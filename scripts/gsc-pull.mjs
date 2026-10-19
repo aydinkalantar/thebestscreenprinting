@@ -6,7 +6,8 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createSign } from 'node:crypto';
 import { homedir } from 'node:os';
 
-const SITE = process.env.GSC_SITE || 'sc-domain:thebestscreenprinting.com';
+// Defaults to whichever thebestscreenprinting.com property the account can see.
+let SITE = process.env.GSC_SITE;
 const keyFile = (process.env.GSC_KEY_FILE || '~/.config/tbsp/gsc-service-account.json').replace(/^~/, homedir());
 const key = JSON.parse(readFileSync(keyFile, 'utf8'));
 
@@ -35,7 +36,8 @@ const t = await token();
 const sites = await fetch('https://www.googleapis.com/webmasters/v3/sites', { headers: { authorization: `Bearer ${t}` } }).then((r) => r.json());
 const props = (sites.siteEntry || []).map((s) => `${s.siteUrl} (${s.permissionLevel})`);
 console.log(`properties visible: ${props.join(', ') || 'none — add the service account in Search Console'}`);
-if (!props.some((p) => p.startsWith(SITE))) process.exit(props.length ? 0 : 2);
+SITE ||= (sites.siteEntry || []).map((s) => s.siteUrl).find((u) => u.includes('thebestscreenprinting.com'));
+if (!SITE) process.exit(2);
 
 const rows = [];
 for (let startRow = 0; ; startRow += 25000) {
