@@ -1,0 +1,87 @@
+/* Public site styles. Every colour, font, radius and shadow comes from the shared
+   TBSP tokens (packages/config/src/tokens.css), the same ones the design studio
+   loads, so both look and switch between light and dark identically. */
+@import '@virtual-promo/config/tokens.css';
+
+* { box-sizing: border-box; }
+html { background: var(--tb-bg); }
+body {
+  margin: 0;
+  font-family: var(--tb-font-sans);
+  color: var(--tb-fg);
+  background: var(--tb-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+img { max-width: 100%; height: auto; }
+:focus-visible { outline: none; box-shadow: var(--tb-focus); border-radius: var(--tb-radius-sm); }
+::selection { background: var(--tb-accent-soft); }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.icon { width: 18px; height: 18px; flex: none; }
+
+/* Header */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--tb-bg) 88%, transparent);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--tb-line);
+}
+.site-header .wrap { display: flex; align-items: center; gap: 16px; min-height: 64px; flex-wrap: wrap; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--tb-font-display); font-weight: 800; text-decoration: none; letter-spacing: -0.01em; }
+.brand-mark { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; background: var(--tb-accent); color: var(--tb-on-accent); font-size: 11px; font-weight: 800; }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: var(--tb-radius-sm); text-decoration: none; color: var(--tb-muted); font-size: 0.92rem; font-weight: 500; transition: color .2s var(--tb-ease), background .2s var(--tb-ease); }
+.nav a:hover { color: var(--tb-fg); background: var(--tb-elevated); }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+
+/* Buttons — same shape as the studio's primary and quiet buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: var(--tb-radius); border: 1px solid transparent; font: 600 0.92rem/1.2 var(--tb-font-sans); text-decoration: none; cursor: pointer; transition: background .2s var(--tb-ease), border-color .2s var(--tb-ease), transform .1s; }
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--tb-accent); color: var(--tb-on-accent); box-shadow: 0 0 40px rgba(124, 58, 237, 0.15); }
+.btn-primary:hover { background: var(--tb-accent-hover); }
+.btn-quiet { background: var(--tb-panel); color: var(--tb-fg); border-color: var(--tb-line); }
+.btn-quiet:hover { background: var(--tb-elevated); }
+.icon-btn { width: 38px; height: 38px; display: grid; place-items: center; border-radius: var(--tb-radius-sm); border: 1px solid var(--tb-line); background: var(--tb-panel); color: var(--tb-muted); cursor: pointer; }
+.icon-btn:hover { color: var(--tb-fg); background: var(--tb-elevated); }
+
+/* Page */
+main { padding: 40px 0 72px; }
+main h1 { font-family: var(--tb-font-display); font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 16px; }
+main h2 { font-family: var(--tb-font-display); margin-top: 2em; line-height: 1.25; letter-spacing: -0.01em; }
+main h3 { margin-top: 1.6em; }
+.lead { font-size: 1.15rem; color: var(--tb-muted); max-width: 70ch; }
+.prose { max-width: 75ch; color: var(--tb-fg-2); }
+.prose a { color: var(--tb-accent); }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 32px; }
+.card { background: var(--tb-panel); border: 1px solid var(--tb-line); border-radius: var(--tb-radius-lg); box-shadow: var(--tb-shadow-sm); padding: 20px; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--tb-line); background: var(--tb-bg-subtle); padding: 40px 0; font-size: 0.95rem; color: var(--tb-muted); }
+.site-footer .wrap { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.site-footer a { text-decoration: none; }
+.site-footer a:hover { color: var(--tb-fg); }
+.footer-line { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+
+.imported-note { background: var(--tb-accent-soft); border: 1px solid var(--tb-line); padding: 8px 12px; border-radius: var(--tb-radius); font-size: 0.9rem; }
+
+/* Theme toggle: show the icon for the mode you'd switch to */
+.theme-toggle .sun { display: none; }
+:root.dark .theme-toggle .sun { display: block; }
+:root.dark .theme-toggle .moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .theme-toggle .sun { display: block; }
+  :root:not(.light) .theme-toggle .moon { display: none; }
+}
+
+/* Phones: brand + actions on one row, nav scrolls sideways underneath */
+@media (max-width: 760px) {
+  .site-header .wrap { gap: 8px; padding-top: 8px; }
+  .brand { font-size: 0.95rem; }
+  .header-actions { margin-left: auto; }
+  .header-actions .btn { padding: 8px 12px; }
+  .nav { order: 3; width: 100%; margin: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { white-space: nowrap; }
+}

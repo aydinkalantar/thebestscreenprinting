@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { business } from '../data/business';
+import { ArrowRight, Palette } from '@lucide/astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((page) => ({
+    // "/" is the homepage; everything else drops its slashes for the rest param.
+    params: { slug: page.data.path === '/' ? undefined : page.data.path.replace(/^\/|\/$/g, '') },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+const { title, description, h1, noindex, imported } = page.data;
+---
+<Base title={title} description={description} noindex={noindex}>
+  {imported && import.meta.env.DEV && (
+    <p class="imported-note">Imported from WordPress — not rewritten yet.</p>
+  )}
+  <h1>{h1}</h1>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="icon" aria-hidden="true" /></a>
+    <a class="btn btn-quiet" href={`${business.studioUrl}/studio`} rel="nofollow"><Palette class="icon" aria-hidden="true" />Design it online</a>
+  </div>
+  <article class="prose">
+    <Content />
+  </article>
+</Base>

@@ -1,0 +1,17 @@
+# Search and AI answer engines are welcome: we want to be recommended.
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://thebestscreenprinting.com/sitemap-index.xml

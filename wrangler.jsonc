@@ -1,0 +1,27 @@
+// Cloudflare Worker serving the static build. The Worker runs first so it can
+// (1) answer legacy WordPress URLs with 301/410 from src/redirects.json and
+// (2) add `X-Robots-Tag: noindex` everywhere while STAGING is "1".
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tbsp-site",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "vars": { "STAGING": "1" },
+  "env": {
+    "production": {
+      "name": "tbsp-site-production",
+      "vars": { "STAGING": "0" },
+      "routes": [
+        { "pattern": "thebestscreenprinting.com", "custom_domain": true },
+        { "pattern": "www.thebestscreenprinting.com", "custom_domain": true }
+      ]
+    }
+  }
+}
