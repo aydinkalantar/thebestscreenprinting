@@ -13,10 +13,12 @@
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
     "astro": "7.3.8",
-    "@virtual-promo/config": "*",
     "@lucide/astro": "1.49.0"
   },
   "devDependencies": {
     "wrangler": "4.145.0"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

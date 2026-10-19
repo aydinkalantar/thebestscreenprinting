@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.dev.vars
+.env
+# Raw Search Console pulls stay on the machine that runs the weekly report.
+data/gsc/*.json

@@ -1,0 +1,98 @@
+/* COPY of packages/config/src/tokens.css from aydinkalantar/Virtual-Promo (the
+   design studio), which is the source of truth. Change it there, then copy it
+   here so the studio and this site stay identical. */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TBSP design tokens — the one source of colour, type, radius and shadow for
+   every surface: the design studio (Next.js, apps/web) and the public site
+   (Astro, apps/site). Values mirror the studio's fluid layout:
+   white/zinc + violet in light mode, #0d0d14 panels in dark mode.
+
+   Dark mode applies when <html> has class "dark" (next-themes in the studio,
+   the theme toggle on the public site) or, with no explicit choice, when the
+   OS prefers dark.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  color-scheme: light;
+
+  /* Brand */
+  --tb-accent: #7c3aed;          /* violet-600 */
+  --tb-accent-hover: #6d28d9;    /* violet-700 */
+  --tb-accent-glow: #a78bfa;     /* violet-400 */
+  --tb-accent-soft: rgba(124, 58, 237, 0.1);
+  --tb-on-accent: #ffffff;
+
+  /* Surfaces */
+  --tb-bg: #ffffff;
+  --tb-bg-subtle: #fafafa;       /* zinc-50 */
+  --tb-panel: #ffffff;
+  --tb-elevated: #f4f4f5;        /* zinc-100 */
+
+  /* Text */
+  --tb-fg: #18181b;              /* zinc-900 */
+  --tb-fg-2: #3f3f46;            /* zinc-700 */
+  --tb-muted: #71717a;           /* zinc-500 */
+  --tb-faint: #a1a1aa;           /* zinc-400 */
+
+  /* Lines */
+  --tb-line: #e4e4e7;            /* zinc-200 */
+  --tb-line-strong: #d4d4d8;     /* zinc-300 */
+
+  /* Status */
+  --tb-success: #059669;
+  --tb-warning: #d97706;
+  --tb-danger: #dc2626;
+
+  /* Type */
+  --tb-font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --tb-font-display: 'Outfit', 'Inter', system-ui, sans-serif;
+
+  /* Shape */
+  --tb-radius-sm: 8px;
+  --tb-radius: 12px;
+  --tb-radius-lg: 16px;
+  --tb-radius-xl: 24px;
+  --tb-shadow: 0 18px 44px -24px rgba(52, 33, 110, 0.5);
+  --tb-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --tb-focus: 0 0 0 2px var(--tb-bg), 0 0 0 4px var(--tb-accent);
+  --tb-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+    --tb-accent: #8b5cf6;          /* violet-500 reads better on dark */
+    --tb-accent-hover: #a78bfa;
+    --tb-accent-soft: rgba(139, 92, 246, 0.14);
+    --tb-bg: #0a0a0f;
+    --tb-bg-subtle: #0d0d14;
+    --tb-panel: #0d0d14;
+    --tb-elevated: #16161f;
+    --tb-fg: #f4f4f5;
+    --tb-fg-2: #d4d4d8;
+    --tb-muted: #a1a1aa;
+    --tb-faint: #71717a;
+    --tb-line: rgba(255, 255, 255, 0.1);
+    --tb-line-strong: rgba(255, 255, 255, 0.18);
+    --tb-shadow: 0 18px 44px -24px rgba(0, 0, 0, 0.8);
+  }
+}
+
+:root.dark {
+  color-scheme: dark;
+  --tb-accent: #8b5cf6;
+  --tb-accent-hover: #a78bfa;
+  --tb-accent-soft: rgba(139, 92, 246, 0.14);
+  --tb-bg: #0a0a0f;
+  --tb-bg-subtle: #0d0d14;
+  --tb-panel: #0d0d14;
+  --tb-elevated: #16161f;
+  --tb-fg: #f4f4f5;
+  --tb-fg-2: #d4d4d8;
+  --tb-muted: #a1a1aa;
+  --tb-faint: #71717a;
+  --tb-line: rgba(255, 255, 255, 0.1);
+  --tb-line-strong: rgba(255, 255, 255, 0.18);
+  --tb-shadow: 0 18px 44px -24px rgba(0, 0, 0, 0.8);
+}

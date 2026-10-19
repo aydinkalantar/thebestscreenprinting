@@ -1,7 +1,7 @@
 /* Public site styles. Every colour, font, radius and shadow comes from the shared
-   TBSP tokens (packages/config/src/tokens.css), the same ones the design studio
+   TBSP tokens (src/styles/tokens.css, copied from the studio repo), the same ones the design studio
    loads, so both look and switch between light and dark identically. */
-@import '@virtual-promo/config/tokens.css';
+@import './tokens.css';
 
 * { box-sizing: border-box; }
 html { background: var(--tb-bg); }
