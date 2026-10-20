@@ -45,7 +45,7 @@ const schema = [localBusinessJsonLd, ...jsonLd];
   <body>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">TBSP</span>{business.name}</a>
+        <a class="brand" href="/" aria-label={`${business.shortName} home`}><span class="brand-mark" aria-hidden="true"><Shirt class="icon" /></span>{business.shortName}</a>
         <nav class="nav" aria-label="Main">
           <a href="/screen-printing/"><Shirt class="icon" aria-hidden="true" />Screen printing</a>
           <a href="/services/embroidery/"><Scissors class="icon" aria-hidden="true" />Embroidery</a>
@@ -69,7 +69,7 @@ const schema = [localBusinessJsonLd, ...jsonLd];
     <footer class="site-footer">
       <div class="wrap">
         <div>
-          <strong>{business.name}</strong>
+          <strong>{business.shortName}</strong>
           <p class="footer-line"><MapPin class="icon" aria-hidden="true" />{business.address.streetAddress}, {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}</p>
           <p class="footer-line"><Phone class="icon" aria-hidden="true" /><a href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
           <p class="footer-line"><Mail class="icon" aria-hidden="true" /><a href={`mailto:${business.email}`}>{business.email}</a></p>
