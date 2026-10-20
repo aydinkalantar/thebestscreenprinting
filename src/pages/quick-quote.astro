@@ -3,67 +3,66 @@ import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { business } from '../data/business';
 import { LEAD_SOURCES, DECORATIONS, GARMENTS } from '../lib/quote';
-import { Upload, Phone, Mail, Clock, Send } from '@lucide/astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { Upload, Phone, Mail, Clock, Send, BadgeCheck } from '@lucide/astro';
 
 const page = await getEntry('pages', 'quick-quote');
 const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
-<Base title={page?.data.title ?? 'Get a Quote | TBSP'} description="Request a custom apparel printing quote from our Downtown LA shop. Screen printing, embroidery, DTF and more — we reply within one business day.">
-  <div class="quote-layout">
+<Base title={page?.data.title ?? 'Get a Quote | TBSP'} description="Request a custom apparel printing quote from our Downtown LA shop. Screen printing, embroidery, DTF and more. We reply within one business day.">
+  <Breadcrumbs items={[{ label: 'Get a quote' }]} />
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
     <div>
-      <h1>Get a quote</h1>
-      <p class="lead">Tell us what you need and we'll reply with a personal quote within one business day. Orders of {business.shopMinimum}+ pieces are printed in our shop.</p>
+      <p class="eyebrow">Get a quote</p>
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white">Tell us what you need</h1>
+      <p class="mt-4 text-lg muted max-w-2xl">We reply with a personal quote within one business day. Orders of {business.shopMinimum}+ pieces are printed in our shop.</p>
 
-      <form id="quote-form" class="form card" novalidate enctype="multipart/form-data">
-        <fieldset>
-          <legend>Your order</legend>
-          <div class="row">
-            <label><span>What do you want printed?</span>
-<select name="garment" required>
+      <form id="quote-form" class="mt-8 panel-raised p-5 sm:p-7 grid gap-8" novalidate enctype="multipart/form-data">
+        <fieldset class="grid gap-5">
+          <legend class="text-lg font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2"><span class="w-7 h-7 rounded-full grid place-items-center bg-violet-600 text-white text-xs">1</span>Your order</legend>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="label"><span>What do you want printed?</span>
+              <select name="garment" class="field" required>
                 <option value="">Choose one</option>
                 {GARMENTS.map((g) => <option>{g}</option>)}
               </select>
               <span class="err" data-for="garment"></span>
             </label>
-            <label><span>Quantity</span>
-<input name="quantity" type="number" min="1" inputmode="numeric" placeholder="e.g. 50" required />
+            <label class="label"><span>Quantity</span>
+              <input name="quantity" class="field" type="number" min="1" inputmode="numeric" placeholder="e.g. 50" required />
               <span class="err" data-for="quantity"></span>
             </label>
           </div>
-          <div class="checks" role="group" aria-label="Decoration">
+          <div class="grid gap-2" role="group" aria-label="Decoration">
             <span class="label"><span>Decoration <small>(pick any)</small></span></span>
-            {DECORATIONS.map((d) => <label class="check"><input type="checkbox" name="decorations" value={d} />{d}</label>)}
+            <div class="flex flex-wrap gap-2">
+              {DECORATIONS.map((d) => <label class="chip cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300"><input type="checkbox" name="decorations" value={d} class="accent-violet-600" />{d}</label>)}
+            </div>
           </div>
-          <div class="row">
-            <label><span>Needed by <small>(optional)</small></span>
-<input name="deadline" type="date" />
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="label"><span>Needed by <small>(optional)</small></span>
+              <input name="deadline" class="field" type="date" />
             </label>
-            <label><span>Artwork <small>(optional, up to 10 MB)</small></span>
-<span class="file"><Upload class="icon" aria-hidden="true" /><input name="artwork" type="file" accept=".png,.jpg,.jpeg,.webp,.svg,.pdf,.ai,.eps,.psd" /></span>
+            <label class="label"><span>Artwork <small>(optional, up to 10 MB)</small></span>
+              <span class="field !h-auto py-2 flex items-center gap-2"><Upload class="w-4 h-4 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><input name="artwork" type="file" class="text-[13px] file:mr-3 file:rounded-lg file:border-0 file:bg-violet-500/10 file:px-3 file:py-1.5 file:text-violet-700 dark:file:text-violet-300 file:font-semibold" accept=".png,.jpg,.jpeg,.webp,.svg,.pdf,.ai,.eps,.psd" /></span>
               <span class="err" data-for="artwork"></span>
             </label>
           </div>
-          <label><span>Details <small>(optional)</small></span>
-<textarea name="details" rows="4" placeholder="Colors, sizes, print locations, anything else"></textarea>
+          <label class="label"><span>Details <small>(optional)</small></span>
+            <textarea name="details" class="field" rows="4" placeholder="Colors, sizes, print locations, anything else"></textarea>
           </label>
         </fieldset>
 
-        <fieldset>
-          <legend>Where should we send the quote?</legend>
-          <div class="row">
-            <label><span>Name</span>
-<input name="name" autocomplete="name" required /><span class="err" data-for="name"></span></label>
-            <label><span>Email</span>
-<input name="email" type="email" autocomplete="email" required /><span class="err" data-for="email"></span></label>
+        <fieldset class="grid gap-5">
+          <legend class="text-lg font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2"><span class="w-7 h-7 rounded-full grid place-items-center bg-violet-600 text-white text-xs">2</span>Where should we send the quote?</legend>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="label"><span>Name</span><input name="name" class="field" autocomplete="name" required /><span class="err" data-for="name"></span></label>
+            <label class="label"><span>Email</span><input name="email" class="field" type="email" autocomplete="email" required /><span class="err" data-for="email"></span></label>
+            <label class="label"><span>Phone <small>(optional)</small></span><input name="phone" class="field" type="tel" autocomplete="tel" /></label>
+            <label class="label"><span>Company or team <small>(optional)</small></span><input name="company" class="field" autocomplete="organization" /></label>
           </div>
-          <div class="row">
-            <label><span>Phone <small>(optional)</small></span>
-<input name="phone" type="tel" autocomplete="tel" /></label>
-            <label><span>Company or team <small>(optional)</small></span>
-<input name="company" autocomplete="organization" /></label>
-          </div>
-          <label><span>How did you find us? <small>(optional)</small></span>
-<select name="leadSource">
+          <label class="label"><span>How did you find us? <small>(optional)</small></span>
+            <select name="leadSource" class="field">
               <option value="">Choose one</option>
               {LEAD_SOURCES.map((s) => <option value={s.id}>{s.label}</option>)}
             </select>
@@ -71,19 +70,28 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
         </fieldset>
 
         <!-- Hidden from people; bots fill it in. -->
-        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input class="absolute -left-[9999px] w-px h-px opacity-0" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
         {turnstileKey && <div class="cf-turnstile" data-sitekey={turnstileKey}></div>}
 
-        <p class="form-msg" role="status" aria-live="polite"></p>
-        <button class="btn btn-primary" type="submit"><Send class="icon" aria-hidden="true" />Send my quote request</button>
+        <p class="form-msg hidden rounded-xl px-4 py-3 text-sm font-medium" role="status" aria-live="polite"></p>
+        <button class="btn-primary justify-self-start" type="submit"><Send class="w-4 h-4" aria-hidden="true" /><span>Send my quote request</span></button>
       </form>
     </div>
 
-    <aside class="card quote-side">
-      <h2>Rather talk?</h2>
-      <p class="footer-line"><Phone class="icon" aria-hidden="true" /><a href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
-      <p class="footer-line"><Mail class="icon" aria-hidden="true" /><a href={`mailto:${business.email}`}>{business.email}</a></p>
-      <p class="footer-line"><Clock class="icon" aria-hidden="true" />Mon–Fri, 9am–5pm</p>
+    <aside class="space-y-4 lg:sticky lg:top-24 self-start lg:mt-[9.5rem]">
+      <div class="panel-raised p-5">
+        <p class="eyebrow">Rather talk?</p>
+        <div class="mt-3 space-y-2.5 text-sm">
+          <p class="flex items-center gap-2"><Phone class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a class="font-semibold" href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
+          <p class="flex items-center gap-2"><Mail class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a href={`mailto:${business.email}`}>{business.email}</a></p>
+          <p class="flex items-center gap-2 muted"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Mon–Fri, 9am–5pm</p>
+        </div>
+      </div>
+      <div class="panel p-5 text-sm muted space-y-2">
+        <p class="flex gap-2"><BadgeCheck class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" aria-hidden="true" />Free art check before anything prints</p>
+        <p class="flex gap-2"><BadgeCheck class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" aria-hidden="true" />Quote within one business day</p>
+        <p class="flex gap-2"><BadgeCheck class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" aria-hidden="true" />Same-day rush when you need it</p>
+      </div>
     </aside>
   </div>
   {turnstileKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
@@ -106,27 +114,27 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     e.preventDefault();
     setErrors();
     msg.textContent = '';
-    msg.className = 'form-msg';
+    msg.className = 'form-msg hidden rounded-xl px-4 py-3 text-sm font-medium';
     button.disabled = true;
-    button.lastChild!.textContent = 'Sending…';
+    button.querySelector('span')!.textContent = 'Sending…';
     try {
       const res = await fetch('/api/quote', { method: 'POST', body: new FormData(form) });
       const data = await res.json().catch(() => ({}));
       if (res.ok) {
         form.reset();
-        msg.className = 'form-msg ok';
+        msg.className = 'form-msg rounded-xl px-4 py-3 text-sm font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-300';
         msg.textContent = "Thanks! We've got your request and will reply within one business day.";
       } else {
         setErrors(data.fields);
-        msg.className = 'form-msg bad';
+        msg.className = 'form-msg rounded-xl px-4 py-3 text-sm font-medium bg-red-500/10 text-red-700 dark:text-red-300';
         msg.textContent = data.error || 'Something went wrong. Please try again.';
       }
     } catch {
-      msg.className = 'form-msg bad';
+      msg.className = 'form-msg rounded-xl px-4 py-3 text-sm font-medium bg-red-500/10 text-red-700 dark:text-red-300';
       msg.textContent = 'Network error. Please try again, or call us.';
     } finally {
       button.disabled = false;
-      button.lastChild!.textContent = 'Send my quote request';
+      button.querySelector('span')!.textContent = 'Send my quote request';
     }
   });
 </script>

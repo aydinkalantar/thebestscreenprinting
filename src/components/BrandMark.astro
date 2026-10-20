@@ -1,0 +1,9 @@
+---
+import { business } from '../data/business';
+interface Props { size?: 'sm' | 'md' }
+const { size = 'md' } = Astro.props;
+---
+<a href="/" class="flex items-center gap-2.5 min-w-0" aria-label={`${business.shortName} home`}>
+  <span class:list={['brand-mark shrink-0 grid place-items-center rounded-xl', size === 'sm' ? 'w-7 h-7' : 'w-8 h-8']} aria-hidden="true"><i></i></span>
+  <span class="text-[15px] font-black tracking-tight text-zinc-900 dark:text-white">{business.shortName}</span>
+</a>

@@ -1,0 +1,46 @@
+---
+import BrandMark from './BrandMark.astro';
+import { business } from '../data/business';
+import { Shirt, Scissors, Package, CalendarDays, CircleHelp, Moon, Sun, Phone, ArrowRight, Menu, Palette } from '@lucide/astro';
+
+const NAV = [
+  { href: '/screen-printing/', label: 'Screen printing', icon: Shirt },
+  { href: '/services/embroidery/', label: 'Embroidery', icon: Scissors },
+  { href: '/catalog/', label: 'Catalog', icon: Package },
+  { href: '/event-apparel/', label: 'Events', icon: CalendarDays },
+  { href: '/faq/', label: 'FAQ', icon: CircleHelp },
+];
+const here = Astro.url.pathname;
+---
+<header class="sticky top-0 z-50 border-b border-zinc-200/80 dark:border-white/10 bg-white/90 dark:bg-[#0a0a0f]/85 backdrop-blur-xl">
+  <div class="wrap h-16 flex items-center gap-6">
+    <BrandMark />
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Main">
+      {NAV.map((n) => (
+        <a href={n.href} aria-current={here.startsWith(n.href) ? 'page' : undefined}
+          class="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg text-[13.5px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/[0.06] aria-[current=page]:text-violet-700 dark:aria-[current=page]:text-violet-300 aria-[current=page]:bg-violet-500/10 transition-colors">
+          <n.icon class="w-4 h-4" aria-hidden="true" />{n.label}
+        </a>
+      ))}
+    </nav>
+    <div class="ml-auto flex items-center gap-2">
+      <a href={`tel:${business.phone}`} class="hidden md:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg text-[13.5px] font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/[0.06]"><Phone class="w-4 h-4" aria-hidden="true" />{business.phoneDisplay}</a>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch light or dark mode" data-theme-toggle>
+        <Moon class="w-4 h-4 moon" aria-hidden="true" /><Sun class="w-4 h-4 sun" aria-hidden="true" />
+      </button>
+      {business.studioLive && (
+        <a href={`${business.studioUrl}/studio`} rel="nofollow" class="hidden sm:inline-flex btn-quiet btn-sm"><Palette class="w-4 h-4" aria-hidden="true" />Design online</a>
+      )}
+      <a href="/quick-quote/" class="btn-primary btn-sm">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+      <details class="lg:hidden relative">
+        <summary class="icon-btn cursor-pointer" aria-label="Menu"><Menu class="w-4 h-4" aria-hidden="true" /></summary>
+        <nav class="absolute right-0 mt-2 w-60 panel-raised p-2 grid" aria-label="Main">
+          {NAV.map((n) => (
+            <a href={n.href} class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/[0.06]"><n.icon class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />{n.label}</a>
+          ))}
+          <a href={`tel:${business.phone}`} class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/[0.06]"><Phone class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />{business.phoneDisplay}</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

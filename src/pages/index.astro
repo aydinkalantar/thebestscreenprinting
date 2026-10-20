@@ -1,44 +1,32 @@
 ---
 import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ProductCard from '../components/ProductCard.astro';
 import { business } from '../data/business';
+import { products } from '../lib/catalog';
 import {
   ArrowRight, Phone, MapPin, Clock, Shirt, Scissors, Layers, Flame, Stamp, Printer, Maximize, Zap,
-  Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, ChevronDown,
+  Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck,
 } from '@lucide/astro';
 
-// Title and description stay exactly as the live homepage has them (they rank).
+// Title, description and H1 stay exactly as the live homepage has them (they rank).
 const home = await getEntry('pages', 'home');
 const title = home?.data.title ?? 'Custom Apparel Printing Los Angeles | TBSP';
 const description = home?.data.description ?? '';
+const h1 = home?.data.h1 ?? 'Custom apparel printing in Los Angeles';
 
 const services = [
-  { href: '/screen-printing/', icon: Shirt, name: 'Screen printing', line: `Our core service for ${business.shopMinimum}+ pieces. Bold spot colors, lowest cost per piece at volume.` },
+  { href: '/screen-printing/', icon: Shirt, name: 'Screen printing', line: `Our core service for ${business.shopMinimum}+ pieces. Bold spot colors, lowest price per piece.` },
   { href: '/services/embroidery/', icon: Scissors, name: 'Embroidery', line: 'Stitched logos for polos, hats, jackets and uniforms.' },
-  { href: '/services/direct-to-film/', icon: Layers, name: 'DTF transfers', line: 'Full-color prints that work on cotton, polyester and blends.' },
-  { href: '/services/direct-to-garment/', icon: Printer, name: 'DTG printing', line: 'Full-color printing with no minimum and no setup fee.' },
+  { href: '/services/direct-to-film/', icon: Layers, name: 'DTF transfers', line: 'Full-color prints on cotton, polyester and blends.' },
+  { href: '/services/direct-to-garment/', icon: Printer, name: 'DTG printing', line: 'Full color with no minimum and no setup fee.' },
   { href: '/services/heat-transfer-vinyl/', icon: Flame, name: 'Heat transfer', line: 'Names, numbers and small runs with crisp edges.' },
   { href: '/services/embossing/', icon: Stamp, name: 'Embossing', line: 'Raised, tonal branding for a premium finish.' },
-  { href: '/services/large-format-screen-printing/', icon: Maximize, name: 'Oversize prints', line: 'Jumbo and large format prints beyond the standard chest size.' },
-  { href: '/same-day-t-shirt-printing-los-angeles/', icon: Zap, name: 'Same-day rush', line: 'Need it today? Rush slots are available from our DTLA shop.' },
+  { href: '/services/large-format-screen-printing/', icon: Maximize, name: 'Oversize prints', line: 'Jumbo prints beyond the standard chest size.' },
+  { href: '/same-day-t-shirt-printing-los-angeles/', icon: Zap, name: 'Same-day rush', line: 'Need it today? Rush slots from our DTLA shop.' },
 ];
-
-// Client logos carried over from the current site.
-const clients = [
-  { file: 'netflix', name: 'Netflix' }, { file: 'adidas', name: 'Adidas' }, { file: 'nike', name: 'Nike' },
-  { file: 'youtube', name: 'YouTube' }, { file: 'google', name: 'Google' }, { file: 'amazon-alexa', name: 'Amazon Alexa' },
-  { file: 'optimum-nutrition', name: 'Optimum Nutrition' }, { file: '99-only', name: '99 Cents Only' }, { file: 'bcg-digital-ventures', name: 'BCG Digital Ventures' },
-];
-
-const products = [
-  { href: '/products/t-shirts/', name: 'T-shirts' },
-  { href: '/products/sweatshirts-hoodies/', name: 'Hoodies & sweatshirts' },
-  { href: '/products/hats/', name: 'Hats' },
-  { href: '/products/business-and-polos-landings/', name: 'Polos' },
-  { href: '/products/bags/', name: 'Bags & totes' },
-  { href: '/products/team-uniforms-jerseys/', name: 'Team uniforms' },
-];
-
 const audiences = [
   { href: '/for/retail-brands/', icon: Store, name: 'Clothing brands' },
   { href: '/event-apparel/', icon: CalendarDays, name: 'Events & tours' },
@@ -47,20 +35,23 @@ const audiences = [
   { href: '/for/schools/', icon: GraduationCap, name: 'Schools' },
   { href: '/for/non-profits/', icon: HeartHandshake, name: 'Non-profits' },
 ];
-
 const steps = [
   { icon: MessageSquareText, name: 'Tell us what you need', line: 'Garment, quantity, deadline and your artwork. A rough idea is fine.' },
-  { icon: Printer, name: 'Approve your proof', line: 'We check the art, confirm colors and placement, and send a quote.' },
+  { icon: BadgeCheck, name: 'Approve your proof', line: 'We check the art, confirm colors and placement, and send your quote.' },
   { icon: Truck, name: 'Pick up or get it delivered', line: 'Printed in our Downtown LA shop, ready for pickup or shipping.' },
 ];
-
+const clients = [
+  ['netflix', 'Netflix'], ['adidas', 'Adidas'], ['nike', 'Nike'], ['youtube', 'YouTube'], ['google', 'Google'],
+  ['amazon-alexa', 'Amazon Alexa'], ['optimum-nutrition', 'Optimum Nutrition'], ['99-only', '99 Cents Only'], ['bcg-digital-ventures', 'BCG Digital Ventures'],
+];
 const faqs = [
   { q: 'Where is your shop?', a: `We print at ${business.address.streetAddress}, ${business.address.addressLocality}, ${business.address.addressRegion} ${business.address.postalCode}, in Downtown Los Angeles. We're open Monday to Friday, 9am to 5pm.` },
   { q: 'What is the minimum order for screen printing?', a: `Screen printing starts at ${business.shopMinimum} pieces of one design. For smaller runs, DTG and DTF printing have no minimum.` },
   { q: 'Can you print the same day?', a: 'Yes. Same-day and next-day rush slots are available for many orders. Call us or request a quote with your deadline and we will confirm.' },
   { q: 'How do I get a price?', a: 'Request a quote with your garment, quantity, print locations and artwork. We reply with a personal quote within one business day.' },
 ];
-
+const shirt = products.find((p) => /t-shirt/i.test(p.name) && p.category === 'apparel') ?? products[0];
+const featured = products.filter((p) => ['apparel', 'sweatshirts', 'hats'].includes(p.category)).slice(0, 8);
 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${business.name} ${business.address.streetAddress} Los Angeles`)}`;
 const jsonLd = [{
   '@context': 'https://schema.org',
@@ -68,89 +59,140 @@ const jsonLd = [{
   mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 }];
 ---
-<Base title={title} description={description} jsonLd={jsonLd}>
-  <section class="hero">
-    <p class="eyebrow"><MapPin class="icon" aria-hidden="true" />Downtown Los Angeles print shop</p>
-    <h1>{home?.data.h1 ?? 'Custom apparel printing in Los Angeles'}</h1>
-    <p class="lead">
-      Screen printing, embroidery and full garment programs, printed in our shop at {business.address.streetAddress}.
-      Orders of {business.shopMinimum} pieces and up are made in-house, with same-day rush available.
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="icon" aria-hidden="true" /></a>
-      <a class="btn btn-quiet" href={`tel:${business.phone}`}><Phone class="icon" aria-hidden="true" />{business.phoneDisplay}</a>
+<Base title={title} description={description} jsonLd={jsonLd} bare>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_80%_20%,rgba(124,58,237,0.16),transparent_70%)] dark:bg-[radial-gradient(60%_60%_at_80%_20%,rgba(139,92,246,0.22),transparent_70%)]" aria-hidden="true"></div>
+    <div class="wrap pt-14 pb-16 sm:pt-20 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] items-center">
+      <div class="min-w-0">
+        <p class="pill"><MapPin class="w-3.5 h-3.5" aria-hidden="true" />Downtown Los Angeles print shop</p>
+        <h1 class="mt-5 text-[2.5rem] sm:text-6xl break-words font-bold leading-[1.02] text-zinc-900 dark:text-white">{h1}</h1>
+        <p class="mt-6 text-lg leading-8 muted max-w-xl">
+          Screen printing, embroidery and full garment programs, printed in our shop at {business.address.streetAddress}.
+          Orders of {business.shopMinimum}+ pieces are made in-house, with same-day rush available.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+          <a class="btn-quiet" href="/catalog/"><Package class="w-4 h-4" aria-hidden="true" />Browse products</a>
+        </div>
+        <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[13px] font-medium muted">
+          <li class="flex items-center gap-1.5"><BadgeCheck class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Quote within one business day</li>
+          <li class="flex items-center gap-1.5"><Zap class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Same-day rush</li>
+          <li class="flex items-center gap-1.5"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Mon–Fri, 9am–5pm</li>
+        </ul>
+      </div>
+
+      <!-- A slice of the studio: product on stage + Max, the assistant -->
+      <div class="relative min-w-0">
+        <div class="panel-raised p-3 sm:p-4">
+          <div class="flex items-center justify-between px-1 pb-3">
+            <span class="flex items-center gap-2 min-w-0 text-[13px] font-semibold text-zinc-800 dark:text-zinc-200"><span class="w-2 h-2 shrink-0 rounded-full bg-emerald-500"></span><span class="truncate">{shirt?.name ?? 'Custom tee'}</span></span>
+            <span class="inline-flex shrink-0 rounded-lg bg-zinc-100 dark:bg-white/[0.06] p-0.5 text-[11px] font-semibold"><span class="px-2.5 py-1 rounded-md bg-violet-600 text-white">Front</span><span class="px-2.5 py-1 muted">Back</span></span>
+          </div>
+          <div class="relative aspect-[4/3.4] rounded-xl bg-zinc-100 dark:bg-white/[0.04] grid place-items-center overflow-hidden">
+            {shirt && <img src={shirt.image} alt="" class="h-full max-w-full w-auto object-contain" width="480" height="480" />}
+            <span class="absolute top-[38%] left-1/2 -translate-x-1/2 rounded-md border-2 border-dashed border-violet-500/70 px-4 py-2 text-[13px] font-black tracking-tight text-zinc-900 bg-white/70 dark:bg-white/80">YOUR LOGO</span>
+          </div>
+          <div class="mt-3 rounded-xl border border-zinc-200 dark:border-white/10 p-2.5 flex items-center gap-3">
+            <span class="w-9 h-9 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white"><Mic class="w-4 h-4" aria-hidden="true" /></span>
+            <div class="min-w-0">
+              <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-violet-600 dark:text-violet-300">● Max · your design assistant</p>
+              <p class="text-[13px] muted truncate">"50 black tees, logo on the chest, by Friday"</p>
+            </div>
+            <Sparkles class="w-4 h-4 ml-auto text-violet-500 shrink-0" aria-hidden="true" />
+          </div>
+        </div>
+        {!business.studioLive && <p class="mt-3 text-center text-[12px] muted">Our online design studio is coming soon.</p>}
+      </div>
     </div>
   </section>
 
-  <section class="clients" aria-label="Brands we have printed for">
-    <p>Trusted by teams at</p>
-    <ul>
-      {clients.map((c) => <li><img src={`/images/clients/${c.file}.webp`} alt={c.name} loading="lazy" height="28" /></li>)}
+  <!-- Clients -->
+  <section class="wrap" aria-label="Brands we have printed for">
+    <p class="eyebrow !text-zinc-400">Trusted by teams at</p>
+    <ul class="mt-4 flex flex-wrap items-center gap-x-10 gap-y-5">
+      {clients.map(([file, name]) => <li><img src={`/images/clients/${file}.webp`} alt={name} loading="lazy" class="h-7 w-auto opacity-60 grayscale dark:invert" /></li>)}
     </ul>
   </section>
 
-  <section class="section" aria-labelledby="services-title">
-    <h2 id="services-title">What we print</h2>
-    <div class="grid">
+  <!-- Services -->
+  <section class="wrap mt-24" aria-labelledby="services-title">
+    <p class="eyebrow">What we print</p>
+    <h2 id="services-title" class="section-title mt-2">Every decoration, one shop</h2>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {services.map((s) => (
         <a class="tile" href={s.href}>
-          <span class="tile-icon"><s.icon class="icon" aria-hidden="true" /></span>
-          <strong>{s.name}</strong>
-          <span>{s.line}</span>
+          <span class="tile-icon"><s.icon class="w-5 h-5" aria-hidden="true" /></span>
+          <strong class="mt-2 text-zinc-900 dark:text-white">{s.name}</strong>
+          <span class="text-sm muted">{s.line}</span>
         </a>
       ))}
     </div>
   </section>
 
-  <section class="section" aria-labelledby="products-title">
-    <h2 id="products-title">Popular products</h2>
-    <ul class="chips">
-      {products.map((p) => <li><a href={p.href}>{p.name}<ArrowRight class="icon" aria-hidden="true" /></a></li>)}
-    </ul>
-  </section>
+  <!-- Catalog preview -->
+  {featured.length > 0 && (
+    <section class="wrap mt-24" aria-labelledby="catalog-title">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="eyebrow">Catalog</p>
+          <h2 id="catalog-title" class="section-title mt-2">Pick a product, add your design</h2>
+        </div>
+        <a class="btn-quiet btn-sm" href="/catalog/">See all {products.length}<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+      </div>
+      <div class="mt-8 grid gap-5 grid-cols-2 md:grid-cols-4">
+        {featured.map((p) => <ProductCard p={p} />)}
+      </div>
+    </section>
+  )}
 
-  <section class="section" aria-labelledby="who-title">
-    <h2 id="who-title">Who we print for</h2>
-    <div class="grid grid-sm">
-      {audiences.map((a) => (
-        <a class="tile tile-row" href={a.href}>
-          <span class="tile-icon"><a.icon class="icon" aria-hidden="true" /></span>
-          <strong>{a.name}</strong>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="how-title">
-    <h2 id="how-title">How it works</h2>
-    <ol class="steps">
+  <!-- How it works -->
+  <section class="wrap mt-24" aria-labelledby="how-title">
+    <p class="eyebrow">How it works</p>
+    <h2 id="how-title" class="section-title mt-2">From idea to finished merch</h2>
+    <ol class="mt-8 grid gap-4 md:grid-cols-3">
       {steps.map((s, i) => (
-        <li class="card">
-          <span class="step-n">{i + 1}</span>
-          <strong>{s.name}</strong>
-          <span>{s.line}</span>
+        <li class="panel p-6">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-full grid place-items-center bg-violet-600 text-white text-sm font-bold">{i + 1}</span>
+            <s.icon class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />
+          </div>
+          <p class="mt-4 font-bold text-zinc-900 dark:text-white">{s.name}</p>
+          <p class="mt-1.5 text-sm muted">{s.line}</p>
         </li>
       ))}
     </ol>
   </section>
 
-  <section class="section visit card" aria-labelledby="visit-title">
-    <div>
-      <h2 id="visit-title">Visit the shop</h2>
-      <p class="footer-line"><MapPin class="icon" aria-hidden="true" />{business.address.streetAddress}, {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}</p>
-      <p class="footer-line"><Clock class="icon" aria-hidden="true" />Monday–Friday, 9am–5pm</p>
-      <p class="footer-line"><Phone class="icon" aria-hidden="true" /><a href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
+  <!-- Audiences -->
+  <section class="wrap mt-24" aria-labelledby="who-title">
+    <p class="eyebrow">Who we print for</p>
+    <h2 id="who-title" class="section-title mt-2">Brands, events, teams and businesses</h2>
+    <div class="mt-8 grid gap-3 grid-cols-2 md:grid-cols-3">
+      {audiences.map((a) => (
+        <a class="tile !flex-row !items-center !gap-3 !py-4" href={a.href}>
+          <span class="tile-icon"><a.icon class="w-5 h-5" aria-hidden="true" /></span>
+          <strong class="text-zinc-900 dark:text-white text-[15px]">{a.name}</strong>
+        </a>
+      ))}
     </div>
-    <a class="btn btn-quiet" href={mapUrl} rel="noopener" target="_blank"><MapPin class="icon" aria-hidden="true" />Get directions</a>
   </section>
 
-  <section class="faq" aria-labelledby="faq-title">
-    <h2 id="faq-title">Questions people ask</h2>
-    {faqs.map((f) => (
-      <details>
-        <summary>{f.q}<ChevronDown class="icon" aria-hidden="true" /></summary>
-        <p>{f.a}</p>
-      </details>
-    ))}
+  <!-- Visit -->
+  <section class="wrap mt-24">
+    <div class="panel-raised p-6 sm:p-8 flex flex-wrap items-center justify-between gap-6">
+      <div>
+        <p class="eyebrow">Visit the shop</p>
+        <h2 class="section-title mt-2">2710 S Broadway, Downtown LA</h2>
+        <div class="mt-4 space-y-2 text-sm muted">
+          <p class="flex items-center gap-2"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Monday–Friday, 9am–5pm</p>
+          <p class="flex items-center gap-2"><Phone class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
+        </div>
+      </div>
+      <a class="btn-quiet" href={mapUrl} rel="noopener" target="_blank"><MapPin class="w-4 h-4" aria-hidden="true" />Get directions</a>
+    </div>
   </section>
+
+  <section class="wrap mt-24"><Faq faqs={faqs} /></section>
+  <section class="wrap mt-24"><CtaBand /></section>
 </Base>

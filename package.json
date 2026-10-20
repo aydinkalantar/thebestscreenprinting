@@ -13,10 +13,13 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
-    "astro": "7.3.8",
-    "@lucide/astro": "1.49.0"
+    "@lucide/astro": "1.49.0",
+    "astro": "7.3.8"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.19",
     "wrangler": "4.145.0"
   },
   "engines": {

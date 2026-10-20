@@ -1,16 +1,19 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import { business, localBusinessJsonLd } from '../data/business';
-import { Phone, Mail, MapPin, Clock, Palette, ArrowRight, Moon, Sun, Shirt, Scissors, Package, CalendarDays, CircleHelp } from '@lucide/astro';
 
 interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
   jsonLd?: object[];
+  /** Full-bleed pages (home) manage their own width. */
+  bare?: boolean;
 }
 
-const { title, description = '', noindex = false, jsonLd = [] } = Astro.props;
+const { title, description = '', noindex = false, jsonLd = [], bare = false } = Astro.props;
 // Self-referencing canonical on the production host, always with a trailing slash.
 const canonical = new URL(Astro.url.pathname, business.url).toString();
 const schema = [localBusinessJsonLd, ...jsonLd];
@@ -25,79 +28,40 @@ const schema = [localBusinessJsonLd, ...jsonLd];
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={business.shortName} />
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
     <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#7c3aed" />
     <link rel="icon" href="/images/brand/TBSP-New-Logo-2025.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" />
-    <!-- Apply a saved light/dark choice before paint (same "theme" key as the studio). -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800&display=swap" />
+    <!-- Same theme rule as the studio: a saved choice wins, otherwise follow the OS. -->
     <script is:inline>
       try {
         const t = localStorage.getItem('theme');
-        if (t === 'dark' || t === 'light') document.documentElement.classList.add(t);
+        const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.add(dark ? 'dark' : 'light');
       } catch {}
     </script>
     {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
-  <body>
-    <header class="site-header">
-      <div class="wrap">
-        <a class="brand" href="/" aria-label={`${business.shortName} home`}><img class="brand-logo" src="/images/brand/TBSP-New-Logo-2025.svg" width="32" height="32" alt="" />{business.shortName}</a>
-        <nav class="nav" aria-label="Main">
-          <a href="/screen-printing/"><Shirt class="icon" aria-hidden="true" />Screen printing</a>
-          <a href="/services/embroidery/"><Scissors class="icon" aria-hidden="true" />Embroidery</a>
-          <a href="/catalog/"><Package class="icon" aria-hidden="true" />Catalog</a>
-          <a href="/event-apparel/"><CalendarDays class="icon" aria-hidden="true" />Events</a>
-          <a href="/faq/"><CircleHelp class="icon" aria-hidden="true" />FAQ</a>
-        </nav>
-        <div class="header-actions">
-          <button class="icon-btn theme-toggle" type="button" aria-label="Switch light or dark mode" data-theme-toggle>
-            <Moon class="icon moon" aria-hidden="true" /><Sun class="icon sun" aria-hidden="true" />
-          </button>
-          <a class="btn btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="icon" aria-hidden="true" /></a>
-        </div>
-      </div>
-    </header>
-    <main>
-      <div class="wrap">
-        <slot />
-      </div>
+  <body class="min-h-screen flex flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 btn-primary btn-sm z-[60]">Skip to content</a>
+    <Header />
+    <main id="main" class="flex-1">
+      {bare ? <slot /> : <div class="wrap py-10 sm:py-14"><slot /></div>}
     </main>
-    <footer class="site-footer">
-      <div class="wrap">
-        <div>
-          <strong>{business.shortName}</strong>
-          <p class="footer-line"><MapPin class="icon" aria-hidden="true" />{business.address.streetAddress}, {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}</p>
-          <p class="footer-line"><Phone class="icon" aria-hidden="true" /><a href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
-          <p class="footer-line"><Mail class="icon" aria-hidden="true" /><a href={`mailto:${business.email}`}>{business.email}</a></p>
-          <p class="footer-line"><Clock class="icon" aria-hidden="true" />Mon–Fri 9am–5pm</p>
-        </div>
-        <div>
-          <p><a href="/services/">Services</a></p>
-          <p><a href="/products/">Products</a></p>
-          <p><a href="/catalog/">Catalog</a></p>
-          <p><a href="/about-us/">About</a></p>
-          <p><a href="/shipping-and-delivery/">Shipping & delivery</a></p>
-        </div>
-        <div>
-          {business.studioLive && <p class="footer-line"><Palette class="icon" aria-hidden="true" /><a href={`${business.studioUrl}/studio`} rel="nofollow">Design online</a></p>}
-          <p><a href="/quick-quote/">Get a quote</a></p>
-          <p><a href="/privacy-policy/">Privacy</a></p>
-          <p><a href="/terms-conditions/">Terms</a></p>
-        </div>
-      </div>
-    </footer>
+    <Footer />
     <script is:inline>
       document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
         const root = document.documentElement;
-        const dark = root.classList.contains('dark') ||
-          (!root.classList.contains('light') && matchMedia('(prefers-color-scheme: dark)').matches);
+        const next = root.classList.contains('dark') ? 'light' : 'dark';
         root.classList.remove('dark', 'light');
-        root.classList.add(dark ? 'light' : 'dark');
-        try { localStorage.setItem('theme', dark ? 'light' : 'dark'); } catch {}
+        root.classList.add(next);
+        try { localStorage.setItem('theme', next); } catch {}
       });
     </script>
   </body>

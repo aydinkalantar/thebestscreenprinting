@@ -1,0 +1,52 @@
+---
+import BrandMark from './BrandMark.astro';
+import { business } from '../data/business';
+import { MapPin, Phone, Mail, Clock } from '@lucide/astro';
+
+const cols = [
+  { title: 'Services', links: [
+    ['Screen printing', '/screen-printing/'], ['Embroidery', '/services/embroidery/'], ['DTF transfers', '/services/direct-to-film/'],
+    ['DTG printing', '/services/direct-to-garment/'], ['Oversize prints', '/services/large-format-screen-printing/'], ['Same-day rush', '/same-day-t-shirt-printing-los-angeles/'],
+  ] },
+  { title: 'Shop', links: [
+    ['Product catalog', '/catalog/'], ['T-shirts', '/products/t-shirts/'], ['Hoodies', '/products/sweatshirts-hoodies/'],
+    ['Hats', '/products/hats/'], ['Team uniforms', '/products/team-uniforms-jerseys/'], ['Get a quote', '/quick-quote/'],
+  ] },
+  { title: 'Company', links: [
+    ['About us', '/about-us/'], ['FAQ', '/faq/'], ['Shipping & delivery', '/shipping-and-delivery/'],
+    ['Blog', '/blog/'], ['Privacy', '/privacy-policy/'], ['Terms', '/terms-conditions/'],
+  ] },
+];
+const social = [
+  { href: 'https://www.instagram.com/tbsp.la/', label: 'Instagram' },
+  { href: 'https://www.youtube.com/c/Thebestscreenprinting', label: 'YouTube' },
+  { href: 'https://www.facebook.com/TheBestScreenPrinting/', label: 'Facebook' },
+  { href: 'https://www.yelp.com/biz/the-best-screen-printing-and-embroidery-los-angeles-2', label: 'Yelp' },
+];
+---
+<footer class="mt-24 border-t border-zinc-200/80 dark:border-white/10 bg-zinc-50 dark:bg-[#0d0d14]">
+  <div class="wrap py-14 grid gap-10 md:grid-cols-[1.3fr_repeat(3,1fr)]">
+    <div class="space-y-3 text-sm muted">
+      <BrandMark />
+      <p class="max-w-xs">Screen printing, embroidery and custom apparel, made in our Downtown Los Angeles shop.</p>
+      <p class="flex items-start gap-2"><MapPin class="w-4 h-4 mt-0.5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" />{business.address.streetAddress}, {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}</p>
+      <p class="flex items-center gap-2"><Phone class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a class="hover:text-zinc-900 dark:hover:text-white" href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
+      <p class="flex items-center gap-2"><Mail class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a class="hover:text-zinc-900 dark:hover:text-white" href={`mailto:${business.email}`}>{business.email}</a></p>
+      <p class="flex items-center gap-2"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Mon–Fri, 9am–5pm</p>
+      <div class="flex flex-wrap gap-2 pt-1">
+        {social.map((s) => <a class="chip !h-8 !px-3 !text-xs" href={s.href} rel="noopener">{s.label}</a>)}
+      </div>
+    </div>
+    {cols.map((c) => (
+      <div>
+        <p class="eyebrow mb-3">{c.title}</p>
+        <ul class="space-y-2 text-sm">
+          {c.links.map(([label, href]) => <li><a class="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white" href={href}>{label}</a></li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <div class="border-t border-zinc-200/80 dark:border-white/10">
+    <p class="wrap py-5 text-xs muted">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+  </div>
+</footer>

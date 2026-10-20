@@ -1,0 +1,21 @@
+---
+import { ChevronDown } from '@lucide/astro';
+interface Props { faqs: { q: string; a: string }[]; title?: string }
+const { faqs, title = 'Questions people ask' } = Astro.props;
+---
+{faqs.length > 0 && (
+  <section aria-labelledby="faq-title" class="max-w-3xl">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq-title" class="section-title mt-2 mb-6">{title}</h2>
+    <div class="panel divide-y divide-zinc-200/80 dark:divide-white/10">
+      {faqs.map((f) => (
+        <details class="group px-5">
+          <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer font-semibold text-zinc-900 dark:text-white">
+            {f.q}<ChevronDown class="chev w-4 h-4 shrink-0 text-zinc-400 transition-transform" aria-hidden="true" />
+          </summary>
+          <p class="pb-5 -mt-1 text-[15px] leading-7 muted">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+)}

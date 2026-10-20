@@ -1,7 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ArrowRight, Package, Shirt } from '@lucide/astro';
 ---
 <Base title="Page not found | TBSP" noindex>
-  <h1>We couldn't find that page</h1>
-  <p class="lead">Try our <a href="/services/">services</a>, <a href="/products/">products</a>, or <a href="/quick-quote/">request a quote</a>.</p>
+  <div class="max-w-xl mx-auto text-center py-16">
+    <p class="eyebrow">404</p>
+    <h1 class="mt-3 text-4xl font-bold text-zinc-900 dark:text-white">We couldn't find that page</h1>
+    <p class="mt-4 muted">It may have moved when we rebuilt the site. These will get you where you need to go.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a class="btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+      <a class="btn-quiet" href="/screen-printing/"><Shirt class="w-4 h-4" aria-hidden="true" />Screen printing</a>
+      <a class="btn-quiet" href="/catalog/"><Package class="w-4 h-4" aria-hidden="true" />Catalog</a>
+    </div>
+  </div>
 </Base>

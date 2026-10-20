@@ -1,6 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { products, CATEGORY_LABELS, money } from '../../lib/catalog';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { products, CATEGORY_LABELS } from '../../lib/catalog';
 import { business } from '../../data/business';
 
 const categories = [...new Set(products.map((p) => p.category))]
@@ -13,32 +16,28 @@ const jsonLd = [{
 }];
 ---
 <Base title="Custom Apparel & Merch Catalog | TBSP Los Angeles" description={`Browse ${products.length} products you can customize with your logo: tees, hoodies, hats, bags and more. No minimum for small runs; ${business.shopMinimum}+ pieces printed in our DTLA shop.`} jsonLd={jsonLd}>
-  <h1>Product catalog</h1>
-  <p class="lead">
-    {products.length} products you can put your design on. Small runs have no minimum{business.studioLive ? ' and can be designed online' : ''}; orders of {business.shopMinimum}+ pieces are printed in our Downtown LA shop.
+  <Breadcrumbs items={[{ label: 'Catalog' }]} />
+  <p class="eyebrow">Catalog</p>
+  <h1 class="mt-3 text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white">Products for your design</h1>
+  <p class="mt-4 text-lg muted max-w-2xl">
+    {products.length} products, from tees to totes. Small runs have no minimum{business.studioLive ? ' and can be designed online' : ''}; orders of {business.shopMinimum}+ pieces are printed in our Downtown LA shop.
   </p>
 
-  <div class="chips filter" role="group" aria-label="Filter by category">
-    <button type="button" class="chip is-on" data-cat="">All <span>{products.length}</span></button>
-    {categories.map((c) => <button type="button" class="chip" data-cat={c.id}>{c.label} <span>{c.count}</span></button>)}
+  <div class="mt-8 -mx-4 px-4 flex gap-2 overflow-x-auto no-scrollbar" role="group" aria-label="Filter by category">
+    <button type="button" class="chip is-on shrink-0" data-cat="">All <span class="muted font-medium">{products.length}</span></button>
+    {categories.map((c) => <button type="button" class="chip shrink-0" data-cat={c.id}>{c.label} <span class="muted font-medium">{c.count}</span></button>)}
   </div>
 
-  <ul class="product-grid">
-    {products.map((p) => (
-      <li data-cat={p.category}>
-        <a class="product-card" href={`/catalog/${p.slug}/`}>
-          <span class="product-img"><img src={p.image} alt={p.name} loading="lazy" width="400" height="400" /></span>
-          <strong>{p.name}</strong>
-          <span class="product-meta">{p.colors.length > 1 ? `${p.colors.length} colors · ` : ''}from {money(p.fromPrice)}</span>
-        </a>
-      </li>
-    ))}
+  <ul class="mt-8 grid gap-x-5 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    {products.map((p) => <li data-cat={p.category}><ProductCard p={p} /></li>)}
   </ul>
+
+  <div class="mt-20"><CtaBand title="Don't see it?" text="We print on almost anything: your own garments, brands we don't list, special finishes. Tell us what you have in mind." /></div>
 </Base>
 
 <script>
-  const chips = document.querySelectorAll<HTMLButtonElement>('.filter .chip');
-  const items = document.querySelectorAll<HTMLElement>('.product-grid li');
+  const chips = document.querySelectorAll<HTMLButtonElement>('[data-cat].chip');
+  const items = document.querySelectorAll<HTMLElement>('li[data-cat]');
   chips.forEach((chip) => chip.addEventListener('click', () => {
     chips.forEach((c) => c.classList.toggle('is-on', c === chip));
     const cat = chip.dataset.cat;
