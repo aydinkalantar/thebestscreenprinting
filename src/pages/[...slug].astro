@@ -2,31 +2,92 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { business } from '../data/business';
-import { ArrowRight, Palette } from '@lucide/astro';
+import { ArrowRight, Palette, Phone, ChevronDown } from '@lucide/astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
-  return pages.map((page) => ({
-    // "/" is the homepage; everything else drops its slashes for the rest param.
-    params: { slug: page.data.path === '/' ? undefined : page.data.path.replace(/^\/|\/$/g, '') },
-    props: { page },
-  }));
+  // "/" is rendered by src/pages/index.astro.
+  return pages
+    .filter((page) => page.data.path !== '/')
+    .map((page) => ({
+      params: { slug: page.data.path.replace(/^\/|\/$/g, '') },
+      props: { page },
+    }));
 }
 
 const { page } = Astro.props;
 const { Content } = await render(page);
-const { title, description, h1, noindex, imported } = page.data;
+const { title, description, h1, noindex, imported, summary, facts, faqs, kind, path } = page.data;
+const url = new URL(path, business.url).toString();
+
+const crumbs = path.split('/').filter(Boolean);
+const jsonLd: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${business.url}/` },
+      ...crumbs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 2,
+        name: i === crumbs.length - 1 ? h1 : c.replace(/-/g, ' '),
+        item: `${business.url}/${crumbs.slice(0, i + 1).join('/')}/`,
+      })),
+    ],
+  },
+];
+if (kind === 'service' || kind === 'product') {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: h1,
+    description: summary || description,
+    url,
+    areaServed: { '@type': 'City', name: 'Los Angeles' },
+    provider: { '@id': `${business.url}/#organization` },
+  });
+}
+if (faqs.length) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  });
+}
 ---
-<Base title={title} description={description} noindex={noindex}>
+<Base title={title} description={description} noindex={noindex} jsonLd={jsonLd}>
   {imported && import.meta.env.DEV && (
     <p class="imported-note">Imported from WordPress — not rewritten yet.</p>
   )}
   <h1>{h1}</h1>
+  {summary && <p class="lead">{summary}</p>}
+  {facts.length > 0 && (
+    <dl class="facts">
+      {facts.map((f) => (
+        <div class="fact"><dt>{f.label}</dt><dd>{f.value}</dd></div>
+      ))}
+    </dl>
+  )}
   <div class="cta-row">
     <a class="btn btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="icon" aria-hidden="true" /></a>
-    <a class="btn btn-quiet" href={`${business.studioUrl}/studio`} rel="nofollow"><Palette class="icon" aria-hidden="true" />Design it online</a>
+    {business.studioLive ? (
+      <a class="btn btn-quiet" href={`${business.studioUrl}/studio`} rel="nofollow"><Palette class="icon" aria-hidden="true" />Design it online</a>
+    ) : (
+      <a class="btn btn-quiet" href={`tel:${business.phone}`}><Phone class="icon" aria-hidden="true" />{business.phoneDisplay}</a>
+    )}
   </div>
   <article class="prose">
     <Content />
   </article>
+  {faqs.length > 0 && (
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions people ask</h2>
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.q}<ChevronDown class="icon" aria-hidden="true" /></summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </section>
+  )}
 </Base>

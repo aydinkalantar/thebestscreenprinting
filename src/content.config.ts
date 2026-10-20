@@ -15,6 +15,11 @@ const pages = defineCollection({
     // Imported verbatim from WordPress and not yet rewritten.
     imported: z.boolean().default(false),
     noindex: z.boolean().default(false),
+    // Answer-first block shown under the H1 (what, who, price, minimum, turnaround).
+    summary: z.string().optional(),
+    facts: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
+    // Rendered as an FAQ section and FAQPage schema.
+    faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     sourceUrl: z.string().optional(),
   }),
 });

@@ -82,7 +82,8 @@ const schema = [localBusinessJsonLd, ...jsonLd];
           <p><a href="/shipping-and-delivery/">Shipping & delivery</a></p>
         </div>
         <div>
-          <p class="footer-line"><Palette class="icon" aria-hidden="true" /><a href={`${business.studioUrl}/studio`} rel="nofollow">Design online</a></p>
+          {business.studioLive && <p class="footer-line"><Palette class="icon" aria-hidden="true" /><a href={`${business.studioUrl}/studio`} rel="nofollow">Design online</a></p>}
+          <p><a href="/quick-quote/">Get a quote</a></p>
           <p><a href="/privacy-policy/">Privacy</a></p>
           <p><a href="/terms-conditions/">Terms</a></p>
         </div>

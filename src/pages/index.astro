@@ -1,0 +1,142 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { business } from '../data/business';
+import {
+  ArrowRight, Phone, MapPin, Clock, Shirt, Scissors, Layers, Flame, Stamp, Printer, Maximize, Zap,
+  Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, ChevronDown,
+} from '@lucide/astro';
+
+// Title and description stay exactly as the live homepage has them (they rank).
+const home = await getEntry('pages', 'home');
+const title = home?.data.title ?? 'Custom Apparel Printing Los Angeles | TBSP';
+const description = home?.data.description ?? '';
+
+const services = [
+  { href: '/screen-printing/', icon: Shirt, name: 'Screen printing', line: `Our core service for ${business.shopMinimum}+ pieces. Bold spot colors, lowest cost per piece at volume.` },
+  { href: '/services/embroidery/', icon: Scissors, name: 'Embroidery', line: 'Stitched logos for polos, hats, jackets and uniforms.' },
+  { href: '/services/direct-to-film/', icon: Layers, name: 'DTF transfers', line: 'Full-color prints that work on cotton, polyester and blends.' },
+  { href: '/services/direct-to-garment/', icon: Printer, name: 'DTG printing', line: 'Full-color printing with no minimum and no setup fee.' },
+  { href: '/services/heat-transfer-vinyl/', icon: Flame, name: 'Heat transfer', line: 'Names, numbers and small runs with crisp edges.' },
+  { href: '/services/embossing/', icon: Stamp, name: 'Embossing', line: 'Raised, tonal branding for a premium finish.' },
+  { href: '/services/large-format-screen-printing/', icon: Maximize, name: 'Oversize prints', line: 'Jumbo and large format prints beyond the standard chest size.' },
+  { href: '/same-day-t-shirt-printing-los-angeles/', icon: Zap, name: 'Same-day rush', line: 'Need it today? Rush slots are available from our DTLA shop.' },
+];
+
+const products = [
+  { href: '/products/t-shirts/', name: 'T-shirts' },
+  { href: '/products/sweatshirts-hoodies/', name: 'Hoodies & sweatshirts' },
+  { href: '/products/hats/', name: 'Hats' },
+  { href: '/products/business-and-polos-landings/', name: 'Polos' },
+  { href: '/products/bags/', name: 'Bags & totes' },
+  { href: '/products/team-uniforms-jerseys/', name: 'Team uniforms' },
+];
+
+const audiences = [
+  { href: '/for/retail-brands/', icon: Store, name: 'Clothing brands' },
+  { href: '/event-apparel/', icon: CalendarDays, name: 'Events & tours' },
+  { href: '/small-business/', icon: Package, name: 'Small businesses' },
+  { href: '/products/team-uniforms-jerseys/', icon: Trophy, name: 'Teams & leagues' },
+  { href: '/for/schools/', icon: GraduationCap, name: 'Schools' },
+  { href: '/for/non-profits/', icon: HeartHandshake, name: 'Non-profits' },
+];
+
+const steps = [
+  { icon: MessageSquareText, name: 'Tell us what you need', line: 'Garment, quantity, deadline and your artwork. A rough idea is fine.' },
+  { icon: Printer, name: 'Approve your proof', line: 'We check the art, confirm colors and placement, and send a quote.' },
+  { icon: Truck, name: 'Pick up or get it delivered', line: 'Printed in our Downtown LA shop, ready for pickup or shipping.' },
+];
+
+const faqs = [
+  { q: 'Where is your shop?', a: `We print at ${business.address.streetAddress}, ${business.address.addressLocality}, ${business.address.addressRegion} ${business.address.postalCode}, in Downtown Los Angeles. We're open Monday to Friday, 9am to 5pm.` },
+  { q: 'What is the minimum order for screen printing?', a: `Screen printing starts at ${business.shopMinimum} pieces of one design. For smaller runs, DTG and DTF printing have no minimum.` },
+  { q: 'Can you print the same day?', a: 'Yes. Same-day and next-day rush slots are available for many orders. Call us or request a quote with your deadline and we will confirm.' },
+  { q: 'How do I get a price?', a: 'Request a quote with your garment, quantity, print locations and artwork. We reply with a personal quote within one business day.' },
+];
+
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${business.name} ${business.address.streetAddress} Los Angeles`)}`;
+const jsonLd = [{
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+}];
+---
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <section class="hero">
+    <p class="eyebrow"><MapPin class="icon" aria-hidden="true" />Downtown Los Angeles print shop</p>
+    <h1>{home?.data.h1 ?? 'Custom apparel printing in Los Angeles'}</h1>
+    <p class="lead">
+      Screen printing, embroidery and full garment programs, printed in our shop at {business.address.streetAddress}.
+      Orders of {business.shopMinimum} pieces and up are made in-house, with same-day rush available.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="icon" aria-hidden="true" /></a>
+      <a class="btn btn-quiet" href={`tel:${business.phone}`}><Phone class="icon" aria-hidden="true" />{business.phoneDisplay}</a>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="services-title">
+    <h2 id="services-title">What we print</h2>
+    <div class="grid">
+      {services.map((s) => (
+        <a class="tile" href={s.href}>
+          <span class="tile-icon"><s.icon class="icon" aria-hidden="true" /></span>
+          <strong>{s.name}</strong>
+          <span>{s.line}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="products-title">
+    <h2 id="products-title">Popular products</h2>
+    <ul class="chips">
+      {products.map((p) => <li><a href={p.href}>{p.name}<ArrowRight class="icon" aria-hidden="true" /></a></li>)}
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="who-title">
+    <h2 id="who-title">Who we print for</h2>
+    <div class="grid grid-sm">
+      {audiences.map((a) => (
+        <a class="tile tile-row" href={a.href}>
+          <span class="tile-icon"><a.icon class="icon" aria-hidden="true" /></span>
+          <strong>{a.name}</strong>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="how-title">
+    <h2 id="how-title">How it works</h2>
+    <ol class="steps">
+      {steps.map((s, i) => (
+        <li class="card">
+          <span class="step-n">{i + 1}</span>
+          <strong>{s.name}</strong>
+          <span>{s.line}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section visit card" aria-labelledby="visit-title">
+    <div>
+      <h2 id="visit-title">Visit the shop</h2>
+      <p class="footer-line"><MapPin class="icon" aria-hidden="true" />{business.address.streetAddress}, {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}</p>
+      <p class="footer-line"><Clock class="icon" aria-hidden="true" />Monday–Friday, 9am–5pm</p>
+      <p class="footer-line"><Phone class="icon" aria-hidden="true" /><a href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
+    </div>
+    <a class="btn btn-quiet" href={mapUrl} rel="noopener" target="_blank"><MapPin class="icon" aria-hidden="true" />Get directions</a>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Questions people ask</h2>
+    {faqs.map((f) => (
+      <details>
+        <summary>{f.q}<ChevronDown class="icon" aria-hidden="true" /></summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </section>
+</Base>
