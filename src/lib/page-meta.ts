@@ -8,7 +8,7 @@ export const SERVICE_LINKS = [
   { href: '/services/heat-transfer-vinyl/', label: 'Heat transfer' },
   { href: '/services/embossing/', label: 'Embossing' },
   { href: '/services/large-format-screen-printing/', label: 'Oversize prints' },
-  { href: '/same-day-t-shirt-printing-los-angeles/', label: 'Same-day rush' },
+  { href: '/same-day-t-shirt-printing-los-angeles/', label: 'Rush & Super Rush' },
 ];
 
 export const PRODUCT_LINKS = [

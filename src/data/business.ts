@@ -30,6 +30,15 @@ export const business = {
   /** Orders this size and up are printed in our shop (quote); smaller ones go through the studio. */
   shopMinimum: 24,
   assistantName: 'Max',
+  /**
+   * Turnaround options shown across the site and offered on the quote form.
+   * `time` is filled in once confirmed; until then pages say it's confirmed with the quote.
+   */
+  turnaround: [
+    { id: 'normal', name: 'Normal', time: null as string | null, note: 'Standard production time' },
+    { id: 'rush', name: 'Rush', time: null as string | null, note: 'Faster, for tighter deadlines' },
+    { id: 'super-rush', name: 'Super Rush', time: null as string | null, note: 'Our fastest option' },
+  ],
   /** Areas we serve without a shop address there (service-area business). */
   serviceAreas: ['Los Angeles, CA', 'Cleveland, OH'],
 } as const;

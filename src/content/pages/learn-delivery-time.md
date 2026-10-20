@@ -1,16 +1,16 @@
 ---
 path: "/learn-delivery-time/"
 title: "Learn More About Delivery Time | The Best Screen Printing"
-description: "How long custom apparel takes at TBSP: free standard shipping, a 2pm PT order cutoff, and same-day or next-day rush slots in Downtown LA for many orders."
+description: "How long custom apparel takes at TBSP: free standard shipping, a 2pm PT order cutoff, and Rush and Super Rush turnaround in Downtown LA for many orders."
 h1: "From the design studio to your door"
 kind: core
 imported: false
-summary: "Plan your deadline with confidence. Standard orders ship free in about 14 business days; same-day and next-day rush slots are available for many orders in Downtown LA."
+summary: "Plan your deadline with confidence. Standard orders ship free in about 14 business days; Normal, Rush and Super Rush turnaround options are available in Downtown LA."
 faqs:
   - q: "When does the clock start?"
     a: "Order online or by phone by 2pm Pacific, Monday to Friday. Orders placed after the cutoff start the next business day."
   - q: "Can I get my order the same day?"
-    a: "Same-day and next-day rush slots are available for many orders. It depends on quantity, method and garment stock, so call (323) 433-0033 or request a quote to confirm."
+    a: "Normal, Rush and Super Rush turnaround options are available. It depends on quantity, method and garment stock, so call (323) 433-0033 or request a quote to confirm."
   - q: "Do you ship to Alaska or Hawaii?"
     a: "Standard delivery times cover the contiguous 48 states. Call us for shipping details and pricing to Alaska or Hawaii."
   - q: "Is rush available for embroidery?"
@@ -25,13 +25,13 @@ Standard orders get the same mockup approval, free art check and quality checks 
 
 ## Rush: when the date will not move
 
-Launch next week? Event this weekend? Same-day and next-day rush slots are available for many orders at our Downtown LA shop. What makes rush possible:
+Launch next week? Event this weekend? Normal, Rush and Super Rush turnaround options are available at our Downtown LA shop. What makes rush possible:
 
 - **Garment stock.** Common blanks in common colors move fastest.
 - **Method.** [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) need no screens, so small runs turn quickly. [Screen printing](/screen-printing/) for 24+ pieces needs screens made first.
 - **Approved art.** The sooner you approve the mockup, the sooner we print.
 
-Rush is quoted per order. Call (323) 433-0033 before you commit to a deadline, or read more on [same-day t-shirt printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/).
+Rush is quoted per order. Call (323) 433-0033 before you commit to a deadline, or read more on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Can I pick up my order in Los Angeles?
 

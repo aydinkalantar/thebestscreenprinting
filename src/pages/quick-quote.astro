@@ -39,6 +39,12 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
               {DECORATIONS.map((d) => <label class="chip cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300"><input type="checkbox" name="decorations" value={d} class="accent-violet-600" />{d}</label>)}
             </div>
           </div>
+          <div class="grid gap-2" role="radiogroup" aria-label="Turnaround">
+            <span class="label"><span>Turnaround</span></span>
+            <div class="flex flex-wrap gap-2">
+              {business.turnaround.map((t, i) => <label class="chip cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300"><input type="radio" name="turnaround" value={t.id} checked={i === 0} class="accent-violet-600" />{t.name}</label>)}
+            </div>
+          </div>
           <div class="grid gap-4 sm:grid-cols-2">
             <label class="label"><span>Needed by <small>(optional)</small></span>
               <input name="deadline" class="field" type="date" />
@@ -90,7 +96,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       <div class="panel p-5 text-sm muted space-y-2">
         <p class="flex gap-2"><BadgeCheck class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" aria-hidden="true" />Free art check before anything prints</p>
         <p class="flex gap-2"><BadgeCheck class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" aria-hidden="true" />Quote within one business day</p>
-        <p class="flex gap-2"><BadgeCheck class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" aria-hidden="true" />Same-day rush when you need it</p>
+        <p class="flex gap-2"><BadgeCheck class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" aria-hidden="true" />Normal, Rush or Super Rush turnaround</p>
       </div>
     </aside>
   </div>

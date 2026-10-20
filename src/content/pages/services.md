@@ -9,7 +9,7 @@ summary: "Ink, thread, film and texture, all decorated at our Downtown LA shop. 
 facts:
   - { label: "Screen printing", value: "24+ pieces per design" }
   - { label: "Small runs", value: "DTG and DTF, no minimum on DTG" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
 faqs:
   - q: "Which printing method is cheapest for my order?"
     a: "It depends on quantity and colors. For 24 or more pieces of one design, screen printing is usually the most cost-effective. Under 24 pieces, DTG or DTF usually wins because there are no screens to set up."
@@ -18,7 +18,7 @@ faqs:
   - q: "Do you check my artwork before printing?"
     a: "Every order gets a free art check before production, so issues like low resolution or thin lines are caught before anything is printed or stitched."
   - q: "Can I get my order rushed?"
-    a: "Same-day and next-day rush slots are available for many orders. Call or request a quote with your deadline and we will confirm what is possible."
+    a: "Normal, Rush and Super Rush turnaround options are available. Call or request a quote with your deadline and we will confirm what is possible."
 sourceUrl: "https://thebestscreenprinting.com/services/"
 ---
 ## Six ways to put your design on a garment
@@ -61,7 +61,7 @@ Not sure? Send the design and we will recommend a method, then run it through a 
 
 ## Need it this week?
 
-Same-day and next-day rush slots are open for many orders. Read how it works on [same-day T-shirt printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/), then browse blanks in the [catalog](/catalog/).
+Rush and Super Rush turnaround are open for tight deadlines. Read how it works on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/), then browse blanks in the [catalog](/catalog/).
 
 ## Start your order
 

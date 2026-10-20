@@ -43,7 +43,7 @@ This is where it happens. Screens get burned, ink gets mixed, needles fly and fi
 
 ## How do rush orders work at the shop?
 
-Same-day and next-day rush slots are available for many orders. Call before you come in so we can check press time and garment stock, then confirm your pickup time. More on [same-day T-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+Normal, Rush and Super Rush turnaround options are available. Call before you come in so we can check press time and garment stock, then confirm your pickup time. More on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Not in DTLA?
 

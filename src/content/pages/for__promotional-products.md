@@ -8,7 +8,7 @@ imported: false
 summary: "Swag people keep. Branded tees, embroidered hats, totes and towels for campaigns, launches and giveaways, printed at our Downtown LA shop for brands that have included Netflix, Google and Amazon Alexa."
 facts:
   - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Giveaways, launches, activations, client gifts" }
 faqs:
   - q: "What promotional products get used the most?"
@@ -18,7 +18,7 @@ faqs:
   - q: "Can I see the product before the full order?"
     a: "Every order gets a mockup for approval. Ask about samples when you request a quote."
   - q: "How fast can you deliver promo items?"
-    a: "Quotes are answered within one business day, and same-day and next-day rush slots are available for many orders. Share your in-hands date with your quote request."
+    a: "Quotes are answered within one business day, and Normal, Rush and Super Rush turnaround options are available. Share your in-hands date with your quote request."
 ---
 ## Promo that does not end up in the trash
 

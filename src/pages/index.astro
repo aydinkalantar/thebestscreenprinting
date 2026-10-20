@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ProductCard from '../components/ProductCard.astro';
+import Turnaround from '../components/Turnaround.astro';
 import { business } from '../data/business';
 import { products } from '../lib/catalog';
 import {
@@ -25,7 +26,7 @@ const services = [
   { href: '/services/heat-transfer-vinyl/', icon: Flame, name: 'Heat transfer', line: 'Names, numbers and sharp edges for jerseys and one-offs.' },
   { href: '/services/embossing/', icon: Stamp, name: 'Embossing', line: 'Raised, tonal branding for a quiet-luxury finish.' },
   { href: '/services/large-format-screen-printing/', icon: Maximize, name: 'Oversize prints', line: 'Go big: jumbo prints that cover way more than the chest.' },
-  { href: '/same-day-t-shirt-printing-los-angeles/', icon: Zap, name: 'Same-day rush', line: 'Event tomorrow? We have rush slots for the jobs that can’t wait.' },
+  { href: '/same-day-t-shirt-printing-los-angeles/', icon: Zap, name: 'Rush & Super Rush', line: 'Tight deadline? Pick Rush or Super Rush when the date can’t move.' },
 ];
 const audiences = [
   { href: '/for/retail-brands/', icon: Store, name: 'Clothing brands' },
@@ -47,7 +48,7 @@ const clients = [
 const faqs = [
   { q: 'Where are you located?', a: `We have two production facilities. Our Los Angeles shop is at ${business.address.streetAddress}, ${business.address.addressLocality}, ${business.address.addressRegion} ${business.address.postalCode}, open Monday to Friday, 9am to 5pm. Our Cleveland facility serves Greater Cleveland and Northeast Ohio with local delivery.` },
   { q: 'What is the minimum order for screen printing?', a: `Screen printing starts at ${business.shopMinimum} pieces of one design. For smaller runs, DTG and DTF printing have no minimum.` },
-  { q: 'Can you print the same day?', a: 'Yes. Same-day and next-day rush slots are available for many orders. Call us or request a quote with your deadline and we will confirm.' },
+  { q: 'How fast can you print?', a: 'Choose Normal, Rush or Super Rush turnaround. Tell us your deadline with your quote request and we will confirm the timing for your order.' },
   { q: 'How do I get a price?', a: 'Request a quote with your garment, quantity, print locations and artwork. We reply with a personal quote within one business day.' },
 ];
 const shirt = products.find((p) => /t-shirt/i.test(p.name) && p.category === 'apparel') ?? products[0];
@@ -68,7 +69,7 @@ const jsonLd = [{
         <h1 class="mt-5 text-[2.5rem] sm:text-6xl break-words font-bold leading-[1.02] text-zinc-900 dark:text-white">{h1}</h1>
         <p class="mt-6 text-lg leading-8 muted max-w-xl">
           Bold ink, clean stitches and merch people actually keep. We print and embroider for brands, tours, crews and teams
-          from two production facilities, in Los Angeles and Cleveland: {business.shopMinimum}+ pieces made in-house, and rush jobs can leave the same day.
+          from two production facilities, in Los Angeles and Cleveland: {business.shopMinimum}+ pieces made in-house, with Normal, Rush and Super Rush turnaround.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a class="btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
@@ -76,7 +77,7 @@ const jsonLd = [{
         </div>
         <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[13px] font-medium muted">
           <li class="flex items-center gap-1.5"><BadgeCheck class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Quote within one business day</li>
-          <li class="flex items-center gap-1.5"><Zap class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Same-day rush</li>
+          <li class="flex items-center gap-1.5"><Zap class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Rush &amp; Super Rush</li>
           <li class="flex items-center gap-1.5"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Mon–Fri, 9am–5pm</li>
         </ul>
       </div>
@@ -161,6 +162,14 @@ const jsonLd = [{
         </li>
       ))}
     </ol>
+  </section>
+
+  <!-- Turnaround -->
+  <section class="wrap mt-24" aria-labelledby="turn-title">
+    <p class="eyebrow">Turnaround</p>
+    <h2 id="turn-title" class="section-title mt-2">Your deadline, your speed</h2>
+    <p class="mt-3 muted max-w-2xl">Pick the turnaround that fits your date. Every option gets the same free art check and the same quality.</p>
+    <div class="mt-8"><Turnaround /></div>
   </section>
 
   <!-- Audiences -->

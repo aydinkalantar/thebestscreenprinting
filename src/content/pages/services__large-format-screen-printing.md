@@ -21,7 +21,7 @@ faqs:
   - q: "How big can you print on a t-shirt?"
     a: "It depends on the garment style and size. Send your design and garment choice with a quote request and we will confirm the print size we can run on it."
   - q: "Can I get an oversize print on a rush deadline?"
-    a: "Same-day and next-day rush slots are available for many orders. Request a quote with your deadline or call (323) 433-0033 to confirm."
+    a: "Normal, Rush and Super Rush turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
 ---
 
 Go big. TBSP pulls oversize and jumbo screen prints at our shop at 2710 S Broadway in Downtown Los Angeles, for designs that need more room than a standard chest or back print. Bring 24 or more pieces of one design and we will put your art on press, after a free art check to make sure it holds up at full size.

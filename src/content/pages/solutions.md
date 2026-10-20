@@ -30,7 +30,7 @@ Volunteer shirts, fundraiser merch and event tees that make a crowd look like a 
 
 ## Events, festivals and trade shows
 
-Crew shirts, attendee giveaways and merch tables. Same-day and next-day rush slots are available for many orders. See [event apparel](/event-apparel/).
+Crew shirts, attendee giveaways and merch tables. Normal, Rush and Super Rush turnaround options are available. See [event apparel](/event-apparel/).
 
 ## Sports teams and leagues
 

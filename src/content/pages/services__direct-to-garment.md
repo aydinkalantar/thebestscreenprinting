@@ -50,7 +50,7 @@ When it comes to digital printing, pixels are everything. Think of a mosaic: the
 
 ## We handle the blanks and the shipping
 
-From sourcing the apparel to shipping the finished order, we take care of it. Pick blanks from our [catalog](/catalog/) or bring your own. Need it fast? Same-day and next-day slots are open for many orders. See [same-day T-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+From sourcing the apparel to shipping the finished order, we take care of it. Pick blanks from our [catalog](/catalog/) or bring your own. Need it fast? Rush and Super Rush turnaround are open for tight deadlines. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Let's print it
 

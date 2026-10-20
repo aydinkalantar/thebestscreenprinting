@@ -5,11 +5,11 @@ description: "Custom t-shirt printing in Los Angeles, step by step: send your ar
 h1: "Custom t-shirt printing in Los Angeles"
 kind: product
 imported: false
-summary: "From idea to folded stack in five clear steps, run out of our Downtown LA shop. Quotes within one business day, a free art check on every order, and same-day or next-day rush slots for many jobs."
+summary: "From idea to folded stack in five clear steps, run out of our Downtown LA shop. Quotes within one business day, a free art check on every order, and Rush and Super Rush turnaround for many jobs."
 facts:
   - { label: "Quote", value: "Answered within one business day" }
   - { label: "Art check", value: "Free on every order" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
 faqs:
   - q: "What do I need to start a custom t-shirt order?"
     a: "Your artwork (or an idea), the shirt style and color, a rough quantity by size, where you want the print, and your deadline. If something is missing, we will help you fill it in."
@@ -55,7 +55,7 @@ Before anything goes on press, we check your artwork for resolution, thin lines,
 
 ## Step 4: We print
 
-Your order goes into production. If you are racing a date, ask about rush: same-day and next-day slots are available for many orders. Details are on our [same-day t-shirt printing](/products/t-shirts/same-day-t-shirt-printing-near-me/) page.
+Your order goes into production. If you are racing a date, ask about rush: Normal, Rush and Super Rush turnaround options are available. Details are on our [Rush and Super Rush printing](/products/t-shirts/same-day-t-shirt-printing-near-me/) page.
 
 ## Step 5: Pick up or ship
 

@@ -57,4 +57,4 @@ Because your logo is already digitized, reorders for new hires are straightforwa
 
 ## Outfit your team
 
-Send your logo, garment list and headcount through the [quick quote form](/quick-quote/). We answer within one business day. Same-day and next-day rush slots are available for many orders.
+Send your logo, garment list and headcount through the [quick quote form](/quick-quote/). We answer within one business day. Normal, Rush and Super Rush turnaround options are available.

@@ -6,21 +6,21 @@ h1: "Custom t-shirt printing"
 kind: product
 imported: false
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/"
-summary: "From one-off samples to full brand drops, we put your art on tees that people actually want to wear. Screen printing from 24 pieces of one design, DTG with no minimum, and same-day or next-day rush slots for many orders."
+summary: "From one-off samples to full brand drops, we put your art on tees that people actually want to wear. Screen printing from 24 pieces of one design, DTG with no minimum, and Rush and Super Rush turnaround for tight deadlines."
 facts:
   - label: "Minimum"
     value: "No minimum with DTG; 24 pieces for screen printing"
   - label: "Decoration"
     value: "Screen printing, DTG, DTF and embroidery"
   - label: "Rush"
-    value: "Same-day and next-day slots for many orders"
+    value: "Normal, Rush or Super Rush"
 faqs:
   - q: "Can I order just one custom t-shirt?"
     a: "Yes. DTG printing has no minimum and no setup fee, so single shirts and small runs are possible."
   - q: "When is screen printing the better choice for t-shirts?"
     a: "Screen printing is our core service for orders of 24 or more pieces of one design, printed in-house at our shop."
   - q: "How fast can I get custom t-shirts?"
-    a: "Same-day and next-day rush slots are available for many orders. Request a quote with your deadline or call (323) 433-0033 to confirm."
+    a: "Normal, Rush and Super Rush turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
   - q: "How long does it take to get a quote?"
     a: "We answer quote requests within one business day."
 ---
@@ -58,7 +58,7 @@ A lot of our customers print for their own clothing lines and shops. Screen prin
 
 ## Complete the set
 
-Match your tees with [sweatshirts and hoodies](/products/sweatshirts-hoodies/) or [embroidered hats](/products/hats/) using the same artwork. Deadline close? See [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+Match your tees with [sweatshirts and hoodies](/products/sweatshirts-hoodies/) or [embroidered hats](/products/hats/) using the same artwork. Deadline close? See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Let's make your shirts
 

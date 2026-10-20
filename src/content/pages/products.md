@@ -8,7 +8,7 @@ imported: false
 summary: "Tees, fleece, polos, hats, bags and more, decorated with screen printing, embroidery, DTG, DTF or heat transfer. Everything runs out of our Downtown LA shop, with quotes answered within one business day."
 facts:
   - { label: "Minimum", value: "24 per design for screen printing; none for DTG" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Brands, events, teams, artists and businesses" }
 faqs:
   - q: "Can I put the same design on different products?"

@@ -58,7 +58,7 @@ Send what you have. We offer graphic design help for creating or editing artwork
 
 ## Launch date locked?
 
-Same-day and next-day rush slots are open for many orders, handy when a pop-up or restock sneaks up on you. Confirm by phone at (323) 433-0033 before you announce. See [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+Rush and Super Rush turnaround are open for tight deadlines, handy when a pop-up or restock sneaks up on you. Confirm by phone at (323) 433-0033 before you announce. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Beyond the collection
 

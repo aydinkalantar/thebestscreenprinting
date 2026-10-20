@@ -64,7 +64,7 @@ Plenty of businesses start with a short DTG run for staff, then switch to screen
 
 ## Grand opening on Friday?
 
-Same-day and next-day rush slots are open for many orders. Call us to confirm before you plan around a date. Details on [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+Rush and Super Rush turnaround are open for tight deadlines. Call us to confirm before you plan around a date. Details on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Launches, pop-ups and your own line
 

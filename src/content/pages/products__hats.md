@@ -6,19 +6,19 @@ h1: "Custom embroidered hats"
 kind: product
 imported: false
 sourceUrl: "https://thebestscreenprinting.com/products/hats/"
-summary: "Your logo, stitched in thread and worn every day. We embroider custom hats in Downtown LA with a free art check, quotes within one business day, and same-day or next-day rush slots for many orders."
+summary: "Your logo, stitched in thread and worn every day. We embroider custom hats in Downtown LA with a free art check, quotes within one business day, and Rush and Super Rush turnaround for tight deadlines."
 facts:
   - label: "Decoration"
     value: "Embroidery"
   - label: "Rush"
-    value: "Same-day and next-day slots for many orders"
+    value: "Normal, Rush or Super Rush"
   - label: "Art"
     value: "Free art check before production"
 faqs:
   - q: "Can you put my logo on hats?"
     a: "Yes. We embroider logos on hats. Send your artwork with a quote request and we will check that it works at hat size."
   - q: "Can I get custom hats on a rush?"
-    a: "Same-day and next-day rush slots are available for many orders. Request a quote with your deadline or call (323) 433-0033 to confirm."
+    a: "Normal, Rush and Super Rush turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
   - q: "Can I order hats together with shirts and hoodies?"
     a: "Yes. We quote hats alongside t-shirts, hoodies and other apparel so the whole order is planned together."
   - q: "How soon will I get a quote?"
@@ -61,7 +61,7 @@ Yes, and it is one of the best ways to make merch feel like a collection. Pair h
 
 ## Short on time?
 
-Same-day and next-day rush slots are available for many orders. See our [same-day printing](/same-day-t-shirt-printing-los-angeles/) page for how rush jobs work, and include your deadline when you reach out.
+Normal, Rush and Super Rush turnaround options are available. See our [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/) page for how rush jobs work, and include your deadline when you reach out.
 
 ## Get your hats made
 

@@ -47,7 +47,7 @@ DTG gives its best results on cotton. The water-based inks soak into the fibers,
 
 ## Local pickup, no shipping wait
 
-Because you are printing with a Downtown LA shop, you can collect your order in person, Monday to Friday, 9am to 5pm. Same-day and next-day rush slots are available for many orders; call to confirm.
+Because you are printing with a Downtown LA shop, you can collect your order in person, Monday to Friday, 9am to 5pm. Normal, Rush and Super Rush turnaround options are available; call to confirm.
 
 ## When to move up to screen printing
 

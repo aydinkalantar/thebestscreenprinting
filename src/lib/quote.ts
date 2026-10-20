@@ -22,13 +22,15 @@ export const GARMENTS = [
   'T-shirts', 'Hoodies / sweatshirts', 'Hats', 'Polos', 'Jackets', 'Bags / totes', 'Team uniforms', 'Something else',
 ] as const;
 
+export const TURNAROUND_LABELS: Record<string, string> = { normal: 'Normal', rush: 'Rush', 'super-rush': 'Super Rush' };
+
 export const MAX_ARTWORK_BYTES = 10 * 1024 * 1024;
 export const ARTWORK_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/svg+xml', 'application/pdf', 'application/postscript', 'image/vnd.adobe.photoshop'];
 
 export interface QuoteRequest {
   name: string; email: string; phone?: string; company?: string;
   garment: string; quantity: number; decorations: string[]; deadline?: string;
-  details?: string; leadSource?: string;
+  details?: string; leadSource?: string; turnaround: string;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -44,6 +46,7 @@ export function parseQuote(form: FormData): { errors: Record<string, string> } |
   const decorations = form.getAll('decorations').map((d) => s(d, 40)).filter((d) => (DECORATIONS as readonly string[]).includes(d));
   const deadline = s(form.get('deadline'), 10);
   const leadSource = s(form.get('leadSource'), 20);
+  const turnaround = s(form.get('turnaround'), 20);
   if (!name) errors.name = 'Please tell us your name.';
   if (!EMAIL_RE.test(email)) errors.email = 'Enter a valid email so we can send your quote.';
   if (!garment) errors.garment = 'Pick what you want printed.';
@@ -57,6 +60,7 @@ export function parseQuote(form: FormData): { errors: Record<string, string> } |
       deadline: /^\d{4}-\d{2}-\d{2}$/.test(deadline) ? deadline : undefined,
       details: s(form.get('details'), 4000) || undefined,
       leadSource: LEAD_SOURCES.some((l) => l.id === leadSource) ? leadSource : undefined,
+      turnaround: TURNAROUND_LABELS[turnaround] ?? 'Normal',
     },
   };
 }
@@ -69,9 +73,9 @@ export function quoteEmail(q: QuoteRequest, shopMinimum: number, artworkName?: s
   const rows: [string, string][] = [
     ['Name', q.name], ['Email', q.email], ['Phone', q.phone ?? '—'], ['Company', q.company ?? '—'],
     ['What', q.garment], ['Quantity', `${q.quantity} (${route})`], ['Decoration', q.decorations.join(', ') || '—'],
-    ['Needed by', q.deadline ?? '—'], ['Artwork', artworkName ?? 'None attached'], ['Found us via', source],
+    ['Turnaround', q.turnaround], ['Needed by', q.deadline ?? '—'], ['Artwork', artworkName ?? 'None attached'], ['Found us via', source],
   ];
-  const subject = `Quote request: ${q.quantity} × ${q.garment} — ${q.name}`;
+  const subject = `${q.turnaround === 'Normal' ? '' : `[${q.turnaround.toUpperCase()}] `}Quote request: ${q.quantity} × ${q.garment} — ${q.name}`;
   const text = rows.map(([k, v]) => `${k}: ${v}`).join('\n') + (q.details ? `\n\nDetails:\n${q.details}` : '');
   const html = `<h2 style="font-family:sans-serif">New quote request</h2><table style="font-family:sans-serif;border-collapse:collapse">${
     rows.map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#71717a">${esc(k)}</td><td style="padding:4px 0"><b>${esc(v)}</b></td></tr>`).join('')

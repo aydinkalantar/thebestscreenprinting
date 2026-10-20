@@ -8,7 +8,7 @@ imported: false
 summary: "Shirts that rally people around your cause. Volunteer tees, walk and run shirts, and fundraiser merch printed in Downtown LA, with screen printing for 24+ pieces and no-minimum DTG."
 facts:
   - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Volunteers, charity walks, galas, fundraiser merch" }
 faqs:
   - q: "What is the most budget-friendly way to print volunteer shirts?"
@@ -18,7 +18,7 @@ faqs:
   - q: "Can we print sponsor logos on the back?"
     a: "Yes. A sponsor block on the back is common for walks and runs. Each extra print location is included in your quote."
   - q: "How quickly can we get shirts for an event?"
-    a: "Quotes are answered within one business day, and same-day and next-day rush slots are available for many orders. Share your event date when you request a quote."
+    a: "Quotes are answered within one business day, and Normal, Rush and Super Rush turnaround options are available. Share your event date when you request a quote."
 ---
 ## Wear the mission
 

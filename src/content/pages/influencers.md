@@ -8,7 +8,7 @@ imported: false
 summary: "Your audience, wearing your brand. Test a design with no-minimum DTG, then scale the drop with screen printing and embroidery, all from our Downtown LA shop."
 facts:
   - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Merch drops, samples, giveaways, content shoots" }
 faqs:
   - q: "Can I order just one sample before my drop?"
@@ -18,7 +18,7 @@ faqs:
   - q: "Can you print my design on hats?"
     a: "Yes. Embroidery is the go-to for hats, giving your logo a raised, stitched finish."
   - q: "How quickly can I get merch for a shoot?"
-    a: "Same-day and next-day rush slots are available for many orders. Call (323) 433-0033 to confirm."
+    a: "Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 to confirm."
 sourceUrl: "https://thebestscreenprinting.com/influencers/"
 ---
 ## Merch that looks like you made it on purpose

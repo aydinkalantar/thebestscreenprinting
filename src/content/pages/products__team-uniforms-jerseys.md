@@ -23,7 +23,7 @@ faqs:
   - q: "Do you check my logo before printing?"
     a: "Yes. Every order gets a free art check before it goes to print."
   - q: "Can you rush jerseys before a game?"
-    a: "Same-day and next-day rush slots are available for many orders. Call (323) 433-0033 or request a quote to confirm your date."
+    a: "Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 or request a quote to confirm your date."
 sourceUrl: "https://thebestscreenprinting.com/products/team-uniforms-jerseys/"
 ---
 
@@ -62,7 +62,7 @@ A clean roster is the secret weapon. List each player once with size, name exact
 
 ## Season starts Saturday?
 
-Same-day and next-day rush slots are open for many orders. What is possible depends on the garment, the method and the shop schedule, so call (323) 433-0033 before you lock in a date. More on rush work: [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+Rush and Super Rush turnaround are open for tight deadlines. What is possible depends on the garment, the method and the shop schedule, so call (323) 433-0033 before you lock in a date. More on rush work: [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Beyond the field
 

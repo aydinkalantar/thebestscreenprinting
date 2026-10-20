@@ -8,7 +8,7 @@ imported: false
 summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Downtown LA shop. Screen printing for 24+ pieces; DTG with no minimum for smaller groups."
 facts:
   - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Clubs, school groups, reunions, charity walks, staff" }
 faqs:
   - q: "Can everyone in the group get a different size?"

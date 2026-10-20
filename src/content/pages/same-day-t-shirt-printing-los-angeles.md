@@ -6,10 +6,10 @@ h1: "Same-day t-shirt printing in Los Angeles"
 kind: service
 imported: false
 sourceUrl: "https://thebestscreenprinting.com/same-day-t-shirt-printing-los-angeles/"
-summary: "Deadline tomorrow? Shirts today. Same-day and next-day rush slots are available for many orders at our Downtown LA shop; call or send your deadline with a quote request to lock one in."
+summary: "Deadline tomorrow? Shirts today. Normal, Rush and Super Rush turnaround options are available at our Downtown LA shop; call or send your deadline with a quote request to lock one in."
 facts:
   - label: "Rush"
-    value: "Same-day and next-day slots for many orders"
+    value: "Normal, Rush or Super Rush"
   - label: "Minimum"
     value: "No minimum with DTG; 24 pieces for screen printing"
   - label: "Hours"

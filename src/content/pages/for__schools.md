@@ -61,7 +61,7 @@ Every order gets a free art check and a mockup for approval. If the design start
 
 ## Game is tomorrow?
 
-Same-day and next-day rush slots are open for many orders. Call (323) 433-0033 to confirm before you plan around a date. See [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+Rush and Super Rush turnaround are open for tight deadlines. Call (323) 433-0033 to confirm before you plan around a date. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Rep your school
 

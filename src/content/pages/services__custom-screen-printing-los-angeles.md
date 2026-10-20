@@ -5,7 +5,7 @@ description: "Plastisol, water-based and discharge inks plus puff, high density,
 h1: "Custom screen printing in Los Angeles: inks and effects"
 kind: service
 imported: false
-summary: "Same screen, very different results: a soft water-based hand, punchy plastisol, or effects like puff, foil and glow. Screen printing starts at 24 pieces per design, printed in-house in Downtown LA with same-day and next-day rush slots for many orders."
+summary: "Same screen, very different results: a soft water-based hand, punchy plastisol, or effects like puff, foil and glow. Screen printing starts at 24 pieces per design, printed in-house in Downtown LA with Rush and Super Rush turnaround for tight deadlines."
 facts:
   - { label: "Minimum", value: "24 pieces per design" }
   - { label: "Standard ink", value: "Plastisol, included in standard pricing" }

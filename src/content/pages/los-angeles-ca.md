@@ -1,11 +1,11 @@
 ---
 path: "/los-angeles-ca/"
 title: "Screen Printing & Embroidery in Los Angeles | TBSP"
-description: "Our Los Angeles production facility at 2710 S Broadway: screen printing, embroidery, DTF and DTG with pickup, same-day rush and delivery across LA."
+description: "Our Los Angeles production facility at 2710 S Broadway: screen printing, embroidery, DTF and DTG with pickup, Rush and Super Rush turnaround and delivery across LA."
 h1: "Screen printing and embroidery in Los Angeles"
 kind: service
 imported: false
-summary: "Our home base: a Downtown LA production floor turning out merch for brands, tours and teams. Screen printing from 24 pieces, embroidery, DTF and DTG, with pickup and same-day rush."
+summary: "Our home base: a Downtown LA production floor turning out merch for brands, tours and teams. Screen printing from 24 pieces, embroidery, DTF and DTG, with pickup and Rush and Super Rush."
 facts:
   - { label: "Address", value: "2710 S Broadway, Los Angeles" }
   - { label: "Hours", value: "Mon–Fri, 9am–5pm" }
@@ -18,7 +18,7 @@ faqs:
   - q: "Do you deliver across Los Angeles?"
     a: "Yes. We ship and deliver across LA County and beyond. Delivery options and timing come with your quote."
   - q: "How fast can you print in LA?"
-    a: "Same-day and next-day rush slots are available for many orders. Send your deadline with the quote request or call us to check today's slots."
+    a: "Normal, Rush and Super Rush turnaround options are available. Send your deadline with the quote request or call us to check today's slots."
 ---
 Downtown LA is where TBSP started and where most of our presses run every day. Brands, tours, film crews, restaurants and teams come here for merch that looks right the first time.
 
@@ -27,7 +27,7 @@ Downtown LA is where TBSP started and where most of our presses run every day. B
 - **[Screen printing](/screen-printing/)** from 24 pieces per design, pulled in-house.
 - **[Embroidery](/services/embroidery/)** on caps, polos, jackets and workwear.
 - **[DTF transfers](/services/direct-to-film/)** and **[DTG printing](/services/direct-to-garment/)** for full color and small runs.
-- **[Oversize prints](/services/large-format-screen-printing/)** and **[same-day rush](/same-day-t-shirt-printing-los-angeles/)** when the design or the deadline is big.
+- **[Oversize prints](/services/large-format-screen-printing/)** and **[Rush and Super Rush](/same-day-t-shirt-printing-los-angeles/)** when the design or the deadline is big.
 
 ## Why work with an LA shop you can visit?
 

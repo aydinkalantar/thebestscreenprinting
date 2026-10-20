@@ -38,7 +38,7 @@ Brands, artists, events and teams. Our presses have run work for names like Netf
 
 - **Free art check.** Every file is reviewed before anything is printed.
 - **Fast answers.** Quotes come back within one business day.
-- **Rush when you need it.** Same-day and next-day slots are available for many orders. Call or request a quote to confirm.
+- **Rush when you need it.** Normal, Rush and Super Rush turnaround options are available. Call or request a quote to confirm.
 
 ## Come by the shop
 

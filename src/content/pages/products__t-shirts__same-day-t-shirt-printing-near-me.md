@@ -5,9 +5,9 @@ description: "Same-day t-shirt printing near Los Angeles. How to make your order
 h1: "Same-day t-shirt printing near me"
 kind: product
 imported: false
-summary: "Rush is a team sport. Same-day and next-day slots are available for many orders at our Downtown LA shop, and the right prep on your end is what gets a job into one. Call to confirm before you count on it."
+summary: "Rush is a team sport. Normal, Rush and Super Rush turnaround options are available at our Downtown LA shop, and the right prep on your end is what gets a job into one. Call to confirm before you count on it."
 facts:
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Confirm", value: "By phone at (323) 433-0033 or with a quote" }
   - { label: "Best for", value: "Last-minute events, shoots, launches and teams" }
 faqs:
@@ -21,9 +21,9 @@ sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/same-day-t-shirt
 ---
 ## Deadline today? Let's get you on press.
 
-The event got moved up. The shoot is tomorrow. Someone forgot the shirts. We see it every week, and same-day and next-day rush slots exist for exactly that. What decides whether your job fits in one is mostly prep. Here is how to make your order rush-ready.
+The event got moved up. The shoot is tomorrow. Someone forgot the shirts. We see it every week, and Rush and Super Rush turnaround exist for exactly that. What decides whether your job fits in one is mostly prep. Here is how to make your order rush-ready.
 
-For slot availability, methods and how to book, see our main [same-day t-shirt printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/) page. This page is your checklist.
+For slot availability, methods and how to book, see our main [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/) page. This page is your checklist.
 
 ## The rush-ready checklist
 

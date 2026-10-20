@@ -58,7 +58,7 @@ If you need 24 or more pieces of one design, yes, almost always. It gives you th
 
 ## Up against a deadline?
 
-Same-day and next-day rush slots are available for many orders. Tell us your date when you ask for a quote and we will confirm. More on [same-day printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/).
+Normal, Rush and Super Rush turnaround options are available. Tell us your date when you ask for a quote and we will confirm. More on [same-day printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/).
 
 ## Ready to start?
 

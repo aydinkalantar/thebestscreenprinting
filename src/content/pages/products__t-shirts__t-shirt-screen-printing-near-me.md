@@ -52,7 +52,7 @@ For the technical side of the process, read our guide to [screen printing in Los
 
 ## Close by when the clock is ticking
 
-Being local helps when deadlines get tight. Same-day and next-day rush slots are available for many orders; see [same-day t-shirt printing](/products/t-shirts/same-day-t-shirt-printing-near-me/) for how rush works. Pickup details are on [custom t-shirt printing near Los Angeles](/products/t-shirts/custom-tshirt-printing-near-los-angeles/).
+Being local helps when deadlines get tight. Normal, Rush and Super Rush turnaround options are available; see [Rush and Super Rush printing](/products/t-shirts/same-day-t-shirt-printing-near-me/) for how rush works. Pickup details are on [custom t-shirt printing near Los Angeles](/products/t-shirts/custom-tshirt-printing-near-los-angeles/).
 
 ## Get your run on press
 

@@ -29,7 +29,7 @@ Ordering shirts online from a print shop three states away means waiting on boxe
 - **Talk blanks in person.** Work through shirt weights, fabrics and colors before you commit.
 - **Talk it through.** Bring artwork, a sample shirt or just an idea, and work it out face to face.
 - **Fix it fast.** Need to tweak a size breakdown or add a few pieces? A phone call reaches the people running your job.
-- **Rush is realistic.** Same-day and next-day slots are available for many orders, and being close means no shipping day to add on top.
+- **Rush is realistic.** Normal, Rush and Super Rush turnaround options are available, and being close means no shipping day to add on top.
 
 ## Who walks through our door
 
@@ -48,7 +48,7 @@ Methods include in-house [screen printing](/screen-printing/) for 24+ pieces, [D
 
 ## How do I order for local pickup?
 
-Request a quote online, note that you want to pick up, and we will confirm when your order is ready. For a step-by-step look at how orders move, see [custom t-shirt printing](/products/t-shirts/custom-t-shirt-printing/). Racing a date? Read [same-day t-shirt printing](/products/t-shirts/same-day-t-shirt-printing-near-me/) first.
+Request a quote online, note that you want to pick up, and we will confirm when your order is ready. For a step-by-step look at how orders move, see [custom t-shirt printing](/products/t-shirts/custom-t-shirt-printing/). Racing a date? Read [Rush and Super Rush printing](/products/t-shirts/same-day-t-shirt-printing-near-me/) first.
 
 ## Come see us
 

@@ -9,7 +9,7 @@ summary: "Machine embroidery stitched in Downtown LA. Drop off your garments or 
 facts:
   - { label: "Location", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
   - { label: "Minimum", value: "12 pieces per design" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
 faqs:
   - q: "Can I drop off my own hats or jackets for embroidery?"
     a: "Yes. We embroider customer-supplied garments. Tell us the brand and fabric when you request a quote so we can plan hooping and thread."
@@ -27,7 +27,7 @@ When you need embroidery in LA, distance matters. A local shop means you can dro
 
 - **Hand it over in person.** Bring your caps, jackets or uniforms straight to the shop instead of shipping them twice.
 - **Match colors with your own eyes.** Thread looks different on screen. See it on the fabric.
-- **Faster turnaround.** Local pickup takes transit out of the timeline. Same-day and next-day rush slots are available for many orders; call to confirm.
+- **Faster turnaround.** Local pickup takes transit out of the timeline. Normal, Rush and Super Rush turnaround options are available; call to confirm.
 - **Real conversations.** Talk placement, size and stitch style with the people running the machines.
 
 ## What can you bring us?

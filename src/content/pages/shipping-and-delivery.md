@@ -23,7 +23,7 @@ Online orders ship with a free standard method of about two weeks. Faster option
 
 Production cutoff is **2pm Pacific, Monday to Friday**. Orders approved after the cutoff start the next business day.
 
-Need it sooner? See [delivery times](/learn-delivery-time/) for rush options, or check [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+Need it sooner? See [delivery times](/learn-delivery-time/) for rush options, or check [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Mockups first, then production
 

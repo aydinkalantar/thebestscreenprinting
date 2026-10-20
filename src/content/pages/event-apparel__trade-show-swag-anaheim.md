@@ -8,11 +8,11 @@ imported: false
 summary: "Look like the booth everyone stops at. Staff shirts, embroidered polos, hats and branded totes for Anaheim trade shows and conventions, printed in Downtown Los Angeles."
 facts:
   - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Booth staff, giveaways, conference teams" }
 faqs:
   - q: "Can you get our booth shirts done before the show?"
-    a: "Same-day and next-day rush slots are available for many orders. Tell us your show date in the quote request and we will confirm what is possible."
+    a: "Normal, Rush and Super Rush turnaround options are available. Tell us your show date in the quote request and we will confirm what is possible."
   - q: "Do you deliver to Anaheim?"
     a: "We ship orders, and you can also pick up at our Downtown LA shop at 2710 S Broadway Avenue on the way to the show."
   - q: "What is the best giveaway item for a trade show?"
@@ -54,7 +54,7 @@ At a trade show, your team is the billboard. Matching shirts make your staff eas
 3. **Approve the mockup.** Production starts after approval.
 4. **Pick up or ship.** Collect in Downtown LA or have it shipped.
 
-If the show is close, same-day and next-day rush slots are available for many orders. Call (323) 433-0033 to confirm.
+If the show is close, Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 to confirm.
 
 ## Trusted by brands
 

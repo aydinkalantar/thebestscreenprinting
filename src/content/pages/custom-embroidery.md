@@ -9,7 +9,7 @@ summary: "Stitched merch people keep: caps, hoodies, polos and totes with your l
 facts:
   - { label: "Minimum", value: "12 pieces per design" }
   - { label: "Setup", value: "Digitizing included" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
 faqs:
   - q: "What products can be embroidered?"
     a: "Hats and caps, polos, hoodies, crewnecks, jackets, tote bags, towels and more. Fabric matters, so tell us the garment when you request a quote."
@@ -40,7 +40,7 @@ Printing wins on big graphics, photos and fine detail. Embroidery wins on small 
 1. **Pick your hero piece.** Caps and hoodies get worn. Choose what your audience will actually use.
 2. **Keep the logo bold.** Clean shapes and a short color list stitch the sharpest.
 3. **Hit the minimum.** 12 pieces per design. Mix garments as long as the design is the same.
-4. **Tell us the date.** Same-day and next-day rush slots are available for many orders. Confirm by phone or in your quote.
+4. **Tell us the date.** Normal, Rush and Super Rush turnaround options are available. Confirm by phone or in your quote.
 
 ## Want a specific stitch style?
 

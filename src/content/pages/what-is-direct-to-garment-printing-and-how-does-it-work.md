@@ -69,6 +69,6 @@ Both skip screens and suit small runs. Tell us your garment and design and we wi
 
 ## Do you need fast turnaround?
 
-Because DTG skips screens, small orders can move quickly. Same-day and next-day rush slots are available for many orders at our Downtown LA shop. See [same-day t-shirt printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/) or call (323) 433-0033.
+Because DTG skips screens, small orders can move quickly. Normal, Rush and Super Rush turnaround options are available at our Downtown LA shop. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/) or call (323) 433-0033.
 
 Ready to print in full color? [Get a free quote](/quick-quote/).

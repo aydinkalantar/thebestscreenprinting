@@ -5,17 +5,17 @@ description: "Custom event apparel in Los Angeles: staff shirts, tour merch, giv
 h1: "Event apparel"
 kind: audience
 imported: false
-summary: "Shirts people actually keep wearing after the event. Screen printed in-house in Downtown LA for 24+ pieces of one design, with same-day and next-day rush slots for many orders."
+summary: "Shirts people actually keep wearing after the event. Screen printed in-house in Downtown LA for 24+ pieces of one design, with Rush and Super Rush turnaround for tight deadlines."
 facts:
   - label: "24+ pieces of one design"
     value: "Screen printed in-house in Downtown LA"
   - label: "Rush"
-    value: "Same-day and next-day slots for many orders; confirm by phone"
+    value: "Normal, Rush or Super Rush; confirm by phone"
   - label: "Location"
     value: "2710 S Broadway Ave, Los Angeles, CA 90007"
 faqs:
   - q: "Can you print event shirts on short notice?"
-    a: "Same-day and next-day rush slots are available for many orders. Call (323) 433-0033 or request a quote to confirm your date."
+    a: "Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 or request a quote to confirm your date."
   - q: "Can I pick up my order in Downtown LA?"
     a: "Yes. Our shop is at 2710 S Broadway Avenue, Los Angeles, CA 90007, open Monday through Friday, 9am to 5pm."
   - q: "What if I only need a few shirts for event staff?"
@@ -53,7 +53,7 @@ Mixing is normal. Screen-printed volunteer tees plus embroidered polos for event
 
 ## Work backward from showtime
 
-Start from the moment the boxes need to be in your hands. Leave room to approve the art and to ship or pick up. If the date is tight, call (323) 433-0033 before you finalize the design. Same-day and next-day rush slots are open for many orders, and we will tell you straight what is possible for your garment and quantity. See how rush runs work on [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+Start from the moment the boxes need to be in your hands. Leave room to approve the art and to ship or pick up. If the date is tight, call (323) 433-0033 before you finalize the design. Rush and Super Rush turnaround are open for tight deadlines, and we will tell you straight what is possible for your garment and quantity. See how rush runs work on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## How do we get sizes right for a crowd?
 

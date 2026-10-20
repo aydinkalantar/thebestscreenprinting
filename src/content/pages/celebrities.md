@@ -1,14 +1,14 @@
 ---
 path: "/celebrities/"
 title: "Custom Print On All Products For Celebrities"
-description: "Custom apparel for talent, managers and creative teams in LA: screen printing, embroidery and DTG with mockup approval and same-day or next-day rush slots."
+description: "Custom apparel for talent, managers and creative teams in LA: screen printing, embroidery and DTG with mockup approval and Rush and Super Rush turnaround."
 h1: "Custom printing for celebrities and talent"
 kind: audience
 imported: false
 summary: "Merch, crew gear and gifts that match the name on them. Screen printing, embroidery and full-color DTG for talent, managers and creative teams, made at our Downtown LA shop."
 facts:
   - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
-  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Fan merch, tour and crew gear, gifts, wrap shirts" }
 faqs:
   - q: "Can we see a sample before the full run?"
@@ -18,7 +18,7 @@ faqs:
   - q: "Do you offer design help?"
     a: "Yes. Email sales@tbsp.la to ask about graphic design assistance for creating or editing artwork."
   - q: "How fast can you turn an order?"
-    a: "Same-day and next-day rush slots are available for many orders. Call (323) 433-0033 to confirm for your quantity and garment."
+    a: "Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 to confirm for your quantity and garment."
 sourceUrl: "https://thebestscreenprinting.com/celebrities/"
 ---
 ## Built for people whose name is the brand
