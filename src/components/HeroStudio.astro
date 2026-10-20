@@ -1,0 +1,136 @@
+---
+// Animated slice of TBSP Studio for the homepage hero: a request types into the
+// assistant bar, the garment changes color, the logo drops onto the print area
+// and a quote chip slides in. Loops through three scenes. Respects
+// prefers-reduced-motion (shows the first finished scene, no animation).
+import { business } from '../data/business';
+import { Mic, Sparkles, Check } from '@lucide/astro';
+
+const scenes = [
+  {
+    product: 'Unisex Classic Tee', prompt: '50 black tees, logo on the chest, by Friday',
+    from: 'https://files.cdn.printful.com/products/438/11579_1693310991.jpg',
+    to: 'https://files.cdn.printful.com/products/438/12645_1642678228.jpg',
+    color: 'Black', logo: { x: 50, y: 33, w: 26 }, ink: '#ffffff', chip: '50 × Black tee · Screen print',
+  },
+  {
+    product: 'Heavy Blend Hoodie', prompt: 'Maroon hoodies for the crew, big chest print',
+    from: 'https://files.cdn.printful.com/products/146/5522_1750160842.jpg',
+    to: 'https://files.cdn.printful.com/products/146/5586_1750160840.jpg',
+    color: 'Maroon', logo: { x: 51, y: 35, w: 30 }, ink: '#ffffff', chip: '36 × Maroon hoodie · Rush',
+  },
+  {
+    product: 'Classic Dad Hat', prompt: 'Navy dad hats with our logo stitched on front',
+    from: 'https://files.cdn.printful.com/products/206/7853_1584455533.jpg',
+    to: 'https://files.cdn.printful.com/products/206/7857_1584455384.jpg',
+    color: 'Navy', logo: { x: 50, y: 44, w: 18 }, ink: '#f4f4f5', chip: '24 × Navy cap · Embroidery',
+  },
+];
+---
+<div class="relative" id="hero-studio" data-scenes={JSON.stringify(scenes)}>
+  <div class="absolute -inset-6 rounded-[2.5rem] bg-violet-500/15 blur-3xl" aria-hidden="true"></div>
+  <div class="relative panel-raised p-3 sm:p-4">
+    <div class="flex items-center justify-between gap-3 px-1 pb-3">
+      <span class="flex items-center gap-2 min-w-0 text-[13px] font-semibold text-zinc-800 dark:text-zinc-200">
+        <span class="w-2 h-2 shrink-0 rounded-full bg-emerald-500"></span>
+        <span class="truncate" data-product>{scenes[0].product}</span>
+        <span class="muted font-medium shrink-0" data-color>· White</span>
+      </span>
+      <span class="inline-flex shrink-0 rounded-lg bg-zinc-100 dark:bg-white/[0.06] p-0.5 text-[11px] font-semibold"><span class="px-2.5 py-1 rounded-md bg-violet-600 text-white">Front</span><span class="px-2.5 py-1 muted">Back</span></span>
+    </div>
+
+    <div class="relative aspect-[4/3.6] rounded-xl bg-white overflow-hidden grid place-items-center">
+      <div class="relative h-full aspect-[7/10]" data-stage>
+        <img data-img-from src={scenes[0].from} alt="" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700" />
+        <img data-img-to src={scenes[0].to} alt="" class="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-700" />
+        <div data-logo class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-[6%] opacity-0 scale-50 transition-all duration-500 ease-[cubic-bezier(.34,1.56,.64,1)]" style="left:50%;top:33%;width:26%">
+          <span class="brand-mark-ink block w-[46%] aspect-square" aria-hidden="true"></span>
+          <span data-logo-text class="font-black tracking-tight leading-none whitespace-nowrap" style="font-size:clamp(7px,1.15vw,13px)">YOUR BRAND</span>
+        </div>
+        <div data-box class="absolute -translate-x-1/2 -translate-y-1/2 rounded-md border-2 border-dashed border-violet-500/80 opacity-0 transition-opacity duration-300" style="left:50%;top:33%;width:34%;height:16%"></div>
+      </div>
+      <div data-chip class="absolute bottom-3 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-500 flex items-center gap-2 rounded-full bg-white/95 dark:bg-[#0d0d14]/95 border border-zinc-200 dark:border-white/10 px-3.5 py-1.5 text-[12px] font-semibold text-zinc-800 dark:text-zinc-100 shadow-lg whitespace-nowrap">
+        <Check class="w-3.5 h-3.5 text-emerald-500" aria-hidden="true" /><span data-chip-text>Quote ready</span>
+      </div>
+    </div>
+
+    <div class="mt-3 rounded-xl border border-zinc-200 dark:border-white/10 p-2.5 flex items-center gap-3">
+      <span data-mic class="relative w-9 h-9 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white">
+        <span class="absolute inset-0 rounded-lg bg-violet-500 animate-ping opacity-0" data-ping></span>
+        <Mic class="relative w-4 h-4" aria-hidden="true" />
+      </span>
+      <div class="min-w-0 flex-1">
+        <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-violet-600 dark:text-violet-300">● AI design assistant</p>
+        <p class="text-[13px] text-zinc-700 dark:text-zinc-300 truncate h-5"><span data-typed></span><span class="inline-block w-px h-3.5 align-middle bg-violet-500 ml-0.5 animate-pulse" aria-hidden="true"></span></p>
+      </div>
+      <Sparkles class="w-4 h-4 text-violet-500 shrink-0" aria-hidden="true" />
+    </div>
+  </div>
+  {!business.studioLive && <p class="relative mt-3 text-center text-[12px] muted">Our online design studio is coming soon.</p>}
+</div>
+
+<style>
+  .brand-mark-ink { background: currentColor; -webkit-mask: url('/images/brand/TBSP-New-Logo-2025.svg') center / contain no-repeat; mask: url('/images/brand/TBSP-New-Logo-2025.svg') center / contain no-repeat; }
+</style>
+
+<script>
+  type Scene = { product: string; prompt: string; from: string; to: string; color: string; logo: { x: number; y: number; w: number }; ink: string; chip: string };
+  const root = document.getElementById('hero-studio');
+  if (root && !root.dataset.ready) {
+    root.dataset.ready = '1';
+    const scenes: Scene[] = JSON.parse(root.dataset.scenes!);
+    const q = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
+    const imgFrom = q<HTMLImageElement>('[data-img-from]'), imgTo = q<HTMLImageElement>('[data-img-to]');
+    const logo = q('[data-logo]'), box = q('[data-box]'), chip = q('[data-chip]'), chipText = q('[data-chip-text]');
+    const typed = q('[data-typed]'), product = q('[data-product]'), color = q('[data-color]'), ping = q('[data-ping]');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    // Warm the cache so color swaps are instant.
+    scenes.forEach((s) => { new Image().src = s.from; new Image().src = s.to; });
+
+    const place = (s: Scene) => {
+      for (const el of [logo, box]) { el.style.left = `${s.logo.x}%`; el.style.top = `${s.logo.y}%`; }
+      logo.style.width = `${s.logo.w}%`;
+      box.style.width = `${s.logo.w + 8}%`;
+      box.style.height = `${s.logo.w * 0.62}%`;
+      logo.style.color = s.ink;
+    };
+    const show = (el: HTMLElement, on: boolean, ...cls: string[]) => {
+      el.classList.toggle('opacity-0', !on);
+      cls.forEach((c) => el.classList.toggle(c, !on));
+    };
+
+    const finish = (s: Scene) => {
+      place(s); imgTo.src = s.to; imgTo.classList.remove('opacity-0'); imgFrom.classList.add('opacity-0');
+      product.textContent = s.product; color.textContent = `· ${s.color}`; typed.textContent = s.prompt;
+      show(logo, true, 'scale-50'); chipText.textContent = s.chip; show(chip, true, 'translate-y-4');
+    };
+
+    async function play() {
+      for (let i = 0; ; i = (i + 1) % scenes.length) {
+        const s = scenes[i];
+        // Reset to the plain white garment.
+        show(logo, false, 'scale-50'); show(chip, false, 'translate-y-4'); show(box, false);
+        imgFrom.src = s.from; imgFrom.classList.remove('opacity-0'); imgTo.classList.add('opacity-0');
+        product.textContent = s.product; color.textContent = '· White'; typed.textContent = '';
+        place(s);
+        await wait(700);
+        // The request types itself into the assistant bar.
+        ping.classList.remove('opacity-0'); ping.classList.add('opacity-60');
+        for (const ch of s.prompt) { typed.textContent += ch; await wait(32 + Math.random() * 40); }
+        ping.classList.add('opacity-0'); ping.classList.remove('opacity-60');
+        await wait(350);
+        // Color swap, then the print area appears and the logo drops in.
+        imgTo.src = s.to; imgTo.classList.remove('opacity-0'); imgFrom.classList.add('opacity-0');
+        color.textContent = `· ${s.color}`;
+        await wait(650);
+        show(box, true); await wait(350);
+        show(logo, true, 'scale-50'); await wait(450);
+        show(box, false);
+        chipText.textContent = s.chip; show(chip, true, 'translate-y-4');
+        await wait(2600);
+      }
+    }
+    if (reduce) finish(scenes[0]); else play();
+  }
+</script>

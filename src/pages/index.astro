@@ -6,6 +6,7 @@ import CtaBand from '../components/CtaBand.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Turnaround from '../components/Turnaround.astro';
 import VideoGrid from '../components/VideoGrid.astro';
+import HeroStudio from '../components/HeroStudio.astro';
 import { VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
 import { products } from '../lib/catalog';
@@ -53,7 +54,6 @@ const faqs = [
   { q: 'How fast can you print?', a: 'Choose Normal, Rush or Super Rush turnaround. Tell us your deadline with your quote request and we will confirm the timing for your order.' },
   { q: 'How do I get a price?', a: 'Request a quote with your garment, quantity, print locations and artwork. We reply with a personal quote within one business day.' },
 ];
-const shirt = products.find((p) => /t-shirt/i.test(p.name) && p.category === 'apparel') ?? products[0];
 const featured = products.filter((p) => ['apparel', 'sweatshirts', 'hats'].includes(p.category)).slice(0, 8);
 const homeVideos = [VIDEOS.reel, VIDEOS.netflix];
 const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
@@ -85,28 +85,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         </ul>
       </div>
 
-      <!-- A slice of the studio: product on stage + Max, the assistant -->
-      <div class="relative min-w-0">
-        <div class="panel-raised p-3 sm:p-4">
-          <div class="flex items-center justify-between px-1 pb-3">
-            <span class="flex items-center gap-2 min-w-0 text-[13px] font-semibold text-zinc-800 dark:text-zinc-200"><span class="w-2 h-2 shrink-0 rounded-full bg-emerald-500"></span><span class="truncate">{shirt?.name ?? 'Custom tee'}</span></span>
-            <span class="inline-flex shrink-0 rounded-lg bg-zinc-100 dark:bg-white/[0.06] p-0.5 text-[11px] font-semibold"><span class="px-2.5 py-1 rounded-md bg-violet-600 text-white">Front</span><span class="px-2.5 py-1 muted">Back</span></span>
-          </div>
-          <div class="relative aspect-[4/3.4] rounded-xl bg-zinc-100 dark:bg-white/[0.04] grid place-items-center overflow-hidden">
-            {shirt && <img src={shirt.image} alt="" class="h-full max-w-full w-auto object-contain" width="480" height="480" />}
-            <span class="absolute top-[38%] left-1/2 -translate-x-1/2 rounded-md border-2 border-dashed border-violet-500/70 px-4 py-2 text-[13px] font-black tracking-tight text-zinc-900 bg-white/70 dark:bg-white/80">YOUR LOGO</span>
-          </div>
-          <div class="mt-3 rounded-xl border border-zinc-200 dark:border-white/10 p-2.5 flex items-center gap-3">
-            <span class="w-9 h-9 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white"><Mic class="w-4 h-4" aria-hidden="true" /></span>
-            <div class="min-w-0">
-              <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-violet-600 dark:text-violet-300">● Max · your design assistant</p>
-              <p class="text-[13px] muted truncate">"50 black tees, logo on the chest, by Friday"</p>
-            </div>
-            <Sparkles class="w-4 h-4 ml-auto text-violet-500 shrink-0" aria-hidden="true" />
-          </div>
-        </div>
-        {!business.studioLive && <p class="mt-3 text-center text-[12px] muted">Our online design studio is coming soon.</p>}
-      </div>
+      <HeroStudio />
     </div>
   </section>
 
