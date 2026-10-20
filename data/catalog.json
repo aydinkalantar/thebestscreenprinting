@@ -1,0 +1,3449 @@
+{
+ "syncedAt": "2026-10-20T23:10:48.208Z",
+ "source": "http://localhost:3000",
+ "products": [
+  {
+   "id": "cmr76xhmu009ow82g257zap31",
+   "slug": "acrylic-ornaments",
+   "name": "Acrylic Ornaments",
+   "brand": null,
+   "category": "home",
+   "subcategory": "home-decor",
+   "type": "Ornament | Acrylic",
+   "fromPrice": 10.71,
+   "techniques": [
+    "UV"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/16/16b5a6d56334457bb291cc2e4e4eed09_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/16/16b5a6d56334457bb291cc2e4e4eed09_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/16/16b5a6d56334457bb291cc2e4e4eed09_l"
+    }
+   ],
+   "sizes": [
+    "Circle",
+    "Rectangle"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76w45d0008w82gky9grw7b",
+   "slug": "adidas-dad-hat",
+   "name": "Adidas Dad Hat",
+   "brand": "Adidas",
+   "category": "hats",
+   "subcategory": "dad-hats",
+   "type": "Adidas HA9264 | Dad Hat",
+   "fromPrice": 39.55,
+   "techniques": [
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/c4/c45ba3c882b8ecb672b30ac5c1041955_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/c4/c45ba3c882b8ecb672b30ac5c1041955_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/638/16245_1744870748.jpg"
+    }
+   ],
+   "sizes": [
+    "One size"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76x3b30080w82gk19hr0l5",
+   "slug": "adidas-fundamental-alliance-cap-ah607",
+   "name": "Adidas Fundamental Alliance Cap | AH607",
+   "brand": "Adidas",
+   "category": "hats",
+   "subcategory": null,
+   "type": "Adidas Fundamental Alliance Cap | AH607",
+   "fromPrice": 47.98,
+   "techniques": [
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/c4/c44a8740ac632ba550d1d3bf728db44c_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/c4/c44a8740ac632ba550d1d3bf728db44c_l"
+   ],
+   "colors": [
+    {
+     "name": "Black / White",
+     "hex": "#151515",
+     "image": "https://files.cdn.printful.com/products/1586/49973_1779361247.jpg"
+    },
+    {
+     "name": "Team Dark Grey / White",
+     "hex": "#484a4e",
+     "image": "https://files.cdn.printful.com/products/1586/49972_1779361247.jpg"
+    },
+    {
+     "name": "Team Navy Blue / White",
+     "hex": "#1e2a44",
+     "image": "https://files.cdn.printful.com/products/1586/49971_1779361246.jpg"
+    },
+    {
+     "name": "White / Black",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/1586/49970_1779361247.jpg"
+    }
+   ],
+   "sizes": [
+    "One size"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wo5v004uw82g90frbpve",
+   "slug": "all-over-print-american-football-jersey",
+   "name": "All-Over Print American Football Jersey",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "all-over-prints",
+   "type": "All-Over Print American Football Jersey",
+   "fromPrice": 50.4,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d0/d05ae634a9736063dfb1edd1df2c4ad6_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/d0/d05ae634a9736063dfb1edd1df2c4ad6_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/918/23612_1754051019.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zn8kn01hhh52g876jqxn5",
+   "slug": "all-over-print-backpack",
+   "name": "All-Over Print Backpack",
+   "brand": null,
+   "category": "accessories",
+   "subcategory": "bags",
+   "type": "All-Over Print Backpack",
+   "fromPrice": 51.57,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/1c/1cb4394b298d1d9e5d622976d8b89213_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/1c/1cb4394b298d1d9e5d622976d8b89213_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/279/9063_1534847488.jpg"
+    }
+   ],
+   "sizes": [
+    "One size"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76x4oh0085w82g53lpu8oe",
+   "slug": "all-over-print-bandana",
+   "name": "All-Over Print Bandana",
+   "brand": null,
+   "category": "hats",
+   "subcategory": null,
+   "type": "All-Over Print Bandana",
+   "fromPrice": 14.21,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/89/89110ee2718a4b86e369141ca3d882c4_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/89/89110ee2718a4b86e369141ca3d882c4_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/630/16033_1660914152.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76w5mp000bw82gto87td46",
+   "slug": "all-over-print-basic-pillow",
+   "name": "All-Over Print Basic Pillow",
+   "brand": null,
+   "category": "home",
+   "subcategory": "home-decor",
+   "type": "All-Over Print | Basic Pillow",
+   "fromPrice": 21.35,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/products/83/product_1573737219.jpg",
+   "images": [
+    "https://files.cdn.printful.com/o/products/83/product_1573737219.jpg"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/products/83/product_1573737219.jpg"
+    }
+   ],
+   "sizes": [
+    "18″×18″",
+    "20″×12″",
+    "22″×22″"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76xisx009rw82gfoijymyy",
+   "slug": "all-over-print-basic-pillow-case",
+   "name": "All-Over Print Basic Pillow Case",
+   "brand": null,
+   "category": "home",
+   "subcategory": "home-decor",
+   "type": "All-Over Print | Basic Pillow Case",
+   "fromPrice": 18.5,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/products/89/product_1573737407.jpg",
+   "images": [
+    "https://files.cdn.printful.com/o/products/89/product_1573737407.jpg"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/products/89/product_1573737407.jpg"
+    }
+   ],
+   "sizes": [
+    "18″×18″",
+    "20″×12″",
+    "22″×22″"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wabn000vw82gkho0h5qi",
+   "slug": "all-over-print-boxy-football-jersey",
+   "name": "All-Over Print Boxy Football Jersey",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "all-over-prints",
+   "type": "All-Over Print Boxy Football Jersey",
+   "fromPrice": 51.8,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/cb/cb6865b1fe54bfa343a4010c50fc2f74_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/cb/cb6865b1fe54bfa343a4010c50fc2f74_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/1367/25458_1758114432.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76xe40008zw82gvkgpcw94",
+   "slug": "all-over-print-case-for-airpods",
+   "name": "All-Over Print Case for AirPods®",
+   "brand": null,
+   "category": "accessories",
+   "subcategory": "tech",
+   "type": "All-Over Print Case for AirPods®",
+   "fromPrice": 21.42,
+   "techniques": [
+    "SUBLIMATION"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/35/3590046c51744ee1db489e35cc117820_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/35/3590046c51744ee1db489e35cc117820_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/681/16865_1681715466.jpg"
+    }
+   ],
+   "sizes": [
+    "AirPods Gen1",
+    "AirPods Gen2",
+    "AirPods Gen3",
+    "AirPods Pro Gen1",
+    "AirPods Pro Gen2"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76x6fz0089w82g291somcb",
+   "slug": "all-over-print-headband",
+   "name": "All-Over Print Headband",
+   "brand": null,
+   "category": "hats",
+   "subcategory": null,
+   "type": "All-Over Print Headband",
+   "fromPrice": 9.93,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/e2/e27e7c277d9e21d1c66bca5be286bada_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/e2/e27e7c277d9e21d1c66bca5be286bada_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/545/16363_1671190237.jpg"
+    }
+   ],
+   "sizes": [
+    "M",
+    "L"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76x1vw007sw82gy0gj3vmb",
+   "slug": "all-over-print-kids-cotton-crew-neck-t-shirt",
+   "name": "All-Over Print Kids Cotton Crew Neck T-Shirt",
+   "brand": null,
+   "category": "kids",
+   "subcategory": null,
+   "type": "All-Over Print Kids Cotton Crew Neck T-Shirt",
+   "fromPrice": 30.09,
+   "techniques": [
+    "DIRECT-TO-FABRIC"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/5d/5dd05259d9125a97b8dce6a226c8fbe9_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/5d/5dd05259d9125a97b8dce6a226c8fbe9_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/1416/33949_1762161267.jpg"
+    }
+   ],
+   "sizes": [
+    "2T",
+    "3T",
+    "4T",
+    "5T",
+    "6",
+    "6X",
+    "7"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wp850056w82g6xi2wi2j",
+   "slug": "all-over-print-men-s-athletic-t-shirt",
+   "name": "All-Over Print Men's Athletic T-Shirt",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "all-over-prints",
+   "type": "All-Over Print Men's Athletic T-Shirt",
+   "fromPrice": 45.29,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/24/243d158018882a4fee017e357d584e2b_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/24/243d158018882a4fee017e357d584e2b_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/328/9957_1582102633.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wg8c0017w82gn17f1n1c",
+   "slug": "all-over-print-men-s-cotton-crew-neck-t-shirt",
+   "name": "All-Over Print Men’s Cotton Crew Neck T-Shirt",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "all-over-prints",
+   "type": "All-Over Print Men’s Cotton Crew Neck T-Shirt",
+   "fromPrice": 34.99,
+   "techniques": [
+    "DIRECT-TO-FABRIC"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/21/21ef846da3f3a2f53c72f5ee4a312df9_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/21/21ef846da3f3a2f53c72f5ee4a312df9_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/1414/33937_1759749584.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wqda005ew82g75i4xv2i",
+   "slug": "all-over-print-men-s-crew-neck-t-shirt",
+   "name": "All-Over Print Men's Crew Neck T-Shirt",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "all-over-prints",
+   "type": "All-Over Print Men's Crew Neck T-Shirt",
+   "fromPrice": 31.35,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/fd/fdb7214913fd3c6c56d683e1f8997c58_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/fd/fdb7214913fd3c6c56d683e1f8997c58_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/257/8853_1530703809.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76w2jm0000w82gipmsqf4j",
+   "slug": "all-over-print-men-s-rash-guard",
+   "name": "All-Over Print Men's Rash Guard",
+   "brand": null,
+   "category": "accessories",
+   "subcategory": null,
+   "type": "All-Over Print Men's Rash Guard",
+   "fromPrice": 48.49,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/f5/f515cd70efe83bee7e42d06c9e1c4e3c_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/f5/f515cd70efe83bee7e42d06c9e1c4e3c_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/301/9331_1582102402.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wrrn005lw82gs9wynkh3",
+   "slug": "all-over-print-men-s-recycled-short-sleeve-rash-guard",
+   "name": "All-Over Print Men's Recycled Short Sleeve Rash Guard",
+   "brand": null,
+   "category": "accessories",
+   "subcategory": "tech",
+   "type": "All-Over Print Men's Recycled Short Sleeve Rash Guard",
+   "fromPrice": 45.69,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/13/133cf1e27f3a5269f6333521c19545af_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/13/133cf1e27f3a5269f6333521c19545af_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/836/21464_1737016295.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wtvd005xw82gqlyrrtxw",
+   "slug": "all-over-print-men-s-tank-top",
+   "name": "All-Over Print Men's Tank Top",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "tank-tops",
+   "type": "All-Over Print Men's Tank Top",
+   "fromPrice": 28.49,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/e2/e2ccc26380d655ad98939e7b50716486_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/e2/e2ccc26380d655ad98939e7b50716486_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/276/9054_1582102236.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wxqt006sw82gml1p4ogp",
+   "slug": "all-over-print-oversized-cotton-hoodie",
+   "name": "All-Over Print Oversized Cotton Hoodie",
+   "brand": null,
+   "category": "sweatshirts",
+   "subcategory": "hoodies",
+   "type": "All-Over Print Oversized Cotton Hoodie",
+   "fromPrice": 77,
+   "techniques": [
+    "DIRECT-TO-FABRIC"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/fb/fb56069c088406ddf01d7b15b61e49d8_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/fb/fb56069c088406ddf01d7b15b61e49d8_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/1628/51475_1782110637.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76w89t000jw82g8avhmiqe",
+   "slug": "all-over-print-oversized-cotton-t-shirt",
+   "name": "All-Over Print Oversized Cotton T-Shirt",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "all-over-prints",
+   "type": "All-Over Print Oversized Cotton T-Shirt",
+   "fromPrice": 34.16,
+   "techniques": [
+    "DIRECT-TO-FABRIC"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bc/bc749e1e793d6ff6abd85bfee25f9372_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/bc/bc749e1e793d6ff6abd85bfee25f9372_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/1482/46406_1773838262.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76w6y8000fw82gcm3bkdd0",
+   "slug": "all-over-print-premium-pillow",
+   "name": "All-Over Print Premium Pillow",
+   "brand": null,
+   "category": "home",
+   "subcategory": "home-decor",
+   "type": "All-Over Print | Premium Pillow",
+   "fromPrice": 24.21,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/products/214/product_1573737284.jpg",
+   "images": [
+    "https://files.cdn.printful.com/o/products/214/product_1573737284.jpg"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/products/214/product_1573737284.jpg"
+    }
+   ],
+   "sizes": [
+    "18″×18″",
+    "20″×12″",
+    "22″×22″"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76xk7a009vw82gzj5bs0b8",
+   "slug": "all-over-print-premium-pillow-case",
+   "name": "All-Over Print Premium Pillow Case",
+   "brand": null,
+   "category": "home",
+   "subcategory": "home-decor",
+   "type": "All-Over Print | Premium Pillow Case",
+   "fromPrice": 21.35,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/products/215/product_1573737377.jpg",
+   "images": [
+    "https://files.cdn.printful.com/o/products/215/product_1573737377.jpg"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/products/215/product_1573737377.jpg"
+    }
+   ],
+   "sizes": [
+    "18″×18″",
+    "20″×12″",
+    "22″×22″"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wlls003pw82g90qjufbj",
+   "slug": "all-over-print-recycled-hockey-fan-jersey",
+   "name": "All-Over Print Recycled Hockey Fan Jersey",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "all-over-prints",
+   "type": "All-Over Print Recycled Hockey Fan Jersey",
+   "fromPrice": 45.63,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/19/194038adb4fc75c47f06b3675055c965_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/19/194038adb4fc75c47f06b3675055c965_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/730/18672_1706000045.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76x8u8008cw82g35hqx6ew",
+   "slug": "all-over-print-recycled-scrunchie",
+   "name": "All-Over Print Recycled Scrunchie",
+   "brand": null,
+   "category": "hats",
+   "subcategory": null,
+   "type": "All-Over Print Recycled Scrunchie",
+   "fromPrice": 12.17,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/69/69fd9744e329b24e8a556511b925fcb5_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/69/69fd9744e329b24e8a556511b925fcb5_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/69/69fd9744e329b24e8a556511b925fcb5_l"
+    }
+   ],
+   "sizes": [
+    "One size"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76xd2j008nw82gt5uwyo96",
+   "slug": "all-over-print-recycled-swim-trunks",
+   "name": "All-Over Print Recycled Swim Trunks",
+   "brand": null,
+   "category": "pants",
+   "subcategory": null,
+   "type": "All-Over Print Recycled Swim Trunks",
+   "fromPrice": 54.1,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/76/765cc9cc83cffb1c0e0aadaf9441d55d_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/76/765cc9cc83cffb1c0e0aadaf9441d55d_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/571/14642_1645708467.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wv430064w82gh9hsy9m4",
+   "slug": "all-over-print-recycled-unisex-baseball-jersey",
+   "name": "All-Over Print Recycled Unisex Baseball Jersey",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "all-over-prints",
+   "type": "All-Over Print Recycled Unisex Baseball Jersey",
+   "fromPrice": 49.91,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/a0/a0f63fe79fd9248b5acce47b67e23462_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/a0/a0f63fe79fd9248b5acce47b67e23462_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/792/20188_1723439426.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wz9j0074w82g3o9q6ni2",
+   "slug": "all-over-print-recycled-unisex-hoodie",
+   "name": "All-Over Print Recycled Unisex Hoodie",
+   "brand": null,
+   "category": "sweatshirts",
+   "subcategory": "hoodies",
+   "type": "All-Over Print Recycled Unisex Hoodie",
+   "fromPrice": 55.93,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/7c/7c6f71d3de5db0ef1f05f397fc497f0b_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/7c/7c6f71d3de5db0ef1f05f397fc497f0b_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://static.cdn.printful.com/s/static/v877/images/products/product_temporary_image.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wimq001ew82gnixcsbe1",
+   "slug": "all-over-print-recycled-unisex-sports-jersey",
+   "name": "All-Over Print Recycled Unisex Sports Jersey",
+   "brand": null,
+   "category": "apparel",
+   "subcategory": "all-over-prints",
+   "type": "All-Over Print Recycled Unisex Sports Jersey",
+   "fromPrice": 42.77,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/2c/2c953c1fd173f6d5443ecb5930d3260b_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/2c/2c953c1fd173f6d5443ecb5930d3260b_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/644/16264_1665466502.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wwha006gw82gwn8ne2wm",
+   "slug": "all-over-print-unisex-button-shirt",
+   "name": "All-Over Print Unisex Button Shirt",
+   "brand": null,
+   "category": "accessories",
+   "subcategory": null,
+   "type": "All-Over Print Unisex Button Shirt",
+   "fromPrice": 42.77,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/03/0352107394863154a82131aaee2a1098_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/03/0352107394863154a82131aaee2a1098_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/659/17120_1686124116.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76x0m1007gw82gfup0ztw0",
+   "slug": "all-over-print-unisex-cotton-hoodie",
+   "name": "All-Over Print Unisex Cotton Hoodie",
+   "brand": null,
+   "category": "sweatshirts",
+   "subcategory": "hoodies",
+   "type": "All-Over Print Unisex Cotton Hoodie",
+   "fromPrice": 63.69,
+   "techniques": [
+    "DIRECT-TO-FABRIC"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/45/45c2d1c38858cdb2861c9d601ee4a3f5_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/45/45c2d1c38858cdb2861c9d601ee4a3f5_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/1419/33974_1761804892.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL",
+    "2XS",
+    "6XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zn9qx01hjh52gmo89xmuc",
+   "slug": "all-over-print-women-s-rash-guard",
+   "name": "All-Over Print Women's Rash Guard",
+   "brand": null,
+   "category": "womens",
+   "subcategory": null,
+   "type": "All-Over Print Women's Rash Guard",
+   "fromPrice": 48.49,
+   "techniques": [
+    "CUT-SEW"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/e0/e0f7b162617e7cbdeb0c66618cb86c43_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/e0/e0f7b162617e7cbdeb0c66618cb86c43_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/302/9338_1532360365.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76xbee008gw82g518em2dx",
+   "slug": "area-rug",
+   "name": "Area Rug",
+   "brand": null,
+   "category": "home",
+   "subcategory": null,
+   "type": "Rug | Area",
+   "fromPrice": 33.69,
+   "techniques": [
+    "SUBLIMATION"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/ff/ffb57c4bdb5235917d3ad7cae6594de5_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/ff/ffb57c4bdb5235917d3ad7cae6594de5_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/ff/ffb57c4bdb5235917d3ad7cae6594de5_l"
+    }
+   ],
+   "sizes": [
+    "24″×36″",
+    "36″×24″",
+    "36″×60″",
+    "48″×72″",
+    "60″×36″",
+    "72″×48″"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zn50501gnh52g57dtscfv",
+   "slug": "classic-dad-hat-yupoong-6245cm",
+   "name": "Classic Dad Hat | Yupoong 6245CM",
+   "brand": "Yupoong",
+   "category": "hats",
+   "subcategory": "dad-hats",
+   "type": "YuPoong 6245CM | YP Classics Classic Dad Cap",
+   "fromPrice": 20.51,
+   "techniques": [
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/products/206/product_1584101692.jpg",
+   "images": [
+    "https://files.cdn.printful.com/o/products/206/product_1584101692.jpg"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#181717",
+     "image": "https://files.cdn.printful.com/products/206/7854_1584455281.jpg"
+    },
+    {
+     "name": "Green Camo",
+     "hex": "#415446",
+     "image": "https://files.cdn.printful.com/products/206/9794_1584455306.jpg"
+    },
+    {
+     "name": "Khaki",
+     "hex": "#b49771",
+     "image": "https://files.cdn.printful.com/products/206/7855_1584455330.jpg"
+    },
+    {
+     "name": "Light Blue",
+     "hex": "#b5cbda",
+     "image": "https://files.cdn.printful.com/products/206/7856_1584455357.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#182031",
+     "image": "https://files.cdn.printful.com/products/206/7857_1584455384.jpg"
+    },
+    {
+     "name": "Pink",
+     "hex": "#fab2ba",
+     "image": "https://files.cdn.printful.com/products/206/7858_1584455412.jpg"
+    },
+    {
+     "name": "Spruce",
+     "hex": "#183a31",
+     "image": "https://files.cdn.printful.com/products/206/8745_1584455442.jpg"
+    },
+    {
+     "name": "Stone",
+     "hex": "#d6bdad",
+     "image": "https://files.cdn.printful.com/products/206/7859_1584455468.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/206/7853_1584455533.jpg"
+    },
+    {
+     "name": "Cranberry",
+     "hex": "#a3001b",
+     "image": "https://files.cdn.printful.com/products/206/12735_1625493645.jpg"
+    },
+    {
+     "name": "Dark Grey",
+     "hex": "#39353a",
+     "image": "https://files.cdn.printful.com/products/206/12736_1625493578.jpg"
+    }
+   ],
+   "sizes": [
+    "One size"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp0qmdi300lsx52giun1xa2p",
+   "slug": "clear-case-for-iphone",
+   "name": "Clear Case for iPhone®",
+   "brand": null,
+   "category": "accessories",
+   "subcategory": "tech",
+   "type": "iPhone | Cell Phone Case | Clear",
+   "fromPrice": 13.14,
+   "techniques": [
+    "UV"
+   ],
+   "image": "https://files.cdn.printful.com/o/products/181/product_1570615955.jpg",
+   "images": [
+    "https://files.cdn.printful.com/o/products/181/product_1570615955.jpg"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/products/181/product_1570615955.jpg"
+    }
+   ],
+   "sizes": [
+    "iPhone 11",
+    "iPhone 11 Pro",
+    "iPhone 11 Pro Max",
+    "iPhone 12",
+    "iPhone 12 mini",
+    "iPhone 12 Pro",
+    "iPhone 12 Pro Max",
+    "iPhone 13",
+    "iPhone 13 mini",
+    "iPhone 13 Pro",
+    "iPhone 13 Pro Max",
+    "iPhone 14",
+    "iPhone 14 Plus",
+    "iPhone 14 Pro",
+    "iPhone 14 Pro Max",
+    "iPhone 15",
+    "iPhone 15 Plus",
+    "iPhone 15 Pro",
+    "iPhone 15 Pro Max",
+    "iPhone 16",
+    "iPhone 16 Plus",
+    "iPhone 16 Pro",
+    "iPhone 16 Pro Max",
+    "iPhone 17",
+    "iPhone 17 Air",
+    "iPhone 17 Pro",
+    "iPhone 17 Pro Max",
+    "iPhone 7/8",
+    "iPhone SE",
+    "iPhone X/XS",
+    "iPhone XR"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmu2q8mko0000uw2gglyo8pl5",
+   "slug": "harness-work-jacket-3763",
+   "name": "Harness Work Jacket 3763",
+   "brand": "Carhartt",
+   "category": "accessories",
+   "subcategory": null,
+   "type": "Jacket",
+   "fromPrice": 89,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY"
+   ],
+   "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAF0lEQVR4nGP8z8Dwn4EIwESMolEFpCkAAF5NAgv0JeqTAAAAAElFTkSuQmCC",
+   "images": [
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAF0lEQVR4nGP8z8Dwn4EIwESMolEFpCkAAF5NAgv0JeqTAAAAAElFTkSuQmCC"
+   ],
+   "colors": [
+    {
+     "name": "Brown",
+     "hex": "#ffffff",
+     "image": null
+    },
+    {
+     "name": "Black",
+     "hex": "#000000",
+     "image": null
+    }
+   ],
+   "sizes": [
+    "M",
+    "L",
+    "XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zmz2z018sh52gilt00av9",
+   "slug": "laptop-sleeve",
+   "name": "Laptop Sleeve",
+   "brand": null,
+   "category": "accessories",
+   "subcategory": "tech",
+   "type": "Laptop Sleeve | White",
+   "fromPrice": 29.63,
+   "techniques": [
+    "SUBLIMATION"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/02/022e7ef918b642b66d60b3ce3cb5e5ee_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/02/022e7ef918b642b66d60b3ce3cb5e5ee_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/02/022e7ef918b642b66d60b3ce3cb5e5ee_l"
+    }
+   ],
+   "sizes": [
+    "13″",
+    "15″"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76xaaq008ew82gp19whps5",
+   "slug": "luggage-tag",
+   "name": "Luggage Tag",
+   "brand": null,
+   "category": "accessories",
+   "subcategory": null,
+   "type": "Tag | Luggage",
+   "fromPrice": 18.48,
+   "techniques": [],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/04/04f318b62ba2242360baeb2fcc89fe2c_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/04/04f318b62ba2242360baeb2fcc89fe2c_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/04/04f318b62ba2242360baeb2fcc89fe2c_l"
+    }
+   ],
+   "sizes": [
+    "2.4″×4″"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wmtd0041w82gm8eiobhx",
+   "slug": "men-s-adidas-quarter-zip-pullover-a401",
+   "name": "Men's Adidas Quarter-Zip Pullover | A401",
+   "brand": "Adidas",
+   "category": "sweatshirts",
+   "subcategory": "pullovers",
+   "type": "Adidas A401 | Men's Ultimate365 Lightweight Quarter-Zip Pullover",
+   "fromPrice": 85.68,
+   "techniques": [
+    "EMBROIDERY"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/26/2693766afb61273a00cd50e1e3295cd6_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/26/2693766afb61273a00cd50e1e3295cd6_l"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#0b0b0b",
+     "image": "https://files.cdn.printful.com/products/531/13362_1632811031.jpg"
+    },
+    {
+     "name": "Black Heather",
+     "hex": "#706f6e",
+     "image": "https://files.cdn.printful.com/products/531/13374_1632811046.jpg"
+    },
+    {
+     "name": "Collegiate Navy",
+     "hex": "#020b26",
+     "image": "https://files.cdn.printful.com/products/531/13380_1632811072.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/531/13359_1632811109.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp0o1vt9003p1m2ga40bp4po",
+   "slug": "men-s-premium-polo-shirt-port-authority-k500",
+   "name": "Men’s Premium Polo Shirt | Port Authority K500",
+   "brand": "Port Authority",
+   "category": "apparel",
+   "subcategory": "polos",
+   "type": "Port Authority K500 | Silk Touch Polo",
+   "fromPrice": 28.49,
+   "techniques": [
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/23/23d7331453bc52729e632d586a377cba_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/23/23d7331453bc52729e632d586a377cba_l"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#0e0c0c",
+     "image": "https://files.cdn.printful.com/products/340/9902_1590149377.jpg"
+    },
+    {
+     "name": "Cool Heather",
+     "hex": "#a9b3b6",
+     "image": "https://files.cdn.printful.com/products/340/15429_1657260468.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#223653",
+     "image": "https://files.cdn.printful.com/products/340/15437_1657882599.jpg"
+    },
+    {
+     "name": "Red",
+     "hex": "#af0029",
+     "image": "https://files.cdn.printful.com/products/340/17490_1691584743.jpg"
+    },
+    {
+     "name": "Steel Grey",
+     "hex": "#47525c",
+     "image": "https://files.cdn.printful.com/products/340/11060_1571903762.jpg"
+    },
+    {
+     "name": "Stone",
+     "hex": "#e9c899",
+     "image": "https://files.cdn.printful.com/products/340/15444_1657882640.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/340/9907_1590149414.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp0o1tdl00001m2g6rkwzeap",
+   "slug": "men-s-staple-tank-top-bella-canvas-3480",
+   "name": "Men’s Staple Tank Top | Bella + Canvas 3480",
+   "brand": "Bella + Canvas",
+   "category": "apparel",
+   "subcategory": "tank-tops",
+   "type": "Bella + Canvas 3480 | 3480 Unisex Jersey Tank",
+   "fromPrice": 19.93,
+   "techniques": [
+    "DTG",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/f8/f836f923a554381037d8ae779bc64c1d_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/f8/f836f923a554381037d8ae779bc64c1d_l"
+   ],
+   "colors": [
+    {
+     "name": "Athletic Heather",
+     "hex": "#AAA1A2",
+     "image": "https://files.cdn.printful.com/products/248/8637_1581415324.jpg"
+    },
+    {
+     "name": "Black",
+     "hex": "#131212",
+     "image": "https://files.cdn.printful.com/products/248/8633_1581415380.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#1a2438",
+     "image": "https://files.cdn.printful.com/products/248/8651_1581415493.jpg"
+    },
+    {
+     "name": "Red",
+     "hex": "#c21424",
+     "image": "https://files.cdn.printful.com/products/248/8657_1581415591.jpg"
+    },
+    {
+     "name": "True Royal",
+     "hex": "#1645b2",
+     "image": "https://files.cdn.printful.com/products/248/8645_1581415687.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/248/8663_1581415736.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zn7km01h2h52gmbczejwv",
+   "slug": "premium-luster-photo-paper-poster-in",
+   "name": "Premium Luster Photo Paper Poster (in)",
+   "brand": null,
+   "category": "home",
+   "subcategory": "wall-art",
+   "type": "Paper Poster (in) | Luster",
+   "fromPrice": 10.71,
+   "techniques": [
+    "DIGITAL"
+   ],
+   "image": "https://files.cdn.printful.com/o/products/171/product_1613463439.jpg",
+   "images": [
+    "https://files.cdn.printful.com/o/products/171/product_1613463439.jpg"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/products/171/product_1613463439.jpg"
+    }
+   ],
+   "sizes": [
+    "10″×10″",
+    "10″×24″",
+    "11.69″×16.54″",
+    "11″×14″",
+    "11″×17″",
+    "12″×12″",
+    "12″×16″",
+    "12″×18″",
+    "14″×14″",
+    "16″×16″",
+    "16″×20″",
+    "16″×24″",
+    "18″×18″",
+    "18″×24″",
+    "20″×20″",
+    "20″×24″",
+    "20″×28″",
+    "20″×30″",
+    "24″×24″",
+    "24″×32″",
+    "24″×36″",
+    "5″×7″",
+    "6″×8″",
+    "8.27″×11.69″",
+    "8″×10″",
+    "8″×12″",
+    "8″×20″",
+    "9″×11″",
+    "A1 (23.3″×33.1″)",
+    "A2 (16.5″×23.3″)"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76xg1x0095w82gy6ncqnwe",
+   "slug": "rubber-case-for-airpods",
+   "name": "Rubber Case for AirPods®",
+   "brand": null,
+   "category": "accessories",
+   "subcategory": "tech",
+   "type": "Airpod Case | Plastic",
+   "fromPrice": 14.21,
+   "techniques": [
+    "UV"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/ef/ef181b7a0c99f895af52b60c017d6d03_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/ef/ef181b7a0c99f895af52b60c017d6d03_l"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#3b3b3b",
+     "image": "https://files.cdn.printful.com/products/605/15533_1657777015.jpg"
+    },
+    {
+     "name": "Blue",
+     "hex": "#00ccff",
+     "image": "https://files.cdn.printful.com/products/605/15525_1657533243.jpg"
+    },
+    {
+     "name": "Grey",
+     "hex": "#b1b4b4",
+     "image": "https://files.cdn.printful.com/products/605/15535_1657777036.jpg"
+    },
+    {
+     "name": "Mint",
+     "hex": "#b5ffe9",
+     "image": "https://files.cdn.printful.com/products/605/15536_1657777046.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#1b4982",
+     "image": "https://files.cdn.printful.com/products/605/15537_1657777046.jpg"
+    },
+    {
+     "name": "Pink",
+     "hex": "#ffc1cd",
+     "image": "https://files.cdn.printful.com/products/605/15538_1657777056.jpg"
+    },
+    {
+     "name": "Red",
+     "hex": "#f52f2f",
+     "image": "https://files.cdn.printful.com/products/605/15539_1657777056.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/605/15540_1657777056.jpg"
+    },
+    {
+     "name": "Yellow",
+     "hex": "#ffcc00",
+     "image": "https://files.cdn.printful.com/products/605/15541_1657777107.jpg"
+    }
+   ],
+   "sizes": [
+    "AirPods",
+    "AirPods Pro"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zn6mj01gzh52gmixila5e",
+   "slug": "stainless-steel-water-bottle",
+   "name": "Stainless Steel Water Bottle",
+   "brand": null,
+   "category": "home",
+   "subcategory": "drinkware",
+   "type": "Water Bottle | Stainless Steel",
+   "fromPrice": 33.48,
+   "techniques": [
+    "UV"
+   ],
+   "image": "https://files.cdn.printful.com/o/products/382/product_1614007264.jpg",
+   "images": [
+    "https://files.cdn.printful.com/o/products/382/product_1614007264.jpg"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#020202",
+     "image": "https://files.cdn.printful.com/products/382/16030_1661782722.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/382/10798_1614007341.jpg"
+    }
+   ],
+   "sizes": [
+    "17 oz"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zn25d019gh52gyg2y8bjv",
+   "slug": "unisex-classic-tee-gildan-5000",
+   "name": "Unisex Classic Tee | Gildan 5000",
+   "brand": "Gildan",
+   "category": "apparel",
+   "subcategory": "t-shirts",
+   "type": "Gildan 5000 | Adult T-Shirt Heavy Cotton",
+   "fromPrice": 12.95,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/51/5137d67bedbf56010d1daa04555a6d03_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/51/5137d67bedbf56010d1daa04555a6d03_l"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#141313",
+     "image": "https://files.cdn.printful.com/products/438/12645_1642678228.jpg"
+    },
+    {
+     "name": "Daisy",
+     "hex": "#ffc946",
+     "image": "https://files.cdn.printful.com/products/438/15896_1737381436.jpg"
+    },
+    {
+     "name": "Graphite Heather",
+     "hex": "#858585",
+     "image": "https://files.cdn.printful.com/products/438/21685_1737381467.jpg"
+    },
+    {
+     "name": "Light Pink",
+     "hex": "#ffd4d5",
+     "image": "https://files.cdn.printful.com/products/438/11552_1725448999.jpg"
+    },
+    {
+     "name": "Maroon",
+     "hex": "#47001b",
+     "image": "https://files.cdn.printful.com/products/438/16248_1663164959.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#1a2330",
+     "image": "https://files.cdn.printful.com/products/438/11564_1642678353.jpg"
+    },
+    {
+     "name": "Sapphire",
+     "hex": "#007AB3",
+     "image": "https://files.cdn.printful.com/products/438/21660_1737381641.jpg"
+    },
+    {
+     "name": "Sport Grey",
+     "hex": "#c4c0be",
+     "image": "https://files.cdn.printful.com/products/438/11571_1642678426.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#fffefa",
+     "image": "https://files.cdn.printful.com/products/438/11579_1693310991.jpg"
+    },
+    {
+     "name": "Yellow Haze",
+     "hex": "#FFD99C",
+     "image": "https://files.cdn.printful.com/products/438/21679_1737381487.jpg"
+    },
+    {
+     "name": "Ash",
+     "hex": "#f3f3f3",
+     "image": "https://files.cdn.printful.com/products/438/14976_1652249487.jpg"
+    },
+    {
+     "name": "Azalea",
+     "hex": "#ff98c6",
+     "image": "https://files.cdn.printful.com/products/438/15815_1661693852.jpg"
+    },
+    {
+     "name": "Brown Savana",
+     "hex": "#9f8971",
+     "image": "https://files.cdn.printful.com/products/438/15811_1661693863.jpg"
+    },
+    {
+     "name": "Cardinal",
+     "hex": "#c21b3a",
+     "image": "https://files.cdn.printful.com/products/438/15823_1661693873.jpg"
+    },
+    {
+     "name": "Carolina Blue",
+     "hex": "#96bbff",
+     "image": "https://files.cdn.printful.com/products/438/15829_1661693894.jpg"
+    },
+    {
+     "name": "Charcoal",
+     "hex": "#6a6967",
+     "image": "https://files.cdn.printful.com/products/438/15835_1661693905.jpg"
+    },
+    {
+     "name": "Dark Chocolate",
+     "hex": "#463b33",
+     "image": "https://files.cdn.printful.com/products/438/15841_1661693925.jpg"
+    },
+    {
+     "name": "Dark Heather",
+     "hex": "#595959",
+     "image": "https://files.cdn.printful.com/products/438/15847_1661693946.jpg"
+    },
+    {
+     "name": "Forest Green",
+     "hex": "#1A3B23",
+     "image": "https://files.cdn.printful.com/products/438/20457_1725449019.jpg"
+    },
+    {
+     "name": "Gold",
+     "hex": "#ffb22d",
+     "image": "https://files.cdn.printful.com/products/438/15853_1664354988.jpg"
+    },
+    {
+     "name": "Heliconia",
+     "hex": "#E33F7A",
+     "image": "https://files.cdn.printful.com/products/438/21655_1737381535.jpg"
+    },
+    {
+     "name": "Ice Grey",
+     "hex": "#E9DDDC",
+     "image": "https://files.cdn.printful.com/products/438/21695_1737381569.jpg"
+    },
+    {
+     "name": "Irish Green",
+     "hex": "#00ba69",
+     "image": "https://files.cdn.printful.com/products/438/15859_1661693987.jpg"
+    },
+    {
+     "name": "Light Blue",
+     "hex": "#d9efff",
+     "image": "https://files.cdn.printful.com/products/438/15865_1661693998.jpg"
+    },
+    {
+     "name": "Lime",
+     "hex": "#A3E05A",
+     "image": "https://files.cdn.printful.com/products/438/15889_1737381600.jpg"
+    },
+    {
+     "name": "Military Green",
+     "hex": "#737a5f",
+     "image": "https://files.cdn.printful.com/products/438/15871_1661694008.jpg"
+    },
+    {
+     "name": "Natural",
+     "hex": "#e8dacd",
+     "image": "https://files.cdn.printful.com/products/438/11560_1642678300.jpg"
+    },
+    {
+     "name": "Orange",
+     "hex": "#ff5f2e",
+     "image": "https://files.cdn.printful.com/products/438/14971_1652249516.jpg"
+    },
+    {
+     "name": "Purple",
+     "hex": "#48197d",
+     "image": "https://files.cdn.printful.com/products/438/15877_1661694029.jpg"
+    },
+    {
+     "name": "Red",
+     "hex": "#d80019",
+     "image": "https://files.cdn.printful.com/products/438/11570_1642678353.jpg"
+    },
+    {
+     "name": "Royal",
+     "hex": "#175ac7",
+     "image": "https://files.cdn.printful.com/products/438/15883_1661694039.jpg"
+    },
+    {
+     "name": "Sand",
+     "hex": "#d6c0ab",
+     "image": "https://files.cdn.printful.com/products/438/12643_1642678374.jpg"
+    },
+    {
+     "name": "Sky",
+     "hex": "#8ee0ff",
+     "image": "https://files.cdn.printful.com/products/438/14985_1652249538.jpg"
+    },
+    {
+     "name": "Tropical Blue",
+     "hex": "#00A0B3",
+     "image": "https://files.cdn.printful.com/products/438/21703_1737381662.jpg"
+    },
+    {
+     "name": "Turf Green",
+     "hex": "#187532",
+     "image": "https://files.cdn.printful.com/products/438/21671_1737381703.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp0nzmbm00mozk2gdml1dawi",
+   "slug": "unisex-crew-neck-sweatshirt-gildan-18000",
+   "name": "Unisex Crew Neck Sweatshirt | Gildan 18000",
+   "brand": "Gildan",
+   "category": "sweatshirts",
+   "subcategory": "crewnecks",
+   "type": "Gildan 18000 | Adult Crewneck Heavy Blend",
+   "fromPrice": 26.31,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/c4/c45dccb582df772f84fcafde9b726096_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/c4/c45dccb582df772f84fcafde9b726096_l"
+   ],
+   "colors": [
+    {
+     "name": "Ash",
+     "hex": "#ededed",
+     "image": "https://files.cdn.printful.com/products/145/18755_1753765555.jpg"
+    },
+    {
+     "name": "Black",
+     "hex": "#0b0b0b",
+     "image": "https://files.cdn.printful.com/products/145/5434_1753765555.jpg"
+    },
+    {
+     "name": "Carolina Blue",
+     "hex": "#8DB7F6",
+     "image": "https://files.cdn.printful.com/products/145/20594_1753765555.jpg"
+    },
+    {
+     "name": "Charcoal",
+     "hex": "#534E4A",
+     "image": "https://files.cdn.printful.com/products/145/16882_1753765555.jpg"
+    },
+    {
+     "name": "Dark Chocolate",
+     "hex": "#35241b",
+     "image": "https://files.cdn.printful.com/products/145/5458_1753765555.jpg"
+    },
+    {
+     "name": "Dark Heather",
+     "hex": "#46484d",
+     "image": "https://files.cdn.printful.com/products/145/10833_1753765555.jpg"
+    },
+    {
+     "name": "Forest Green",
+     "hex": "#1A3626",
+     "image": "https://files.cdn.printful.com/products/145/18763_1753765555.jpg"
+    },
+    {
+     "name": "Gold",
+     "hex": "#FFAF24",
+     "image": "https://files.cdn.printful.com/products/145/20578_1753765556.jpg"
+    },
+    {
+     "name": "Graphite Heather",
+     "hex": "#686868",
+     "image": "https://files.cdn.printful.com/products/145/22642_1753765555.jpg"
+    },
+    {
+     "name": "Heather Deep Royal",
+     "hex": "#6898f2",
+     "image": "https://files.cdn.printful.com/products/145/23657_1753765555.jpg"
+    },
+    {
+     "name": "Heliconia",
+     "hex": "#F63880",
+     "image": "https://files.cdn.printful.com/products/145/20586_1753765555.jpg"
+    },
+    {
+     "name": "Indigo Blue",
+     "hex": "#395d82",
+     "image": "https://files.cdn.printful.com/products/145/5466_1753765555.jpg"
+    },
+    {
+     "name": "Irish Green",
+     "hex": "#00B365",
+     "image": "https://files.cdn.printful.com/products/145/5450_1753765555.jpg"
+    },
+    {
+     "name": "Light Blue",
+     "hex": "#a1c5e1",
+     "image": "https://files.cdn.printful.com/products/145/7860_1753765555.jpg"
+    },
+    {
+     "name": "Light Pink",
+     "hex": "#f3d4e3",
+     "image": "https://files.cdn.printful.com/products/145/7868_1753765555.jpg"
+    },
+    {
+     "name": "Maroon",
+     "hex": "#651d32",
+     "image": "https://files.cdn.printful.com/products/145/5490_1753765555.jpg"
+    },
+    {
+     "name": "Military Green",
+     "hex": "#7e8560",
+     "image": "https://files.cdn.printful.com/products/145/13005_1753765556.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#050c1d",
+     "image": "https://files.cdn.printful.com/products/145/5498_1753765555.jpg"
+    },
+    {
+     "name": "Orange",
+     "hex": "#ff5723",
+     "image": "https://files.cdn.printful.com/products/145/22650_1753765556.jpg"
+    },
+    {
+     "name": "Purple",
+     "hex": "#4A1C7D",
+     "image": "https://files.cdn.printful.com/products/145/20602_1753765555.jpg"
+    },
+    {
+     "name": "Red",
+     "hex": "#da0a1a",
+     "image": "https://files.cdn.printful.com/products/145/5442_1753765555.jpg"
+    },
+    {
+     "name": "Royal",
+     "hex": "#1D50A4",
+     "image": "https://files.cdn.printful.com/products/145/16870_1753765555.jpg"
+    },
+    {
+     "name": "Sand",
+     "hex": "#e7d3b3",
+     "image": "https://files.cdn.printful.com/products/145/16876_1753765555.jpg"
+    },
+    {
+     "name": "Sport Grey",
+     "hex": "#ccccce",
+     "image": "https://files.cdn.printful.com/products/145/5514_1753765555.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/145/5426_1753765555.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zn09x018vh52gyje203tv",
+   "slug": "unisex-essential-eco-cruiser-2-0-hoodie-stanley-stella-stsu177",
+   "name": "Unisex Essential Eco Cruiser 2.0 Hoodie | Stanley/Stella STSU177",
+   "brand": "Stanley/Stella",
+   "category": "sweatshirts",
+   "subcategory": "hoodies",
+   "type": "Stanley/Stella STSU177 | Cruiser 2.0 Iconic Unisex Hoodie Sweatshirt",
+   "fromPrice": 45.85,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/40/40bad6c6fb8f637b3421a71cdadac1ba_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/40/40bad6c6fb8f637b3421a71cdadac1ba_l"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#0b0b0b",
+     "image": "https://files.cdn.printful.com/products/479/12376_1713330001.jpg"
+    },
+    {
+     "name": "Desert Dust",
+     "hex": "#dcccb4",
+     "image": "https://files.cdn.printful.com/products/479/12386_1713330022.jpg"
+    },
+    {
+     "name": "French Navy",
+     "hex": "#071429",
+     "image": "https://files.cdn.printful.com/products/479/12391_1713330032.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/479/12406_1713330049.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zmu7x00vhh52gpkl2aqcs",
+   "slug": "unisex-garment-dyed-heavyweight-t-shirt-comfort-colors-1717",
+   "name": "Unisex Garment-Dyed Heavyweight T-Shirt | Comfort Colors 1717",
+   "brand": "Comfort Colors",
+   "category": "apparel",
+   "subcategory": "t-shirts",
+   "type": "Comfort Colors 1717 | Adult Ringspun Cotton Tee",
+   "fromPrice": 21.41,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6d/6d7501c1e4b984392a258054bf0cd145_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/6d/6d7501c1e4b984392a258054bf0cd145_l"
+   ],
+   "colors": [
+    {
+     "name": "Ice Blue",
+     "hex": "#7a9096",
+     "image": "https://files.cdn.printful.com/products/586/16517_1759238040.jpg"
+    },
+    {
+     "name": "Ivory",
+     "hex": "#fff4d9",
+     "image": "https://files.cdn.printful.com/products/586/16523_1759238043.jpg"
+    },
+    {
+     "name": "Midnight",
+     "hex": "#3a4e63",
+     "image": "https://files.cdn.printful.com/products/586/21541_1759238043.jpg"
+    },
+    {
+     "name": "Mystic Blue",
+     "hex": "#5068AB",
+     "image": "https://files.cdn.printful.com/products/586/22076_1759238043.jpg"
+    },
+    {
+     "name": "Paprika",
+     "hex": "#fe4747",
+     "image": "https://files.cdn.printful.com/products/586/17669_1759238043.jpg"
+    },
+    {
+     "name": "Sage",
+     "hex": "#49482e",
+     "image": "https://files.cdn.printful.com/products/586/21562_1759238043.jpg"
+    },
+    {
+     "name": "Violet",
+     "hex": "#9a8ad2",
+     "image": "https://files.cdn.printful.com/products/586/15186_1759238043.jpg"
+    },
+    {
+     "name": "Yam",
+     "hex": "#db642f",
+     "image": "https://files.cdn.printful.com/products/586/21271_1759238043.jpg"
+    },
+    {
+     "name": "Terracotta",
+     "hex": "#ff9364",
+     "image": "https://files.cdn.printful.com/products/586/17662_1759238043.jpg"
+    },
+    {
+     "name": "Blossom",
+     "hex": "#ffd6e1",
+     "image": "https://files.cdn.printful.com/products/586/16541_1764055024.jpg"
+    },
+    {
+     "name": "Blue Jean",
+     "hex": "#707e8d",
+     "image": "https://files.cdn.printful.com/products/586/16511_1759238040.jpg"
+    },
+    {
+     "name": "Bay",
+     "hex": "#b8bfab",
+     "image": "https://files.cdn.printful.com/products/586/17707_1759238040.jpg"
+    },
+    {
+     "name": "Berry",
+     "hex": "#8e5a7b",
+     "image": "https://files.cdn.printful.com/products/586/15156_1759238040.jpg"
+    },
+    {
+     "name": "Black",
+     "hex": "#1b1b1c",
+     "image": "https://files.cdn.printful.com/products/586/15114_1759238040.jpg"
+    },
+    {
+     "name": "Blue Spruce",
+     "hex": "#4c6151",
+     "image": "https://files.cdn.printful.com/products/586/17686_1759238042.jpg"
+    },
+    {
+     "name": "Brick",
+     "hex": "#8d4b54",
+     "image": "https://files.cdn.printful.com/products/586/15161_1759238040.jpg"
+    },
+    {
+     "name": "Burnt orange",
+     "hex": "#FF7842",
+     "image": "https://files.cdn.printful.com/products/586/22089_1759238040.jpg"
+    },
+    {
+     "name": "Butter",
+     "hex": "#ffe09e",
+     "image": "https://files.cdn.printful.com/products/586/15166_1759238040.jpg"
+    },
+    {
+     "name": "Chalky Mint",
+     "hex": "#a1f2dc",
+     "image": "https://files.cdn.printful.com/products/586/21513_1759238040.jpg"
+    },
+    {
+     "name": "Chambray",
+     "hex": "#d9f3ff",
+     "image": "https://files.cdn.printful.com/products/586/17648_1759238040.jpg"
+    },
+    {
+     "name": "Crimson",
+     "hex": "#bb5151",
+     "image": "https://files.cdn.printful.com/products/586/16547_1759238040.jpg"
+    },
+    {
+     "name": "Crunchberry",
+     "hex": "#ff748e",
+     "image": "https://files.cdn.printful.com/products/586/21250_1759238040.jpg"
+    },
+    {
+     "name": "Denim",
+     "hex": "#565a67",
+     "image": "https://files.cdn.printful.com/products/586/21520_1759238040.jpg"
+    },
+    {
+     "name": "Espresso",
+     "hex": "#87634a",
+     "image": "https://files.cdn.printful.com/products/586/21243_1759238040.jpg"
+    },
+    {
+     "name": "Flo Blue",
+     "hex": "#5669be",
+     "image": "https://files.cdn.printful.com/products/586/15171_1759238040.jpg"
+    },
+    {
+     "name": "Granite",
+     "hex": "#a6abaa",
+     "image": "https://files.cdn.printful.com/products/586/17655_1759238040.jpg"
+    },
+    {
+     "name": "Grape",
+     "hex": "#644E6D",
+     "image": "https://files.cdn.printful.com/products/586/22096_1759238040.jpg"
+    },
+    {
+     "name": "Graphite",
+     "hex": "#3e3737",
+     "image": "https://files.cdn.printful.com/products/586/21264_1759238040.jpg"
+    },
+    {
+     "name": "Grey",
+     "hex": "#92928f",
+     "image": "https://files.cdn.printful.com/products/586/15176_1759238040.jpg"
+    },
+    {
+     "name": "Hemp",
+     "hex": "#4F5232",
+     "image": "https://files.cdn.printful.com/products/586/22103_1759238040.jpg"
+    },
+    {
+     "name": "Island Reef",
+     "hex": "#b8ffca",
+     "image": "https://files.cdn.printful.com/products/586/21527_1759238040.jpg"
+    },
+    {
+     "name": "Khaki",
+     "hex": "#b3ab8b",
+     "image": "https://files.cdn.printful.com/products/586/21534_1759238043.jpg"
+    },
+    {
+     "name": "Lagoon Blue",
+     "hex": "#92dedb",
+     "image": "https://files.cdn.printful.com/products/586/17679_1759238043.jpg"
+    },
+    {
+     "name": "Light Green",
+     "hex": "#608267",
+     "image": "https://files.cdn.printful.com/products/586/16535_1759238043.jpg"
+    },
+    {
+     "name": "Moss",
+     "hex": "#6b7053",
+     "image": "https://files.cdn.printful.com/products/586/17700_1759238043.jpg"
+    },
+    {
+     "name": "Mustard",
+     "hex": "#ffbc5a",
+     "image": "https://files.cdn.printful.com/products/586/21548_1759238043.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#424150",
+     "image": "https://files.cdn.printful.com/products/586/21555_1759238042.jpg"
+    },
+    {
+     "name": "Orchid",
+     "hex": "#ead3f2",
+     "image": "https://files.cdn.printful.com/products/586/21257_1764055089.jpg"
+    },
+    {
+     "name": "Pepper",
+     "hex": "#514f4c",
+     "image": "https://files.cdn.printful.com/products/586/17693_1759238043.jpg"
+    },
+    {
+     "name": "Red",
+     "hex": "#bb1035",
+     "image": "https://files.cdn.printful.com/products/586/15119_1759238043.jpg"
+    },
+    {
+     "name": "Seafoam",
+     "hex": "#69a999",
+     "image": "https://files.cdn.printful.com/products/586/16529_1759238043.jpg"
+    },
+    {
+     "name": "True Navy",
+     "hex": "#1e2c4a",
+     "image": "https://files.cdn.printful.com/products/586/15181_1759238043.jpg"
+    },
+    {
+     "name": "Washed Denim",
+     "hex": "#98aed1",
+     "image": "https://files.cdn.printful.com/products/586/21506_1759238043.jpg"
+    },
+    {
+     "name": "Watermelon",
+     "hex": "#d15c68",
+     "image": "https://files.cdn.printful.com/products/586/15191_1759238043.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/586/15124_1759238043.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp0nzid300gfzk2gmnfrz6x6",
+   "slug": "unisex-heavy-blend-hoodie-gildan-18500",
+   "name": "Unisex Heavy Blend Hoodie | Gildan 18500",
+   "brand": "Gildan",
+   "category": "sweatshirts",
+   "subcategory": "hoodies",
+   "type": "Gildan 18500 | Adult Hooded Sweat Heavy Blend",
+   "fromPrice": 31.07,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/c6/c650a4604d04de3cedb2694e01920f60_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/c6/c650a4604d04de3cedb2694e01920f60_l"
+   ],
+   "colors": [
+    {
+     "name": "Ash",
+     "hex": "#dedede",
+     "image": "https://files.cdn.printful.com/products/146/20544_1750160842.jpg"
+    },
+    {
+     "name": "Black",
+     "hex": "#0b0b0b",
+     "image": "https://files.cdn.printful.com/products/146/5530_1750160839.jpg"
+    },
+    {
+     "name": "Carolina Blue",
+     "hex": "#8DB7F6",
+     "image": "https://files.cdn.printful.com/products/146/21635_1750160840.jpg"
+    },
+    {
+     "name": "Charcoal",
+     "hex": "#534E4A",
+     "image": "https://files.cdn.printful.com/products/146/16859_1750160841.jpg"
+    },
+    {
+     "name": "Dark Chocolate",
+     "hex": "#35241b",
+     "image": "https://files.cdn.printful.com/products/146/5554_1750160841.jpg"
+    },
+    {
+     "name": "Dark Heather",
+     "hex": "#47484d",
+     "image": "https://files.cdn.printful.com/products/146/10806_1750160842.jpg"
+    },
+    {
+     "name": "Royal",
+     "hex": "#1D50A4",
+     "image": "https://files.cdn.printful.com/products/146/16850_1750160840.jpg"
+    },
+    {
+     "name": "Forest Green",
+     "hex": "#222E1F",
+     "image": "https://files.cdn.printful.com/products/146/20570_1750160841.jpg"
+    },
+    {
+     "name": "Gold",
+     "hex": "#FFAF24",
+     "image": "https://files.cdn.printful.com/products/146/22118_1750160843.jpg"
+    },
+    {
+     "name": "Graphite Heather",
+     "hex": "#686868",
+     "image": "https://files.cdn.printful.com/products/146/20546_1750160841.jpg"
+    },
+    {
+     "name": "Heather Sport Dark Navy",
+     "hex": "#515A6E",
+     "image": "https://files.cdn.printful.com/products/146/17406_1750160842.jpg"
+    },
+    {
+     "name": "Heliconia",
+     "hex": "#F63880",
+     "image": "https://files.cdn.printful.com/products/146/22257_1750160842.jpg"
+    },
+    {
+     "name": "Indigo Blue",
+     "hex": "#395d82",
+     "image": "https://files.cdn.printful.com/products/146/5562_1750160841.jpg"
+    },
+    {
+     "name": "Irish Green",
+     "hex": "#1d9345",
+     "image": "https://files.cdn.printful.com/products/146/5546_1750160841.jpg"
+    },
+    {
+     "name": "Light Blue",
+     "hex": "#a1c5e1",
+     "image": "https://files.cdn.printful.com/products/146/10841_1750160841.jpg"
+    },
+    {
+     "name": "Light Pink",
+     "hex": "#f3d4e3",
+     "image": "https://files.cdn.printful.com/products/146/10849_1750160843.jpg"
+    },
+    {
+     "name": "Maroon",
+     "hex": "#47171c",
+     "image": "https://files.cdn.printful.com/products/146/5586_1750160840.jpg"
+    },
+    {
+     "name": "Military Green",
+     "hex": "#7e8560",
+     "image": "https://files.cdn.printful.com/products/146/12989_1750160840.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#131928",
+     "image": "https://files.cdn.printful.com/products/146/5594_1750160841.jpg"
+    },
+    {
+     "name": "Orange",
+     "hex": "#FF5723",
+     "image": "https://files.cdn.printful.com/products/146/22265_1750160843.jpg"
+    },
+    {
+     "name": "Purple",
+     "hex": "#4A1C7D",
+     "image": "https://files.cdn.printful.com/products/146/21627_1750160842.jpg"
+    },
+    {
+     "name": "Red",
+     "hex": "#da0a1a",
+     "image": "https://files.cdn.printful.com/products/146/5538_1750160842.jpg"
+    },
+    {
+     "name": "Sand",
+     "hex": "#e7d3b3",
+     "image": "https://files.cdn.printful.com/products/146/12997_1750160840.jpg"
+    },
+    {
+     "name": "Sport Grey",
+     "hex": "#9b969c",
+     "image": "https://files.cdn.printful.com/products/146/5610_1750160841.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/146/5522_1750160842.jpg"
+    },
+    {
+     "name": "Azalea",
+     "hex": "#ff9faf",
+     "image": "https://files.cdn.printful.com/products/146/23489_1750160840.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp0o1uit00111m2gqeqozyqk",
+   "slug": "unisex-long-sleeve-tee-bella-canvas-3501",
+   "name": "Unisex Long Sleeve Tee | Bella + Canvas 3501",
+   "brand": "Bella + Canvas",
+   "category": "apparel",
+   "subcategory": "long-sleeves",
+   "type": "Bella + Canvas 3501 | Unisex Jersey Long Sleeve Tee",
+   "fromPrice": 25.61,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/81/81f6a07c7d89482446ca87dbd1489dd1_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/81/81f6a07c7d89482446ca87dbd1489dd1_l"
+   ],
+   "colors": [
+    {
+     "name": "Athletic Heather",
+     "hex": "#b5b4b4",
+     "image": "https://files.cdn.printful.com/products/356/10087_1556619713.jpg"
+    },
+    {
+     "name": "Black",
+     "hex": "#131313",
+     "image": "https://files.cdn.printful.com/products/356/10098_1732542285.jpg"
+    },
+    {
+     "name": "Black Heather",
+     "hex": "#0e0e0e",
+     "image": "https://files.cdn.printful.com/products/356/12937_1732542304.jpg"
+    },
+    {
+     "name": "Dark Grey Heather",
+     "hex": "#3e3c3d",
+     "image": "https://files.cdn.printful.com/products/356/11202_1603780158.jpg"
+    },
+    {
+     "name": "Gold",
+     "hex": "#ffa107",
+     "image": "https://files.cdn.printful.com/products/356/14240_1644918503.jpg"
+    },
+    {
+     "name": "Heather Deep Teal",
+     "hex": "#335c6b",
+     "image": "https://files.cdn.printful.com/products/356/12949_1627544915.jpg"
+    },
+    {
+     "name": "Heather Forest",
+     "hex": "#28332e",
+     "image": "https://files.cdn.printful.com/products/356/16155_1664259901.jpg"
+    },
+    {
+     "name": "Heather Mauve",
+     "hex": "#c4736c",
+     "image": "https://files.cdn.printful.com/products/356/11208_1627544939.jpg"
+    },
+    {
+     "name": "Heather Navy",
+     "hex": "#44495b",
+     "image": "https://files.cdn.printful.com/products/356/16137_1664259932.jpg"
+    },
+    {
+     "name": "Maroon",
+     "hex": "#590a1d",
+     "image": "https://files.cdn.printful.com/products/356/10111_1556619715.jpg"
+    },
+    {
+     "name": "Military Green",
+     "hex": "#68664d",
+     "image": "https://files.cdn.printful.com/products/356/10117_1556619712.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#161324",
+     "image": "https://files.cdn.printful.com/products/356/10123_1556619717.jpg"
+    },
+    {
+     "name": "Red",
+     "hex": "#b9091d",
+     "image": "https://files.cdn.printful.com/products/356/10135_1556619716.jpg"
+    },
+    {
+     "name": "Storm",
+     "hex": "#9f9393",
+     "image": "https://files.cdn.printful.com/products/356/14252_1644918544.jpg"
+    },
+    {
+     "name": "True Royal",
+     "hex": "#0a4690",
+     "image": "https://files.cdn.printful.com/products/356/16143_1664260000.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/356/10141_1556619718.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmr76wk50001qw82gan5waj1e",
+   "slug": "unisex-performance-crew-neck-t-shirt-a4-n3142",
+   "name": "Unisex Performance Crew Neck T-Shirt | A4 N3142",
+   "brand": "A4",
+   "category": "apparel",
+   "subcategory": "t-shirts",
+   "type": "A4 N3142 | Cooling Performance Short Sleeve Tee",
+   "fromPrice": 24.21,
+   "techniques": [
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/e2/e239b78e54f77c63f3ec3bcda3be8e62_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/e2/e239b78e54f77c63f3ec3bcda3be8e62_l"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#191919",
+     "image": "https://files.cdn.printful.com/products/679/17008_1686038024.jpg"
+    },
+    {
+     "name": "Forest Green",
+     "hex": "#00572f",
+     "image": "https://files.cdn.printful.com/products/679/17015_1686038146.jpg"
+    },
+    {
+     "name": "Graphite",
+     "hex": "#818181",
+     "image": "https://files.cdn.printful.com/products/679/17022_1686038177.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#1f3045",
+     "image": "https://files.cdn.printful.com/products/679/17029_1686038208.jpg"
+    },
+    {
+     "name": "Purple",
+     "hex": "#58367b",
+     "image": "https://files.cdn.printful.com/products/679/17043_1686038250.jpg"
+    },
+    {
+     "name": "Royal",
+     "hex": "#1c5baa",
+     "image": "https://files.cdn.printful.com/products/679/17050_1686038281.jpg"
+    },
+    {
+     "name": "Safety Orange",
+     "hex": "#ff4300",
+     "image": "https://files.cdn.printful.com/products/679/17090_1686038314.jpg"
+    },
+    {
+     "name": "Safety Yellow",
+     "hex": "#e6fe1a",
+     "image": "https://files.cdn.printful.com/products/679/17071_1686038334.jpg"
+    },
+    {
+     "name": "Silver",
+     "hex": "#e3e3e3",
+     "image": "https://files.cdn.printful.com/products/679/17064_1686038355.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/679/17057_1686038376.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zms6800rmh52ggsrr8ux8",
+   "slug": "unisex-premium-pullover-hoodie-cotton-heritage-m2580",
+   "name": "Unisex Premium Pullover Hoodie | Cotton Heritage M2580",
+   "brand": "Cotton Heritage",
+   "category": "sweatshirts",
+   "subcategory": "hoodies",
+   "type": "Cotton Heritage M2580 | Unisex Premium Pullover Hoodie",
+   "fromPrice": 38.21,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/0e/0e62ae87da7d32dfb60d6dadc3744346_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/0e/0e62ae87da7d32dfb60d6dadc3744346_l"
+   ],
+   "colors": [
+    {
+     "name": "Carolina Blue",
+     "hex": "#98b7ee",
+     "image": "https://files.cdn.printful.com/products/380/11496_1759916354.jpg"
+    },
+    {
+     "name": "Black",
+     "hex": "#080808",
+     "image": "https://files.cdn.printful.com/products/380/10779_1759916354.jpg"
+    },
+    {
+     "name": "Military Green",
+     "hex": "#5c4f32",
+     "image": "https://files.cdn.printful.com/products/380/13893_1759916354.jpg"
+    },
+    {
+     "name": "Vintage Black",
+     "hex": "#43413D",
+     "image": "https://files.cdn.printful.com/products/380/20272_1759916354.jpg"
+    },
+    {
+     "name": "Adobe",
+     "hex": "#d06e26",
+     "image": "https://files.cdn.printful.com/products/380/24987_1759916354.jpg"
+    },
+    {
+     "name": "Khaki",
+     "hex": "#d2a26f",
+     "image": "https://files.cdn.printful.com/products/380/13899_1759916354.jpg"
+    },
+    {
+     "name": "Latte",
+     "hex": "#b28a68",
+     "image": "https://files.cdn.printful.com/products/380/24981_1759916354.jpg"
+    },
+    {
+     "name": "Lavender",
+     "hex": "#ffdcf3",
+     "image": "https://files.cdn.printful.com/products/380/25005_1759916354.jpg"
+    },
+    {
+     "name": "Light Pink",
+     "hex": "#ffd0cc",
+     "image": "https://files.cdn.printful.com/products/380/24993_1759916354.jpg"
+    },
+    {
+     "name": "Oatmeal Heather",
+     "hex": "#fbf2e1",
+     "image": "https://files.cdn.printful.com/products/380/24975_1759916354.jpg"
+    },
+    {
+     "name": "Team Gold",
+     "hex": "#ffa912",
+     "image": "https://files.cdn.printful.com/products/380/24999_1759916354.jpg"
+    },
+    {
+     "name": "Bone",
+     "hex": "#f5e8ce",
+     "image": "https://files.cdn.printful.com/products/380/20284_1759916354.jpg"
+    },
+    {
+     "name": "Carbon Grey",
+     "hex": "#c7c3be",
+     "image": "https://files.cdn.printful.com/products/380/10784_1759916354.jpg"
+    },
+    {
+     "name": "Charcoal Heather",
+     "hex": "#463e3d",
+     "image": "https://files.cdn.printful.com/products/380/11481_1759916354.jpg"
+    },
+    {
+     "name": "Dusty Rose",
+     "hex": "#d27e6f",
+     "image": "https://files.cdn.printful.com/products/380/13887_1759916354.jpg"
+    },
+    {
+     "name": "Forest Green",
+     "hex": "#335231",
+     "image": "https://files.cdn.printful.com/products/380/16162_1759916354.jpg"
+    },
+    {
+     "name": "Maroon",
+     "hex": "#7d263a",
+     "image": "https://files.cdn.printful.com/products/380/11486_1759916354.jpg"
+    },
+    {
+     "name": "Navy Blazer",
+     "hex": "#171f2c",
+     "image": "https://files.cdn.printful.com/products/380/11491_1759916354.jpg"
+    },
+    {
+     "name": "Purple",
+     "hex": "#623a7a",
+     "image": "https://files.cdn.printful.com/products/380/13911_1759916354.jpg"
+    },
+    {
+     "name": "Sky Blue",
+     "hex": "#d6edf7",
+     "image": "https://files.cdn.printful.com/products/380/13917_1759916354.jpg"
+    },
+    {
+     "name": "Team Red",
+     "hex": "#FF2D41",
+     "image": "https://files.cdn.printful.com/products/380/20278_1759916354.jpg"
+    },
+    {
+     "name": "Team Royal",
+     "hex": "#1b43ae",
+     "image": "https://files.cdn.printful.com/products/380/13905_1759916354.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/380/10774_1759916354.jpg"
+    }
+   ],
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp0nzg0c0000zk2g9x4sqg93",
+   "slug": "unisex-staple-t-shirt-bella-canvas-3001",
+   "name": "Unisex Staple T-Shirt | Bella + Canvas 3001",
+   "brand": "Bella + Canvas",
+   "category": "apparel",
+   "subcategory": "t-shirts",
+   "type": "Bella + Canvas 3001 | Unisex Jersey Short Sleeve Tee",
+   "fromPrice": 16.37,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/20/2079a3ee4cc472ad952fe16654f274cd_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/20/2079a3ee4cc472ad952fe16654f274cd_l"
+   ],
+   "colors": [
+    {
+     "name": "Aqua",
+     "hex": "#008db5",
+     "image": "https://files.cdn.printful.com/products/71/4021_1752236278.jpg"
+    },
+    {
+     "name": "Army",
+     "hex": "#5f5849",
+     "image": "https://files.cdn.printful.com/products/71/8440_1752236278.jpg"
+    },
+    {
+     "name": "Ash",
+     "hex": "#f0f1ea",
+     "image": "https://files.cdn.printful.com/products/71/4026_1752236278.jpg"
+    },
+    {
+     "name": "Asphalt",
+     "hex": "#52514f",
+     "image": "https://files.cdn.printful.com/products/71/4031_1752236278.jpg"
+    },
+    {
+     "name": "Athletic Heather",
+     "hex": "#cececc",
+     "image": "https://files.cdn.printful.com/products/71/6948_1752236278.jpg"
+    },
+    {
+     "name": "Autumn",
+     "hex": "#c85313",
+     "image": "https://files.cdn.printful.com/products/71/10383_1752236278.jpg"
+    },
+    {
+     "name": "Baby Blue",
+     "hex": "#c7d7ef",
+     "image": "https://files.cdn.printful.com/products/71/4036_1752236278.jpg"
+    },
+    {
+     "name": "Berry",
+     "hex": "#c02773",
+     "image": "https://files.cdn.printful.com/products/71/4041_1752236278.jpg"
+    },
+    {
+     "name": "Black",
+     "hex": "#0c0c0c",
+     "image": "https://files.cdn.printful.com/products/71/4016_1752236278.jpg"
+    },
+    {
+     "name": "Black Heather",
+     "hex": "#0b0b0b",
+     "image": "https://files.cdn.printful.com/products/71/8923_1752236278.jpg"
+    },
+    {
+     "name": "Brown",
+     "hex": "#322622",
+     "image": "https://files.cdn.printful.com/products/71/4046_1752236278.jpg"
+    },
+    {
+     "name": "Burnt Orange",
+     "hex": "#ed8043",
+     "image": "https://files.cdn.printful.com/products/71/4051_1752236278.jpg"
+    },
+    {
+     "name": "Cardinal",
+     "hex": "#890c1e",
+     "image": "https://files.cdn.printful.com/products/71/4061_1752236278.jpg"
+    },
+    {
+     "name": "Charity Pink",
+     "hex": "#FF6284",
+     "image": "https://files.cdn.printful.com/products/71/21569_1752236278.jpg"
+    },
+    {
+     "name": "Dark Grey",
+     "hex": "#2A2929",
+     "image": "https://files.cdn.printful.com/products/71/21577_1752236279.jpg"
+    },
+    {
+     "name": "Dark Grey Heather",
+     "hex": "#3E3C3D",
+     "image": "https://files.cdn.printful.com/products/71/8460_1752236278.jpg"
+    },
+    {
+     "name": "Forest",
+     "hex": "#223e25",
+     "image": "https://files.cdn.printful.com/products/71/8451_1752236278.jpg"
+    },
+    {
+     "name": "Gold",
+     "hex": "#ff9e00",
+     "image": "https://files.cdn.printful.com/products/71/4081_1752236278.jpg"
+    },
+    {
+     "name": "Heather Aqua",
+     "hex": "#27a8c8",
+     "image": "https://files.cdn.printful.com/products/71/22022_1752236278.jpg"
+    },
+    {
+     "name": "Heather Autumn",
+     "hex": "#D5743F",
+     "image": "https://files.cdn.printful.com/products/71/24358_1752236280.jpg"
+    },
+    {
+     "name": "Heather Brown",
+     "hex": "#6A513A",
+     "image": "https://files.cdn.printful.com/products/71/24330_1752236282.jpg"
+    },
+    {
+     "name": "Heather Carolina Blue",
+     "hex": "#ABC3EF",
+     "image": "https://files.cdn.printful.com/products/71/24310_1752236283.jpg"
+    },
+    {
+     "name": "Heather Clay",
+     "hex": "#994836",
+     "image": "https://files.cdn.printful.com/products/71/22031_1752236282.jpg"
+    },
+    {
+     "name": "Heather Columbia Blue",
+     "hex": "#7D95E8",
+     "image": "https://files.cdn.printful.com/products/71/21585_1752236280.jpg"
+    },
+    {
+     "name": "Heather Deep Teal",
+     "hex": "#447085",
+     "image": "https://files.cdn.printful.com/products/71/8481_1752236280.jpg"
+    },
+    {
+     "name": "Heather Dust",
+     "hex": "#e5d9c9",
+     "image": "https://files.cdn.printful.com/products/71/10359_1752236280.jpg"
+    },
+    {
+     "name": "Heather Emerald",
+     "hex": "#1E2C1C",
+     "image": "https://files.cdn.printful.com/products/71/24337_1752236283.jpg"
+    },
+    {
+     "name": "Heather Forest",
+     "hex": "#425040",
+     "image": "https://files.cdn.printful.com/products/71/8488_1752236282.jpg"
+    },
+    {
+     "name": "Heather Grass Green",
+     "hex": "#477749",
+     "image": "https://files.cdn.printful.com/products/71/24344_1752236282.jpg"
+    },
+    {
+     "name": "Heather Ice Blue",
+     "hex": "#e8fdff",
+     "image": "https://files.cdn.printful.com/products/71/21309_1752236280.jpg"
+    },
+    {
+     "name": "Heather Kelly",
+     "hex": "#00a263",
+     "image": "https://files.cdn.printful.com/products/71/18642_1752236280.jpg"
+    },
+    {
+     "name": "Heather Mauve",
+     "hex": "#B2736F",
+     "image": "https://files.cdn.printful.com/products/71/18634_1752236280.jpg"
+    },
+    {
+     "name": "Heather Midnight Navy",
+     "hex": "#302d4b",
+     "image": "https://files.cdn.printful.com/products/71/8495_1752236280.jpg"
+    },
+    {
+     "name": "Heather Mint",
+     "hex": "#b2ebcf",
+     "image": "https://files.cdn.printful.com/products/71/8502_1752236280.jpg"
+    },
+    {
+     "name": "Heather Natural",
+     "hex": "#F9E9CF",
+     "image": "https://files.cdn.printful.com/products/71/24365_1752236281.jpg"
+    },
+    {
+     "name": "Heather Navy",
+     "hex": "#303643",
+     "image": "https://files.cdn.printful.com/products/71/8509_1752236280.jpg"
+    },
+    {
+     "name": "Heather Olive",
+     "hex": "#5c5531",
+     "image": "https://files.cdn.printful.com/products/71/21301_1752236280.jpg"
+    },
+    {
+     "name": "Heather Orange",
+     "hex": "#ff6f4e",
+     "image": "https://files.cdn.printful.com/products/71/8516_1752236280.jpg"
+    },
+    {
+     "name": "Heather Orchid",
+     "hex": "#c2878e",
+     "image": "https://files.cdn.printful.com/products/71/10351_1752236282.jpg"
+    },
+    {
+     "name": "Heather Prism Dusty Blue",
+     "hex": "#a5c8bc",
+     "image": "https://files.cdn.printful.com/products/71/9388_1752236281.jpg"
+    },
+    {
+     "name": "Heather Prism Ice Blue",
+     "hex": "#c3e2e3",
+     "image": "https://files.cdn.printful.com/products/71/9360_1752236281.jpg"
+    },
+    {
+     "name": "Heather Prism Lilac",
+     "hex": "#deafcd",
+     "image": "https://files.cdn.printful.com/products/71/9374_1752236283.jpg"
+    },
+    {
+     "name": "Heather Prism Mint",
+     "hex": "#aad5b9",
+     "image": "https://files.cdn.printful.com/products/71/9381_1752236282.jpg"
+    },
+    {
+     "name": "Heather Raspberry",
+     "hex": "#d23d62",
+     "image": "https://files.cdn.printful.com/products/71/8523_1752236283.jpg"
+    },
+    {
+     "name": "Heather Red",
+     "hex": "#ed5359",
+     "image": "https://files.cdn.printful.com/products/71/20669_1752236283.jpg"
+    },
+    {
+     "name": "Heather Slate",
+     "hex": "#4C626E",
+     "image": "https://files.cdn.printful.com/products/71/18618_1752236281.jpg"
+    },
+    {
+     "name": "Heather Team Purple",
+     "hex": "#B680C1",
+     "image": "https://files.cdn.printful.com/products/71/21601_1752236281.jpg"
+    },
+    {
+     "name": "Heather True Royal",
+     "hex": "#536ba7",
+     "image": "https://files.cdn.printful.com/products/71/8530_1752236283.jpg"
+    },
+    {
+     "name": "Heather Yellow Gold",
+     "hex": "#FFB834",
+     "image": "https://files.cdn.printful.com/products/71/24372_1752236283.jpg"
+    },
+    {
+     "name": "Kelly",
+     "hex": "#1a9462",
+     "image": "https://files.cdn.printful.com/products/71/4086_1752236281.jpg"
+    },
+    {
+     "name": "Leaf",
+     "hex": "#5c9346",
+     "image": "https://files.cdn.printful.com/products/71/4091_1752236281.jpg"
+    },
+    {
+     "name": "Light Blue",
+     "hex": "#cfd5e1",
+     "image": "https://files.cdn.printful.com/products/71/4096_1752236281.jpg"
+    },
+    {
+     "name": "Lilac",
+     "hex": "#efbbe3",
+     "image": "https://files.cdn.printful.com/products/71/10367_1752236281.jpg"
+    },
+    {
+     "name": "Maroon",
+     "hex": "#721d37",
+     "image": "https://files.cdn.printful.com/products/71/4106_1752236282.jpg"
+    },
+    {
+     "name": "Mauve",
+     "hex": "#bf6e6e",
+     "image": "https://files.cdn.printful.com/products/71/9395_1752236282.jpg"
+    },
+    {
+     "name": "Military Green",
+     "hex": "#4d4c36",
+     "image": "https://files.cdn.printful.com/products/71/17202_1752236282.jpg"
+    },
+    {
+     "name": "Mint",
+     "hex": "#a5f4bd",
+     "image": "https://files.cdn.printful.com/products/71/22040_1752236282.jpg"
+    },
+    {
+     "name": "Mustard",
+     "hex": "#eda027",
+     "image": "https://files.cdn.printful.com/products/71/10375_1752236282.jpg"
+    },
+    {
+     "name": "Natural",
+     "hex": "#fef1d1",
+     "image": "https://files.cdn.printful.com/products/71/14681_1752236282.jpg"
+    },
+    {
+     "name": "Navy",
+     "hex": "#212642",
+     "image": "https://files.cdn.printful.com/products/71/4111_1752236282.jpg"
+    },
+    {
+     "name": "Ocean Blue",
+     "hex": "#a9dff6",
+     "image": "https://files.cdn.printful.com/products/71/4116_1752236282.jpg"
+    },
+    {
+     "name": "Olive",
+     "hex": "#5b642f",
+     "image": "https://files.cdn.printful.com/products/71/4121_1752236283.jpg"
+    },
+    {
+     "name": "Orange",
+     "hex": "#ff6f32",
+     "image": "https://files.cdn.printful.com/products/71/4126_1752236282.jpg"
+    },
+    {
+     "name": "Oxblood Black",
+     "hex": "#2c1013",
+     "image": "https://files.cdn.printful.com/products/71/9739_1752236282.jpg"
+    },
+    {
+     "name": "Pebble",
+     "hex": "#9a8479",
+     "image": "https://files.cdn.printful.com/products/71/4131_1752236282.jpg"
+    },
+    {
+     "name": "Pink",
+     "hex": "#fdbfc7",
+     "image": "https://files.cdn.printful.com/products/71/4136_1752236283.jpg"
+    },
+    {
+     "name": "Red",
+     "hex": "#d0071e",
+     "image": "https://files.cdn.printful.com/products/71/4141_1752236283.jpg"
+    },
+    {
+     "name": "Sage",
+     "hex": "#9eab96",
+     "image": "https://files.cdn.printful.com/products/71/22049_1752236283.jpg"
+    },
+    {
+     "name": "Silver",
+     "hex": "#e3e3dd",
+     "image": "https://files.cdn.printful.com/products/71/4146_1752236283.jpg"
+    },
+    {
+     "name": "Soft Cream",
+     "hex": "#e7d4c0",
+     "image": "https://files.cdn.printful.com/products/71/4151_1752236283.jpg"
+    },
+    {
+     "name": "Soft Pink",
+     "hex": "#ffd8e1",
+     "image": "https://files.cdn.printful.com/products/71/20668_1752236283.jpg"
+    },
+    {
+     "name": "Solid White Blend",
+     "hex": "#FCFCFC",
+     "image": "https://files.cdn.printful.com/products/71/24351_1752236285.jpg"
+    },
+    {
+     "name": "Steel Blue",
+     "hex": "#668ea7",
+     "image": "https://files.cdn.printful.com/products/71/4161_1752236284.jpg"
+    },
+    {
+     "name": "Tan",
+     "hex": "#ddb792",
+     "image": "https://files.cdn.printful.com/products/71/14673_1752236284.jpg"
+    },
+    {
+     "name": "Teal",
+     "hex": "#00e3cf",
+     "image": "https://files.cdn.printful.com/products/71/22058_1752236284.jpg"
+    },
+    {
+     "name": "Team Purple",
+     "hex": "#230f46",
+     "image": "https://files.cdn.printful.com/products/71/4166_1752236284.jpg"
+    },
+    {
+     "name": "Toast",
+     "hex": "#cf8d4c",
+     "image": "https://files.cdn.printful.com/products/71/14689_1752236284.jpg"
+    },
+    {
+     "name": "True Royal",
+     "hex": "#01408d",
+     "image": "https://files.cdn.printful.com/products/71/4171_1752236284.jpg"
+    },
+    {
+     "name": "Turquoise",
+     "hex": "#54d9eb",
+     "image": "https://files.cdn.printful.com/products/71/4176_1752236284.jpg"
+    },
+    {
+     "name": "Vintage Black",
+     "hex": "#151515",
+     "image": "https://files.cdn.printful.com/products/71/21593_1752236284.jpg"
+    },
+    {
+     "name": "Vintage White",
+     "hex": "#fcf4e8",
+     "image": "https://files.cdn.printful.com/products/71/14713_1752236284.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/71/4011_1752236284.jpg"
+    },
+    {
+     "name": "Yellow",
+     "hex": "#ffd667",
+     "image": "https://files.cdn.printful.com/products/71/4181_1752236284.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL",
+    "5XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zmxg20149h52gwdxvp2og",
+   "slug": "unisex-tri-blend-t-shirt-bella-canvas-3413",
+   "name": "Unisex Tri-Blend T-Shirt | Bella + Canvas 3413",
+   "brand": "Bella + Canvas",
+   "category": "apparel",
+   "subcategory": "t-shirts",
+   "type": "Bella + Canvas 3413 | Unisex Triblend S/S Tee",
+   "fromPrice": 25.13,
+   "techniques": [
+    "DTG",
+    "EMBROIDERY",
+    "DTFILM"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/7f/7f84bc900e266780cb31f3d28e41c7c0_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/7f/7f84bc900e266780cb31f3d28e41c7c0_l"
+   ],
+   "colors": [
+    {
+     "name": "Mustard Triblend",
+     "hex": "#e3ac56",
+     "image": "https://files.cdn.printful.com/products/162/16733_1719904911.jpg"
+    },
+    {
+     "name": "Athletic Grey Triblend",
+     "hex": "#a49895",
+     "image": "https://files.cdn.printful.com/products/162/6477_1719905039.jpg"
+    },
+    {
+     "name": "Charcoal-Black Triblend",
+     "hex": "#171b19",
+     "image": "https://files.cdn.printful.com/products/162/6509_1719905155.jpg"
+    },
+    {
+     "name": "Clay Triblend",
+     "hex": "#9a5344",
+     "image": "https://files.cdn.printful.com/products/162/6515_1719905197.jpg"
+    },
+    {
+     "name": "Emerald Triblend",
+     "hex": "#142c1e",
+     "image": "https://files.cdn.printful.com/products/162/6522_1719905228.jpg"
+    },
+    {
+     "name": "Navy Triblend",
+     "hex": "#464d7e",
+     "image": "https://files.cdn.printful.com/products/162/6552_1719905526.jpg"
+    },
+    {
+     "name": "Oatmeal Triblend",
+     "hex": "#e8decd",
+     "image": "https://files.cdn.printful.com/products/162/6826_1719905573.jpg"
+    },
+    {
+     "name": "True Royal Triblend",
+     "hex": "#2e4c86",
+     "image": "https://files.cdn.printful.com/products/162/6602_1719905757.jpg"
+    },
+    {
+     "name": "Olive Triblend",
+     "hex": "#9c8861",
+     "image": "https://files.cdn.printful.com/products/162/17379_1719904932.jpg"
+    },
+    {
+     "name": "Solid White Triblend",
+     "hex": "#ffffff",
+     "image": "https://files.cdn.printful.com/products/162/16797_1719904959.jpg"
+    },
+    {
+     "name": "Tan Triblend",
+     "hex": "#cdb9a6",
+     "image": "https://files.cdn.printful.com/products/162/16726_1719904980.jpg"
+    },
+    {
+     "name": "Aqua Triblend",
+     "hex": "#33869f",
+     "image": "https://files.cdn.printful.com/products/162/6469_1719904996.jpg"
+    },
+    {
+     "name": "Berry Triblend",
+     "hex": "#bc437c",
+     "image": "https://files.cdn.printful.com/products/162/6485_1719905082.jpg"
+    },
+    {
+     "name": "Blue Triblend",
+     "hex": "#62749b",
+     "image": "https://files.cdn.printful.com/products/162/6493_1719905103.jpg"
+    },
+    {
+     "name": "Brown Triblend",
+     "hex": "#563e32",
+     "image": "https://files.cdn.printful.com/products/162/6501_1719905124.jpg"
+    },
+    {
+     "name": "Grey Triblend",
+     "hex": "#84817f",
+     "image": "https://files.cdn.printful.com/products/162/6541_1719905341.jpg"
+    },
+    {
+     "name": "Maroon Triblend",
+     "hex": "#744e5a",
+     "image": "https://files.cdn.printful.com/products/162/6549_1719905373.jpg"
+    },
+    {
+     "name": "Mauve Triblend",
+     "hex": "#cd8071",
+     "image": "https://files.cdn.printful.com/products/162/9766_1719905474.jpg"
+    },
+    {
+     "name": "Purple Triblend",
+     "hex": "#846394",
+     "image": "https://files.cdn.printful.com/products/162/6573_1719905618.jpg"
+    },
+    {
+     "name": "Red Triblend",
+     "hex": "#da5154",
+     "image": "https://files.cdn.printful.com/products/162/6581_1719905649.jpg"
+    },
+    {
+     "name": "Solid Black Triblend",
+     "hex": "#101211",
+     "image": "https://files.cdn.printful.com/products/162/6589_1719905671.jpg"
+    },
+    {
+     "name": "Teal Triblend",
+     "hex": "#156560",
+     "image": "https://files.cdn.printful.com/products/162/6597_1719905686.jpg"
+    },
+    {
+     "name": "White Fleck Triblend",
+     "hex": "#eaeaea",
+     "image": "https://files.cdn.printful.com/products/162/6613_1719905792.jpg"
+    }
+   ],
+   "sizes": [
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL",
+    "4XL"
+   ],
+   "featured": false
+  },
+  {
+   "id": "cmp1zn3ws01gjh52gqkazl1na",
+   "slug": "white-glossy-mug",
+   "name": "White Glossy Mug",
+   "brand": null,
+   "category": "home",
+   "subcategory": "drinkware",
+   "type": "Mug | Glossy | Ceramic | White",
+   "fromPrice": 8.33,
+   "techniques": [
+    "SUBLIMATION"
+   ],
+   "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8c/8c4ac4a450b8485bc8a6e041a5a23666_l",
+   "images": [
+    "https://files.cdn.printful.com/o/upload/product-catalog-img/8c/8c4ac4a450b8485bc8a6e041a5a23666_l"
+   ],
+   "colors": [
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8c/8c4ac4a450b8485bc8a6e041a5a23666_l"
+    }
+   ],
+   "sizes": [
+    "11 oz",
+    "15 oz",
+    "20 oz"
+   ],
+   "featured": false
+  }
+ ]
+}

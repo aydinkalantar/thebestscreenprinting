@@ -1,0 +1,85 @@
+---
+import Base from '../../layouts/Base.astro';
+import { products, CATEGORY_LABELS, techniqueNames, money, customizeHref, type CatalogProduct } from '../../lib/catalog';
+import { business } from '../../data/business';
+import { ArrowRight, Palette, Phone, Check } from '@lucide/astro';
+
+export function getStaticPaths() {
+  return products.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+const { p } = Astro.props as { p: CatalogProduct };
+const methods = techniqueNames(p.techniques);
+const category = CATEGORY_LABELS[p.category] || p.category;
+const description = `Custom ${p.name} printed with your logo or design. ${methods.join(', ')}. From ${money(p.fromPrice)} each, no minimum for small runs, ${business.shopMinimum}+ pieces printed in our Downtown LA shop.`;
+const url = `${business.url}/catalog/${p.slug}/`;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: p.name,
+    image: p.images.length ? p.images : [p.image],
+    description,
+    ...(p.brand ? { brand: { '@type': 'Brand', name: p.brand } } : {}),
+    offers: { '@type': 'AggregateOffer', priceCurrency: 'USD', lowPrice: p.fromPrice, offerCount: Math.max(1, p.colors.length * Math.max(1, p.sizes.length)), availability: 'https://schema.org/InStock', url },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${business.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Catalog', item: `${business.url}/catalog/` },
+      { '@type': 'ListItem', position: 3, name: p.name, item: url },
+    ],
+  },
+];
+---
+<Base title={`Custom ${p.name} | TBSP Los Angeles`} description={description} jsonLd={jsonLd}>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/catalog/">Catalog</a> / <span>{category}</span></nav>
+  <div class="product-detail">
+    <div class="product-gallery">
+      <img id="main-img" src={p.image} alt={p.name} width="640" height="640" />
+    </div>
+    <div>
+      <h1>{p.name}</h1>
+      <p class="price">From <strong>{money(p.fromPrice)}</strong> each <small>· decoration included, bigger sizes cost more</small></p>
+      {p.colors.length > 0 && (
+        <section>
+          <h2 class="h-small">Colors <span id="color-name">{p.colors[0].name}</span></h2>
+          <div class="swatches">
+            {p.colors.map((c, i) => (
+              <button type="button" class:list={['swatch', { 'is-on': i === 0 }]} style={`--sw:${c.hex}`} title={c.name} aria-label={c.name} data-name={c.name} data-img={c.image || ''}></button>
+            ))}
+          </div>
+        </section>
+      )}
+      {p.sizes.length > 0 && (
+        <section>
+          <h2 class="h-small">Sizes</h2>
+          <p class="sizes">{p.sizes.join(' · ')}</p>
+        </section>
+      )}
+      <section>
+        <h2 class="h-small">Decoration</h2>
+        <ul class="ticks">{methods.map((m) => <li><Check class="icon" aria-hidden="true" />{m}</li>)}</ul>
+      </section>
+      <div class="cta-row">
+        <a class="btn btn-primary" href={customizeHref(p)} rel={business.studioLive ? 'nofollow' : undefined}>
+          {business.studioLive ? <><Palette class="icon" aria-hidden="true" />Customize in TBSP Studio</> : <>Get a quote<ArrowRight class="icon" aria-hidden="true" /></>}
+        </a>
+        <a class="btn btn-quiet" href={`tel:${business.phone}`}><Phone class="icon" aria-hidden="true" />{business.phoneDisplay}</a>
+      </div>
+      {!business.studioLive && <p class="note">Online design is coming soon. Until then, send us your artwork with a quote request.</p>}
+      <p class="note">Ordering {business.shopMinimum} or more? We'll quote screen printing or embroidery from our shop, usually at a lower price per piece.</p>
+    </div>
+  </div>
+</Base>
+
+<script>
+  const main = document.getElementById('main-img') as HTMLImageElement | null;
+  const label = document.getElementById('color-name');
+  document.querySelectorAll<HTMLButtonElement>('.swatch').forEach((b, _, all) => b.addEventListener('click', () => {
+    all.forEach((x) => x.classList.toggle('is-on', x === b));
+    if (label) label.textContent = b.dataset.name || '';
+    if (main && b.dataset.img) main.src = b.dataset.img;
+  }));
+</script>

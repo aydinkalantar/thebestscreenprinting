@@ -8,7 +8,8 @@
     "build": "node scripts/build-redirects.mjs && astro build",
     "preview": "wrangler dev",
     "import:wp": "python3 -I scripts/import-wp.py",
-    "check:redirects": "node scripts/check-redirects.mjs"
+    "check:redirects": "node scripts/check-redirects.mjs",
+    "sync:catalog": "node scripts/sync-catalog.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",

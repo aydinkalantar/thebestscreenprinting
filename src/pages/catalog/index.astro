@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import { products, CATEGORY_LABELS, money } from '../../lib/catalog';
+import { business } from '../../data/business';
+
+const categories = [...new Set(products.map((p) => p.category))]
+  .map((c) => ({ id: c, label: CATEGORY_LABELS[c] || c, count: products.filter((p) => p.category === c).length }))
+  .sort((a, b) => b.count - a.count);
+const jsonLd = [{
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: products.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${business.url}/catalog/${p.slug}/`, name: p.name })),
+}];
+---
+<Base title="Custom Apparel & Merch Catalog | TBSP Los Angeles" description={`Browse ${products.length} products you can customize with your logo: tees, hoodies, hats, bags and more. No minimum for small runs; ${business.shopMinimum}+ pieces printed in our DTLA shop.`} jsonLd={jsonLd}>
+  <h1>Product catalog</h1>
+  <p class="lead">
+    {products.length} products you can put your design on. Small runs have no minimum{business.studioLive ? ' and can be designed online' : ''}; orders of {business.shopMinimum}+ pieces are printed in our Downtown LA shop.
+  </p>
+
+  <div class="chips filter" role="group" aria-label="Filter by category">
+    <button type="button" class="chip is-on" data-cat="">All <span>{products.length}</span></button>
+    {categories.map((c) => <button type="button" class="chip" data-cat={c.id}>{c.label} <span>{c.count}</span></button>)}
+  </div>
+
+  <ul class="product-grid">
+    {products.map((p) => (
+      <li data-cat={p.category}>
+        <a class="product-card" href={`/catalog/${p.slug}/`}>
+          <span class="product-img"><img src={p.image} alt={p.name} loading="lazy" width="400" height="400" /></span>
+          <strong>{p.name}</strong>
+          <span class="product-meta">{p.colors.length > 1 ? `${p.colors.length} colors · ` : ''}from {money(p.fromPrice)}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.filter .chip');
+  const items = document.querySelectorAll<HTMLElement>('.product-grid li');
+  chips.forEach((chip) => chip.addEventListener('click', () => {
+    chips.forEach((c) => c.classList.toggle('is-on', c === chip));
+    const cat = chip.dataset.cat;
+    items.forEach((li) => { li.hidden = !!cat && li.dataset.cat !== cat; });
+  }));
+</script>

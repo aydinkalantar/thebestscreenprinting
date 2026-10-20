@@ -91,6 +91,12 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
 <script>
   const form = document.getElementById('quote-form') as HTMLFormElement;
+  // Coming from a catalog product: note which one in the details box.
+  const fromProduct = new URLSearchParams(location.search).get('garment');
+  if (fromProduct) {
+    const details = form.elements.namedItem('details') as HTMLTextAreaElement;
+    details.value = `Product: ${fromProduct.slice(0, 200)}\n`;
+  }
   const msg = form.querySelector('.form-msg') as HTMLElement;
   const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
   const setErrors = (fields: Record<string, string> = {}) => {

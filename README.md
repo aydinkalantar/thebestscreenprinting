@@ -28,6 +28,15 @@ The design studio, customer accounts and admin are a separate app
 - `scripts/gsc-pull.mjs` + `scripts/seo-report.mjs` — weekly Search Console
   report. The service-account key lives outside the repo.
 
+## Product catalog
+
+`/catalog/` and `/catalog/<product>/` are built from `data/catalog.json`, a
+snapshot of the studio's catalog (which the studio syncs from Printful). Refresh
+it with `npm run sync:catalog` (set `CATALOG_URL=http://localhost:3000` to read a
+local studio) and commit the file. Only public fields are kept — never cost.
+"Customize" opens the product in TBSP Studio once `business.studioLive` is true;
+until then it starts a quote.
+
 ## Quote form
 
 `/quick-quote/` posts to `/api/quote` in the Worker, which emails the request
