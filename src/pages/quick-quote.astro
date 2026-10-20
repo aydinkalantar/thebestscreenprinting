@@ -105,6 +105,11 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
 <script>
   const form = document.getElementById('quote-form') as HTMLFormElement;
+  // Coming from a custom-project link: tick that decoration.
+  const project = new URLSearchParams(location.search).get('project');
+  if (project) {
+    form.querySelectorAll<HTMLInputElement>('input[name="decorations"]').forEach((c) => { if (c.value === project) c.checked = true; });
+  }
   // Coming from a catalog product: note which one in the details box.
   const fromProduct = new URLSearchParams(location.search).get('garment');
   if (fromProduct) {

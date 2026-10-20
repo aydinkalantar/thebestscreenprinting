@@ -9,6 +9,7 @@ export const SERVICE_LINKS = [
   { href: '/services/embossing/', label: 'Embossing' },
   { href: '/services/large-format-screen-printing/', label: 'Oversize prints' },
   { href: '/same-day-t-shirt-printing-los-angeles/', label: 'Rush & Super Rush' },
+  { href: '/custom-projects/', label: 'Custom projects' },
 ];
 
 export const PRODUCT_LINKS = [
