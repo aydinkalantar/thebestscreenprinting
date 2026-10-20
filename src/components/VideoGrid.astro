@@ -1,0 +1,41 @@
+---
+// Lightweight YouTube embeds: a thumbnail until clicked, then the privacy-
+// enhanced player. Keeps pages fast and loads nothing from YouTube up front.
+import type { Video } from '../data/videos';
+import { Play } from '@lucide/astro';
+interface Props { videos: Video[]; title?: string; eyebrow?: string }
+const { videos, title = 'See it on the press', eyebrow = 'Watch' } = Astro.props;
+---
+{videos.length > 0 && (
+  <section aria-label={title}>
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 class="section-title mt-2">{title}</h2>
+    <div class:list={['mt-6 grid gap-5', videos.length > 1 ? 'md:grid-cols-2' : 'max-w-3xl']}>
+      {videos.map((v) => (
+        <figure class="panel overflow-hidden">
+          <button type="button" class="yt group relative block w-full aspect-video bg-zinc-900" data-yt={v.id} aria-label={`Play video: ${v.title}`}>
+            <img src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`} alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
+            <span class="absolute inset-0 grid place-items-center">
+              <span class="w-16 h-16 rounded-full bg-violet-600 text-white grid place-items-center shadow-xl shadow-violet-900/40 group-hover:scale-105 transition-transform"><Play class="w-7 h-7 ml-1" aria-hidden="true" /></span>
+            </span>
+          </button>
+          <figcaption class="px-4 py-3 text-sm font-semibold text-zinc-800 dark:text-zinc-200">{v.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="mt-4 text-sm muted">More on our <a class="text-violet-600 dark:text-violet-300 font-semibold" href="https://www.youtube.com/@Thebestscreenprinting" rel="noopener">YouTube channel</a>.</p>
+  </section>
+)}
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('button.yt').forEach((b) => b.addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0`;
+    f.title = b.getAttribute('aria-label') || 'YouTube video';
+    f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    f.className = 'absolute inset-0 w-full h-full';
+    b.replaceChildren(f);
+    b.disabled = true;
+  }));
+</script>

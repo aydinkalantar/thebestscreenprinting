@@ -5,6 +5,8 @@ import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Turnaround from '../components/Turnaround.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import { VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
 import { products } from '../lib/catalog';
 import {
@@ -53,7 +55,8 @@ const faqs = [
 ];
 const shirt = products.find((p) => /t-shirt/i.test(p.name) && p.category === 'apparel') ?? products[0];
 const featured = products.filter((p) => ['apparel', 'sweatshirts', 'hats'].includes(p.category)).slice(0, 8);
-const jsonLd = [{
+const homeVideos = [VIDEOS.reel, VIDEOS.netflix];
+const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
@@ -177,6 +180,9 @@ const jsonLd = [{
       ))}
     </ol>
   </section>
+
+  <!-- Videos -->
+  <section class="wrap mt-24"><VideoGrid videos={homeVideos} eyebrow="Inside the shop" title="Watch us print" /></section>
 
   <!-- Turnaround -->
   <section class="wrap mt-24" aria-labelledby="turn-title">

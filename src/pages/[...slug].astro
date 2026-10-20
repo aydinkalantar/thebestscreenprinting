@@ -4,6 +4,8 @@ import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import { PAGE_VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
 import { heroImage, eyebrowFor, relatedFor } from '../lib/page-meta';
 import { ArrowRight, Palette, Phone, Clock, MapPin, ChevronRight } from '@lucide/astro';
@@ -56,6 +58,8 @@ if (kind === 'service' || kind === 'product' || kind === 'location') {
     provider: { '@id': `${business.url}/#organization` },
   });
 }
+const videos = PAGE_VIDEOS[path] ?? [];
+for (const v of videos) { const ld = videoJsonLd(v); if (ld) jsonLd.push(ld); }
 if (faqs.length) {
   jsonLd.push({
     '@context': 'https://schema.org',
@@ -126,6 +130,7 @@ if (faqs.length) {
     )}
   </div>
 
+  {videos.length > 0 && <div class="mt-16"><VideoGrid videos={videos} /></div>}
   {faqs.length > 0 && <div class="mt-16"><Faq faqs={faqs} /></div>}
   {!narrow && <div class="mt-16"><CtaBand /></div>}
 </Base>
