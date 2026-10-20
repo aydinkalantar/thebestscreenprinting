@@ -30,6 +30,8 @@ export const business = {
   /** Orders this size and up are printed in our shop (quote); smaller ones go through the studio. */
   shopMinimum: 24,
   assistantName: 'Max',
+  /** Areas we serve without a shop address there (service-area business). */
+  serviceAreas: ['Los Angeles, CA', 'Cleveland, OH'],
 } as const;
 
 export const localBusinessJsonLd = {
@@ -43,4 +45,8 @@ export const localBusinessJsonLd = {
   address: { '@type': 'PostalAddress', ...business.address },
   openingHours: business.openingHours,
   sameAs: business.sameAs,
+  areaServed: [
+    { '@type': 'City', name: 'Los Angeles', containedInPlace: { '@type': 'State', name: 'California' } },
+    { '@type': 'City', name: 'Cleveland', containedInPlace: { '@type': 'State', name: 'Ohio' } },
+  ],
 };

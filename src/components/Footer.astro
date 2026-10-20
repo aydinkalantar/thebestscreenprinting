@@ -14,7 +14,7 @@ const cols = [
   ] },
   { title: 'Company', links: [
     ['About us', '/about-us/'], ['FAQ', '/faq/'], ['Shipping & delivery', '/shipping-and-delivery/'],
-    ['Blog', '/blog/'], ['Privacy', '/privacy-policy/'], ['Terms', '/terms-conditions/'],
+    ['Blog', '/blog/'], ['Cleveland, OH', '/cleveland-oh/'], ['Privacy', '/privacy-policy/'], ['Terms', '/terms-conditions/'],
   ] },
 ];
 const social = [
@@ -28,7 +28,7 @@ const social = [
   <div class="wrap py-14 grid gap-10 md:grid-cols-[1.3fr_repeat(3,1fr)]">
     <div class="space-y-3 text-sm muted">
       <BrandMark />
-      <p class="max-w-xs">Screen printing, embroidery and custom apparel, made in our Downtown Los Angeles shop.</p>
+      <p class="max-w-xs">Screen printing, embroidery and custom apparel from our Downtown Los Angeles shop. Now serving Cleveland, Ohio.</p>
       <p class="flex items-start gap-2"><MapPin class="w-4 h-4 mt-0.5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" />{business.address.streetAddress}, {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}</p>
       <p class="flex items-center gap-2"><Phone class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a class="hover:text-zinc-900 dark:hover:text-white" href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
       <p class="flex items-center gap-2"><Mail class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a class="hover:text-zinc-900 dark:hover:text-white" href={`mailto:${business.email}`}>{business.email}</a></p>

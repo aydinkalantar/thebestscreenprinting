@@ -55,6 +55,7 @@ export function areaName(path: string): string | null {
 }
 
 export function eyebrowFor(kind: string, path: string): string {
+  if (path.includes('cleveland')) return 'Now serving Cleveland, Ohio';
   if (kind === 'location') {
     const area = areaName(path);
     return area ? `Los Angeles · ${area}` : 'Los Angeles';

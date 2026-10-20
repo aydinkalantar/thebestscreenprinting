@@ -50,7 +50,9 @@ if (kind === 'service' || kind === 'product' || kind === 'location') {
     name: h1,
     description: summary || description,
     url,
-    areaServed: { '@type': 'City', name: 'Los Angeles' },
+    areaServed: path.includes('cleveland')
+      ? { '@type': 'City', name: 'Cleveland', containedInPlace: { '@type': 'State', name: 'Ohio' } }
+      : { '@type': 'City', name: 'Los Angeles' },
     provider: { '@id': `${business.url}/#organization` },
   });
 }
