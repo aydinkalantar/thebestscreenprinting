@@ -1,71 +1,73 @@
 ---
 path: "/products/team-uniforms-jerseys/"
-title: "Team Uniforms & Jerseys"
-description: "Team Uniforms & Jerseys"
-h1: "Team uniforms & Jerseys"
+title: "Team Uniforms & Jerseys | Los Angeles"
+description: "Custom team uniforms and jerseys in Los Angeles: screen-printed crests, heat-transfer names and numbers, embroidered coach gear. Made in Downtown LA."
+h1: "Team uniforms and jerseys"
 kind: product
-imported: true
+imported: false
+summary: "Jerseys that look like a team before the first whistle. Logos screen printed or embroidered in our Downtown LA shop, names and numbers pressed from your roster, quotes back within one business day."
+facts:
+  - label: "Names and numbers"
+    value: "Heat transfer, so every jersey can be different"
+  - label: "Team crest"
+    value: "Screen printed in-house for 24+ pieces; DTG or DTF for smaller squads"
+  - label: "Quotes"
+    value: "Answered within one business day"
+faqs:
+  - q: "Can every jersey have a different name and number?"
+    a: "Yes. Names and numbers are applied with heat transfer, which lets us change them piece by piece from your roster."
+  - q: "What is the minimum for team jerseys?"
+    a: "There is no fixed minimum. Screen printing is used for 24 or more pieces of one design; smaller teams are usually printed with DTG or DTF, and DTG has no minimum or setup fee."
+  - q: "Can you embroider team polos, jackets and hats?"
+    a: "Yes. We embroider polos, hats, jackets and uniforms for coaches, staff and players."
+  - q: "Do you check my logo before printing?"
+    a: "Yes. Every order gets a free art check before it goes to print."
+  - q: "Can you rush jerseys before a game?"
+    a: "Same-day and next-day rush slots are available for many orders. Call (323) 433-0033 or request a quote to confirm your date."
 sourceUrl: "https://thebestscreenprinting.com/products/team-uniforms-jerseys/"
 ---
-## Customer Feedback
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+Your team should look the part. We print and embroider uniforms for leagues, clubs, schools and company teams out of our shop at 2710 S Broadway Avenue in Downtown LA. The crest goes on in ink or thread. Names and numbers go on from your roster, one player at a time.
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+## Built from your roster
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+A team order is part uniform, part personal. Most combine:
 
-## Our Customers
+- A front crest or team name, identical on every jersey
+- Big, bold numbers on the back, plus the front or sleeve if you want
+- Player names across the shoulders
+- Sponsor logos on the sleeve or lower back
+- Matching coach and staff shirts, polos or jackets
 
-#### 24 Hour Online Support
+Send a roster with sizes, names and numbers. We build the whole order from that list.
 
-## Get a Quick Quote
+## Which decoration method goes where?
 
-### Blog
+One jersey, several techniques, each doing what it does best:
 
-#### What is direct to garment printing and how does it work?
+- **[Screen printing](/screen-printing/)** lays down the team crest in thick, saturated ink when you have 24 or more pieces of one design. Printed in-house, built to survive the wash after every game.
+- **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** handles names and numbers, crisp edges, different on every piece.
+- **[Direct to film](/services/direct-to-film/)** and DTG cover full-color logos for smaller squads, usually under 24 pieces.
+- **[Embroidery](/services/embroidery/)** stitches the logo onto coach polos, team jackets and hats for a sharp sideline look.
 
-Direct to garment printing (DTG) is a digital printing process that allows for full-color, high-quality [...]
+Not sure which mix fits? Send your art and headcount. We will call it in the quote.
 
-#### What kind of thread is used for embroidery?
+## Pick your kit
 
-There are several types of thread that can be used for embroidery, and the choice [...]
+Jerseys, performance tees, cotton tees, hoodies, polos, jackets, hats. Browse styles and colors in our [catalog](/catalog/), or tell us what your league requires and we will match the rules and the budget.
 
-#### What is the difference between embroidery and screen printing?
+## How do we keep sizes and names straight?
 
-Embroidery and screen printing are both popular methods of adding designs or logos to fabric [...]
+A clean roster is the secret weapon. List each player once with size, name exactly as it should print (capitals included) and number. Check spelling before you send it. We walk through the art and layout with you before anything hits a press, so that is the moment to catch a typo, not on game day.
 
-#### What materials can be embroidered?
+## Season starts Saturday?
 
-Embroidery can be done on a wide variety of materials, including: Overall, embroidery can be [...]
+Same-day and next-day rush slots are open for many orders. What is possible depends on the garment, the method and the shop schedule, so call (323) 433-0033 before you lock in a date. More on rush work: [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
 
-#### What is screen printing and how is it done?
+## Beyond the field
 
-What is the screen printing process? Screen printing is a multi step printing technique which [...]
+Schools and booster clubs run spirit wear through the same setup; see [apparel for schools](/for/schools/). Company rec-league teams often pair jerseys with [event apparel](/event-apparel/) for tournaments and fundraisers.
 
-#### How to do t-shirt screen printing?
+## Suit up
 
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
-
-#### Screen Printing on Hoodies
-
-Screen printing on hoodies is a popular way to customize and personalize hoodies with designs, [...]
-
-#### Embroidery on clothes
-
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your logo, roster and deadline through the [quick quote form](/quick-quote/), or call (323) 433-0033, Monday through Friday, 9am to 5pm. You will hear back within one business day.

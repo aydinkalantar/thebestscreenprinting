@@ -1,59 +1,57 @@
 ---
 path: "/services/direct-to-garment/"
-title: "Direct To Garment Services In Los Angeles"
-description: "High end, high resolution direct to garment apparel printing services in Los Angeles."
-h1: "direct to garment printing"
+title: "Direct-to-Garment (DTG) Printing in Los Angeles"
+description: "DTG printing in Downtown LA: full-color, high-detail prints with no minimum and no setup fee. Ideal for samples, one-offs and runs under 24 pieces."
+h1: "Direct-to-garment (DTG) printing in Los Angeles"
 kind: service
-imported: true
+imported: false
+summary: "Photo-level detail printed straight into the fabric, from one shirt to a short run, at our Downtown LA shop. DTG has no minimum and no setup fee, and every design gets a review and proof before it prints."
+facts:
+  - { label: "Minimum", value: "No minimum" }
+  - { label: "Setup fee", value: "None" }
+  - { label: "Best for", value: "Samples, one-offs and full-color designs" }
+faqs:
+  - q: "Is there a minimum order for DTG printing?"
+    a: "No. DTG has no minimum and no setup fee, so you can print a single shirt or a short run of different designs."
+  - q: "What file should I send for DTG?"
+    a: "Send the highest resolution image you have. The more pixels in the file, the more detail ends up on the shirt. For business logos, ask your web or marketing team for the original files."
+  - q: "When is screen printing better than DTG?"
+    a: "For larger orders of one design, screen printing is usually more cost efficient and faster. DTG is the better fit for small batches, samples and orders with many different designs."
+  - q: "Will I see a proof before printing?"
+    a: "Yes. Every design is inspected before printing, and we send you a final proof to approve before anything goes on a garment."
 sourceUrl: "https://thebestscreenprinting.com/services/direct-to-garment/"
 ---
-### High quality, quick turnaround, affordable prices
+## Printed straight into the fabric
 
-## Digital Shirt Printing
+DTG works like an inkjet printer built for apparel. Your design is printed directly onto the garment, so full-color artwork, gradients and photos land with fine detail and no screens. The ink becomes part of the shirt, which keeps the print soft to the touch.
 
-### High end, high resolution direct to garment apparel printing.
+## When should you choose DTG?
 
-Direct to Garment, or DTG printing, is a process by which a digital image is printed directly onto your apparel using the newest technology in apparel printing. This process allows us to print any quantity order with highly detailed full color designs at an affordable price. With our expert team of DTG professionals any design is possible. We ensure outstanding accuracy, exceptional consistency, exceptional print output and low priced rates with every order.
+DTG is the play when:
 
-From purchasing apparel stock to handling shipping – we do it all for you. That leaves you with more time to focus on what matters to you. Call us today at (323) 433-0033 to learn more about our direct to garment printing apparel options.
+- You need one piece or a short run with no minimum
+- You are printing several different designs in small quantities
+- Your artwork is too detailed or colorful for screens
+- You want samples before running a bigger order
+- You are going for a vintage look, since the ink and fabric fade together over time
 
-## Direct to Garment Process
+For 24 or more pieces of a single design, [screen printing](/screen-printing/) is usually the faster, more cost-efficient route. Printing on polyester or blends? [Direct-to-film](/services/direct-to-film/) often handles those better.
 
-Step 1: Every order receives a professional design review from our team of graphic artists and digital printing experts. We work diligently with you to see to your finished product. To start, we ask for the highest resolution image you currently have. The higher the image resolution, the better!
+## How does the DTG process work?
 
-Step 2: Our designers are happy to work with any image you provide, even if it takes a bit of polishing. We have mastered the art of transforming designs into masterpieces. For businesses, check with your web developer or marketing team to provide you with any raw logo image files.
+1. **Send your best file.** The highest resolution image you have. Higher resolution means more detail on the shirt.
+2. **Design review.** Our team reviews every order. If the file needs polishing, we can help clean it up.
+3. **Proof.** You get a final proof to approve before printing.
+4. **Print.** The design is printed directly onto the garment and inspected before it is packed.
 
-Step 3: Every design is thoroughly inspected before printing for quality assurance. You’ll be able to review the finished layout when we send you the final design proofs for your approval. If you have questions about your specific artwork, simply call us at 1-323-433-0033 to consult with your project specialist.
+## Why resolution matters
 
-Step 4: When it comes to printing, pixels matter. Pixels are the smallest measurable point in a photo, and together, hundreds of thousands of them (sometimes millions) combine together to make the image you see. Think of mosaic artwork; The greater number of pieces within a canvas, the more detailed and apparent the image will look.
+When it comes to digital printing, pixels are everything. Think of a mosaic: the more pieces, the sharper the picture. A small or compressed image pulled from a website will look soft once it is stretched across a chest print. Send the original file whenever you can. Not sure what you have? Send it anyway and our free art check will tell you.
 
-Digital t shirt printing is essential for designs that are simply too complex for traditional screen printing methods, and when the maximum amount of detail is sought. Our DTG printers use the best quality inks to distribute the ink evenly across one amazing design after another.
+## We handle the blanks and the shipping
 
-### FAQ
+From sourcing the apparel to shipping the finished order, we take care of it. Pick blanks from our [catalog](/catalog/) or bring your own. Need it fast? Same-day and next-day slots are open for many orders. See [same-day T-shirt printing](/same-day-t-shirt-printing-los-angeles/).
 
-Direct to garment is an affordable printing method for small batch orders. This printing method is used for singular designs and often we direct to garment for samplesbefore running bigger orders. If you are looking to print multiple designs, direct to garment printing is the fastest way to do it. For larger scale orders, screen printing would be the better route in terms of cost efficiency and time. However, there may have to be file adjustments done to the artwork so that the printing technique captures what is being visually communicated.
+## Let's print it
 
-Direct to Film or DTF and direct to garment (DTG)are both great options for low quantity orders. DTF film is more expensive due to the film being used to transfer the image onto a shirt. Whereas direct to garment printing is printing onto the shirt directly without an extra material to make the transfer. DTG printing allows for a seamless feel of garment and ink transfer whereas DTF transfer layers a subtle film only noticeable to the touch. Due to this, DTG printing is a great selection if you are looking to create a washed out vintage look because the ink and fabric fade simultaneously over time.
-
-## Our Customers
-
-#### 24 Hour Online Support
-
-## Get a Quick Quote
-
-DIRECT TO GARMENT PRINTING NEAR ME
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your design and count through our [quick quote form](/quick-quote/). Quotes come back within one business day, or call (323) 433-0033, Monday to Friday, 9am to 5pm.

@@ -1,45 +1,49 @@
 ---
 path: "/learn-delivery-time/"
 title: "Learn More About Delivery Time | The Best Screen Printing"
-description: "If you order is not rush, use our Free Shipping service. Place your order online or over the phone by 2pm PST for delivery in 14-business days."
+description: "How long custom apparel takes at TBSP: free standard shipping, a 2pm PT order cutoff, and same-day or next-day rush slots in Downtown LA for many orders."
 h1: "From the design studio to your door"
 kind: core
-imported: true
+imported: false
+summary: "Plan your deadline with confidence. Standard orders ship free in about 14 business days; same-day and next-day rush slots are available for many orders in Downtown LA."
+faqs:
+  - q: "When does the clock start?"
+    a: "Order online or by phone by 2pm Pacific, Monday to Friday. Orders placed after the cutoff start the next business day."
+  - q: "Can I get my order the same day?"
+    a: "Same-day and next-day rush slots are available for many orders. It depends on quantity, method and garment stock, so call (323) 433-0033 or request a quote to confirm."
+  - q: "Do you ship to Alaska or Hawaii?"
+    a: "Standard delivery times cover the contiguous 48 states. Call us for shipping details and pricing to Alaska or Hawaii."
+  - q: "Is rush available for embroidery?"
+    a: "Rush availability varies by method and item. Tell us what you need and we will confirm what is possible before you order."
 sourceUrl: "https://thebestscreenprinting.com/learn-delivery-time/"
 ---
-#### FREE SHIPPING
+## Standard: free shipping
 
-## 2-WEEK DELIVERY
+Not in a hurry? Use free standard shipping. Place your order online or by phone by **2pm Pacific** for delivery in about **14 business days** within the contiguous 48 states.
 
-If you order is not rush, use our Free Shipping service. Place your order online or over the phone by 2pm PST for delivery in 14-business days.
+Standard orders get the same mockup approval, free art check and quality checks as every TBSP order.
 
-#### UPGRADE TO RUSH
+## Rush: when the date will not move
 
-## 1-Week Delivery
+Launch next week? Event this weekend? Same-day and next-day rush slots are available for many orders at our Downtown LA shop. What makes rush possible:
 
-If you need shirts fast, with all the same guarantees as any TBSP.LA order, use our Upgraded To Rush service. Place your order online or over the phone by 2pm PST for delivery in 7-business days. Upgraded To Rush service is 25% of your order cost and is available on a ton of styles.
+- **Garment stock.** Common blanks in common colors move fastest.
+- **Method.** [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) need no screens, so small runs turn quickly. [Screen printing](/screen-printing/) for 24+ pieces needs screens made first.
+- **Approved art.** The sooner you approve the mockup, the sooner we print.
 
-#### SUPER RUSH – LOCAL PICK-UP Only
+Rush is quoted per order. Call (323) 433-0033 before you commit to a deadline, or read more on [same-day t-shirt printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/).
 
-## 4-Day Super Rush – Local pick-up Only
+## Can I pick up my order in Los Angeles?
 
-If you need shirts fast, with all the same guarantees as any TBSP.LA order, use our Super Rush Local Pick-up service. Place your order online or over the phone by 2pm PST for pick-up in 4-business days. Super Rush service is 35% of your order cost and is available on a ton of styles. We don’t currently offer Super Rush on specialty items or embroidery orders. Place your order online or over the phone by 2pm PST for local pick-up. Local Pick-up Address: 2500 S Main St. Los Angeles CA 90007
+Yes. Local pickup at 2710 S Broadway Avenue, Los Angeles, CA 90007 skips transit time entirely. It is often the fastest way to get a rush order into your hands. Pickup hours are Monday to Friday, 9am to 5pm.
 
-These shipping times reflect shipment within the contiguous 48 United States. If you would like shipping and pricing details for shipment to Alaska or Hawaii OR if you would like to learn more about our Rush or Super-Rush shipping options, please give us a call at 1-323-433-0033 and a service representative will be happy to assist you!
+## How to hit your date
 
-Talk to a Real Person 6 Days a Week | Mon-Sat 9am-6pm PST | Sun-Closed
+1. **Start with a quote.** Quotes are answered within one business day.
+2. **Send print-ready art.** See our [design tips](/helpful-design-tips/).
+3. **Approve the mockup quickly.** Production starts after approval.
+4. **Tell us your in-hands date.** Not just the ship date: the day you actually need it.
 
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Shipping, reorders and returns are covered on [shipping and delivery](/shipping-and-delivery/).
+
+Have a deadline? [Get a free quote](/quick-quote/) and put the date in the notes.

@@ -1,77 +1,68 @@
 ---
 path: "/products/t-shirts/custom-printed-t-shirts/"
-title: "Custom Printed T-shirts In Los Angeles"
-description: "Custom printed t-shirts for Everyone in Los Angeles. Print shirts for yourself or your online business."
-h1: "Custom printed"
+title: "Custom Printed T-shirts in Los Angeles | TBSP"
+description: "Custom printed t-shirts in Los Angeles: screen printing, DTG, DTF, heat transfer or all-over sublimation. Here is how to pick the right print for your shirt."
+h1: "Custom printed t-shirts in Los Angeles"
 kind: product
-imported: true
+imported: false
+summary: "Five ways to put your design on a shirt, and the one that fits depends on your quantity, colors and fabric. We run all of them at our Downtown LA shop and recommend the right one with every quote."
+facts:
+  - { label: "Methods", value: "Screen print, DTG, DTF, heat transfer, sublimation" }
+  - { label: "Minimum", value: "None for DTG; 24 pieces per design for screen printing" }
+  - { label: "Best for", value: "Matching the print to your quantity and artwork" }
+faqs:
+  - q: "Which print method lasts the longest?"
+    a: "Screen printing and sublimation are both very durable. Screen printed ink is thick and holds up to repeated washing, and sublimation dye becomes part of polyester fabric, so it cannot crack or peel."
+  - q: "What is the best method for a full-color photo on a cotton shirt?"
+    a: "Direct-to-garment (DTG) prints full color straight into cotton with no minimum and no setup fee. Direct-to-film (DTF) is another option that works on a wider range of fabrics."
+  - q: "Can I use more than one method on the same shirt?"
+    a: "Yes. A common combination is a screen printed design with heat transfer names and numbers added on the back."
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/custom-printed-t-shirts/"
 ---
-Block "11614" not found
+## Same shirt. Five different prints.
 
-Block "11523" not found
+A custom printed tee can feel like a soft vintage print, a bold slab of opaque ink or a photo that looks dyed into the fabric. The difference is the method. Here is how each one works and when it wins.
 
-## Browse our Categories
+## Screen printing: bold color in bulk
 
-## Customer Feedback
+Ink is pushed through a mesh screen, one screen per color, layer by layer. The result is opaque, saturated color with a print that stands up to years of washing. Screen printing starts at 24 pieces of one design and is printed in-house at our shop.
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+**Choose it for:** staff shirts, events, teams, merch drops, designs with a few solid colors. [More on screen printing](/screen-printing/).
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+## Direct-to-garment: full color, no minimum
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+DTG works like an inkjet printer for fabric, spraying water-based ink straight into the shirt. Unlimited colors, fine detail, soft feel, and no minimum or setup fee.
 
-## Our Customers
+**Choose it for:** small runs, one-offs, photos and gradients on cotton. [More on DTG](/services/direct-to-garment/).
 
-#### 24 Hour Online Support
+## Direct-to-film: small runs on more fabrics
 
-## Get a Quick Quote
+Your design is printed onto a film, coated with adhesive powder and heat pressed onto the garment. It handles full color and works on cotton, polyester and blends.
 
-### Blog
+**Choose it for:** short runs, mixed fabrics, bright color on dark shirts. [More on DTF](/services/direct-to-film/).
 
-#### How to do t-shirt screen printing?
+## Heat transfer vinyl: names and numbers
 
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
+Cut vinyl is pressed onto the shirt for clean, sharp lettering. It is how one design becomes a full roster of personalized shirts.
 
-#### What is direct to garment printing and how does it work?
+**Choose it for:** jerseys, staff names, individual numbers. [More on heat transfer](/services/heat-transfer-vinyl/).
 
-Direct to garment printing (DTG) is a digital printing process that allows for full-color, high-quality [...]
+## Sublimation: the whole shirt
 
-#### What kind of thread is used for embroidery?
+Dye is turned to gas by heat and bonded into polyester fibers, covering the shirt edge to edge with no ink feel.
 
-There are several types of thread that can be used for embroidery, and the choice [...]
+**Choose it for:** all-over patterns and photo prints. [More on all-over printing](/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/).
 
-#### What is the difference between embroidery and screen printing?
+## How do I choose the right one?
 
-Embroidery and screen printing are both popular methods of adding designs or logos to fabric [...]
+Start with three questions:
 
-#### What materials can be embroidered?
+1. **How many of one design?** 24 or more points to screen printing. Fewer points to DTG or DTF.
+2. **How many colors?** A few solid spot colors suit screens. Photos and gradients suit DTG, DTF or sublimation.
+3. **What fabric?** Cotton opens every option except sublimation. Polyester is where sublimation and DTF shine.
 
-Embroidery can be done on a wide variety of materials, including: Overall, embroidery can be [...]
+You do not have to get it right on your own. Every quote comes with our recommendation and a free art check. To see how an order moves from art to pickup, read [custom t-shirt printing step by step](/products/t-shirts/custom-t-shirt-printing/), or browse blanks in the [catalog](/catalog/).
 
-#### What is screen printing and how is it done?
+## Let us match the method
 
-What is the screen printing process? Screen printing is a multi step printing technique which [...]
-
-#### Embroidery on clothes
-
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
-
-#### Screen Printing
-
-What is Screen Printing? Screen printing is another type of printing used in printing. But [...]
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your design and quantity, and we will tell you which print gives you the best result for the budget. [Get a quick quote](/quick-quote/).

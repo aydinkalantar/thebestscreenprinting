@@ -1,59 +1,63 @@
 ---
 path: "/products/bags/customize-bag/"
-title: "Customize Bag"
-description: "Customising bags is one the cheapest ways to advertise your business. Customise bags, tote-bags, backpacks, travel bags, shopping bags, classic bags and others with the best screen printing."
-h1: "Customize Bag"
+title: "Customize Bag | Custom Printed Bags Los Angeles | TBSP"
+description: "Customize a bag in Los Angeles: bring your own totes or backpacks or choose ours, then pick screen printing or embroidery on one or both sides."
+h1: "Customize a bag"
 kind: product
-imported: true
+imported: false
+summary: "Bring your own bags or pick from ours, choose print or stitch, one side or both. Customizing a bag is simple, and it is one of the most affordable ways to put your brand into daily life."
+facts:
+  - { label: "Bags", value: "Yours or ours: totes, shopping bags, backpacks, travel bags" }
+  - { label: "Methods", value: "Screen printing or embroidery, one or both sides" }
+  - { label: "Best for", value: "Affordable everyday advertising and gifts" }
+faqs:
+  - q: "Can I bring my own bags to be customized?"
+    a: "Yes. You can supply your own bags or choose from the materials and colors we offer. Tell us the brand, fabric and quantity in your quote request so we can confirm the method."
+  - q: "Are custom bags a good way to advertise a business?"
+    a: "Yes. A reusable bag is one of the more affordable branded items, and people carry it in public again and again, so your logo gets seen long after the giveaway."
+  - q: "Can custom bags be used to carry food?"
+    a: "Yes. Our custom bags can carry all kinds of contents, from very small items to food. Let us know the use when you order so we can suggest the right bag."
 sourceUrl: "https://thebestscreenprinting.com/products/bags/customize-bag/"
 ---
-Screen Printing | Embroidery | DTG | Dye-Sublimation
+## Your bag, your way
 
-#### FREE SHIPPING
+Customizing a bag comes down to four decisions: which bag, which method, which side and which design. Here is how to work through each one so your bags come out exactly how you pictured them.
 
-## 2-Week Delivery
+## Step 1: Choose the bag
 
-#### UPGRADE TO RUSH
+You have two routes.
 
-## 1-Week Delivery
+**Use ours.** We offer bags in a range of materials and colors, from light, durable totes to sturdier styles. Browse the [catalog](/catalog/) or ask us for a pick based on your budget and use.
 
-#### SUPER RUSH - local pick-up only
+**Bring your own.** Already have bags you love, or need to match a specific style? Supply them and we will decorate them. Just tell us the fabric up front so we can choose the right method.
 
-## 4-Day Super Rush
+## Step 2: Choose print or stitch
 
-### NEW
+**[Screen printing](/screen-printing/)** lays down bold, solid ink on canvas and cotton. It handles big graphics and starts at 24 pieces of one design.
 
-## Online Design Studio
+**[Embroidery](/services/embroidery/)** stitches your logo into the bag for a raised, premium finish. It suits smaller marks and sturdier fabrics.
 
-### Design, Order & Enjoy
+## Step 3: One side or both?
 
-Block "3584" not found
+A design on one side keeps cost down. Adding the back doubles the visibility: a logo on the front, a website or tagline on the back. Each side is quoted as its own print.
 
-#### 24 Hour Online Support
+## Step 4: Make the design work
 
-## Get a Quick Quote
+Customers notice bright colors and creative designs, but a simple, clean logo is just as on-trend. Whichever way you go:
 
-## Customize Bag
+- Make sure text is big enough to read at arm's length
+- Pick ink colors that contrast with the bag
+- Keep stitched designs bold and uncluttered
+- Send vector artwork or a high-resolution image
 
-Customising bags is one the cheapest ways to advertise your business. Customise bags, tote-bags, backpacks, travel bags, shopping bags, classic bags and others with the best screen printing.
+Every order gets a free art check before production, so small issues are fixed before they are printed fifty times.
 
-One can bring their own bags or get from our shop where a variety of materials and colors are presented. Customised bags that we offer are quite durable and light at the same time which makes it unique. Once they notice your customised bags they will never forget it. To make so you may need to choose bright colors and a creative design. Although simple customised bags are also in trend.
+## Why do bags make such good marketing?
 
-Your design can be screen printed or embroidered on one or both sides based on your vision. If there is need you can use our free templates in design studio to customise your bags. Our customised bags can be used for various contents including very small items or food.
+A custom bag is cheap per impression. People reuse it for groceries, gym clothes, takeout and small items, carrying your brand through the city long after the event is over. Once someone notices a great bag, they remember it.
 
-Order and enjoy the feedback from customised bags now!
+For bag styles and use cases, see our [custom bags](/products/bags/) overview. Building a bigger merch package? Pair bags with [T-shirts](/products/t-shirts/) and [hats](/products/hats/).
 
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+## Start customizing
+
+Send your design, the bag (yours or ours) and your quantity. [Get a quick quote](/quick-quote/).

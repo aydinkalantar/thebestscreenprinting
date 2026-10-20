@@ -1,87 +1,63 @@
 ---
 path: "/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/"
-title: "Custom All-Over T-Shirt Printing In Los Angeles"
-description: "Custom all-over t-shirt printing in Los Angeles are the best way to highlight even the most intricate of designs."
-h1: "Custom All-Over T-Shirt Printing in Los Angeles"
+title: "Custom All-Over T-Shirt Printing in Los Angeles | TBSP"
+description: "Custom all-over t-shirt printing in Los Angeles. Dye-sublimation covers the whole shirt, front, back and sleeves, in full color with zero ink feel."
+h1: "Custom all-over t-shirt printing in Los Angeles"
 kind: product
-imported: true
+imported: false
+summary: "Edge to edge, front to back, sleeves included: all-over prints that turn the whole shirt into the canvas. Done with dye-sublimation on polyester at our Downtown LA shop, with a free art check before anything is pressed."
+facts:
+  - { label: "Method", value: "Dye-sublimation, pressed panel by panel" }
+  - { label: "Fabric", value: "Polyester garments with a light base color" }
+  - { label: "Best for", value: "Clothing lines, photo prints, patterns, merch drops" }
+faqs:
+  - q: "What fabric do all-over print shirts need?"
+    a: "Polyester. Sublimation dye bonds with polyester fibers, so 100% polyester or a high-polyester blend in white or a light color gives the brightest, most accurate result. It does not work on 100% cotton."
+  - q: "Will an all-over print crack or peel?"
+    a: "No. Sublimation dye becomes part of the fabric instead of sitting on top of it, so there is no ink layer to crack, peel or feel. The shirt stays as soft and breathable as the blank."
+  - q: "Can you do all-over prints on hoodies and other garments?"
+    a: "Yes. Besides T-shirts we print all-over designs on hoodies, sweatshirts, sweatpants, socks and more, as long as the garment is polyester."
+  - q: "How do I get a price for all-over printing?"
+    a: "Send your design, garment, quantity and deadline through the quick quote form. Quotes are answered within one business day."
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/"
 ---
-Block "11614" not found
+## The whole shirt is the canvas
 
-Block "11523" not found
+Most printing puts a logo in a box on the chest. All-over printing ignores the box. Your artwork runs across the front, wraps around the back and carries down both sleeves, so the shirt reads as one continuous piece of design: a photo, a pattern, a gradient, a texture, a full-bleed graphic with no blank fabric framing it.
 
-## Browse our Categories
+It is the look behind a lot of streetwear, festival merch and brand drops, and we press it right here at our Downtown LA shop on South Broadway.
 
-## Customer Feedback
+## How does all-over printing work?
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+We use dye-sublimation, which works nothing like screens or ink layers:
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+1. **Layout.** Your artwork is laid out in the shape of the garment's panels. For a T-shirt that means front, back and each sleeve. For a hoodie it also includes the hood.
+2. **Print to paper.** The layout is printed onto transfer paper with sublimation dye.
+3. **Press.** The paper goes on a large heat press, the garment is laid on top, and heat and pressure turn the dye into a gas that bonds with the polyester fibers.
+4. **Flip and repeat.** The garment is turned and pressed again until every panel carries the design.
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+Because the dye moves into the fiber instead of sitting on it, colors come out vivid and photographic, and the print has no hand at all. Run your palm over it and you feel fabric, not ink.
 
-## Our Customers
+## What all-over printing does best
 
-#### 24 Hour Online Support
+- **Photographic and painted artwork** with smooth gradients and unlimited colors
+- **Repeating patterns** like camo, florals, checks or a logo monogram
+- **Abstract and textured graphics** that would need too many screens to screen print
+- **Branded merch** for businesses, events and organizations that want to go bigger than a chest logo
+- **Clothing lines** building a signature print across tees, hoodies, sweats and socks
 
-## Get a Quick Quote
+## Design tips before you send art
 
-### Blog
+All-over prints reward a little planning:
 
-#### How to do t-shirt screen printing?
+- **Go big on resolution.** The artwork prints at full garment size, so start with high-resolution files. Our free art check flags anything that will look soft.
+- **Respect the seams.** Keep faces, text and logos away from collars, side seams and underarms. The press works panel by panel on a finished shirt, so small unprinted lines can appear in folds. Busy patterns hide them; big flat colors show them.
+- **Think light.** Sublimation dye is transparent, so it needs a white or light polyester base. It cannot lay white onto a dark shirt.
 
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
+## Is all-over printing right for your design?
 
-#### What is direct to garment printing and how does it work?
+If your design fits on the chest or back and you want it on cotton, screen printing or direct-to-garment is usually the better call. Compare them on [screen printing](/screen-printing/), [direct-to-garment](/services/direct-to-garment/) and [direct-to-film](/services/direct-to-film/). Need a handful of one-off all-over pieces, or a sample before a full run? See [all-over printing with no minimum](/products/t-shirts/custom-all-over-t-shirt-printing-no-minimum/). For the full range of blanks, browse [T-shirts](/products/t-shirts/) or [hoodies and sweatshirts](/products/sweatshirts-hoodies/).
 
-Direct to garment printing (DTG) is a digital printing process that allows for full-color, high-quality [...]
+## Bring us the wild idea
 
-#### What kind of thread is used for embroidery?
-
-There are several types of thread that can be used for embroidery, and the choice [...]
-
-#### Screen Printing
-
-What is Screen Printing? Screen printing is another type of printing used in printing. But [...]
-
-#### Embroidery on clothes
-
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
-
-#### What is screen printing and how is it done?
-
-What is the screen printing process? Screen printing is a multi step printing technique which [...]
-
-#### What materials can be embroidered?
-
-Embroidery can be done on a wide variety of materials, including: Overall, embroidery can be [...]
-
-#### What is the difference between embroidery and screen printing?
-
-Embroidery and screen printing are both popular methods of adding designs or logos to fabric [...]
-
-Custom t-shirt printing | T-shirt screen printing near me | Custom printed t-shirts | Ssame day t-shirt printing near me | Custom All-Over T-Shirt Printing in Los Angeles | Custom T-shirt Screen Printing Near Tuscumbia AL | Custom All-over T-shirt Printing No-minimum
-
-### FAQ
-
-Another method of printing we provide for garments are custom all over print shirts. This printing technique involves the use of sublimation printing to press a design on a whole garment, from the front to the back, creating a seamless look all over with no blank fabric showing. All over printing is primarily used with polyester garments. Printing with this technique offers full customization of any garment including t shirts, hoodies, sweatpants, sweatshirts, socks, and more. For total creativity, custom all over print is the perfect option for clothing lines.
-
-With all over printing, we use the sublimation technique. In order to do this, we print the artwork of your design in the shape of the garment it is to be printed on. So if we do a custom all over print on a hoodie, the artwork is laid out as such, with the front of the hoodie, the back, the front sleeves, the back sleeves, and finally the hood. This design is printed onto paper using a dye ink and afterwards, we are ready to transfer it onto fabric using a large heat press. The paper is laid onto the surface of the heat press then the garment is layered on top. It is pressed with plenty of pressure and heat for some time then released and finally, the image is transferred onto the fabric. This process is repeated, flipping the garment from front to back, until all the image is transferred onto the fabric. Custom all over print can be used to create a variety of different effects and designs, including photographic prints, abstract patterns, and graphic designs. The technique is particularly popular for creating custom t-shirts, hoodies, and other casual wear items, as well as for creating branded merchandise for businesses and organizations. Overall, custom all over print is a versatile and creative printing technique that allows for endless possibilities in terms of design and customization.
-
-Every garment is truly customizable. Whether you want to print on a shirt, print on a tote bag, and even print on provided garments, we at The Best Screen Printing have plenty of options to bring your creative ideas to life. From embroidering on polos to direct to garment on hoodies, we are able to help you print any garment for any project you can think of. Send us over any information you have to our email at [email protected] to get designing today.
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your artwork, the garment you have in mind and your deadline, and we will tell you exactly how it will print. [Get a quick quote](/quick-quote/) or call (323) 433-0033.

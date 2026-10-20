@@ -1,286 +1,57 @@
 ---
 path: "/clubs-groups/"
 title: "Specialty T-Shirts"
-description: "Design specialty t-shirts, apparel, & more for your club or group."
-h1: "Specialty T-Shirts"
+description: "Custom shirts and hoodies for clubs, school groups, families, charities and crews, printed in Downtown LA. Screen printing for 24+, DTG with no minimum."
+h1: "Specialty t-shirts for clubs and groups"
 kind: audience
-imported: true
+imported: false
+summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Downtown LA shop. Screen printing for 24+ pieces; DTG with no minimum for smaller groups."
+facts:
+  - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
+  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+  - { label: "Best for", value: "Clubs, school groups, reunions, charity walks, staff" }
+faqs:
+  - q: "Can everyone in the group get a different size?"
+    a: "Yes. Quantity is counted per design, not per size, so you can mix sizes across the order."
+  - q: "Can we add individual names to each shirt?"
+    a: "Yes. Names and numbers are usually added with heat transfer, on top of a screen printed or DTG design."
+  - q: "Our group is small. Do we still qualify?"
+    a: "Yes. DTG has no minimum and no setup fee. Screen printing starts at 24 pieces of one design and usually gets cheaper per piece as quantity grows."
+  - q: "Can you help us with the design?"
+    a: "Send what you have, even a sketch. Every order gets a free art check, and we can talk through graphic design help by email."
 sourceUrl: "https://thebestscreenprinting.com/clubs-groups/"
 ---
-Design specialty t-shirts, apparel, & more for your club or group.
+## Matching shirts, made in LA
 
-## Charity
+A group shirt does a job. It makes a team look like a team, gets a cause noticed and turns a weekend into a memory people actually wear. We print them every week for every kind of crew.
 
-- ALS T-shirts
-- Alzheimer’s T-shirts
-- Autism Awareness T-shirts
-- Big Brother T-shirts
-- Big Sister T-shirts
-- Breast Cancer Awareness T-shirts
-- Cancer T-shirts
-- Charity T-shirts
-- Cystic Fibrosis T-shirts
-- Diabetes Walk T-shirts
-- Fundraising Ideas
-- Leukemia Awareness Shirts
-- Lupus Awareness T-shirts
-- Movember T-shirts
-- Mustache T-shirts
-- Multiple Sclerosis T-shirts
-- Ovarian Cancer Awareness T-shirts
-- Ovarian Cancer Sweatshirts
-- Race for the Cure T-shirts
-- Relay for Life T-shirts
-- Suicide Prevention T-shirts
+## Who orders group shirts?
 
-## Cities / States / Countries
+- **Clubs:** run clubs, car clubs, anime and gaming clubs, choirs, bands, robotics teams, martial arts and yoga studios.
+- **School groups:** classes, seniors, student council, drama, drumline, Greek life, PTA and camp. See also [shirts for schools](/for/schools/).
+- **Family and celebrations:** reunions, vacations, weddings, bachelor and bachelorette parties, baby showers.
+- **Charity and awareness:** walks, runs, fundraisers and volunteer days. See [non-profit shirts](/for/non-profits/).
+- **Work crews:** staff shirts, company outings and uniforms. See [team uniforms and jerseys](/products/team-uniforms-jerseys/).
 
-- Albuquerque T-shirts
-- Atlanta T-shirts
-- Austin T-shirts
-- Baltimore T-shirts
-- Boston Sweatshirts
-- Chicago Sweatshirts
-- Chicago T-shirts
-- Cleveland T-shirts
-- Colorado Springs T-shirts
-- Columbus T-shirts
-- Dallas T-shirts
-- Denver T-shirts
-- Detroit T-shirts
-- Fort Worth T-shirts
-- Fresno T-shirts
-- Hawaii T-shirts
-- Houston T-shirts
-- Indianapolis T-shirts
-- Kansas City T-shirts
-- Las Vegas T-shirts
-- Long Beach T-shirts
-- Los Angeles T-shirts
-- Louisville T-shirts
-- Memphis T-shirts
-- Mexican T-shirts
-- Miami T-shirts
-- Milwaukee T-shirts
-- Minneapolis T-shirts
-- Nashville T-shirts
-- New York T-shirts
-- Oakland T-shirts
-- OBX T-shirts
-- Oklahoma T-shirts
-- Omaha T-shirts
-- Philadelphia T-shirts
-- Phoenix T-shirts
-- Portland T-shirts
-- Raleigh T-shirts
-- Sacramento T-shirts
-- San Antonio T-shirts
-- San Diego T-shirts
-- San Francisco T-shirts
-- San Jose T-shirts
-- Seattle T-shirts
-- Tulsa T-shirts
-- Virginia Beach T-shirts
-- Washington, D.C. T-shirts
+## Which print method fits our group?
 
-## Clubs & Groups
+It comes down to how many shirts and how many colors.
 
-- Anime T-shirts
-- Archery T-shirts
-- Band Tank Tops
-- Bicycle T-shirts
-- Biker T-shirts
-- Boating Shirts
-- Boating Sweatshirts
-- Boxing T-shirts
-- Boy Scout T-shirts
-- Car T-shirts
-- Celtic T-shirts
-- Chemistry T-shirts
-- Choir T-shirts
-- Concert T-shirts
-- Custom Uniforms
-- FBLA T-shirts
-- Fishing T-shirts
-- French T-shirts
-- German T-shirts
-- Heavy Metal T-shirts
-- Hiking T-shirts
-- Hip-Hop T-shirts
-- Hunting T-shirts
-- Irish T-shirts
-- Italian T-shirts
-- Jeep T-shirts
-- Jewish T-shirts
-- Karate T-shirts
-- MMA T-shirts
-- Motorcycle T-shirts
-- National Honor Society T-shirts
-- Poker T-shirts
-- Polish T-shirts
-- Robotics T-shirts
-- Russian T-shirts
-- Science Club T-shirts
-- Spanish Club T-shirts
-- SUP Shirts
-- Team T-shirts
-- Tennis Apparel
-- Yoga T-shirts
+- **24 or more of one design:** [screen printing](/screen-printing/). Bold, solid ink that lasts, printed in-house.
+- **Fewer than 24, or full-color art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). DTG has no minimum and no setup fee.
+- **Names and numbers:** [heat transfer](/services/heat-transfer-vinyl/) to personalize each piece.
+- **Hats, polos and jackets:** [embroidery](/services/embroidery/) for a stitched logo.
 
-## Family
+## More than t-shirts
 
-- Baby Shower T-shirts
-- Bachelor Party T-shirts
-- Bachelorette Party T-shirts
-- Bar Mitzvah Favors
-- Bridesmaid Tank Tops
-- Bridesmaid T-shirts
-- Catholic T-shirts
-- Christian T-Shirt Design
-- Church T-shirts
-- Family Reunion T-shirts
-- Family Vacation T-shirts
-- Grandpa T-shirts
-- Jesus T-shirts
-- Matching Family Shirts
-- Team Bride T-shirts
-- Wedding Koozies
-- 90s T-shirts
-- Animal T-shirts
-- Apple T-shirts
-- Bacon T-shirts
-- Beard T-shirts
-- Beer T-shirts
-- Bikini T-shirts
-- Bitmoji Shirts
-- Boston Strong T-shirts
-- Chili Cookoff T-shirts
-- Cigar T-shirts
-- Country T-shirts
-- Couple T-shirts
-- Cowboys T-shirts
-- Cute T-shirts
-- Dachshund T-shirts
-- Drummer T-shirts
-- Eat Sleep T-shirts
-- Fantasy Football T-shirts
-- Fire T-shirts
-- Fish T-shirts
-- Fitness Sweatshirts
-- Fly fishing T-shirts
-- Food T-shirts
-- Frog T-shirts
-- Gay Pride T-shirts
-- Geek T-shirts
-- Guitar T-shirts
-- Gym Duffel Bags
-- Horse T-shirts
-- Hotrod T-shirts
-- Jet T-shirts
-- Kale T-shirts
-- Keep Calm Tank Tops
-- King and Queen Shirts
-- Monster T-shirts
-- New Mom T-shirts
-- Nerd T-shirts
-- Nursing T-shirts
-- Obey T-shirts
-- Pep Rally T-shirts
-- Periodic Table T-shirts
-- Pitbull T-shirts
-- Price is Right T-shirts
-- Republican T-shirts
-- Saint T-shirts
-- Science T-shirts
-- Skull T-shirts
-- Slogan T-shirts
-- Soccer Mom Shirts
-- Southern T-shirts
-- State T-shirts
-- Straight Outta T-shirts
-- Superhero T-shirts
-- Tribal T-shirts
-- Water Skiing T-shirts
-- Welder T-shirts
-- Western T-shirts
-- Wine T-shirts
-- Zombie T-shirts
+Tees are the classic, but groups also go for [hoodies and sweatshirts](/products/sweatshirts-hoodies/), tank tops, [hats](/products/hats/), tote bags and towels. Browse the [catalog](/catalog/) for blanks.
 
-## School
+## How a group order works
 
-- 100 Days of School Shirts
-- 5th Grade T-shirts
-- Art Club T-shirts
-- Band T-shirts
-- Big Little T-shirts
-- Camp T-shirts
-- Campus T-shirts
-- Class T-shirts
-- Class of 2017 T-shirts
-- Class of 2018 T-shirts
-- Class Reunion T-shirts
-- College T-shirts
-- Drama T-shirts
-- Drumline T-shirts
-- Elementary School T-shirts
-- First Day of School Shirts
-- Fraternity Sweatshirts
-- Fraternity T-shirts
-- Freshman T-shirts
-- Greek T-shirts
-- Junior T-shirts
-- Key Club T-shirts
-- Kindergarten T-shirts
-- Math Club T-shirts
-- Debate Team T-shirts
-- Orchestra T-shirts
-- Physics T-shirts
-- Preschool T-shirts
-- PTA T-shirts
-- JROTC T-shirts
-- Senior Shirts
-- School T-shirts
-- Sophomore Shirts
-- Sorority T-shirts
-- Spirit Wear
-- Student Council T-shirts
-- Teacher T-shirts
+1. **Collect sizes.** Make a simple list of names and sizes before you request a quote.
+2. **Send your art.** A finished file or a rough idea. Every order gets a free art check.
+3. **Get your quote.** Answered within one business day.
+4. **Approve the mockup.** Check placement, colors and sizes, then we print.
+5. **Pick up or ship.** Grab it at 2710 S Broadway Avenue in Downtown LA, or have it shipped.
 
-## Work
-
-- Air Force T-shirts
-- Army T-shirts
-- Company T-shirts
-- Construction T-shirts
-- Custom Work Shirts
-- Daycare T-shirts
-- Firefighter T-shirts
-- Lawn Care T-shirts
-- Lifeguard Sweatshirts
-- Lifeguard Tank Tops
-- Lifeguard T-shirts
-- Marine Corps T-shirts
-- Medical T-shirts
-- Military T-shirts
-- Navy T-shirts
-- Nurse T-shirts
-- Paramedic T-shirts
-- Physical Therapy T-shirts
-- Police T-shirts
-- Political T-shirts
-- Promotional T-shirts
-- Staff T-shirts
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Rounding up the crew? [Get a free quote](/quick-quote/).

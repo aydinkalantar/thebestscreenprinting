@@ -1,75 +1,74 @@
 ---
 path: "/what-is-screen-printing-and-how-is-it-done/"
 title: "What Is Screen Printing And How Is It Done?"
-description: "Screen printing is a multi step printing technique which transfers ink onto fabric, and other materials, primarily using a mesh screen, ink, and a squeegee."
-h1: "What Is Screen Printing And How Is It Done?"
+description: "Screen printing explained: how ink moves through a mesh stencil, how a shop separates colors, the six print types, plastisol vs water-based vs discharge inks."
+h1: "What is screen printing and how is it done?"
 kind: blog
-imported: true
+imported: false
+summary: "Ink, mesh and a squeegee: the method behind most printed shirts. How a shop turns your art into screens, the six types of screen printing and which inks do what."
+faqs:
+  - q: "Is screen printing better than digital printing?"
+    a: "For solid colors and larger runs, screen printing is usually more vivid and durable at a better per-piece price. For small runs and photo-style art, digital methods like DTG are often the better fit."
+  - q: "What fabrics can be screen printed?"
+    a: "Cotton, polyester, blends, fleece, denim, canvas and more. Some synthetics need special inks or lower curing temperatures because they react to heat."
+  - q: "How long does a screen print last?"
+    a: "A properly cured screen print can last for years of regular wear. Washing inside out in cool water and avoiding high dryer heat helps it last longer."
 sourceUrl: "https://thebestscreenprinting.com/what-is-screen-printing-and-how-is-it-done/"
 ---
 ## What is the screen printing process?
 
-Screen printing is a multi step printing technique which transfers ink onto fabric, and other materials, primarily using a mesh screen, ink, and a squeegee. Printing with screens involves the separation of colors, usually done with design software, and placing these color separations on their own screens. Screen printing is the most popular printing technique for garments being that the solid colors are printed vividly and the print lasts a long time. We can print on almost any material, from screen printing on shirts to screen printing on towels, depending on what your needs are, we can find the right printing solution for you.
+Screen printing pushes ink through a fine mesh screen onto fabric or another material. A stencil on the screen blocks ink everywhere except the design. Each color gets its own screen, and the colors are printed one layer at a time.
 
-## How do you make screen printing?
+It is the most popular way to decorate garments for good reason: solid colors come out vivid, the ink is thick and opaque, and a well-cured print lasts. It works on shirts, hoodies, towels, bags and much more.
 
-Screen printing your design onto a garment is done by a series of steps. Once production has received the necessary items to bring your design to life, we begin with extracting colors from the design. Using design software, production reduces and separates colors to be printed onto it’s own film. Once the image is printed and transferred onto mesh screens, the design is ready to be screen printed onto hoodies and shirts or any other fabric material. The garment is laid out onto a surface, adjusted for printing placement, and finally, the screen lays onto the shirt to transfer an image mechanically or by hand using a squeegee and ink. After all the colors are transferred onto the garment, it is removed from the surface and placed in a flat bed dryer for curing. At last, there is your shirt with a screen print of your design.
+Want the hands-on version with a materials list? See [how to do t-shirt screen printing](/how-to-do-t-shirt-screen-printing/).
 
-## What is screen printing vs digital printing?
+## How is it done in a print shop?
 
-Printing technologies vary, that’s why screen printing and digital printing options are available to you depending on the needs of your project. Screen printing and digital printing differences lie in their color printing process.Single color printing is used in screen printing vs digital printing where 4 colors can be printed at once. With printing on screens, solid colors hold a better vibrance and for bulk orders, can have a fast turnaround time. In digital printing, customers can print with no minimums and can print pictures onto a shirt or any other garment.
+1. **Color separation.** Using design software, the art is reduced to a set number of ink colors, and each color is separated onto its own film.
+2. **Screen making.** Each film is used to expose a screen coated with light-sensitive emulsion, creating a stencil for that color.
+3. **Setup.** Screens are locked into the press and lined up so every color lands in the right place. This alignment is called registration.
+4. **Printing.** The garment is loaded on a platen and positioned. Ink is pulled through each screen with a squeegee, by hand or by an automatic press.
+5. **Curing.** The printed garment travels through a dryer, which sets the ink so it survives washing.
 
-## What are screen printing types?
+Setup is the slow part. Once screens are ready, each additional piece prints quickly. That is why screen printing gets more cost-effective as quantity rises. At TBSP, [screen printing](/screen-printing/) is for orders of 24 or more pieces of one design, printed in-house.
 
-There are six different types of screen printing. We have spot color screen printing, halftone screen printing, grayscale printing, duotone printing, CMYK screen printing, and simulated process screen printing. Spot color printing is the most used process, using single solid colors to print at a time. In halftone printing, a single color ink is used to create a gradient effect using halftone dots. Grayscale screen printing uses a whole image and prints the dots in grayscale. This print offers great detail by pulling out colored tones only and switching to grayscale. Duotone screen printing uses the combination of two halftones for printing the same image with two colors. This print result looks like a sepia photograph. CMYK printing is the most complex, printing four colors at one time using Cyan, Magenta, Yellow, and Black. Lastly, simulated process printing screen prints 4 colors at one time and is becoming increasingly popular because of its ability to print realistic imagery using screen printing.
+## Screen printing vs digital printing
 
-## Is screen printing hard?
+Screen printing lays down one solid color per screen. Digital methods like [DTG](/what-is-direct-to-garment-printing-and-how-does-it-work/) print many colors at once from a file, with no screens.
 
-Screen printing can be both simple and lengthy work depending on the complexity of a project. There is pre work and post work to be done for this printing process to be completed. When screen printing on a hoodie, for example, the pocket causes an uneven surface for transfer, so production has to adjust screen placements to ensure there is enough distance between the screen and fabric for the ink to be applied smoothly and not end up too smudgy. If your project is asking for puff screen printing, there are extra additives that need to be applied to into the ink to create the reaction, also requiring additional steps to cure properly. Screen printing on hats need to be applied using transfer paper and a hot press. These are only a few examples of the screen printing process that show it can go from easy to intricate depending on how elaborate a project is.
+- **Screen printing** wins on vibrant solid colors, durability and price at volume.
+- **Digital printing** wins on small runs, photos and gradients, with no minimum.
+
+## What are the types of screen printing?
+
+- **Spot color.** The most common. Each solid color is printed with its own screen.
+- **Halftone.** One ink color printed as dots of varying size to create the look of shading or gradients.
+- **Grayscale.** A full image converted to grayscale and printed as halftone dots for detailed, photo-like results.
+- **Duotone.** Two halftones of the same image in two colors, giving a rich, sepia-like effect.
+- **CMYK (four-color process).** Cyan, magenta, yellow and black halftones combine to create full color. It is the most technical and works best on light garments.
+- **Simulated process.** Spot colors printed as halftones to build realistic imagery, and it works on dark garments too. Increasingly popular for photo-real art.
 
 ## What ink is used for screen printing?
 
-With screen printing, there are multiple inks to choose from such as discharge inks, plastisol inks, and water-based inks. Each of these inks have different properties that work well with different materials and print patterns. Working with these inks also requires distinct skill sets and expertise. Different inks produce different feels for the print on fabric. Soft-hand screen prints such as puff printing and even rough crackle ink screen prints are some examples of different types of ink techniques.
+- **Plastisol.** Opaque, bright and forgiving. Sits on top of the fabric and is a standard for many shops.
+- **Water-based.** Soaks into the fibers for a soft feel. Great on light, natural fabrics.
+- **Discharge.** Removes the dye from cotton and replaces it with color, for a nearly weightless print on dark shirts.
 
-## What materials are required for screen printing?
+Specialty techniques add texture: **puff** ink rises as it cures, and **crackle** ink breaks into a distressed, vintage texture. These often need extra steps to cure properly.
 
-The materials required for screen printing include a metal or wooden frame with a mesh screen, a squeegee, ink, a color station mechanism, a conveyor belt dryer for curing, artwork, and a garment or fabric. We can screen print on polyester, cotton, wool, denim, and many more fabrics. Nylon or any other synthetic fabric is to be avoided because they can shrink when drying.
+## Is screen printing hard?
 
-## What are the advantages of screen printing?
+It ranges from simple to intricate. A one-color logo on a flat tee is straightforward. A hoodie with a front pocket creates an uneven surface, so placement and screen height must be adjusted to keep the print clean. Puff ink needs additives and careful curing. Hats are usually decorated differently, often with [embroidery](/services/embroidery/) or a heat-applied transfer, because of their curved shape.
 
-Screen printing is a fantastic option for printing. It’s long lasting, vivid, and is fast and affordable for large scale projects. Some screen printed garments can last over 20+ years depending on the aftercare of the garment and print. Colors are solid and vivid, and the feel of a screen print is weighty and durable.
+Every added color, location and special effect adds setup work, which is why simpler art often prints faster and costs less.
 
-#### Quote Team
+## What materials are needed?
 
-- What is direct to garment printing and how does it work?
-- What kind of thread is used for embroidery?
-- What is the difference between embroidery and screen printing?
-- What materials can be embroidered?
-- What is screen printing and how is it done?
-- April 2023
-- March 2023
-- January 2023
-- October 2022
-- June 2022
-- April 2022
-- March 2022
-- Direct to garment printing
-- Embroidery
-- Screen Printing
-- Log in
-- Entries feed
-- Comments feed
-- WordPress.org
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+A frame with mesh, emulsion, films, ink, a squeegee, a press or platen, a dryer for curing, your artwork and the garment. Screen printing works on cotton, polyester, blends, fleece, denim, canvas and more. Some synthetics are sensitive to heat and need the right ink and cure settings.
+
+## Why choose screen printing?
+
+It is vivid, durable and fast once set up, which makes it the go-to for team shirts, event runs, brand merch and uniforms. For more on garments, see [screen printing on hoodies](/the-screen-printing-on-the-hoodies/).
+
+Ready to print? [Get a free quote](/quick-quote/).

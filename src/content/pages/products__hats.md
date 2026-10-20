@@ -1,57 +1,68 @@
 ---
 path: "/products/hats/"
-title: "Hats"
-description: "Hats"
-h1: "Hats"
+title: "Custom Embroidered Hats in Los Angeles | TBSP"
+description: "Custom embroidered hats for brands, artists, businesses and teams, stitched at our Downtown Los Angeles shop. Free art check and a quote in one business day."
+h1: "Custom embroidered hats"
 kind: product
-imported: true
+imported: false
 sourceUrl: "https://thebestscreenprinting.com/products/hats/"
+summary: "Your logo, stitched in thread and worn every day. We embroider custom hats in Downtown LA with a free art check, quotes within one business day, and same-day or next-day rush slots for many orders."
+facts:
+  - label: "Decoration"
+    value: "Embroidery"
+  - label: "Rush"
+    value: "Same-day and next-day slots for many orders"
+  - label: "Art"
+    value: "Free art check before production"
+faqs:
+  - q: "Can you put my logo on hats?"
+    a: "Yes. We embroider logos on hats. Send your artwork with a quote request and we will check that it works at hat size."
+  - q: "Can I get custom hats on a rush?"
+    a: "Same-day and next-day rush slots are available for many orders. Request a quote with your deadline or call (323) 433-0033 to confirm."
+  - q: "Can I order hats together with shirts and hoodies?"
+    a: "Yes. We quote hats alongside t-shirts, hoodies and other apparel so the whole order is planned together."
+  - q: "How soon will I get a quote?"
+    a: "We answer quote requests within one business day."
 ---
-## Hats
 
-## Customer Feedback
+A hat is the merch people actually wear out the door. TBSP embroiders custom hats for clothing brands, artists, businesses, teams, schools and events at our shop in Downtown Los Angeles. Send your logo and the hat you want, and we will check the art for free and get you a quote within one business day.
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+## Why is embroidery the go-to for hats?
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+[Embroidery](/services/embroidery/) stitches your design into the hat with thread. The result is raised, textured and built to handle daily wear. It suits logos, short text and clean marks, and it is the standard for caps because the curved, structured front of a hat is a tough surface to print on.
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+## What makes a logo stitch well?
 
-## Our Customers
+The front of a hat is small real estate, so strong, simple art wins.
 
-#### 24 Hour Online Support
+- **Keep it bold.** Thick lines and solid shapes read better in thread than fine detail.
+- **Go easy on tiny text.** Very small lettering can lose its edges.
+- **Send a clean file.** Vector art (AI, EPS, PDF or SVG) or a high-resolution image gives us the best starting point.
 
-## Get a Quick Quote
+Every order gets a free art check. If your logo needs a simplified version for a hat, we tell you before anything gets stitched.
 
-### Blog
+## Front, side or back
 
-#### Screen Printing on Hoodies
+The front panel is the headline spot. Plenty of brands add a small mark on the side or back for a finished look. List every placement you want when you request a quote so we can plan the full design.
 
-Screen printing on hoodies is a popular way to customize and personalize hoodies with designs, [...]
+## Pick your hat
 
-#### Screen Printing
+We embroider a range of hat styles and colors. Stock changes by brand and color, so browse current options in our [catalog](/catalog/) and tell us which one you like.
 
-What is Screen Printing? Screen printing is another type of printing used in printing. But [...]
+Before you choose:
 
-#### How to do t-shirt screen printing?
+- Structured crowns hold their shape and make a front logo stand tall.
+- Softer, unstructured caps give a relaxed, lived-in fit.
+- Hat color changes which thread colors pop, so tell us both when you request a quote.
 
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
+## Can I match hats with shirts and hoodies?
 
-#### Embroidery on clothes
+Yes, and it is one of the best ways to make merch feel like a collection. Pair hats with [t-shirts](/products/t-shirts/) or [sweatshirts and hoodies](/products/sweatshirts-hoodies/) decorated with [screen printing](/screen-printing/), [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), and we quote the set together. We embroider polos and jackets too.
 
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
+## Short on time?
 
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Same-day and next-day rush slots are available for many orders. See our [same-day printing](/same-day-t-shirt-printing-los-angeles/) page for how rush jobs work, and include your deadline when you reach out.
+
+## Get your hats made
+
+Send your logo, hat style, color, quantity and deadline through our [quick quote form](/quick-quote/) and we will reply within one business day. Or call (323) 433-0033 and swing by 2710 S Broadway, Monday through Friday, 9am to 5pm.

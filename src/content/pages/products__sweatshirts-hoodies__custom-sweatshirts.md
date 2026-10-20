@@ -1,73 +1,58 @@
 ---
 path: "/products/sweatshirts-hoodies/custom-sweatshirts/"
-title: "Custom Sweatshirts"
-description: "Stand out from the crowd with Custom Sweatshirts in a range of designs, colors and styles."
-h1: "Custom sweatshirts Los angeles"
+title: "Custom Sweatshirts Los Angeles | TBSP"
+description: "Custom crewneck sweatshirts in Los Angeles, screen printed or embroidered in Downtown LA. Clean, collegiate and corporate looks with a free art check."
+h1: "Custom sweatshirts in Los Angeles"
 kind: product
-imported: true
+imported: false
+summary: "The crewneck is the hoodie's sharper sibling: clean neckline, wide canvas, no hood in the way. Screen printed, embroidered or DTG printed out of our Downtown LA shop."
+facts:
+  - { label: "Minimum", value: "24 per design for screen printing; none for DTG" }
+  - { label: "Methods", value: "Screen printing, embroidery, DTG, heat transfer" }
+  - { label: "Best for", value: "Varsity looks, company gear, retail crewnecks" }
+faqs:
+  - q: "Should I choose a sweatshirt or a hoodie?"
+    a: "Crewnecks read cleaner and dressier, layer well over collars and give an unbroken back panel. Hoodies feel more casual and add the hood as a print location. Many brands offer both in the same design."
+  - q: "Does embroidery work on sweatshirts?"
+    a: "Yes. Fleece holds stitches well, and an embroidered chest logo or arched wordmark is one of the most popular crewneck looks."
+  - q: "Can I order a few sweatshirts, not dozens?"
+    a: "Yes. Direct-to-garment has no minimum and no setup fee. For 24 or more of one design, screen printing is usually the better value."
 sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/custom-sweatshirts/"
 ---
-Block "11610" not found
+## The crewneck has range
 
-Block "11523" not found
+Throw it over a T-shirt for a weekend run. Wear it over a collared shirt to the office. Put a big arched wordmark across the chest and it is instantly varsity. The custom crewneck sweatshirt does a lot of jobs, and it does them looking sharp.
 
-### Browse our Categories
+## Why choose a sweatshirt over a hoodie?
 
-## Customer Feedback
+- **Cleaner silhouette.** No hood and no drawcords, so it looks finished in a meeting or a photo.
+- **An unbroken back.** The full back panel is open for a large graphic with nothing hanging over it.
+- **Easy layering.** It sits flat over a collar or under a jacket.
+- **Retail appeal.** Crewnecks are a staple for clothing brands and gift shops.
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+## Looks that work on a crewneck
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+**The arched chest.** A curved wordmark across the front, the classic collegiate move. Bold with screen printing, rich with embroidery.
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+**The small stitch.** A left-chest logo in thread. Understated, premium, perfect for company gear. See [embroidery](/services/embroidery/).
 
-## Our Customers
+**The big back.** A full-back graphic with a small front hit. Strong for bands, events and merch drops via [screen printing](/screen-printing/).
 
-#### 24 Hour Online Support
+**The full-color piece.** Photo or painted artwork printed with [DTG](/services/direct-to-garment/), with no minimum, so a short run of an art print is easy.
 
-## Get a Quick Quote
+**The personalized set.** One shared design plus individual names or years added with [heat transfer](/services/heat-transfer-vinyl/).
 
-### Blog
+## Who orders custom sweatshirts?
 
-#### What is screen printing and how is it done?
+- **Schools, alumni groups and clubs** chasing that collegiate look
+- **Companies** that want staff gear people wear outside of work
+- **Clothing brands** adding a crewneck to the line
+- **Nonprofits and events** that want something warmer than a tee
 
-What is the screen printing process? Screen printing is a multi step printing technique which [...]
+## Pick the blank, then the print
 
-#### What is direct to garment printing and how does it work?
+Fabric weight and blend affect both comfort and print quality. Cotton-rich fleece takes ink and DTG cleanly; heavier blanks give a structured fit. Browse options in the [catalog](/catalog/), or let us suggest one when you request a quote. For a hooded version, see [custom hoodies](/products/sweatshirts-hoodies/custom-hoodies/). For design tips on colors and placement, read [customize your sweatshirt](/products/sweatshirts-hoodies/customize-sweatshirt/).
 
-Direct to garment printing (DTG) is a digital printing process that allows for full-color, high-quality [...]
+## Make the crew
 
-#### What kind of thread is used for embroidery?
-
-There are several types of thread that can be used for embroidery, and the choice [...]
-
-#### What is the difference between embroidery and screen printing?
-
-Embroidery and screen printing are both popular methods of adding designs or logos to fabric [...]
-
-#### What materials can be embroidered?
-
-Embroidery can be done on a wide variety of materials, including: Overall, embroidery can be [...]
-
-#### How to do t-shirt screen printing?
-
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
-
-#### Embroidery on clothes
-
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your design, quantity and deadline. [Get a quick quote](/quick-quote/) and we will reply within one business day.

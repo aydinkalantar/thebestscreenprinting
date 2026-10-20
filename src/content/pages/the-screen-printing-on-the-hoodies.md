@@ -1,68 +1,76 @@
 ---
 path: "/the-screen-printing-on-the-hoodies/"
 title: "Screen Printing On Hoodies And Sweatshirts"
-description: "Screen printing on hoodies and sweatshirts is durable and a high quality print. You can print on your own hoodie or find blank options from us."
-h1: "Screen Printing On Hoodies And Sweatshirts"
+description: "How screen printing on hoodies works: hoodie styles, fleece and fabric choices, placements around pockets and zippers, underbase on dark colors and curing tips."
+h1: "Screen printing on hoodies and sweatshirts"
 kind: blog
-imported: true
+imported: false
+summary: "Hoodies are thicker, pocketed and zipped, and that changes how you print. Styles, fabrics, placements and the press-side tips that keep a hoodie print clean."
+faqs:
+  - q: "Can I bring my own hoodie to print?"
+    a: "Hoodie prints can go on your own hoodies or on blanks from us. Call (323) 433-0033 with the details first so we can confirm the fabric will print well."
+  - q: "Where should I print on a zip-up hoodie?"
+    a: "Left chest and full back are the classic zip-up placements, because the zipper splits the front. Sleeves are a strong extra."
+  - q: "What is the minimum for screen printed hoodies?"
+    a: "Screen printing starts at 24 pieces of one design. For fewer hoodies, DTG or DTF is usually the better fit."
 sourceUrl: "https://thebestscreenprinting.com/the-screen-printing-on-the-hoodies/"
 ---
-Screen printing on hoodies is a popular way to customize and personalize hoodies with designs, logos, or text.
+Hoodies are the garment people keep. A good one gets worn for years, which makes it prime real estate for a design. But printing a hoodie is not the same as printing a tee. The fabric is thicker, the surface is interrupted by pockets, seams and zippers, and dark colors are the norm.
 
-## Types of hoodies:
+## Which hoodie styles can be printed?
 
-There are various types of hoodies available in the market. Here are some of the most common types of hoodies:
+- **Pullover.** A hood and a front pouch pocket. The most popular style for custom prints.
+- **Zip-up.** A front zipper splits the chest, so placement works around it.
+- **Sleeveless.** Also called a gym or muscle hoodie. Great for training and team gear.
+- **Oversized.** Cut intentionally large for comfort and street style. Bigger canvas, bigger prints.
+- **Cropped.** Ends at or above the waist. Placement sits higher to stay balanced.
+- **Tech or performance.** Moisture-wicking synthetic fabric for activity. Needs inks and curing suited to synthetics.
+- **Crewneck sweatshirt.** No hood or pocket, so the whole front is open for a print.
 
-- Pullover Hoodie: A pullover hoodie is a type of sweatshirt with a hood and a front pocket. It is designed to be pulled over the head and worn as a standalone piece or layered with other clothing.
-- Zip-Up Hoodie: A zip-up hoodie is a type of sweatshirt with a hood and a front zipper. It is designed to be worn as a standalone piece or layered with other clothing.
-- Sleeveless Hoodie: A sleeveless hoodie, also known as a muscle hoodie or a gym hoodie, is a type of hoodie that has no sleeves. It is designed to be worn as a standalone piece or layered with other clothing.
-- Oversized Hoodie: An oversized hoodie is a type of hoodie that is intentionally larger than the wearer’s size. It is designed to be worn for comfort or as a fashion statement.
-- Crop Hoodie: A crop hoodie is a type of hoodie that has a shortened length, typically ending at or above the waistline. It is designed to be worn as a fashion statement and is often paired with high-waisted pants or skirts.
-- Tech Hoodie: A tech hoodie is a type of hoodie made with performance fabrics that provide moisture-wicking and temperature control properties. It is designed to be worn during outdoor activities or sports.
-- Designer Hoodie: A designer hoodie is a type of hoodie that is created by a fashion designer or brand. It is often made with high-quality materials and features unique designs or logos.
+Browse blanks in [hoodies and sweatshirts](/products/sweatshirts-hoodies/) or the [catalog](/catalog/).
 
-## Here are some tips for screen printing on hoodies:
+## What fabric is best for screen printing hoodies?
 
-- Choose the right hoodie: When choosing a hoodie for screen printing, consider the material and color. Cotton or cotton blends work well for screen printing, as they hold the ink better and are more durable. Darker colors may require an underbase layer of white ink to make the colors of the design appear vibrant.
-- Prepare the screen: The screen is the most important tool for screen printing. To prepare the screen, apply a light-sensitive emulsion to the screen, then expose the emulsion to light through a film positive of your design. This will create a stencil on the screen that will allow ink to pass through only where the design is.
-- Set up your printing station: Set up your printing station by securing the screen on the printing press and placing the hoodie onto the platen. Make sure that the hoodie is positioned correctly for printing and is secured tightly.
-- Apply ink to the screen: Apply ink to the screen using a squeegee. Make sure to apply enough pressure to push the ink through the stencil and onto the hoodie. Repeat this step for each color in your design, making sure to clean the screen between each color.
-- Cure the ink: After printing, the ink needs to be cured to ensure that it will not wash out or fade over time. The curing process typically involves heating the hoodie to a specific temperature for a set amount of time.
-- Quality check: Once the ink is cured, perform a quality check to ensure that the print is clean, sharp, and free of any imperfections. This is also a good time to check that the hoodie is correctly positioned and secured.
+**Cotton and cotton blends** are the easiest to print. They hold ink well, look sharp and stay soft. Fleece is brushed on the inside, but the outside face is usually smooth enough for a clean print.
 
-By following these tips, you can create high-quality screen printed hoodies that will last for years. It’s important to use high-quality inks, screens, and equipment to ensure the best possible outcome. Additionally, make sure to follow proper safety procedures when working with ink and heat, and to allow adequate time for the ink to cure before washing or wearing the hoodie.
+**Polyester-heavy fabrics** can be printed, but they need the right ink and lower curing heat, because synthetics react to heat and dye can migrate into the ink.
 
-#### Quote Team
+## Where should I place my hoodie print?
 
-- What is direct to garment printing and how does it work?
-- What kind of thread is used for embroidery?
-- What is the difference between embroidery and screen printing?
-- What materials can be embroidered?
-- What is screen printing and how is it done?
-- April 2023
-- March 2023
-- January 2023
-- October 2022
-- June 2022
-- April 2022
-- March 2022
-- Direct to garment printing
-- Embroidery
-- Screen Printing
-- Log in
-- Entries feed
-- Comments feed
-- WordPress.org
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+- **Full front** above the pocket: the classic. Keep the design clear of the pocket seam.
+- **Left chest:** a small logo for a clean, branded look. Pair it with a big back print.
+- **Full back:** the largest flat area on the hoodie and perfect for statement art. See [large-format screen printing](/services/large-format-screen-printing/).
+- **Sleeves:** a vertical hit down the arm adds detail.
+- **Hood:** a small mark on the side of the hood is subtle and stylish.
+
+## How do printers handle pockets and seams?
+
+The pouch pocket creates an uneven surface. If a screen sits across the pocket edge, ink can skip or smear. Printers adjust placement and screen height so the ink lands smoothly. Designs are usually sized to sit fully above the pocket. On zip-ups, prints go around the zipper or move to the back and chest.
+
+## Why do dark hoodies need an underbase?
+
+Most hoodies are dark: black, navy, charcoal, forest. Ink is slightly translucent, so colors printed directly on a dark garment look dull. Printers lay down a white **underbase** first, cure it briefly, then print the colors on top. The result is bright, opaque color. It does add a screen, so it is part of your quote.
+
+## The printing process, hoodie edition
+
+1. **Prepare the screens.** Each color is exposed onto its own screen. The full process is in [what is screen printing and how is it done](/what-is-screen-printing-and-how-is-it-done/).
+2. **Load the hoodie.** It goes on the platen, flat and secure, with the hood and pocket kept out of the way.
+3. **Print each color.** Ink is pulled through each screen, lined up with the last.
+4. **Cure the ink.** Thick fleece takes longer to heat through, so curing is set to make sure the ink fully sets.
+5. **Quality check.** Clean edges, correct placement and no smudges.
+
+Want the step-by-step tee version? See [how to do t-shirt screen printing](/how-to-do-t-shirt-screen-printing/).
+
+## Specialty looks for hoodies
+
+Hoodies are made for texture. **Puff ink** gives a raised, 3D print. **Water-based** and **discharge** inks give a soft, vintage feel on cotton. For a stitched logo on the chest, [embroidery](/services/embroidery/) is a premium alternative.
+
+## How to make a hoodie print last
+
+Wash inside out in cold water, tumble dry low or hang dry, and do not iron the print. A properly cured screen print holds up for years.
+
+## Screen printed hoodies at TBSP
+
+[Screen printing](/screen-printing/) is for orders of 24 or more pieces of one design, printed in-house at our Downtown LA shop. For fewer pieces or full-color art, we usually recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). Every order gets a free art check.
+
+Ready to print hoodies? [Get a free quote](/quick-quote/).

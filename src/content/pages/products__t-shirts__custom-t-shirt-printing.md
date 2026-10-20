@@ -1,87 +1,66 @@
 ---
 path: "/products/t-shirts/custom-t-shirt-printing/"
-title: "Custom T-shirt Printing In Los Angeles"
-description: "Custom T-shirt Printing for Everyone in Los Angeles. Print shirts for yourself or your online business."
-h1: "Custom T-shirt Printing"
+title: "Custom T-shirt Printing in Los Angeles | TBSP"
+description: "Custom t-shirt printing in Los Angeles, step by step: send your art, get a quote within one business day, approve a free art check, and we print in-house."
+h1: "Custom t-shirt printing in Los Angeles"
 kind: product
-imported: true
+imported: false
+summary: "From idea to folded stack in five clear steps, run out of our Downtown LA shop. Quotes within one business day, a free art check on every order, and same-day or next-day rush slots for many jobs."
+facts:
+  - { label: "Quote", value: "Answered within one business day" }
+  - { label: "Art check", value: "Free on every order" }
+  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+faqs:
+  - q: "What do I need to start a custom t-shirt order?"
+    a: "Your artwork (or an idea), the shirt style and color, a rough quantity by size, where you want the print, and your deadline. If something is missing, we will help you fill it in."
+  - q: "What file format should my artwork be?"
+    a: "Vector files such as AI, EPS, SVG or PDF are ideal. A high-resolution PNG works too. Our free art check will tell you if anything needs fixing before it prints."
+  - q: "Can I mix sizes and styles in one order?"
+    a: "Yes. Most orders mix sizes, and you can run the same design on different styles like tees, long sleeves and tanks. Tell us the breakdown when you request a quote."
+  - q: "Do you print for men, women and kids?"
+    a: "Yes. We print on men's, women's and youth cuts, including short-sleeve, long-sleeve and V-neck styles."
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/custom-t-shirt-printing/"
 ---
-Block "11614" not found
+## Your design. Our ink. Five steps.
 
-Block "11523" not found
+Custom tees should not come with a learning curve. Whether it is merch for a brand, shirts for an event or a run for your team, every order at TBSP moves through the same straightforward path, run out of our shop at 2710 S Broadway Avenue in Downtown LA.
 
-## Browse our Categories
+## Step 1: Send the idea
 
-## Customer Feedback
+Fill out the [quick quote form](/quick-quote/) with what you have. Finished artwork is great. A sketch, a logo file or a reference photo works too. Tell us:
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+- The shirt you want (or ask us to recommend one from the [catalog](/catalog/))
+- Quantity and size breakdown
+- Print locations, like front, back or sleeve
+- Your deadline
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+## Step 2: Get your quote
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+We answer within one business day with a price and a recommended print method. That recommendation comes from your quantity and artwork, not a sales script.
 
-## Our Customers
+## How do we pick the print method?
 
-#### 24 Hour Online Support
+Quantity and artwork decide it:
 
-## Get a Quick Quote
+- **24+ pieces of one design:** [screen printing](/screen-printing/), done in-house, for bold, durable color
+- **Under 24 pieces:** usually [direct-to-garment](/services/direct-to-garment/) or [direct-to-film](/services/direct-to-film/), with no screens to set up
+- **Names and numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/)
+- **Edge-to-edge artwork:** [all-over sublimation](/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/)
 
-### Blog
+Not sure which suits your design? Our guide to [custom printed t-shirts](/products/t-shirts/custom-printed-t-shirts/) breaks down each method.
 
-#### How to do t-shirt screen printing?
+## Step 3: Free art check
 
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
+Before anything goes on press, we check your artwork for resolution, thin lines, color count and sizing. Problems get caught on the screen, not on your shirts.
 
-#### What is direct to garment printing and how does it work?
+## Step 4: We print
 
-Direct to garment printing (DTG) is a digital printing process that allows for full-color, high-quality [...]
+Your order goes into production. If you are racing a date, ask about rush: same-day and next-day slots are available for many orders. Details are on our [same-day t-shirt printing](/products/t-shirts/same-day-t-shirt-printing-near-me/) page.
 
-#### What kind of thread is used for embroidery?
+## Step 5: Pick up or ship
 
-There are several types of thread that can be used for embroidery, and the choice [...]
+Grab your order from our Downtown LA shop during business hours, Monday through Friday, 9am to 5pm, or have it shipped. Live nearby? See [custom t-shirt printing near Los Angeles](/products/t-shirts/custom-tshirt-printing-near-los-angeles/) for local pickup.
 
-#### What is the difference between embroidery and screen printing?
+## Ready when you are
 
-Embroidery and screen printing are both popular methods of adding designs or logos to fabric [...]
-
-#### What materials can be embroidered?
-
-Embroidery can be done on a wide variety of materials, including: Overall, embroidery can be [...]
-
-#### What is screen printing and how is it done?
-
-What is the screen printing process? Screen printing is a multi step printing technique which [...]
-
-#### Embroidery on clothes
-
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
-
-#### Screen Printing
-
-What is Screen Printing? Screen printing is another type of printing used in printing. But [...]
-
-### Custom T-shirt Printing
-
-Customised screen printing is a perfect way to create or promote a personal brand. With the help of customised printing and embroidery one can express his/her individuality and style.
-
-T-shirt screen printing is one the most popular ways to do it. Customised t-shirts with a wide range of choice is available in our website. You can create customised branded t-shirts with your logo or any other design.
-
-We also offer you a design studio to create and visualise customised screen printing. There are special but free templates of custom shirts and t-shirts which you can use if you have no idea where to start. Apart from design you can also choose a color and a style of a t-shirt itself, such as long-sleeve shirts, short-sleeve t-shirts, v-neck t-shirts and other types.
-
-Customise t-shirts for men, women and kids. Start designing branded customised t-shirts and inspire others right now!
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+The fastest way to start is to send what you have. [Get a quick quote](/quick-quote/), email sales@tbsp.la or call (323) 433-0033.

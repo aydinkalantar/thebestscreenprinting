@@ -1,51 +1,47 @@
 ---
 path: "/about-us/"
 title: "About Us | The Best Screen Printing"
-description: "About us - Tbsp.la. The TBSP.LA story began in 2000 when three brothers got the bug to start a business in Los Angeles, CA."
-h1: "About Us | The Best Screen Printing"
+description: "Meet TBSP, a family-started screen printing and embroidery shop in Downtown LA printing for brands, artists, teams and communities at 2710 S Broadway Ave."
+h1: "About The Best Screen Printing"
 kind: core
-imported: true
+imported: false
+summary: "A Downtown LA print shop built on one idea: custom apparel should be easy to design, easy to order and made to bring people together. Screen printing, embroidery, DTG, DTF and heat transfer at 2710 S Broadway Avenue, Los Angeles."
 sourceUrl: "https://thebestscreenprinting.com/about-us/"
 ---
-### About us
+## Started by brothers in Los Angeles
 
-#### Our Story
+The Best Screen Printing, known around town as TBSP, started with brothers in Los Angeles who wanted to make designing and buying custom t-shirts fun, easy and reliable. One of the first ideas was a simple website where people could upload a graphic, put it on a shirt and order it.
 
-The TBSP.LA story began in 2000 when three brothers got the bug to start a business in Los Angeles, CA.
+That idea still drives the shop. You bring the art, the logo or just the concept. We help you get it onto the right garment, in the right method, on time.
 
-Meanwhile, Ethan was tinkering with the earliest iteration of the tbsp.la website, which would let people upload graphics onto t-shirts and buy them as special keepsakes.
+## Why does community sit at the center of what we do?
 
-Ethan contacted to his brothers and computer whiz, Ali Kalantarli. Ethan spent long hours on his green couch (a hand-me-down from his big brother) talking to Zack on the phone and planning the business, and figuring out ways to make designing and buying custom t-shirts fun, easy, and reliable. In March 2001, TBSP.LA was officially launched with a small team of “Inkers” running the show — all from different backgrounds — but with big hearts.
+Custom apparel is how groups show up together. A matching shirt turns a crowd into a crew: a team, a club, a company, a charity walk, a family reunion. We have always been about that, and it shapes how we work. Every order, whether it is one shirt or a full run for an event, gets the same attention.
 
-#### Our mission
+## What we make
 
-We believe in the power and importance of community. That’s what we have always been about — even before we knew it — and it’s why our brands offer innovative ways to help activate and strengthen communities.
+Everything is produced out of our shop at 2710 S Broadway Avenue in Downtown Los Angeles.
 
-TBSP.LA enables people to design and order custom t-shirts and gear for their clubs, companies, charities, family reunions, and more. Through the TBSP.LA Fundraising tool, people can sell custom t-shirts to help individuals and organizations raise money and awareness.
+- **Screen printing** for orders of 24 or more pieces of one design, printed in-house. See [screen printing](/screen-printing/).
+- **Embroidery** for polos, hats, jackets and uniforms. See [embroidery](/services/embroidery/).
+- **Direct-to-garment (DTG)** for full-color art with no minimum and no setup fee. See [DTG printing](/services/direct-to-garment/).
+- **Direct-to-film (DTF)** for small runs and bright detail on many fabrics. See [DTF printing](/services/direct-to-film/).
+- **Heat transfer** for names and numbers. See [heat transfer vinyl](/services/heat-transfer-vinyl/).
 
-Represent is a social merchandising and marketing platform that helps influencers like actors, athletes, musicians and thought leaders create and sell limited-run t-shirts and merchandise to their fans and followers.
+We print on [t-shirts](/products/t-shirts/), [hoodies and sweatshirts](/products/sweatshirts-hoodies/), [hats](/products/hats/), [team uniforms](/products/team-uniforms-jerseys/), bags, towels and more. Browse the [catalog](/catalog/) to see blanks.
 
-## Customer Feedback
+## Who do we print for?
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+Brands, artists, events and teams. Our presses have run work for names like Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures, and just as often for a local club, a first merch drop or a fundraiser.
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+## How we work
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+- **Free art check.** Every file is reviewed before anything is printed.
+- **Fast answers.** Quotes come back within one business day.
+- **Rush when you need it.** Same-day and next-day slots are available for many orders. Call or request a quote to confirm.
 
-## Our Customers
+## Come by the shop
 
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+2710 S Broadway Avenue, Los Angeles, CA 90007. Open Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la.
+
+Ready to start? [Get a free quote](/quick-quote/).

@@ -1,105 +1,55 @@
 ---
 path: "/custom-embroidery/"
 title: "Custom Embroidery | The Best Screen Printing"
-description: "We offer affordable & fast embroidery services to meet your urgent needs! Whether you're looking for custom embroidery for a special event, business"
-h1: "Custom Embroidery in Los Angeles"
-kind: core
-imported: true
+description: "Custom embroidery in Los Angeles for events, promotions and merch: stitched hats, polos, hoodies, jackets and bags. 12-piece minimum, digitizing included."
+h1: "Custom embroidery in Los Angeles"
+kind: service
+imported: false
+summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Downtown LA shop with a 12-piece minimum per design, digitizing included and rush slots for many orders."
+facts:
+  - { label: "Minimum", value: "12 pieces per design" }
+  - { label: "Setup", value: "Digitizing included" }
+  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+faqs:
+  - q: "What products can be embroidered?"
+    a: "Hats and caps, polos, hoodies, crewnecks, jackets, tote bags, towels and more. Fabric matters, so tell us the garment when you request a quote."
+  - q: "Can I embroider a design with lots of small text?"
+    a: "Very small text and thin lines are hard to stitch cleanly. The free art check will flag them, and we can suggest simplifications or a print method instead."
+  - q: "Can I combine embroidery and printing on one item?"
+    a: "Yes. A stitched chest logo with a printed back graphic on a hoodie is a popular combination."
 sourceUrl: "https://thebestscreenprinting.com/custom-embroidery/"
 ---
-#### CALL US Today! (323) 433-0033
+## Merch with texture
 
-## Custom Embroidery
+A print says your name. Embroidery makes people reach out and touch it. For launches, events, giveaways and brand merch, stitched pieces feel like something worth keeping, not something to toss in a drawer.
 
-We offer affordable & fast embroidery services to meet your urgent needs! Whether you’re looking for custom embroidery for a special event, business promotion, or personal use, we’ve got you covered.
+## What should you embroider?
 
-Watch our production video
+- **Dad hats and snapbacks.** The classic. A front logo on a cap is the most recognizable piece of merch there is. See [custom hats](/products/hats/).
+- **Hoodies and crewnecks.** A small chest hit in thread, maybe a big print on the back. See [sweatshirts and hoodies](/products/sweatshirts-hoodies/).
+- **Polos.** Event staff, sales teams, hospitality.
+- **Jackets.** Coaches jackets, bombers and workwear with a chest logo and a statement back.
+- **Tote bags and towels.** Useful giveaways that keep your logo in circulation.
 
-#### Custom apparel decoration · Downtown Los Angeles · Since 2005
+## How does embroidery compare to printing for merch?
 
-## The production partner behind LA's brands, events & teams.
+Printing wins on big graphics, photos and fine detail. Embroidery wins on small logos, premium feel and durability. Many of the best merch drops use both: an embroidered cap and screen printed tees, or one hoodie with a stitched chest logo and a printed back. If your design has fine lines or tiny text, a print method like [screen printing](/screen-printing/) or [DTF](/services/direct-to-film/) may serve it better.
 
-#### Premium custom apparel at production scale — screen printing, embroidery, and complete garment programs with retail-quality finishing, Pantone-matched color, and rush production when the deadline is real. All in-house, all DTLA.
+## Planning an event or promo?
 
-#### Watch Video
+1. **Pick your hero piece.** Caps and hoodies get worn. Choose what your audience will actually use.
+2. **Keep the logo bold.** Clean shapes and a short color list stitch the sharpest.
+3. **Hit the minimum.** 12 pieces per design. Mix garments as long as the design is the same.
+4. **Tell us the date.** Same-day and next-day rush slots are available for many orders. Confirm by phone or in your quote.
 
-## Screen Printing
+## Want a specific stitch style?
 
-Creativity with superior quality
+Flat embroidery, 3D puff, appliqué, patches, chenille and monograms each create a different look. Compare them on [embroidery styles](/custom-embroidery-services-los-angeles/). Outfitting a team instead of making merch? See [embroidery for uniforms](/services/embroidery/custom-embroidery/).
 
-## Embroidery
+## Visit or call
 
-The artistry and perfection
+We are at 2710 S Broadway Ave, Los Angeles, CA 90007, open Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la.
 
-## Heat Transfer
+## Get your stitch count
 
-Experience brilliance and durability
-
-## Direct to Film (DTF)
-
-Where innovation meets quality
-
-## Garment Embossing
-
-A aouch of distinction
-
-## Direct To Garment (DTG)
-
-No Minimum / No Setup Fee
-
-#### Our Products
-
-## Custom Tees
-
-Screen Printing | DTG | Embroidery
-
-## Custom Hoodie
-
-## Tank Top
-
-## Custom Bags
-
-## Custom Hats
-
-## Custom Polos
-
-## Start a Quick Quote
-
-## Customer Feedback
-
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
-
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
-
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
-
-## Our Customers
-
-### Contact Us
-
-You’ve got questions? We’ve got answers.
-
-Hours: 9am – 5pm (PST) Weekdays
-
-Address: 2710 S Broadway Ave Los Angeles, CA 90007
-
-Phone: (323) 433-0033
-
-Email: [email protected]
-
-2710 S Broadway Ave Los Angeles, CA 90007
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your logo, garment and quantity through the [quick quote form](/quick-quote/). We will reply within one business day.

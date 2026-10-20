@@ -1,85 +1,60 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/screen-printing-on-your-shirts/"
 title: "Screen Printing On Your Shirts In Los Angeles"
-description: "We offer a variety of services here such as screen printing on your shirts in Los Angeles."
-h1: "screen printing on your shirts In Los Angeles"
+description: "Bring your own shirts, hoodies or cut-and-sew pieces and we will screen print them in Downtown LA. Local drop-off, a free art check and 24+ pieces per design."
+h1: "Screen printing on your shirts in Los Angeles"
 kind: service
-imported: true
+imported: false
+summary: "Your garments, our ink. Drop off your own blanks or cut-and-sew pieces at our Downtown LA shop and we will print them, with a free art check first. Screen printing runs at 24+ pieces per design."
+facts:
+  - { label: "Garments", value: "Customer-supplied welcome" }
+  - { label: "Minimum", value: "24 pieces per design for screen printing" }
+  - { label: "Drop-off", value: "2710 S Broadway Ave, Mon–Fri 9am–5pm" }
+faqs:
+  - q: "Can I bring my own shirts to be printed?"
+    a: "Yes. We accept customer-supplied garments for printing, including blanks you bought elsewhere and pieces from your own cut-and-sew maker."
+  - q: "Can I bring fewer than 24 shirts?"
+    a: "Screen printing starts at 24 pieces per design. For fewer pieces we can usually print your garments with DTG or DTF instead."
+  - q: "Which garments print best?"
+    a: "Cotton, polyester and blends all print well. Tell us the fabric content when you request a quote so we can choose the right ink."
+  - q: "Do I need to wash the shirts before drop-off?"
+    a: "No. Bring them new, folded and sorted by size if you can. That makes counting and checking faster."
 sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-los-angeles/screen-printing-on-your-shirts/"
 ---
-### High quality, quick turnaround, affordable prices
+## Your blanks, our presses
 
-## Screen printing on your shirts in Los Angeles made easy.
+Already have the perfect shirt? Maybe it is a heavyweight tee you love, a cut-and-sew piece from your own pattern maker, or a box of extras from the last drop. Bring them in. We screen print customer-supplied garments at our Downtown LA shop, so your vision stays exactly as you planned it.
 
-One fun way to bring creative ideas to life is by screen printing on your shirts. Screen printing in Los Angeles lets your favorite images or drawings extend their life into a new expressive, material form. The best part about creating with custom printed apparel is that there are many garments and printing techniques to choose from. Continue reading to see just what we are all about and how we can help you print designs on your shirt.
+## Who brings their own garments?
 
-#### 24 Hour Online Support
+- **Clothing brands** with custom cut-and-sew blanks, private label fits or specialty fabrics.
+- **Artists** who want their print on a specific shirt, color or wash.
+- **Businesses** with leftover stock that needs a new logo or event print.
+- **Teams and groups** mixing garments from different sources into one order.
 
-## Get a Quick Quote
+## How does a customer-supplied order work?
 
-## Our Customers
+1. **Get a quote.** Tell us the garment brand, fabric and quantity, plus your design and print locations. We reply within one business day.
+2. **Free art check.** We review your file and send a proof for approval.
+3. **Drop off.** Bring the garments to 2710 S Broadway, Monday to Friday, 9am to 5pm. Sorted by size makes life easier for everyone.
+4. **Print and cure.** Your shirts go on press and through the dryer like any other order.
+5. **Pick up.** Collect them at the shop, or ask about [shipping and fulfillment](/fulfillment/).
 
-## Customer Feedback
+## Tips for a clean result
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+- **Bring a few extras.** A small buffer protects your count if a blank has a flaw or a size runs short.
+- **Know your fabric.** Cotton, poly and blends each like different inks. If you are unsure, send the label.
+- **Keep it consistent.** One brand and style per design prints the most uniformly. Mixing brands is fine; tell us up front.
+- **Check the seams.** Pockets, zippers and heavy seams near the print area can affect placement. Flag them in your quote.
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+## Short run on your own shirts?
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+Screen printing starts at 24 pieces per design. For fewer, we can usually print your garments with [DTG](/services/direct-to-garment/), which has no minimum, or [DTF](/services/direct-to-film/), which handles polyester and blends well. Want stitching instead of ink? See [embroidery](/services/embroidery/).
 
-### Screen printing on your shirts
+## Prefer we supply the blanks?
 
-The Best Screen Printing is a full fledge garment printing production. We specialize in various printing solutions for apparel such as Screen printing, Embroidery, and Direct to Garment printing. We can print on most garments such as shirts, hoodies, polo shirts, long sleeves, hats, masks, pants, etc. Our printing company is the perfect one stop solution for apparel promotional items, team uniforms, work uniforms, capsule designs, and even personal projects. Here at The Best Screen Printing we like to turn your creative idea into a material solution.
+No problem. Browse the [catalog](/catalog/) or our [favorite tees and hoodies](/the-best-custom-t-shirt-shop-in-la/). For the full order flow, read [custom screen printing, step by step](/services/custom-screen-printing-los-angeles/custom-screen-printing/).
 
-We offer a variety of services here such as screen printing on your shirts, embroidery on your hoodies, to printing on hats using screen print or vinyl heat transfers. With us, we even go the extra mile by allowing customers to bring their own garments for printing. “Wait does that mean you guys can do custom screen printing on my shirts?” Yes it absolutely does! We accept garments of your own choosing. Whether you have a pile of extra shirts you want to mix and match or you have your own cut and sew specialist, we at The Best Screen Printing want to ensure you have a product that is the best representation of your creative vision.
+## Bring them in
 
-We are always connected and ready to print on shirts, print on hoodies, and even print on tote bags for you. You can use our website or download our application to use our drag and drop templated system for your designs. With this feature, you can print your design with ease by simply choosing a product, and dragging and dropping your design to be positioned as you please. 24/7 days a week you can print with us, and when you place your first order with us, we ensure free shipping with your print order.
-
-We are based in Los Angeles and we are ready to accept local drop off for printing on provided shirts. Reach out to us for a quote or use our online system for ordering, we are ready to print custom designs for you!
-
-#### What is direct to garment printing and how does it work?
-
-Direct to garment printing (DTG) is a digital printing process that allows for full-color, high-quality [...]
-
-#### What kind of thread is used for embroidery?
-
-There are several types of thread that can be used for embroidery, and the choice [...]
-
-#### What is the difference between embroidery and screen printing?
-
-Embroidery and screen printing are both popular methods of adding designs or logos to fabric [...]
-
-#### What materials can be embroidered?
-
-Embroidery can be done on a wide variety of materials, including: Overall, embroidery can be [...]
-
-#### What is screen printing and how is it done?
-
-What is the screen printing process? Screen printing is a multi step printing technique which [...]
-
-#### How to do t-shirt screen printing?
-
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
-
-#### Screen Printing on Hoodies
-
-Screen printing on hoodies is a popular way to customize and personalize hoodies with designs, [...]
-
-#### Embroidery on clothes
-
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Tell us what you are bringing and what you want printed. [Get a quick quote](/quick-quote/), or call (323) 433-0033 before you drop off.

@@ -1,73 +1,63 @@
 ---
 path: "/products/sweatshirts-hoodies/"
-title: "Sweatshirts & Hoodies"
-description: "Sweatshirts & Hoodies Printing for Everyone. Print shirts for yourself or your online business."
-h1: "Sweatshirts & Hoodies"
+title: "Custom Sweatshirts & Hoodies in Los Angeles | TBSP"
+description: "Custom hoodies and sweatshirts, screen printed or embroidered in Downtown LA. Screen printing from 24 pieces, DTG with no minimum, and a free art check."
+h1: "Custom sweatshirts and hoodies"
 kind: product
-imported: true
+imported: false
 sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/"
+summary: "The hoodie is the piece people keep for years, so we make it count with bold ink or clean stitching on heavy fleece. Screen printing from 24 pieces of one design, DTG or DTF for smaller runs, embroidery available."
+facts:
+  - label: "Minimum"
+    value: "24 pieces for screen printing; DTG has no minimum"
+  - label: "Decoration"
+    value: "Screen printing, DTG, DTF and embroidery"
+  - label: "Rush"
+    value: "Same-day and next-day slots for many orders"
+faqs:
+  - q: "Can you screen print on hoodies?"
+    a: "Yes. Screen printing is our core service for 24 or more pieces of one design, and hoodies and sweatshirts are common orders."
+  - q: "Can I get custom hoodies in a small quantity?"
+    a: "Yes. Orders under 24 pieces usually run as DTG or DTF. DTG has no minimum and no setup fee."
+  - q: "Do you embroider hoodies and sweatshirts?"
+    a: "Embroidery is available on many sweatshirts and hoodies, as well as on jackets, polos and hats. Send your logo and we will check that it suits the garment."
+  - q: "How quickly can I get custom hoodies?"
+    a: "Same-day and next-day rush slots are available for many orders. Request a quote with your deadline or call (323) 433-0033 to confirm."
 ---
-## Customer Feedback
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+A good hoodie gets worn until the cuffs fray. TBSP makes custom hoodies and sweatshirts for brands, artists, teams, schools, crews and events at our shop in Downtown Los Angeles. We screen print 24 or more pieces of one design in-house, handle smaller runs with DTG or DTF, and embroider logos when you want the texture of thread.
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+## Which decoration works best on hoodies and sweatshirts?
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+- **[Screen printing](/screen-printing/)** is the standard for 24 or more pieces of one design. Bold logos and big graphics sit thick and bright on fleece.
+- **[Direct-to-garment (DTG)](/services/direct-to-garment/)** prints full-color art with no minimum and no setup fee. Perfect for samples and small batches.
+- **[Direct-to-film (DTF)](/services/direct-to-film/)** is another small-run option, handy on fabrics or spots that are harder to print directly.
+- **[Embroidery](/services/embroidery/)** gives a raised, stitched logo, usually on the left chest of a hoodie or crewneck.
 
-## Our Customers
+Tell us your design and quantity and we will match the method to the look you want.
 
-#### 24 Hour Online Support
+## Where can a design go on a hoodie?
 
-## Get a Quick Quote
+Front chest, left chest, full back, sleeves, even the hood. On a pullover, the front pocket means a full-front print sits above it. On a zip-up, the zipper splits the front, so left chest and back are the power moves. Going bigger than a standard back print? See [oversize and large format printing](/services/large-format-screen-printing/).
 
-### Blog
+## Choose your fleece
 
-#### Screen Printing on Hoodies
+We decorate pullover hoodies, zip-ups and crewneck sweatshirts in a range of weights, fits, sizes and colors. Stock changes by brand and color, so browse current styles in our [catalog](/catalog/) and tell us your pick when you request a quote.
 
-Screen printing on hoodies is a popular way to customize and personalize hoodies with designs, [...]
+What to think about:
 
-#### Screen Printing
+- Heavier fleece feels premium and gives big prints and embroidery a solid base.
+- Lighter sweatshirts layer easily and work well for events.
+- Light ink on dark fleece is a classic, and screen printing makes it pop.
 
-What is Screen Printing? Screen printing is another type of printing used in printing. But [...]
+## One look across the whole crew
 
-#### Embroidery on clothes
+Hoodies are a staple for clothing brands, sports teams, school clubs and work crews. Pair them with [t-shirts](/products/t-shirts/) and [hats](/products/hats/) using the same artwork and we will quote the whole set together.
 
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
+## Need them fast?
 
-#### What materials can be embroidered?
+Rush slots are available for many orders. Check our [same-day printing](/same-day-t-shirt-printing-los-angeles/) page for how rush jobs work, then send us your deadline.
 
-Embroidery can be done on a wide variety of materials, including: Overall, embroidery can be [...]
+## Start your hoodie order
 
-#### What kind of thread is used for embroidery?
-
-There are several types of thread that can be used for embroidery, and the choice [...]
-
-#### What is direct to garment printing and how does it work?
-
-Direct to garment printing (DTG) is a digital printing process that allows for full-color, high-quality [...]
-
-#### What is the difference between embroidery and screen printing?
-
-Embroidery and screen printing are both popular methods of adding designs or logos to fabric [...]
-
-#### What is screen printing and how is it done?
-
-What is the screen printing process? Screen printing is a multi step printing technique which [...]
-
-custom sweatshirts | customize sweatshirt | custom hoodies | custom hoodies near me
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your design, garment style, quantities and deadline through our [quick quote form](/quick-quote/) and we will reply within one business day. Every order includes a free art check. You can also call (323) 433-0033 or email sales@tbsp.la, Monday through Friday, 9am to 5pm.

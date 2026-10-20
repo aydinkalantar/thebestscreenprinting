@@ -1,153 +1,56 @@
 ---
 path: "/the-best-screen-printing/"
 title: "Same Day Shirt Print | The Best Screen Printing In LA"
-description: "The Best Screen Printing offers same day shirt print in Los Angeles. Looking for custom t-shirts for business or personal use, we've got you covered."
-h1: "The Best ScreenPrinting"
+description: "The Best Screen Printing is a Downtown LA print shop for brands, artists, events and teams. Screen printing, embroidery, DTG and DTF, with rush slots."
+h1: "The Best Screen Printing in LA"
 kind: core
-imported: true
+imported: false
+summary: "A Downtown LA print shop that has put ink on shirts for Netflix, Adidas, Nike and Google, and for the brand you are launching next month. Screen printing, embroidery, DTG and DTF, with same-day and next-day rush slots for many orders."
+facts:
+  - { label: "Location", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
+  - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF, heat transfer, embossing" }
+  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+faqs:
+  - q: "Can you help me start a clothing brand?"
+    a: "Yes. We print first runs, samples and restocks for new labels, and can handle finishing like folding, bagging, custom labels and hang tags for retail-ready product."
+  - q: "Can I get shirts printed the same day?"
+    a: "Same-day and next-day rush slots are available for many orders. Call (323) 433-0033 or request a quote with your deadline and we will confirm."
+  - q: "What brands have you printed for?"
+    a: "Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures, along with many independent LA brands, events and teams."
 sourceUrl: "https://thebestscreenprinting.com/the-best-screen-printing/"
 ---
-#### Local Shop
+## Ink, thread and deadlines, handled in DTLA
 
-#### New
+The Best Screen Printing, TBSP for short, is a custom apparel shop at 2710 S Broadway in Downtown Los Angeles. We print and stitch for big names and brand-new labels alike: Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures have all worn our work. So do independent LA labels, artists, events and teams.
 
-#### Services
+## Build a brand, not just a box of shirts
 
-#### Products
+Launching a clothing line? We work with brand builders from the first sample to the restock.
 
-#### Build a Brand
+- **Sample with DTG.** Test a design on a single piece before committing to a run. No minimum, no setup fee.
+- **Go to press at 24+.** Screen printing gives you the best price per piece and a print that lasts, with effects like puff, discharge and foil to set your line apart. See [inks and effects](/services/custom-screen-printing-los-angeles/).
+- **Add premium details.** Embroidered chest logos, [embossing](/services/embossing/) and custom finishes.
+- **Make it retail-ready.** Folding, poly-bagging, custom labels and hang tags through [fulfillment](/fulfillment/).
 
-#### Soon
+## What do we print?
 
-#### Design Studio
+T-shirts, hoodies, crewnecks, tanks, polos, hats, bags and team uniforms. Bring your own blanks or choose from the [catalog](/catalog/). Need help picking? Start with our [favorite tees and hoodies](/the-best-custom-t-shirt-shop-in-la/).
 
-#### Merch
+## Six methods, one shop
 
-#### Shirt App
+[Screen printing](/screen-printing/) for bulk. [Embroidery](/services/embroidery/) for logos with texture. [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) for small runs and full-color art. [Heat transfer](/services/heat-transfer-vinyl/) for names and numbers. [Embossing](/services/embossing/) for a tactile, ink-free finish. Not sure which? Our [services overview](/services/) breaks it down.
 
-#### Design Store
+## How fast can you get shirts?
 
-#### Brand
+Fast, when it counts. Same-day and next-day rush slots are open for many orders. Quantity, colors and garment stock all play a part, so tell us your date up front and we will confirm. See [same-day T-shirt printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/).
 
-Refer a friend, family member, or colleague and get 15% off for your next order.
+## Why brands come back
 
-## DTLA Shop
+- **Free art check** on every order, before anything is printed.
+- **Quotes within one business day.**
+- **Local pickup** in DTLA, or shipping across the continental US.
+- **Real people** on the phone, Monday to Friday, 9am to 5pm.
 
-## Custom Apparel Decoration Company in LA
+## Let's make something
 
-#### Looking for quick and top-notch t-shirt printing near you in Los Angeles? The Best Screen Printing offers same day / next day shirt print services to meet your urgent needs! Whether you’re looking for custom t-shirts for a special event, business promotion, or personal use, we’ve got you covered.
-
-### Los Angeles
-
-## Custom Shirt Printing Company
-
-## Bring Your Clothing Brand to Life
-
-#### From concept to creation, we help you design, launch, and grow a successful clothing brand. Turn your passion into a thriving business today!
-
-#### Watch What Our Brand Owners Say
-
-https://thebestscreenprinting.com/wp-content/uploads/2025/01/Start-Your-Clothing-Brand-⧸-Victoria-My-Nguyen-⧸-Los-Angeles.mp4
-
-#### Watch What Our Brand Builders Say
-
-#### Watch Video
-
-## Screen Printing
-
-Creativity with superior quality
-
-## Embroidery
-
-The artistry and perfection
-
-## Heat Transfer
-
-Experience brilliance and durability
-
-## Direct to Film (DTF)
-
-Where innovation meets quality
-
-## Garment Embossing
-
-A touch of distinction
-
-## Direct To Garment (DTG)
-
-No Minimum / No Setup Fee
-
-#### Our Products
-
-## Custom Tees
-
-Screen Printing | DTG | Embroidery
-
-## Custom Hoodie
-
-## Tank Top
-
-## Custom Bags
-
-## Custom Hats
-
-## Custom Polos
-
-### NEW
-
-## Start Your Brand
-
-### Coming Soon
-
-#### Turning brand desire into brand growth.
-
-Watch the video
-
-#### FREE SHIPPING
-
-## 2-Week Delivery
-
-#### UPGRADE TO RUSH
-
-## 1-Week Delivery
-
-#### SUPER RUSH - local pick-up only
-
-## 4-Day Super Rush
-
-## Online Design Studio
-
-### Design, Order & Enjoy
-
-## TBPS.LA Shirt APP
-
-### Design your own shirt in a minute.
-
-#### 24 Hour Online Support
-
-## Get a Quick Quote
-
-## Customer Feedback
-
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
-
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
-
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
-
-## Our Customers
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your design, quantity and deadline through the [quick quote form](/quick-quote/), or call (323) 433-0033.

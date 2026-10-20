@@ -1,291 +1,68 @@
 ---
 path: "/services/"
-title: "Services"
-description: "We offer high-client services while printing your customs. Innovative methods in printing will make design of your dreams come true."
-h1: "Our Services"
+title: "Services | Screen Printing, Embroidery, DTG & DTF in Los Angeles"
+description: "Screen printing, embroidery, DTG, DTF, heat transfer and embossing under one roof in Downtown LA. Pick the right method for your run and get a quote fast."
+h1: "Our services"
 kind: service
-imported: true
+imported: false
+summary: "Ink, thread, film and texture, all decorated at our Downtown LA shop. Screen printing for 24+ pieces, DTG with no minimum, embroidery for hats, polos and uniforms, and quotes answered within one business day."
+facts:
+  - { label: "Screen printing", value: "24+ pieces per design" }
+  - { label: "Small runs", value: "DTG and DTF, no minimum on DTG" }
+  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+faqs:
+  - q: "Which printing method is cheapest for my order?"
+    a: "It depends on quantity and colors. For 24 or more pieces of one design, screen printing is usually the most cost-effective. Under 24 pieces, DTG or DTF usually wins because there are no screens to set up."
+  - q: "Can I combine methods on one order?"
+    a: "Yes. A common combo is screen printed tees for an event plus embroidered polos or hats for staff. We quote each item with the method that suits it."
+  - q: "Do you check my artwork before printing?"
+    a: "Every order gets a free art check before production, so issues like low resolution or thin lines are caught before anything is printed or stitched."
+  - q: "Can I get my order rushed?"
+    a: "Same-day and next-day rush slots are available for many orders. Call or request a quote with your deadline and we will confirm what is possible."
 sourceUrl: "https://thebestscreenprinting.com/services/"
 ---
-#### DTF
+## Six ways to put your design on a garment
 
-#### NEW
+Every method has a sweet spot. The trick is matching your quantity, artwork and fabric to the right one. Here is the short version of what we run at 2710 S Broadway in Downtown LA.
 
-#### Embossing
+### Screen printing
 
-#### DTG
+Thick, opaque ink pushed through mesh, one screen per color. Solid color, serious durability and the best price per piece once you hit 24 or more of one design. It also unlocks effects like puff, high density, foil and glow-in-the-dark. Start at [screen printing](/screen-printing/), or dig into [inks and effects](/services/custom-screen-printing-los-angeles/).
 
-CUSTOM
+### Embroidery
 
-#### Screen Printing
+Your logo stitched in thread, with real texture and a finish that reads premium. Built for hats, polos, jackets and uniforms, with flat, 3D puff and appliqué options. See [embroidery](/services/embroidery/).
 
-#### Embroidery
+### Direct-to-garment (DTG)
 
-#### Heat Transfer
+A digital printer lays ink straight into the fabric. Full color, fine detail, soft hand, and no minimum or setup fee, so one shirt is as easy as twenty. See [DTG printing](/services/direct-to-garment/).
 
-#### CUSTOM
+### Direct-to-film (DTF)
 
-#### Screen Print
+Your design is printed onto film and heat-pressed onto the garment. Vivid color on cotton, blends and polyester, which makes it a strong pick for small runs on mixed fabrics. See [DTF printing](/services/direct-to-film/).
 
-Refer a friend, family member, or colleague and get 15% off for your next order.
+### Heat transfer vinyl
 
-Learn more about Online Design Studio > Learn more about Mobile Shirt App >
+Cut vinyl pressed onto the garment. The go-to for names and numbers on jerseys, with matte, gloss and metallic finishes. See [heat transfer vinyl](/services/heat-transfer-vinyl/).
 
-Watch our production video
+### Embossing
 
-Garment embossing adds a captivating three-dimensional texture to your designs.
+No ink, just texture. Raised logos and patterns pressed into the fabric for a quiet, high-end look. See [garment embossing](/services/embossing/).
 
-Learn more >
+## Which method fits your order?
 
-#### Watch our Embossing video
+Start with three questions:
 
-DTF technology allows us to create prints with exceptional vibrancy and intricate detail.
+- **How many pieces?** 24+ of one design points to screen printing. Fewer points to DTG or DTF.
+- **What does the art look like?** A few solid colors print beautifully on screen. Photos and gradients belong on DTG or DTF.
+- **What is the garment?** Hats, polos and jackets usually look best embroidered. Jerseys with individual names want heat transfer.
 
-Watch DTF production video
+Not sure? Send the design and we will recommend a method, then run it through a free art check before anything is printed. For oversized prints, see [large format screen printing](/services/large-format-screen-printing/).
 
-#### Custom
+## Need it this week?
 
-Screen printing allows for stunning color vibrancy, capturing the essence of your design with unparalleled accuracy.
+Same-day and next-day rush slots are open for many orders. Read how it works on [same-day T-shirt printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/), then browse blanks in the [catalog](/catalog/).
 
-Watch our Screen Printing video
+## Start your order
 
-DTG printing's advanced technology enables us to reproduce intricate details and fine lines with astonishing precision, capturing every nuance of your design.
-
-Watch our DTG video
-
-Clothing embroidery adds dimension to your designs, creating a tactile experience that elevates your garments beyond ordinary prints.
-
-Watch our Embroidery video
-
-Heat Transfer Vinyl allows us to produce vivid and bold designs that catch the eye and make a statement.
-
-Watch our Heat Transfer video
-
-Garment embossing adds a captivating three-dimensional texture to your designs. The raised elements create a visually appealing and tactile experience, making your custom apparel truly stand out.
-
-Watch our Embossing video
-
-DTF technology allows us to create prints with exceptional vibrancy and intricate detail. Every nuance of your design is captured, resulting in stunning, true-to-life prints that demand attention.
-
-Watch our DTF video
-
-### Custom
-
-Screen printing allows for stunning color vibrancy, capturing the essence of your design with unparalleled accuracy. From bold hues to subtle gradients, your artwork comes to life in rich and vivid tones.
-
-Clothing embroidery adds dimension to your designs, creating a tactile experience that elevates your garments beyond ordinary prints. The raised threads provide depth and visual interest that demands attention.
-
-Heat Transfer Vinyl allows us to produce vivid and bold designs that catch the eye and make a statement. The colors remain vibrant and true, ensuring your apparel stands out in any crowd.
-
-## Direct to Film (DTF)
-
-### Elevate Your Shirt Printing with DTF
-
-## What makes Direct to Film (DTF)?
-
-## Why DTF?
-
-### Where Innovation Meets Quality
-
-## 1
-
-## Incredible Color Vibrancy
-
-DTF technology offers vibrant and true-to-life colors, capturing every hue and shade with remarkable accuracy.
-
-## 2
-
-## Versatility Across Fabrics
-
-Direct-to-film excels on a multitude of fabrics, from cotton and blends to polyester and even leather.
-
-## 3
-
-## Exceptional Detail Reproduction
-
-DTF printing captures the finest details with precision. Intricate patterns, gradients, and textures are brought to life with stunning clarity and depth.
-
-## 4
-
-## Long-Lasting Durability
-
-DTF prints are built to last. The ink bonds deeply with the fabric, resulting in prints that resist fading, cracking, and peeling, ensuring your designs remain vibrant over time.
-
-## 5
-
-## Eco-Friendly Approach
-
-DTF technology utilizes water-based inks that are environmentally friendly, making it a responsible choice without compromising on quality.
-
-## 6
-
-## No Limit to Color Palette
-
-With DTF, there's no limit to the number of colors you can incorporate into your designs. This freedom enables you to explore intricate color combinations and gradients.
-
-## Embossing
-
-### Elevate Elegance and Texture with Garment Embossing
-
-## What makes Embossing?
-
-## Why Embossing?
-
-### A Touch of Distinction
-
-## Textural Elegance
-
-The raised elements create a visually appealing and tactile experience, making your custom apparel truly stand out.
-
-## Subtle Sophistication
-
-This subtle yet impactful touch communicates a sense of quality and attention to detail that resonates with wearers and observers alike.
-
-## Customizable Creativity
-
-From intricate patterns to discreet logos, garment embossing offers a wide range of creative possibilities.
-
-## Durability and Longevity
-
-Unlike some print methods, embossing doesn't fade, crack, or peel over time, ensuring that your custom apparel maintains its allure.
-
-## Diverse Fabric Compatibility
-
-Our garment embossing technique is compatible with various fabric types, allowing you to create stunning designs on everything from t-shirts and hoodies to formal wear and accessories.
-
-## Subdued Color Versatility
-
-Garment embossing doesn't rely on color to make an impact. This makes it an excellent choice for designs that are elegant and understated, relying on texture to convey sophistication.
-
-## Direct to Garment (DTG)
-
-### Revolutionize Your Apparel with Direct-to-Garment Printing
-
-## What makes Direct to Garment (DTG)?
-
-## Why DTG?
-
-### Empower Your Designs
-
-## Microscopic Detail
-
-## Limitless Color Expression
-
-Your design can include gradients, blends, and a full spectrum of hues for a captivating visual impact.
-
-## Soft and Comfortable Feel
-
-The water-based inks used in DTG printing seep into the fabric fibers, resulting in a print that's soft to the touch and comfortable to wear, unlike some traditional print methods that can feel stiff or plasticky.
-
-## No Minimum Orders
-
-DTG printing is equally effective for small print runs as it is for larger orders. This means you can have a single custom shirt or a batch of shirts, all with the same exceptional quality.
-
-## Environmentally Friendly
-
-DTG printing employs eco-friendly water-based inks, reducing its environmental impact while still delivering stunning, high-quality results.
-
-## Quick Turnaround
-
-Our efficient DTG printing process allows for fast turnaround times, so you can enjoy your custom-designed shirts without waiting for weeks.
-
-## Screen Printing
-
-### The Power of Shirt Screen Printing
-
-## What makes Screen Printing?
-
-## Why Screen Printing?
-
-## Vivid Color Reproduction
-
-## Durability Beyond Compare
-
-The ink used in screen printing bonds deeply with the fabric, resulting in prints that withstand countless washes and wear without fading, cracking, or peeling.
-
-## Versatile Fabric Compatibility
-
-## Crisp Detail and Clarity
-
-Screen printing's ability to capture fine details and crisp lines ensures that your artwork is reproduced with impressive clarity.
-
-## Ideal for Bulk Orders
-
-Whether you're outfitting a sports team, promoting an event, or establishing a brand, our screen printing process delivers consistent quality across the board.
-
-## Customization
-
-With screen printing, you have the freedom to print on various parts of the garment, creating truly unique and customized pieces that reflect your style and vision.
-
-## Embroidery
-
-### Elevate Your Style with Custom Embroidery
-
-## What makes Embroidery?
-
-## Why Embroidery?
-
-### Threaded Elegance
-
-## Unparalleled Depth & Texture
-
-## Elegance & Sophistication
-
-Embroidery exudes a sense of refinement that's ideal for showcasing logos, monograms, and intricate patterns.
-
-Embroidery withstands the test of time. The threads are tightly stitched into the fabric, ensuring that your designs remain vibrant and intact even after countless washes.
-
-## Diverse Color Palette
-
-With a wide array of thread colors at our disposal, clothing embroidery offers versatility in color selection, allowing us to match your design's palette with precision.
-
-## Professional Branding
-
-Embroidery is a favored choice for business attire and uniforms. It lends a professional and polished look, making it perfect for corporate branding and team uniforms.
-
-Whether it's a logo, a personalized monogram, or an artistic motif, clothing embroidery brings your vision to life.
-
-## Heat Transfer
-
-### Elevate Your Clothing with Heat Transfer Vinyl
-
-## What makes Heat Transfer?
-
-## Why Heat Transfer?
-
-### Experience Brilliance and Durability
-
-## Vibrant & Striking Designs
-
-## Durability & Longevity
-
-The vinyl adheres securely to the fabric, resisting fading, cracking, and peeling even after repeated washes, making it a perfect choice for sportswear and everyday wear.
-
-## Customization Beyond Limits
-
-HTV offers the flexibility to create intricate designs, typography, and even photo-realistic prints.
-
-## Colors & Finishes
-
-Choose from a wide variety of vinyl colors and finishes, including matte, glossy, metallic, and more.
-
-HTV is a quick and efficient process, making it ideal for rush orders or last-minute customization.
-
-## Small Batch Orders
-
-Heat Transfer Vinyl is equally effective for individual pieces or small batch orders.
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Tell us the garment, quantity, print locations and deadline. [Get a quick quote](/quick-quote/) and hear back within one business day, or call (323) 433-0033, Monday to Friday, 9am to 5pm.

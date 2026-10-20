@@ -1,66 +1,66 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/screen-printing-near-me/"
 title: "Screen Printing Near Me"
-description: "Screen printing near me may include not only designs such as personal photos or various pictures but also simple inscriptions (lines)."
-h1: "screen printing near me"
+description: "Looking for screen printing near you in Los Angeles? Seven questions to ask any local print shop, and how TBSP in Downtown LA answers each one."
+h1: "Screen printing near me in Los Angeles"
 kind: service
-imported: true
+imported: false
+summary: "Not every shop down the street prints in-house. Here is how to vet a local screen printer, and how our Downtown LA shop stacks up: 24+ piece screen printing, free art checks and quotes within one business day."
+facts:
+  - { label: "Location", value: "2710 S Broadway Ave, Downtown LA" }
+  - { label: "Minimum", value: "24 pieces per design" }
+  - { label: "Rush", value: "Same-day and next-day slots for many orders" }
+faqs:
+  - q: "Do you screen print in-house?"
+    a: "Yes. Screen printing orders of 24 or more pieces are printed in-house at our shop at 2710 S Broadway Ave in Downtown Los Angeles."
+  - q: "What are your hours?"
+    a: "Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la."
+  - q: "Do you ship outside Los Angeles?"
+    a: "Yes. We ship anywhere in the continental US. International shipments are handled as a courtesy, and the recipient pays any customs duties or taxes."
 sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-los-angeles/screen-printing-near-me/"
 ---
-### High quality, quick turnaround, affordable prices
+## Close is good. Good is better.
 
-Block "11523" not found
+Searching "screen printing near me" in LA turns up dozens of names. Some print on their own presses. Some take your order and send it out. Some are great at 500 tees and lost at 30. Before you hand over your artwork, ask a few sharp questions. Here they are, with our answers.
 
-## Screen printing near me – made easy.
+## Seven questions to ask a local screen printer
 
-Screen Printing near me for Everyone. Get a headstart with free design templates you can customize in a few clicks.
+**1. Do you print in-house?**
+Ours: yes. Screen printing runs on our presses at 2710 S Broadway in Downtown LA.
 
-- Top quality prints using the latest technology
-- Mix and match colors, sizes, and designs
-- Fast and free standard shipping
-- Customer happiness guarantee
+**2. What is your minimum?**
+Ours: 24 pieces per design for screen printing. Below that we recommend [DTG](/services/direct-to-garment/), which has no minimum and no setup fee, or [DTF](/services/direct-to-film/).
 
-## Customer Feedback
+**3. Will you check my art?**
+Ours: every order gets a free art check before printing, plus a proof to approve.
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+**4. How fast do you quote?**
+Ours: within one business day.
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+**5. Can you rush?**
+Ours: same-day and next-day slots are available for many orders. We confirm by phone or with your quote. See [same-day printing](/same-day-t-shirt-printing-los-angeles/).
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+**6. What else can you do?**
+Ours: [embroidery](/services/embroidery/), [heat transfer](/services/heat-transfer-vinyl/) for names and numbers, [embossing](/services/embossing/) and [large format](/services/large-format-screen-printing/) prints. One shop, one invoice.
 
-## Screen printing near me
+**7. Who have you printed for?**
+Ours: Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures, plus local brands, schools and teams.
 
-Screen printing is a popular method of printing designs on clothes, and finding a reliable screen printing shop near you is essential for getting high-quality prints. In this article, we’ll discuss why screen printing is a great option for custom clothing, and how to find a screen printing shop near you.
+## Why local still matters
 
-Screen printing is a printing technique where ink is pressed through a stencil (or “screen”) onto the fabric. This method is popular for its durability, versatility, and ability to produce high-quality prints. Screen printing is often used for custom t-shirts, sweatshirts, tote bags, and other types of apparel.
+A nearby shop means you can pick up instead of waiting on a carrier, swing by to approve a color, or fix a size count without a week of email. When a deadline is tight, local pickup cuts transit out of the schedule entirely.
 
-One of the benefits of screen printing is that it can be used to print a wide range of designs and colors. With the ability to mix custom ink colors and create detailed stencils, screen printing allows for highly customized and intricate designs. Screen printing is also a durable option, as the ink is fused into the fabric and can withstand multiple washes without fading or cracking.
+## What should you bring to a first meeting?
 
-If you’re looking for a screen printing shop near you, there are a few things to keep in mind. First, look for a shop with a solid reputation and a track record of producing high-quality prints. Check online reviews and ask for references if possible. You may also want to visit the shop in person to see examples of their work and to discuss your project with the staff.
+- Your design file, or a sketch if it is early
+- A rough quantity and size breakdown
+- The garment you have in mind, or browse the [catalog](/catalog/)
+- Your deadline
 
-Another consideration when looking for a screen printing shop near you is the types of products they offer. Some shops may specialize in certain types of clothing or printing techniques, so be sure to ask about their capabilities and options. Additionally, consider the turnaround time for your project, as some shops may have longer lead times than others.
+## Find us
 
-When you find a screen printing shop near you that you’re interested in working with, be sure to communicate your needs clearly and provide any necessary artwork or designs. The more information you can provide upfront, the better the shop will be able to deliver the final product you’re looking for.
+2710 S Broadway Ave, Los Angeles, CA 90007. Open Monday to Friday, 9am to 5pm. Planning a visit? Check the [local shop page](/local-shop/). Want to see how an order runs? Read [custom screen printing, step by step](/services/custom-screen-printing-los-angeles/custom-screen-printing/).
 
-In conclusion, screen printing is a great option for custom clothing, offering durability, versatility, and high-quality prints. When looking for a screen printing shop near you, be sure to do your research, ask for references, and consider the shop’s capabilities and turnaround time. With the right shop and clear communication, you can get the custom clothing you need for your business, event, or personal project.
+## Skip the search
 
-## Our Customers
-
-#### 24 Hour Online Support
-
-## Get a Quick Quote
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your project through the [quick quote form](/quick-quote/) and hear back within one business day.

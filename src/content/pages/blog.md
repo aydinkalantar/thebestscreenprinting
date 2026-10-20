@@ -1,65 +1,34 @@
 ---
 path: "/blog/"
 title: "Blog | The Best Screen Printing"
-description: "Blog page about digital printing for goods and clothing. Read and increase your digital printing knowledge."
+description: "Straight-talk guides from a Downtown LA print shop: how screen printing works, DTG explained, embroidery thread and materials, hoodie printing and design tips."
 h1: "Blog"
 kind: blog
-imported: true
+imported: false
+summary: "Shop-floor knowledge, written down. Guides on screen printing, DTG and embroidery from the TBSP team in Downtown Los Angeles."
 sourceUrl: "https://thebestscreenprinting.com/blog/"
 ---
-Direct to garment printing
+Ink, thread and the decisions in between. These guides explain how custom apparel actually gets made, so you can pick the right method and send art that prints clean.
 
-#### What is direct to garment printing and how does it work?
+## Screen printing
 
-Direct to garment printing (DTG) is a digital printing [...]
+- [What is screen printing and how is it done?](/what-is-screen-printing-and-how-is-it-done/) The process, the print types and the inks.
+- [How to do t-shirt screen printing](/how-to-do-t-shirt-screen-printing/) A step-by-step walkthrough of printing a shirt by hand.
+- [Screen printing on hoodies and sweatshirts](/the-screen-printing-on-the-hoodies/) Placements, fleece and pockets.
 
-Embroidery
+## Direct to garment
 
-#### What kind of thread is used for embroidery?
+- [What is direct-to-garment printing and how does it work?](/what-is-direct-to-garment-printing-and-how-does-it-work/) Full color, no screens, no minimum.
 
-There are several types of thread that can be [...]
+## Embroidery
 
-#### What is the difference between embroidery and screen printing?
+- [What is the difference between embroidery and screen printing?](/what-is-the-difference-between-embroidery-and-screen-printing/)
+- [What kind of thread is used for embroidery?](/what-kind-of-thread-is-used-for-embroidery/)
+- [What materials can be embroidered?](/what-materials-can-be-embroidered/)
+- [Embroidery on clothes](/embroidery-on-clothes/)
 
-Embroidery and screen printing are both popular methods of [...]
+## Design
 
-#### What materials can be embroidered?
+- [Helpful design tips](/helpful-design-tips/) Seven ways to make art that prints better.
 
-Embroidery can be done on a wide variety of [...]
-
-Screen Printing
-
-#### What is screen printing and how is it done?
-
-What is the screen printing process? Screen printing is [...]
-
-#### How to do t-shirt screen printing?
-
-T-shirt – a versatile item of clothing: it is [...]
-
-#### Screen Printing on Hoodies
-
-Screen printing on hoodies is a popular way to [...]
-
-#### Embroidery on clothes
-
-Requirements for Embroidery on Clothes For the production of [...]
-
-#### Screen Printing
-
-What is Screen Printing? Screen printing is another type [...]
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Ready to make something? [Get a free quote](/quick-quote/).

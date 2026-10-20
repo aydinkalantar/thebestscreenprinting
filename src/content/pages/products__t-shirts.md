@@ -1,75 +1,65 @@
 ---
 path: "/products/t-shirts/"
-title: "T-shirts Printing For Everyone."
-description: "Stand out from the crowd with custom T-shirts in a range of designs, colors and styles. Get a headstart with free design templates you can customize in a few clicks."
-h1: "T-shirt Printing for Everyone"
+title: "Custom T-Shirt Printing in Los Angeles | TBSP"
+description: "Custom t-shirt printing in Downtown LA for brands, artists, events and teams. Screen printing from 24 pieces, DTG with no minimum, and rush slots available."
+h1: "Custom t-shirt printing"
 kind: product
-imported: true
+imported: false
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/"
+summary: "From one-off samples to full brand drops, we put your art on tees that people actually want to wear. Screen printing from 24 pieces of one design, DTG with no minimum, and same-day or next-day rush slots for many orders."
+facts:
+  - label: "Minimum"
+    value: "No minimum with DTG; 24 pieces for screen printing"
+  - label: "Decoration"
+    value: "Screen printing, DTG, DTF and embroidery"
+  - label: "Rush"
+    value: "Same-day and next-day slots for many orders"
+faqs:
+  - q: "Can I order just one custom t-shirt?"
+    a: "Yes. DTG printing has no minimum and no setup fee, so single shirts and small runs are possible."
+  - q: "When is screen printing the better choice for t-shirts?"
+    a: "Screen printing is our core service for orders of 24 or more pieces of one design, printed in-house at our shop."
+  - q: "How fast can I get custom t-shirts?"
+    a: "Same-day and next-day rush slots are available for many orders. Request a quote with your deadline or call (323) 433-0033 to confirm."
+  - q: "How long does it take to get a quote?"
+    a: "We answer quote requests within one business day."
 ---
-Print shirts for yourself or your online business
 
-## Customer Feedback
+The t-shirt is the most-worn piece of merch there is, so it should look and feel right. TBSP prints custom tees for clothing lines, online stores, artists, businesses, events and teams out of our shop in Downtown Los Angeles. Print one shirt with DTG or run a full drop with screen printing, and every order gets a free art check before ink hits fabric.
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+## Which printing method is right for my t-shirts?
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+Quantity and artwork decide it.
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+- **[Screen printing](/screen-printing/)** is our core service for 24 or more pieces of one design, printed in-house. Thick, saturated ink and crisp edges make it the go-to for brand drops, event shirts and team orders.
+- **[Direct-to-garment (DTG)](/services/direct-to-garment/)** prints full-color art straight into the shirt. No minimum, no setup fee. Made for samples, one-offs and small batches.
+- **[Direct-to-film (DTF)](/services/direct-to-film/)** presses a printed film onto the garment, another strong option for orders under 24 pieces.
+- **[Embroidery](/services/embroidery/)** adds a stitched chest logo on heavier tees, though it really shines on polos, hats and jackets.
 
-## Our Customers
+Still deciding? Send your design and quantity and we will point you to the right one.
 
-#### 24 Hour Online Support
+## Where can the print go?
 
-## Get a Quick Quote
+Full front, left chest, full back, upper back, sleeves. Most orders combine two, like a small front logo with a big back graphic. Want the art bigger than a standard front or back? Go to our [oversize and large format printing](/services/large-format-screen-printing/) page.
 
-### Blog
+## Pick your blank
 
-#### What is direct to garment printing and how does it work?
+We print on a wide range of blank tees, from everyday cotton to softer blends and heavier streetwear cuts, in a range of sizes and colors. Stock changes by brand and color, so browse what is available now in our [catalog](/catalog/) and name your favorite when you request a quote.
 
-Direct to garment printing (DTG) is a digital printing process that allows for full-color, high-quality [...]
+A few things worth knowing:
 
-#### What kind of thread is used for embroidery?
+- Fabric content affects which method works best, so tell us if you have a specific shirt in mind.
+- Light ink on dark shirts is a classic look, and screen printing delivers it with real punch.
+- The blank sets the feel of the final shirt as much as the print does.
 
-There are several types of thread that can be used for embroidery, and the choice [...]
+## Built for brands and online stores
 
-#### What is the difference between embroidery and screen printing?
+A lot of our customers print for their own clothing lines and shops. Screen printing keeps bigger runs consistent shirt after shirt, while DTG lets you test a new design in small numbers before you commit to a full run.
 
-Embroidery and screen printing are both popular methods of adding designs or logos to fabric [...]
+## Complete the set
 
-#### What materials can be embroidered?
+Match your tees with [sweatshirts and hoodies](/products/sweatshirts-hoodies/) or [embroidered hats](/products/hats/) using the same artwork. Deadline close? See [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
 
-Embroidery can be done on a wide variety of materials, including: Overall, embroidery can be [...]
+## Let's make your shirts
 
-#### What is screen printing and how is it done?
-
-What is the screen printing process? Screen printing is a multi step printing technique which [...]
-
-#### How to do t-shirt screen printing?
-
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
-
-#### Screen Printing on Hoodies
-
-Screen printing on hoodies is a popular way to customize and personalize hoodies with designs, [...]
-
-#### Embroidery on clothes
-
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
-
-custom t-shirt printing | t-shirt screen printing near me | custom printed t-shirts | same day t-shirt printing near me | Custom All-Over T-Shirt Printing in Los Angeles | Custom T-shirt Screen Printing Near Tuscumbia AL | Custom All-over T-shirt Printing No-minimum | Custom T-shirt Printing near Los Angeles
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your design, shirt style, quantities and deadline through our [quick quote form](/quick-quote/) and we will reply within one business day. Or call (323) 433-0033 and come by 2710 S Broadway, Monday through Friday, 9am to 5pm.

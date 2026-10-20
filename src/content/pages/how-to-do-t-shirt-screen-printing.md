@@ -1,83 +1,92 @@
 ---
 path: "/how-to-do-t-shirt-screen-printing/"
 title: "How To Do T Shirt Screen Printing?"
-description: "How to do t shirt screen printing? T-shirt - a versatile item of clothing: it is in the wardrobe of everyone, regardless of age."
-h1: "How To Do T Shirt Screen Printing?"
+description: "A step-by-step guide to screen printing a t-shirt by hand: the materials you need, how to burn a screen, pull a print, cure the ink and when to hire a shop."
+h1: "How to do t-shirt screen printing"
 kind: blog
-imported: true
+imported: false
+summary: "From blank screen to finished shirt. A hands-on walkthrough of the gear and the ten steps behind every screen printed tee, from a Downtown LA print shop."
+faqs:
+  - q: "Can I screen print a t-shirt at home?"
+    a: "Yes, with a screen, emulsion, a light source for exposure, ink, a squeegee and a way to cure the ink. Single-color designs are the easiest place to start."
+  - q: "Why does my print wash out?"
+    a: "Usually because the ink was not fully cured. Each ink type needs enough heat for long enough to set, so follow the ink maker's curing guidance."
+  - q: "When is it better to use a print shop?"
+    a: "Multi-color designs, dark garments, tight deadlines and runs of 24 or more pieces are where a shop's presses, dryers and registration pay off."
 sourceUrl: "https://thebestscreenprinting.com/how-to-do-t-shirt-screen-printing/"
 ---
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless of age. Custom t-shirts in Los-Angeles are worn in the gym, for a walk around the city, in the office, at school, used as home clothes and even for sleep. That is why printing on T-shirts is in demand and are ideal for advertising any goods and services.
+The t-shirt is the most-worn custom garment on the planet: at the gym, at work, at school, on the street and on the couch. Screen printing is the classic way to put a design on one. Here is how it works, step by step, whether you are trying it yourself or just want to know what happens on our presses.
 
-If you need to print hundreds or thousands of T-shirts as soon as possible, you should pay attention to screenprinting, and if you need a complex photorealistic drawing on cotton – DTG and DTF are also available. For each type of printing we specify the optimal period and minimum quantity of products available to order. The cost of tshirt and shirt screen printing directly depends on the chosen printing method, the size of the print and the number of colors used in it, as well as the number of different prints.
+New to the concept? Start with [what screen printing is and how it is done](/what-is-screen-printing-and-how-is-it-done/). This guide is the hands-on version.
 
-Here is a step-by-step guide on how to do t-shirt screen printing:
+## What do you need to screen print a t-shirt?
 
-## Materials to Screen printing on T-shirt:
+- **Screen frame** with mesh stretched tight
+- **Photo emulsion** and a **scoop coater** to apply it
+- **Film positive:** your design printed solid black on transparency film
+- **Exposure unit** or another strong UV light source
+- **Dark room** or light-safe area for drying coated screens
+- **Water source** for washing out the stencil
+- **Ink** suited to your fabric
+- **Squeegee** sized to your design
+- **Press or platen** to hold the shirt flat
+- **Heat source** for curing: a conveyor dryer, flash dryer or heat press
+- **Blank t-shirts**
 
-- Screen printing frame
-- Emulsion
-- Emulsion scoop coater
-- Film positive
-- Transparency film
-- Ink
-- Squeegee
-- T-shirt
-- Exposure unit
-- Water source
-- Dark room or light-safe area
-- Heat source or conveyor dryer (optional)
+## The ten steps
 
-## Screen printing on T-shirt Steps:
+### 1. Create your design
 
-- Create your design: Use graphic design software to create your design or artwork. Be sure to create it in the appropriate size and resolution for screen printing.
-- Print the film positive: Print the design onto a transparency film using a printer or have it printed at a print shop.
-- Coat the screen: Coat the screen with a layer of emulsion using the emulsion scoop coater. Be sure to cover both sides of the screen evenly.
-- Dry the screen: Allow the screen to dry in a dark room or light-safe area.
-- Expose the screen: Place the dried screen onto the exposure unit, and place the film positive on top of the screen. Turn on the exposure unit and expose the screen to UV light for the recommended time. This will cause the emulsion to harden and create a stencil of the design on the screen.
-- Wash out the screen: Rinse the screen with water to remove any unexposed emulsion and reveal the stencil.
-- Set up the printing station: Place the T-shirt onto the platen of the printing press, and secure the screen on top of the T-shirt.
-- Apply ink: Apply a small amount of ink onto the screen, and use the squeegee to push the ink through the stencil and onto the T-shirt. Repeat this step for each color in the design, making sure to clean the screen between each color.
-- Cure the ink: Cure the ink by using a heat source or conveyor dryer. This step is important to ensure that the ink sets and will not wash out or fade over time.
-- Quality check: Once the ink is cured, perform a quality check to ensure that the print is clean, sharp, and free of any imperfections.
+Build your art in design software at the size you want to print it. Separate each color onto its own layer, because each color needs its own screen. Our [design tips](/helpful-design-tips/) cover file prep.
 
-By following these steps, you can create high-quality screen printed T-shirts. It’s important to use high-quality inks, screens, and equipment to ensure the best possible outcome. Additionally, make sure to follow proper safety procedures when working with ink and heat, and to allow adequate time for the ink to cure before washing or wearing the T-shirt.
+### 2. Print the film positive
 
-Direct tshirt printing allows you to quickly and clearly transfer to the fabric all colors, any image to the smallest detail. We use the latest equipment that allows us to execute bulk orders in the shortest possible time.
+Print each color layer onto transparency film in solid, opaque black. Any gray or weak areas let light through and weaken the stencil.
 
-No matter what type of printing you choose, we guarantee high quality finished products: printed t-shirts last a long time, attracting the attention of others and not requiring complex care.
+### 3. Coat the screen
 
-#### Quote Team
+In low light, use the scoop coater to spread a thin, even layer of emulsion on both sides of the mesh.
 
-- What is direct to garment printing and how does it work?
-- What kind of thread is used for embroidery?
-- What is the difference between embroidery and screen printing?
-- What materials can be embroidered?
-- What is screen printing and how is it done?
-- April 2023
-- March 2023
-- January 2023
-- October 2022
-- June 2022
-- April 2022
-- March 2022
-- Direct to garment printing
-- Embroidery
-- Screen Printing
-- Log in
-- Entries feed
-- Comments feed
-- WordPress.org
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+### 4. Dry the screen
+
+Let it dry flat in a dark, light-safe area. Light at this stage will start hardening the emulsion.
+
+### 5. Expose the screen
+
+Place the film positive on the screen and expose it to UV light for the time your emulsion calls for. Light hardens the emulsion everywhere except under the black areas of your design.
+
+### 6. Wash out the stencil
+
+Rinse the screen with water. The unexposed emulsion washes away, leaving open mesh in the shape of your design. Let it dry.
+
+### 7. Set up the press
+
+Load the shirt onto the platen, smooth it flat and lock the screen above it. Line up the placement now, because it is hard to fix once ink is down.
+
+### 8. Pull the print
+
+Spread ink along the top of the screen. With firm, even pressure, pull the squeegee across to push ink through the open mesh. For multi-color designs, repeat with each screen, lining up every color to the last. Clean screens between colors and between jobs.
+
+### 9. Cure the ink
+
+Run the shirt through a dryer or under heat until the ink fully cures. This is what makes the print survive the wash. Skip it or rush it and the print can crack, peel or fade.
+
+### 10. Quality check
+
+Look for clean edges, full coverage, correct placement and no smudges. Let the shirt cool and rest before washing or wearing it.
+
+## What makes a home print look professional?
+
+- **Start with one color.** Registration gets harder with every color you add.
+- **Use tight mesh and a sharp film.** Fuzzy films make fuzzy prints.
+- **Test on scrap fabric** before printing on good blanks.
+- **Watch dark shirts.** Bright colors on dark fabric usually need a white underbase printed first.
+- **Respect safety.** Ventilate, protect your hands and follow the instructions for every ink and chemical.
+
+## Why do print shops do it differently?
+
+On a production press, the steps are the same but the scale is not. Multi-head presses hold several screens in perfect registration, conveyor dryers cure every shirt at a consistent temperature, and experienced printers dial in ink and pressure for each fabric. That consistency matters when you need dozens or hundreds of identical shirts.
+
+At TBSP, [screen printing](/screen-printing/) for orders of 24 or more pieces of one design is printed in-house at our Downtown LA shop. Smaller runs and full-color photo art are usually better on [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), which skip screens entirely. Not sure which is right? Read about [DTG printing](/what-is-direct-to-garment-printing-and-how-does-it-work/).
+
+Want shirts without the darkroom? [Get a free quote](/quick-quote/).

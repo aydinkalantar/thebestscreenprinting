@@ -1,49 +1,53 @@
 ---
 path: "/services/embossing/"
-title: "Embossing | The Best Screen Printing"
-description: "Embossing in garment printing is a process which creates an impression on the fabric's surface. It involves applying pressure to the garment and leaving"
-h1: "Embossing"
+title: "Garment Embossing in Los Angeles | TBSP"
+description: "Garment embossing in Downtown LA: raised or debossed designs pressed into fabric with a custom metal die, blind or with foil. 50-piece minimum per design."
+h1: "Garment embossing in Los Angeles"
 kind: service
-imported: true
-sourceUrl: "https://thebestscreenprinting.com/services/embossing/"
+imported: false
+summary: "Your design pressed into the fabric itself, raised or sunken, no ink required, made at our Downtown LA shop. Embossing uses a custom metal die, comes blind or with foil, and has a 50-piece minimum."
+facts:
+  - { label: "Minimum", value: "50 pieces" }
+  - { label: "Styles", value: "Blind embossing and foil" }
+  - { label: "Best for", value: "Tonal, premium brand pieces" }
+faqs:
+  - q: "What is the minimum for embossing?"
+    a: "Embossing has a 50-piece minimum. Each job needs a custom metal die, which is why it works best on larger runs."
+  - q: "What is the difference between blind embossing and foil?"
+    a: "Blind embossing leaves a raised or sunken mark in the same color as the garment. Foil adds a metallic or colored foil layer to the embossed areas."
+  - q: "Does every design work for embossing?"
+    a: "No. Because the design is turned into a metal die, some designs work better than others. Send us your artwork and we will tell you whether it is a good fit."
 ---
-### High quality, quick turnaround, affordable prices
+## Texture you can run your hand over
 
-## Embossing
+Embossing skips ink entirely. We press your design into the fabric with a custom metal die, leaving a raised or sunken image in the garment itself. It is also called blind printing or relief printing. The result is subtle, tonal and tactile, the kind of detail people notice up close.
 
-Embossing in garment printing is a process which creates an impression on the fabric’s surface. It involves applying pressure to the garment and leaving behind a raised or depressed image or pattern—also known as blind printing or relief printing. There are two kinds of embossing: blind embossing and foil. Blind embossing produces a raised or depressed mark that is the same as the garment itself, while foil adds a metallic or colored foil layer to these areas.
+## What styles of embossing do you offer?
 
-Embossing is a longer printing process and has a minimum of 50pcs. We have to create a metal stencil for this method, so some designs are more suitable than others. Feel free to email us to learn more.
+- **Blind embossing.** A raised or debossed mark in the same color as the garment. Clean, quiet, all texture.
+- **Foil.** Adds a metallic or colored foil layer to the embossed areas for a finish that catches light.
 
-Embossing is a technique used to create raised or three-dimensional designs on various materials, such as paper, leather, or metal. It adds texture and visual interest to the surface. Here are the general steps involved in embossing:
+## When should you choose embossing?
 
-- Prepare the materials: Gather the materials you want to emboss, such as paper, cardstock, or any other suitable material. Ensure that the surface is clean and smooth, free from any dirt, oil, or debris.
-- Design and mark: Decide on the design or pattern you want to emboss. You can either draw the design directly on the material or use pre-made stencils or embossing folders. Use a pencil or embossing pen to trace the design onto the surface. Applying light pressure will leave a visible mark without damaging the material.
-- Embossing powder: Apply embossing ink or embossing adhesive to the marked area. Embossing ink is specially formulated to stay wet for a longer period, allowing the embossing powder to adhere to it. Make sure to cover the entire design area evenly with the ink or adhesive.
-- Apply embossing powder: While the ink or adhesive is still wet, sprinkle embossing powder over the design, completely covering the marked area. The powder will stick to the adhesive, creating a raised effect. Gently tap or shake off any excess powder from the surface. The embossing powder will cling only to the areas with ink or adhesive.
-- Heat embossing: Use a heat tool or heat embossing machine to melt the embossing powder. Hold the heat tool a few inches away from the surface and direct the heat towards the embossing powder. Move the tool around to evenly distribute the heat and prevent overheating or scorching. The heat will cause the powder to melt and form a raised, glossy design.
-- Cooling and finishing: Allow the embossed design to cool and solidify for a few seconds. The embossing powder will harden as it cools, creating a permanent raised effect. Once cooled, gently touch the embossed area to ensure it is dry and no longer tacky.
-- Optional steps: If desired, you can further enhance the embossed design by adding additional colors or effects. For example, you can use embossing pens to apply colored embossing powder selectively, or you can apply ink or paint to the embossed design and then wipe off the excess for a distressed or antiqued look.
+Embossing makes sense when:
 
-These steps provide a basic guideline for embossing. However, the specific techniques and materials may vary depending on the type of material being embossed and the desired effect. It’s always recommended to refer to the instructions provided by the manufacturer of the embossing supplies you are using.
+- You want a tonal, minimal look instead of printed color
+- The piece is premium brand merch or a capsule release
+- You are ordering 50 pieces or more of one design
+- You have time to plan, since embossing is a longer process
 
-## Our Customers
+Need a raised logo on a smaller run? [3D puff embroidery](/services/embroidery/) starts at 12 pieces. Want bold color instead of texture? Go with [screen printing](/screen-printing/) from 24 pieces, or [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) for short runs.
 
-#### 24 Hour Online Support
+## Why does embossing take longer?
 
-## Get a Quick Quote
+Every embossing job starts with a custom metal die made from your design. That step takes time, and it is also why embossing has a 50-piece minimum. Once the die is ready, each garment is pressed to set the design into the fabric. Same die, same pressure, same crisp edge on every piece in the run.
 
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+## What designs work best?
+
+Because the design becomes a metal die, some artwork translates better than others. Bold shapes and clean logos tend to read well in relief. Very fine lines and tiny text can get lost in the fabric. Send us your file and we will tell you honestly whether it is a good fit before you commit.
+
+Blanks can come from our [catalog](/catalog/) or from you.
+
+## Let's make an impression
+
+Send your artwork, garment and count through our [quick quote form](/quick-quote/). Quotes come back within one business day, or email sales@tbsp.la or call (323) 433-0033, Monday to Friday, 9am to 5pm.

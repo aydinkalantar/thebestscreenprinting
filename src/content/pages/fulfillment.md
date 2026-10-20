@@ -1,125 +1,68 @@
 ---
 path: "/fulfillment/"
 title: "Fulfillment | The Best Screen Printing"
-description: "Full Service Shipping & Distribution. Save a step and distribute your printed products directly from TBSP"
-h1: "Fulfillment Services"
-kind: core
-imported: true
+description: "Ship, split or pick up your printed apparel from TBSP in Los Angeles. Blind shipping, multi-location delivery, folding, poly-bagging, labels and hang tags."
+h1: "Fulfillment services"
+kind: service
+imported: false
+summary: "Printed today, on the shelf or on the road next. TBSP ships your order across the continental US, splits it across locations, or finishes it retail-ready with folding, bagging, labels and hang tags."
+facts:
+  - { label: "Shipping", value: "Continental US via UPS/FedEx, plus freight and courier" }
+  - { label: "Pickup", value: "Free at 2710 S Broadway Ave, Los Angeles" }
+  - { label: "Finishing minimum", value: "12 pieces (100 for hang tags)" }
+faqs:
+  - q: "What is blind shipping?"
+    a: "We ship your order with your return address on the package instead of ours, at no extra cost. It is ideal for designers and resellers who do not want TBSP branding to reach their clients."
+  - q: "Can you ship to more than one address?"
+    a: "Yes. Tell us the quantity, carrier, destination and priority for each shipment in your shipping instructions and we will coordinate every drop."
+  - q: "Who pays duties on international orders?"
+    a: "The recipient. Duties and taxes are set by the destination country's customs, not by TBSP or the carrier, and cannot be estimated in advance."
+  - q: "How is shipping priced?"
+    a: "By weight, number of packages, destination, insurance level and shipping priority. All shipments are insured for their actual per-piece value."
 sourceUrl: "https://thebestscreenprinting.com/fulfillment/"
 ---
-Block "394" not found
+## From the press to wherever it needs to be
 
-### Pick up, Ship or Direct Mail your projects
+Printing is only half the job. Your shirts still need to reach a store, a stage, a warehouse or a hundred doorsteps. Hand that part to us too, and keep printing and shipping on one bill.
 
-With our wide range of fulfillment services, you will save time and money. Leave the work to TBSP, and use our fulfillment capabilities to get your orders where they need to go.
+## Ship it
 
-- Drop Shipping
-- Blind Shipping
-- Pick-Up
-- Apparel Finishing
+We ship across the continental US. Choose the carrier that fits the job:
 
-### Save a step and distribute your printed products directly from TBSP
+- **UPS or FedEx.** The default for most orders.
+- **USPS.** For international orders.
+- **Freight.** For large orders.
+- **Courier.** For local same-day deliveries around LA.
+- **Continental Cargo.** For nationwide same-day or next-day delivery. Call our office to arrange it.
 
-In addition to our printing services, TBSP offers clients the ability to safely and cost-effectively ship their order anywhere in the Continental US in 1-5 business days. Choose to ship through UPS, and have all your shipping and printing costs conveniently located on one bill.
+Specify the carrier, destination and priority on your order. Every shipment is insured and declared at its actual per-piece value. Using FedEx on your own account? Include your account number.
 
-### Shipping Options
+## Split it
 
-- UPS/FedEx (default)
-- USPS (international orders)
-- Freight (larger orders)
-- Courier Service (local same-day deliveries)
-- Continental Cargo (nationwide same-day or next-day deliveries)
+Supplying several stores, offices or tour stops? We ship to multiple locations and coordinate every destination and quantity, so you do not have to. Add the details for each shipment in the shipping instructions box.
 
-### Pricing
+## Hide our name
 
-- Based on weight, number of packages, destination, level of insurance and shipping priority.
+Choose **blind shipping** and your return address goes on the package instead of ours, at no extra cost. Your clients see your brand, not your printer.
 
-### How to order
+## Grab it
 
-- In our order form, specify shipping carrier, destination and priority.
-- For Continental Cargo, please call our office to make arrangements.
+Live or work in LA, or just passing through on tour? Pick up your order at 2710 S Broadway Ave at no additional cost. Choose "Pick Up" when you order. Pickup hours are Monday to Friday, 9am to 5pm.
 
-## Multiple Locations
+## What does retail-ready finishing include?
 
-Let TBSP ship your printed materials to more than one location. We will coordinate all destinations and quantities to save you time and energy. Shipping to multiple locations is great for when you are supplying many locations or going away on tour.
+Turn printed apparel into product that is ready for the rack.
 
-- Based on weight, number of packages, destination, level of insurance and shipping priority
-- Request in shipping instructions box.
-- Specify quantity, shipping carrier, destinations and priority for each shipment.
+- **Folding and poly-bagging.** Folded and heat-sealed in 4 mil polypropylene bags that finish at 10 x 13 inches. Size stickers can go on the bag.
+- **Custom labels.** Remove the manufacturer's tag and add your own customer-supplied label. Available on screen printing, DTG and embroidery orders. Mention if labels are sorted by size.
+- **Hang tags.** Attach your tags or have us print them. Use them for branding, care instructions, promo codes, download codes or sponsor info.
 
-Learn more about any of our printing or fulfillment services by calling us today at (323) 433-0033.
+Folding, bagging and labels have a 12-piece minimum. Hang tags have a 100-piece minimum. Finishing adds time to your turnaround, so we confirm the timeline and per-piece pricing with your quote. Request finishing in the special instructions when you order.
 
-We insure/declare all shipments for their actual “per piece” value. If you are sending any shipments internationally, your package recipient will be required to pay duties/taxes by their nation’s customs in order to obtain possession of their shipment. This charge is not determined by TBSP or UPS/FedEx/DHL, but by the recipient country’s government. TBSP handles international shipments as a courtesy to our customers and assumes no liability for these charges, nor are we able to predetermine or estimate these fees ahead of time. They are calculated by customs upon arrival of the package. If you have any questions about this, you should contact your desired shipping company or the customs department for the country you intend to ship to.
+## Building a brand?
 
-### Protect your brand and keep your service professional
+Fulfillment pairs naturally with our [clothing brand services](/the-best-screen-printing/), [retail brand solutions](/for/retail-brands/) and the [blanks we recommend](/the-best-custom-t-shirt-shop-in-la/). For carrier timing, see [shipping and delivery](/shipping-and-delivery/).
 
-If you choose our printing services and specify Blind Shipping on the order form, we will put your return address on the package at no extra cost. Whether you represent yourself as a printer or want a more professional delivery to your design clients, it is a professional way to keep TBSP branding hidden from your customers.
+## Plan your delivery
 
-Based on weight, number of packages, destination, level of insurance and shipping priority.
-
-- If FedEx, provide your own account number.
-
-### Get your hands on your job even faster
-
-Live or work in Los Angeles California? Passing through on tour? One of the benefits of working with a Los Angeles printing company is the ability to save time and money by picking up your job at our Los Angeles, California location. Most orders are ready between 3:30pm – 6pm on the day of completion.
-
-No additional cost.
-
-- Specify “Pick Up” when placing your order.
-
-### From TBSP Straight To The Retail Shelf
-
-Let TBSP fold and bag your apparel for retail. Heat-sealed polypropylene bagging is 4 ml thick. Final piece measures 10×13″ with apparel packaged inside. Additional customizations include apparel size stickers on the bag’s surface.
-
-- Folding Only: $0.50 per piece, $25 minimum charge
-- Folding & Poly-bagging: $1.00 per piece, $25 minimum charge
-- Add 5 Business Days To Estimated Turnaround Time Minimum Quantity Of 12 Pieces
-
-Request In Special Instructions When Placing An Order Or Quote
-
-### Complete your retail merchandise with your own apparel label
-
-Promote your brand on each garment by adding your own custom apparel label (customer supplied). To completely brand your product, remove the manufacturers label altogether. If you don’t already have labels, we highly recommend CBF Label, proven leaders in printed and woven apparel label making.
-
-- $1.50 per piece, $50 minimum charge.
-- Minimum quantity of 12 pieces
-- Add 5 business days to estimated turnaround time.
-- Available on screen printing, DTG and embroidery orders.
-
-Request in special instructions, and mention if labels are segregated by size.
-
-### Custom Hang Tag Printing, Clothing Tags And Hang Tagging Services To Help You Stand Out, On The Rack Or In The Stack
-
-Custom Hang Tags and Custom Sticker Hang Tags are essential if you want to elevate your custom apparel to a professional level. While the classic applications are for branding, logos, retail tags, clothing tags and care instructions, why stop there? Tell your story. Drive traffic to your website. Hang tag t-shirts at your next event with a promotional code, a music download code or event sponsor information. Sometimes you only get one chance to interact with your customers, make it count.
-
-- $1.25 Per Piece, $50 Minimum charge
-- Add One Business Day to Estimated Turnaround Time
-- Minimum Quantity of 100 Pieces
-- Print Custom Hang Tags: Standard Quantities As Low As 100 Pieces, Or Custom Quote A Short Run
-
-Specify in Special Instructions
-
-- Location of the Tag
-- If You Provide the Tags or Require Printing Services
-- If You Are Attaching More Than One Tag
-
-Learn more about custom hang tag printing or any of our retail-ready services by calling us today at (323) 433-0033.
-
-Block "405" not found
-
-## WE CAN HELP YOU WITH YOUR PROJECT
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Tell us where your order is going and how it should arrive. [Get a quick quote](/quick-quote/) or call (323) 433-0033, Monday to Friday, 9am to 5pm.

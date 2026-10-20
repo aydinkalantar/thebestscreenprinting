@@ -1,12 +1,68 @@
 ---
 path: "/for/schools/"
 title: "School Apparel Printing in Los Angeles"
-description: "Custom shirts, hoodies and uniforms for LA schools, clubs and booster groups."
+description: "Custom shirts, hoodies and uniforms for Los Angeles schools, clubs and booster groups. Screen printing, embroidery and names and numbers in Downtown LA."
 h1: "Custom apparel for schools"
 kind: audience
 imported: false
+summary: "School colors, done loud. Shirts, hoodies and uniforms for LA schools, clubs, teams and boosters, screen printed in-house for 24+ pieces of one design, with quotes back within one business day."
+facts:
+  - label: "24+ pieces of one design"
+    value: "Screen printed in-house"
+  - label: "Names and numbers"
+    value: "Heat transfer for each student or player"
+  - label: "Quotes"
+    value: "Answered within one business day"
+faqs:
+  - q: "Can a small club order just a few shirts?"
+    a: "Yes. Orders under 24 pieces are usually printed with DTG or DTF, and DTG has no minimum and no setup fee."
+  - q: "Can you add student names or numbers?"
+    a: "Yes. Names and numbers are added with heat transfer, so each piece can be different."
+  - q: "Can you embroider staff polos and jackets?"
+    a: "Yes. We embroider polos, hats, jackets and uniforms."
+  - q: "Can we pick up the order at your shop?"
+    a: "Yes. Our shop is at 2710 S Broadway Avenue, Los Angeles, CA 90007, open Monday through Friday, 9am to 5pm."
 ---
 
-Custom shirts, hoodies and uniforms for LA schools, clubs and booster groups.
+Spirit week, game day, senior year, the robotics team's first competition. We make the shirts that show up in every photo. Schools, clubs, sports teams, booster groups and PTAs across LA order from our Downtown LA shop for screen printing, embroidery and personalized names and numbers.
 
-<!-- TODO(content): new hub page that the neighborhood pages for this topic redirect to. Write the real copy: who orders, typical quantities, turnaround, starting price range, FAQs, local client examples. -->
+## What do schools order?
+
+- Spirit wear: tees, hoodies and crewnecks with the school name or mascot
+- Team uniforms, warm-ups and practice shirts
+- Club shirts for robotics, theater, choir and everything in between
+- Senior class and graduation shirts
+- Field trip shirts in a bright color you can spot across a museum
+- Embroidered polos and jackets for teachers, coaches and staff
+- Fundraiser merch for booster clubs and PTAs
+
+Browse styles and colors in our [catalog](/catalog/).
+
+## Which printing method fits a school order?
+
+- **Whole grade or whole school, 24 or more of one design:** [screen printing](/screen-printing/), in-house, in bold ink that matches your school colors.
+- **Small clubs and staff runs, under 24:** usually DTG or [direct to film](/services/direct-to-film/).
+- **Staff polos, jackets and hats:** [embroidery](/services/embroidery/), clean stitched crests.
+- **Student names and numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/).
+
+Ordering for a sports program? See [team uniforms and jerseys](/products/team-uniforms-jerseys/) for how we run rosters.
+
+## How do we collect sizes and names?
+
+Keep it simple. Gather orders on a sign-up sheet or form, then send us one list with every size and quantity. For personalized pieces, include each name or number exactly as it should print. One clean list means an accurate order and a fast quote.
+
+## Stretch the fundraiser budget
+
+Price comes down to the garment, the number of ink colors, the number of print locations and the quantity. Rolling several classes or clubs into one bigger order of the same design, and keeping the art to fewer colors, usually lowers the cost per shirt. We will flag options when we quote.
+
+## Student art welcome
+
+Every order gets a free art check and a mockup for approval. If the design started as a sketch in a notebook, send a clear photo or scan and ask about our graphic design help.
+
+## Game is tomorrow?
+
+Same-day and next-day rush slots are open for many orders. Call (323) 433-0033 to confirm before you plan around a date. See [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
+
+## Rep your school
+
+Send your design, quantities and deadline through the [quick quote form](/quick-quote/), and we will reply within one business day. Planning a school event, too? See [event apparel](/event-apparel/).

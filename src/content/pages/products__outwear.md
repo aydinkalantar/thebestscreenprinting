@@ -1,55 +1,65 @@
 ---
 path: "/products/outwear/"
-title: "Outwear"
-description: "Outwear"
-h1: "Outwear"
+title: "Custom Jackets & Outerwear in Los Angeles | TBSP"
+description: "Custom jackets and outerwear in Los Angeles. Embroidered chest logos, printed back graphics and names for crews, staff, teams and brands, made in Downtown LA."
+h1: "Custom jackets and outerwear"
 kind: product
-imported: true
+imported: false
+summary: "The jacket is the top layer, so it is the one everybody sees. Embroidered logos, printed backs and personalized names on outerwear for crews, staff, teams and brands, out of our Downtown LA shop."
+facts:
+  - { label: "Methods", value: "Embroidery, screen printing, heat transfer" }
+  - { label: "Minimum", value: "24 per design for screen printing" }
+  - { label: "Best for", value: "Crew jackets, staff uniforms, teams, brand outerwear" }
+faqs:
+  - q: "What is the best way to brand a jacket?"
+    a: "Embroidery is the most popular choice for a chest logo on jackets, since thread holds up well and looks premium. Larger back graphics are often screen printed, and names are added with heat transfer."
+  - q: "Can you embroider on the back of a jacket?"
+    a: "Embroidery works best for smaller to mid-size logos. For a large back design, screen printing is usually the better fit. We will recommend the right approach for your artwork and jacket."
+  - q: "Can I add individual names to each jacket?"
+    a: "Yes. Names and numbers can be added with heat transfer vinyl or embroidery on top of a shared logo."
 sourceUrl: "https://thebestscreenprinting.com/products/outwear/"
 ---
-## Customer Feedback
+## The layer everybody sees
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+Shirts get covered up. Jackets do not. When your crew walks on set, your staff greets guests outside or your team lines up on the sideline, the outer layer is the one carrying the logo. Get it right and the jacket becomes the thing people ask about.
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+## What can you customize?
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+We decorate a range of outerwear, including:
 
-## Our Customers
+- **Lightweight and windbreaker jackets** for events and outdoor work
+- **Coaches and bomber-style jackets** for crews, teams and brand drops
+- **Fleece and softshell layers** for staff and corporate gear
+- **Vests** for front-of-house, field and warehouse teams
 
-#### 24 Hour Online Support
+Looking for a specific style or color? Check the [catalog](/catalog/) or ask us to source it with your quote.
 
-## Get a Quick Quote
+## Stitch it, print it, or both
 
-### Blog
+**[Embroidery](/services/embroidery/)** is the classic for outerwear. A stitched chest logo looks sharp, holds up to weather and wear, and gives a jacket that uniform-grade finish. It is our main method for jackets, polos, hats and uniforms.
 
-#### Screen Printing on Hoodies
+**[Screen printing](/screen-printing/)** owns the big back graphic. Bold, opaque ink across the back panel for crew jackets, tour gear and merch. In-house for 24 or more pieces of one design.
 
-Screen printing on hoodies is a popular way to customize and personalize hoodies with designs, [...]
+**[Heat transfer vinyl](/services/heat-transfer-vinyl/)** adds names, titles and numbers so each jacket belongs to one person.
 
-#### Screen Printing
+The strongest outerwear often combines all three: an embroidered chest, a printed back and a name on the sleeve.
 
-What is Screen Printing? Screen printing is another type of printing used in printing. But [...]
+## Which jackets work best for decoration?
 
-#### How to do t-shirt screen printing?
+Fabric matters. Smooth, tightly woven shells take both stitching and print cleanly. Very slick, padded or waterproof coatings can limit what is possible, so tell us the exact jacket and we will confirm the method before anything is produced. Customer-provided outerwear is welcome, too.
 
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
+Our free art check also makes sure your logo is sized and simplified for thread, since tiny text and hairline details do not stitch as cleanly as they print.
 
-#### Embroidery on clothes
+## Who orders custom outerwear?
 
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
+- **Production crews** who want to look like a unit on location
+- **Restaurants, hotels and venues** outfitting staff for outdoor shifts
+- **Sports teams and clubs** for sideline jackets
+- **Companies** gifting gear employees will actually wear
+- **Clothing brands** adding a jacket to the line
 
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Pair your jackets with [embroidered polos](/products/business-and-polos-landings/), [hats](/products/hats/) or [hoodies](/products/sweatshirts-hoodies/) for a complete set.
+
+## Suit up
+
+Send your logo, the jacket you have in mind and your quantity. [Get a quick quote](/quick-quote/) and hear back within one business day.

@@ -1,23 +1,61 @@
 ---
 path: "/solutions/"
 title: "Solutions | The Best Screen Printing"
-description: ""
-h1: "Solutions | The Best Screen Printing"
+description: "Custom apparel solutions for brands, restaurants, schools, nonprofits, events, teams and small businesses, printed and stitched in Downtown Los Angeles."
+h1: "Custom apparel solutions for every kind of crew"
 kind: core
-imported: true
+imported: false
+summary: "Brands, kitchens, classrooms, causes, crews and teams each need something different from their shirts. Find your path, then get a quote answered within one business day."
 sourceUrl: "https://thebestscreenprinting.com/solutions/"
 ---
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+## Start with who you are outfitting
+
+The right garment, method and timeline depend on who is wearing it and why. Pick the closest match below and we will take it from there.
+
+## Retail and clothing brands
+
+First runs, restocks and limited drops with retail-quality finishing. Soft blanks, special effect inks, custom labels and hang tags. See [retail brands](/for/retail-brands/) and [fulfillment](/fulfillment/).
+
+## Restaurants, bars and hospitality
+
+Embroidered polos, caps and aprons that survive the dish pit, plus printed tees for front of house. See [restaurants](/for/restaurants/) and [embroidery for uniforms](/services/embroidery/custom-embroidery/).
+
+## Schools and youth programs
+
+Spirit wear, staff shirts, field day tees and club hoodies in adult, youth and toddler sizes. See [schools](/for/schools/).
+
+## Nonprofits and causes
+
+Volunteer shirts, fundraiser merch and event tees that make a crowd look like a movement. See [non-profits](/for/non-profits/).
+
+## Events, festivals and trade shows
+
+Crew shirts, attendee giveaways and merch tables. Same-day and next-day rush slots are available for many orders. See [event apparel](/event-apparel/).
+
+## Sports teams and leagues
+
+Jerseys, warmups and fan gear, with heat transfer names and numbers. See [team uniforms and jerseys](/products/team-uniforms-jerseys/).
+
+## Small businesses
+
+Branded tees, staff uniforms and customer giveaways sized for a small budget. See [small business](/small-business/).
+
+## Clubs, groups and creators
+
+Run clubs, crews, families and fan communities, plus [influencers](/influencers/) launching merch. See [clubs and groups](/clubs-groups/).
+
+## Promotional products
+
+Logo merch beyond the T-shirt: bags, hats, towels and more. See [promotional products](/for/promotional-products/).
+
+## How do you pick the right method?
+
+Quantity is the first filter. For 24 or more pieces of one design, [screen printing](/screen-printing/) is usually best. For fewer pieces or full-color photo art, [DTG](/services/direct-to-garment/) (no minimum, no setup fee) or [DTF](/services/direct-to-film/). For logos on polos, hats and jackets, [embroidery](/services/embroidery/). Compare all six on our [services overview](/services/).
+
+## Who has worn our work?
+
+Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures, along with countless LA crews who just needed great shirts on time.
+
+## Tell us about your crew
+
+Who is wearing it, how many, and by when? [Get a quick quote](/quick-quote/) and we will answer within one business day.

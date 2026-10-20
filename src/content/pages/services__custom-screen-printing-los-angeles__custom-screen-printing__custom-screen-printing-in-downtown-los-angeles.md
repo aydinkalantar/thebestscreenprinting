@@ -1,58 +1,51 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/"
 title: "Custom Screen Printing In Downtown Los Angeles"
-description: "Same day custom screen printing in Downtown Los Angeles. Get a headstart with free design templates you can customize in a few clicks."
-h1: "Custom screen printing downtown los angeles"
+description: "Custom screen printing made in Downtown Los Angeles at 2710 S Broadway. Local pickup, rush slots for many orders and a free art check. 24+ pieces per design."
+h1: "Custom screen printing in Downtown Los Angeles"
 kind: service
-imported: true
+imported: false
+summary: "Printed on S Broadway, picked up on S Broadway. Our DTLA shop screen prints orders of 24+ pieces in-house, with local pickup and same-day or next-day rush slots for many orders."
+facts:
+  - { label: "Location", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
+  - { label: "Hours", value: "Mon–Fri, 9am–5pm" }
+  - { label: "Minimum", value: "24 pieces per design" }
+faqs:
+  - q: "Can I pick up my order in Downtown LA?"
+    a: "Yes. Orders can be picked up at our shop at 2710 S Broadway Ave, Los Angeles, CA 90007, Monday to Friday, 9am to 5pm."
+  - q: "Do you print for businesses and events in DTLA?"
+    a: "Yes. We print for local brands, venues, restaurants, events and teams, as well as companies such as Netflix, Adidas, Nike, YouTube and Google."
+  - q: "Can a Downtown LA order be rushed?"
+    a: "Same-day and next-day rush slots are available for many orders. Call (323) 433-0033 or request a quote with your deadline and we will confirm."
 sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/"
 ---
-### High quality, quick turnaround, affordable prices
+## Made on Broadway
 
-Block "10066" not found
+Our presses run at 2710 S Broadway in Downtown Los Angeles. That means your shirts are printed down the street, not across the country. You talk to the people who pull the squeegee, and you can see your job before it leaves the building.
 
-Block "11523" not found
+We have put ink on garments for Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures. The same presses print for neighborhood brands, venues and teams every week.
 
-## Custom screen printing in Downtown Los Angeles made easy.
+## Why print local in DTLA?
 
-Custom Screen Printing in Downtown Los Angeles for Everyone. Get a headstart with free design templates you can customize in a few clicks.
+- **Pick up, skip shipping.** Collect your order at the shop and get it into hands faster.
+- **Rush that actually works.** Same-day and next-day slots are available for many orders, and local pickup removes transit time from the equation.
+- **Eyes on the job.** Stop by to talk through placement, ink colors or garment choices in person.
+- **Fewer surprises.** Every order gets a free art check and a proof before anything is printed.
 
-- Top quality prints using the latest technology
-- Mix and match colors, sizes, and designs
-- Fast and free standard shipping
-- Customer happiness guarantee
+## Who prints with us downtown?
 
-## Customer Feedback
+Fashion District labels dropping a new run. Arts District galleries and artists making merch. Restaurants and bars outfitting staff. Event teams who need a stack of tees before the weekend. Production crews, gyms, churches, schools and clubs from across the city.
 
-I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
+Whatever the project, the rule is the same: 24 or more pieces of one design runs on screen. Smaller runs move to [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), and logos for polos and hats go to [embroidery](/services/embroidery/).
 
-THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
+## What can we print for you?
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
+T-shirts, hoodies, crewnecks, long sleeves, tanks, tote bags and work shirts, in plastisol or water-based ink with effects like puff, foil and discharge. Browse styles in the [catalog](/catalog/), or see our [inks and effects](/services/custom-screen-printing-los-angeles/) guide.
 
-### Custom Screen Printing in Downtown Los Angeles
+## Planning a visit?
 
-Customised screen printing should be realised in high quality. Here matter all the details including the material, design and quality of the paint. In our workshop we use the most modern, high-quality techniques and equipment to print. Screen printing may include not only designs such as personal photos or various pictures but also simple inscriptions (lines).
+Our [local shop page](/local-shop/) covers hours, pickup and what to bring. If you want to know how an order flows from file to finished shirts, read [custom screen printing, step by step](/services/custom-screen-printing-los-angeles/custom-screen-printing/).
 
-Screen printing is mostly used for creating customised branded clothes in great numbers or individually as presents to closest people. You can screen print on actually anything such as shirts, t-shirts, bags, tote-bags, sweatshirts, hats, caps, hoodies and others.
+## Start your DTLA order
 
-## Our Customers
-
-#### 24 Hour Online Support
-
-## Get a Quick Quote
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your design, quantity and deadline through the [quick quote form](/quick-quote/). We answer within one business day. Prefer to talk? Call (323) 433-0033, Monday to Friday, 9am to 5pm.

@@ -1,102 +1,64 @@
 ---
 path: "/services/embroidery/"
-title: "Embroidery Services In Los Angeles"
-description: "TBSP can embroidery services in Los Angeles on almost any apparel stock you desire. Create a custom look with more than 10 dazzling effects."
-h1: "embroidery services in Los Angeles"
+title: "Embroidery Services in Los Angeles"
+description: "Custom embroidery in Downtown LA on caps, polos, jackets and uniforms. 12-piece minimum per design, digitizing and setup included, 3D puff available."
+h1: "Embroidery services in Los Angeles"
 kind: service
-imported: true
+imported: false
+summary: "Thread-built logos with real texture, stitched on caps, polos, jackets and uniforms at our Downtown LA shop. 12-piece minimum per design, with digitizing and setup included and no hidden setup fees."
+facts:
+  - { label: "Minimum", value: "12 pieces per design" }
+  - { label: "Setup", value: "Digitizing and setup included" }
+  - { label: "Best for", value: "Caps, uniforms, polos and jackets" }
+faqs:
+  - q: "What is the minimum order for custom embroidery?"
+    a: "Our embroidery minimum is 12 pieces per design. Send the quantity and garments with your quote request and we will confirm the details."
+  - q: "Do you charge a digitizing fee?"
+    a: "No. Our prices include all digitizing and setup costs, so there are no hidden setup fees on embroidery orders."
+  - q: "What is 3D puff embroidery?"
+    a: "3D puff embroidery is stitched over a foam base, which raises the design off the fabric like the logos on major league caps. It works best on bold designs without thin lines or small lettering."
+  - q: "What do I need to send for an embroidery quote?"
+    a: "Send your artwork file, where you want it placed, the garment and the quantity. We need to see the artwork because the stitch count of the design is part of the quote."
 sourceUrl: "https://thebestscreenprinting.com/services/embroidery/"
 ---
-### High quality, quick turnaround, affordable prices
+## Your logo, built from thread
 
-## Embroidery
+Embroidery does not sit on top of the fabric. It is stitched into it. You get raised texture, clean edges and a finish that says the brand is serious. We run multi-head embroidery machines that stitch several pieces at once, so every cap and polo in the order comes out matching.
 
-Embroidery is a decorative form of needlework in which color, texture, and shape are added to fabric or clothing. Embroidery is done by machine, and can be used to create a wide range of designs, from simple monograms to intricate patterns and designs. Embroidery can be done on a variety of fabrics, including cotton, silk, wool, and more. It is often used to embellish clothing, such as shirts, jackets, and hats, as well as home decor items like pillows, curtains, and tablecloths. Embroidery can also be used to create logos and designs for businesses, sports teams, and other organizations and offers a premium high quality look for uniforms and any other professional attire. We offer 3D Embroidery, standard Embroidery and patchwork embroidery.
+## When should you choose embroidery over printing?
 
-To begin, we ask for a 12pc minimum per design and must see your artwork to determine the stitch count of the design. We then digitize your artwork which is important because this determines the quality of the print. A detail oriented digitized file ensures the best quality print which you can be sure of with us!
+Pick embroidery when the piece needs to feel premium and last for years, especially on heavier or structured items:
 
-### Embroidery services pricing
+- Snapbacks, dad hats and beanies
+- Polos and button-up work shirts
+- Jackets, including denim and leather
+- Uniforms and crew apparel
+- Bags
 
-Pricing Your Job See product pages or request a quote for pricing embroidery, specialty threads, 3D foam or custom effects. There are no hidden setup fees! Prices include all digitization and setup costs.
+Thread loves logos, names and clean artwork. For big full-front graphics or photo detail, go with [screen printing](/screen-printing/) on bulk runs, or [direct-to-garment](/services/direct-to-garment/) and [direct-to-film](/services/direct-to-film/) on small ones. Plenty of crews mix it up: embroidered polos for staff, screen printed tees for the event.
 
-Custom Embroidery Effects
+## Four ways to stitch it
 
-Add a something extra to your apparel’s look with custom embroidery effects from TBSP.
+- **Flat embroidery.** The classic. Handles detail well and works on most fabrics.
+- **3D puff.** Stitched over foam for a raised, sculpted logo. Made for caps.
+- **Patches.** Your design embroidered as a patch and applied to the garment.
+- **Custom fill patterns.** Your logo repeated as an embroidered background layer for a look nobody else has.
 
-- 3D Foam
-- Custom Fill Patterns
+## How does the embroidery process work?
 
-Create an attention grabbing, 3-D effect! Embroidery is stitched over a foam base, which creates a raised graphic effect similar to logos on major league sports hats. 3D foam effects are great for designs with no thin/narrow lines or fonts.
+1. **Send the art.** Artwork file, placement and garment info.
+2. **Digitizing.** We turn your artwork into a stitch file the machine can read. This step decides the quality of the final piece, so we sweat the details.
+3. **Hooping.** Each garment is locked into a frame so nothing shifts mid-stitch.
+4. **Stitching.** The machine lays down the design color by color, and every piece gets checked before it is packed.
 
-Repeat your logo as a pattern to create an embroidered background layer. Custom embroidery fill patterns add value to your apparel and looks unique.
+## Art that stitches clean
 
-### Pricing
+Vector files and high-resolution artwork digitize best. Tiny text and hairline details are tough to render in thread, and they do not work with 3D puff. If your logo has fine points, we will tell you during the art review what will hold up and suggest tweaks.
 
-Request a quote for pricing
+## Bring blanks or pick ours
 
-### FAQ
+Supply your own pieces or choose caps, polos and outerwear from our [catalog](/catalog/).
 
-Embroidery is a printing technique that uses thread and needle to create stitchings of designs onto fabrics or articles of clothing. Our embroidery services can help you add a unique and professional touch to your garments, hats, uniforms, shirts, hoodies, and more. We’re stitch artwork specialists, and we’re here to help you create clothing that looks great. We offer standard flat embroidery and 3D embroidery. Flat embroidery is the most common method of printing, great for detailed designs and can be printed on most fabrics. 3D embroidery is the process of adding depth and dimension using stitch and puff foam, which is particularly popular on hats. Since it adds depth and dimension to a design, it makes your products more memorable and gives them extra visual appeal.
+## Let's stitch it
 
-Embroidery in clothing refers to the decorative designs or patterns that are stitched onto fabric using a needle and thread. Embroidery can be done by hand or by machine, and it is a popular way to add a personal touch to clothing items such as shirts, dresses, jackets, and hats. Embroidery in clothing can take many forms, from simple monograms or embroidered logos to more complex designs featuring intricate patterns and multiple colors. It can be used to create a variety of effects, such as adding texture and dimension to a garment, highlighting certain areas, or creating a focal point. Embroidery in clothing can be done using a wide range of materials, including cotton, linen, rayon, silk, and polyester. It can also be done using different types of stitches, such as satin stitch, running stitch, chain stitch, and French knot. Embroidery in clothing can be a great way to add a unique and personalized touch to your garments. It can also be used by businesses and organizations to create branded clothing items or uniforms that help to promote their brand or image.
-
-The process of embroidery is easy to get going. First, we ask for your artwork file so that we can digitize the designinto a stitch file. This lets the artwork file be read by our multi-head embroidery stitch machine. After we have a digitized file of your design, we can move forward into production. We then carefully position each garment under each head using plastic frames that secure the fabric so that it does not move while getting stitched into. Once the garment is positioned, the head is adjusted to be closer to the fabric. After the file is set up and adjustments have been made to the print settings, the machine begins printing using needle and thread.
-
-We offer embroidery with a multi-head machine for a fast and efficient way to create high-quality embroidery designs. Multi-head machines are embroidery machines that have multiple needles and can stitch multiple designs at once. They can be configured with anywhere from two to thirty-two needles, with the most common configuration being six or eight needles. This allows for a variety of colors to be used in the design without having to stop and change the thread as often. One of the main advantages of using a multi-head machine is the speed at which it can produce embroidery designs. With multiple needles stitching at the same time, the machine can produce a design in a fraction of the time it would take a single-needle machine. This makes it ideal for large-scale production runs, such as creating uniforms or corporate gifts. Another advantage is the accuracy and consistency of the stitching. With multiple needles stitching at the same time, the machine can ensure that each stitch is uniform and precise, resulting in a high-quality finished product. We have an embroidery minimum of 12pcs per design, contact us today for more information.
-
-To begin an embroidery project, email us at [email protected]. We require a 12pc minimum per design, if the requirement is met, provide us with your artwork file, placement details, and garment information for an accurate price quote. We look forward to working with you whether you want to embroider on bags, embroider on leather, or embroider on denim jackets, we are able to help!
-
-Embroidery near me | Custom embroidery
-
-#### What is direct to garment printing and how does it work?
-
-Direct to garment printing (DTG) is a digital printing process that allows for full-color, high-quality [...]
-
-#### What kind of thread is used for embroidery?
-
-There are several types of thread that can be used for embroidery, and the choice [...]
-
-#### What is the difference between embroidery and screen printing?
-
-Embroidery and screen printing are both popular methods of adding designs or logos to fabric [...]
-
-#### What materials can be embroidered?
-
-Embroidery can be done on a wide variety of materials, including: Overall, embroidery can be [...]
-
-#### What is screen printing and how is it done?
-
-What is the screen printing process? Screen printing is a multi step printing technique which [...]
-
-#### How to do t-shirt screen printing?
-
-T-shirt – a versatile item of clothing: it is in the wardrobe of everyone, regardless [...]
-
-#### Screen Printing on Hoodies
-
-Screen printing on hoodies is a popular way to customize and personalize hoodies with designs, [...]
-
-#### Embroidery on clothes
-
-Requirements for Embroidery on Clothes For the production of embroidered products, natural high-quality fabrics are [...]
-
-## Our Customers
-
-#### 24 Hour Online Support
-
-## Get a Quick Quote
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your artwork, garment and count through our [quick quote form](/quick-quote/). Quotes come back within one business day, or call (323) 433-0033, Monday to Friday, 9am to 5pm.

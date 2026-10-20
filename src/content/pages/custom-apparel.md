@@ -1,227 +1,65 @@
 ---
 path: "/custom-apparel/"
 title: "Custom Apparel"
-description: "Whether it’s t-shirts, sweats, or more…we’ve got you covered."
-h1: "Custom Apparel"
-kind: core
-imported: true
+description: "Custom apparel printed and embroidered in Los Angeles: athletic wear, workwear, tees, tanks, hoodies and outerwear. Browse categories and get a quick quote."
+h1: "Custom apparel for every kind of wear"
+kind: product
+imported: false
+summary: "Tees to track jackets, aprons to jerseys: if it is made of fabric, we can probably put your design on it. Printed and stitched in Downtown LA, with screen printing at 24+ pieces and DTG with no minimum."
+facts:
+  - { label: "Categories", value: "Athletics, workwear, tees, tanks, sweatshirts, outerwear" }
+  - { label: "Screen printing", value: "24+ pieces per design" }
+  - { label: "Small runs", value: "DTG with no minimum" }
+faqs:
+  - q: "Can you print on performance and moisture-wicking fabrics?"
+    a: "Yes. Polyester and performance fabrics are often best decorated with DTF or heat transfer. Tell us the garment and we will recommend the method."
+  - q: "Can I mix garment types in one order?"
+    a: "Yes. Tees, hoodies and hats can share one design and one order. Each item is decorated with the method that suits it."
+  - q: "Do you carry youth, plus and tall sizes?"
+    a: "Many styles come in youth, plus and tall sizes. Availability varies by style, so check the catalog or ask in your quote."
 sourceUrl: "https://thebestscreenprinting.com/custom-apparel/"
 ---
-Whether it’s t-shirts, sweats, or more…we’ve got you covered.
+## If it is fabric, it is a canvas
 
-## Athletics
+T-shirts are where most people start. They are rarely where they stop. Here is the range of apparel we decorate at our Downtown LA shop, grouped the way people actually shop for it.
 
-- Badminton T-shirts
-- Baseball Caps
-- Baseball Jerseys
-- Baseball Tank Tops
-- Basketball for Kids T-shirts
-- Basketball Hats
-- Basketball Jerseys
-- Basketball Shirts for Girls
-- Basketball Tank Tops
-- Bodybuilding Tank Tops
-- Bodybuilding T-shirts
-- Cheer Sweatshirts
-- Custom Pinnies
-- Custom Shorts
-- Custom Snapbacks
-- Custom Uniforms
-- Custom Visors
-- Custom Warmups
-- Dance Tank Tops
-- Fitness Tank Tops
-- Football Jerseys
-- Football Sweatshirts
-- Golf Sweatshirts
-- Gymnastics Sweatshirts
-- Gym Tank Tops
-- Lacrosse Jerseys
-- Lacrosse Sweatshirts
-- Moisture Wicking Polo Shirts
-- Performance Polos
-- Red Sweatshirts
-- Rowing Sweatshirts
-- Rugby Sweatshirts
-- Running Tank Tops
-- Running T-shirts
-- Soccer Jerseys
-- Softball Jerseys
-- Softball Shirts for Girls
-- Softball Tank Tops
-- Sports Sweatshirts
-- Sports Tank Tops
-- Team Sweatshirts
-- Tennis Apparel
-- Wicking T-shirts
-- Workout Tank Tops
-- Yoga Sweatshirts
-- Yoga Tank-Tops
+## Athletics and performance
 
-### Businesswear / Loungewear
+Jerseys for baseball, basketball, football, soccer, softball and lacrosse. Pinnies, warmups, shorts and team sweatshirts. Wicking tees, performance polos, gym and running tanks, plus visors and snapbacks. Names and numbers go on with [heat transfer vinyl](/services/heat-transfer-vinyl/). Outfitting a league? See [team uniforms and jerseys](/products/team-uniforms-jerseys/).
 
-- Company Polo Shirts
-- Custom Aprons
-- Custom Clothing
-- Custom Hats
-- Custom Joggers
-- Custom Pajamas
-- Custom Polo Shirts
-- Custom Scrubs
-- Embroidered Caps
-- Landscaping T-shirts
-- Plus Size Polo Shirts
-- Restaurant Uniforms
-- Safety Vests
-- Safety Wear
-- Wholesale Polo Shirts
-- Work Shirts
+## Workwear and business
 
-## T-Shirts
+Company polos, work shirts, aprons, scrubs, safety vests and embroidered caps. Restaurant uniforms and front-of-house tees. Logos on workwear usually look best [embroidered](/services/embroidery/custom-embroidery/). Browse [business and polo styles](/products/business-and-polos-landings/).
 
-- American Flag T-shirts
-- Baseball Henleys
-- Black T-shirts
-- Blue T-shirts
-- Boys T-shirts
-- Brown T-shirts
-- Camo T-shirts
-- Cheap T-shirts for Men
-- Color Block T-shirts
-- Custom Ringers and Raglans
-- Dri Fit T-shirts
-- Embroidered Shirts
-- Girls T-shirts
-- Golf Shirts
-- Green T-shirts
-- Infant T-shirts
-- Junior Tops
-- Keep Calm T-shirts
-- Lightweight T-shirts
-- Lime Green T-shirts
-- Long Sleeve T-shirts
-- Made in USA T-shirts
-- Maroon T-shirts
-- Mens T-shirts
-- Miner T-shirts
-- Neon T-shirts
-- Orange T-shirts
-- Organic T-shirts
-- Pink T-shirts
-- Pigment Dyed T-shirts
-- Plus Size T-shirts
-- Pocket T-shirts
-- Red T-shirts
-- Retro and Vintage T-shirts
-- Scoop Neck T-shirts
-- Soft T-shirts
-- Tagless T-shirts
-- Tall T-shirts
-- Tie Dye T-shirts
-- Toddler T-shirts
-- Tri-Blend T-shirts
-- V-Neck T-shirts
-- Womens T-shirts
-- Yellow T-shirts
-- Youth T-shirts
-- 3/4 Sleeve T-shirts
+## T-shirts
 
-## Sweatshirts & Hoodies
+Every cut and color: crew and V-neck, pocket tees, ringers and raglans, long sleeves, 3/4 sleeves, tall, plus size, youth, toddler and infant. Tri-blends, organic cotton, pigment-dyed and tie-dye. Made-in-USA options for brands that want them. Start at [custom T-shirts](/products/t-shirts/) or see [the blanks we love](/the-best-custom-t-shirt-shop-in-la/).
 
-- Animal Rescue Sweatshirts
-- Bar Sweatshirts
-- Beer Pong Sweatshirts
-- Beer Sweatshirts
-- Big Little Sweatshirts
-- Birthday Sweatshirts
-- Boating Sweatshirts
-- Bowling Sweatshirts
-- Bridal Sweatshirts
-- Camp Sweatshirts
-- Cheap Hoodies for Men
-- Cheap Hoodies for Women
-- Choir Sweatshirts
-- Equestrian Sweatshirts
-- Hanukkah Sweater
-- Llama Sweatshirts
-- Marine Corps Sweatshirts
-- Student Council Sweatshirts
-- Wedding Sweatshirts
-- Wolf Sweatshirts
+## Sweatshirts and hoodies
 
-## Tank Tops
+Pullovers, zip hoodies and crewnecks for teams, schools, camps, weddings, birthdays and brand drops. A chest logo in thread plus a big back print is a crowd favorite. See [sweatshirts and hoodies](/products/sweatshirts-hoodies/).
 
-- Bachelorette Tank Tops
-- Beer Pong Tank Tops
-- Black Tank Tops
-- Blue Tank Tops
-- Bridal Party Tank Tops
-- Bro Tanks
-- Brown Tank Tops
-- Camp Tank Tops
-- Cotton Tank Tops
-- Custom Tank Tops
-- DJ Tank Tops
-- Flowy Tank Tops
-- Football Tank Tops
-- Frat Tanks
-- Green Tank Tops
-- Long Tank Tops
-- Muscle Tank Tops
-- Neon Tank Tops
-- Orange Tank Tops
-- Pink Tank Tops
-- Racerback Tanks
-- Red Tank Tops
-- Rugby Tank Tops
-- Silver Tank Tops
-- Soccer Tank Tops
-- Sorority Tanks
-- Swimming Tank Tops
-- Tank Tops for Men
-- Tank Tops for Women
-- USA Tank Tops
-- V-Neck Tank Tops
-- Wedding Tank Tops
-- White Tank Tops
-- Wrestling Tank Tops
-- Yellow Tank Tops
+## Tank tops
+
+Muscle tanks, racerbacks, flowy tanks and classic cotton tanks for gyms, bachelorette parties, summer events and sorority and fraternity gear.
 
 ## Outerwear
 
-- Anorak Jackets
-- Coast Guard Sweatshirts
-- Crewneck Sweatshirts
-- Custom Fleece
-- Custom Hoodies
-- Custom Jackets
-- Custom Pullovers
-- Custom Scarves
-- Custom Ski Hats
-- Custom Ski Sweatshirts
-- Custom Sweatpants
-- Custom Sweatshirts
-- Custom Track Jackets
-- Custom Zip Hoodies
-- Field Hockey Sweatshirts
-- Hoodies for Girls
-- Keep Calm Sweatshirts
-- Military Sweatshirts
-- Monogrammed Sweatshirts
-- Police Sweatshirts
-- Pullover Hoodies
-- Sweatshirts for Girls
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Track jackets, anoraks, fleece, pullovers, sweatpants, scarves and beanies. Jackets take a chest logo up front and a statement across the back. See [outerwear](/products/outwear/).
+
+## Beyond apparel
+
+Hats, tote bags and towels round out a merch table or a welcome kit. See [hats](/products/hats/), [bags](/products/bags/) and [towels](/products/towels/).
+
+## How do you pick the method for each item?
+
+- **24+ pieces of one design on tees or hoodies:** [screen printing](/screen-printing/).
+- **Small runs or full-color art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
+- **Logos on caps, polos and jackets:** [embroidery](/services/embroidery/).
+- **Names and numbers:** heat transfer vinyl.
+
+Every order gets a free art check before production, and same-day and next-day rush slots are available for many orders.
+
+## Find your garment
+
+Browse the full [catalog](/catalog/), then send your picks through the [quick quote form](/quick-quote/). We reply within one business day.

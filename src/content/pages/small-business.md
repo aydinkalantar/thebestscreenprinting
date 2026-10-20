@@ -1,71 +1,75 @@
 ---
 path: "/small-business/"
-title: "Printing For Small Businesses"
-description: "High quality custom screen print, embroidery, vinyl printing promotional production for your business, printing for small businesses."
-h1: "Printing For Small Businesses"
+title: "Printing for Small Businesses | Los Angeles"
+description: "Custom shirts, polos, hats and bags for Los Angeles small businesses: screen printing, embroidery and DTG with no minimum. Quotes in one business day."
+h1: "Printing for small businesses"
 kind: audience
-imported: true
+imported: false
+summary: "Put your name on everything your crew wears. From one DTG shirt to a full screen-printed run, made in our Downtown LA shop, with quotes back within one business day."
+facts:
+  - label: "Small runs"
+    value: "DTG has no minimum and no setup fee"
+  - label: "24+ pieces of one design"
+    value: "Screen printed in-house"
+  - label: "Before printing"
+    value: "Free art check and mockup for approval"
+faqs:
+  - q: "What affects the price of my order?"
+    a: "Mainly four things: the garment, the number of ink colors, the number of print locations and the total quantity. Personalization and samples can also change the price."
+  - q: "How can I lower the cost per item?"
+    a: "Order a larger quantity, or reduce the number of ink colors in your design. Our team can adapt most designs to one, two or three colors."
+  - q: "Can you help with my logo or artwork?"
+    a: "Yes. Every order gets a free art check, and we offer graphic design help for creating or editing artwork. Email sales@tbsp.la for details."
+  - q: "Can I change my order after I approve the mockup?"
+    a: "Make changes during the mockup stage. Because each order is custom, there are no cancellations or refunds once a mockup is approved for production."
 sourceUrl: "https://thebestscreenprinting.com/small-business/"
 ---
-### Hundreds templates of apparel styles and colors
 
-Products
+Your logo deserves better than a plain black tee. We print and embroider staff uniforms, merch and giveaways for cafes, salons, shops, studios and crews across LA, all from our shop at 2710 S Broadway Avenue in Downtown LA. Start with one shirt or start with a stack.
 
-T-shirts
+## What do small businesses order?
 
-Business and Polos
+The greatest hits:
 
-Sweatshirts & Hoodies
+- Staff tees and uniforms for restaurants, cafes, salons and shops
+- Embroidered polos for the front desk, sales and service teams
+- Hats and beanies with a stitched logo
+- Hoodies and sweatshirts for the team or for the merch shelf
+- Outerwear for crews that work outside
+- Tote bags and towels for giveaways and retail
 
-Team Uniforms & Jerseys
+Browse t-shirts, polos, sweatshirts, hats, outerwear, bags and towels in our [catalog](/catalog/).
 
-Hats
+## Which method fits my business?
 
-Outerwear
+Quantity and garment call the shot:
 
-Bags
+- **Under 24 pieces:** usually DTG or [direct to film](/services/direct-to-film/). DTG has no minimum and no setup fee, perfect for the first batch of staff shirts.
+- **24 or more pieces of one design:** [screen printing](/screen-printing/), pulled in-house in rich, solid ink.
+- **Polos, hats and jackets:** [embroidery](/services/embroidery/), dense thread that makes a uniform look sharp.
+- **Employee names:** [heat transfer vinyl](/services/heat-transfer-vinyl/), a different name on every shirt.
 
-Towels
+Not sure? Send the logo and the quantity. We will recommend a method in your quote.
 
-Completed projects
+## How does ordering work?
 
-Our customers
+1. Send your logo, garments, quantities and sizes through the [quick quote form](/quick-quote/), by email to sales@tbsp.la, or by phone at (323) 433-0033.
+2. Get your quote within one business day.
+3. We check your art for free and send a mockup for approval.
+4. You approve, we print. Pick it up at the shop or have it shipped.
 
-Question & Answers
+## Start small, scale up
 
-Whether you’re curious about the cost of your order or the price difference between different designs or products, we’re always here to provide a quick, accurate price quote with no obligation to buy.
+Plenty of businesses start with a short DTG run for staff, then switch to screen printing once they need 24 or more pieces of one design. Same logo, more shirts, better economics.
 
-Your all-inclusive The Best Screen Printing price is primarily determined by four things: 1. The product you select. 2. The total number of ink colors needed for printing. 3. The placements of your artwork designs. 4. The total quantity of items in your order. Other factors such as personalization or sample customization also affect the cost.
+## Grand opening on Friday?
 
-Savings tip: The easiest way to reduce the cost per item is to increase the quantity of your order. Consider ordering a few extras to maximize your savings. Reducing the number of ink colors in your design can also lead to significant savings. Our talented production team can make any design shine with only three, two, or even one ink color!
+Same-day and next-day rush slots are open for many orders. Call us to confirm before you plan around a date. Details on [same-day t-shirt printing](/same-day-t-shirt-printing-los-angeles/).
 
-FREE with every order – no matter how large or small: • Design review through mock ups for preapproval • Professional Quality Assurance – at least three of colleagues in our team will check every aspect of your order to ensure perfection, every time • Expert design consultation • Shipping to the United States, APO, and Canade • Amazing customer service
+## Launches, pop-ups and your own line
 
-Ready to get a quote? There are three ways: 1. Email us at [email protected] with details on your project. 2. Give us a call – we’re happy to help! 323-433-0033 3. Find Us on Yelp and send us a message! The Best Screen Printing believes in all-inclusive pricing, and our quotes always ensure that you won’t be surprised by any hidden fees – even online standard shipping is free.
+Hosting a launch or community day? See [event apparel](/event-apparel/). Building a clothing line to sell? See [apparel for retail brands](/for/retail-brands/).
 
-From just one to one thousand, The Best Screen Printing can print as many items as you need for your brand or unique cause, or occasion. For some of our most popular styles, you can order just one item through our digital printing service. See a list of these products in our No Minimum product category. Some items must use screen printing or embroidery, and may have different minimums. • Screen printing: Minimum quantity is 12 pcs. • Embroidery: Minimum quantity is 12. Please call us if you have questions. A production consultant is here to answer any questions and help bring your design to life 5 days a week at 1-323-433-0033, Monday-Friday: 10am-4pm PST.
+## Get your brand on the rack
 
-Whether you’re having trouble with our online customizer, are not sure how many ink colors you’ll need to print your uploaded art, or just want a production expert to take a look at your design, we’re always happy to help! Most design questions can be answered by our production team representatives. Call us for real, live help 5 days a week at 1-323-433-0033, Monday-Friday: 10am – 4pm PST.
-
-We also offer Graphic Design Assistance in case you need help with creating or editing an artwork. Please send us an email to [email protected] asking for further details on this service we provide.
-
-Due to the custom nature of the service we provide, there are no cancellations or refunds onceyou have approved your mock up for production. If changes need to be made, please do so in the mock up stage so that those updated details will be reflected in the garment guidelines.
-
-Failure to notify your production representative of any changes prior to mock up approval, is not our responsibility. If a change needs to be made after mock up approval, please notify our team immediately, although there is no guarantee this change will be accommodated.
-
-We do our best to be remain transparent and efficient in our production process, please be considerate of our time frames and deadlines for your orders. A delay in responding in a timely manner will affect the completion date of your project.
-
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Send your logo and order details through the [quick quote form](/quick-quote/) or call (323) 433-0033, Monday through Friday, 9am to 5pm.

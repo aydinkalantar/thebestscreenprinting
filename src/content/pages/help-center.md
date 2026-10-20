@@ -1,306 +1,73 @@
 ---
 path: "/help-center/"
 title: "Help Center"
-description: "Help center - Frequency asked questions, Shipping, Delivery & Returns, User agreement, Privacy policy, Content guidelines."
-h1: "Privacy Policy"
+description: "TBSP help center: how custom apparel pricing works, order minimums by method, design help, what we will and will not print, plus shipping and policy links."
+h1: "Help center"
 kind: core
-imported: true
+imported: false
+summary: "Everything you need before you order: how pricing works, minimums by print method, design help and our content guidelines. Questions? Call (323) 433-0033, Monday to Friday, 9am to 5pm."
 sourceUrl: "https://thebestscreenprinting.com/help-center/"
 ---
-#### Help Center
+## Start here
 
-- Frequently Asked Questions
-- Shipping, Delivery & Returns
-- User Agreement
-- Privacy Policy
-- Content Guidelines
+- [Shipping, reorders and returns](/shipping-and-delivery/)
+- [Delivery times and rush](/learn-delivery-time/)
+- [Helpful design tips](/helpful-design-tips/)
+- [Frequently asked questions](/faq/)
+- [Support and contact](/support/)
+- [Privacy policy](/privacy-policy/) and [terms and conditions](/terms-conditions/)
 
-### How is my price determined?
+## How is my price determined?
 
-Whether you’re curious about the cost of your order or the price difference between different designs or products, we’re always here to provide a quick, accurate price quote with no obligation to buy.
+Every quote is built from a few things:
 
-Your all-inclusive TBSP price is primarily determined by three things:
+- **The product.** A heavyweight hoodie costs more than a basic tee.
+- **Ink colors.** In screen printing, each color needs its own screen.
+- **Print placements.** Front, back, sleeve: each location adds a print.
+- **Quantity.** Setup is spread across the run, so the per-piece price drops as quantity goes up.
+- **Extras.** Personalized names and numbers, samples and special requests.
 
-- The product you select.
-- The total number of ink colors needed for printing.
-- The total quantity of items in your order.
+Want to save? Order a few extras to reach a better price break, or simplify the art. Many designs look sharp in three, two or even one ink color.
 
-Other factors such as personalization (adding personalized names and/or numbers to your items) or special requests also affect the cost.
+Quotes come back within one business day, with no obligation. [Request one here](/quick-quote/).
 
-Savings tip: The easiest way to reduce the cost per item is to increase the quantity of your order. Consider ordering a few extras to maximize your savings. Reducing the number of ink colors in your design can also lead to significant savings. Our team of talented artists can make any design shine with only three, two, or even one ink color!
+## How many do I have to order?
 
-FREE with every order – no matter how large or small:
+It depends on the method:
 
-- Design review by a professional artist
-- Professional Quality Assurance – at least three Helpful Inkers will check every aspect of your order to ensure perfection, every time
-- Expert design consultation
-- Guaranteed delivery date
-- Set-up fees
-- Shipping to the 48 US states, APO, and Canada
-- Amazing customer service
-- Money-back guarantee
+- **Screen printing:** 24 or more pieces of one design, printed in-house. See [screen printing](/screen-printing/).
+- **Under 24 pieces:** usually [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). DTG has no minimum and no setup fee.
+- **Embroidery:** for polos, hats, jackets and uniforms. See [embroidery](/services/embroidery/).
+- **Names and numbers:** [heat transfer](/services/heat-transfer-vinyl/).
 
-Ready to get a quote? There are three ways:
+Not sure which method fits? Tell us the quantity and the art, and we will recommend one.
 
-- Click the green “$” sign marked “Get Quote” in the Lab
-- Get a Quick Quote now.
-- Give us a call – we’re happy to help! 323-433-0033
+## How can I get help with my design?
 
-TBSP believes in all-inclusive pricing, and our quotes always ensure that you won’t be surprised by any hidden fees – even standard shipping is free!
+Send what you have. Every order gets a free art check before printing, so problems like low resolution or very thin lines are caught early. If you need artwork created or edited, email sales@tbsp.la and ask about graphic design assistance.
 
-### How many do I have to order?
+## What will TBSP print?
 
-From just one to over one thousand, Custom Ink can print as many items as you need for your unique cause or occasion!
+Custom apparel brings people together, and we want designs that do the same. Our guidelines work on a simple scale.
 
-For some of our most popular styles, you can order just one item through our digital printing service. See a list of these products in our No Minimum product category.
+**We will not print designs that:**
 
-Some items must use screen printing or embroidery, and may have different minimums.
+- Infringe someone else's trademarks, copyrights or other intellectual property
+- Encourage violence or hate, or attack people based on race, religion, ethnicity, gender, disability, national origin or sexual identity
+- Include hate speech or hate symbols
+- Promote hard drug use, or underage drinking or drug use
+- Feature explicit sexual content, or any sexualized content involving minors
 
-- Screen printing: Minimum quantity is 12. (If your design contains more than 5 colors, higher minimums may apply.)
-- Embroidery: Minimum quantity is 12.
+**We may decline or ask for changes to designs that:**
 
-The minimum quantity for each product is noted in the product catalog on each individual product page. Please call us if you have questions.
+- Use crude language or strong sexual innuendo
+- Show violence not aimed at a person or group, such as historical images
+- Promote other illegal activity, or could inflame tensions around a recent event
 
-Inkers are available to answer questions and help bring your design to life 7 days a week at 1-323-433-0033, Monday-Friday: 8am – Midnight ET, Saturday: 10am – 6pm ET, and Sunday: 10am – 9pm ET.
+**We will happily print designs that** build community, respect intellectual property and use content you own or are licensed to use.
 
-### How can I get help with my design?
+When a design does not meet the guidelines, we will work with you on an alternative.
 
-Whether you’re having trouble with the Design Lab, not sure how many ink colors you’ll need to print your uploaded art, or just want a helpful Inker to take a look at your design, we’re always happy to help! Most design questions can be answered by our service representatives. Call us for real, live help 7 days a week at 1-323-433-0033, Monday-Friday: 8am – Midnight ET, Saturday: 10am – 6pm ET, and Sunday: 10am – 9pm ET.
+## Still stuck?
 
-#### Looking for expert design help?
-
-Check out Custom Creations by Custom Ink. Bring your best ideas and our artists will transform your concept into a masterpiece tailored to your personal budget and style. You can reach Custom Creations by phone at 323-433-0033 from 9am – 5pm ET Monday-Friday. Click here to learn more about Custom Creations
-
-Last Modified: December 31, 2015
-
-TBSP.LA (“TBSP.LA”, “we” or “us”) understands that security and privacy are important issues for users of www.tbsp.la (the “Site”). The following Privacy Policy (the “Policy”) describes how we collect, use and share the information that we gather about the users of our Site.
-
-By using our Site, you consent to our collection, use and disclosure of your information, including Personal Information (defined below), as described in this Policy. Your use of our Site is subject to this Policy and our User Agreement
-
-Information we collect How we use your information How we share your information Cookies and other tracking mechanisms California do not track disclosure Online advertising Your choices Your California privacy rights Children’s privacy External links Security Changes to this Policy Contacting TBSP.LA
-
-## Information we collect
-
-We may collect information directly from you, automatically through your use of our Site, and from third parties. We may combine all of information we collect about you from these various sources.
-
-- Information we collect directly from you. Depending on how you use our Site, you may provide us with certain information that can identify you as an individual, such as your name, email address, phone number, credit or debit card information and shipping or billing address (collectively, “Personal Information”). We will also collect any other information that you choose to provide to us through our Site (eg contents of messages you send to us through our Site).
-- Content that you provide. You may upload comments, reviews, graphics, photos or other materials to the Site (“Content”). If you post Content on our Site, the Content (e.g., t-shirt designs or photos submitted as part of a contest), as well as other information (eg user name or profile picture), may be available to all visitors to our Site, and we cannot prevent such Content or information from being used in a manner that may violate this Policy, our User Agreement, the law, or your personal privacy.
-- Information we collect about you from third parties. We may collect information about you from third parties. For example, we may collect demographics information from public sources and from third-party data and analytics companies. In addition, we may collect information about you from other TBSP.LA users (eg if one user ships a package to another user).
-- Information we collect automatically through your use of our Site. We may automatically collect information about your use of our Site and your orders, including but not limited to your Internet protocol (“IP”) address; the type of web browser you are using; the website that led you to our Site; the website you go after leaving our Site; the pages you view on our Site; the dates and times you access our Site; and information about any orders you place, such as your order identification number, items ordered and the cost of your order.
-
-## How we use your information
-
-TBSP.LA may use your information, including Personal Information and/or Content, for the following purposes:
-
-- Providing our services To facilitate your orders, to administer your account; to respond to your questions or requests; to provide you with news or other information we think may interest you; to communicate with you about your account, orders or use of our Site or for other informational purposes; to improve our services; and for other account or customer support-related purposes.
-- Marketing and advertising. To provide you with special offers, product information and other marketing or promotional communications from TBSP.LA or from other third parties. We may provide marketing or advertising to you in a variety of ways, including through our Site, via email or on other third-party websites (eg using Google Customer Match or Facebook Ads). See our Online advertising and Your choices sections below for more information.
-- Research and analytics. To analyze how customers use our Site, services and products; to analyze how customers interact with marketing or other communications we send to them; and for other research, analytical and statistical purposes.
-- Protecting rights and interests.To investigate, protect or defend the rights, safety or property of TBSP.LA, our customers or the public; to investigate or enforce perceived violations of our User Agreement or this Policy; as evidence in litigation in which we are involved; and for fraud protection and credit risk reduction purposes.
-- Legal compliance. To comply with laws, regulations, legal process (eg a warrant or subpoena) or guidance; and to respond to governmental requests (eg informal requests from a regulator).
-
-## How we share your information
-
-TBSP.LA may share your information, including Personal Information and/or Content, with the following types of third parties:
-
-- Service providers. TBSP.LA may share your information with third-party service providers, vendors, agents, contractors or others who perform functions on our behalf. For example, we may use service providers to process your orders, deliver packages or send mail. We will obtain consent for such sharing with service providers where legally required.
-- Corporate affiliates. TBSP.LA may share your information with any current or future parent company, affiliate or subsidiary.
-- Other unaffiliated third parties. As noted above, TBSP.LA may send you marketing offers on behalf of third parties. TBSP.LA may also share your information directly with third parties, including so they may send you marketing offers directly. The information that we share with third parties may include, without limitation, your email address, billing address, shipping address and order information (eg total price).
-
-TBSP.LA may also share your information, including Personal Information and/or Content, in the following contexts:
-
-- Protecting rights and interests. TBSP.LA may share your information to investigate, protect or defend the rights, safety or property of TBSP.LA our customers or the public; to investigate or enforce perceived violations of our User Agreement or this Policy; as evidence in litigation in which we are involved; and for fraud protection and credit risk reduction purposes.
-- Sale or acquisition of assets. TBSP.LA may share your information if we become involved in a transaction involving the sale of our assets, such as a merger or acquisition, if we are transferred to another company, in the event of a bankruptcy, or as part of any other business transfer. If the surviving entity in such a transaction is not TBSP.LA, the surviving entity may use your information pursuant to its own privacy policies, which may be different from this Policy.
-- Legal compliance. TBSP.LA may share your information to comply with laws, regulations, legal process (eg a warrant or subpoena) or guidance; and to respond to governmental requests (eg informal requests from a regulator).
-- Aggregate or anonymous information. TBSP.LA may share anonymous or aggregate information about TBSP.LA users to third parties. For example, we may share anonymous or aggregate information to inform a third party’s decision on whether to place advertisements on our Site or on other websites. These companies may use such information about your visits to the Site and other websites to provide advertisements on the Site and other websites.
-
-## Cookies and other tracking mechanisms
-
-We may automatically collect information about you through the use of common information-gathering tools, as well as new tracking technologies that develop as technology evolves. The tools that we or our service providers may use to track you include the following:
-
-- Cookies. A cookie is a small string of text that a website can send to your browser to help the website remember and customize your visit. For example, we use cookies to help us to tailor our Site to you, remember your orders, keep you logged into your account, and compile statistics about Site usage. With most Internet browsers or other software, you can erase cookies from your computer hard drive, block or disable cookies or receive a warning before a cookie is stored. Please refer to your browser instructions to learn more about these functions. If you reject cookies, functionality of the Site may be limited, and you may not be able to take advantage of many of the Site’s features (eg you may not be able to stay logged into your account).
-- Web beacons/clear GIFs. Clear graphics interchange format images (“GIFs”) are tiny graphics with a unique identifier, similar in function to cookies, that are embedded invisibly on web pages or in emails. We or our service providers may use clear GIFs (also known as web beacons, web bugs or pixel tags) in connection with our Site to track the activities of visitors to our Site, help us manage content and compile statistics about usage of our Site. We or our service providers may also use clear GIFs in emails to our users, to help us track email response rates, identify when our emails are viewed and track whether our emails are forwarded.
-- LSOs. We may also use local storage objects (“LSOs”) to store your Site preferences and to personalize your visit. LSOs are different from browser cookies because of the amount and type of data stored. Typically, you cannot control, delete or disable the acceptance of LSOs through your web browser. For more information on Flash LSOs, or to learn how to manage your settings for Flash LSOs, please click here.
-
-We may use applications, servers and other technology provided by third-party companies, such as Google Analytics, to help us improve our Site, performance and user experiences. These entities may use cookies and information-gathering tools, such as web beacons or LSOs, to perform their services.
-
-## California do not track disclosure
-
-Our Site does not respond to do not track signals (eg the Mozilla Firefox Do Not Track feature), though you may be able to disable certain tracking as discussed above (eg by disabling cookies). There is still no universally accepted standard regarding tracking, but for more information about do not track signals, please click here.
-
-## Online advertising
-
-We use third-party marketing or advertising companies (eg Google Customer Match) to serve advertisements on our Site and on third-party websites or other media (e.g., social networking platforms). This enables these third parties to target advertisements to you for products and services in which you might be interested. These advertisements may be targeted based on the pages you view on our Site or on third-party websites, as well as other information that they may have about you. These third parties may use cookies, JavaScript, web beacons (including clear GIFs), LSOs and other tracking technologies to measure the effectiveness of their ads and to personalize advertising content to you. We may provide these third-party advertisers with information, including Personal Information, about you, as permitted under our agreements with such third parties.
-
-Users in the United States may opt out of many third-party ad networks. For example, you may go to the Digital Advertising Alliance (“DAA”) Consumer Choice Page for information about opting out of interest-based advertising and your choices regarding having information used by DAA companies. You may also go to the Network Advertising Initiative (“NAI”) Consumer Opt-Out Page for information about opting out of interest-based advertising and your choices regarding having information used by NAI members.
-
-Opting out from one or more companies listed on the DAA Consumer Choice Page or the NAI Consumer Opt-Out Page will opt you out from those companies’ delivery of interest-based content or advertisements to you, but it does not mean you will no longer receive any advertising through our Site or on other websites. Please note that even if you opt out, you may continue to receive advertisements, for example, based on the particular website that you are viewing (ie contextually based ads). Also, if your browsers are configured to reject cookies when you opt out on the DAA or NAI websites, your opt out may not be effective. Additional information is available on the DAA’s website at www.aboutads.info or the NAI’s website at www.networkadvertising.org.
-
-The service providers we use for online advertising may change. However, for your convenience, here are the opt outs for some of the advertising service providers we use as of the “Last Modified” date of this Policy:
-
-Datalogix Opt Out Google Ads Opt Out Google Analytics Opt Out LiveRamp Opt Out MediaMath Opt Out Trueffect Opt Out
-
-## Your choices
-
-- Account information. If you ever wish to access your Personal Information, update your Personal Information or cancel your account, please contact us at [email protected] or through the contact information below. Please note that we may maintain copies of your information and Content even after you have updated the information or canceled your account.
-- Communications from TBSP.LA. We may send periodic promotional or informational emails to you, about TBSP.LA and other third-party information and offers. In the event you do not wish to receive such emails from TBSP.LA, you may opt out of such communications by following the opt-out instructions contained within the body of any email message you receive or emailing us at [email protected] and requesting that you no longer receive communications from us. It may take us up to ten (10) business days to process your opt out request. Even if you have opted out of receiving marketing and promotional emails from us, we may still send you transactional emails, such as emails about your account or the services you have requested from us.
-- Communications from Third Parties. You may also opt out of our sharing your information with third parties for their own marketing purposes on a going forward basis by emailing us at [email protected]. Please note that once we have shared your information with a third party, such information is subject to that third party’s privacy policies and practices.
-- Online advertising. Please see our Online advertising section above for more information about your choices regarding online interest-based advertising.
-
-## Your California privacy rights
-
-If you are a California resident, you may request a list of certain third parties to which we have disclosed “personal information”, as defined in California’s “Shine the Light” law (Cal. Civ. Code § 1798.83), about you for their own direct marketing purposes. You may make one (1) request per calendar year. In your request, please affirm that you are a California resident and provide a current California address for your response. You may request this information in writing by contacting us at: [email protected]. Please allow up to thirty (30) days for a response.
-
-## Children’s privacy
-
-Our Site is not targeted to children under thirteen (13) years of age and we do not knowingly collect Personal Information from children under 13. If we discover that we have inadvertently collected Personal Information from a child under 13, we will promptly take measures to delete that Personal Information from our systems.
-
-## External links
-
-Our Site may contain links to other websites. Your use of an external website is subject to and governed by the terms and policies of that website. TBSP.LA is not responsible for the privacy practices of such other websites. We encourage our users to read the privacy statements of each and every website they visit.
-
-## Security
-
-We have taken steps to protect your information. For example, we limit internal access to our servers and have physical, electronic, and administrative safeguards in place that are designed to protect your information. However, the transmission of information via the Internet is not completely secure, and we cannot guarantee the security of information transmitted through our Site. We cannot ensure or warrant the security of any such information, and you provide such information at your own risk.
-
-You can also take steps to help protect your information. For example, if you have an account with us, you should take steps to protect against unauthorized access to your account by, among other things, choosing a robust password that nobody else knows or can easily guess and keeping your log-in and password private.
-
-## Changes to this Policy
-
-This Policy was last updated as of the “Last Modified” date above. TBSP.LA may modify this Policy at any time and will post any updates to our Site. We therefore encourage you to review this page frequently for any changes.
-
-## Contacting TBSP.LA
-
-If you have any questions or comments about this Policy, please contact us using the information below.
-
-TBSP.LA 2500 S Main St. Los Angeles CA, 90007 323-433-0033 [email protected]
-
-### What this Agreement Covers
-
-This Agreement governs your use of the Site and the TBSP.LA service (the “Service”). The Service permits customers that have an appropriate relationship either with: (i) institutions of higher learning, fraternal organizations, honor societies and other collegiate groups (collectively, “Institutions”); (ii) corporations and small businesses; (iii) elementary and secondary schools; or (iv) other organizations, to design and purchase custom merchandise properly describing that relationship. You understand that by using the Site and the Service, you have agreed to the terms and conditions of this Agreement and you agree to use the Site and the Service solely as provided in this Agreement.
-
-### Intellectual Property Rights of TBSP.LA and Third Parties
-
-TBSP.LA is committed to the appropriate and legal use of the intellectual property of others, and we require our users to behave similarly. Unless otherwise noted, all materials, including images, illustrations, designs, icons, photographs and written and other materials that appear on the TBSP.LA Site (collectively the “Contents”) are copyrights, trademarks, trade dress and/or other intellectual properties owned, controlled or licensed by TBSP.LA.
-
-TBSP.LA is the owner of the TBSP.LA trademark; other trademarks made available through this Site, including logos, slogans, color schemes and design trademarks, are licensed for use by TBSP.LA from Institutions and other third parties (the “Licensed Marks”). By using the TBSP.LA Site, you agree to limit your use of Licensed Marks to uses that are directly related to such third parties and to comply with any restrictions or conditions imposed on the use and access of the Licensed Marks by the third parties. TBSP.LA will notify you of such terms if your usage is in violation of such terms.
-
-Generally, products created using images available on the site should not be resold commercially. In the event that you wish to resell such products, you agree to contact TBSP.LA and verify the legality of reselling such products prior to doing so. Designs created using the text tools and images available through the site are in no way the exclusive property of the customers who assemble such designs. TBSP.LA retains the right to display such designs or offer them (or variations of such designs) to other customers.
-
-Additionally, TBSP.LA has the sole discretion to reject any order that it considers libelous, defamatory, obscene, profane (according to standards established by the FCC), portraying irresponsible use of alcohol or other substances, advocating persecution based on gender, age, race, religion, disability or national origin, containing explicit sexual content or is otherwise inappropriate for TBSP.LA production.
-
-You agree to not use TBSP.LA’s Service to create any material that is unlawful, harmful, threatening, abusive, harassing, tortious, defamatory, vulgar, obscene, libelous, invasive of another’s privacy, hateful, or racially, ethnically or otherwise objectionable, or that infringes on any patent, trademark, trade secret, copyright or other proprietary rights of any third party.
-
-### Content Guidelines
-
-Click Here to view our Content Guidelines.
-
-### Privacy Policy
-
-Click Here to view our Privacy Policy.
-
-### Anti-Sweat Shop Policy
-
-TBSP.LA supports high standards for manufacturing labor conditions. Accordingly, we seek to work with suppliers who promote such standards within their operations. TBSP.LA relies upon referrals, reputation and, in some cases, personal inspections to identify such vendors.
-
-### Payment Policies
-
-TBSP.LA accepts online or telephone payment via credit card, debit card, or electronic check (ACH). All payments sent electronically are securely transmitted.
-
-TBSP.LA also accepts payment via purchase order for qualified customers. Invoices may be paid by check or credit or debit card.
-
-### Shipment/Delivery Times
-
-TBSP.LA’s orders are generally delivered within 14 days. Customers who are concerned about meeting deadlines should contact a Service/Sales Representative. Rush orders on screen-printed apparel items are available for a 10% rush charge. Rush orders are delivered within 7 days. Delivery times may vary during the holiday seasons.
-
-### Returns Policy
-
-TBSP.LA goes to great lengths to ensure that all orders are filled accurately and on time and are of the highest quality. Accordingly, TBSP.LA accepts returns and will refund payment if and when customers are disappointed by TBSP.LA merchandise for one of the following reasons: (a) the blank items themselves are materially flawed; (b) the quality of the decorating (i.e., the printing or embroidery) is below a reasonable range of expectations; or (c) the design of the final product is materially different from the final design submitted by the customer.
-
-### Cancellation Policy
-
-For Standard Delivery orders, you may change or cancel your order within twenty-four (24) hours of submitting your order.
-
-For Rush Delivery orders (any order requiring faster delivery than a Standard Delivery order), you may not change or cancel your order.
-
-### Limit of TBSP.LA’s Responsibility
-
-TBSP.LA will be responsible for acting only on those instructions sent to TBSP.LA that actually are received and does not assume responsibility for malfunctions in communications facilities not under its control that may affect the accuracy or timeliness of any orders you send. TBSP.LA is not responsible for any losses or delays in transmission of orders arising out of the use of any Internet Access Service Provider or caused by any browser software or any computer virus or related problem that may be attributable to services provided by any Internet Access Service Provider. TBSP.LA is not responsible should you give incorrect instructions or if your credit-card payment is not processed by your credit-card company.
-
-The information and materials contained in this Site, including text, graphics, links or other items, are provided “as is”, “as available”. TBSP.LA does not warrant the accuracy, adequacy or completeness of the information and materials on the Site and expressly disclaims liability for errors or omissions in this information and materials. No warranty of any kind, implied, express or statutory, including but not limited to the warranties of non-infringement of third party rights, title, merchantability, fitness for a particular purpose or freedom from computer virus, is given in conjunction with the information and materials.
-
-In no event will TBSP.LA be liable for any damages, including without limitation, direct or indirect, special, incidental, or consequential damages, losses or expenses arising in connection with this site or use thereof or inability to use by any party, or in connection with any failure of performance, error, omission, interruption, defect, delay in operation or transmission, computer virus or line or system failure, even if TBSP.LA, or representatives thereof, are advised of the possibility of such damages, losses or expenses.
-
-### Intellectual Property Claims
-
-TBSP.LA respects the intellectual property rights of others. We have a policy of removing user submissions that violate copyright, trademark, or other intellectual property laws, suspending or blocking access to the design-saving or other features of our site to any user who uses our site in violation of any such law, and/or terminating in appropriate circumstances the account (if any) of any user who uses our site in violation of any such law. Pursuant to Title 17 of the United States Code, Section 512, we have implemented procedures for receiving written notification of claimed copyright infringement and for processing such claims in accordance with such law. If you believe your copyright, trademark, or other intellectual property right is being infringed by a user of TBSP.LA, please provide written notice to the following agent for notice of claims of infringement:
-
-Ethan Kalan TBSP.LA 2500 S Main St. Los Angeles CA, 90007 Tel: 323-433-0033 Email: [email protected]
-
-In order for us to respond to your notice, it must: (i) contain your physical or electronic signature; (ii) identify the copyrighted work, trademark, or other intellectual property alleged to have been infringed; (iii) identify the allegedly infringing material in a sufficiently precise manner to allow us to locate that material; (iv) contain adequate information by which we can contact you (including postal address, telephone number, and e-mail address); (v) contain a statement that you have a good faith belief that use of the copyrighted material, trademark, or other intellectual property is not authorized by the owner, the owner’s agent, or the law; (vi) contain a statement that the information in the written notice is accurate; and (vii) contain a statement, under penalty of perjury, that you are authorized to act on behalf of the copyright, trademark, or other intellectual property right owner.
-
-### Indemnity
-
-You agree to defend, indemnify and hold TBSP.LA and its affiliates harmless from and against any and all claims, damages, costs and expenses, including reasonable attorneys’ fees, arising from or relating to your use of TBSP.LA’s Site and the Service, your violation of this Agreement, or your violation of any rights of another.
-
-### Governing Law
-
-This Agreement shall be governed by the laws of the Commonwealth of Virginia and, where applicable, by federal law.
-
-Last updated on: 6/10/2016
-
-By using our Site, you consent to our collection, use and disclosure of your information, including Personal Information (defined below), as described in this Policy. Your use of our Site is subject to this Policy and our User Agreement.
-
-Last Modified: 5/18/16
-
-Statement of Principles Content Guidelines NO – TBSP.LA will not print designs that: SLOW – TBSP.LA may not print or may require changes to designs that: GO – TBSP.LA will print designs that:
-
-## Statement of Principles:
-
-TBSP.LA believes in the power of custom apparel and accessories to bring groups and communities together, and we want to help our customers create products with designs that are meaningful and unifying. Our customers have diverse viewpoints and perspectives, which are reflected in the designs they create, and we believe that we all must be tolerant of those with different views.
-
-In rare cases, however, a design proposed by a customer may be offensive or threatening to others who see the design. In such cases, we use the following guidelines to balance our customers’ design goals with the standards and expectations of the TBSP.LA community and the public. When a design does not meet our Content Guidelines, we will make every effort to work with the customer to try to create an alternate design that complies with the guidelines below.
-
-## Content Guidelines:
-
-TBSP.LA’s Content Guidelines provide guidance for customers in designing custom products. Our Content Guidelines use a sliding scale from “no” to “go” to account for the range of potential designs, so we can work with customers to create a design that meets these standards. The descriptions under each category are not meant to be exhaustive, and the ultimate decision on whether to approve a design, or not, will always rest with Custom Ink’s Content Guidelines team. Custom Ink regularly reviews these policies and updates them as appropriate based on feedback from our customers and team members.
-
-## NO – TBSP.LA will not print designs that:
-
-- Violate the intellectual property rights of others (see intellectual property policy)
-- Encourage violence or hate against individuals or groups
-- Attack, harass, or defame others based on race, religion, ethnicity, gender, disability, national origin, or sexual identity
-- Include hate speech or symbols (including but not limited to swastikas, iron crosses, etc.)
-- Promote, feature, or encourage the use of hard drugs (i.e. other than marijuana)
-- Feature explicit sex acts or frontal nudity of a non-artistic or health/medical nature
-- Include sexually suggestive images or text involving children (including nudity)
-- Promote, feature, or encourage underage drinking or marijuana use by minors
-
-## SLOW – TBSP.LA may not print or may require changes to designs that:
-
-- Include crass vulgarity, lewd language, or swear words
-- Feature implicit sex acts, non-frontal nudity, or other nudity of an artistic or health/medical nature
-- Have an overtly sexually connotation or tone, including strong sexual innuendo
-- Involve violent terms or images that are not directed at an individual or group, such as historical images of violence
-- Promote, feature or encourage illegal activities (other than those mentioned above)
-- Might cause public outrage or inspire violence due to a recent event
-- Include other content that would be offensive to the TBSP.LA community
-
-## GO – TBSP.LA will print designs that:
-
-- Use language and images appropriate for adults and children of all ages
-- Create a sense of community and are not likely to offend individuals or groups
-- Support intellectual property rights by using authorized images and content, including those owned or legally authorized to be used by the customer
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+Call (323) 433-0033, email sales@tbsp.la or visit us at 2710 S Broadway Avenue, Los Angeles. Or skip ahead and [get a free quote](/quick-quote/).

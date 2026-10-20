@@ -1,53 +1,84 @@
 ---
 path: "/helpful-design-tips/"
 title: "Helpful Design Tips | The Best Screen Printing"
-description: ""
-h1: "Helpful Design Tips"
+description: "Seven design tips from a Downtown LA print shop: contrast, shaped text, fewer colors, audience, originality, idea notes and the file formats we accept."
+h1: "Helpful design tips"
 kind: blog
-imported: true
+imported: false
+summary: "Great prints start before the ink. Seven tips for designing shirts that look as good on fabric as they do on screen, plus the file types we accept."
+faqs:
+  - q: "What file formats do you accept?"
+    a: "JPG, JPEG, TIFF, PSD, EPS, AI, PNG, PDF and BMP. Vector files (AI, EPS or vector PDF) give the cleanest results for screen printing and embroidery."
+  - q: "Will you check my design before printing?"
+    a: "Yes. Every order gets a free art check before anything is printed."
 sourceUrl: "https://thebestscreenprinting.com/helpful-design-tips/"
 ---
-#### 01. Use contrasting colors
+A design that looks great on a laptop can fall flat on a shirt. Fabric has texture, garments have color, and every print method has its own rules. These tips come from what we see on the press every day at our Downtown LA shop.
 
-The human eye is attracted to different colors being paired together. Keep this in mind when designing your t shirt to keep the garment interesting
+## 01. Use contrasting colors
 
-#### 02. Give Your Text Shape
+The eye goes straight to contrast. Light ink on a dark shirt, dark ink on a light one, a bright accent against a muted base. When ink and garment are close in value, the design disappears from more than a few feet away.
 
-Our platform offers a feature where you can change the form of your text by bending or arching the words to incorporate in your design.
+Think about the shirt color as part of the palette, not just the background. A heather gray tee changes how every color on it reads. On dark garments, screen printers usually lay down a white underbase so the colors on top stay bright.
 
-#### 03. Less Is More
+## 02. Give your text shape
 
-Graphic design is about saying things visually. Be mindful of each element in your artwork to portray a clear image.
+Text does not have to sit in a straight line. Arching, bending or curving words around a graphic makes a layout feel designed instead of typed. Arched text across the chest or wrapped around a circular badge are classic for a reason.
 
-#### 04. Always Think About Your Audience
+Keep it readable. Very condensed or decorative fonts get hard to read when they are curved and small.
 
-Consider who your designs are for and what type of things intrigue them. This will determine the elements you’re going to use, the color scheme you should go with, and much more.
+## 03. Less is more
 
-#### 05. Be Different
+A shirt is seen in a second or two, often while someone is walking past. One strong idea beats five competing ones. Cut anything that does not help the message.
 
-Creativity is about exploration. Study trends, be inspired by them, but never be afraid to create your own. Making your own brand is all about telling your story and being unique.
+Fewer colors also matter for cost. In [screen printing](/screen-printing/), each color needs its own screen, so a tight palette is cheaper to print. Many designs hit harder in three, two or even one color.
 
-#### 06. Keep it Noted
+## 04. Always think about your audience
 
-It’s better to work with a bunch of ideas than start out from only one. Write down or keep a note file on your device with little sketches of ideas that you think about throughout the day. You never know when inspiration will strike.
+Who is wearing this, and where? A run club wants something different from a law firm retreat or a merch table at a show. Your audience shapes the style, the colors, the garment and even the print location.
 
-#### 07. Know Your Files
+Ask one question: would someone wear this when they do not have to? If yes, the shirt keeps working long after the event.
 
-File formats structure your artworks differently when they are saved a certain way. Here is a list of all the files we can accept:
+## 05. Be different
 
-• JPG , • JPEG, • TIFF, • PSD, • EPS, • AI, • PNG, • PDF, • BMP
+Study trends, borrow energy from them, then make your own move. A brand is a story, and a copied design tells someone else's. Small, specific details, like an inside joke, a neighborhood reference or a hand-drawn element, make a design feel like it belongs to you.
 
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+## 06. Keep it noted
+
+It is easier to pick the best idea from ten than to perfect a single one. Keep a notes file or sketchbook on hand and capture rough ideas as they come. Quick thumbnails are enough. You never know which scribble becomes the shirt.
+
+## 07. Know your files
+
+How a file is saved changes how it prints. We accept:
+
+- JPG and JPEG
+- TIFF
+- PSD
+- EPS
+- AI
+- PNG
+- PDF
+- BMP
+
+## What makes a file print-ready?
+
+Format is only half of it. A few habits make a big difference:
+
+- **Send vector when you can.** AI, EPS or vector PDF files scale to any size without blurring. They are the cleanest starting point for screen printing and are ideal for [embroidery](/services/embroidery/) digitizing.
+- **Send raster files large.** If your art is a photo or painting, send it at full size and high resolution. A small image pulled from a website will look soft or blocky when it is enlarged.
+- **Use a transparent background.** A PNG with transparency avoids a white box printing around your design.
+- **Outline your fonts** in vector files, or send the font, so the type does not change.
+- **Watch the fine details.** Hairline strokes and tiny text can fill in or break up on fabric, and they are even harder in thread.
+
+## Which method suits my design?
+
+Your art can steer the method:
+
+- **Few solid colors, 24+ pieces:** [screen printing](/screen-printing/).
+- **Photos, gradients or lots of colors, small runs:** [direct-to-garment](/services/direct-to-garment/) or [direct-to-film](/services/direct-to-film/).
+- **Logos on polos, hats and jackets:** [embroidery](/services/embroidery/).
+- **Names and numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/).
+
+Every order gets a free art check before printing, so if something in your file will not print well, we will flag it first.
+
+Got a design ready? [Get a free quote](/quick-quote/).
