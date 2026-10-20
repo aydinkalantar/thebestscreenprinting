@@ -6,9 +6,9 @@ import { ArrowRight, Palette, Phone, ChevronDown } from '@lucide/astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
-  // "/" is rendered by src/pages/index.astro.
+  // "/" and "/quick-quote/" have their own pages in src/pages/.
   return pages
-    .filter((page) => page.data.path !== '/')
+    .filter((page) => !['/', '/quick-quote/'].includes(page.data.path))
     .map((page) => ({
       params: { slug: page.data.path.replace(/^\/|\/$/g, '') },
       props: { page },

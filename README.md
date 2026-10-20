@@ -28,6 +28,17 @@ The design studio, customer accounts and admin are a separate app
 - `scripts/gsc-pull.mjs` + `scripts/seo-report.mjs` — weekly Search Console
   report. The service-account key lives outside the repo.
 
+## Quote form
+
+`/quick-quote/` posts to `/api/quote` in the Worker, which emails the request
+(with artwork attached) through [Resend](https://resend.com). Secrets:
+
+- `npx wrangler secret put RESEND_API_KEY`
+- optional `npx wrangler secret put TURNSTILE_SECRET` plus `PUBLIC_TURNSTILE_SITE_KEY` at build time
+- vars `QUOTE_TO` (default sales@tbsp.la) and `QUOTE_FROM` (an address on a domain verified in Resend)
+
+Without `RESEND_API_KEY` the form answers with the phone number and email instead.
+
 ## Deploy (Cloudflare)
 
 - Staging: `npx wrangler deploy` (noindexed, on a workers.dev URL).

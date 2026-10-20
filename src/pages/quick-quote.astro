@@ -1,0 +1,126 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { business } from '../data/business';
+import { LEAD_SOURCES, DECORATIONS, GARMENTS } from '../lib/quote';
+import { Upload, Phone, Mail, Clock, Send } from '@lucide/astro';
+
+const page = await getEntry('pages', 'quick-quote');
+const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+<Base title={page?.data.title ?? 'Get a Quote | TBSP'} description="Request a custom apparel printing quote from our Downtown LA shop. Screen printing, embroidery, DTF and more — we reply within one business day.">
+  <div class="quote-layout">
+    <div>
+      <h1>Get a quote</h1>
+      <p class="lead">Tell us what you need and we'll reply with a personal quote within one business day. Orders of {business.shopMinimum}+ pieces are printed in our shop.</p>
+
+      <form id="quote-form" class="form card" novalidate enctype="multipart/form-data">
+        <fieldset>
+          <legend>Your order</legend>
+          <div class="row">
+            <label><span>What do you want printed?</span>
+<select name="garment" required>
+                <option value="">Choose one</option>
+                {GARMENTS.map((g) => <option>{g}</option>)}
+              </select>
+              <span class="err" data-for="garment"></span>
+            </label>
+            <label><span>Quantity</span>
+<input name="quantity" type="number" min="1" inputmode="numeric" placeholder="e.g. 50" required />
+              <span class="err" data-for="quantity"></span>
+            </label>
+          </div>
+          <div class="checks" role="group" aria-label="Decoration">
+            <span class="label"><span>Decoration <small>(pick any)</small></span></span>
+            {DECORATIONS.map((d) => <label class="check"><input type="checkbox" name="decorations" value={d} />{d}</label>)}
+          </div>
+          <div class="row">
+            <label><span>Needed by <small>(optional)</small></span>
+<input name="deadline" type="date" />
+            </label>
+            <label><span>Artwork <small>(optional, up to 10 MB)</small></span>
+<span class="file"><Upload class="icon" aria-hidden="true" /><input name="artwork" type="file" accept=".png,.jpg,.jpeg,.webp,.svg,.pdf,.ai,.eps,.psd" /></span>
+              <span class="err" data-for="artwork"></span>
+            </label>
+          </div>
+          <label><span>Details <small>(optional)</small></span>
+<textarea name="details" rows="4" placeholder="Colors, sizes, print locations, anything else"></textarea>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Where should we send the quote?</legend>
+          <div class="row">
+            <label><span>Name</span>
+<input name="name" autocomplete="name" required /><span class="err" data-for="name"></span></label>
+            <label><span>Email</span>
+<input name="email" type="email" autocomplete="email" required /><span class="err" data-for="email"></span></label>
+          </div>
+          <div class="row">
+            <label><span>Phone <small>(optional)</small></span>
+<input name="phone" type="tel" autocomplete="tel" /></label>
+            <label><span>Company or team <small>(optional)</small></span>
+<input name="company" autocomplete="organization" /></label>
+          </div>
+          <label><span>How did you find us? <small>(optional)</small></span>
+<select name="leadSource">
+              <option value="">Choose one</option>
+              {LEAD_SOURCES.map((s) => <option value={s.id}>{s.label}</option>)}
+            </select>
+          </label>
+        </fieldset>
+
+        <!-- Hidden from people; bots fill it in. -->
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        {turnstileKey && <div class="cf-turnstile" data-sitekey={turnstileKey}></div>}
+
+        <p class="form-msg" role="status" aria-live="polite"></p>
+        <button class="btn btn-primary" type="submit"><Send class="icon" aria-hidden="true" />Send my quote request</button>
+      </form>
+    </div>
+
+    <aside class="card quote-side">
+      <h2>Rather talk?</h2>
+      <p class="footer-line"><Phone class="icon" aria-hidden="true" /><a href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
+      <p class="footer-line"><Mail class="icon" aria-hidden="true" /><a href={`mailto:${business.email}`}>{business.email}</a></p>
+      <p class="footer-line"><Clock class="icon" aria-hidden="true" />Mon–Fri, 9am–5pm</p>
+    </aside>
+  </div>
+  {turnstileKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+</Base>
+
+<script>
+  const form = document.getElementById('quote-form') as HTMLFormElement;
+  const msg = form.querySelector('.form-msg') as HTMLElement;
+  const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+  const setErrors = (fields: Record<string, string> = {}) => {
+    form.querySelectorAll<HTMLElement>('.err').forEach((el) => { el.textContent = fields[el.dataset.for!] || ''; });
+  };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    setErrors();
+    msg.textContent = '';
+    msg.className = 'form-msg';
+    button.disabled = true;
+    button.lastChild!.textContent = 'Sending…';
+    try {
+      const res = await fetch('/api/quote', { method: 'POST', body: new FormData(form) });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        form.reset();
+        msg.className = 'form-msg ok';
+        msg.textContent = "Thanks! We've got your request and will reply within one business day.";
+      } else {
+        setErrors(data.fields);
+        msg.className = 'form-msg bad';
+        msg.textContent = data.error || 'Something went wrong. Please try again.';
+      }
+    } catch {
+      msg.className = 'form-msg bad';
+      msg.textContent = 'Network error. Please try again, or call us.';
+    } finally {
+      button.disabled = false;
+      button.lastChild!.textContent = 'Send my quote request';
+    }
+  });
+</script>
