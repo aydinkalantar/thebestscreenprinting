@@ -23,6 +23,13 @@ const services = [
   { href: '/same-day-t-shirt-printing-los-angeles/', icon: Zap, name: 'Same-day rush', line: 'Need it today? Rush slots are available from our DTLA shop.' },
 ];
 
+// Client logos carried over from the current site.
+const clients = [
+  { file: 'netflix', name: 'Netflix' }, { file: 'adidas', name: 'Adidas' }, { file: 'nike', name: 'Nike' },
+  { file: 'youtube', name: 'YouTube' }, { file: 'google', name: 'Google' }, { file: 'amazon-alexa', name: 'Amazon Alexa' },
+  { file: 'optimum-nutrition', name: 'Optimum Nutrition' }, { file: '99-only', name: '99 Cents Only' }, { file: 'bcg-digital-ventures', name: 'BCG Digital Ventures' },
+];
+
 const products = [
   { href: '/products/t-shirts/', name: 'T-shirts' },
   { href: '/products/sweatshirts-hoodies/', name: 'Hoodies & sweatshirts' },
@@ -73,6 +80,13 @@ const jsonLd = [{
       <a class="btn btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="icon" aria-hidden="true" /></a>
       <a class="btn btn-quiet" href={`tel:${business.phone}`}><Phone class="icon" aria-hidden="true" />{business.phoneDisplay}</a>
     </div>
+  </section>
+
+  <section class="clients" aria-label="Brands we have printed for">
+    <p>Trusted by teams at</p>
+    <ul>
+      {clients.map((c) => <li><img src={`/images/clients/${c.file}.webp`} alt={c.name} loading="lazy" height="28" /></li>)}
+    </ul>
   </section>
 
   <section class="section" aria-labelledby="services-title">

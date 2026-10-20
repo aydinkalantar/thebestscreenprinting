@@ -122,3 +122,11 @@ main h3 { margin-top: 1.6em; }
 .step-n { width: 30px; height: 30px; border-radius: 999px; display: grid; place-items: center; background: var(--tb-accent); color: var(--tb-on-accent); font-weight: 700; font-size: 0.9rem; }
 .visit { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
 .visit h2 { margin-top: 0; }
+
+.brand-logo { width: 32px; height: 32px; display: block; }
+.clients { margin-top: 40px; }
+.clients p { margin: 0 0 12px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--tb-muted); font-weight: 600; }
+.clients ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: center; }
+.clients img { height: 28px; width: auto; opacity: 0.7; filter: grayscale(1); }
+:root.dark .clients img { filter: grayscale(1) invert(1); }
+@media (prefers-color-scheme: dark) { :root:not(.light) .clients img { filter: grayscale(1) invert(1); } }
