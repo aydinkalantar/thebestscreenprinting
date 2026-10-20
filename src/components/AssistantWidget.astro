@@ -1,0 +1,57 @@
+---
+// Floating chat that loads the studio's own AI assistant (studio /assistant page)
+// in a panel, so visitors talk to the same agent they'll use in TBSP Studio.
+// It is served by the studio, so it only appears once the studio is live (or a
+// local studio is set with PUBLIC_STUDIO_URL while developing).
+import { business } from '../data/business';
+import { Sparkles, X } from '@lucide/astro';
+
+const devStudio = import.meta.env.PUBLIC_STUDIO_URL as string | undefined;
+const src = `${(devStudio || business.studioUrl).replace(/\/$/, '')}/assistant`;
+const show = business.studioLive || !!devStudio;
+---
+{show && (
+  <div id="tb-assistant" data-src={src}>
+    <div id="tb-assistant-panel" class="hidden fixed z-[80] inset-x-0 bottom-0 sm:inset-auto sm:right-5 sm:bottom-24 w-full sm:w-[400px] h-[85dvh] sm:h-[min(680px,calc(100dvh-140px))] panel-raised overflow-hidden flex-col">
+      <div class="flex items-center justify-between px-4 h-12 border-b border-zinc-200/80 dark:border-white/10">
+        <span class="flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-white"><span class="brand-mark w-7 h-7 rounded-lg grid place-items-center" aria-hidden="true"><i></i></span>TBSP AI assistant</span>
+        <button type="button" class="icon-btn" data-close aria-label="Close assistant"><X class="w-4 h-4" aria-hidden="true" /></button>
+      </div>
+      <div class="flex-1 min-h-0" data-frame></div>
+    </div>
+    <button type="button" data-open aria-expanded="false" aria-controls="tb-assistant-panel"
+      class="fixed z-[81] right-5 bottom-5 h-14 pl-4 pr-5 rounded-full bg-violet-600 text-white shadow-xl shadow-violet-600/30 flex items-center gap-2.5 hover:bg-violet-700 active:scale-[0.97] transition-all">
+      <span class="w-8 h-8 rounded-full bg-white/15 grid place-items-center"><Sparkles class="w-[18px] h-[18px]" aria-hidden="true" /></span>
+      <span class="text-sm font-bold">Ask our AI</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-white" aria-hidden="true"></span>
+    </button>
+  </div>
+)}
+
+<script>
+  const root = document.getElementById('tb-assistant');
+  // Guard against the script running twice (dev reloads).
+  if (root && !root.dataset.ready) {
+    root.dataset.ready = '1';
+    const panel = root.querySelector<HTMLElement>('#tb-assistant-panel')!;
+    const open = root.querySelector<HTMLButtonElement>('[data-open]')!;
+    const slot = root.querySelector<HTMLElement>('[data-frame]')!;
+    const toggle = (show: boolean) => {
+      // Load the assistant only when first opened, so pages stay fast.
+      if (show && !slot.firstChild) {
+        const f = document.createElement('iframe');
+        f.src = `${root.dataset.src}?theme=${document.documentElement.classList.contains('dark') ? 'dark' : 'light'}`;
+        f.title = 'TBSP AI assistant';
+        f.allow = 'microphone; clipboard-write';
+        f.className = 'w-full h-full border-0';
+        slot.appendChild(f);
+      }
+      panel.classList.toggle('hidden', !show);
+      panel.classList.toggle('flex', show);
+      open.setAttribute('aria-expanded', String(show));
+    };
+    open.addEventListener('click', () => toggle(panel.classList.contains('hidden')));
+    root.querySelector('[data-close]')!.addEventListener('click', () => toggle(false));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggle(false); });
+  }
+</script>

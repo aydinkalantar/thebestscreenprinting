@@ -6,3 +6,4 @@ dist/
 .env
 # Raw Search Console pulls stay on the machine that runs the weekly report.
 data/gsc/*.json
+.env.development

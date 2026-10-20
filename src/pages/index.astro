@@ -18,14 +18,14 @@ const description = home?.data.description ?? '';
 const h1 = home?.data.h1 ?? 'Custom apparel printing in Los Angeles';
 
 const services = [
-  { href: '/screen-printing/', icon: Shirt, name: 'Screen printing', line: `Our core service for ${business.shopMinimum}+ pieces. Bold spot colors, lowest price per piece.` },
-  { href: '/services/embroidery/', icon: Scissors, name: 'Embroidery', line: 'Stitched logos for polos, hats, jackets and uniforms.' },
-  { href: '/services/direct-to-film/', icon: Layers, name: 'DTF transfers', line: 'Full-color prints on cotton, polyester and blends.' },
-  { href: '/services/direct-to-garment/', icon: Printer, name: 'DTG printing', line: 'Full color with no minimum and no setup fee.' },
-  { href: '/services/heat-transfer-vinyl/', icon: Flame, name: 'Heat transfer', line: 'Names, numbers and small runs with crisp edges.' },
-  { href: '/services/embossing/', icon: Stamp, name: 'Embossing', line: 'Raised, tonal branding for a premium finish.' },
-  { href: '/services/large-format-screen-printing/', icon: Maximize, name: 'Oversize prints', line: 'Jumbo prints beyond the standard chest size.' },
-  { href: '/same-day-t-shirt-printing-los-angeles/', icon: Zap, name: 'Same-day rush', line: 'Need it today? Rush slots from our DTLA shop.' },
+  { href: '/screen-printing/', icon: Shirt, name: 'Screen printing', line: `Thick, punchy color that lasts wash after wash. The best price per piece from ${business.shopMinimum} up.` },
+  { href: '/services/embroidery/', icon: Scissors, name: 'Embroidery', line: 'Your logo in thread on caps, polos, jackets and uniforms. Made to look premium for years.' },
+  { href: '/services/direct-to-film/', icon: Layers, name: 'DTF transfers', line: 'Photo-level detail and full color on cotton, poly and blends. Small runs welcome.' },
+  { href: '/services/direct-to-garment/', icon: Printer, name: 'DTG printing', line: 'One shirt or fifty, full color, no minimum and no setup fee.' },
+  { href: '/services/heat-transfer-vinyl/', icon: Flame, name: 'Heat transfer', line: 'Names, numbers and sharp edges for jerseys and one-offs.' },
+  { href: '/services/embossing/', icon: Stamp, name: 'Embossing', line: 'Raised, tonal branding for a quiet-luxury finish.' },
+  { href: '/services/large-format-screen-printing/', icon: Maximize, name: 'Oversize prints', line: 'Go big: jumbo prints that cover way more than the chest.' },
+  { href: '/same-day-t-shirt-printing-los-angeles/', icon: Zap, name: 'Same-day rush', line: 'Event tomorrow? We have rush slots for the jobs that can’t wait.' },
 ];
 const audiences = [
   { href: '/for/retail-brands/', icon: Store, name: 'Clothing brands' },
@@ -36,9 +36,9 @@ const audiences = [
   { href: '/for/non-profits/', icon: HeartHandshake, name: 'Non-profits' },
 ];
 const steps = [
-  { icon: MessageSquareText, name: 'Tell us what you need', line: 'Garment, quantity, deadline and your artwork. A rough idea is fine.' },
-  { icon: BadgeCheck, name: 'Approve your proof', line: 'We check the art, confirm colors and placement, and send your quote.' },
-  { icon: Truck, name: 'Pick up or get it delivered', line: 'Printed in our Downtown LA shop, ready for pickup or shipping.' },
+  { icon: MessageSquareText, name: 'Tell us the idea', line: 'Garment, quantity, deadline and your art. A rough sketch is plenty to start.' },
+  { icon: BadgeCheck, name: 'Approve the proof', line: 'We check your art for free, lock in colors and placement, and send the quote.' },
+  { icon: Truck, name: 'Grab it or get it shipped', line: 'Printed in our Downtown LA shop. Pick it up or we send it your way.' },
 ];
 const clients = [
   ['netflix', 'Netflix'], ['adidas', 'Adidas'], ['nike', 'Nike'], ['youtube', 'YouTube'], ['google', 'Google'],
@@ -68,8 +68,8 @@ const jsonLd = [{
         <p class="pill"><MapPin class="w-3.5 h-3.5" aria-hidden="true" />Downtown Los Angeles print shop</p>
         <h1 class="mt-5 text-[2.5rem] sm:text-6xl break-words font-bold leading-[1.02] text-zinc-900 dark:text-white">{h1}</h1>
         <p class="mt-6 text-lg leading-8 muted max-w-xl">
-          Screen printing, embroidery and full garment programs, printed in our shop at {business.address.streetAddress}.
-          Orders of {business.shopMinimum}+ pieces are made in-house, with same-day rush available.
+          Bold ink, clean stitches and merch people actually keep. We print and embroider for brands, tours, crews and teams
+          right here at {business.address.streetAddress}: {business.shopMinimum}+ pieces made in-house, and rush jobs can leave the same day.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a class="btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
@@ -118,7 +118,7 @@ const jsonLd = [{
   <!-- Services -->
   <section class="wrap mt-24" aria-labelledby="services-title">
     <p class="eyebrow">What we print</p>
-    <h2 id="services-title" class="section-title mt-2">Every decoration, one shop</h2>
+    <h2 id="services-title" class="section-title mt-2">Ink, thread and everything in between</h2>
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {services.map((s) => (
         <a class="tile" href={s.href}>
@@ -136,7 +136,7 @@ const jsonLd = [{
       <div class="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p class="eyebrow">Catalog</p>
-          <h2 id="catalog-title" class="section-title mt-2">Pick a product, add your design</h2>
+          <h2 id="catalog-title" class="section-title mt-2">Pick your blank. Make it yours.</h2>
         </div>
         <a class="btn-quiet btn-sm" href="/catalog/">See all {products.length}<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
       </div>
@@ -149,7 +149,7 @@ const jsonLd = [{
   <!-- How it works -->
   <section class="wrap mt-24" aria-labelledby="how-title">
     <p class="eyebrow">How it works</p>
-    <h2 id="how-title" class="section-title mt-2">From idea to finished merch</h2>
+    <h2 id="how-title" class="section-title mt-2">From napkin sketch to boxed and ready</h2>
     <ol class="mt-8 grid gap-4 md:grid-cols-3">
       {steps.map((s, i) => (
         <li class="panel p-6">
@@ -167,7 +167,7 @@ const jsonLd = [{
   <!-- Audiences -->
   <section class="wrap mt-24" aria-labelledby="who-title">
     <p class="eyebrow">Who we print for</p>
-    <h2 id="who-title" class="section-title mt-2">Brands, events, teams and businesses</h2>
+    <h2 id="who-title" class="section-title mt-2">Made for people who wear their name</h2>
     <div class="mt-8 grid gap-3 grid-cols-2 md:grid-cols-3">
       {audiences.map((a) => (
         <a class="tile !flex-row !items-center !gap-3 !py-4" href={a.href}>
