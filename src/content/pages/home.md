@@ -1,8 +1,8 @@
 ---
 path: "/"
-title: "Custom Apparel Printing Los Angeles | Bulk, Brands & Same-Day – TBSP"
-description: "LA's production partner for brands, events & businesses. Bulk screen printing, embroidery & full garment programs from our DTLA facility. Same-day rush available."
-h1: "LA’s Trusted Production Partner for Brands, Events & Teams"
+title: "Custom Apparel Printing for Brands, Events & Teams | TBSP"
+description: "Screen printing, embroidery, DTF and DTG for brands, events and teams, made in our two production facilities in Los Angeles and Cleveland, Ohio."
+h1: "The production partner for brands, events & teams"
 kind: core
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/"

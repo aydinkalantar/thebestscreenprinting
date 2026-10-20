@@ -1,8 +1,8 @@
 ---
 path: "/same-day-t-shirt-printing-san-fernando-ca/"
-title: "#1 Same Day T-Shirt Printing In San Fernando, CA"
+title: "Same Day T-Shirt Printing In San Fernando, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Same Day T-Shirt Printing services near by San Fernando, Los Angeles, CA. We"
-h1: "#1 Same Day T-Shirt Printing in San Fernando, Los Angeles, CA"
+h1: "Same Day T-Shirt Printing in San Fernando, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/same-day-t-shirt-printing-san-fernando-ca/"

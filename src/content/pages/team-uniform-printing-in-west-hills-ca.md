@@ -1,8 +1,8 @@
 ---
 path: "/team-uniform-printing-in-west-hills-ca/"
-title: "#1 Team Uniform Printing In West Hills, CA"
+title: "Team Uniform Printing In West Hills, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Team Uniform Printing services near by West Hills, Los Angeles, CA. We specialize"
-h1: "#1 Team Uniform Printing in West Hills, Los Angeles, CA"
+h1: "Team Uniform Printing in West Hills, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/team-uniform-printing-in-west-hills-ca/"

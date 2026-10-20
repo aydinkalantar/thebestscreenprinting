@@ -1,8 +1,8 @@
 ---
 path: "/branded-apparel-for-retail-in-tarzana-ca/"
-title: "#1 Branded Apparel For Retail In Tarzana, CA"
+title: "Branded Apparel For Retail In Tarzana, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Branded Apparel for Retail services near by Tarzana, Los Angeles, CA. We specialize"
-h1: "#1 Branded Apparel for Retail in Tarzana, Los Angeles, CA"
+h1: "Branded Apparel for Retail in Tarzana, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/branded-apparel-for-retail-in-tarzana-ca/"

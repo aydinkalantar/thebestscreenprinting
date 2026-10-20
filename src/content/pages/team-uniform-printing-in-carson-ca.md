@@ -1,8 +1,8 @@
 ---
 path: "/team-uniform-printing-in-carson-ca/"
-title: "#1 Team Uniform Printing In Carson, CA"
+title: "Team Uniform Printing In Carson, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Team Uniform Printing services near by Carson, Los Angeles, CA. We specialize in"
-h1: "#1 Team Uniform Printing in Carson, Los Angeles, CA"
+h1: "Team Uniform Printing in Carson, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/team-uniform-printing-in-carson-ca/"

@@ -1,8 +1,8 @@
 ---
 path: "/custom-embroidery-hawthorne-ca/"
-title: "#1 Custom Embroidery In Hawthorne, CA"
+title: "Custom Embroidery In Hawthorne, CA"
 description: "Welcome to The Best Screen Printing, your trusted local partner for high-quality Custom Embroidery in Hawthorne, Los Angeles, CA! We’re more than just a print"
-h1: "#1 Custom Embroidery in Hawthorne, Los Angeles, CA"
+h1: "Custom Embroidery in Hawthorne, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/custom-embroidery-hawthorne-ca/"

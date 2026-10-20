@@ -1,8 +1,8 @@
 ---
 path: "/custom-silk-screen-printing-chatsworth-ca/"
-title: "#1 Custom Silk Screen Printing In Chatsworth, CA"
+title: "Custom Silk Screen Printing In Chatsworth, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Custom Silk Screen Printing services near by Chatsworth, Los Angeles, CA. We"
-h1: "#1 Custom Silk Screen Printing in Chatsworth, Los Angeles, CA"
+h1: "Custom Silk Screen Printing in Chatsworth, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/custom-silk-screen-printing-chatsworth-ca/"

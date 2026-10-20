@@ -1,8 +1,8 @@
 ---
 path: "/same-day-screen-printing-encino-ca/"
-title: "#1 Same Day Screen Printing In Encino, CA"
+title: "Same Day Screen Printing In Encino, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Same Day Screen Printing services near by Encino, Los Angeles, CA. We specialize in"
-h1: "#1 Same Day Screen Printing in Encino, Los Angeles, CA"
+h1: "Same Day Screen Printing in Encino, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/same-day-screen-printing-encino-ca/"

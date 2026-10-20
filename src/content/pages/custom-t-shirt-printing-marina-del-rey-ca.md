@@ -1,8 +1,8 @@
 ---
 path: "/custom-t-shirt-printing-marina-del-rey-ca/"
-title: "#1 Custom T-Shirt Printing In Marina Del Rey, CA"
+title: "Custom T-Shirt Printing In Marina Del Rey, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Custom T-Shirt Printing services near by Marina del Rey, Los Angeles, CA. We"
-h1: "#1 Custom T-Shirt Printing in Marina del Rey, Los Angeles, CA"
+h1: "Custom T-Shirt Printing in Marina del Rey, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/custom-t-shirt-printing-marina-del-rey-ca/"

@@ -1,8 +1,8 @@
 ---
 path: "/bulk-screen-printing-downtown-la-ca/"
-title: "#1 Bulk Screen Printing In Downtown LA, CA"
+title: "Bulk Screen Printing In Downtown LA, CA"
 description: "Welcome to The Best Screen Printing, your trusted local partner for high-quality Bulk Screen Printing in Downtown LA, Los Angeles, CA! We’re more than just a"
-h1: "#1 Bulk Screen Printing in Downtown LA, Los Angeles, CA"
+h1: "Bulk Screen Printing in Downtown LA, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/bulk-screen-printing-downtown-la-ca/"

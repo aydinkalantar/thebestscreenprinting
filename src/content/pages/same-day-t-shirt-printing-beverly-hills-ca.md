@@ -1,8 +1,8 @@
 ---
 path: "/same-day-t-shirt-printing-beverly-hills-ca/"
-title: "#1 Same Day T-Shirt Printing In Beverly Hills, CA"
+title: "Same Day T-Shirt Printing In Beverly Hills, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Same Day T-Shirt Printing services near by Beverly Hills, Los Angeles, CA. We"
-h1: "#1 Same Day T-Shirt Printing in Beverly Hills, Los Angeles, CA"
+h1: "Same Day T-Shirt Printing in Beverly Hills, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/same-day-t-shirt-printing-beverly-hills-ca/"

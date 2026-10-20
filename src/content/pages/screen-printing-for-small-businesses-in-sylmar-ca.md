@@ -1,8 +1,8 @@
 ---
 path: "/screen-printing-for-small-businesses-in-sylmar-ca/"
-title: "#1 Screen Printing For Small Businesses In Sylmar, CA"
+title: "Screen Printing For Small Businesses In Sylmar, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Screen Printing for Small Businesses services near by Sylmar, Los Angeles, CA. We"
-h1: "#1 Screen Printing for Small Businesses in Sylmar, Los Angeles, CA"
+h1: "Screen Printing for Small Businesses in Sylmar, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/screen-printing-for-small-businesses-in-sylmar-ca/"

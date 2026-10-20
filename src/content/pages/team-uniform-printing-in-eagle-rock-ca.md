@@ -1,8 +1,8 @@
 ---
 path: "/team-uniform-printing-in-eagle-rock-ca/"
-title: "#1 Team Uniform Printing In Eagle Rock, CA"
+title: "Team Uniform Printing In Eagle Rock, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Team Uniform Printing services near by Eagle Rock, Los Angeles, CA. We specialize"
-h1: "#1 Team Uniform Printing in Eagle Rock, Los Angeles, CA"
+h1: "Team Uniform Printing in Eagle Rock, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/team-uniform-printing-in-eagle-rock-ca/"

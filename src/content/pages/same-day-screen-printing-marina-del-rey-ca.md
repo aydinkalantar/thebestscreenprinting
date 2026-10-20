@@ -1,8 +1,8 @@
 ---
 path: "/same-day-screen-printing-marina-del-rey-ca/"
-title: "#1 Same Day Screen Printing In Marina Del Rey, CA"
+title: "Same Day Screen Printing In Marina Del Rey, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Same Day Screen Printing services near by Marina del Rey, Los Angeles, CA. We"
-h1: "#1 Same Day Screen Printing in Marina del Rey, Los Angeles, CA"
+h1: "Same Day Screen Printing in Marina del Rey, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/same-day-screen-printing-marina-del-rey-ca/"

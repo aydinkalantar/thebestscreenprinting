@@ -1,8 +1,8 @@
 ---
 path: "/same-day-screen-printing-redondo-beach-ca/"
-title: "#1 Same Day Screen Printing In Redondo Beach, CA"
+title: "Same Day Screen Printing In Redondo Beach, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Same Day Screen Printing services near by Redondo Beach, Los Angeles, CA. We"
-h1: "#1 Same Day Screen Printing in Redondo Beach, Los Angeles, CA"
+h1: "Same Day Screen Printing in Redondo Beach, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/same-day-screen-printing-redondo-beach-ca/"

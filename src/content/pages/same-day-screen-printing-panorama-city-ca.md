@@ -1,8 +1,8 @@
 ---
 path: "/same-day-screen-printing-panorama-city-ca/"
-title: "#1 Same Day Screen Printing In Panorama City, CA"
+title: "Same Day Screen Printing In Panorama City, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Same Day Screen Printing services near by Panorama City, Los Angeles, CA. We"
-h1: "#1 Same Day Screen Printing in Panorama City, Los Angeles, CA"
+h1: "Same Day Screen Printing in Panorama City, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/same-day-screen-printing-panorama-city-ca/"

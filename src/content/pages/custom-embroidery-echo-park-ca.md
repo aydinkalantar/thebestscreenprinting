@@ -1,8 +1,8 @@
 ---
 path: "/custom-embroidery-echo-park-ca/"
-title: "#1 Custom Embroidery In Echo Park, CA"
+title: "Custom Embroidery In Echo Park, CA"
 description: "Welcome to The Best Screen Printing, your trusted local partner for high-quality Custom Embroidery in Echo Park, Los Angeles, CA! We’re more than just a print"
-h1: "#1 Custom Embroidery in Echo Park, Los Angeles, CA"
+h1: "Custom Embroidery in Echo Park, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/custom-embroidery-echo-park-ca/"

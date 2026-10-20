@@ -1,8 +1,8 @@
 ---
 path: "/heat-transfer-vinyl-downtown-la-ca/"
-title: "#1 Heat Transfer Vinyl In Downtown LA, CA"
+title: "Heat Transfer Vinyl In Downtown LA, CA"
 description: "Welcome to The Best Screen Printing, your trusted local partner for high-quality Heat Transfer Vinyl in Downtown LA, Los Angeles, CA! We’re more than just a"
-h1: "#1 Heat Transfer Vinyl in Downtown LA, Los Angeles, CA"
+h1: "Heat Transfer Vinyl in Downtown LA, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/heat-transfer-vinyl-downtown-la-ca/"

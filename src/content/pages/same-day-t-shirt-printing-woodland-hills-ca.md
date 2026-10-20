@@ -1,8 +1,8 @@
 ---
 path: "/same-day-t-shirt-printing-woodland-hills-ca/"
-title: "#1 Same Day T-Shirt Printing In Woodland Hills, CA"
+title: "Same Day T-Shirt Printing In Woodland Hills, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Same Day T-Shirt Printing services near by Woodland Hills, Los Angeles, CA. We"
-h1: "#1 Same Day T-Shirt Printing in Woodland Hills, Los Angeles, CA"
+h1: "Same Day T-Shirt Printing in Woodland Hills, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/same-day-t-shirt-printing-woodland-hills-ca/"

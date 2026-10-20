@@ -38,21 +38,20 @@ const audiences = [
 const steps = [
   { icon: MessageSquareText, name: 'Tell us the idea', line: 'Garment, quantity, deadline and your art. A rough sketch is plenty to start.' },
   { icon: BadgeCheck, name: 'Approve the proof', line: 'We check your art for free, lock in colors and placement, and send the quote.' },
-  { icon: Truck, name: 'Grab it or get it shipped', line: 'Printed in our Downtown LA shop. Pick it up or we send it your way.' },
+  { icon: Truck, name: 'Grab it or get it shipped', line: 'Made in Los Angeles or Cleveland. Pick it up or we send it your way.' },
 ];
 const clients = [
   ['netflix', 'Netflix'], ['adidas', 'Adidas'], ['nike', 'Nike'], ['youtube', 'YouTube'], ['google', 'Google'],
   ['amazon-alexa', 'Amazon Alexa'], ['optimum-nutrition', 'Optimum Nutrition'], ['99-only', '99 Cents Only'], ['bcg-digital-ventures', 'BCG Digital Ventures'],
 ];
 const faqs = [
-  { q: 'Where is your shop?', a: `We print at ${business.address.streetAddress}, ${business.address.addressLocality}, ${business.address.addressRegion} ${business.address.postalCode}, in Downtown Los Angeles. We're open Monday to Friday, 9am to 5pm.` },
+  { q: 'Where are you located?', a: `We have two production facilities. Our Los Angeles shop is at ${business.address.streetAddress}, ${business.address.addressLocality}, ${business.address.addressRegion} ${business.address.postalCode}, open Monday to Friday, 9am to 5pm. Our Cleveland facility serves Greater Cleveland and Northeast Ohio with local delivery.` },
   { q: 'What is the minimum order for screen printing?', a: `Screen printing starts at ${business.shopMinimum} pieces of one design. For smaller runs, DTG and DTF printing have no minimum.` },
   { q: 'Can you print the same day?', a: 'Yes. Same-day and next-day rush slots are available for many orders. Call us or request a quote with your deadline and we will confirm.' },
   { q: 'How do I get a price?', a: 'Request a quote with your garment, quantity, print locations and artwork. We reply with a personal quote within one business day.' },
 ];
 const shirt = products.find((p) => /t-shirt/i.test(p.name) && p.category === 'apparel') ?? products[0];
 const featured = products.filter((p) => ['apparel', 'sweatshirts', 'hats'].includes(p.category)).slice(0, 8);
-const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${business.name} ${business.address.streetAddress} Los Angeles`)}`;
 const jsonLd = [{
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -65,11 +64,11 @@ const jsonLd = [{
     <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_80%_20%,rgba(124,58,237,0.16),transparent_70%)] dark:bg-[radial-gradient(60%_60%_at_80%_20%,rgba(139,92,246,0.22),transparent_70%)]" aria-hidden="true"></div>
     <div class="wrap pt-14 pb-16 sm:pt-20 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] items-center">
       <div class="min-w-0">
-        <p class="pill"><MapPin class="w-3.5 h-3.5" aria-hidden="true" />Downtown Los Angeles print shop</p>
+        <p class="pill"><MapPin class="w-3.5 h-3.5" aria-hidden="true" />Production in Los Angeles &amp; Cleveland</p>
         <h1 class="mt-5 text-[2.5rem] sm:text-6xl break-words font-bold leading-[1.02] text-zinc-900 dark:text-white">{h1}</h1>
         <p class="mt-6 text-lg leading-8 muted max-w-xl">
           Bold ink, clean stitches and merch people actually keep. We print and embroider for brands, tours, crews and teams
-          right here at {business.address.streetAddress}: {business.shopMinimum}+ pieces made in-house, and rush jobs can leave the same day.
+          from two production facilities, in Los Angeles and Cleveland: {business.shopMinimum}+ pieces made in-house, and rush jobs can leave the same day.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a class="btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
@@ -178,18 +177,23 @@ const jsonLd = [{
     </div>
   </section>
 
-  <!-- Visit -->
-  <section class="wrap mt-24">
-    <div class="panel-raised p-6 sm:p-8 flex flex-wrap items-center justify-between gap-6">
-      <div>
-        <p class="eyebrow">Visit the shop</p>
-        <h2 class="section-title mt-2">2710 S Broadway, Downtown LA</h2>
-        <div class="mt-4 space-y-2 text-sm muted">
-          <p class="flex items-center gap-2"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Monday–Friday, 9am–5pm</p>
-          <p class="flex items-center gap-2"><Phone class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
-        </div>
-      </div>
-      <a class="btn-quiet" href={mapUrl} rel="noopener" target="_blank"><MapPin class="w-4 h-4" aria-hidden="true" />Get directions</a>
+  <!-- Locations -->
+  <section class="wrap mt-24" aria-labelledby="where-title">
+    <p class="eyebrow">Where we make it</p>
+    <h2 id="where-title" class="section-title mt-2">Two production facilities, one standard</h2>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <a href="/los-angeles-ca/" class="tile !p-6">
+        <span class="tile-icon"><MapPin class="w-5 h-5" aria-hidden="true" /></span>
+        <strong class="mt-2 text-lg text-zinc-900 dark:text-white">Los Angeles, California</strong>
+        <span class="text-sm muted">{business.address.streetAddress}, {business.address.addressLocality}. Monday–Friday, 9am–5pm. Pickup, rush and delivery across LA.</span>
+        <span class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-violet-700 dark:text-violet-300">Los Angeles printing<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
+      </a>
+      <a href="/cleveland-oh/" class="tile !p-6">
+        <span class="tile-icon"><MapPin class="w-5 h-5" aria-hidden="true" /></span>
+        <strong class="mt-2 text-lg text-zinc-900 dark:text-white">Cleveland, Ohio</strong>
+        <span class="text-sm muted">Serving Greater Cleveland and Northeast Ohio with local production and delivery.</span>
+        <span class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-violet-700 dark:text-violet-300">Cleveland printing<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
+      </a>
     </div>
   </section>
 

@@ -1,18 +1,18 @@
 ---
 path: "/cleveland-oh/"
 title: "Custom T-Shirt Printing & Embroidery in Cleveland, OH | TBSP"
-description: "TBSP now serves Cleveland: screen printing, embroidery, DTF and DTG for brands, teams and events, with local delivery across Greater Cleveland."
+description: "TBSP's Cleveland production facility: screen printing, embroidery, DTF and DTG for brands, teams and events, delivered across Greater Cleveland."
 h1: "Custom apparel printing in Cleveland, Ohio"
 kind: service
 imported: false
-summary: "The LA print shop behind merch for Netflix, Adidas and Nike is now taking orders in Cleveland. Screen printing, embroidery, DTF and DTG, delivered across Greater Cleveland."
+summary: "Our second production facility puts TBSP in Northeast Ohio. Screen printing, embroidery, DTF and DTG for Cleveland brands, teams and events, delivered across Greater Cleveland."
 facts:
   - { label: "Service area", value: "Greater Cleveland, OH" }
   - { label: "Delivery", value: "Local drop-off by our team" }
   - { label: "Screen printing", value: "From 24 pieces per design" }
 faqs:
   - q: "Do you have a shop in Cleveland?"
-    a: "Not yet. We serve Cleveland as a service area: you order with us, and our team delivers your finished order locally. Our production shop is in Downtown Los Angeles."
+    a: "Yes, we have a production facility in Cleveland. It is not a walk-in storefront, so orders are delivered by our team across Greater Cleveland. Our walk-in shop is in Los Angeles."
   - q: "What can I order in Cleveland?"
     a: "The same services as in Los Angeles: screen printing from 24 pieces, embroidery, DTF and DTG printing, on tees, hoodies, hats, polos, bags and team uniforms."
   - q: "Which areas do you deliver to?"
@@ -20,7 +20,7 @@ faqs:
   - q: "How do I get a quote for a Cleveland order?"
     a: "Use the quote form, call us or email us with the garment, quantity, deadline and artwork, and mention you're in Cleveland. We reply within one business day."
 ---
-Cleveland, meet TBSP. We print merch for brands, tours, crews and teams out of Downtown Los Angeles, and now we're taking orders in Northeast Ohio too. Same ink, same thread, same people checking your art, with your order brought to you.
+Cleveland, meet TBSP. Our second production facility brings the same ink, the same thread and the same art check that brands, tours and teams get in Los Angeles to Northeast Ohio, with your order brought to you.
 
 ## How does ordering in Cleveland work?
 
@@ -28,7 +28,7 @@ You order exactly the way our LA customers do, and we handle the rest.
 
 1. **Send the idea.** Garment, quantity, deadline and artwork through the [quote form](/quick-quote/). Say you're in Cleveland.
 2. **Approve the proof.** We check your art for free and lock in colors, placement and price.
-3. **We make it.** Your order is printed or stitched with the method that fits it best.
+3. **We make it.** Your order is printed or stitched in Cleveland with the method that fits it best.
 4. **We deliver it.** Our team drops your finished order off in Greater Cleveland.
 
 ## What can we print for Cleveland?

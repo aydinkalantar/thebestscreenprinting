@@ -1,8 +1,8 @@
 ---
 path: "/direct-to-garment-printing-north-hollywood-ca/"
-title: "#1 Direct-to-Garment Printing In North Hollywood, CA"
+title: "Direct-to-Garment Printing In North Hollywood, CA"
 description: "Welcome to The Best Screen Printing, your trusted local partner for high-quality Direct-to-Garment Printing in North Hollywood, Los Angeles, CA! We’re more"
-h1: "#1 Direct-to-Garment Printing in North Hollywood, Los Angeles, CA"
+h1: "Direct-to-Garment Printing in North Hollywood, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/direct-to-garment-printing-north-hollywood-ca/"

@@ -1,8 +1,8 @@
 ---
 path: "/custom-embroidery-koreatown-la-ca/"
-title: "#1 Custom Embroidery In Koreatown LA, CA"
+title: "Custom Embroidery In Koreatown LA, CA"
 description: "Welcome to The Best Screen Printing, your trusted local partner for high-quality Custom Embroidery in Koreatown LA, Los Angeles, CA! We’re more than just a"
-h1: "#1 Custom Embroidery in Koreatown LA, Los Angeles, CA"
+h1: "Custom Embroidery in Koreatown LA, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/custom-embroidery-koreatown-la-ca/"

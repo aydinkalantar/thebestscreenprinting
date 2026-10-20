@@ -1,8 +1,8 @@
 ---
 path: "/rush-order-screen-printing-chinatown-la-ca/"
-title: "#1 Rush Order Screen Printing In Chinatown LA, CA"
+title: "Rush Order Screen Printing In Chinatown LA, CA"
 description: "Welcome to The Best Screen Printing, your trusted local partner for high-quality Rush Order Screen Printing in Chinatown LA, Los Angeles, CA! We’re more than"
-h1: "#1 Rush Order Screen Printing in Chinatown LA, Los Angeles, CA"
+h1: "Rush Order Screen Printing in Chinatown LA, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/rush-order-screen-printing-chinatown-la-ca/"

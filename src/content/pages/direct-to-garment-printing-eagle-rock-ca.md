@@ -1,8 +1,8 @@
 ---
 path: "/direct-to-garment-printing-eagle-rock-ca/"
-title: "#1 Direct-to-Garment Printing In Eagle Rock, CA"
+title: "Direct-to-Garment Printing In Eagle Rock, CA"
 description: "Welcome to The Best Screen Printing, your trusted local partner for high-quality Direct-to-Garment Printing in Eagle Rock, Los Angeles, CA! We’re more than"
-h1: "#1 Direct-to-Garment Printing in Eagle Rock, Los Angeles, CA"
+h1: "Direct-to-Garment Printing in Eagle Rock, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/direct-to-garment-printing-eagle-rock-ca/"

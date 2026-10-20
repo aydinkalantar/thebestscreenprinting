@@ -1,8 +1,8 @@
 ---
 path: "/same-day-screen-printing-koreatown-la-ca/"
-title: "#1 Same Day Screen Printing In Koreatown LA, CA"
+title: "Same Day Screen Printing In Koreatown LA, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Same Day Screen Printing services near by Koreatown LA, Los Angeles, CA. We"
-h1: "#1 Same Day Screen Printing in Koreatown LA, Los Angeles, CA"
+h1: "Same Day Screen Printing in Koreatown LA, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/same-day-screen-printing-koreatown-la-ca/"

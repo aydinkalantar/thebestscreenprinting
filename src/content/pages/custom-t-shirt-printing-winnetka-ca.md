@@ -1,8 +1,8 @@
 ---
 path: "/custom-t-shirt-printing-winnetka-ca/"
-title: "#1 Custom T-Shirt Printing In Winnetka, CA"
+title: "Custom T-Shirt Printing In Winnetka, CA"
 description: "Welcome to The Best Screen Printing Company your trusted local partner for Custom T-Shirt Printing services near by Winnetka, Los Angeles, CA. We specialize"
-h1: "#1 Custom T-Shirt Printing in Winnetka, Los Angeles, CA"
+h1: "Custom T-Shirt Printing in Winnetka, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/custom-t-shirt-printing-winnetka-ca/"
