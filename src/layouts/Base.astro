@@ -34,7 +34,10 @@ const schema = [localBusinessJsonLd, ...jsonLd];
     {description && <meta property="og:description" content={description} />}
     <meta property="og:url" content={canonical} />
     <meta name="theme-color" content="#7c3aed" />
-    <link rel="icon" href="/images/brand/TBSP-New-Logo-2025.svg" type="image/svg+xml" />
+    <meta property="og:image" content={new URL("/icon-512.png", business.url).toString()} />
+    <link rel="icon" href="/images/brand/tbsp-mark.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

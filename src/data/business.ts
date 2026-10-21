@@ -53,6 +53,8 @@ export const localBusinessJsonLd = {
   email: business.email,
   address: { '@type': 'PostalAddress', ...business.address },
   openingHours: business.openingHours,
+  logo: `${business.url}/icon-512.png`,
+  image: `${business.url}/icon-512.png`,
   sameAs: business.sameAs,
   areaServed: [
     { '@type': 'City', name: 'Los Angeles', containedInPlace: { '@type': 'State', name: 'California' } },
