@@ -7,9 +7,9 @@ viewBox="0 0 17.3 6.21"
  <defs>
   <style type="text/css">
    <![CDATA[
-    .fil2 {fill:white}
+    .fil2 {fill:#FFFFFF}
     .fil0 {fill:#18181B;fill-rule:nonzero}
-    .fil1 {fill:url(#id0);fill-rule:nonzero}
+    .fil1 {fill:#18181B;fill-rule:nonzero}
    ]]>
   </style>
   <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="0" y1="-0.04" x2="0" y2="6.43">
