@@ -1,12 +1,12 @@
 ---
-// The TBSP logo (orange shield + "tbsp" wordmark). The wordmark is dark in light
-// mode and white in dark mode; the shield stays the brand orange in both.
+// The TBSP shield on its own: black (positive) in light mode, white (negative)
+// in dark mode.
 import { business } from '../data/business';
 interface Props { size?: 'sm' | 'md' }
 const { size = 'md' } = Astro.props;
-const h = size === 'sm' ? 'h-7' : 'h-8';
+const s = size === 'sm' ? 'h-8 w-8' : 'h-9 w-9';
 ---
 <a href="/" class="flex items-center shrink-0" aria-label={`${business.shortName} home`}>
-  <img src="/images/brand/tbsp-logo-on-light.svg" alt={business.shortName} width="139" height="50" class:list={[h, 'w-auto dark:hidden']} />
-  <img src="/images/brand/tbsp-logo-on-dark.svg" alt={business.shortName} width="139" height="50" class:list={[h, 'w-auto hidden dark:block']} />
+  <img src="/images/brand/tbsp-mark.svg" alt={business.shortName} width="40" height="40" class:list={[s, 'dark:hidden']} />
+  <img src="/images/brand/tbsp-mark-negative.svg" alt={business.shortName} width="40" height="40" class:list={[s, 'hidden dark:block']} />
 </a>
