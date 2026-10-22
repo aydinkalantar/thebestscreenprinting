@@ -1,6 +1,6 @@
 {
- "syncedAt": "2026-10-20T23:10:48.208Z",
- "source": "http://localhost:3000",
+ "syncedAt": "2026-10-22T22:17:05.061Z",
+ "source": "https://design.thebestscreenprinting.com",
  "products": [
   {
    "id": "cmr76xhmu009ow82g257zap31",
@@ -479,7 +479,7 @@
     {
      "name": "White",
      "hex": "#ffffff",
-     "image": "https://files.cdn.printful.com/products/257/8853_1530703809.jpg"
+     "image": "https://files.cdn.printful.com/products/257/8851_1530703813.jpg"
     }
    ],
    "sizes": [
@@ -2133,6 +2133,11 @@
      "image": "https://files.cdn.printful.com/products/586/17662_1759238043.jpg"
     },
     {
+     "name": "Black",
+     "hex": "#1b1b1c",
+     "image": "https://files.cdn.printful.com/products/586/15114_1759238040.jpg"
+    },
+    {
      "name": "Blossom",
      "hex": "#ffd6e1",
      "image": "https://files.cdn.printful.com/products/586/16541_1764055024.jpg"
@@ -2151,11 +2156,6 @@
      "name": "Berry",
      "hex": "#8e5a7b",
      "image": "https://files.cdn.printful.com/products/586/15156_1759238040.jpg"
-    },
-    {
-     "name": "Black",
-     "hex": "#1b1b1c",
-     "image": "https://files.cdn.printful.com/products/586/15114_1759238040.jpg"
     },
     {
      "name": "Blue Spruce",
