@@ -32,7 +32,7 @@ export const NAV: NavMenu[] = [
       { links: [{ label: 'Trade show swag', href: '/event-apparel/trade-show-swag-anaheim/' }, { label: 'Promo merch ideas', href: '/for/promotional-products/' }] },
     ],
   },
-  { label: 'AI Design Studio', href: '/custom-projects/', feature: 'ai' },
+  { label: 'Design Studio', href: '/custom-projects/', feature: 'ai' },
   {
     label: 'Business & Groups', href: '/solutions/',
     columns: [

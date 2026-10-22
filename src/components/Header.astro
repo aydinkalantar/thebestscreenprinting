@@ -11,7 +11,7 @@ const aiHref = '/quick-quote/';
 <div class="bg-zinc-900 dark:bg-black text-white text-[13px]">
   <div class="wrap h-9 flex items-center justify-center gap-2 text-center">
     <Sparkles class="w-3.5 h-3.5 text-violet-300 shrink-0" aria-hidden="true" />
-    <span class="truncate">New: <b>TBSP AI</b> picks the product, places your logo and quotes your order in minutes.</span>
+    <span class="truncate">New: your <b>Merch Agent</b> picks the product, places your logo and quotes your order in minutes.</span>
     <a href="/custom-projects/" class="font-semibold underline underline-offset-2 shrink-0">See how</a>
   </div>
 </div>
@@ -33,7 +33,7 @@ const aiHref = '/quick-quote/';
       </a>
       <a href={aiHref} data-ask-ai class="hidden lg:flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-zinc-100 dark:hover:bg-white/[0.06]">
         <Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />
-        <span class="leading-tight"><span class="block text-[12px] muted">Design &amp; quote with AI</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">Ask TBSP AI</span></span>
+        <span class="leading-tight"><span class="block text-[12px] muted">Design &amp; quote in minutes</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">Ask your Merch Agent</span></span>
       </a>
       <button class="icon-btn theme-toggle" type="button" aria-label="Switch light or dark mode" data-theme-toggle>
         <Moon class="w-4 h-4 moon" aria-hidden="true" /><Sun class="w-4 h-4 sun" aria-hidden="true" />
@@ -58,10 +58,10 @@ const aiHref = '/quick-quote/';
                 {m.feature === 'ai' ? (
                   <div class="grid grid-cols-[1.2fr_1fr_1fr_1fr] gap-8 items-center">
                     <div>
-                      <p class="eyebrow">AI design studio</p>
+                      <p class="eyebrow">Design studio</p>
                       <p class="mt-2 text-2xl font-bold text-zinc-900 dark:text-white">A full-service agent, not just a design tool</p>
-                      <p class="mt-2 text-sm muted">Describe what you need. TBSP AI picks the product, places your logo, suggests the best print method and builds your quote. Real people check every order.</p>
-                      <a href={aiHref} data-ask-ai class="btn-primary mt-5">Ask TBSP AI<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+                      <p class="mt-2 text-sm muted">Describe what you need. Your Merch Agent picks the product, places your logo, suggests the best print method and builds your quote. Real people check every order.</p>
+                      <a href={aiHref} data-ask-ai class="btn-primary mt-5">Ask the Merch Agent<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
                     </div>
                     {[
                       { icon: MessageSquareText, t: 'Just describe it', d: '"50 black tees, logo on the chest, by Friday."' },
@@ -120,7 +120,7 @@ const aiHref = '/quick-quote/';
   <div class="absolute inset-0 bg-black/40" data-menu-close></div>
   <div class="absolute right-0 top-0 bottom-0 w-[86%] max-w-sm bg-white dark:bg-[#0d0d14] overflow-y-auto p-4">
     <div class="flex items-center justify-between mb-4"><BrandMark size="sm" /><button class="icon-btn" type="button" aria-label="Close menu" data-menu-close><X class="w-4 h-4" aria-hidden="true" /></button></div>
-    <a href={aiHref} data-ask-ai class="btn-primary w-full mb-3"><Sparkles class="w-4 h-4" aria-hidden="true" />Ask TBSP AI</a>
+    <a href={aiHref} data-ask-ai class="btn-primary w-full mb-3"><Sparkles class="w-4 h-4" aria-hidden="true" />Ask the Merch Agent</a>
     {NAV.map((m) => m.columns ? (
       <details class="border-b border-zinc-200/80 dark:border-white/10">
         <summary class="flex items-center justify-between py-3.5 font-bold text-zinc-900 dark:text-white cursor-pointer">{m.label}<ChevronDown class="chev w-4 h-4 transition-transform" aria-hidden="true" /></summary>
@@ -141,7 +141,7 @@ const aiHref = '/quick-quote/';
   document.querySelectorAll('[data-menu-open]').forEach((b) => b.addEventListener('click', () => drawer?.classList.remove('hidden')));
   document.querySelectorAll('[data-menu-close]').forEach((b) => b.addEventListener('click', () => drawer?.classList.add('hidden')));
 
-  // "Ask TBSP AI": opens the assistant panel when it's on the page, otherwise follows the link.
+  // "Ask the Merch Agent": opens the assistant panel when it's on the page, otherwise follows the link.
   document.querySelectorAll<HTMLAnchorElement>('[data-ask-ai]').forEach((a) => a.addEventListener('click', (e) => {
     const open = document.querySelector<HTMLButtonElement>('#tb-assistant [data-open]');
     if (open) { e.preventDefault(); drawer?.classList.add('hidden'); open.click(); }
@@ -161,7 +161,7 @@ const aiHref = '/quick-quote/';
       if (!q) { box.classList.add('hidden'); return; }
       const words = q.split(/\s+/);
       const hits = (await load()).filter((h) => words.every((w) => h.t.toLowerCase().includes(w))).slice(0, 7);
-      const ai = `<a href="${aiLink(input.value.trim())}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="text-sm"><b class="text-violet-700 dark:text-violet-300">Ask TBSP AI</b><span class="block muted truncate">“${esc(input.value.trim())}”</span></span></a>`;
+      const ai = `<a href="${aiLink(input.value.trim())}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="text-sm"><b class="text-violet-700 dark:text-violet-300">Ask the Merch Agent</b><span class="block muted truncate">“${esc(input.value.trim())}”</span></span></a>`;
       const list = hits.map((h) => `<a href="${h.u}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06]">${h.i ? `<img src="${h.i}" alt="" class="w-9 h-9 rounded-lg object-contain bg-white">` : '<span class="w-9 h-9 rounded-lg grid place-items-center bg-zinc-100 dark:bg-white/[0.06] text-zinc-400">↗</span>'}<span class="text-sm text-zinc-800 dark:text-zinc-200">${esc(h.t)}</span></a>`).join('');
       box.innerHTML = ai + (list ? `<p class="px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-[0.1em] muted">Suggestions</p>${list}` : '');
       box.classList.remove('hidden');

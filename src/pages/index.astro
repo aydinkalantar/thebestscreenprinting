@@ -55,7 +55,7 @@ const categories = [
 ];
 const trust = [
   { icon: BadgeCheck, t: 'Free art check on every order' },
-  { icon: Sparkles, t: 'AI design help, day and night' },
+  { icon: Sparkles, t: 'A merch agent on call, day and night' },
   { icon: Zap, t: 'Normal, Rush & Super Rush' },
   { icon: MapPin, t: 'Made in Los Angeles & Cleveland' },
 ];
@@ -98,7 +98,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         </p>
         <form class="mt-8 panel-raised p-2 flex items-center gap-2 max-w-xl" action="/quick-quote/" data-hero-ai>
           <span class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-600 text-white"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
-          <input name="details" required placeholder="Tell TBSP AI what you need…" aria-label="Tell TBSP AI what you need" class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] text-zinc-900 dark:text-white placeholder:text-zinc-500" />
+          <input name="details" required placeholder="Tell your merch agent what you need…" aria-label="Tell your merch agent what you need" class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] text-zinc-900 dark:text-white placeholder:text-zinc-500" />
           <button class="btn-primary btn-sm" type="submit">Start<ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
         </form>
         <div class="mt-3 flex flex-wrap gap-2">
@@ -160,9 +160,9 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
       <div class="bg-violet-600 text-white p-8 sm:p-12 grid content-center">
         <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-violet-200">What makes TBSP different</p>
         <h2 class="mt-3 text-3xl sm:text-4xl font-bold">A full-service agent that works for you</h2>
-        <p class="mt-4 text-violet-100 leading-7">TBSP AI doesn't just hand you a design tool. It asks the right questions, recommends the garment and print method, places your logo, sketches ideas when you don't have one yet, and builds your quote. Then our team takes it from there.</p>
+        <p class="mt-4 text-violet-100 leading-7">Your Merch Agent doesn't just hand you a design tool. It asks the right questions, recommends the garment and print method, places your logo, sketches ideas when you don't have one yet, and builds your quote. Then our team takes it from there.</p>
         <div class="mt-7 flex flex-wrap gap-3">
-          <a href="/quick-quote/" data-ask-ai class="btn bg-white text-violet-700 hover:bg-violet-50"><Sparkles class="w-4 h-4" aria-hidden="true" />Ask TBSP AI</a>
+          <a href="/quick-quote/" data-ask-ai class="btn bg-white text-violet-700 hover:bg-violet-50"><Sparkles class="w-4 h-4" aria-hidden="true" />Ask the Merch Agent</a>
           <a href="/custom-projects/" class="btn border border-white/30 text-white hover:bg-white/10">See custom projects</a>
         </div>
       </div>
@@ -191,7 +191,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         <span class="tile-icon shrink-0"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
         <div>
           <p class="font-bold text-zinc-900 dark:text-white">Something the catalog can't do?</p>
-          <p class="mt-1 text-sm muted">Custom cut &amp; sew, sublimation, all-over prints and embossing on tees, hoodies, hats and more. Request it with a quote or ask our AI.</p>
+          <p class="mt-1 text-sm muted">Custom cut &amp; sew, sublimation, all-over prints and embossing on tees, hoodies, hats and more. Request it with a quote or ask the Merch Agent.</p>
         </div>
       </div>
       <span class="btn-quiet btn-sm">Start a custom project<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>

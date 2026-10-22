@@ -9,12 +9,12 @@ summary: "When the catalog isn't enough: custom cut and sew garments, sublimatio
 facts:
   - { label: "Projects", value: "Cut & sew, sublimation, all-over, embossing" }
   - { label: "Products", value: "Tees, hoodies, hats and more" }
-  - { label: "How to start", value: "Quote form or our AI assistant" }
+  - { label: "How to start", value: "Quote form or the Merch Agent" }
 faqs:
   - q: "What counts as a custom project?"
     a: "Anything that isn't a regular catalog item: garments cut and sewn from scratch, sublimation and all-over prints, embossing, and special finishes. If you can describe it, we'll tell you how we can make it."
   - q: "How do I request a custom project?"
-    a: "Use the quote form and pick the project type, or ask our AI assistant on any page. Include the product, quantity, deadline and any references or sketches."
+    a: "Use the quote form and pick the project type, or ask the Merch Agent on any page. Include the product, quantity, deadline and any references or sketches."
   - q: "How much does a custom project cost?"
     a: "Every custom project is quoted individually, because fabric, construction, decoration and quantity all change the price. We reply with a personal quote within one business day."
   - q: "Is there a minimum order?"
@@ -38,7 +38,7 @@ Some ideas don't fit on a blank. A hoodie in your own fabric and fit. A jersey p
 
 ## Where do I start?
 
-Two easy ways. Fill out the [quote form](/quick-quote/?project=Custom%20cut%20%26%20sew) and pick the project type, or tap **Ask our AI** on any page and describe what you have in mind. It will gather the details and send your request straight to our team.
+Two easy ways. Fill out the [quote form](/quick-quote/?project=Custom%20cut%20%26%20sew) and pick the project type, or tap **Ask the Merch Agent** on any page and describe what you have in mind. It will gather the details and send your request straight to our team.
 
 ## Ready to build something nobody else has?
 
