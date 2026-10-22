@@ -39,6 +39,28 @@ const audiences = [
   { href: '/for/schools/', icon: GraduationCap, name: 'Schools' },
   { href: '/for/non-profits/', icon: HeartHandshake, name: 'Non-profits' },
 ];
+const categories = [
+  { name: 'T-shirts', href: '/products/t-shirts/', img: 'https://files.cdn.printful.com/products/438/11564_1642678353.jpg' },
+  { name: 'Hoodies', href: '/products/sweatshirts-hoodies/custom-hoodies/', img: 'https://files.cdn.printful.com/products/146/5530_1750160839.jpg' },
+  { name: 'Sweatshirts', href: '/products/sweatshirts-hoodies/custom-sweatshirts/', img: 'https://files.cdn.printful.com/products/145/18763_1753765555.jpg' },
+  { name: 'Hats', href: '/products/hats/', img: 'https://files.cdn.printful.com/products/206/7854_1584455281.jpg' },
+  { name: 'Polos & business wear', href: '/products/business-and-polos-landings/', img: 'https://files.cdn.printful.com/products/340/15437_1657882599.jpg' },
+  { name: 'Jackets & pullovers', href: '/products/outwear/', img: 'https://files.cdn.printful.com/products/531/13362_1632811031.jpg' },
+  { name: 'Long sleeves', href: '/catalog/?sub=long-sleeves', img: 'https://files.cdn.printful.com/products/356/10111_1556619715.jpg' },
+  { name: 'Tank tops', href: '/catalog/?sub=tank-tops', img: 'https://files.cdn.printful.com/products/248/8657_1581415591.jpg' },
+  { name: 'Team jerseys', href: '/products/team-uniforms-jerseys/', img: 'https://files.cdn.printful.com/o/upload/product-catalog-img/d0/d05ae634a9736063dfb1edd1df2c4ad6_l' },
+  { name: 'Bags & backpacks', href: '/products/bags/', img: 'https://files.cdn.printful.com/o/upload/product-catalog-img/1c/1cb4394b298d1d9e5d622976d8b89213_l' },
+  { name: 'Drinkware', href: '/catalog/?sub=drinkware', img: 'https://files.cdn.printful.com/o/products/382/product_1614007264.jpg' },
+  { name: 'Mugs & home', href: '/catalog/?cat=home', img: 'https://files.cdn.printful.com/o/upload/product-catalog-img/8c/8c4ac4a450b8485bc8a6e041a5a23666_l' },
+];
+const trust = [
+  { icon: BadgeCheck, t: 'Free art check on every order' },
+  { icon: Sparkles, t: 'AI design help, day and night' },
+  { icon: Zap, t: 'Normal, Rush & Super Rush' },
+  { icon: MapPin, t: 'Made in Los Angeles & Cleveland' },
+];
+const brands = ['Gildan', 'Bella+Canvas', 'Comfort Colors', 'Port Authority', 'adidas', 'Yupoong', 'Cotton Heritage', 'Stanley/Stella', 'A4'];
+const aiPrompts = ['50 black tees with our logo', 'Embroidered hats for my crew', 'Hoodies for a school club', 'Merch for a band tour'];
 const steps = [
   { icon: MessageSquareText, name: 'Tell us the idea', line: 'Garment, quantity, deadline and your art. A rough sketch is plenty to start.' },
   { icon: BadgeCheck, name: 'Approve the proof', line: 'We check your art for free, lock in colors and placement, and send the quote.' },
@@ -74,9 +96,17 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
           Bold ink, clean stitches and merch people actually keep. We print and embroider for brands, tours, crews and teams
           from two production facilities, in Los Angeles and Cleveland: {business.shopMinimum}+ pieces made in-house, with Normal, Rush and Super Rush turnaround.
         </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a class="btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
-          <a class="btn-quiet" href="/catalog/"><Package class="w-4 h-4" aria-hidden="true" />Browse products</a>
+        <form class="mt-8 panel-raised p-2 flex items-center gap-2 max-w-xl" action="/quick-quote/" data-hero-ai>
+          <span class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-600 text-white"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
+          <input name="details" required placeholder="Tell TBSP AI what you need…" aria-label="Tell TBSP AI what you need" class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] text-zinc-900 dark:text-white placeholder:text-zinc-500" />
+          <button class="btn-primary btn-sm" type="submit">Start<ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
+        </form>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {aiPrompts.map((p) => <button type="button" class="chip !h-8 !text-[12.5px]" data-prompt={p}>{p}</button>)}
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a class="btn-quiet btn-sm" href="/catalog/"><Package class="w-4 h-4" aria-hidden="true" />Browse products</a>
+          <a class="btn-quiet btn-sm" href="/quick-quote/">Request a quote</a>
         </div>
         <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[13px] font-medium muted">
           <li class="flex items-center gap-1.5"><BadgeCheck class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Quote within one business day</li>
@@ -89,12 +119,54 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     </div>
   </section>
 
-  <!-- Clients -->
-  <section class="wrap" aria-label="Brands we have printed for">
-    <p class="eyebrow !text-zinc-400">Trusted by teams at</p>
-    <ul class="mt-4 flex flex-wrap items-center gap-x-10 gap-y-5">
-      {clients.map(([file, name]) => <li><img src={`/images/clients/${file}.webp`} alt={name} loading="lazy" class="h-7 w-auto opacity-60 grayscale dark:invert" /></li>)}
+  <!-- Trust strip -->
+  <section class="wrap mt-4" aria-label="Why TBSP">
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-6 border-y border-zinc-200/80 dark:border-white/10 py-8">
+      {trust.map((t) => (
+        <li class="flex flex-col items-center text-center gap-3">
+          <span class="w-12 h-12 rounded-full grid place-items-center border border-zinc-300 dark:border-white/20 text-zinc-800 dark:text-zinc-200"><t.icon class="w-6 h-6" aria-hidden="true" /></span>
+          <span class="text-[15px] font-medium text-zinc-800 dark:text-zinc-200">{t.t}</span>
+        </li>
+      ))}
     </ul>
+  </section>
+
+  <!-- Categories -->
+  <section class="wrap mt-20" aria-labelledby="cat-title">
+    <h2 id="cat-title" class="text-3xl sm:text-4xl font-bold text-center text-zinc-900 dark:text-white">Custom apparel &amp; merch for your crew</h2>
+    <div class="mt-10 grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {categories.map((c) => (
+        <a href={c.href} class="group panel p-3 hover:shadow-[0_18px_44px_-24px_rgba(52,33,110,0.45)] hover:border-violet-400/60 transition-all">
+          <span class="block aspect-[5/4] rounded-xl bg-zinc-100 overflow-hidden"><img src={c.img} alt="" loading="lazy" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" /></span>
+          <span class="block py-3 text-center font-semibold text-zinc-900 dark:text-white">{c.name}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- AI full-service banner -->
+  <section class="wrap mt-20">
+    <div class="grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10">
+      <div class="relative bg-zinc-100 dark:bg-white/[0.04] p-8 sm:p-10 grid gap-3 content-center">
+        {[
+          { who: 'you', t: 'I need 36 hoodies for our crew, logo on the chest, by the 15th.' },
+          { who: 'ai', t: 'Got it. Heavy Blend hoodie in black, logo screen printed on the chest. 36 pieces qualifies for in-shop pricing. Want me to send it to the team for a quote?' },
+          { who: 'you', t: 'Yes, and add our name on the back.' },
+          { who: 'ai', t: 'Done. Back print added, quote request sent. A real person will confirm within one business day.' },
+        ].map((m) => (
+          <p class:list={['max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] leading-6', m.who === 'you' ? 'justify-self-end bg-violet-600 text-white rounded-br-md' : 'bg-white dark:bg-[#0d0d14] text-zinc-800 dark:text-zinc-200 border border-zinc-200/80 dark:border-white/10 rounded-bl-md']}>{m.t}</p>
+        ))}
+      </div>
+      <div class="bg-violet-600 text-white p-8 sm:p-12 grid content-center">
+        <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-violet-200">What makes TBSP different</p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold">A full-service agent that works for you</h2>
+        <p class="mt-4 text-violet-100 leading-7">TBSP AI doesn't just hand you a design tool. It asks the right questions, recommends the garment and print method, places your logo, sketches ideas when you don't have one yet, and builds your quote. Then our team takes it from there.</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="/quick-quote/" data-ask-ai class="btn bg-white text-violet-700 hover:bg-violet-50"><Sparkles class="w-4 h-4" aria-hidden="true" />Ask TBSP AI</a>
+          <a href="/custom-projects/" class="btn border border-white/30 text-white hover:bg-white/10">See custom projects</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Services -->
@@ -126,22 +198,6 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     </a>
   </section>
 
-  <!-- Catalog preview -->
-  {featured.length > 0 && (
-    <section class="wrap mt-24" aria-labelledby="catalog-title">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p class="eyebrow">Catalog</p>
-          <h2 id="catalog-title" class="section-title mt-2">Pick your blank. Make it yours.</h2>
-        </div>
-        <a class="btn-quiet btn-sm" href="/catalog/">See all {products.length}<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
-      </div>
-      <div class="mt-8 grid gap-5 grid-cols-2 md:grid-cols-4">
-        {featured.map((p) => <ProductCard p={p} />)}
-      </div>
-    </section>
-  )}
-
   <!-- How it works -->
   <section class="wrap mt-24" aria-labelledby="how-title">
     <p class="eyebrow">How it works</p>
@@ -158,6 +214,23 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         </li>
       ))}
     </ol>
+  </section>
+
+  <!-- Brands -->
+  <section class="wrap mt-24" aria-labelledby="brands-title">
+    <h2 id="brands-title" class="text-3xl font-bold text-center text-zinc-900 dark:text-white">Brands we print on</h2>
+    <ul class="mt-8 grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-3">
+      {brands.map((b) => <li class="h-20 rounded-2xl bg-zinc-100 dark:bg-white/[0.05] grid place-items-center px-2 text-center font-display font-extrabold tracking-tight text-zinc-800 dark:text-zinc-100">{b}</li>)}
+    </ul>
+    <p class="mt-5 text-center"><a href="/catalog/" class="inline-flex items-center gap-1 font-semibold text-zinc-900 dark:text-white hover:text-violet-700">Browse the catalog<ArrowRight class="w-4 h-4" aria-hidden="true" /></a></p>
+  </section>
+
+  <!-- Clients -->
+  <section class="wrap mt-24" aria-label="Brands we have printed for">
+    <p class="eyebrow !text-zinc-400">Trusted by teams at</p>
+    <ul class="mt-4 flex flex-wrap items-center gap-x-10 gap-y-5">
+      {clients.map(([file, name]) => <li><img src={`/images/clients/${file}.webp`} alt={name} loading="lazy" class="h-7 w-auto opacity-60 grayscale dark:invert" /></li>)}
+    </ul>
   </section>
 
   <!-- Videos -->
@@ -208,3 +281,16 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   <section class="wrap mt-24"><Faq faqs={faqs} /></section>
   <section class="wrap mt-24"><CtaBand /></section>
 </Base>
+
+<script>
+  const heroForm = document.querySelector<HTMLFormElement>('[data-hero-ai]');
+  if (heroForm) {
+    const input = heroForm.querySelector('input')!;
+    document.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach((b) => b.addEventListener('click', () => { input.value = b.dataset.prompt!; input.focus(); }));
+    heroForm.addEventListener('submit', (e) => {
+      // With the assistant on the page, hand the request to it; otherwise it becomes a quote request.
+      const open = document.querySelector<HTMLButtonElement>('#tb-assistant [data-open]');
+      if (open) { e.preventDefault(); open.click(); }
+    });
+  }
+</script>

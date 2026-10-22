@@ -29,7 +29,7 @@ const jsonLd = [{
   </div>
 
   <ul class="mt-8 grid gap-x-5 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    {products.map((p) => <li data-cat={p.category}><ProductCard p={p} /></li>)}
+    {products.map((p) => <li data-cat={p.category} data-sub={p.subcategory ?? ""}><ProductCard p={p} /></li>)}
   </ul>
 
   <div class="mt-20"><CtaBand title="Don't see it?" text="We print on almost anything: your own garments, brands we don't list, special finishes. Tell us what you have in mind." /></div>
@@ -38,9 +38,15 @@ const jsonLd = [{
 <script>
   const chips = document.querySelectorAll<HTMLButtonElement>('[data-cat].chip');
   const items = document.querySelectorAll<HTMLElement>('li[data-cat]');
+  const apply = (cat: string, sub = '') => {
+    chips.forEach((c) => c.classList.toggle('is-on', c.dataset.cat === (sub ? '' : cat)));
+    items.forEach((li) => { li.hidden = sub ? li.dataset.sub !== sub : !!cat && li.dataset.cat !== cat; });
+  };
   chips.forEach((chip) => chip.addEventListener('click', () => {
-    chips.forEach((c) => c.classList.toggle('is-on', c === chip));
-    const cat = chip.dataset.cat;
-    items.forEach((li) => { li.hidden = !!cat && li.dataset.cat !== cat; });
+    history.replaceState(null, '', chip.dataset.cat ? `?cat=${chip.dataset.cat}` : location.pathname);
+    apply(chip.dataset.cat || '');
   }));
+  // Menu links land here with ?cat= or ?sub= already chosen.
+  const params = new URLSearchParams(location.search);
+  if (params.get('cat') || params.get('sub')) apply(params.get('cat') || '', params.get('sub') || '');
 </script>

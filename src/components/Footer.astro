@@ -1,52 +1,73 @@
 ---
 import BrandMark from './BrandMark.astro';
 import { business } from '../data/business';
-import { MapPin, Phone, Mail, Clock } from '@lucide/astro';
+import { VIDEOS } from '../data/videos';
+import { Phone, Mail, Sparkles, MapPin, Play } from '@lucide/astro';
 
-const cols = [
-  { title: 'Services', links: [
-    ['Screen printing', '/screen-printing/'], ['Embroidery', '/services/embroidery/'], ['DTF transfers', '/services/direct-to-film/'],
-    ['DTG printing', '/services/direct-to-garment/'], ['Oversize prints', '/services/large-format-screen-printing/'], ['Rush & Super Rush', '/same-day-t-shirt-printing-los-angeles/'], ['Custom projects', '/custom-projects/'],
-  ] },
-  { title: 'Shop', links: [
-    ['Product catalog', '/catalog/'], ['T-shirts', '/products/t-shirts/'], ['Hoodies', '/products/sweatshirts-hoodies/'],
-    ['Hats', '/products/hats/'], ['Team uniforms', '/products/team-uniforms-jerseys/'], ['Get a quote', '/quick-quote/'],
-  ] },
-  { title: 'Company', links: [
-    ['About us', '/about-us/'], ['FAQ', '/faq/'], ['Shipping & delivery', '/shipping-and-delivery/'],
-    ['Blog', '/blog/'], ['Los Angeles, CA', '/los-angeles-ca/'], ['Cleveland, OH', '/cleveland-oh/'], ['Privacy', '/privacy-policy/'], ['Terms', '/terms-conditions/'],
-  ] },
+const about: [string, string][] = [
+  ['About TBSP', '/about-us/'], ['Los Angeles facility', '/los-angeles-ca/'], ['Cleveland facility', '/cleveland-oh/'],
+  ['Who we print for', '/solutions/'], ['Guides & articles', '/blog/'], ['Watch us print', 'https://www.youtube.com/@Thebestscreenprinting'],
 ];
-const social = [
-  { href: 'https://www.instagram.com/tbsp.la/', label: 'Instagram' },
-  { href: 'https://www.youtube.com/c/Thebestscreenprinting', label: 'YouTube' },
-  { href: 'https://www.facebook.com/TheBestScreenPrinting/', label: 'Facebook' },
-  { href: 'https://www.yelp.com/biz/the-best-screen-printing-and-embroidery-los-angeles-2', label: 'Yelp' },
+const service: [string, string][] = [
+  ['Get a quote', '/quick-quote/'], ['Help center', '/help-center/'], ['FAQ', '/faq/'], ['Turnaround options', '/learn-delivery-time/'],
+  ['Shipping & delivery', '/shipping-and-delivery/'], ['Design tips', '/helpful-design-tips/'],
 ];
+const account: [string, string][] = business.studioLive
+  ? [['Sign in', `${business.studioUrl}/login`], ['Track your order', `${business.studioUrl}/orders`], ['Saved designs', `${business.studioUrl}/studio`]]
+  : [['Custom projects', '/custom-projects/'], ['Product catalog', '/catalog/'], ['Rush & Super Rush', '/same-day-t-shirt-printing-los-angeles/']];
+const social: [string, string][] = [
+  ['Instagram', 'https://www.instagram.com/tbsp.la/'], ['YouTube', 'https://www.youtube.com/c/Thebestscreenprinting'],
+  ['Facebook', 'https://www.facebook.com/TheBestScreenPrinting/'], ['Yelp', 'https://www.yelp.com/biz/the-best-screen-printing-and-embroidery-los-angeles-2'],
+];
+const reel = VIDEOS.reel;
+const col = 'text-[15px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white';
 ---
-<footer class="mt-24 border-t border-zinc-200/80 dark:border-white/10 bg-zinc-50 dark:bg-[#0d0d14]">
-  <div class="wrap py-14 grid gap-10 md:grid-cols-[1.3fr_repeat(3,1fr)]">
-    <div class="space-y-3 text-sm muted">
-      <BrandMark />
-      <p class="max-w-xs">Screen printing, embroidery and custom apparel from our production facilities in Los Angeles and Cleveland.</p>
-      <p class="flex items-start gap-2"><MapPin class="w-4 h-4 mt-0.5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" />{business.address.streetAddress}, {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}</p>
-      <p class="flex items-center gap-2"><Phone class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a class="hover:text-zinc-900 dark:hover:text-white" href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
-      <p class="flex items-center gap-2"><Mail class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a class="hover:text-zinc-900 dark:hover:text-white" href={`mailto:${business.email}`}>{business.email}</a></p>
-      <p class="flex items-center gap-2"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Mon–Fri, 9am–5pm</p>
-      <div class="flex flex-wrap gap-2 pt-1">
-        {social.map((s) => <a class="chip !h-8 !px-3 !text-xs" href={s.href} rel="noopener">{s.label}</a>)}
+<footer class="mt-24 border-t-4 border-zinc-900 dark:border-white/20 bg-white dark:bg-[#0a0a0f]">
+  <div class="wrap py-14 grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
+    <div class="space-y-6">
+      <div>
+        <p class="font-bold text-zinc-900 dark:text-white mb-3">Watch us print</p>
+        <a href={`https://www.youtube.com/watch?v=${reel.id}`} rel="noopener" class="group relative block max-w-sm aspect-video rounded-2xl overflow-hidden bg-zinc-900">
+          <img src={`https://i.ytimg.com/vi/${reel.id}/hqdefault.jpg`} alt={reel.title} loading="lazy" class="w-full h-full object-cover opacity-90 group-hover:opacity-100" />
+          <span class="absolute inset-0 grid place-items-center"><span class="w-14 h-14 rounded-full bg-violet-600 text-white grid place-items-center"><Play class="w-6 h-6 ml-0.5" aria-hidden="true" /></span></span>
+        </a>
+      </div>
+      <div>
+        <p class="font-bold text-zinc-900 dark:text-white mb-3">Follow us</p>
+        <div class="flex flex-wrap gap-2">{social.map(([l, h]) => <a class="chip !h-8 !px-3 !text-xs" href={h} rel="noopener">{l}</a>)}</div>
       </div>
     </div>
-    {cols.map((c) => (
+    <div class="space-y-8">
       <div>
-        <p class="eyebrow mb-3">{c.title}</p>
-        <ul class="space-y-2 text-sm">
-          {c.links.map(([label, href]) => <li><a class="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white" href={href}>{label}</a></li>)}
-        </ul>
+        <p class="font-bold text-zinc-900 dark:text-white mb-3">About us</p>
+        <ul class="space-y-2">{about.map(([l, h]) => <li><a class={col} href={h}>{l}</a></li>)}</ul>
       </div>
-    ))}
+      <div>
+        <p class="font-bold text-zinc-900 dark:text-white mb-3">{business.studioLive ? 'Your account' : 'Shop'}</p>
+        <ul class="space-y-2">{account.map(([l, h]) => <li><a class={col} href={h} rel={h.startsWith('http') ? 'nofollow' : undefined}>{l}</a></li>)}</ul>
+      </div>
+    </div>
+    <div>
+      <p class="font-bold text-zinc-900 dark:text-white mb-3">Service center</p>
+      <ul class="space-y-2">{service.map(([l, h]) => <li><a class={col} href={h}>{l}</a></li>)}</ul>
+    </div>
+    <div class="space-y-5">
+      <div>
+        <p class="font-bold text-zinc-900 dark:text-white mb-3">Contact us</p>
+        <p class="text-[15px] muted">Monday–Friday: 9am – 5pm PT</p>
+      </div>
+      <ul class="space-y-3 text-[15px]">
+        <li><a class="flex items-center gap-3 text-zinc-800 dark:text-zinc-200" href={`tel:${business.phone}`}><Phone class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />{business.phoneDisplay}</a></li>
+        <li><a class="flex items-center gap-3 text-zinc-800 dark:text-zinc-200" href="/quick-quote/" data-ask-ai><Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />Ask TBSP AI</a></li>
+        <li><a class="flex items-center gap-3 text-zinc-800 dark:text-zinc-200" href={`mailto:${business.email}`}><Mail class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />{business.email}</a></li>
+        <li class="flex items-start gap-3 text-zinc-800 dark:text-zinc-200"><MapPin class="w-5 h-5 mt-0.5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><span>{business.address.streetAddress}, {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}<br /><span class="muted">and Cleveland, Ohio</span></span></li>
+      </ul>
+    </div>
   </div>
-  <div class="border-t border-zinc-200/80 dark:border-white/10">
-    <p class="wrap py-5 text-xs muted">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+  <div class="bg-zinc-100 dark:bg-white/[0.04]">
+    <div class="wrap py-5 flex flex-wrap items-center justify-between gap-3 text-[13px] muted">
+      <span class="flex items-center gap-3"><BrandMark size="sm" />© {new Date().getFullYear()} {business.name}</span>
+      <span class="flex flex-wrap gap-4"><a href="/privacy-policy/">Privacy policy</a><a href="/terms-conditions/">Terms</a><a href="/catalog/">Custom products</a></span>
+    </div>
   </div>
 </footer>

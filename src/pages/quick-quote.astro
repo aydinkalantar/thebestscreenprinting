@@ -110,6 +110,9 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   if (project) {
     form.querySelectorAll<HTMLInputElement>('input[name="decorations"]').forEach((c) => { if (c.value === project) c.checked = true; });
   }
+  // Coming from the header's AI box: carry the request into the details.
+  const asked = new URLSearchParams(location.search).get('details');
+  if (asked) (form.elements.namedItem('details') as HTMLTextAreaElement).value = asked.slice(0, 1000);
   // Coming from a catalog product: note which one in the details box.
   const fromProduct = new URLSearchParams(location.search).get('garment');
   if (fromProduct) {
