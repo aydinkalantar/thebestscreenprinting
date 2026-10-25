@@ -87,12 +87,18 @@ html.sheet-lock body { position: fixed; left: 0; right: 0; overflow: hidden; }
 
 /* Generic sheet animation: [data-sheet-panel] slides in when the root has data-open. */
 [data-sheet] { overscroll-behavior: contain; }
+[data-sheet][hidden]:not([data-sheet-persist]) { display: none !important; }
 [data-sheet] [data-sheet-backdrop] { opacity: 0; transition: opacity .25s var(--tb-ease); }
 [data-sheet][data-open] [data-sheet-backdrop] { opacity: 1; }
 [data-sheet] [data-sheet-panel] { transition: transform .28s cubic-bezier(0.32, 0.72, 0, 1); overscroll-behavior: contain; }
 [data-sheet="right"] [data-sheet-panel] { transform: translateX(100%); }
 [data-sheet="bottom"] [data-sheet-panel] { transform: translateY(100%); }
 [data-sheet="fade"] [data-sheet-panel] { transform: translateY(12px); opacity: 0; transition: transform .22s var(--tb-ease), opacity .22s var(--tb-ease); }
+/* Bottom sheet on phones, centered dialog from md up. */
+[data-sheet="modal"] [data-sheet-panel] { transform: translateY(100%); }
+@media (min-width: 768px) {
+  [data-sheet="modal"] [data-sheet-panel] { transform: translateY(16px); opacity: 0; transition: transform .22s var(--tb-ease), opacity .22s var(--tb-ease); }
+}
 [data-sheet][data-open] [data-sheet-panel] { transform: none; opacity: 1; }
 
 /* Bottom tab bar height, used for body padding and bars that sit above it. */

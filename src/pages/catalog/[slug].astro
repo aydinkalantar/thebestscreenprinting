@@ -4,6 +4,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { products, CATEGORY_LABELS, COLLECTIONS, collectionHref, brandHref, techniqueNames, customizeHref, type CatalogProduct } from '../../lib/catalog';
 import { business } from '../../data/business';
+import DesignPreview from '../../components/design/DesignPreview.astro';
+import DesignRequestSheet from '../../components/design/DesignRequestSheet.astro';
 import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send } from '@lucide/astro';
 
 export function getStaticPaths() {
@@ -42,31 +44,13 @@ const jsonLd = [
     ],
   },
 ];
-// Phones get a swipeable gallery: the current color first, then the style's other photos.
-const firstImg = p.colors[0]?.image || p.image;
-const gallery = [...new Set([...p.images, p.image].filter(Boolean))].filter((src) => src !== firstImg).slice(0, 5);
 const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300';
 ---
 <Base title={`Custom ${p.name} | TBSP Los Angeles`} description={description} jsonLd={jsonLd}>
   <Breadcrumbs items={[{ label: 'Catalog', href: '/catalog/' }, { label: category, href: categoryHref }, { label: p.name }]} />
   <div class="grid gap-4 md:gap-10 lg:grid-cols-2">
-    <div class="relative lg:sticky lg:top-24 self-start max-md:-mx-4 min-w-0">
-      <div class="absolute inset-8 rounded-[2rem] bg-violet-500/15 blur-3xl max-md:hidden" aria-hidden="true"></div>
-      <div data-gallery class="relative max-md:flex max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory no-scrollbar" role="region" aria-label="Product photos" tabindex="-1">
-        <div class="max-md:w-full max-md:shrink-0 max-md:snap-center md:contents">
-          <img id="main-img" src={firstImg} alt={p.name} width="640" height="640" class="relative w-full aspect-square object-contain panel-raised p-4 bg-zinc-50 dark:bg-white/[0.04] max-md:rounded-none max-md:border-x-0 max-md:border-t-0 max-md:shadow-none max-md:p-6" />
-        </div>
-        {gallery.map((src, i) => (
-          <div class="md:hidden w-full shrink-0 snap-center">
-            <img src={src} alt={`${p.name}, photo ${i + 2}`} width="640" height="640" loading="lazy" decoding="async" class="w-full aspect-square object-contain p-6 bg-zinc-50 dark:bg-white/[0.04] border-b border-zinc-200/80 dark:border-white/10" />
-          </div>
-        ))}
-      </div>
-      {gallery.length > 0 && (
-        <div class="md:hidden flex justify-center gap-1.5 pt-3" data-dots>
-          {[firstImg, ...gallery].map((_, i) => <button type="button" class="h-2 rounded-full transition-all bg-zinc-300 dark:bg-white/25 w-2 aria-[current=true]:w-5 aria-[current=true]:bg-violet-600" aria-label={`Show photo ${i + 1}`} aria-current={i === 0 ? 'true' : 'false'} data-dot={i}></button>)}
-        </div>
-      )}
+    <div class="min-w-0 lg:order-none">
+      <DesignPreview p={p} />
     </div>
     <div class="min-w-0">
       <p class="eyebrow"><a href={categoryHref} class="hover:underline">{category}</a></p>
@@ -86,7 +70,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
             <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400">Color · <span id="color-name" class="normal-case tracking-normal text-zinc-900 dark:text-white text-[13px]">{p.colors[0].name}</span></legend>
             <div class="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label="Color">
               {p.colors.map((c, i) => (
-                <button type="button" role="radio" hidden={i >= SWATCH_LIMIT} aria-checked={i === 0 ? 'true' : 'false'} class:list={['swatch w-8 h-8 max-md:w-10 max-md:h-10 rounded-full border border-zinc-300 dark:border-white/20 transition-shadow', { 'is-on ring-2 ring-violet-500 ring-offset-2 ring-offset-white dark:ring-offset-[#0d0d14]': i === 0 }]} style={`background:${c.hex}`} title={c.name} aria-label={c.name} data-name={c.name} data-img={c.image || ''}></button>
+                <button type="button" role="radio" hidden={i >= SWATCH_LIMIT} aria-checked={i === 0 ? 'true' : 'false'} class:list={['swatch w-8 h-8 max-md:w-10 max-md:h-10 rounded-full border border-zinc-300 dark:border-white/20 transition-shadow', { 'is-on ring-2 ring-violet-500 ring-offset-2 ring-offset-white dark:ring-offset-[#0d0d14]': i === 0 }]} style={`background:${c.hex}`} title={c.name} aria-label={c.name} data-name={c.name} data-img={c.image || ''} data-back={c.back || ''}></button>
               ))}
             </div>
             {p.colors.length > SWATCH_LIMIT && (
@@ -111,8 +95,18 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           </p>
         </fieldset>
 
+        <!-- Filled by the design preview once artwork is placed. -->
+        <div data-design-summary hidden class="grid gap-1">
+          <div class="flex items-baseline justify-between gap-3">
+            <p class="eyebrow !text-zinc-500 dark:!text-zinc-400">Your artwork</p>
+            <a href="#design" class="text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add more</a>
+          </div>
+          <ul data-list class="divide-y divide-zinc-200/80 dark:divide-white/10"></ul>
+          <p data-bytes class="text-[12px] muted"></p>
+        </div>
+
         {methods.length > 0 && (
-          <fieldset>
+          <fieldset data-plain-only>
             <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400">Decoration</legend>
             <div class="mt-3 flex flex-wrap gap-2">
               {methods.map((m) => <label class={chipOn}><input type="checkbox" name="decoration" value={m} checked={methods.length === 1} class="accent-violet-600" />{m}</label>)}
@@ -120,7 +114,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           </fieldset>
         )}
 
-        <fieldset>
+        <fieldset data-plain-only>
           <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400">Print location</legend>
           <div class="mt-3 flex flex-wrap gap-2">
             {locations.map((l, i) => <label class={chipOn}><input type="checkbox" name="location" value={l} checked={i === 0} class="accent-violet-600" />{l}</label>)}
@@ -180,6 +174,8 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     </div>
   </div>
 
+  <DesignRequestSheet />
+
   {related.length > 0 && (
     <section class="mt-20">
       <div class="flex items-baseline justify-between gap-4">
@@ -192,8 +188,8 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 </Base>
 
 <script>
+  import { mountDesign } from '../../components/design/design';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
-  const main = document.getElementById('main-img') as HTMLImageElement | null;
   const label = document.getElementById('color-name');
   const total = document.getElementById('qty-total')!;
   const hint = document.getElementById('qty-hint')!;
@@ -201,69 +197,77 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   const min = Number(form.dataset.min) || 12;
   const on = ['is-on', 'ring-2', 'ring-violet-500', 'ring-offset-2'];
   const swatches = [...document.querySelectorAll<HTMLButtonElement>('.swatch')];
-  // Phone action bar + gallery mirror this form's state.
+  // Phone action bar mirrors this form's state.
   const barColor = document.querySelector<HTMLElement>('[data-bar-color]');
   const barSwatch = document.querySelector<HTMLElement>('[data-bar-swatch]');
   const barTotal = document.querySelector<HTMLElement>('[data-bar-total]');
   const barSubmit = document.querySelector<HTMLButtonElement>('[data-bar-submit]');
-  const gallery = document.querySelector<HTMLElement>('[data-gallery]');
-  const dots = [...document.querySelectorAll<HTMLButtonElement>('[data-dot]')];
+  const plainOnly = [...form.querySelectorAll<HTMLElement>('[data-plain-only]')];
   let color = swatches[0]?.dataset.name || '';
   let colorImg = swatches[0]?.dataset.img || '';
+
+  const inputs = [...form.querySelectorAll<HTMLInputElement>('input[data-size]')];
+  const qty = (i: HTMLInputElement) => Math.max(0, Math.min(99999, Math.floor(Number(i.value) || 0)));
+  const sum = () => inputs.reduce((n, i) => n + qty(i), 0);
+  const d = form.dataset;
+
+  const design = mountDesign(document.querySelector<HTMLElement>('[data-design]')!, {
+    summary: form.querySelector<HTMLElement>('[data-design-summary]'),
+    sheet: document.getElementById('design-request'),
+    getOrder: () => ({
+      name: d.name || '', style: d.style || '', brand: d.brand || '', color, cat: d.cat || '', sub: d.sub || '',
+      url: location.origin + location.pathname,
+      sizes: inputs.filter((i) => qty(i) > 0).map((i) => ({ size: i.dataset.size || '', n: qty(i) })),
+      total: sum(),
+    }),
+    onChange: () => refresh(),
+  });
+
   swatches.forEach((b) => b.addEventListener('click', () => {
     swatches.forEach((x) => { on.forEach((c) => x.classList.toggle(c, x === b)); x.setAttribute('aria-checked', String(x === b)); });
     color = b.dataset.name || '';
     colorImg = b.dataset.img || '';
     if (label) label.textContent = color;
-    if (main && colorImg) main.src = colorImg;
     if (barColor) barColor.textContent = color;
     if (barSwatch) barSwatch.style.background = b.style.background;
-    if (gallery && gallery.scrollLeft > 0) gallery.scrollTo({ left: 0, behavior: 'smooth' });
+    design.setColor({ name: color, front: colorImg, back: b.dataset.back || '' });
   }));
-
-  if (gallery && dots.length) {
-    const current = () => Math.round(gallery.scrollLeft / Math.max(1, gallery.clientWidth));
-    let raf = 0;
-    gallery.addEventListener('scroll', () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => { const i = current(); dots.forEach((d, n) => d.setAttribute('aria-current', String(n === i))); });
-    }, { passive: true });
-    dots.forEach((d, n) => d.addEventListener('click', () => gallery.scrollTo({ left: n * gallery.clientWidth, behavior: 'smooth' })));
-  }
 
   document.getElementById('more-colors')?.addEventListener('click', (e) => {
     swatches.forEach((b) => { b.hidden = false; });
     (e.currentTarget as HTMLElement).remove();
   });
 
-  const inputs = [...form.querySelectorAll<HTMLInputElement>('input[data-size]')];
-  const qty = (i: HTMLInputElement) => Math.max(0, Math.min(99999, Math.floor(Number(i.value) || 0)));
-  const sum = () => inputs.reduce((n, i) => n + qty(i), 0);
-  const refresh = () => {
+  function refresh() {
     const n = sum();
+    const placed = design?.count() ?? 0;
     total.textContent = String(n);
     button.disabled = n < min;
     if (barTotal) barTotal.textContent = String(n);
     if (barSubmit) barSubmit.disabled = n < min;
+    plainOnly.forEach((f) => { f.hidden = placed > 0; });
     hint.textContent = n === 0 ? `Enter at least ${min} pieces to request a quote.`
       : n < min ? `Add ${min - n} more piece${min - n === 1 ? '' : 's'} to reach the ${min}-piece minimum.`
+      : placed ? "Next we'll ask for your contact details, then send your design and files to our team."
       : "We'll prefill the quote form with your selection.";
-  };
+  }
   inputs.forEach((i) => i.addEventListener('input', refresh));
   document.querySelector('[data-bar-sizes]')?.addEventListener('click', () => {
     const first = inputs.find((i) => !qty(i)) ?? inputs[0];
     first?.scrollIntoView({ block: 'center', behavior: 'smooth' });
     first?.focus({ preventScroll: true });
   });
+  if (swatches[0]) design.init({ name: color, front: colorImg, back: swatches[0].dataset.back || '' });
   refresh();
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const n = sum();
     if (n < min) { inputs[0]?.focus(); return; }
+    // Artwork placed: send everything from here (contact step in a sheet).
+    if (design.count()) { design.openRequest(); return; }
     const checked = (name: string) => [...form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)].map((c) => c.value);
     const q = new URLSearchParams();
-    const d = form.dataset;
     q.set('product', d.name || '');
     if (d.style) q.set('style', d.style);
     if (d.brand) q.set('brand', d.brand);

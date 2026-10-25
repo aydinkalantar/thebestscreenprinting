@@ -118,6 +118,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 </Base>
 
 <script>
+  import { garmentFor } from '../lib/quote';
   const form = document.getElementById('quote-form') as HTMLFormElement;
   const query = new URLSearchParams(location.search);
   const clean = (v: string | null, max = 120) => (v || '').replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max);
@@ -159,14 +160,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
     // Best garment option for the product's category.
     const cat = clean(query.get('cat'), 30), sub = clean(query.get('sub'), 30);
-    const text = `${cat} ${sub} ${product}`.toLowerCase();
-    const garment = /polo/.test(text) ? 'Polos'
-      : /hats|cap\b|beanie|trucker|snapback/.test(text) ? 'Hats'
-      : /outerwear|jacket|windbreaker/.test(text) ? 'Jackets'
-      : /accessories|tote|bag/.test(text) ? 'Bags / totes'
-      : /sweatshirt|hoodie|crewneck|fleece/.test(text) ? 'Hoodies / sweatshirts'
-      : /t-shirt|tee|tank|crop|long-sleeve|long sleeve/.test(text) ? 'T-shirts'
-      : 'Something else';
+    const garment = garmentFor(cat, sub, product);
     const select = form.elements.namedItem('garment') as HTMLSelectElement;
     if ([...select.options].some((o) => o.value === garment)) select.value = garment;
 

@@ -24,6 +24,18 @@ export const GARMENTS = [
   'T-shirts', 'Hoodies / sweatshirts', 'Hats', 'Polos', 'Jackets', 'Bags / totes', 'Team uniforms', 'Something else',
 ] as const;
 
+/** Best GARMENTS option for a catalog product, from its category, subcategory and name. */
+export function garmentFor(category = '', subcategory = '', name = ''): (typeof GARMENTS)[number] {
+  const text = `${category} ${subcategory} ${name}`.toLowerCase();
+  return /polo/.test(text) ? 'Polos'
+    : /hats|cap\b|beanie|trucker|snapback/.test(text) ? 'Hats'
+    : /outerwear|jacket|windbreaker/.test(text) ? 'Jackets'
+    : /accessories|tote|bag/.test(text) ? 'Bags / totes'
+    : /sweatshirt|hoodie|crewneck|fleece/.test(text) ? 'Hoodies / sweatshirts'
+    : /t-shirt|tee|tank|crop|long-sleeve|long sleeve/.test(text) ? 'T-shirts'
+    : 'Something else';
+}
+
 export const TURNAROUND_LABELS: Record<string, string> = { normal: 'Normal', rush: 'Rush', 'super-rush': 'Super Rush' };
 
 export const MAX_ARTWORK_BYTES = 10 * 1024 * 1024;
