@@ -1,0 +1,883 @@
+[
+ {
+  "brand": "Gildan",
+  "style": "5000",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Gildan",
+  "style": "64000",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "2000",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Hanes",
+  "style": "5280",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Hanes",
+  "style": "5250",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "29MR",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3001",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3001CVC",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1717",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Next Level",
+  "style": "3600",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Next Level",
+  "style": "6210",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "American Apparel",
+  "style": "2001CVC",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHGD",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "790",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Badger",
+  "style": "4120",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Russell Athletic",
+  "style": "64STTM",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5400",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "2400",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3501",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "6014",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Columbia",
+  "style": "212472",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3480",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "8800",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Adidas",
+  "style": "A230",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Under Armour",
+  "style": "1370399",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M265",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18500",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "SS4500",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND4000",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM4500",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND5000P",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3719",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1467",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9303",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "S700",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "S101",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Hanes",
+  "style": "P170",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "996MR",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Lane Seven",
+  "style": "LS14001",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3739",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "SS4500Z",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18000",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1566",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "SS3000",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Richardson",
+  "style": "168",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "511",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "115",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "YP Classics",
+  "style": "6006",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "256",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "YP Classics",
+  "style": "6245CM",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Richardson",
+  "style": "220",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Flexfit",
+  "style": "6277",
+  "category": "hats",
+  "subcategory": "fitted-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "YP Classics",
+  "style": "6089M",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Sportsman",
+  "style": "SP12",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Sportsman",
+  "style": "SP15",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Liberty Bags",
+  "style": "8502",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Q-Tees",
+  "style": "Q800",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": true
+ },
+ {
+  "brand": "Q-Tees",
+  "style": "Q125300",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18400",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND20PNT",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "RW10",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM50STPD",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP54LWZ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5000L",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6400",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "1533",
+  "category": "womens",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "1580",
+  "category": "womens",
+  "subcategory": "crop-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5000B",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3001Y",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18500B",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "5506",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ }
+]

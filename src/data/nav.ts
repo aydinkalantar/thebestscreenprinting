@@ -17,18 +17,18 @@ export const NAV: NavMenu[] = [
   {
     label: 'Apparel', href: '/products/',
     columns: [
-      { links: [{ label: 'Hoodies', href: '/products/sweatshirts-hoodies/custom-hoodies/' }, { label: 'Crewneck sweatshirts', href: '/products/sweatshirts-hoodies/custom-sweatshirts/' }, { label: 'Quarter zips & pullovers', href: '/catalog/?sub=pullovers' }, { label: 'View all sweatshirts', href: '/products/sweatshirts-hoodies/' }] },
+      { links: [{ label: 'Hoodies', href: '/products/sweatshirts-hoodies/custom-hoodies/' }, { label: 'Crewneck sweatshirts', href: '/products/sweatshirts-hoodies/custom-sweatshirts/' }, { label: 'Zip hoodies', href: '/catalog/?sub=zip-hoodies' }, { label: 'View all sweatshirts', href: '/products/sweatshirts-hoodies/' }] },
       { links: [{ label: 'Hats & caps', href: '/products/hats/' }, { label: 'Dad hats', href: '/catalog/?sub=dad-hats' }, { label: 'Embroidered hats', href: '/services/embroidery/' }] },
       { links: [{ label: 'Polo shirts', href: '/products/business-and-polos-landings/' }, { label: 'Jackets & outerwear', href: '/products/outwear/' }, { label: 'Workwear & uniforms', href: '/services/embroidery/custom-embroidery/' }] },
-      { links: [{ label: 'Team jerseys', href: '/products/team-uniforms-jerseys/' }, { label: 'All-over print apparel', href: '/catalog/?sub=all-over-prints' }, { label: 'View all products', href: '/catalog/' }] },
+      { links: [{ label: 'Team jerseys', href: '/products/team-uniforms-jerseys/' }, { label: 'All-over print apparel', href: '/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/' }, { label: 'View all products', href: '/catalog/' }] },
     ],
   },
   {
     label: 'Promotional Products', href: '/for/promotional-products/',
     columns: [
-      { links: [{ label: 'Drinkware', href: '/catalog/?sub=drinkware' }, { label: 'Home & decor', href: '/catalog/?cat=home' }] },
+      { links: [{ label: 'Beanies', href: '/catalog/?sub=beanies' }, { label: 'Totes', href: '/catalog/?sub=totes' }] },
       { links: [{ label: 'Bags & totes', href: '/products/bags/' }, { label: 'Custom bags', href: '/products/bags/customize-bag/' }] },
-      { links: [{ label: 'Towels', href: '/products/towels/' }, { label: 'Tech accessories', href: '/catalog/?sub=tech' }] },
+      { links: [{ label: 'Towels', href: '/products/towels/' }] },
       { links: [{ label: 'Trade show swag', href: '/event-apparel/trade-show-swag-anaheim/' }, { label: 'Promo merch ideas', href: '/for/promotional-products/' }] },
     ],
   },

@@ -1,5 +1,5 @@
 ---
-import { money, type CatalogProduct } from '../lib/catalog';
+import { type CatalogProduct } from '../lib/catalog';
 interface Props { p: CatalogProduct }
 const { p } = Astro.props;
 ---
@@ -8,5 +8,5 @@ const { p } = Astro.props;
     <img src={p.image} alt={p.name} loading="lazy" width="400" height="400" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
   </span>
   <span class="text-[14px] font-semibold leading-snug text-zinc-900 dark:text-white group-hover:text-violet-700 dark:group-hover:text-violet-300">{p.name}</span>
-  <span class="text-[13px] muted">{p.colors.length > 1 ? `${p.colors.length} colors · ` : ''}from <b class="text-zinc-800 dark:text-zinc-200">{money(p.fromPrice)}</b></span>
+  <span class="text-[13px] muted">{p.brand}{p.colors.length > 1 ? ` · ${p.colors.length} colors` : ''}</span>
 </a>
