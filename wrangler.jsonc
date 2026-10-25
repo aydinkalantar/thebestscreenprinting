@@ -19,8 +19,10 @@
       "name": "tbsp-site-production",
       "vars": { "STAGING": "0" },
       "routes": [
-        { "pattern": "thebestscreenprinting.com", "custom_domain": true },
-        { "pattern": "www.thebestscreenprinting.com", "custom_domain": true }
+        // Routes (not custom domains) so the existing proxied DNS records stay as
+        // they are: rolling back is just removing these routes.
+        { "pattern": "thebestscreenprinting.com/*", "zone_name": "thebestscreenprinting.com" },
+        { "pattern": "www.thebestscreenprinting.com/*", "zone_name": "thebestscreenprinting.com" }
       ]
     }
   }
