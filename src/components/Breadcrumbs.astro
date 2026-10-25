@@ -3,14 +3,15 @@ import { ChevronRight } from '@lucide/astro';
 interface Props { items: { label: string; href?: string }[] }
 const { items } = Astro.props;
 ---
-<nav aria-label="Breadcrumb" class="mb-6">
-  <ol class="flex flex-wrap items-center gap-1 text-[13px] muted">
-    <li><a class="hover:text-zinc-900 dark:hover:text-white" href="/">Home</a></li>
-    {items.map((i) => (
-      <li class="flex items-center gap-1">
-        <ChevronRight class="w-3.5 h-3.5" aria-hidden="true" />
-        {i.href ? <a class="hover:text-zinc-900 dark:hover:text-white" href={i.href}>{i.label}</a> : <span class="text-zinc-700 dark:text-zinc-300">{i.label}</span>}
+<nav aria-label="Breadcrumb" class="mb-4 md:mb-6 max-md:-mx-4">
+  <ol class="flex md:flex-wrap items-center gap-1 text-[13px] muted max-md:overflow-x-auto no-scrollbar max-md:whitespace-nowrap max-md:px-4">
+    <li class="shrink-0"><a class="hover:text-zinc-900 dark:hover:text-white" href="/">Home</a></li>
+    {items.map((i, n) => (
+      <li class:list={['flex items-center gap-1', n === items.length - 1 ? 'min-w-0' : 'shrink-0']}>
+        <ChevronRight class="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+        {i.href ? <a class="hover:text-zinc-900 dark:hover:text-white" href={i.href}>{i.label}</a> : <span class="text-zinc-700 dark:text-zinc-300 max-md:truncate">{i.label}</span>}
       </li>
     ))}
   </ol>
 </nav>
+

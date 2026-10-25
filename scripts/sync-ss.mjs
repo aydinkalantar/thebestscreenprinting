@@ -46,7 +46,7 @@ for (const c of curated) {
   const colors = new Map();
   const sizes = new Map();
   for (const k of skus) {
-    if (k.qty > 0 && !colors.has(k.colorName)) colors.set(k.colorName, { name: k.colorName, hex: k.color1 || null, image: large(k.colorFrontImage) });
+    if (k.qty > 0 && !colors.has(k.colorName)) colors.set(k.colorName, { name: k.colorName, hex: k.color1 || null, image: large(k.colorFrontImage), back: large(k.colorBackImage) });
     if (!sizes.has(k.sizeName)) sizes.set(k.sizeName, k.sizeOrder);
   }
   const features = [...(style.description || '').matchAll(/<li>(.*?)<\/li>/g)].map((m) => clean(m[1].replace(/<[^>]+>/g, ''))).filter(Boolean).slice(0, 8);

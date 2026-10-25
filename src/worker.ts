@@ -1,7 +1,7 @@
 // Edge entry point. Static pages come from the ASSETS binding; anything the build
 // doesn't contain is checked against the legacy WordPress redirect map.
 import redirects from './redirects.json';
-import { parseQuote, quoteEmail, MAX_ARTWORK_BYTES, ARTWORK_TYPES } from './lib/quote';
+import { parseQuote, parsePlacements, quoteEmail, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, ARTWORK_TYPES } from './lib/quote';
 import { business } from './data/business';
 
 interface Env {
@@ -22,7 +22,7 @@ const json = (body: unknown, status = 200) =>
 
 async function handleQuote(request: Request, env: Env): Promise<Response> {
   const len = Number(request.headers.get('content-length') || 0);
-  if (len > MAX_ARTWORK_BYTES + 200_000) return json({ error: 'That file is too large. Please keep artwork under 10 MB.' }, 413);
+  if (len > MAX_TOTAL_BYTES + 500_000) return json({ error: 'Your files are too large together. Please keep them under 25 MB in total.' }, 413);
   let form: FormData;
   try { form = await request.formData(); } catch { return json({ error: 'Could not read the form.' }, 400); }
 
@@ -42,21 +42,44 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
   if ('errors' in parsed) return json({ error: 'Please check the highlighted fields.', fields: parsed.errors }, 400);
   const q = parsed.quote;
 
-  const file = form.get('artwork');
-  let attachment: { filename: string; content: string } | undefined;
-  if (file && typeof file !== 'string' && file.size > 0) {
-    if (file.size > MAX_ARTWORK_BYTES) return json({ error: 'That file is too large. Please keep artwork under 10 MB.', fields: { artwork: 'Max 10 MB' } }, 400);
-    if (file.type && !ARTWORK_TYPES.includes(file.type)) return json({ error: 'Please upload PNG, JPG, SVG, PDF, AI or PSD artwork.', fields: { artwork: 'Unsupported file type' } }, 400);
-    const bytes = new Uint8Array(await file.arrayBuffer());
+  // Artwork: the quote form's single `artwork` field, or one `artwork_<n>` per placed location
+  // from the product page's design preview, plus its rendered `mockup_<side>` PNGs.
+  const toBase64 = async (f: File) => {
+    const bytes = new Uint8Array(await f.arrayBuffer());
     let bin = '';
     for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-    attachment = { filename: file.name.slice(0, 120) || 'artwork', content: btoa(bin) };
+    return btoa(bin);
+  };
+  const attachments: { filename: string; content: string; content_id?: string }[] = [];
+  const artworkNames: string[] = [];
+  const mockups: { cid: string; label: string }[] = [];
+  let total = 0;
+  for (const [key, value] of form.entries()) {
+    if (typeof value === 'string' || value.size === 0) continue;
+    const isMockup = /^mockup_[a-z-]{1,20}$/.test(key);
+    if (!isMockup && key !== 'artwork' && !/^artwork_\d{1,2}$/.test(key)) continue;
+    if (value.size > MAX_ARTWORK_BYTES) return json({ error: `${value.name || 'A file'} is too large. Please keep each file under 10 MB.`, fields: { artwork: 'Max 10 MB per file' } }, 400);
+    total += value.size;
+    if (total > MAX_TOTAL_BYTES) return json({ error: 'Your files are too large together. Please keep them under 25 MB in total.', fields: { artwork: 'Max 25 MB in total' } }, 400);
+    if (isMockup) {
+      if (value.type !== 'image/png' || mockups.length >= 4) continue;
+      const side = key.slice(7);
+      mockups.push({ cid: `mockup-${side}`, label: `Mockup: ${side.replace(/-/g, ' ')}` });
+      attachments.push({ filename: `mockup-${side}.png`, content: await toBase64(value), content_id: `mockup-${side}` });
+      continue;
+    }
+    if (value.type && !ARTWORK_TYPES.includes(value.type)) return json({ error: 'Please upload PNG, JPG, SVG, PDF, AI or PSD artwork.', fields: { artwork: 'Unsupported file type' } }, 400);
+    if (artworkNames.length >= 8) continue;
+    const name = value.name.slice(0, 120) || `artwork-${artworkNames.length + 1}`;
+    artworkNames.push(name);
+    attachments.push({ filename: name, content: await toBase64(value) });
   }
+  const placements = parsePlacements(form.get('placements'));
 
   if (!env.RESEND_API_KEY) {
     return json({ error: `Online quotes are not switched on yet. Please call ${business.phoneDisplay} or email ${business.email}.`, fallback: true }, 503);
   }
-  const mail = quoteEmail(q, attachment?.filename);
+  const mail = quoteEmail(q, artworkNames, placements, mockups);
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
@@ -67,7 +90,7 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
       subject: mail.subject,
       text: mail.text,
       html: mail.html,
-      attachments: attachment ? [attachment] : undefined,
+      attachments: attachments.length ? attachments : undefined,
     }),
   });
   if (!res.ok) {

@@ -69,3 +69,75 @@ details[open] .chev { transform: rotate(180deg); }
 
 .err { @apply text-[12.5px] font-medium text-red-600 dark:text-red-400; }
 .err:empty { display: none; }
+
+/* ───────────────────────── Native-feel mobile layer ─────────────────────────
+   Everything below only changes phones (< 768px, Tailwind's md) unless noted,
+   so desktop renders exactly as before. */
+
+html { -webkit-tap-highlight-color: transparent; }
+a, button, label, summary, input, select, textarea, [role="button"] { touch-action: manipulation; }
+
+/* Pressed state for tappable cards and controls. */
+.press { transition: transform .15s var(--tb-ease); }
+.press:active, .chip:active, .icon-btn:active, .tile:active { transform: scale(.98); }
+
+/* Sheets lock the page behind them (iOS ignores overflow:hidden on body alone). */
+html.sheet-lock { overflow: hidden; }
+html.sheet-lock body { position: fixed; left: 0; right: 0; overflow: hidden; }
+
+/* Generic sheet animation: [data-sheet-panel] slides in when the root has data-open. */
+[data-sheet] { overscroll-behavior: contain; }
+[data-sheet] [data-sheet-backdrop] { opacity: 0; transition: opacity .25s var(--tb-ease); }
+[data-sheet][data-open] [data-sheet-backdrop] { opacity: 1; }
+[data-sheet] [data-sheet-panel] { transition: transform .28s cubic-bezier(0.32, 0.72, 0, 1); overscroll-behavior: contain; }
+[data-sheet="right"] [data-sheet-panel] { transform: translateX(100%); }
+[data-sheet="bottom"] [data-sheet-panel] { transform: translateY(100%); }
+[data-sheet="fade"] [data-sheet-panel] { transform: translateY(12px); opacity: 0; transition: transform .22s var(--tb-ease), opacity .22s var(--tb-ease); }
+[data-sheet][data-open] [data-sheet-panel] { transform: none; opacity: 1; }
+
+/* Bottom tab bar height, used for body padding and bars that sit above it. */
+:root { --tabbar-h: 0px; --hdr-offset: 0px; }
+
+/* A desktop panel that becomes a bottom sheet on phones (catalog filters). */
+@media (max-width: 767px) {
+  [data-sheet="bottom-mobile"] [data-sheet-panel] { transform: translateY(100%); }
+  [data-sheet="bottom-mobile"][data-open] [data-sheet-panel] { transform: none; }
+  [data-sheet-persist]:not([data-open]) { visibility: hidden; pointer-events: none; transition: visibility 0s linear .3s; }
+}
+
+@media (max-width: 767px) {
+  :root { --tabbar-h: calc(60px + env(safe-area-inset-bottom)); --hdr-offset: 56px; }
+  html.hdr-hidden { --hdr-offset: 0px; }
+  body { padding-bottom: var(--tabbar-h); }
+  /* Product pages swap the tab bar for their own action bar. */
+  body:has([data-pdp-bar]) { --tabbar-h: 0px; padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  body:has([data-pdp-bar]) [data-tabbar] { display: none; }
+
+  /* App header: hides on scroll down, returns on scroll up. */
+  [data-app-header] { padding-top: env(safe-area-inset-top); transition: transform .25s var(--tb-ease); }
+  html.hdr-hidden [data-app-header] { transform: translateY(-100%); }
+
+  /* Type scale: content H1s ~2rem, home hero ~2.4rem, lead paragraphs 1rem. */
+  #main h1 { font-size: 2rem; line-height: 1.1; }
+  [data-home] #main h1 { font-size: 2.4rem; line-height: 1.04; }
+  #main p.text-lg { font-size: 1rem; line-height: 1.6; }
+  #main .section-title { font-size: 1.5rem; }
+
+  /* Tighter section rhythm. */
+  #main .mt-24 { margin-top: 4rem; }
+  #main .mt-20 { margin-top: 3.5rem; }
+  #main .mt-16 { margin-top: 3rem; }
+
+  /* Horizontal rows snap, with the first card lining up with the page edge. */
+  .no-scrollbar.overflow-x-auto { scroll-snap-type: x proximity; scroll-padding-inline: 1rem; -webkit-overflow-scrolling: touch; }
+  .no-scrollbar.overflow-x-auto > * { scroll-snap-align: start; }
+
+  /* Form fields: 16px stops iOS zooming on focus; 48px tap targets. */
+  .field { font-size: 16px; }
+  .field:not(textarea) { min-height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

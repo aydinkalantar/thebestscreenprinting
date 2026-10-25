@@ -11,13 +11,13 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 <Base title={page?.data.title ?? 'Get a Quote | TBSP'} description="Request a custom apparel printing quote from our Downtown LA shop. Screen printing, embroidery, DTF and more. We reply within one business day.">
   <Breadcrumbs items={[{ label: 'Get a quote' }]} />
-  <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
-    <div>
+  <div class="grid gap-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_320px]">
+    <div class="min-w-0">
       <p class="eyebrow">Get a quote</p>
       <h1 class="mt-3 text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white">Tell us what you need</h1>
       <p class="mt-4 text-lg muted max-w-2xl">We reply with a personal quote within one business day. Everything is made in our own shops, and orders start at {business.shopMinimum} pieces.</p>
 
-      <form id="quote-form" class="mt-8 panel-raised p-5 sm:p-7 grid gap-8" novalidate enctype="multipart/form-data">
+      <form id="quote-form" class="mt-8 max-md:mt-6 panel-raised p-4 sm:p-7 grid grid-cols-[minmax(0,1fr)] gap-8" novalidate enctype="multipart/form-data">
         <!-- Filled in when the visitor comes from a product's "Add to quote" panel. -->
         <div id="product-summary" class="hidden panel p-3 sm:p-4 items-center gap-4 bg-zinc-50 dark:bg-white/[0.03]">
           <img data-s="img" alt="" width="80" height="80" hidden class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl object-contain bg-white dark:bg-white/[0.04] border border-zinc-200/80 dark:border-white/10" />
@@ -39,7 +39,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
               <span class="err" data-for="garment"></span>
             </label>
             <label class="label"><span>Quantity</span>
-              <input name="quantity" class="field" type="number" min={business.shopMinimum} inputmode="numeric" placeholder="e.g. 50" required />
+              <input name="quantity" class="field" type="number" min={business.shopMinimum} inputmode="numeric" pattern="[0-9]*" enterkeyhint="next" placeholder="e.g. 50" required />
               <span class="text-[12px] muted">Minimum {business.shopMinimum} pieces</span>
               <span class="err" data-for="quantity"></span>
             </label>
@@ -47,21 +47,21 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
           <div class="grid gap-2" role="group" aria-label="Decoration">
             <span class="label"><span>Decoration <small>(pick any)</small></span></span>
             <div class="flex flex-wrap gap-2">
-              {DECORATIONS.map((d) => <label class="chip cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300"><input type="checkbox" name="decorations" value={d} class="accent-violet-600" />{d}</label>)}
+              {DECORATIONS.map((d) => <label class="chip max-md:h-auto max-md:min-h-[44px] max-md:py-2 max-md:px-4 max-md:text-[14px] cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300"><input type="checkbox" name="decorations" value={d} class="accent-violet-600" />{d}</label>)}
             </div>
           </div>
           <div class="grid gap-2" role="radiogroup" aria-label="Turnaround">
             <span class="label"><span>Turnaround</span></span>
             <div class="flex flex-wrap gap-2">
-              {business.turnaround.map((t, i) => <label class="chip cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300"><input type="radio" name="turnaround" value={t.id} checked={i === 0} class="accent-violet-600" />{t.name} <span class="muted font-medium">· {t.time}{t.fee ? ` · ${t.fee}` : ''}</span></label>)}
+              {business.turnaround.map((t, i) => <label class="chip max-md:h-auto max-md:min-h-[44px] max-md:py-2 max-md:px-4 max-md:text-[14px] cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300"><input type="radio" name="turnaround" value={t.id} checked={i === 0} class="accent-violet-600" />{t.name} <span class="muted font-medium">· {t.time}{t.fee ? ` · ${t.fee}` : ''}</span></label>)}
             </div>
           </div>
           <div class="grid gap-4 sm:grid-cols-2">
             <label class="label"><span>Needed by <small>(optional)</small></span>
-              <input name="deadline" class="field" type="date" />
+              <input name="deadline" class="field min-w-0 appearance-none" type="date" />
             </label>
             <label class="label"><span>Artwork <small>(optional, up to 10 MB)</small></span>
-              <span class="field !h-auto py-2 flex items-center gap-2"><Upload class="w-4 h-4 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><input name="artwork" type="file" class="text-[13px] file:mr-3 file:rounded-lg file:border-0 file:bg-violet-500/10 file:px-3 file:py-1.5 file:text-violet-700 dark:file:text-violet-300 file:font-semibold" accept=".png,.jpg,.jpeg,.webp,.svg,.pdf,.ai,.eps,.psd" /></span>
+              <span class="field !h-auto py-2 flex items-center gap-2 min-w-0"><Upload class="w-4 h-4 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><input name="artwork" type="file" class="min-w-0 w-full text-[13px] file:mr-3 file:rounded-lg file:border-0 file:bg-violet-500/10 file:px-3 file:py-1.5 file:text-violet-700 dark:file:text-violet-300 file:font-semibold" accept=".png,.jpg,.jpeg,.webp,.svg,.pdf,.ai,.eps,.psd" /></span>
               <span class="err" data-for="artwork"></span>
             </label>
           </div>
@@ -73,10 +73,10 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
         <fieldset class="grid gap-5">
           <legend class="text-lg font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2"><span class="w-7 h-7 rounded-full grid place-items-center bg-violet-600 text-white text-xs">2</span>Where should we send the quote?</legend>
           <div class="grid gap-4 sm:grid-cols-2">
-            <label class="label"><span>Name</span><input name="name" class="field" autocomplete="name" required /><span class="err" data-for="name"></span></label>
-            <label class="label"><span>Email</span><input name="email" class="field" type="email" autocomplete="email" required /><span class="err" data-for="email"></span></label>
-            <label class="label"><span>Phone <small>(optional)</small></span><input name="phone" class="field" type="tel" autocomplete="tel" /></label>
-            <label class="label"><span>Company or team <small>(optional)</small></span><input name="company" class="field" autocomplete="organization" /></label>
+            <label class="label"><span>Name</span><input name="name" class="field" autocomplete="name" autocapitalize="words" enterkeyhint="next" required /><span class="err" data-for="name"></span></label>
+            <label class="label"><span>Email</span><input name="email" class="field" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" required /><span class="err" data-for="email"></span></label>
+            <label class="label"><span>Phone <small>(optional)</small></span><input name="phone" class="field" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" /></label>
+            <label class="label"><span>Company or team <small>(optional)</small></span><input name="company" class="field" autocomplete="organization" enterkeyhint="next" /></label>
           </div>
           <label class="label"><span>How did you find us? <small>(optional)</small></span>
             <select name="leadSource" class="field">
@@ -91,11 +91,14 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
         {turnstileKey && <div class="cf-turnstile" data-sitekey={turnstileKey}></div>}
 
         <p class="form-msg hidden rounded-xl px-4 py-3 text-sm font-medium" role="status" aria-live="polite"></p>
-        <button class="btn-primary justify-self-start" type="submit"><Send class="w-4 h-4" aria-hidden="true" /><span>Send my quote request</span></button>
+        <!-- Phones: the submit button stays in reach at the bottom while filling the form. -->
+        <div class="md:contents max-md:sticky max-md:z-10 max-md:bottom-[var(--tabbar-h)] max-md:-mx-4 max-md:-mb-4 max-md:px-4 max-md:py-3 max-md:rounded-b-2xl max-md:bg-white/90 dark:max-md:bg-[#0d0d14]/90 max-md:backdrop-blur-xl max-md:border-t max-md:border-zinc-200/80 dark:max-md:border-white/10">
+          <button class="btn-primary justify-self-start max-md:w-full max-md:h-12 max-md:text-[15px]" type="submit"><Send class="w-4 h-4" aria-hidden="true" /><span>Send my quote request</span></button>
+        </div>
       </form>
     </div>
 
-    <aside class="space-y-4 lg:sticky lg:top-24 self-start lg:mt-[9.5rem]">
+    <aside class="min-w-0 space-y-4 lg:sticky lg:top-24 self-start lg:mt-[9.5rem]">
       <div class="panel-raised p-5">
         <p class="eyebrow">Rather talk?</p>
         <div class="mt-3 space-y-2.5 text-sm">

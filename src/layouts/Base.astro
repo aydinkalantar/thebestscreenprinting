@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import AssistantWidget from '../components/AssistantWidget.astro';
+import MobileTabBar from '../components/MobileTabBar.astro';
 import { business, localBusinessJsonLd } from '../data/business';
 
 interface Props {
@@ -23,7 +24,7 @@ const schema = [localBusinessJsonLd, ...jsonLd];
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonical} />
@@ -35,6 +36,11 @@ const schema = [localBusinessJsonLd, ...jsonLd];
     <meta property="og:url" content={canonical} />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="TBSP" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:image" content={new URL("/icon-512.png", business.url).toString()} />
     <link rel="icon" href="/images/brand/tbsp-favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
@@ -49,26 +55,30 @@ const schema = [localBusinessJsonLd, ...jsonLd];
         const t = localStorage.getItem('theme');
         const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.classList.add(dark ? 'dark' : 'light');
+        // A saved choice can differ from the OS: point both theme-color metas at it.
+        if (t) document.querySelectorAll('meta[name="theme-color"]').forEach((m) => { m.content = dark ? '#0a0a0f' : '#ffffff'; });
       } catch {}
     </script>
     {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col" data-home={Astro.url.pathname === '/' ? '' : undefined}>
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 btn-primary btn-sm z-[60]">Skip to content</a>
     <Header />
     <main id="main" class="flex-1">
-      {bare ? <slot /> : <div class="wrap py-10 sm:py-14"><slot /></div>}
+      {bare ? <slot /> : <div class="wrap pt-4 pb-8 md:py-14"><slot /></div>}
     </main>
     <Footer />
     <AssistantWidget />
+    <MobileTabBar />
     <script is:inline>
-      document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+      document.querySelectorAll('[data-theme-toggle]').forEach((b) => b.addEventListener('click', () => {
         const root = document.documentElement;
         const next = root.classList.contains('dark') ? 'light' : 'dark';
         root.classList.remove('dark', 'light');
         root.classList.add(next);
+        document.querySelectorAll('meta[name="theme-color"]').forEach((m) => { m.content = next === 'dark' ? '#0a0a0f' : '#ffffff'; });
         try { localStorage.setItem('theme', next); } catch {}
-      });
+      }));
     </script>
   </body>
 </html>

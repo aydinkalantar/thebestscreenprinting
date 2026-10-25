@@ -5,6 +5,7 @@ import ProductCard from '../ProductCard.astro';
 import { type CatalogProduct, CATEGORY_LABELS } from '../../lib/catalog';
 import { COLOR_FAMILIES, DECORATION_FILTERS, productFamilies, productDecorations } from './browse';
 import { SlidersHorizontal, RotateCcw, X } from '@lucide/astro';
+const sheetLabel = 'md:hidden text-[11px] font-bold uppercase tracking-[0.1em] muted -mb-1';
 
 interface Props { products: CatalogProduct[]; /** Hide the brand select (brand pages). */ hideBrand?: boolean }
 const { products, hideBrand = false } = Astro.props;
@@ -19,48 +20,75 @@ const decorations = DECORATION_FILTERS.filter((d) => rows.some((r) => r.decos.in
 const showBrand = !hideBrand && brands.length > 1;
 const labels = { ...CATEGORY_LABELS };
 ---
-<div data-browser data-labels={JSON.stringify(labels)} class="mt-8">
-  <div class="panel p-3 sm:p-4 grid gap-3">
+<div data-browser data-labels={JSON.stringify(labels)} class="mt-8 max-md:mt-4">
+  <!-- Phones: sticky "Filter & sort" row; the filter panel below becomes a bottom sheet. -->
+  <div class="md:hidden sticky z-30 -mx-4 px-4 py-2.5 flex items-center gap-3 bg-white/90 dark:bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-zinc-200/80 dark:border-white/10 transition-[top] duration-200" style="top: var(--hdr-offset)">
+    <button type="button" data-filter-open aria-haspopup="dialog" class="press inline-flex items-center gap-2 h-10 pl-3.5 pr-4 rounded-full border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.04] text-[14px] font-semibold text-zinc-900 dark:text-white">
+      <SlidersHorizontal class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Filter &amp; sort
+      <span data-filter-count class="hidden min-w-[20px] h-5 px-1.5 rounded-full bg-violet-600 text-white text-[11px] font-bold place-items-center"></span>
+    </button>
+    <p class="ml-auto text-[13px] muted"><b data-count class="text-zinc-900 dark:text-white">{products.length}</b> <span data-count-word>{products.length === 1 ? 'product' : 'products'}</span></p>
+  </div>
+
+  <div data-filter-sheet data-sheet="bottom-mobile" data-sheet-persist aria-label="Filter and sort" class="max-md:fixed max-md:inset-0 max-md:z-[90]">
+  <div class="md:hidden absolute inset-0 bg-black/40" data-sheet-backdrop data-sheet-close></div>
+  <div data-sheet-panel class="panel p-3 sm:p-4 grid gap-3 max-md:absolute max-md:inset-x-0 max-md:bottom-0 max-md:!p-0 max-md:gap-0 max-md:rounded-b-none max-md:rounded-t-3xl max-md:border-x-0 max-md:border-b-0 max-md:max-h-[88dvh] max-md:flex max-md:flex-col">
+    <div class="md:hidden shrink-0 px-4 pt-2 pb-3 border-b border-zinc-200/80 dark:border-white/10" data-sheet-grip>
+      <span class="block mx-auto w-10 h-1.5 rounded-full bg-zinc-300 dark:bg-white/20" aria-hidden="true"></span>
+      <div class="mt-2 flex items-center justify-between">
+        <p class="text-[17px] font-bold text-zinc-900 dark:text-white">Filter &amp; sort</p>
+        <button type="button" class="icon-btn w-10 h-10 rounded-xl" data-sheet-close aria-label="Close filters"><X class="w-[18px] h-[18px]" aria-hidden="true" /></button>
+      </div>
+    </div>
+    <div class="md:contents max-md:flex-1 max-md:overflow-y-auto max-md:overscroll-contain max-md:p-4 max-md:grid max-md:gap-4 max-md:content-start">
+    <p class={sheetLabel}>Sort{showBrand ? ' & brand' : ''}</p>
     <div class="flex flex-wrap items-center gap-2.5">
       <span class="hidden sm:inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-700 dark:text-zinc-300"><SlidersHorizontal class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Filter</span>
       {showBrand && (
         <label class="flex-1 min-w-[9rem] sm:flex-none sm:w-48"><span class="sr-only">Brand</span>
-          <select data-f="brand" class="field !h-9 !text-[13px] !rounded-full !py-0">
+          <select data-f="brand" class="field !h-9 !text-[13px] !rounded-full !py-0 max-md:!h-11 max-md:!text-base">
             <option value="">All brands</option>
             {brands.map((b) => <option value={b.slug}>{b.name} ({b.count})</option>)}
           </select>
         </label>
       )}
       <label class="flex-1 min-w-[9rem] sm:flex-none sm:w-44"><span class="sr-only">Sort</span>
-        <select data-f="sort" class="field !h-9 !text-[13px] !rounded-full !py-0">
+        <select data-f="sort" class="field !h-9 !text-[13px] !rounded-full !py-0 max-md:!h-11 max-md:!text-base">
           <option value="">Sort: Featured</option>
           <option value="name">Sort: Name A–Z</option>
           <option value="colors">Sort: Most colors</option>
         </select>
       </label>
-      <p class="sm:ml-auto w-full sm:w-auto text-[13px] muted" aria-live="polite"><b data-count class="text-zinc-900 dark:text-white">{products.length}</b> <span data-count-word>{products.length === 1 ? 'product' : 'products'}</span></p>
+      <p class="max-md:hidden sm:ml-auto w-full sm:w-auto text-[13px] muted" aria-live="polite"><b data-count class="text-zinc-900 dark:text-white">{products.length}</b> <span data-count-word>{products.length === 1 ? 'product' : 'products'}</span></p>
     </div>
+    {families.length > 1 && <p class={sheetLabel}>Color</p>}
     {families.length > 1 && (
-      <div class="-mx-3 sm:-mx-4 px-3 sm:px-4 flex gap-2 overflow-x-auto no-scrollbar" role="group" aria-label="Color">
+      <div class="-mx-3 sm:-mx-4 px-3 sm:px-4 flex gap-2 overflow-x-auto no-scrollbar max-md:!mx-0 max-md:!px-0 max-md:flex-wrap max-md:overflow-visible" role="group" aria-label="Color">
         {families.map((f) => (
-          <button type="button" class="chip shrink-0 !h-8 !px-3" data-color={f.id} aria-pressed="false">
+          <button type="button" class="chip shrink-0 !h-8 !px-3 max-md:!h-10 max-md:!px-3.5" data-color={f.id} aria-pressed="false">
             <span class="w-3.5 h-3.5 rounded-full border border-zinc-300 dark:border-white/25" style={`background:${f.hex}`} aria-hidden="true"></span>{f.label}
           </button>
         ))}
       </div>
     )}
+    {decorations.length > 1 && <p class={sheetLabel}>Decoration</p>}
     {decorations.length > 1 && (
-      <div class="-mx-3 sm:-mx-4 px-3 sm:px-4 flex gap-2 overflow-x-auto no-scrollbar" role="group" aria-label="Decoration">
-        {decorations.map((d) => <button type="button" class="chip shrink-0 !h-8 !px-3" data-deco={d.id} aria-pressed="false">{d.label}</button>)}
+      <div class="-mx-3 sm:-mx-4 px-3 sm:px-4 flex gap-2 overflow-x-auto no-scrollbar max-md:!mx-0 max-md:!px-0 max-md:flex-wrap max-md:overflow-visible" role="group" aria-label="Decoration">
+        {decorations.map((d) => <button type="button" class="chip shrink-0 !h-8 !px-3 max-md:!h-10 max-md:!px-3.5" data-deco={d.id} aria-pressed="false">{d.label}</button>)}
       </div>
     )}
     <div data-active class="hidden flex-wrap items-center gap-2">
       <span data-legacy class="hidden"></span>
       <button type="button" data-reset class="btn-quiet btn-sm !h-8"><RotateCcw class="w-3.5 h-3.5" aria-hidden="true" />Clear filters</button>
     </div>
+    </div>
+    <div class="md:hidden shrink-0 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] border-t border-zinc-200/80 dark:border-white/10">
+      <button type="button" data-sheet-close class="btn-primary w-full h-12 text-[15px]"><span>Show <span data-count>{products.length}</span> <span data-count-word>{products.length === 1 ? 'product' : 'products'}</span></span></button>
+    </div>
+  </div>
   </div>
 
-  <ul data-grid class="mt-8 grid gap-x-5 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  <ul data-grid class="mt-8 max-md:mt-4 grid gap-x-3 gap-y-6 md:gap-x-5 md:gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     {rows.map(({ p, i, families: fam, decos }) => (
       <li data-i={i} data-featured={p.featured ? '1' : '0'} data-name={p.name.toLowerCase()} data-colors={p.colors.length}
         data-brand={p.brand ? slug(p.brand) : ''} data-families={fam.join(' ')} data-decos={decos.join(' ')}
@@ -82,6 +110,8 @@ const labels = { ...CATEGORY_LABELS };
 <template id="legacy-chip"><button type="button" class="chip is-on !h-8 !px-3" data-legacy-clear><span></span><X class="w-3.5 h-3.5" aria-hidden="true" /></button></template>
 
 <script>
+  import { openSheet, closeSheet, wireSheet } from '../../lib/sheet';
+
   document.querySelectorAll<HTMLElement>('[data-browser]').forEach((root) => {
     const grid = root.querySelector<HTMLElement>('[data-grid]')!;
     const items = [...grid.querySelectorAll<HTMLElement>('li[data-i]')];
@@ -89,8 +119,9 @@ const labels = { ...CATEGORY_LABELS };
     const sortSel = root.querySelector<HTMLSelectElement>('[data-f="sort"]')!;
     const colorChips = [...root.querySelectorAll<HTMLButtonElement>('[data-color]')];
     const decoChips = [...root.querySelectorAll<HTMLButtonElement>('[data-deco]')];
-    const count = root.querySelector('[data-count]')!;
-    const countWord = root.querySelector('[data-count-word]')!;
+    const counts = [...root.querySelectorAll('[data-count]')];
+    const countWords = [...root.querySelectorAll('[data-count-word]')];
+    const badge = root.querySelector<HTMLElement>('[data-filter-count]');
     const empty = root.querySelector<HTMLElement>('[data-empty]')!;
     const active = root.querySelector<HTMLElement>('[data-active]')!;
     const legacySlot = root.querySelector<HTMLElement>('[data-legacy]')!;
@@ -137,14 +168,16 @@ const labels = { ...CATEGORY_LABELS };
         return Number(b.dataset.featured) - Number(a.dataset.featured) || Number(a.dataset.i) - Number(b.dataset.i);
       });
       sorted.forEach((li) => grid.appendChild(li));
-      count.textContent = String(shown);
-      countWord.textContent = shown === 1 ? 'product' : 'products';
+      counts.forEach((c) => { c.textContent = String(shown); });
+      countWords.forEach((c) => { c.textContent = shown === 1 ? 'product' : 'products'; });
       empty.hidden = shown > 0;
       grid.classList.toggle('hidden', shown === 0);
       grid.classList.toggle('grid', shown > 0);
       colorChips.forEach((c) => { const on = state.colors.has(c.dataset.color!); c.classList.toggle('is-on', on); c.setAttribute('aria-pressed', String(on)); });
       decoChips.forEach((c) => { const on = state.decos.has(c.dataset.deco!); c.classList.toggle('is-on', on); c.setAttribute('aria-pressed', String(on)); });
       const filtered = !!(state.brand || state.colors.size || state.decos.size || state.cat || state.sub);
+      const n = (state.brand ? 1 : 0) + state.colors.size + state.decos.size + (state.cat || state.sub ? 1 : 0) + (state.sort ? 1 : 0);
+      if (badge) { badge.textContent = String(n); badge.classList.toggle('hidden', !n); badge.classList.toggle('grid', !!n); }
       active.classList.toggle('hidden', !filtered);
       active.classList.toggle('flex', filtered);
       legacySlot.replaceChildren();
@@ -173,5 +206,24 @@ const labels = { ...CATEGORY_LABELS };
       update();
     }));
     apply();
+
+    // Phones: the filter panel is a bottom sheet.
+    const sheet = root.querySelector<HTMLElement>('[data-filter-sheet]');
+    const opener = root.querySelector<HTMLElement>('[data-filter-open]');
+    if (sheet && opener) {
+      wireSheet(sheet);
+      opener.addEventListener('click', () => {
+        sheet.setAttribute('role', 'dialog');
+        sheet.setAttribute('aria-modal', 'true');
+        opener.setAttribute('aria-expanded', 'true');
+        openSheet(sheet, { focus: sheet.querySelector<HTMLElement>('[data-sheet-grip] [data-sheet-close]'), onClose: () => {
+          sheet.removeAttribute('role'); sheet.removeAttribute('aria-modal'); opener.setAttribute('aria-expanded', 'false');
+          // Land on the top of the results after changing filters.
+          const top = root.getBoundingClientRect().top + scrollY - 64;
+          if (scrollY > top) scrollTo({ top, behavior: 'instant' as ScrollBehavior });
+        } });
+      });
+      matchMedia('(min-width: 768px)').addEventListener('change', (e) => { if (e.matches) closeSheet(sheet); });
+    }
   });
 </script>
