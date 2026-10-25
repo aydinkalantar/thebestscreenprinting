@@ -2,11 +2,22 @@
 import { type CatalogProduct } from '../lib/catalog';
 interface Props { p: CatalogProduct }
 const { p } = Astro.props;
+// Hover shows another photo of the style when there is one.
+const alt = p.images.find((i) => i && i !== p.image);
+const swatches = p.colors.slice(0, 6);
+const more = p.colors.length - swatches.length;
 ---
-<a href={`/catalog/${p.slug}/`} class="group flex flex-col gap-2.5">
-  <span class="block aspect-square overflow-hidden rounded-2xl border border-zinc-200/80 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
-    <img src={p.image} alt={p.name} loading="lazy" width="400" height="400" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+<a href={`/catalog/${p.slug}/`} class="group flex flex-col gap-2">
+  <span class="relative block aspect-square overflow-hidden rounded-2xl border border-zinc-200/80 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
+    <img src={p.image} alt={p.name} loading="lazy" width="400" height="400" class:list={['w-full h-full object-contain transition-all duration-300 group-hover:scale-105', { 'group-hover:opacity-0': alt }]} />
+    {alt && <img src={alt} alt="" aria-hidden="true" loading="lazy" width="400" height="400" class="absolute inset-0 w-full h-full object-contain opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-105" />}
   </span>
-  <span class="text-[14px] font-semibold leading-snug text-zinc-900 dark:text-white group-hover:text-violet-700 dark:group-hover:text-violet-300">{p.name}</span>
-  <span class="text-[13px] muted">{p.brand}{p.colors.length > 1 ? ` · ${p.colors.length} colors` : ''}</span>
+  {p.brand && <span class="text-[12px] font-medium muted">{p.brand}{p.style ? ` · ${p.style}` : ''}</span>}
+  <span class="-mt-1 text-[14px] font-semibold leading-snug text-zinc-900 dark:text-white group-hover:text-violet-700 dark:group-hover:text-violet-300">{p.name}</span>
+  {swatches.length > 0 && (
+    <span class="flex items-center gap-1" role="img" aria-label={`${p.colors.length} color${p.colors.length === 1 ? '' : 's'}`}>
+      {swatches.map((c) => <span class="w-3.5 h-3.5 rounded-full border border-zinc-300 dark:border-white/20" style={`background:${c.hex}`} title={c.name}></span>)}
+      {more > 0 && <span class="ml-0.5 text-[12px] font-medium muted">+{more}</span>}
+    </span>
+  )}
 </a>

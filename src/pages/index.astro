@@ -9,7 +9,8 @@ import VideoGrid from '../components/VideoGrid.astro';
 import HeroStudio from '../components/HeroStudio.astro';
 import { VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
-import { products } from '../lib/catalog';
+import { products, featuredProducts } from '../lib/catalog';
+import { collectionTiles, brandTiles, styles } from '../components/home/collections';
 import {
   ArrowRight, Phone, MapPin, Clock, Shirt, Scissors, Layers, Flame, Stamp, Printer, Maximize, Zap,
   Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck,
@@ -39,20 +40,11 @@ const audiences = [
   { href: '/for/schools/', icon: GraduationCap, name: 'Schools' },
   { href: '/for/non-profits/', icon: HeartHandshake, name: 'Non-profits' },
 ];
-const categories = [
-  { name: 'T-shirts', href: '/products/t-shirts/', img: 'https://cdn.ssactivewear.com/Images/Style/16_fl.jpg' },
-  { name: 'Hoodies', href: '/products/sweatshirts-hoodies/custom-hoodies/', img: 'https://cdn.ssactivewear.com/Images/Style/1828_fl.jpg' },
-  { name: 'Sweatshirts', href: '/products/sweatshirts-hoodies/custom-sweatshirts/', img: 'https://cdn.ssactivewear.com/Images/Style/372_fl.jpg' },
-  { name: 'Hats', href: '/products/hats/', img: 'https://cdn.ssactivewear.com/Images/Style/4332_fl.jpg' },
-  { name: 'Polos & business wear', href: '/products/business-and-polos-landings/', img: 'https://cdn.ssactivewear.com/Images/Style/7269_fl.jpg' },
-  { name: 'Jackets & pullovers', href: '/products/outwear/', img: 'https://cdn.ssactivewear.com/Images/Style/5996_fl.jpg' },
-  { name: 'Long sleeves', href: '/catalog/?sub=long-sleeves', img: 'https://cdn.ssactivewear.com/Images/Style/2217_fl.jpg' },
-  { name: 'Tank tops', href: '/catalog/?sub=tank-tops', img: 'https://cdn.ssactivewear.com/Images/Style/2766_fl.jpg' },
-  { name: 'Team jerseys', href: '/products/team-uniforms-jerseys/', img: 'https://cdn.ssactivewear.com/Images/Style/1892_fl.jpg' },
-  { name: 'Bags & totes', href: '/products/bags/', img: 'https://cdn.ssactivewear.com/Images/Style/1909_fl.jpg' },
-  { name: 'Beanies', href: '/catalog/?sub=beanies', img: 'https://cdn.ssactivewear.com/Images/Style/3015_fl.jpg' },
-  { name: 'Kids & youth', href: '/catalog/?cat=kids', img: 'https://cdn.ssactivewear.com/Images/Style/543_fl.jpg' },
-];
+// Collection tiles: every non-empty collection, linked to its page with a style count.
+// Twelve keeps the 2/3/4-column grid even, so the smallest extra collections drop off.
+const categories = collectionTiles.length > 12
+  ? collectionTiles.filter((c) => [...collectionTiles].sort((a, b) => b.count - a.count).slice(0, 12).includes(c))
+  : collectionTiles;
 const trust = [
   { icon: BadgeCheck, t: 'Free art check on every order' },
   business.studioLive
@@ -61,7 +53,7 @@ const trust = [
   { icon: Zap, t: 'Normal, Rush & Super Rush' },
   { icon: MapPin, t: 'Made in Los Angeles & Cleveland' },
 ];
-const brands = ['Gildan', 'Bella+Canvas', 'Comfort Colors', 'Port Authority', 'adidas', 'Yupoong', 'Cotton Heritage', 'Stanley/Stella', 'A4'];
+const brands = brandTiles(10);
 const aiPrompts = ['50 black tees with our logo', 'Embroidered hats for my crew', 'Hoodies for a school club', 'Merch for a band tour'];
 const steps = [
   { icon: MessageSquareText, name: 'Tell us the idea', line: 'Garment, quantity, deadline and your art. A rough sketch is plenty to start.' },
@@ -78,7 +70,7 @@ const faqs = [
   { q: 'How fast can you print?', a: 'Choose Normal, Rush or Super Rush turnaround. Tell us your deadline with your quote request and we will confirm the timing for your order.' },
   { q: 'How do I get a price?', a: 'Request a quote with your garment, quantity, print locations and artwork. We reply with a personal quote within one business day.' },
 ];
-const featured = products.filter((p) => ['apparel', 'sweatshirts', 'hats'].includes(p.category)).slice(0, 8);
+const bestSellers = featuredProducts.slice(0, 8);
 const homeVideos = [VIDEOS.reel, VIDEOS.netflix];
 const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   '@context': 'https://schema.org',
@@ -140,10 +132,24 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
       {categories.map((c) => (
         <a href={c.href} class="group panel p-3 hover:shadow-[0_18px_44px_-24px_rgba(52,33,110,0.45)] hover:border-violet-400/60 transition-all">
           <span class="block aspect-[5/4] rounded-xl bg-zinc-100 overflow-hidden"><img src={c.img} alt="" loading="lazy" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" /></span>
-          <span class="block py-3 text-center font-semibold text-zinc-900 dark:text-white">{c.name}</span>
+          <span class="block pt-3 pb-2 text-center leading-snug"><span class="block font-semibold text-zinc-900 dark:text-white">{c.label}</span><span class="block text-[13px] muted">{styles(c.count)}</span></span>
         </a>
       ))}
     </div>
+  </section>
+
+  <!-- Best sellers -->
+  <section class="wrap mt-20" aria-labelledby="best-title">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="eyebrow">Best sellers</p>
+        <h2 id="best-title" class="section-title mt-2">The blanks our crews order most</h2>
+      </div>
+      <a href="/catalog/" class="inline-flex items-center gap-1 font-semibold text-zinc-900 dark:text-white hover:text-violet-700 dark:hover:text-violet-300">Shop all {products.length} styles<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+    </div>
+    <ul class="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0 flex sm:grid sm:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory no-scrollbar">
+      {bestSellers.map((p) => <li class="w-[44%] shrink-0 sm:w-auto snap-start"><ProductCard p={p} /></li>)}
+    </ul>
   </section>
 
   <!-- AI full-service banner (only while the studio, where Max lives, is live) -->
@@ -221,10 +227,16 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   <!-- Brands -->
   <section class="wrap mt-24" aria-labelledby="brands-title">
     <h2 id="brands-title" class="text-3xl font-bold text-center text-zinc-900 dark:text-white">Brands we print on</h2>
-    <ul class="mt-8 grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-3">
-      {brands.map((b) => <li class="h-20 rounded-2xl bg-zinc-100 dark:bg-white/[0.05] grid place-items-center px-2 text-center font-display font-extrabold tracking-tight text-zinc-800 dark:text-zinc-100">{b}</li>)}
+    <p class="mt-2 text-center muted">Shop by brand: the names your crew already knows.</p>
+    <ul class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+      {brands.map((b) => (
+        <li><a href={b.href} class="h-20 rounded-2xl bg-zinc-100 dark:bg-white/[0.05] border border-transparent hover:border-violet-400/60 hover:bg-white dark:hover:bg-white/[0.08] transition-colors flex flex-col items-center justify-center px-2 text-center">
+          <span class="font-display font-extrabold tracking-tight leading-tight text-zinc-800 dark:text-zinc-100">{b.name}</span>
+          <span class="mt-0.5 text-[12px] muted">{styles(b.count)}</span>
+        </a></li>
+      ))}
     </ul>
-    <p class="mt-5 text-center"><a href="/catalog/" class="inline-flex items-center gap-1 font-semibold text-zinc-900 dark:text-white hover:text-violet-700">Browse the catalog<ArrowRight class="w-4 h-4" aria-hidden="true" /></a></p>
+    <p class="mt-5 text-center"><a href="/catalog/" class="inline-flex items-center gap-1 font-semibold text-zinc-900 dark:text-white hover:text-violet-700 dark:hover:text-violet-300">Browse the catalog<ArrowRight class="w-4 h-4" aria-hidden="true" /></a></p>
   </section>
 
   <!-- Clients -->

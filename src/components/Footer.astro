@@ -3,6 +3,7 @@ import BrandMark from './BrandMark.astro';
 import { business } from '../data/business';
 import { VIDEOS } from '../data/videos';
 import { Phone, Mail, Sparkles, MapPin, Play } from '@lucide/astro';
+import { collectionHref } from '../lib/catalog';
 
 const about: [string, string][] = [
   ['About TBSP', '/about-us/'], ['Los Angeles facility', '/los-angeles-ca/'], ['Cleveland facility', '/cleveland-oh/'],
@@ -12,9 +13,13 @@ const service: [string, string][] = [
   ['Get a quote', '/quick-quote/'], ['Help center', '/help-center/'], ['FAQ', '/faq/'], ['Turnaround options', '/learn-delivery-time/'],
   ['Shipping & delivery', '/shipping-and-delivery/'], ['Design tips', '/helpful-design-tips/'],
 ];
+const shop: [string, string][] = [
+  ['T-shirts', collectionHref('t-shirts')], ['Hoodies', collectionHref('hoodies')], ['Hats & caps', collectionHref('hats')],
+  ['Polos', collectionHref('polos')], ['Bags & totes', collectionHref('bags')], ['All products', '/catalog/'],
+];
 const account: [string, string][] = business.studioLive
   ? [['Sign in', `${business.studioUrl}/login`], ['Track your order', `${business.studioUrl}/orders`], ['Saved designs', `${business.studioUrl}/studio`]]
-  : [['Custom projects', '/custom-projects/'], ['Product catalog', '/catalog/'], ['Rush & Super Rush', '/same-day-t-shirt-printing-los-angeles/']];
+  : [['Custom projects', '/custom-projects/'], ['Rush & Super Rush', '/same-day-t-shirt-printing-los-angeles/']];
 const social: [string, string][] = [
   ['Instagram', 'https://www.instagram.com/tbsp.la/'], ['YouTube', 'https://www.youtube.com/c/Thebestscreenprinting'],
   ['Facebook', 'https://www.facebook.com/TheBestScreenPrinting/'], ['Yelp', 'https://www.yelp.com/biz/the-best-screen-printing-and-embroidery-los-angeles-2'],
@@ -43,13 +48,19 @@ const col = 'text-[15px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 da
         <ul class="space-y-2">{about.map(([l, h]) => <li><a class={col} href={h}>{l}</a></li>)}</ul>
       </div>
       <div>
-        <p class="font-bold text-zinc-900 dark:text-white mb-3">{business.studioLive ? 'Your account' : 'Shop'}</p>
+        <p class="font-bold text-zinc-900 dark:text-white mb-3">{business.studioLive ? 'Your account' : 'Custom orders'}</p>
         <ul class="space-y-2">{account.map(([l, h]) => <li><a class={col} href={h} rel={h.startsWith('http') ? 'nofollow' : undefined}>{l}</a></li>)}</ul>
       </div>
     </div>
-    <div>
-      <p class="font-bold text-zinc-900 dark:text-white mb-3">Service center</p>
-      <ul class="space-y-2">{service.map(([l, h]) => <li><a class={col} href={h}>{l}</a></li>)}</ul>
+    <div class="space-y-8">
+      <div>
+        <p class="font-bold text-zinc-900 dark:text-white mb-3">Shop</p>
+        <ul class="space-y-2">{shop.map(([l, h]) => <li><a class={col} href={h}>{l}</a></li>)}</ul>
+      </div>
+      <div>
+        <p class="font-bold text-zinc-900 dark:text-white mb-3">Service center</p>
+        <ul class="space-y-2">{service.map(([l, h]) => <li><a class={col} href={h}>{l}</a></li>)}</ul>
+      </div>
     </div>
     <div class="space-y-5">
       <div>

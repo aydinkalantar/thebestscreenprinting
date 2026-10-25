@@ -24,3 +24,33 @@ export function customizeHref(p: CatalogProduct) {
     ? `${business.studioUrl}/studio?product=${encodeURIComponent(p.id)}`
     : `/quick-quote/?details=${encodeURIComponent(`${p.name}: `)}`;
 }
+
+const slugify = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+/** Shopper-facing collections. Each gets a page at /catalog/category/<slug>/. */
+export const COLLECTIONS: { slug: string; label: string; match: (p: CatalogProduct) => boolean }[] = [
+  { slug: 't-shirts', label: 'T-shirts', match: (p) => p.subcategory === 't-shirts' && !['kids', 'womens'].includes(p.category) },
+  { slug: 'long-sleeves', label: 'Long sleeve shirts', match: (p) => p.subcategory === 'long-sleeves' },
+  { slug: 'hoodies', label: 'Hoodies', match: (p) => p.category === 'sweatshirts' && ['hoodies', 'zip-hoodies'].includes(p.subcategory ?? '') },
+  { slug: 'crewnecks', label: 'Crewneck sweatshirts', match: (p) => p.subcategory === 'crewnecks' },
+  { slug: 'polos', label: 'Polos', match: (p) => p.subcategory === 'polos' },
+  { slug: 'hats', label: 'Hats & caps', match: (p) => p.category === 'hats' && p.subcategory !== 'beanies' },
+  { slug: 'beanies', label: 'Beanies', match: (p) => p.subcategory === 'beanies' },
+  { slug: 'tank-tops', label: 'Tank tops', match: (p) => ['tank-tops', 'crop-tops'].includes(p.subcategory ?? '') },
+  { slug: 'sweatpants-shorts', label: 'Sweatpants & shorts', match: (p) => p.category === 'pants' },
+  { slug: 'jackets', label: 'Jackets', match: (p) => p.category === 'outerwear' },
+  { slug: 'bags', label: 'Bags & totes', match: (p) => p.category === 'accessories' },
+  { slug: 'womens', label: "Women's", match: (p) => p.category === 'womens' },
+  { slug: 'kids', label: 'Kids & youth', match: (p) => p.category === 'kids' },
+];
+export const collectionProducts = (slug: string) => products.filter(COLLECTIONS.find((c) => c.slug === slug)!.match);
+export const collectionHref = (slug: string) => `/catalog/category/${slug}/`;
+
+/** Brands we carry, most products first. Each gets a page at /catalog/brand/<slug>/. */
+export const BRANDS = [...new Set(products.map((p) => p.brand).filter(Boolean) as string[])]
+  .map((name) => ({ name, slug: slugify(name), count: products.filter((p) => p.brand === name).length }))
+  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+export const brandHref = (brand: string) => `/catalog/brand/${slugify(brand)}/`;
+
+/** Featured styles, in catalog order: the "best sellers" rows. */
+export const featuredProducts = products.filter((p) => p.featured);

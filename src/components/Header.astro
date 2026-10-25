@@ -4,12 +4,15 @@
 import BrandMark from './BrandMark.astro';
 import { business } from '../data/business';
 import { NAV } from '../data/nav';
+import { products } from '../lib/catalog';
+import { collectionTiles, brandTiles, styles } from './home/collections';
 import { Search, Phone, Sparkles, Moon, Sun, Menu, ChevronDown, ArrowRight, Wand2, Upload, Type, MessageSquareText, User, ShoppingBag, X } from '@lucide/astro';
 const here = Astro.url.pathname;
 const aiHref = '/quick-quote/';
 // Max lives in the studio, so it is only offered while the studio is live.
 const max = business.studioLive;
 const nav = NAV.filter((m) => max || m.feature !== 'ai');
+const menuBrands = brandTiles(8);
 ---
 <div class="bg-zinc-900 dark:bg-black text-white text-[13px]">
   <div class="wrap h-9 flex items-center justify-center gap-2 text-center">
@@ -63,7 +66,31 @@ const nav = NAV.filter((m) => max || m.feature !== 'ai');
           <div class="invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-150 absolute left-0 right-0 top-full pt-0">
             <div class="wrap">
               <div class="panel-raised rounded-t-none p-8">
-                {m.feature === 'ai' ? (
+                {m.feature === 'products' ? (
+                  <div class="grid grid-cols-[minmax(0,1fr)_230px] gap-8">
+                    <div class="min-w-0">
+                      <div class="flex items-baseline justify-between gap-4">
+                        <p class="eyebrow">Shop by category</p>
+                        <a href="/catalog/" class="inline-flex items-center gap-1 text-sm font-semibold text-violet-700 dark:text-violet-300 hover:underline">View all {products.length} products<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+                      </div>
+                      <ul class="mt-3 grid grid-cols-4 gap-1">
+                        {collectionTiles.map((c) => (
+                          <li><a href={c.href} class="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06] group/c">
+                            <span class="w-12 h-12 shrink-0 rounded-lg bg-zinc-100 overflow-hidden"><img src={c.img} alt="" width="48" height="48" loading="lazy" decoding="async" class="w-full h-full object-contain mix-blend-multiply" /></span>
+                            <span class="min-w-0 leading-tight"><span class="block text-[14px] font-semibold text-zinc-900 dark:text-white group-hover/c:text-violet-700 dark:group-hover/c:text-violet-300">{c.label}</span><span class="block mt-0.5 text-[12px] muted">{styles(c.count)}</span></span>
+                          </a></li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div class="border-l border-zinc-200/80 dark:border-white/10 pl-8">
+                      <p class="eyebrow">Shop by brand</p>
+                      <ul class="mt-3 space-y-2">
+                        {menuBrands.map((b) => <li><a href={b.href} class="flex items-baseline justify-between gap-2 text-[15px] text-zinc-700 dark:text-zinc-300 hover:text-violet-700 dark:hover:text-violet-300">{b.name}<span class="text-[12px] muted">{b.count}</span></a></li>)}
+                      </ul>
+                      <a href="/catalog/" class="btn-quiet btn-sm mt-5 w-full">View all products</a>
+                    </div>
+                  </div>
+                ) : m.feature === 'ai' ? (
                   <div class="grid grid-cols-[1.2fr_1fr_1fr_1fr] gap-8 items-center">
                     <div>
                       <p class="eyebrow">Design studio</p>
@@ -129,7 +156,24 @@ const nav = NAV.filter((m) => max || m.feature !== 'ai');
   <div class="absolute right-0 top-0 bottom-0 w-[86%] max-w-sm bg-white dark:bg-[#0d0d14] overflow-y-auto p-4">
     <div class="flex items-center justify-between mb-4"><BrandMark size="sm" /><button class="icon-btn" type="button" aria-label="Close menu" data-menu-close><X class="w-4 h-4" aria-hidden="true" /></button></div>
     <a href={aiHref} data-ask-ai class="btn-primary w-full mb-3"><Sparkles class="w-4 h-4" aria-hidden="true" />{max ? 'Ask Max' : 'Get a quote'}</a>
-    {nav.map((m) => m.columns ? (
+    {nav.map((m) => m.feature === 'products' ? (
+      <details class="border-b border-zinc-200/80 dark:border-white/10">
+        <summary class="flex items-center justify-between py-3.5 font-bold text-zinc-900 dark:text-white cursor-pointer">{m.label}<ChevronDown class="chev w-4 h-4 transition-transform" aria-hidden="true" /></summary>
+        <ul class="pb-2 space-y-1">
+          {collectionTiles.map((c) => (
+            <li><a class="flex items-center gap-3 py-1" href={c.href}>
+              <span class="w-9 h-9 shrink-0 rounded-lg bg-zinc-100 overflow-hidden"><img src={c.img} alt="" width="36" height="36" loading="lazy" decoding="async" class="w-full h-full object-contain mix-blend-multiply" /></span>
+              <span class="text-[15px] text-zinc-700 dark:text-zinc-300">{c.label} <span class="text-[12px] muted">· {c.count}</span></span>
+            </a></li>
+          ))}
+        </ul>
+        <p class="pt-2 pb-1.5 text-[11px] font-bold uppercase tracking-[0.1em] muted">Shop by brand</p>
+        <ul class="pb-3 space-y-2.5 pl-1">
+          {menuBrands.map((b) => <li><a class="text-[15px] text-zinc-700 dark:text-zinc-300" href={b.href}>{b.name}</a></li>)}
+          <li><a class="text-[15px] font-semibold text-violet-700 dark:text-violet-300" href="/catalog/">View all {products.length} products</a></li>
+        </ul>
+      </details>
+    ) : m.columns ? (
       <details class="border-b border-zinc-200/80 dark:border-white/10">
         <summary class="flex items-center justify-between py-3.5 font-bold text-zinc-900 dark:text-white cursor-pointer">{m.label}<ChevronDown class="chev w-4 h-4 transition-transform" aria-hidden="true" /></summary>
         <ul class="pb-3 space-y-2.5 pl-1">
@@ -155,23 +199,45 @@ const nav = NAV.filter((m) => max || m.feature !== 'ai');
     if (open) { e.preventDefault(); drawer?.classList.add('hidden'); open.click(); }
   }));
 
-  // Search + AI box
-  type Hit = { t: string; u: string; k: 'page' | 'product'; i?: string };
+  // Search + AI box. Each word must appear in the title or hidden keywords; products rank first,
+  // then collection/brand pages, then content pages. A word that is a whole token of the title
+  // (a style number like "5000", a brand) outranks a partial match.
+  type Hit = { t: string; u: string; k: 'page' | 'product' | 'collection' | 'brand'; i?: string; s?: string; w?: string; f?: 1 };
   let index: Hit[] | null = null;
   const load = async () => (index ??= await fetch('/search-index.json').then((r) => r.json()).catch(() => []));
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
   const aiLink = (q: string) => `/quick-quote/?details=${encodeURIComponent(q)}`;
+  const TIER: Record<Hit['k'], number> = { product: 0, collection: 1, brand: 1, page: 2 };
+  const has = (hay: string, w: string) => hay.includes(w) || (w.length > 3 && w.endsWith('s') && hay.includes(w.slice(0, -1)));
+  const rank = (all: Hit[], q: string) => {
+    const words = q.toLowerCase().split(/[\s,]+/).filter(Boolean);
+    if (!words.length) return [];
+    return all.map((h, n) => {
+      const title = h.t.toLowerCase();
+      const hay = `${title} ${(h.w ?? '').toLowerCase()}`;
+      if (!words.every((w) => has(hay, w))) return null;
+      const tokens = new Set(title.split(/[^a-z0-9+]+/));
+      const score = words.reduce((sum, w) => sum + (tokens.has(w) ? 10 : has(title, w) ? 4 : 1), 0) + (h.f ? 2 : 0);
+      return { h, n, score };
+    }).filter((x): x is { h: Hit; n: number; score: number } => !!x)
+      .sort((a, b) => TIER[a.h.k] - TIER[b.h.k] || b.score - a.score || a.n - b.n)
+      .map((x) => x.h);
+  };
+  const row = (h: Hit) => `<a href="${h.u}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06]">${h.i ? `<img src="${h.i}" alt="" loading="lazy" class="w-10 h-10 shrink-0 rounded-lg object-contain bg-white border border-zinc-200/80 dark:border-white/10">` : '<span class="w-10 h-10 shrink-0 rounded-lg grid place-items-center bg-zinc-100 dark:bg-white/[0.06] text-zinc-400">↗</span>'}<span class="min-w-0 text-sm leading-tight"><span class="block truncate text-zinc-800 dark:text-zinc-200 font-medium">${esc(h.t)}</span>${h.s ? `<span class="block mt-0.5 text-[12px] muted truncate">${esc(h.s)}</span>` : ''}</span></a>`;
+  const group = (label: string, hits: Hit[]) => hits.length ? `<p class="px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-[0.1em] muted">${label}</p>${hits.map(row).join('')}` : '';
   document.querySelectorAll<HTMLFormElement>('[data-search]').forEach((form) => {
     const input = form.querySelector('input')!;
     const box = form.querySelector<HTMLElement>('[data-results]')!;
     const render = async () => {
-      const q = input.value.trim().toLowerCase();
+      const q = input.value.trim();
       if (!q) { box.classList.add('hidden'); return; }
-      const words = q.split(/\s+/);
-      const hits = (await load()).filter((h) => words.every((w) => h.t.toLowerCase().includes(w))).slice(0, 7);
-      const ai = `<a href="${aiLink(input.value.trim())}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="text-sm"><b class="text-violet-700 dark:text-violet-300">${form.dataset.max ? 'Ask Max' : 'Request a quote for'}</b><span class="block muted truncate">“${esc(input.value.trim())}”</span></span></a>`;
-      const list = hits.map((h) => `<a href="${h.u}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06]">${h.i ? `<img src="${h.i}" alt="" class="w-9 h-9 rounded-lg object-contain bg-white">` : '<span class="w-9 h-9 rounded-lg grid place-items-center bg-zinc-100 dark:bg-white/[0.06] text-zinc-400">↗</span>'}<span class="text-sm text-zinc-800 dark:text-zinc-200">${esc(h.t)}</span></a>`).join('');
-      box.innerHTML = ai + (list ? `<p class="px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-[0.1em] muted">Suggestions</p>${list}` : '');
+      const hits = rank(await load(), q);
+      if (input.value.trim() !== q) return; // a newer keystroke already rendered
+      const ai = `<a href="${aiLink(q)}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="min-w-0 text-sm"><b class="text-violet-700 dark:text-violet-300">${form.dataset.max ? 'Ask Max' : 'Request a quote for'}</b><span class="block muted truncate">“${esc(q)}”</span></span></a>`;
+      const list = group('Products', hits.filter((h) => h.k === 'product').slice(0, 6))
+        + group('Categories & brands', hits.filter((h) => h.k === 'collection' || h.k === 'brand').slice(0, 3))
+        + group('Pages', hits.filter((h) => h.k === 'page').slice(0, 3));
+      box.innerHTML = list ? list + `<div class="mt-2 pt-2 border-t border-zinc-200/80 dark:border-white/10">${ai}</div>` : ai;
       box.classList.remove('hidden');
       box.querySelector<HTMLAnchorElement>('[data-ai-row]')?.addEventListener('click', (e) => {
         const open = document.querySelector<HTMLButtonElement>('#tb-assistant [data-open]');
@@ -180,12 +246,13 @@ const nav = NAV.filter((m) => max || m.feature !== 'ai');
     };
     input.addEventListener('input', render);
     input.addEventListener('focus', () => { load(); render(); });
+    input.addEventListener('keydown', (e) => { if (e.key === 'Escape') box.classList.add('hidden'); });
     document.addEventListener('click', (e) => { if (!form.contains(e.target as Node)) box.classList.add('hidden'); });
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const q = input.value.trim(); if (!q) return;
-      const first = (await load()).find((h) => h.t.toLowerCase().includes(q.toLowerCase()));
-      location.href = first ? first.u : aiLink(q);
+      const best = rank(await load(), q)[0];
+      location.href = best ? best.u : aiLink(q);
     });
   });
 </script>

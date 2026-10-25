@@ -1,0 +1,56 @@
+---
+// "Styles we print on": a row of catalog products for content pages whose URL clearly maps to a collection.
+// Renders nothing for pages with no match, legal/blog/utility pages and the -ca neighborhood pages.
+import ProductCard from '../ProductCard.astro';
+import { COLLECTIONS, collectionProducts, collectionHref, type CatalogProduct } from '../../lib/catalog';
+import { ArrowRight } from '@lucide/astro';
+
+interface Props { path: string; kind?: string }
+const { path, kind } = Astro.props;
+
+// First rule whose words appear as whole words of the path wins. Order matters: specific before general.
+const RULES: [string[], string[]][] = [
+  [['hoodie', 'hoodies', 'sweatshirt', 'sweatshirts'], ['hoodies', 'crewnecks']],
+  [['kids', 'youth'], ['kids']],
+  [['polo', 'polos', 'business'], ['polos']],
+  [['outwear', 'outerwear', 'jacket', 'jackets'], ['jackets']],
+  [['bag', 'bags', 'tote', 'totes'], ['bags']],
+  [['hat', 'hats', 'cap', 'caps'], ['hats']],
+  [['embroidery'], ['polos', 'hats']],
+  [['t-shirt', 't-shirts', 'tshirt', 'tee', 'tees'], ['t-shirts']],
+  [['jersey', 'jerseys', 'uniform', 'uniforms'], ['t-shirts']],
+];
+
+function collectionsForPath(path: string, kind?: string): string[] {
+  if (['legal', 'blog', 'utility'].includes(kind ?? '') || path.startsWith('/blog') || /-ca\/$/.test(path)) return [];
+  const p = `-${path.toLowerCase().replace(/\//g, '-')}-`;
+  const hit = RULES.find(([words]) => words.some((w) => p.includes(`-${w}-`)));
+  return hit ? hit[1].filter((slug) => COLLECTIONS.some((c) => c.slug === slug) && collectionProducts(slug).length) : [];
+}
+
+const slugs = collectionsForPath(path, kind);
+// Featured styles first, alternating between collections so each one shows up.
+const lists = slugs.map((s) => [...collectionProducts(s)].sort((a, b) => Number(b.featured) - Number(a.featured)));
+const picks: CatalogProduct[] = [];
+for (let i = 0; picks.length < 8 && lists.some((l) => l[i]); i++) {
+  for (const l of lists) if (l[i] && !picks.includes(l[i]) && picks.length < 8) picks.push(l[i]);
+}
+const shown = picks.length >= 8 ? picks : picks.slice(0, Math.max(4, picks.length - (picks.length % 4)));
+const links = slugs.map((s) => ({ href: collectionHref(s), label: COLLECTIONS.find((c) => c.slug === s)!.label, count: collectionProducts(s).length }));
+---
+{shown.length > 0 && (
+  <section aria-labelledby="related-products-title">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="eyebrow">From the catalog</p>
+        <h2 id="related-products-title" class="section-title mt-2">Styles we print on</h2>
+      </div>
+      <div class="flex flex-wrap gap-x-5 gap-y-1">
+        {links.map((l) => <a href={l.href} class="inline-flex items-center gap-1 font-semibold text-zinc-900 dark:text-white hover:text-violet-700 dark:hover:text-violet-300">All {l.count} {l.label.toLowerCase()}<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>)}
+      </div>
+    </div>
+    <ul class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+      {shown.map((p) => <li><ProductCard p={p} /></li>)}
+    </ul>
+  </section>
+)}

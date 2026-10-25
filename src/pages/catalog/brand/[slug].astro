@@ -1,0 +1,55 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import ProductBrowser from '../../../components/catalog/ProductBrowser.astro';
+import { methodsSentence } from '../../../components/catalog/copy';
+import { BRANDS, brandHref, products, type CatalogProduct } from '../../../lib/catalog';
+import { business } from '../../../data/business';
+
+export function getStaticPaths() {
+  return BRANDS.map((b) => ({ params: { slug: b.slug }, props: { name: b.name, items: products.filter((p) => p.brand === b.name) } }));
+}
+const { slug } = Astro.params as { slug: string };
+const { name, items } = Astro.props as { name: string; items: CatalogProduct[] };
+const methods = methodsSentence(items);
+const url = `${business.url}${brandHref(name)}`;
+const description = `Custom ${name} apparel with your logo, made in our own shops in Los Angeles and Cleveland. ${items.length} ${name} style${items.length === 1 ? '' : 's'}${methods ? ` with ${methods}` : ''}. Orders start at ${business.shopMinimum} pieces.`;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Custom ${name} apparel`,
+    url,
+    numberOfItems: items.length,
+    itemListElement: items.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${business.url}/catalog/${p.slug}/`, name: p.name })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${business.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Catalog', item: `${business.url}/catalog/` },
+      { '@type': 'ListItem', position: 3, name, item: url },
+    ],
+  },
+];
+---
+<Base title={`Custom ${name} Apparel | TBSP`} description={description} jsonLd={jsonLd}>
+  <Breadcrumbs items={[{ label: 'Catalog', href: '/catalog/' }, { label: name }]} />
+  <p class="eyebrow">Brand</p>
+  <h1 class="mt-3 text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white">Custom {name} apparel</h1>
+  <p class="mt-4 text-lg muted max-w-2xl">
+    {items.length} {name} style{items.length === 1 ? '' : 's'} ready for your logo, printed in-house in Los Angeles and Cleveland. Orders start at {business.shopMinimum} pieces.{methods && ` Available with ${methods}.`}
+  </p>
+
+  <nav aria-label="Other brands" class="mt-8 -mx-4 px-4 flex gap-2 overflow-x-auto no-scrollbar sm:flex-wrap sm:overflow-visible">
+    <a href="/catalog/" class="chip shrink-0">All brands</a>
+    {BRANDS.map((b) => (
+      <a href={brandHref(b.name)} class:list={['chip shrink-0', { 'is-on': b.slug === slug }]} aria-current={b.slug === slug ? 'page' : undefined}>{b.name} <span class="muted font-medium">{b.count}</span></a>
+    ))}
+  </nav>
+  <ProductBrowser products={items} hideBrand />
+
+  <div class="mt-20"><CtaBand title="Looking for another brand?" text="We carry more than we list here, and we print on garments you bring. Tell us what you have in mind." /></div>
+</Base>

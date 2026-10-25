@@ -1,10 +1,12 @@
 // Main navigation: Custom Ink-style mega menus, with TBSP's AI studio as its own menu.
+// `feature: 'products'` renders the catalog menu (collection photos + brands) from src/lib/catalog.
 
 export interface NavLink { label: string; href: string }
 export interface NavColumn { title?: string; links: NavLink[] }
-export interface NavMenu { label: string; href: string; columns?: NavColumn[]; feature?: 'ai' }
+export interface NavMenu { label: string; href: string; columns?: NavColumn[]; feature?: 'ai' | 'products' }
 
 export const NAV: NavMenu[] = [
+  { label: 'Products', href: '/catalog/', feature: 'products' },
   {
     label: 'Custom T-shirts', href: '/products/t-shirts/',
     columns: [

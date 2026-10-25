@@ -1,14 +1,24 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import ProductCard from '../../components/ProductCard.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { products, CATEGORY_LABELS } from '../../lib/catalog';
+import CollectionChips from '../../components/catalog/CollectionChips.astro';
+import ProductBrowser from '../../components/catalog/ProductBrowser.astro';
+import { products, COLLECTIONS, collectionHref, collectionProducts } from '../../lib/catalog';
 import { business } from '../../data/business';
 
-const categories = [...new Set(products.map((p) => p.category))]
-  .map((c) => ({ id: c, label: CATEGORY_LABELS[c] || c, count: products.filter((p) => p.category === c).length }))
-  .sort((a, b) => b.count - a.count);
+// Old links (/catalog/?sub=dad-hats, ?cat=kids) go to the matching collection page.
+const live = new Set(COLLECTIONS.filter((c) => collectionProducts(c.slug).length).map((c) => c.slug));
+const pick = (m: Record<string, string>) => Object.fromEntries(Object.entries(m).filter(([, v]) => live.has(v)).map(([k, v]) => [k, collectionHref(v)]));
+const legacy = {
+  sub: pick({
+    't-shirts': 't-shirts', 'long-sleeves': 'long-sleeves', hoodies: 'hoodies', 'zip-hoodies': 'hoodies', crewnecks: 'crewnecks',
+    polos: 'polos', 'dad-hats': 'hats', 'trucker-hats': 'hats', snapbacks: 'hats', 'fitted-hats': 'hats', beanies: 'beanies',
+    'tank-tops': 'tank-tops', 'crop-tops': 'tank-tops', sweatpants: 'sweatpants-shorts', shorts: 'sweatpants-shorts',
+    jackets: 'jackets', totes: 'bags',
+  }),
+  cat: pick({ kids: 'kids', womens: 'womens', hats: 'hats', accessories: 'bags', pants: 'sweatpants-shorts', outerwear: 'jackets' }),
+};
 const jsonLd = [{
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -16,6 +26,14 @@ const jsonLd = [{
 }];
 ---
 <Base title="Custom Apparel & Merch Catalog | TBSP Los Angeles" description={`Browse ${products.length} products you can customize with your logo: tees, hoodies, hats, bags and more. Orders start at ${business.shopMinimum} pieces, made in our own shops.`} jsonLd={jsonLd}>
+  <script is:inline define:vars={{ legacy }}>
+    (() => {
+      const q = new URLSearchParams(location.search);
+      const sub = q.get('sub'), cat = q.get('cat');
+      const to = (sub && legacy.sub[sub]) || (!sub && cat && legacy.cat[cat]) || (sub && cat && legacy.cat[cat]);
+      if (to) location.replace(to);
+    })();
+  </script>
   <Breadcrumbs items={[{ label: 'Catalog' }]} />
   <p class="eyebrow">Catalog</p>
   <h1 class="mt-3 text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white">Products for your design</h1>
@@ -23,30 +41,8 @@ const jsonLd = [{
     {products.length} products, from tees to totes. Every order is made in our own shops in Los Angeles and Cleveland, starting at {business.shopMinimum} pieces{business.studioLive ? ', and you can design it online' : ''}.
   </p>
 
-  <div class="mt-8 -mx-4 px-4 flex gap-2 overflow-x-auto no-scrollbar" role="group" aria-label="Filter by category">
-    <button type="button" class="chip is-on shrink-0" data-cat="">All <span class="muted font-medium">{products.length}</span></button>
-    {categories.map((c) => <button type="button" class="chip shrink-0" data-cat={c.id}>{c.label} <span class="muted font-medium">{c.count}</span></button>)}
-  </div>
-
-  <ul class="mt-8 grid gap-x-5 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    {products.map((p) => <li data-cat={p.category} data-sub={p.subcategory ?? ""}><ProductCard p={p} /></li>)}
-  </ul>
+  <CollectionChips />
+  <ProductBrowser products={products} />
 
   <div class="mt-20"><CtaBand title="Don't see it?" text="We print on almost anything: your own garments, brands we don't list, special finishes. Tell us what you have in mind." /></div>
 </Base>
-
-<script>
-  const chips = document.querySelectorAll<HTMLButtonElement>('[data-cat].chip');
-  const items = document.querySelectorAll<HTMLElement>('li[data-cat]');
-  const apply = (cat: string, sub = '') => {
-    chips.forEach((c) => c.classList.toggle('is-on', c.dataset.cat === (sub ? '' : cat)));
-    items.forEach((li) => { li.hidden = sub ? li.dataset.sub !== sub : !!cat && li.dataset.cat !== cat; });
-  };
-  chips.forEach((chip) => chip.addEventListener('click', () => {
-    history.replaceState(null, '', chip.dataset.cat ? `?cat=${chip.dataset.cat}` : location.pathname);
-    apply(chip.dataset.cat || '');
-  }));
-  // Menu links land here with ?cat= or ?sub= already chosen.
-  const params = new URLSearchParams(location.search);
-  if (params.get('cat') || params.get('sub')) apply(params.get('cat') || '', params.get('sub') || '');
-</script>

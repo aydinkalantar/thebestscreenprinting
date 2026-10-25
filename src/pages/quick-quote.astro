@@ -18,6 +18,16 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       <p class="mt-4 text-lg muted max-w-2xl">We reply with a personal quote within one business day. Everything is made in our own shops, and orders start at {business.shopMinimum} pieces.</p>
 
       <form id="quote-form" class="mt-8 panel-raised p-5 sm:p-7 grid gap-8" novalidate enctype="multipart/form-data">
+        <!-- Filled in when the visitor comes from a product's "Add to quote" panel. -->
+        <div id="product-summary" class="hidden panel p-3 sm:p-4 items-center gap-4 bg-zinc-50 dark:bg-white/[0.03]">
+          <img data-s="img" alt="" width="80" height="80" hidden class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl object-contain bg-white dark:bg-white/[0.04] border border-zinc-200/80 dark:border-white/10" />
+          <div class="min-w-0">
+            <p class="eyebrow">Your selection</p>
+            <p data-s="name" class="mt-1 font-semibold leading-snug text-zinc-900 dark:text-white"></p>
+            <p data-s="meta" class="mt-0.5 text-[13px] muted"></p>
+            <p data-s="sizes" class="mt-0.5 text-[13px] muted"></p>
+          </div>
+        </div>
         <fieldset class="grid gap-5">
           <legend class="text-lg font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2"><span class="w-7 h-7 rounded-full grid place-items-center bg-violet-600 text-white text-xs">1</span>Your order</legend>
           <div class="grid gap-4 sm:grid-cols-2">
@@ -106,6 +116,13 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
 <script>
   const form = document.getElementById('quote-form') as HTMLFormElement;
+  const query = new URLSearchParams(location.search);
+  const clean = (v: string | null, max = 120) => (v || '').replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max);
+  const listParam = (k: string) => clean(query.get(k), 400).split(',').map((x) => x.trim()).filter(Boolean);
+  const checkDecorations = (names: string[]) => {
+    const wanted = names.map((n) => n.toLowerCase());
+    form.querySelectorAll<HTMLInputElement>('input[name="decorations"]').forEach((c) => { if (wanted.includes(c.value.toLowerCase())) c.checked = true; });
+  };
   // Coming from a custom-project link: tick that decoration.
   const project = new URLSearchParams(location.search).get('project');
   if (project) {
@@ -119,6 +136,59 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   if (fromProduct) {
     const details = form.elements.namedItem('details') as HTMLTextAreaElement;
     details.value = `Product: ${fromProduct.slice(0, 200)}\n`;
+  }
+  // Coming from a product's "Add to quote" panel:
+  // ?product=&style=&brand=&color=&sizes=S:4,M:10&qty=&decorations=&locations=&cat=&sub=&img=
+  const product = clean(query.get('product'), 200);
+  if (product) {
+    const style = clean(query.get('style'), 40);
+    const color = clean(query.get('color'), 60);
+    const sizes = listParam('sizes')
+      .map((x) => /^(.{1,12}):(\d{1,5})$/.exec(x))
+      .filter((m): m is RegExpExecArray => !!m && Number(m[2]) > 0)
+      .map((m) => ({ size: m[1].trim(), n: Number(m[2]) }));
+    const sizeTotal = sizes.reduce((n, x) => n + x.n, 0);
+    const qty = Math.floor(Number(query.get('qty'))) || sizeTotal;
+    const locations = listParam('locations').map((l) => l.slice(0, 30)).slice(0, 8);
+    checkDecorations(listParam('decorations'));
+
+    if (qty > 0) (form.elements.namedItem('quantity') as HTMLInputElement).value = String(Math.min(qty, 100000));
+
+    // Best garment option for the product's category.
+    const cat = clean(query.get('cat'), 30), sub = clean(query.get('sub'), 30);
+    const text = `${cat} ${sub} ${product}`.toLowerCase();
+    const garment = /polo/.test(text) ? 'Polos'
+      : /hats|cap\b|beanie|trucker|snapback/.test(text) ? 'Hats'
+      : /outerwear|jacket|windbreaker/.test(text) ? 'Jackets'
+      : /accessories|tote|bag/.test(text) ? 'Bags / totes'
+      : /sweatshirt|hoodie|crewneck|fleece/.test(text) ? 'Hoodies / sweatshirts'
+      : /t-shirt|tee|tank|crop|long-sleeve|long sleeve/.test(text) ? 'T-shirts'
+      : 'Something else';
+    const select = form.elements.namedItem('garment') as HTMLSelectElement;
+    if ([...select.options].some((o) => o.value === garment)) select.value = garment;
+
+    const sizeText = sizes.map((x) => `${x.size} ${x.n}`).join(', ');
+    const summary = [
+      `${product}${style ? ` (style ${style})` : ''}${color ? `, color ${color}` : ''}.`,
+      sizeText && `Sizes: ${sizeText}.`,
+      locations.length ? `Print: ${locations.join(', ')}.` : '',
+    ].filter(Boolean).join(' ');
+    (form.elements.namedItem('details') as HTMLTextAreaElement).value = `${summary}\n`;
+
+    const card = document.getElementById('product-summary')!;
+    const set = (k: string, v: string) => { card.querySelector<HTMLElement>(`[data-s="${k}"]`)!.textContent = v; };
+    set('name', product);
+    set('meta', [style && `Style ${style}`, color, qty > 0 && `${qty} pieces`].filter(Boolean).join(' · '));
+    set('sizes', [sizeText, locations.length ? `Print: ${locations.join(', ')}` : ''].filter(Boolean).join(' · '));
+    const img = query.get('img') || '';
+    if (/^https:\/\/cdn\.ssactivewear\.com\/[\w\-./%]+$/.test(img)) {
+      const el = card.querySelector<HTMLImageElement>('[data-s="img"]')!;
+      el.src = img;
+      el.alt = product;
+      el.hidden = false;
+    }
+    card.classList.remove('hidden');
+    card.classList.add('flex');
   }
   const msg = form.querySelector('.form-msg') as HTMLElement;
   const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
