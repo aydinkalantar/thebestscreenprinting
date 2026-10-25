@@ -11,6 +11,7 @@ sourceUrl: "https://thebestscreenprinting.com/terms-conditions/"
 - Minimums
 - Terms
 - Artwork
+- About Your Mockup
 - Max Imprint Sizes
 - Screens
 - Out of Stock Items
@@ -65,6 +66,12 @@ All files must be vector format or at least 300 DPI. The design should be sized 
 All artwork is to be approved via a digital mock-up through email received from Art department ([email protected]).
 
 Artwork must be checked for spelling, color, sizes ordered, placement of the art and accuracy of artwork by the customer. It is very important to look over every detail of the mockup, as this is how your garments will print. Be informed that we use conditional garment while creating mock-up for “provided garment” orders.
+
+## About Your Mockup
+
+Your mockup is a digital preview made to help us quote and plan your order. It is not an exact representation of the finished product. Screens, cameras and garment photos show color differently, and each decoration method, fabric and garment color affects how ink and thread look in real life. Print size and placement are approximate and may be adjusted to fit the garment's sizes and seams and to follow production best practices.
+
+Before anything is produced, we send you a digital proof with the final artwork size, placement and colors (including PMS or thread colors when provided). Production starts only after you approve it. If exact color matching matters, tell us your PMS colors or ask for a pre-production sample.
 
 ## Art Approval | Order Proofing
 
