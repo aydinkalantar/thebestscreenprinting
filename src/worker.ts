@@ -1,7 +1,9 @@
 // Edge entry point. Static pages come from the ASSETS binding; anything the build
 // doesn't contain is checked against the legacy WordPress redirect map.
 import redirects from './redirects.json';
-import { parseQuote, parsePlacements, quoteEmail, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, ARTWORK_TYPES } from './lib/quote';
+import { parseQuote, parsePlacements, quoteEmail, requestNumber, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, ARTWORK_TYPES } from './lib/quote';
+import { buildQuotePdf, type PdfMockup } from './lib/quote-pdf';
+import { confirmationEmail } from './lib/quote-confirm';
 import { business } from './data/business';
 
 interface Env {
@@ -20,6 +22,58 @@ interface Env {
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
 
+const bytesToBase64 = (bytes: Uint8Array) => {
+  let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+};
+
+type Attachment = { filename: string; content: string; content_id?: string };
+
+/** One email through Resend. Returns null on success, or the failure for the log. */
+async function sendEmail(env: Env, mail: Record<string, unknown>): Promise<string | null> {
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
+      body: JSON.stringify({ from: env.QUOTE_FROM || 'TBSP Quotes <quotes@thebestscreenprinting.com>', ...mail }),
+    });
+    return res.ok ? null : `${res.status} ${await res.text()}`;
+  } catch (e) {
+    return String(e);
+  }
+}
+
+const CONFIRMATIONS_PER_HOUR = 5;
+
+/**
+ * Soft per-IP limit on customer confirmation emails, so the form can't be used to spam a third
+ * party's inbox. Uses the colo-local Cache API: best effort, and it fails open.
+ */
+async function allowConfirmation(request: Request, origin: string): Promise<boolean> {
+  const ip = request.headers.get('cf-connecting-ip');
+  const cache = (globalThis as unknown as { caches?: { default?: Cache } }).caches?.default;
+  if (!ip || !cache) return true;
+  try {
+    const key = new Request(`${origin}/__rate/quote-confirm/${encodeURIComponent(ip)}`);
+    const now = Date.now();
+    let state = { count: 0, reset: now + 3600_000 };
+    const hit = await cache.match(key);
+    if (hit) {
+      const saved = (await hit.json()) as typeof state;
+      if (saved.reset > now) state = saved;
+    }
+    if (state.count >= CONFIRMATIONS_PER_HOUR) return false;
+    state.count += 1;
+    await cache.put(key, new Response(JSON.stringify(state), {
+      headers: { 'content-type': 'application/json', 'cache-control': `max-age=${Math.max(1, Math.ceil((state.reset - now) / 1000))}` },
+    }));
+    return true;
+  } catch {
+    return true;
+  }
+}
+
 async function handleQuote(request: Request, env: Env): Promise<Response> {
   const len = Number(request.headers.get('content-length') || 0);
   if (len > MAX_TOTAL_BYTES + 500_000) return json({ error: 'Your files are too large together. Please keep them under 25 MB in total.' }, 413);
@@ -27,7 +81,9 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
   try { form = await request.formData(); } catch { return json({ error: 'Could not read the form.' }, 400); }
 
   // Bots fill the hidden field; pretend success so they move on.
-  if (form.get('website')) return json({ ok: true });
+  const honeypotEmpty = !form.get('website');
+  if (!honeypotEmpty) return json({ ok: true });
+  let humanVerified = !env.TURNSTILE_SECRET;
 
   if (env.TURNSTILE_SECRET) {
     const token = form.get('cf-turnstile-response');
@@ -36,6 +92,7 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
       body: new URLSearchParams({ secret: env.TURNSTILE_SECRET, response: typeof token === 'string' ? token : '', remoteip: request.headers.get('cf-connecting-ip') || '' }),
     }).then((r) => r.json() as Promise<{ success: boolean }>).catch(() => ({ success: false }));
     if (!check.success) return json({ error: 'Please confirm you are not a robot and try again.' }, 400);
+    humanVerified = true;
   }
 
   const parsed = parseQuote(form);
@@ -44,15 +101,12 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
 
   // Artwork: the quote form's single `artwork` field, or one `artwork_<n>` per placed location
   // from the product page's design preview, plus its rendered `mockup_<side>` PNGs.
-  const toBase64 = async (f: File) => {
-    const bytes = new Uint8Array(await f.arrayBuffer());
-    let bin = '';
-    for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-    return btoa(bin);
-  };
-  const attachments: { filename: string; content: string; content_id?: string }[] = [];
+  const toBase64 = async (f: File) => bytesToBase64(new Uint8Array(await f.arrayBuffer()));
+  const artworkFiles: Attachment[] = [];
+  const mockupFiles: Attachment[] = [];
   const artworkNames: string[] = [];
   const mockups: { cid: string; label: string }[] = [];
+  const pdfMockups: PdfMockup[] = [];
   let total = 0;
   for (const [key, value] of form.entries()) {
     if (typeof value === 'string' || value.size === 0) continue;
@@ -64,40 +118,72 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
     if (isMockup) {
       if (value.type !== 'image/png' || mockups.length >= 4) continue;
       const side = key.slice(7);
-      mockups.push({ cid: `mockup-${side}`, label: `Mockup: ${side.replace(/-/g, ' ')}` });
-      attachments.push({ filename: `mockup-${side}.png`, content: await toBase64(value), content_id: `mockup-${side}` });
+      const label = `Mockup: ${side.replace(/-/g, ' ')}`;
+      const png = new Uint8Array(await value.arrayBuffer());
+      mockups.push({ cid: `mockup-${side}`, label });
+      pdfMockups.push({ side, label, png });
+      mockupFiles.push({ filename: `mockup-${side}.png`, content: bytesToBase64(png), content_id: `mockup-${side}` });
       continue;
     }
     if (value.type && !ARTWORK_TYPES.includes(value.type)) return json({ error: 'Please upload PNG, JPG, SVG, PDF, AI or PSD artwork.', fields: { artwork: 'Unsupported file type' } }, 400);
     if (artworkNames.length >= 8) continue;
     const name = value.name.slice(0, 120) || `artwork-${artworkNames.length + 1}`;
     artworkNames.push(name);
-    attachments.push({ filename: name, content: await toBase64(value) });
+    artworkFiles.push({ filename: name, content: await toBase64(value) });
   }
   const placements = parsePlacements(form.get('placements'));
 
   if (!env.RESEND_API_KEY) {
     return json({ error: `Online quotes are not switched on yet. Please call ${business.phoneDisplay} or email ${business.email}.`, fallback: true }, 503);
   }
-  const mail = quoteEmail(q, artworkNames, placements, mockups);
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
-    body: JSON.stringify({
-      from: env.QUOTE_FROM || 'TBSP Quotes <quotes@thebestscreenprinting.com>',
-      to: [env.QUOTE_TO || business.email],
-      reply_to: q.email,
-      subject: mail.subject,
-      text: mail.text,
-      html: mail.html,
-      attachments: attachments.length ? attachments : undefined,
-    }),
+  const ref = requestNumber();
+  const origin = new URL(request.url).origin;
+
+  // Branded summary PDF for both emails. If it can't be built the emails still go out without it.
+  let pdf: Attachment | null = null;
+  try {
+    const logoRes = await env.ASSETS.fetch(new Request(`${origin}/icon-512.png`)).catch(() => null);
+    const logoPng = logoRes?.ok ? new Uint8Array(await logoRes.arrayBuffer()) : null;
+    const bytes = await buildQuotePdf({ ref, date: new Date(), quote: q, placements, artworkNames, mockups: pdfMockups, logoPng });
+    pdf = { filename: `${ref}-design-request.pdf`, content: bytesToBase64(bytes) };
+  } catch (e) {
+    console.error('quote pdf failed', ref, e);
+  }
+
+  // 1. The shop: everything, including the customer's original artwork.
+  const mail = quoteEmail(q, artworkNames, placements, mockups, ref);
+  const shopAttachments = [...artworkFiles, ...mockupFiles, ...(pdf ? [pdf] : [])];
+  const shopError = await sendEmail(env, {
+    to: [env.QUOTE_TO || business.email],
+    reply_to: q.email,
+    subject: mail.subject,
+    text: mail.text,
+    html: mail.html,
+    attachments: shopAttachments.length ? shopAttachments : undefined,
   });
-  if (!res.ok) {
-    console.error('quote email failed', res.status, await res.text());
+  if (shopError) {
+    console.error('quote email failed', ref, shopError);
     return json({ error: `We could not send your request. Please call ${business.phoneDisplay} or email ${business.email}.`, fallback: true }, 502);
   }
-  return json({ ok: true });
+
+  // 2. The customer: a confirmation with the mockups and the PDF (never their own artwork back).
+  // The shop already has the request, so a failure here is only logged.
+  if (honeypotEmpty && humanVerified && (await allowConfirmation(request, origin))) {
+    const confirm = confirmationEmail(q, ref, mockups);
+    const customerAttachments = [...mockupFiles, ...(pdf ? [pdf] : [])];
+    const customerError = await sendEmail(env, {
+      to: [q.email],
+      reply_to: business.email,
+      subject: confirm.subject,
+      text: confirm.text,
+      html: confirm.html,
+      attachments: customerAttachments.length ? customerAttachments : undefined,
+    });
+    if (customerError) console.error('quote confirmation failed', ref, customerError);
+  } else {
+    console.warn('quote confirmation skipped', ref);
+  }
+  return json({ ok: true, ref });
 }
 
 const moved = redirects.moved as Record<string, string>;

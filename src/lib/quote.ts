@@ -106,18 +106,36 @@ export function parseQuote(form: FormData): { errors: Record<string, string> } |
   };
 }
 
-const esc = (t: string) => t.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+export const esc = (t: string) => t.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
-export function quoteEmail(q: QuoteRequest, artworkNames: string[] = [], placements: Placement[] = [], mockups: { cid: string; label: string }[] = []) {
+/** Approximate print size of a placement, e.g. `~10" × 12"`. */
+export const placementSize = (p: Placement) => (p.widthIn && p.heightIn ? `~${p.widthIn}" × ${p.heightIn}"` : '—');
+/** Where a placement sits, measured from the print area's top center. */
+export const placementPosition = (p: Placement) => (p.fromTopIn != null ? `${p.fromTopIn}" below top of print area${p.fromCenterIn ? `, ${Math.abs(p.fromCenterIn)}" ${p.fromCenterIn < 0 ? 'left' : 'right'} of center` : ', centered'}` : '—');
+/** Mockup side a placement shows on: back locations on the back, everything else (sleeves, hat sides, legs) on the front. */
+export const placementSide = (p: Placement) => (/^back/i.test(p.location) ? 'back' : 'front');
+
+/** Per-request reference shown to the shop and the customer, e.g. `TBSP-MH4K2Z1Q-X7F`. */
+export function requestNumber(now = Date.now()): string {
+  const abc = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const rnd = new Uint8Array(3);
+  crypto.getRandomValues(rnd);
+  return `TBSP-${now.toString(36).toUpperCase()}-${Array.from(rnd, (b) => abc[b % abc.length]).join('')}`;
+}
+
+/** The business turnaround tier (time, fee) for a request's turnaround label. */
+export const turnaroundTier = (label: string) => business.turnaround.find((t) => t.name === label) ?? business.turnaround[0];
+
+export function quoteEmail(q: QuoteRequest, artworkNames: string[] = [], placements: Placement[] = [], mockups: { cid: string; label: string }[] = [], ref?: string) {
   const source = LEAD_SOURCES.find((l) => l.id === q.leadSource)?.label ?? 'Not given';
   const rows: [string, string][] = [
+    ...(ref ? [['Request', ref] as [string, string]] : []),
     ['Name', q.name], ['Email', q.email], ['Phone', q.phone ?? '—'], ['Company', q.company ?? '—'],
     ['What', q.garment], ['Quantity', String(q.quantity)], ['Decoration', q.decorations.join(', ') || '—'],
     ['Turnaround', q.turnaround], ['Needed by', q.deadline ?? '—'], ['Artwork', artworkNames.length ? artworkNames.join(', ') : 'None attached'], ['Found us via', source],
   ];
-  const subject = `${q.turnaround === 'Normal' ? '' : `[${q.turnaround.toUpperCase()}] `}Quote request: ${q.quantity} × ${q.garment} — ${q.name}`;
-  const size = (p: Placement) => (p.widthIn && p.heightIn ? `~${p.widthIn}" × ${p.heightIn}"` : '—');
-  const pos = (p: Placement) => (p.fromTopIn != null ? `${p.fromTopIn}" below top of print area${p.fromCenterIn ? `, ${Math.abs(p.fromCenterIn)}" ${p.fromCenterIn < 0 ? 'left' : 'right'} of center` : ', centered'}` : '—');
+  const subject = `${ref ? `${ref} · ` : ''}${q.turnaround === 'Normal' ? '' : `[${q.turnaround.toUpperCase()}] `}Quote request: ${q.quantity} × ${q.garment} — ${q.name}`;
+  const size = placementSize, pos = placementPosition;
   const placementText = placements.length
     ? `\n\nArtwork placement (approximate, confirm on the proof):\n${placements.map((p, i) => `${i + 1}. ${p.location} · ${p.decoration} · ${p.file ?? 'no file'} · ${size(p)} · ${pos(p)}${p.notes ? ` · ${p.notes}` : ''}`).join('\n')}`
     : '';

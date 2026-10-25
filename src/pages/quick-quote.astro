@@ -206,7 +206,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       if (res.ok) {
         form.reset();
         msg.className = 'form-msg rounded-xl px-4 py-3 text-sm font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-300';
-        msg.textContent = "Thanks! We've got your request and will reply within one business day.";
+        msg.textContent = `Thanks! We've got your request and will reply within one business day.${data.ref ? ` Your request number is ${data.ref}.` : ''}`;
       } else {
         setErrors(data.fields);
         msg.className = 'form-msg rounded-xl px-4 py-3 text-sm font-medium bg-red-500/10 text-red-700 dark:text-red-300';

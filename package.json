@@ -14,7 +14,8 @@
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
     "@lucide/astro": "1.49.0",
-    "astro": "7.3.8"
+    "astro": "7.3.8",
+    "pdf-lib": "^1.17.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

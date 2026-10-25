@@ -68,6 +68,7 @@ const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:bor
     <div data-dr-done hidden class="px-5 py-10 text-center grid justify-items-center gap-3" tabindex="-1" aria-live="polite">
       <CircleCheck class="w-12 h-12 text-emerald-500" aria-hidden="true" />
       <p class="text-xl font-bold text-zinc-900 dark:text-white">Thanks! We'll reply within one business day.</p>
+      <p data-dr-ref hidden class="text-[15px] font-semibold text-zinc-900 dark:text-white">Your request number is <span class="text-violet-700 dark:text-violet-300 select-all"></span></p>
       <p class="text-[14px] muted max-w-sm">We've got your design, sizes and artwork files. Questions in the meantime? Call <a class="font-semibold text-violet-700 dark:text-violet-300" href={`tel:${business.phone}`}>{business.phoneDisplay}</a>.</p>
       <button type="button" class="btn-quiet mt-2" data-sheet-close>Done</button>
     </div>

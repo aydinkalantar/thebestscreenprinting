@@ -679,8 +679,10 @@ export function mountDesign(root: HTMLElement, opts: Options) {
 
       label.textContent = 'Sending…';
       const res = await fetch('/api/quote', { method: 'POST', body: fd });
-      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; fields?: Record<string, string>; fallback?: boolean };
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; ref?: string; error?: string; fields?: Record<string, string>; fallback?: boolean };
       if (res.ok && data.ok) {
+        const refEl = done!.querySelector<HTMLElement>('[data-dr-ref]');
+        if (refEl) { refEl.hidden = !data.ref; refEl.querySelector('span')!.textContent = data.ref ?? ''; }
         form.hidden = true;
         actions!.hidden = true;
         done!.hidden = false;
