@@ -1,8 +1,11 @@
 ---
 // Phone-only bottom tab bar, like a native shopping app. Hidden from md up.
-// Search opens the header's search sheet ([data-search-open] is wired in Header.astro).
-import { business } from '../data/business';
-import { House, Shirt, Search, ClipboardPen, Phone } from '@lucide/astro';
+// Home · Products · Max (center orb) · Search · Quote. The orb opens Max via
+// openMax() in src/lib/max.ts; Search opens the header's search sheet
+// ([data-search-open] is wired in Header.astro). The phone number stays in the
+// header menu, the footer, product pages and Max's sheet.
+import MaxSheet from './MaxSheet.astro';
+import { House, Shirt, Search, ClipboardPen, Sparkles } from '@lucide/astro';
 const here = Astro.url.pathname;
 const active = here === '/' ? 'home' : here.startsWith('/catalog/') ? 'products' : here.startsWith('/quick-quote/') ? 'quote' : '';
 const item = 'press flex flex-col items-center justify-center gap-0.5 min-w-0 h-[60px] text-[10.5px] font-semibold tracking-tight';
@@ -13,12 +16,14 @@ const tone = (on: boolean) => on ? 'text-violet-700 dark:text-violet-300' : 'tex
   <ul class="grid grid-cols-5 px-1">
     <li><a href="/" class:list={[item, tone(active === 'home')]} aria-current={active === 'home' ? 'page' : undefined}><span class="h-7 grid place-items-center"><House class="w-[22px] h-[22px]" aria-hidden="true" /></span>Home</a></li>
     <li><a href="/catalog/" class:list={[item, tone(active === 'products')]} aria-current={active === 'products' ? 'page' : undefined}><span class="h-7 grid place-items-center"><Shirt class="w-[22px] h-[22px]" aria-hidden="true" /></span>Products</a></li>
-    <li><button type="button" data-search-open aria-haspopup="dialog" class:list={[item, tone(false), 'w-full']}><span class="h-7 grid place-items-center"><Search class="w-[22px] h-[22px]" aria-hidden="true" /></span>Search</button></li>
-    <li>
-      <a href="/quick-quote/" class:list={[item, 'text-violet-700 dark:text-violet-300']} aria-current={active === 'quote' ? 'page' : undefined}>
-        <span class:list={['w-11 h-7 rounded-full grid place-items-center bg-violet-600 text-white shadow-[0_6px_16px_-6px_rgba(124,58,237,0.8)]', { 'ring-2 ring-violet-300 dark:ring-violet-500/60': active === 'quote' }]}><ClipboardPen class="w-[18px] h-[18px]" aria-hidden="true" /></span>Quote
+    <li class="relative">
+      <a href="/quick-quote/" data-max-open aria-haspopup="dialog" class="press flex flex-col items-center justify-end w-full min-w-0 h-[60px] pb-[7px] text-[10.5px] font-semibold tracking-tight text-violet-700 dark:text-violet-300">
+        <span class="max-orb absolute left-[calc(50%-27px)] -top-[24px] w-[54px] h-[54px] outline outline-4 outline-white dark:outline-[#0a0a0f]" aria-hidden="true"><Sparkles class="w-6 h-6" /></span>
+        Max
       </a>
     </li>
-    <li><a href={`tel:${business.phone}`} class:list={[item, tone(false)]} aria-label={`Call ${business.phoneDisplay}`}><span class="h-7 grid place-items-center"><Phone class="w-[22px] h-[22px]" aria-hidden="true" /></span>Call</a></li>
+    <li><button type="button" data-search-open aria-haspopup="dialog" class:list={[item, tone(false), 'w-full']}><span class="h-7 grid place-items-center"><Search class="w-[22px] h-[22px]" aria-hidden="true" /></span>Search</button></li>
+    <li><a href="/quick-quote/" class:list={[item, tone(active === 'quote')]} aria-current={active === 'quote' ? 'page' : undefined}><span class="h-7 grid place-items-center"><ClipboardPen class="w-[22px] h-[22px]" aria-hidden="true" /></span>Quote</a></li>
   </ul>
 </nav>
+<MaxSheet />

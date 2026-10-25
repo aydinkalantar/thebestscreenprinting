@@ -75,11 +75,31 @@ details[open] .chev { transform: rotate(180deg); }
    so desktop renders exactly as before. */
 
 html { -webkit-tap-highlight-color: transparent; }
+/* No double-tap zoom (pinch is handled in Base.astro). */
+html, body { touch-action: manipulation; }
 a, button, label, summary, input, select, textarea, [role="button"] { touch-action: manipulation; }
 
 /* Pressed state for tappable cards and controls. */
 .press { transition: transform .15s var(--tb-ease); }
 .press:active, .chip:active, .icon-btn:active, .tile:active { transform: scale(.98); }
+
+/* Max's orb: tab bar center button, product sticky bar, sheet header. */
+.max-orb {
+  display: grid; place-items: center; border-radius: 9999px; color: #fff;
+  background: radial-gradient(circle at 32% 26%, #c4b5fd 0%, #8b5cf6 38%, #6d28d9 72%, #4c1d95 100%);
+  box-shadow: 0 10px 24px -8px rgba(124,58,237,.75), inset 0 1px 1px rgba(255,255,255,.45);
+  transition: transform .15s ease;
+}
+.max-orb::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  animation: max-pulse 3s ease-out infinite;
+}
+@keyframes max-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(139,92,246,.45); }
+  70%, 100% { box-shadow: 0 0 0 12px rgba(139,92,246,0); }
+}
+.press:active .max-orb, .max-orb.press:active { transform: scale(.94); }
+@media (prefers-reduced-motion: reduce) { .max-orb::after { animation: none; } }
 
 /* Sheets lock the page behind them (iOS ignores overflow:hidden on body alone). */
 html.sheet-lock { overflow: hidden; }
@@ -125,23 +145,45 @@ html.sheet-lock body { position: fixed; left: 0; right: 0; overflow: hidden; }
 
   /* Type scale: content H1s ~2rem, home hero ~2.4rem, lead paragraphs 1rem. */
   #main h1 { font-size: 2rem; line-height: 1.1; }
-  [data-home] #main h1 { font-size: 2.4rem; line-height: 1.04; }
+  [data-home] #main h1 { font-size: 2.15rem; line-height: 1.05; }
   #main p.text-lg { font-size: 1rem; line-height: 1.6; }
+  #main p[data-hero-intro] { font-size: .9375rem; line-height: 1.55; }
   #main .section-title { font-size: 1.5rem; }
 
-  /* Tighter section rhythm. */
-  #main .mt-24 { margin-top: 4rem; }
-  #main .mt-20 { margin-top: 3.5rem; }
-  #main .mt-16 { margin-top: 3rem; }
+  /* Tighter section rhythm: ~40px between sections. */
+  #main .mt-24, #main .mt-20, #main .mt-16 { margin-top: 2.5rem; }
+  #main .mt-14 { margin-top: 2.25rem; }
 
   /* Horizontal rows snap, with the first card lining up with the page edge. */
   .no-scrollbar.overflow-x-auto { scroll-snap-type: x proximity; scroll-padding-inline: 1rem; -webkit-overflow-scrolling: touch; }
   .no-scrollbar.overflow-x-auto > * { scroll-snap-align: start; }
 
+  /* .m-rail: the one shared horizontal row for phones. Whatever grid or flex the
+     element has from md up, below md it becomes a snap-scrolling row that bleeds
+     to the screen edges, hides its scrollbar and lets the next item peek in.
+     --rail-w sets the item width (default 78%); .m-rail-auto sizes items to content. */
+  .m-rail {
+    --bleed: 1rem;
+    display: flex !important; flex-wrap: nowrap !important; grid-template-columns: none !important;
+    gap: var(--rail-gap, .75rem) !important;
+    overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--bleed);
+    margin-inline: calc(var(--bleed) * -1) !important; padding-inline: var(--bleed) !important;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .m-rail::-webkit-scrollbar { display: none; }
+  .m-rail > * { flex: 0 0 var(--rail-w, 78%) !important; width: auto; min-width: 0; scroll-snap-align: start; }
+  .m-rail.m-rail-auto { scroll-snap-type: x proximity; --rail-gap: .5rem; }
+  .m-rail.m-rail-auto > * { flex: 0 0 auto !important; }
+  /* Rails of equal-height cards. */
+  .m-rail > .tile, .m-rail > .panel { height: auto; }
+
   /* Form fields: 16px stops iOS zooming on focus; 48px tap targets. */
   .field { font-size: 16px; }
   .field:not(textarea) { min-height: 44px; }
 }
+
+@media (min-width: 640px) and (max-width: 767px) { .m-rail { --bleed: 1.5rem; } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

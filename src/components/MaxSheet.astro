@@ -1,0 +1,41 @@
+---
+// Max's quick sheet (phones: full-height bottom sheet; md+: centered dialog).
+// Opened only through openMax() in src/lib/max.ts, which is also where it can be
+// swapped for the live assistant.
+import { business } from '../data/business';
+import { X, ArrowRight, ClipboardPen, Phone, MessageSquareText, Mail, Sparkles } from '@lucide/astro';
+const action = 'press flex items-center gap-3 min-h-[60px] px-3.5 py-2.5 rounded-2xl border border-zinc-200/80 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.04] active:bg-zinc-100 dark:active:bg-white/[0.08]';
+const icon = 'w-9 h-9 shrink-0 rounded-xl grid place-items-center bg-violet-500/10 text-violet-600 dark:text-violet-300';
+---
+<div data-max-sheet data-sheet="modal" hidden role="dialog" aria-modal="true" aria-labelledby="max-title" class="fixed inset-0 z-[96]">
+  <div class="absolute inset-0 bg-black/40" data-sheet-backdrop data-sheet-close></div>
+  <div data-sheet-panel class="absolute inset-x-0 bottom-0 top-[calc(env(safe-area-inset-top)+12px)] flex flex-col rounded-t-3xl bg-white dark:bg-[#0d0d14] shadow-2xl md:inset-0 md:m-auto md:w-[440px] md:h-fit md:max-h-[85vh] md:rounded-3xl">
+    <div data-sheet-grip class="shrink-0 px-4 pt-2 pb-3 border-b border-zinc-200/80 dark:border-white/10">
+      <span class="block mx-auto w-10 h-1.5 rounded-full bg-zinc-300 dark:bg-white/20 md:hidden" aria-hidden="true"></span>
+      <div class="mt-2 flex items-center gap-3">
+        <span class="max-orb relative w-10 h-10 shrink-0" aria-hidden="true"><Sparkles class="w-5 h-5" /></span>
+        <p id="max-title" class="min-w-0 text-[17px] font-bold text-zinc-900 dark:text-white">Max · your merch agent</p>
+        <button type="button" class="icon-btn w-11 h-11 rounded-xl ml-auto shrink-0" data-sheet-close aria-label="Close"><X class="w-[18px] h-[18px]" aria-hidden="true" /></button>
+      </div>
+    </div>
+    <div data-max-body class="flex-1 overflow-y-auto overscroll-contain p-4 pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
+      <p class="text-[15px] muted">Tell Max what you need and we'll set it up.</p>
+      <form action="/quick-quote/" method="get" class="mt-3">
+        <label for="max-details" class="sr-only">What do you need?</label>
+        <textarea id="max-details" name="details" rows="4" required maxlength="1000" enterkeyhint="send" class="field !text-base resize-none" placeholder="50 black tees with our logo, by Friday"></textarea>
+        <button type="submit" class="btn-primary w-full h-12 mt-3 text-[15px]">Send to Max<ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
+      </form>
+      <p class="mt-6 text-[11px] font-bold uppercase tracking-[0.1em] muted">Or reach us directly</p>
+      <ul class="mt-2 grid grid-cols-2 gap-2">
+        <li><a href="/quick-quote/" class={action}><span class={icon}><ClipboardPen class="w-[18px] h-[18px]" aria-hidden="true" /></span><span class="min-w-0 leading-tight"><span class="block text-[14px] font-semibold text-zinc-900 dark:text-white">Get a quote</span><span class="block text-[12px] muted">Reply within 1 business day</span></span></a></li>
+        <li><a href={`tel:${business.phone}`} class={action}><span class={icon}><Phone class="w-[18px] h-[18px]" aria-hidden="true" /></span><span class="min-w-0 leading-tight"><span class="block text-[14px] font-semibold text-zinc-900 dark:text-white">Talk to a real person</span><span class="block text-[12px] muted whitespace-nowrap">{business.phoneDisplay}</span></span></a></li>
+        <li><a href={`sms:${business.phone}`} class={action}><span class={icon}><MessageSquareText class="w-[18px] h-[18px]" aria-hidden="true" /></span><span class="min-w-0 leading-tight"><span class="block text-[14px] font-semibold text-zinc-900 dark:text-white">Text</span><span class="block text-[12px] muted whitespace-nowrap">{business.phoneDisplay}</span></span></a></li>
+        <li><a href={`mailto:${business.email}`} class={action}><span class={icon}><Mail class="w-[18px] h-[18px]" aria-hidden="true" /></span><span class="min-w-0 leading-tight"><span class="block text-[14px] font-semibold text-zinc-900 dark:text-white">Email</span><span class="block text-[12px] muted truncate">{business.email}</span></span></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  import '../lib/max';
+</script>

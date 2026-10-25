@@ -14,8 +14,8 @@ const max = business.studioLive;
 const nav = NAV.filter((m) => max || m.feature !== 'ai');
 const menuBrands = brandTiles(8);
 ---
-<div class="bg-zinc-900 dark:bg-black text-white text-[12px] md:text-[13px] pt-[env(safe-area-inset-top)] md:pt-0">
-  <div class="wrap h-8 md:h-9 flex items-center justify-center gap-2 text-center">
+<div class="bg-zinc-900 dark:bg-black text-white text-[11.5px] md:text-[13px] pt-[env(safe-area-inset-top)] md:pt-0">
+  <div class="wrap h-7 md:h-9 flex items-center justify-center gap-2 max-md:gap-1.5 text-center">
     <Sparkles class="w-3.5 h-3.5 text-violet-300 shrink-0" aria-hidden="true" />
     {max ? (
       <><span class="truncate">New: <b>Max</b>, your merch agent, picks the product, places your logo and quotes your order in minutes.</span>
@@ -29,16 +29,16 @@ const menuBrands = brandTiles(8);
 
 <header data-app-header class="sticky top-0 z-50 border-b border-zinc-200/80 dark:border-white/10 bg-white/95 dark:bg-[#0a0a0f]/95 backdrop-blur-xl">
   <!-- Row 1: logo · search/AI box · contact -->
-  <div class="wrap h-14 md:h-16 flex items-center gap-4 lg:gap-8">
-    <BrandMark />
+  <div class="wrap h-[55px] md:h-16 flex items-center gap-4 lg:gap-8">
+    <BrandMark class="max-md:min-w-[44px] max-md:min-h-[44px] max-md:justify-center max-md:-ml-1" />
     <form class="relative flex-1 max-w-2xl hidden md:block" role="search" action="/search/" data-search data-max={max ? "1" : undefined}>
       <Search class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" aria-hidden="true" />
       <input name="q" type="search" autocomplete="off" placeholder="Search products, or describe what you need…" aria-label="Search or describe what you need"
         class="w-full h-11 rounded-full bg-zinc-100 dark:bg-white/[0.06] border border-transparent focus:border-violet-500 focus:bg-white dark:focus:bg-[#0d0d14] pl-11 pr-4 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 outline-none transition-colors" />
       <div data-results class="hidden absolute left-0 right-0 top-[calc(100%+8px)] panel-raised p-2 max-h-[70vh] overflow-auto"></div>
     </form>
-    <div class="ml-auto flex items-center gap-1.5 sm:gap-3">
-      <button class="icon-btn md:hidden max-md:w-10 max-md:h-10 max-md:rounded-full max-md:border-transparent dark:max-md:border-transparent max-md:text-zinc-700 dark:max-md:text-zinc-200" type="button" aria-label="Search" aria-haspopup="dialog" data-search-open><Search class="w-[18px] h-[18px]" aria-hidden="true" /></button>
+    <div class="ml-auto flex items-center gap-1.5 max-md:gap-0.5 max-md:-mr-1.5 sm:gap-3">
+      <button class="icon-btn md:hidden max-md:w-11 max-md:h-11 max-md:rounded-full max-md:border-transparent dark:max-md:border-transparent max-md:text-zinc-700 dark:max-md:text-zinc-200" type="button" aria-label="Search" aria-haspopup="dialog" data-search-open><Search class="w-[18px] h-[18px]" aria-hidden="true" /></button>
       <a href={`tel:${business.phone}`} class="hidden xl:flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-zinc-100 dark:hover:bg-white/[0.06]">
         <Phone class="w-5 h-5 text-zinc-700 dark:text-zinc-300" aria-hidden="true" />
         <span class="leading-tight"><span class="block text-[12px] muted">Talk to a real person</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">{business.phoneDisplay}</span></span>
@@ -47,10 +47,10 @@ const menuBrands = brandTiles(8);
         <Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />
         <span class="leading-tight"><span class="block text-[12px] muted">{max ? 'Design & quote in minutes' : 'Reply within 1 business day'}</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">{max ? 'Ask Max' : 'Free quote'}</span></span>
       </a>
-      <button class="icon-btn theme-toggle max-md:w-10 max-md:h-10 max-md:rounded-full max-md:border-transparent dark:max-md:border-transparent max-md:text-zinc-700 dark:max-md:text-zinc-200" type="button" aria-label="Switch light or dark mode" data-theme-toggle>
+      <button class="icon-btn theme-toggle max-md:w-11 max-md:h-11 max-md:rounded-full max-md:border-transparent dark:max-md:border-transparent max-md:text-zinc-700 dark:max-md:text-zinc-200" type="button" aria-label="Switch light or dark mode" data-theme-toggle>
         <Moon class="w-4 h-4 moon" aria-hidden="true" /><Sun class="w-4 h-4 sun" aria-hidden="true" />
       </button>
-      <button class="icon-btn lg:hidden max-md:w-10 max-md:h-10 max-md:rounded-full max-md:border-transparent dark:max-md:border-transparent max-md:text-zinc-700 dark:max-md:text-zinc-200" type="button" aria-label="Open menu" aria-haspopup="dialog" aria-controls="site-menu" data-menu-open><Menu class="w-4 h-4" aria-hidden="true" /></button>
+      <button class="icon-btn lg:hidden max-md:w-11 max-md:h-11 max-md:rounded-full max-md:border-transparent dark:max-md:border-transparent max-md:text-zinc-700 dark:max-md:text-zinc-200" type="button" aria-label="Open menu" aria-haspopup="dialog" aria-controls="site-menu" data-menu-open><Menu class="w-4 h-4" aria-hidden="true" /></button>
     </div>
   </div>
 

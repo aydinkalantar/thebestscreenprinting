@@ -78,27 +78,27 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   <!-- Hero -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_80%_20%,rgba(124,58,237,0.16),transparent_70%)] dark:bg-[radial-gradient(60%_60%_at_80%_20%,rgba(139,92,246,0.22),transparent_70%)]" aria-hidden="true"></div>
-    <div class="wrap pt-8 sm:pt-20 pb-12 md:pb-16 grid gap-10 md:gap-12 grid-cols-[minmax(0,1fr)] lg:grid-cols-[1.05fr_0.95fr] items-center">
+    <div class="wrap pt-5 sm:pt-20 pb-8 sm:pb-12 md:pb-16 grid gap-7 sm:gap-10 md:gap-12 grid-cols-[minmax(0,1fr)] lg:grid-cols-[1.05fr_0.95fr] items-center">
       <div class="min-w-0">
         <p class="pill"><MapPin class="w-3.5 h-3.5" aria-hidden="true" />Production in Los Angeles &amp; Cleveland</p>
-        <h1 class="mt-5 text-[2.5rem] sm:text-6xl break-words font-bold leading-[1.02] text-zinc-900 dark:text-white">{h1}</h1>
-        <p class="mt-6 text-lg leading-8 muted max-w-xl">
+        <h1 class="mt-4 sm:mt-5 text-[2.5rem] sm:text-6xl break-words font-bold leading-[1.02] text-zinc-900 dark:text-white">{h1}</h1>
+        <p class="mt-4 sm:mt-6 text-lg leading-8 muted max-w-xl" data-hero-intro>
           Bold ink, clean stitches and merch people actually keep. We print and embroider for brands, tours, crews and teams
           from two production facilities, in Los Angeles and Cleveland: {business.shopMinimum}+ pieces made in-house, with Normal, Rush and Super Rush turnaround.
         </p>
-        <form class="mt-8 panel-raised p-2 flex items-center gap-2 max-w-xl" action="/quick-quote/" data-hero-ai>
+        <form class="mt-5 sm:mt-8 panel-raised p-2 flex items-center gap-2 max-w-xl" action="/quick-quote/" data-hero-ai>
           <span class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-600 text-white"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
-          <input name="details" required placeholder={business.studioLive ? "Tell Max what you need…" : "Tell us what you need…"} aria-label="Tell us what you need" class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] text-zinc-900 dark:text-white placeholder:text-zinc-500" />
+          <input name="details" required placeholder={business.studioLive ? "Tell Max what you need…" : "Tell us what you need…"} aria-label="Tell us what you need" class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] max-md:text-base text-zinc-900 dark:text-white placeholder:text-zinc-500" />
           <button class="btn-primary btn-sm" type="submit">Start<ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
         </form>
-        <div class="mt-3 flex flex-wrap gap-2">
-          {aiPrompts.map((p) => <button type="button" class="chip !h-8 !text-[12.5px]" data-prompt={p}>{p}</button>)}
+        <div class="mt-3 flex flex-wrap gap-2 m-rail m-rail-auto">
+          {aiPrompts.map((p) => <button type="button" class="chip !h-8 max-md:!h-9 !text-[12.5px] max-md:whitespace-nowrap" data-prompt={p}>{p}</button>)}
         </div>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a class="btn-quiet btn-sm" href="/catalog/"><Package class="w-4 h-4" aria-hidden="true" />Browse products</a>
-          <a class="btn-quiet btn-sm" href="/quick-quote/">Request a quote</a>
+        <div class="mt-4 sm:mt-6 flex flex-wrap gap-3 max-md:grid max-md:grid-cols-2 max-md:gap-2">
+          <a class="btn-quiet btn-sm max-md:h-11" href="/catalog/"><Package class="w-4 h-4" aria-hidden="true" />Browse products</a>
+          <a class="btn-quiet btn-sm max-md:h-11" href="/quick-quote/">Request a quote</a>
         </div>
-        <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[13px] font-medium muted">
+        <ul class="mt-5 sm:mt-8 flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1.5 sm:gap-y-2 text-[12.5px] sm:text-[13px] font-medium muted">
           <li class="flex items-center gap-1.5"><BadgeCheck class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Quote within one business day</li>
           <li class="flex items-center gap-1.5"><Zap class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Rush &amp; Super Rush</li>
           <li class="flex items-center gap-1.5"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Mon–Fri, 9am–5pm</li>
@@ -111,11 +111,11 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
 
   <!-- Trust strip -->
   <section class="wrap mt-4" aria-label="Why TBSP">
-    <ul class="grid grid-cols-2 md:grid-cols-4 gap-6 border-y border-zinc-200/80 dark:border-white/10 py-8">
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-4 md:gap-6 border-y border-zinc-200/80 dark:border-white/10 py-4 md:py-8">
       {trust.map((t) => (
-        <li class="flex flex-col items-center text-center gap-3">
-          <span class="w-12 h-12 rounded-full grid place-items-center border border-zinc-300 dark:border-white/20 text-zinc-800 dark:text-zinc-200"><t.icon class="w-6 h-6" aria-hidden="true" /></span>
-          <span class="text-[15px] font-medium text-zinc-800 dark:text-zinc-200">{t.t}</span>
+        <li class="flex flex-col items-center text-center gap-3 max-md:flex-row max-md:text-left max-md:gap-2.5">
+          <span class="w-12 h-12 max-md:w-9 max-md:h-9 shrink-0 rounded-full grid place-items-center border border-zinc-300 dark:border-white/20 text-zinc-800 dark:text-zinc-200"><t.icon class="w-6 h-6 max-md:w-[18px] max-md:h-[18px]" aria-hidden="true" /></span>
+          <span class="text-[15px] max-md:text-[13px] max-md:leading-snug font-medium text-zinc-800 dark:text-zinc-200">{t.t}</span>
         </li>
       ))}
     </ul>
@@ -123,12 +123,12 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
 
   <!-- Categories -->
   <section class="wrap mt-20" aria-labelledby="cat-title">
-    <h2 id="cat-title" class="text-3xl sm:text-4xl font-bold text-center text-zinc-900 dark:text-white">Custom apparel &amp; merch for your crew</h2>
-    <div class="mt-10 grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <h2 id="cat-title" class="text-2xl sm:text-4xl font-bold text-center text-zinc-900 dark:text-white">Custom apparel &amp; merch for your crew</h2>
+    <div class="mt-5 md:mt-10 grid gap-2 sm:gap-4 grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
       {categories.map((c) => (
-        <a href={c.href} class="group panel p-3 hover:shadow-[0_18px_44px_-24px_rgba(52,33,110,0.45)] hover:border-violet-400/60 transition-all">
-          <span class="block aspect-[5/4] rounded-xl bg-zinc-100 overflow-hidden"><img src={c.img} alt="" loading="lazy" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" /></span>
-          <span class="block pt-3 pb-2 text-center leading-snug"><span class="block font-semibold text-zinc-900 dark:text-white">{c.label}</span><span class="block text-[13px] muted">{styles(c.count)}</span></span>
+        <a href={c.href} class="group press panel p-3 max-md:p-1.5 max-md:rounded-xl hover:shadow-[0_18px_44px_-24px_rgba(52,33,110,0.45)] hover:border-violet-400/60 transition-all">
+          <span class="block aspect-[5/4] max-md:aspect-square rounded-xl max-md:rounded-lg bg-zinc-100 overflow-hidden"><img src={c.img} alt="" loading="lazy" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" /></span>
+          <span class="block pt-3 pb-2 max-md:pt-1.5 max-md:pb-1 text-center leading-snug"><span class="block font-semibold max-md:text-[13px] max-md:leading-tight text-zinc-900 dark:text-white">{c.label}</span><span class="block text-[13px] max-md:text-[11.5px] muted">{styles(c.count)}</span></span>
         </a>
       ))}
     </div>
@@ -143,8 +143,8 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
       </div>
       <a href="/catalog/" class="inline-flex items-center gap-1 font-semibold text-zinc-900 dark:text-white hover:text-violet-700 dark:hover:text-violet-300">Shop all {products.length} styles<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
     </div>
-    <ul class="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0 flex sm:grid sm:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory no-scrollbar">
-      {bestSellers.map((p) => <li class="w-[44%] shrink-0 sm:w-auto snap-start"><ProductCard p={p} /></li>)}
+    <ul class="mt-5 md:mt-8 grid grid-cols-4 gap-6 m-rail [--rail-w:44%]">
+      {bestSellers.map((p) => <li class="snap-start"><ProductCard p={p} /></li>)}
     </ul>
   </section>
 
@@ -177,11 +177,11 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   <section class="wrap mt-24" aria-labelledby="services-title">
     <p class="eyebrow">What we print</p>
     <h2 id="services-title" class="section-title mt-2">Ink, thread and everything in between</h2>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="mt-5 md:mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 m-rail [--rail-w:66%]">
       {services.map((s) => (
-        <a class="tile" href={s.href}>
+        <a class="tile max-md:p-4" href={s.href}>
           <span class="tile-icon"><s.icon class="w-5 h-5" aria-hidden="true" /></span>
-          <strong class="mt-2 text-zinc-900 dark:text-white">{s.name}</strong>
+          <strong class="mt-2 max-md:mt-1 text-zinc-900 dark:text-white">{s.name}</strong>
           <span class="text-sm muted">{s.line}</span>
         </a>
       ))}
@@ -189,8 +189,8 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   </section>
 
   <!-- Custom projects -->
-  <section class="wrap mt-6">
-    <a href="/custom-projects/" class="panel-raised p-6 sm:p-7 flex flex-wrap items-center justify-between gap-5 hover:border-violet-400/60 transition-colors">
+  <section class="wrap mt-4 md:mt-6">
+    <a href="/custom-projects/" class="press panel-raised p-4 sm:p-7 flex flex-wrap items-center justify-between gap-3 md:gap-5 hover:border-violet-400/60 transition-colors">
       <div class="flex items-start gap-4">
         <span class="tile-icon shrink-0"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
         <div>
@@ -198,7 +198,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
           <p class="mt-1 text-sm muted">Custom cut &amp; sew, sublimation, all-over prints and embossing on tees, hoodies, hats and more. Request it with a quote{business.studioLive ? ' or ask Max' : ''}.</p>
         </div>
       </div>
-      <span class="btn-quiet btn-sm">Start a custom project<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
+      <span class="btn-quiet btn-sm max-md:w-full max-md:h-11">Start a custom project<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
     </a>
   </section>
 
@@ -206,15 +206,17 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   <section class="wrap mt-24" aria-labelledby="how-title">
     <p class="eyebrow">How it works</p>
     <h2 id="how-title" class="section-title mt-2">From napkin sketch to boxed and ready</h2>
-    <ol class="mt-8 grid gap-4 md:grid-cols-3">
+    <ol class="mt-5 md:mt-8 grid gap-2 md:gap-4 md:grid-cols-3">
       {steps.map((s, i) => (
-        <li class="panel p-6">
-          <div class="flex items-center gap-3">
+        <li class="panel p-6 max-md:p-4 max-md:flex max-md:items-start max-md:gap-3">
+          <div class="flex items-center gap-3 shrink-0">
             <span class="w-8 h-8 rounded-full grid place-items-center bg-violet-600 text-white text-sm font-bold">{i + 1}</span>
-            <s.icon class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />
+            <s.icon class="w-5 h-5 text-violet-600 dark:text-violet-300 max-md:hidden" aria-hidden="true" />
           </div>
-          <p class="mt-4 font-bold text-zinc-900 dark:text-white">{s.name}</p>
-          <p class="mt-1.5 text-sm muted">{s.line}</p>
+          <div class="min-w-0">
+            <p class="mt-4 max-md:mt-0.5 font-bold text-zinc-900 dark:text-white">{s.name}</p>
+            <p class="mt-1.5 max-md:mt-1 text-sm muted">{s.line}</p>
+          </div>
         </li>
       ))}
     </ol>
@@ -222,17 +224,17 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
 
   <!-- Brands -->
   <section class="wrap mt-24" aria-labelledby="brands-title">
-    <h2 id="brands-title" class="text-3xl font-bold text-center text-zinc-900 dark:text-white">Brands we print on</h2>
+    <h2 id="brands-title" class="text-2xl md:text-3xl font-bold text-center text-zinc-900 dark:text-white">Brands we print on</h2>
     <p class="mt-2 text-center muted">Shop by brand: the names your crew already knows.</p>
-    <ul class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+    <ul class="mt-5 md:mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 m-rail m-rail-auto">
       {brands.map((b) => (
-        <li><a href={b.href} class="h-20 rounded-2xl bg-zinc-100 dark:bg-white/[0.05] border border-transparent hover:border-violet-400/60 hover:bg-white dark:hover:bg-white/[0.08] transition-colors flex flex-col items-center justify-center px-2 text-center">
-          <span class="font-display font-extrabold tracking-tight leading-tight text-zinc-800 dark:text-zinc-100">{b.name}</span>
+        <li><a href={b.href} class="press h-20 max-md:h-14 max-md:px-4 max-md:rounded-xl rounded-2xl bg-zinc-100 dark:bg-white/[0.05] border border-transparent hover:border-violet-400/60 hover:bg-white dark:hover:bg-white/[0.08] transition-colors flex flex-col items-center justify-center px-2 text-center">
+          <span class="font-display font-extrabold tracking-tight leading-tight max-md:whitespace-nowrap max-md:text-[15px] text-zinc-800 dark:text-zinc-100">{b.name}</span>
           <span class="mt-0.5 text-[12px] muted">{styles(b.count)}</span>
         </a></li>
       ))}
     </ul>
-    <p class="mt-5 text-center"><a href="/catalog/" class="inline-flex items-center gap-1 font-semibold text-zinc-900 dark:text-white hover:text-violet-700 dark:hover:text-violet-300">Browse the catalog<ArrowRight class="w-4 h-4" aria-hidden="true" /></a></p>
+    <p class="mt-3 md:mt-5 text-center"><a href="/catalog/" class="max-md:min-h-[44px] inline-flex items-center gap-1 font-semibold text-zinc-900 dark:text-white hover:text-violet-700 dark:hover:text-violet-300">Browse the catalog<ArrowRight class="w-4 h-4" aria-hidden="true" /></a></p>
   </section>
 
   <!-- Videos -->
@@ -242,19 +244,19 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   <section class="wrap mt-24" aria-labelledby="turn-title">
     <p class="eyebrow">Turnaround</p>
     <h2 id="turn-title" class="section-title mt-2">Your deadline, your speed</h2>
-    <p class="mt-3 muted max-w-2xl">Pick the turnaround that fits your date. Every option gets the same free art check and the same quality.</p>
-    <div class="mt-8"><Turnaround /></div>
+    <p class="mt-2 md:mt-3 max-md:text-[14px] muted max-w-2xl">Pick the turnaround that fits your date. Every option gets the same free art check and the same quality.</p>
+    <div class="mt-5 md:mt-8"><Turnaround /></div>
   </section>
 
   <!-- Audiences -->
   <section class="wrap mt-24" aria-labelledby="who-title">
     <p class="eyebrow">Who we print for</p>
     <h2 id="who-title" class="section-title mt-2">Made for people who wear their name</h2>
-    <div class="mt-8 grid gap-3 grid-cols-2 md:grid-cols-3">
+    <div class="mt-5 md:mt-8 grid gap-3 grid-cols-2 md:grid-cols-3 m-rail m-rail-auto">
       {audiences.map((a) => (
-        <a class="tile !flex-row !items-center !gap-3 !py-4" href={a.href}>
-          <span class="tile-icon"><a.icon class="w-5 h-5" aria-hidden="true" /></span>
-          <strong class="text-zinc-900 dark:text-white text-[15px]">{a.name}</strong>
+        <a class="tile !flex-row !items-center !gap-3 !py-4 max-md:!gap-2 max-md:!py-1.5 max-md:!pl-1.5 max-md:!pr-4 max-md:!rounded-full max-md:hover:!translate-y-0" href={a.href}>
+          <span class="tile-icon max-md:w-8 max-md:h-8 max-md:rounded-full"><a.icon class="w-5 h-5" aria-hidden="true" /></span>
+          <strong class="text-zinc-900 dark:text-white text-[15px] max-md:text-[14px] max-md:whitespace-nowrap">{a.name}</strong>
         </a>
       ))}
     </div>
@@ -264,18 +266,18 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   <section class="wrap mt-24" aria-labelledby="where-title">
     <p class="eyebrow">Where we make it</p>
     <h2 id="where-title" class="section-title mt-2">Two production facilities, one standard</h2>
-    <div class="mt-8 grid gap-4 md:grid-cols-2">
-      <a href="/los-angeles-ca/" class="tile !p-6">
+    <div class="mt-5 md:mt-8 grid gap-3 md:gap-4 md:grid-cols-2">
+      <a href="/los-angeles-ca/" class="tile !p-6 max-md:!p-4">
         <span class="tile-icon"><MapPin class="w-5 h-5" aria-hidden="true" /></span>
-        <strong class="mt-2 text-lg text-zinc-900 dark:text-white">Los Angeles, California</strong>
+        <strong class="mt-2 max-md:mt-1 text-lg max-md:text-base text-zinc-900 dark:text-white">Los Angeles, California</strong>
         <span class="text-sm muted">{business.address.streetAddress}, {business.address.addressLocality}. Monday–Friday, 9am–5pm. Pickup, rush and delivery across LA.</span>
-        <span class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-violet-700 dark:text-violet-300">Los Angeles printing<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
+        <span class="mt-2 max-md:mt-1 inline-flex items-center gap-1 text-sm font-semibold text-violet-700 dark:text-violet-300">Los Angeles printing<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
       </a>
-      <a href="/cleveland-oh/" class="tile !p-6">
+      <a href="/cleveland-oh/" class="tile !p-6 max-md:!p-4">
         <span class="tile-icon"><MapPin class="w-5 h-5" aria-hidden="true" /></span>
-        <strong class="mt-2 text-lg text-zinc-900 dark:text-white">Cleveland, Ohio</strong>
+        <strong class="mt-2 max-md:mt-1 text-lg max-md:text-base text-zinc-900 dark:text-white">Cleveland, Ohio</strong>
         <span class="text-sm muted">Serving Greater Cleveland and Northeast Ohio with local production and delivery.</span>
-        <span class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-violet-700 dark:text-violet-300">Cleveland printing<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
+        <span class="mt-2 max-md:mt-1 inline-flex items-center gap-1 text-sm font-semibold text-violet-700 dark:text-violet-300">Cleveland printing<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
       </a>
     </div>
   </section>

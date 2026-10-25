@@ -160,15 +160,16 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   <!-- Phones: sticky action bar (replaces the tab bar on this page). It drives the
        "Add to quote" form above, so the minimum and the quote link stay in one place. -->
   <div data-pdp-bar class="md:hidden fixed inset-x-0 bottom-0 z-[60] border-t border-zinc-200/80 dark:border-white/10 bg-white/90 dark:bg-[#0a0a0f]/90 backdrop-blur-xl backdrop-saturate-150 pb-[env(safe-area-inset-bottom)]">
-    <div class="px-4 h-[76px] flex items-center gap-3">
+    <div class="px-4 h-[76px] flex items-center gap-2.5">
+      <button type="button" data-max-open aria-haspopup="dialog" aria-label="Ask Max about this product" class="press max-orb relative w-11 h-11 shrink-0"><Sparkles class="w-5 h-5" aria-hidden="true" /></button>
       <button type="button" data-bar-sizes class="press min-w-0 flex-1 flex items-center gap-2.5 text-left" aria-label="Choose sizes and quantities">
-        {p.colors.length > 0 && <span data-bar-swatch class="w-9 h-9 rounded-full shrink-0 border border-zinc-300 dark:border-white/20" style={`background:${p.colors[0].hex}`} aria-hidden="true"></span>}
+        {p.colors.length > 0 && <span data-bar-swatch class="w-8 h-8 max-[399px]:hidden rounded-full shrink-0 border border-zinc-300 dark:border-white/20" style={`background:${p.colors[0].hex}`} aria-hidden="true"></span>}
         <span class="min-w-0 leading-tight">
           <span data-bar-color class="block truncate text-[14px] font-semibold text-zinc-900 dark:text-white">{p.colors[0]?.name ?? p.name}</span>
-          <span class="block mt-0.5 text-[12.5px] muted"><b data-bar-total class="text-zinc-900 dark:text-white">0</b> pieces · min {min}</span>
+          <span class="block mt-0.5 text-[12.5px] muted truncate"><b data-bar-total class="text-zinc-900 dark:text-white">0</b> pieces · min {min}</span>
         </span>
       </button>
-      <button type="submit" form="add-to-quote" data-bar-submit class="btn-primary h-12 px-4 shrink-0 disabled:opacity-50 disabled:shadow-none" disabled>
+      <button type="submit" form="add-to-quote" data-bar-submit class="btn-primary h-12 px-3.5 text-[14px] shrink-0 disabled:opacity-50 disabled:shadow-none" disabled>
         <Send class="w-4 h-4" aria-hidden="true" />Request a quote
       </button>
     </div>
@@ -189,6 +190,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 
 <script>
   import { mountDesign } from '../../components/design/design';
+  import { setMaxContext } from '../../lib/max';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
   const label = document.getElementById('color-name');
   const total = document.getElementById('qty-total')!;
@@ -205,6 +207,9 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   const plainOnly = [...form.querySelectorAll<HTMLElement>('[data-plain-only]')];
   let color = swatches[0]?.dataset.name || '';
   let colorImg = swatches[0]?.dataset.img || '';
+  // Max's sheet opens already knowing the product and color.
+  const maxContext = () => setMaxContext(`${form.dataset.name || ''}${color ? ` in ${color}` : ''}: `);
+  maxContext();
 
   const inputs = [...form.querySelectorAll<HTMLInputElement>('input[data-size]')];
   const qty = (i: HTMLInputElement) => Math.max(0, Math.min(99999, Math.floor(Number(i.value) || 0)));
@@ -229,6 +234,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     colorImg = b.dataset.img || '';
     if (label) label.textContent = color;
     if (barColor) barColor.textContent = color;
+    maxContext();
     if (barSwatch) barSwatch.style.background = b.style.background;
     design.setColor({ name: color, front: colorImg, back: b.dataset.back || '' });
   }));

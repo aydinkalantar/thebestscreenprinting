@@ -76,42 +76,42 @@ if (faqs.length) {
     <p class="mb-6 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-2.5 text-[13px] text-amber-800 dark:text-amber-200">Imported from WordPress, not rewritten yet. (Only shown while developing.)</p>
   )}
 
-  <section class:list={['grid gap-10 items-center', image ? 'lg:grid-cols-[1.1fr_0.9fr]' : '']}>
+  <section class:list={['grid gap-6 md:gap-10 items-center', image ? 'lg:grid-cols-[1.1fr_0.9fr]' : '']}>
     <div class:list={[narrow ? 'max-w-3xl' : 'max-w-2xl']}>
       <p class="eyebrow">{eyebrow}</p>
-      <h1 class="mt-3 text-4xl sm:text-5xl font-bold leading-[1.05] text-zinc-900 dark:text-white">{h1}</h1>
-      {(summary || (!narrow && description)) && <p class="mt-5 text-lg leading-8 muted">{summary || description}</p>}
+      <h1 class="mt-2 md:mt-3 text-4xl sm:text-5xl font-bold leading-[1.05] text-zinc-900 dark:text-white">{h1}</h1>
+      {(summary || (!narrow && description)) && <p class="mt-3 md:mt-5 text-lg leading-8 muted">{summary || description}</p>}
       {facts.length > 0 && (
-        <dl class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <dl class="mt-4 md:mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3">
           {facts.map((f) => (
-            <div class="panel px-4 py-3"><dt class="text-[11px] font-bold uppercase tracking-[0.1em] muted">{f.label}</dt><dd class="mt-1 font-bold text-zinc-900 dark:text-white">{f.value}</dd></div>
+            <div class="panel px-4 py-3 max-md:px-3 max-md:py-2.5 max-md:rounded-xl"><dt class="text-[11px] max-md:text-[10px] font-bold uppercase tracking-[0.1em] muted">{f.label}</dt><dd class="mt-1 max-md:mt-0.5 font-bold max-md:text-[13.5px] max-md:leading-snug text-zinc-900 dark:text-white">{f.value}</dd></div>
           ))}
         </dl>
       )}
       {!narrow && (
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a class="btn-primary" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+        <div class="mt-7 max-md:mt-5 flex flex-wrap gap-3 max-md:grid max-md:grid-cols-2 max-md:gap-2">
+          <a class="btn-primary max-md:px-3" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
           {business.studioLive
-            ? <a class="btn-quiet" href={`${business.studioUrl}/studio`} rel="nofollow"><Palette class="w-4 h-4" aria-hidden="true" />Design it online</a>
-            : <a class="btn-quiet" href={`tel:${business.phone}`}><Phone class="w-4 h-4" aria-hidden="true" />{business.phoneDisplay}</a>}
+            ? <a class="btn-quiet max-md:px-3" href={`${business.studioUrl}/studio`} rel="nofollow"><Palette class="w-4 h-4" aria-hidden="true" />Design it online</a>
+            : <a class="btn-quiet max-md:px-3" href={`tel:${business.phone}`}><Phone class="w-4 h-4" aria-hidden="true" />{business.phoneDisplay}</a>}
         </div>
       )}
     </div>
     {image && (
       <div class="relative">
         <div class="absolute inset-6 rounded-[2rem] bg-violet-500/20 blur-3xl" aria-hidden="true"></div>
-        <img src={image} alt="" width="560" height="560" class="relative w-full max-w-md mx-auto aspect-square object-contain panel-raised p-6" />
+        <img src={image} alt="" width="560" height="560" class="relative w-full max-w-md max-md:max-w-[min(62vw,260px)] mx-auto aspect-square object-contain panel-raised p-6 max-md:p-4" />
       </div>
     )}
   </section>
 
-  <div class:list={['mt-14 grid gap-10', narrow ? '' : 'lg:grid-cols-[minmax(0,1fr)_300px]']}>
+  <div class:list={['mt-14 grid gap-8 md:gap-10', narrow ? '' : 'lg:grid-cols-[minmax(0,1fr)_300px]']}>
     <article class="prose-tb">
       <Content />
     </article>
     {!narrow && (
       <aside class="space-y-4 lg:sticky lg:top-24 self-start">
-        <div class="panel-raised p-5">
+        <div class="panel-raised p-5 max-md:hidden">
           <p class="eyebrow">Get a price</p>
           <p class="mt-2 text-sm muted">Send your garment, quantity and artwork. We reply within one business day.</p>
           <a class="btn-primary w-full mt-4" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
@@ -124,7 +124,7 @@ if (faqs.length) {
         <nav class="panel p-2" aria-label={related.title}>
           <p class="eyebrow px-3 pt-2 pb-1">{related.title}</p>
           {related.links.map((l) => (
-            <a href={l.href} aria-current={l.href === path ? 'page' : undefined} class="flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/[0.06] aria-[current=page]:text-violet-700 dark:aria-[current=page]:text-violet-300 aria-[current=page]:bg-violet-500/10">{l.label}<ChevronRight class="w-4 h-4 text-zinc-400" aria-hidden="true" /></a>
+            <a href={l.href} aria-current={l.href === path ? 'page' : undefined} class="flex items-center justify-between px-3 py-2 max-md:py-0 max-md:min-h-[46px] max-md:text-[15px] max-md:active:bg-zinc-100 dark:max-md:active:bg-white/[0.06] rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/[0.06] aria-[current=page]:text-violet-700 dark:aria-[current=page]:text-violet-300 aria-[current=page]:bg-violet-500/10">{l.label}<ChevronRight class="w-4 h-4 text-zinc-400" aria-hidden="true" /></a>
           ))}
         </nav>
       </aside>

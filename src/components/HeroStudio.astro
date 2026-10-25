@@ -28,9 +28,9 @@ const scenes = [
 ];
 ---
 <div class="relative" id="hero-studio" data-scenes={JSON.stringify(scenes)}>
-  <div class="absolute -inset-6 rounded-[2.5rem] bg-violet-500/15 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -inset-6 max-md:-inset-3 rounded-[2.5rem] bg-violet-500/15 blur-3xl" aria-hidden="true"></div>
   <div class="relative panel-raised p-3 sm:p-4">
-    <div class="flex items-center justify-between gap-3 px-1 pb-3">
+    <div class="flex items-center justify-between gap-3 px-1 pb-3 max-md:pb-2">
       <span class="flex items-center gap-2 min-w-0 text-[13px] font-semibold text-zinc-800 dark:text-zinc-200">
         <span class="w-2 h-2 shrink-0 rounded-full bg-emerald-500"></span>
         <span class="truncate" data-product>{scenes[0].product}</span>
@@ -39,7 +39,7 @@ const scenes = [
       <span class="inline-flex shrink-0 rounded-lg bg-zinc-100 dark:bg-white/[0.06] p-0.5 text-[11px] font-semibold"><span class="px-2.5 py-1 rounded-md bg-violet-600 text-white">Front</span><span class="px-2.5 py-1 muted">Back</span></span>
     </div>
 
-    <div class="relative aspect-[4/3.6] rounded-xl bg-white overflow-hidden grid place-items-center">
+    <div class="relative aspect-[4/3.6] max-md:aspect-auto max-md:h-[min(44vh,300px)] rounded-xl bg-white overflow-hidden grid place-items-center">
       <div class="relative h-full aspect-[7/10]" data-stage>
         <img data-img-from src={scenes[0].from} alt="" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700" />
         <img data-img-to src={scenes[0].to} alt="" class="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-700" />
@@ -54,7 +54,7 @@ const scenes = [
       </div>
     </div>
 
-    <div class="mt-3 rounded-xl border border-zinc-200 dark:border-white/10 p-2.5 flex items-center gap-3">
+    <div class="mt-3 max-md:mt-2 rounded-xl border border-zinc-200 dark:border-white/10 p-2.5 max-md:p-2 flex items-center gap-3">
       <span data-mic class="relative w-9 h-9 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white">
         <span class="absolute inset-0 rounded-lg bg-violet-500 animate-ping opacity-0" data-ping></span>
         <Mic class="relative w-4 h-4" aria-hidden="true" />
@@ -66,7 +66,7 @@ const scenes = [
       <Sparkles class="w-4 h-4 text-violet-500 shrink-0" aria-hidden="true" />
     </div>
   </div>
-  {!business.studioLive && <p class="relative mt-3 text-center text-[12px] muted">Our online design studio is coming soon.</p>}
+  {!business.studioLive && <p class="relative mt-3 text-center text-[12px] muted max-md:hidden">Our online design studio is coming soon.</p>}
 </div>
 
 

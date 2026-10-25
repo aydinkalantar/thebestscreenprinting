@@ -24,7 +24,18 @@ const schema = [localBusinessJsonLd, ...jsonLd];
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <script is:inline>
+      // App-like phones: no pinch or double-tap zoom (double-tap is handled by touch-action in
+      // global.css). iOS Safari ignores maximum-scale, so block its gesture events and
+      // two-finger moves too, except inside an element marked [data-zoomable].
+      (() => {
+        const free = (e) => e.target instanceof Element && e.target.closest('[data-zoomable]');
+        const stop = (e) => { if (!free(e)) e.preventDefault(); };
+        ['gesturestart', 'gesturechange', 'gestureend'].forEach((t) => document.addEventListener(t, stop, { passive: false }));
+        document.addEventListener('touchmove', (e) => { if (e.touches.length > 1) stop(e); }, { passive: false });
+      })();
+    </script>
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonical} />
