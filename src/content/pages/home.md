@@ -61,7 +61,6 @@ I found this gem of a place through Yelp. I was using another supplier and he be
 
 THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in for a custom hoodie printing job and they did an AMAZING JOB!
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
 
 ## Our Customers
 

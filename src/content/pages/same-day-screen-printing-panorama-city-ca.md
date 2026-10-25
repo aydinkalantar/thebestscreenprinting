@@ -43,7 +43,6 @@ THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in 
 
 I found this gem of a place through Yelp. I was using another supplier and he began to not be responsive to me. So I decided to look for another company to work with for my clothing line.
 
-Oh wow! They are really The Best! We needed custom hats to be embroidered. It was a rush order which needed to be completed in 2 days. These guys are life savers!
 
 ## Bring Your Design To Life
 
