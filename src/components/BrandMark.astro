@@ -9,5 +9,5 @@ const s = size === 'sm' ? 'h-8 w-8' : 'h-9 w-9';
 <a href="/" class:list={['flex items-center shrink-0', cls]} aria-label={`${business.shortName} home`}>
   <img src="/images/brand/tbsp-mark.svg" alt={business.shortName} width="40" height="40" class:list={[s, 'dark:hidden']} />
   <img src="/images/brand/tbsp-mark-negative.svg" alt={business.shortName} width="40" height="40" class:list={[s, 'hidden dark:block']} />
-  {wordmark && <span class="md:hidden ml-2 text-[19px] font-black tracking-tight leading-none text-zinc-900 dark:text-white" aria-hidden="true">TBSP</span>}
+  {wordmark && <span class="md:hidden ml-2 text-[19px] font-bold tracking-tight leading-none text-zinc-900 dark:text-white" aria-hidden="true">TBSP</span>}
 </a>
