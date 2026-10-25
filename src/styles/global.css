@@ -122,7 +122,7 @@ html.sheet-lock body { position: fixed; left: 0; right: 0; overflow: hidden; }
 [data-sheet][data-open] [data-sheet-panel] { transform: none; opacity: 1; }
 
 /* Bottom tab bar height, used for body padding and bars that sit above it. */
-:root { --tabbar-h: 0px; --hdr-offset: 0px; }
+:root { --tabbar-h: 0px; --hdr-offset: 0px; --orb-rise: 0px; }
 
 /* A desktop panel that becomes a bottom sheet on phones (catalog filters). */
 @media (max-width: 767px) {
@@ -133,10 +133,13 @@ html.sheet-lock body { position: fixed; left: 0; right: 0; overflow: hidden; }
 
 @media (max-width: 767px) {
   :root { --tabbar-h: calc(60px + env(safe-area-inset-bottom)); --hdr-offset: 56px; }
+  /* How far the raised Max orb in the tab bar sticks up: bars that sit on the tab bar keep this
+     much clear space at their bottom so the orb never covers their text or buttons. */
+  :root { --orb-rise: 30px; }
   html.hdr-hidden { --hdr-offset: 0px; }
   body { padding-bottom: var(--tabbar-h); }
   /* Product pages swap the tab bar for their own action bar. */
-  body:has([data-pdp-bar]) { --tabbar-h: 0px; padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  body:has([data-pdp-bar]) { --tabbar-h: 0px; --orb-rise: 0px; padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
   body:has([data-pdp-bar]) [data-tabbar] { display: none; }
 
   /* App header: hides on scroll down, returns on scroll up. */

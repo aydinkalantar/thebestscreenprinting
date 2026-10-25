@@ -1,0 +1,507 @@
+---
+// Quote cart: every product the customer added with "Add to quote", sent as one request.
+// Items live in the browser (src/lib/cart.ts); this page lists them, lets the customer fix
+// quantities (12-piece minimum per product), then collects contact details and posts it all to
+// /api/quote as `items` + `item<i>_artwork_<n>` / `item<i>_mockup_<side>` files.
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import DesignRequestSheet from '../components/design/DesignRequestSheet.astro';
+import { business } from '../data/business';
+import { COLLECTIONS, collectionHref } from '../lib/catalog';
+import { ClipboardList, Plus, ArrowRight, CircleCheck, Phone, Info } from '@lucide/astro';
+
+const min = business.shopMinimum;
+const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
+  .map((slug) => COLLECTIONS.find((c) => c.slug === slug))
+  .filter((c): c is (typeof COLLECTIONS)[number] => !!c)
+  .slice(0, 4);
+---
+<Base title="Your quote | TBSP" description="The products you picked for a custom printing quote." noindex>
+  <Breadcrumbs items={[{ label: 'Get a quote', href: '/quick-quote/' }, { label: 'Your quote' }]} />
+  <div class="grid gap-8 lg:gap-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_340px]">
+    <div class="min-w-0">
+      <p class="eyebrow">Quote cart</p>
+      <h1 class="mt-3 text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white">Your quote</h1>
+      <p class="mt-3 text-[15px] muted max-w-2xl">Everything here goes to our team in one request, and we reply with one quote within one business day. Minimum {min} pieces per product.</p>
+
+      <div id="cart-sent" hidden tabindex="-1" class="mt-6 panel p-5 sm:p-6 border-emerald-500/40 bg-emerald-500/[0.06] grid gap-2" role="status">
+        <p class="flex items-center gap-2 text-lg font-bold text-zinc-900 dark:text-white"><CircleCheck class="w-6 h-6 text-emerald-500 shrink-0" aria-hidden="true" />Request sent. Thank you!</p>
+        <p class="text-[15px] text-zinc-800 dark:text-zinc-200">Your request number is <b data-ref class="text-violet-700 dark:text-violet-300 select-all"></b>. We emailed you a copy and will reply with your quote within one business day.</p>
+        <p class="text-[14px] muted">Questions? Call <a class="font-semibold text-violet-700 dark:text-violet-300" href={`tel:${business.phone}`}>{business.phoneDisplay}</a>.</p>
+      </div>
+
+      <p id="cart-warn" hidden class="mt-6 rounded-xl px-4 py-3 text-sm font-medium bg-amber-500/10 text-amber-800 dark:text-amber-300" role="status"></p>
+
+      <ul id="cart-list" class="mt-6 grid gap-4" aria-label="Products in your quote"></ul>
+
+      <div id="cart-empty" hidden class="mt-6 panel p-6 sm:p-10 text-center grid justify-items-center gap-3">
+        <span class="w-14 h-14 rounded-2xl grid place-items-center bg-violet-500/10 text-violet-600 dark:text-violet-300"><ClipboardList class="w-7 h-7" aria-hidden="true" /></span>
+        <p class="text-xl font-bold text-zinc-900 dark:text-white">Your quote is empty</p>
+        <p class="text-[14.5px] muted max-w-md">Pick a product, choose a color and sizes ({min}+ pieces per product), add your artwork if you have it, then tap <b>Add to quote</b>. Add as many products as you like and send them together.</p>
+        <div class="mt-2 flex flex-wrap justify-center gap-2">
+          <a href="/catalog/" class="btn-primary">Browse the catalog<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+          {shortcuts.map((c) => <a href={collectionHref(c.slug)} class="btn-quiet">{c.label}</a>)}
+        </div>
+        <p class="mt-2 text-[13px] muted">Not sure which products? <a href="/quick-quote/" class="font-semibold text-violet-700 dark:text-violet-300 hover:underline">Describe what you need</a> and we'll suggest some.</p>
+      </div>
+
+      <a id="cart-more" hidden href="/catalog/" class="mt-4 btn-quiet w-full sm:w-auto"><Plus class="w-4 h-4" aria-hidden="true" />Add another product</a>
+    </div>
+
+    <aside id="cart-aside" hidden class="min-w-0 lg:sticky lg:top-24 self-start lg:mt-[7.5rem] max-md:hidden">
+      <div class="panel-raised p-5 grid gap-4">
+        <p class="text-lg font-bold text-zinc-900 dark:text-white">Summary</p>
+        <dl class="grid grid-cols-[1fr_auto] gap-y-2 text-[14px]">
+          <dt class="muted">Products</dt><dd class="font-semibold text-zinc-900 dark:text-white text-right" data-sum-items>0</dd>
+          <dt class="muted">Total pieces</dt><dd class="font-semibold text-zinc-900 dark:text-white text-right" data-sum-pieces>0</dd>
+          <dt class="muted">Artwork files</dt><dd class="font-semibold text-zinc-900 dark:text-white text-right" data-sum-files>0</dd>
+        </dl>
+        <p data-sum-error class="err" aria-live="polite"></p>
+        <button type="button" data-continue class="btn-primary w-full h-12 text-[15px] disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed">Continue<ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
+        <p class="flex gap-1.5 text-[12.5px] muted"><Info class="w-4 h-4 shrink-0 mt-px" aria-hidden="true" />Prices depend on your sizes, colors and decoration, so we quote every order personally. Nothing is charged now.</p>
+      </div>
+      <div class="mt-4 panel p-5 text-sm">
+        <p class="eyebrow">Rather talk?</p>
+        <p class="mt-2 flex items-center gap-2"><Phone class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" /><a class="font-semibold" href={`tel:${business.phone}`}>{business.phoneDisplay}</a></p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Phones: totals + Continue stay in reach above the tab bar (clear of the raised Max orb). -->
+  <div id="cart-bar" hidden class="md:hidden fixed inset-x-0 z-[55] bottom-[var(--tabbar-h)] pb-[var(--orb-rise)] border-t border-zinc-200/80 dark:border-white/10 bg-white/90 dark:bg-[#0a0a0f]/90 backdrop-blur-xl backdrop-saturate-150">
+    <div class="px-4 h-[68px] flex items-center gap-3">
+      <p class="min-w-0 flex-1 leading-tight">
+        <span class="block text-[14px] font-semibold text-zinc-900 dark:text-white"><span data-sum-items>0</span> products · <span data-sum-pieces>0</span> pieces</span>
+        <span data-sum-error class="block text-[12.5px] text-red-600 dark:text-red-400 truncate empty:hidden" aria-live="polite"></span>
+      </p>
+      <button type="button" data-continue class="btn-primary h-12 px-5 text-[15px] shrink-0 disabled:opacity-50 disabled:shadow-none">Continue<ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
+    </div>
+  </div>
+
+  <p id="cart-announce" class="sr-only" aria-live="polite"></p>
+
+  <DesignRequestSheet id="cart-request" title="Send your quote request" notes
+    footer="Your artwork files and mockups are attached for each product. We reply within one business day."
+    doneText="We've got your products, sizes and artwork files." />
+</Base>
+
+<style is:global>
+  #cart-list [hidden], #cart-empty[hidden], #cart-sent[hidden], #cart-aside[hidden], #cart-bar[hidden], #cart-more[hidden], #cart-warn[hidden] { display: none !important; }
+  @media (max-width: 767px) { body:has(#cart-bar:not([hidden])) main { padding-bottom: calc(76px + var(--orb-rise)); } }
+</style>
+
+<script>
+  import {
+    CART_MIN, cartItems, updateCartItem, removeCartItem, duplicateCartItem, clearCart, getFile, setCarry,
+    onCartChange, cartPersistsFiles, sumSizes, CART_MAX_ITEMS, type CartItem,
+  } from '../lib/cart';
+  import { garmentFor, MAX_TOTAL_BYTES, MAX_ARTWORK_BYTES, MULTIPLE_PRODUCTS } from '../lib/quote';
+  import { openSheet, wireSheet } from '../lib/sheet';
+  import { business } from '../data/business';
+
+  const list = document.getElementById('cart-list')!;
+  const empty = document.getElementById('cart-empty')!;
+  const more = document.getElementById('cart-more') as HTMLAnchorElement;
+  const aside = document.getElementById('cart-aside')!;
+  const bar = document.getElementById('cart-bar')!;
+  const warn = document.getElementById('cart-warn')!;
+  const sent = document.getElementById('cart-sent')!;
+  const announcer = document.getElementById('cart-announce')!;
+  const continueBtns = [...document.querySelectorAll<HTMLButtonElement>('[data-continue]')];
+  const MB = (n: number) => `${(n / 1024 / 1024).toFixed(n < 1024 * 1024 ? 2 : 1)} MB`;
+  const inch = (n: number) => `${Math.round(n * 10) / 10}"`;
+  const announce = (t: string) => { announcer.textContent = ''; setTimeout(() => { announcer.textContent = t; }, 60); };
+  const urls: string[] = [];
+  /** Draft quantities that are below the minimum (not saved yet), by item id. */
+  const drafts = new Map<string, Record<string, number>>();
+  let selfWrite = false;
+
+  const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls = '', text = '') => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  };
+  const ICON = {
+    copy: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>',
+    trash: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
+    art: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>',
+  };
+  const iconBtn = (label: string, icon: string, text: string, cls = '') => {
+    const b = el('button', `btn-quiet btn-sm max-md:h-11 ${cls}`);
+    b.type = 'button';
+    b.innerHTML = icon;
+    b.append(el('span', '', text));
+    b.setAttribute('aria-label', label);
+    return b;
+  };
+
+  const sizesOf = (it: CartItem) => drafts.get(it.id) ?? it.sizes;
+  const totalOf = (it: CartItem) => sumSizes(sizesOf(it));
+
+  function summary() {
+    const items = cartItems();
+    const pieces = items.reduce((n, it) => n + totalOf(it), 0);
+    const files = items.reduce((n, it) => n + it.placements.length, 0);
+    const bytes = items.reduce((n, it) => n + it.placements.reduce((a, p) => a + p.size, 0), 0);
+    const bad = items.filter((it) => totalOf(it) < CART_MIN);
+    document.querySelectorAll('[data-sum-items]').forEach((n) => { n.textContent = String(items.length); });
+    document.querySelectorAll('[data-sum-pieces]').forEach((n) => { n.textContent = String(pieces); });
+    document.querySelectorAll('[data-sum-files]').forEach((n) => { n.textContent = files ? `${files} · ${MB(bytes)}` : '0'; });
+    const error = bad.length ? `${bad.length === 1 ? 'One product needs' : `${bad.length} products need`} at least ${CART_MIN} pieces.`
+      : bytes > MAX_TOTAL_BYTES ? `Artwork is ${MB(bytes)}, over the 25 MB limit. Remove a product or use smaller files.` : '';
+    document.querySelectorAll('[data-sum-error]').forEach((n) => { n.textContent = error; });
+    continueBtns.forEach((b) => { b.disabled = !!error || !items.length; });
+    const has = items.length > 0;
+    empty.hidden = has;
+    more.hidden = !has || items.length >= CART_MAX_ITEMS;
+    aside.hidden = !has;
+    bar.hidden = !has;
+  }
+
+  function render() {
+    urls.splice(0).forEach((u) => URL.revokeObjectURL(u));
+    list.replaceChildren();
+    const items = cartItems();
+    for (const [idx, it] of items.entries()) list.append(card(it, idx, items.length));
+    summary();
+  }
+
+  function card(it: CartItem, idx: number, count: number) {
+    const li = el('li', 'panel-raised p-4 sm:p-5 grid gap-4');
+    li.dataset.id = it.id;
+    li.setAttribute('aria-labelledby', `ci-${it.id}`);
+
+    // Head: thumbnails + product.
+    const head = el('div', 'flex gap-3 sm:gap-4');
+    const thumbs = el('div', 'shrink-0 grid gap-1.5 content-start');
+    const main = el('span', 'w-20 h-24 sm:w-28 sm:h-32 rounded-xl overflow-hidden border border-zinc-200/80 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.04] grid place-items-center');
+    const img = el('img', 'w-full h-full object-contain');
+    img.alt = it.mockups.length ? `Mockup of ${it.name}, front` : it.name;
+    img.width = 112; img.height = 128;
+    img.src = it.image;
+    main.append(img);
+    thumbs.append(main);
+    if (it.mockups.length) {
+      // Show the rendered mockups (front first) once their files load.
+      (async () => {
+        const blobs = await Promise.all(it.mockups.map((m) => getFile(m.key)));
+        const first = blobs.findIndex(Boolean);
+        if (first < 0) return;
+        const u = URL.createObjectURL(blobs[first]!); urls.push(u); img.src = u;
+        img.alt = `Mockup of ${it.name}, ${it.mockups[first].side}`;
+        if (blobs.filter(Boolean).length > 1) {
+          const row = el('div', 'flex gap-1.5');
+          blobs.forEach((b, i) => {
+            if (!b) return;
+            const bu = URL.createObjectURL(b); urls.push(bu);
+            const t = el('button', 'w-9 h-10 sm:w-[3.25rem] sm:h-14 rounded-lg overflow-hidden border border-zinc-200/80 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.04] aria-pressed:ring-2 aria-pressed:ring-violet-500');
+            t.type = 'button';
+            t.setAttribute('aria-label', `Show the ${it.mockups[i].side} mockup`);
+            t.setAttribute('aria-pressed', String(i === first));
+            const ti = el('img', 'w-full h-full object-contain'); ti.src = bu; ti.alt = '';
+            t.append(ti);
+            t.addEventListener('click', () => {
+              img.src = bu; img.alt = `Mockup of ${it.name}, ${it.mockups[i].side}`;
+              row.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === t)));
+            });
+            row.append(t);
+          });
+          thumbs.append(row);
+        }
+      })();
+    }
+    const info = el('div', 'min-w-0 flex-1');
+    info.append(el('p', 'text-[11px] font-bold uppercase tracking-[0.1em] muted', `Product ${idx + 1} of ${count}`));
+    const title = el('h2', 'mt-0.5 text-[16.5px] sm:text-lg font-bold leading-snug text-zinc-900 dark:text-white');
+    title.id = `ci-${it.id}`;
+    const link = el('a', 'hover:underline underline-offset-2', it.name);
+    link.href = it.url.replace(/^https?:\/\/[^/]+/, '') || '/catalog/';
+    title.append(link);
+    info.append(title);
+    info.append(el('p', 'mt-0.5 text-[13px] muted', [it.brand, it.style && `Style ${it.style}`].filter(Boolean).join(' · ')));
+    if (it.color) info.append(el('p', 'mt-1 text-[13.5px] font-semibold text-zinc-800 dark:text-zinc-200', `Color: ${it.color}`));
+    // Decoration: per artwork, or the plain choices.
+    if (it.placements.length) {
+      const ul = el('ul', 'mt-2 grid gap-1 text-[13px]');
+      ul.setAttribute('aria-label', 'Artwork');
+      for (const p of it.placements) {
+        const row = el('li', 'leading-snug');
+        row.append(el('b', 'font-semibold text-zinc-800 dark:text-zinc-200', `${p.location} · ${p.decoration}`));
+        row.append(el('span', 'block muted break-all', `${p.file} · ≈ ${inch(p.widthIn)} × ${inch(p.heightIn)}${p.notes ? ` · ${p.notes}` : ''}`));
+        ul.append(row);
+      }
+      info.append(ul);
+    } else {
+      const parts = [it.decorations.length && `Decoration: ${it.decorations.join(', ')}`, it.locations.length && `Print: ${it.locations.join(', ')}`].filter(Boolean) as string[];
+      info.append(el('p', 'mt-2 text-[13px] muted', parts.join(' · ') || 'Decoration: not chosen yet'));
+      info.append(el('p', 'mt-0.5 text-[12.5px] muted', 'No artwork attached. You can send it after we reply.'));
+    }
+    head.append(thumbs, info);
+
+    // Quantities by size, editable.
+    const qtys = el('fieldset', 'grid gap-2');
+    qtys.append(el('legend', 'text-[12px] font-bold uppercase tracking-[0.1em] muted mb-1', 'Quantity by size'));
+    const gridEl = el('div', 'grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2');
+    const order = it.sizeOrder.length ? it.sizeOrder : Object.keys(it.sizes);
+    const totalEl = el('span', 'font-semibold text-zinc-900 dark:text-white');
+    const err = el('p', 'err');
+    err.id = `ce-${it.id}`;
+    err.setAttribute('aria-live', 'polite');
+    const inputs: HTMLInputElement[] = [];
+    const sync = () => {
+      const sizes: Record<string, number> = {};
+      inputs.forEach((i) => { const n = Math.max(0, Math.min(99999, Math.floor(Number(i.value) || 0))); if (n) sizes[i.dataset.size!] = n; });
+      const n = sumSizes(sizes);
+      totalEl.textContent = `Total: ${n} pieces`;
+      const bad = n < CART_MIN;
+      err.textContent = bad ? `Minimum ${CART_MIN} pieces per product. Add ${CART_MIN - n} more, or remove this product.` : '';
+      inputs.forEach((i) => i.setAttribute('aria-invalid', String(bad)));
+      li.classList.toggle('ring-2', bad);
+      li.classList.toggle('ring-red-500/60', bad);
+      if (bad) drafts.set(it.id, sizes);
+      else {
+        drafts.delete(it.id);
+        selfWrite = true;
+        updateCartItem(it.id, { sizes });
+        selfWrite = false;
+      }
+      summary();
+    };
+    for (const size of order) {
+      const lab = el('label', 'grid gap-1 text-center');
+      lab.append(el('span', 'text-[12px] font-semibold text-zinc-600 dark:text-zinc-300', size));
+      const input = el('input', 'field !h-10 !px-1.5 text-center max-md:!h-11');
+      Object.assign(input, { type: 'number', inputMode: 'numeric', min: '0', max: '99999', step: '1', placeholder: '0' });
+      input.pattern = '[0-9]*';
+      input.dataset.size = size;
+      const v = sizesOf(it)[size];
+      if (v) input.value = String(v);
+      input.setAttribute('aria-label', `${it.name}, size ${size}, quantity`);
+      input.setAttribute('aria-describedby', err.id);
+      input.addEventListener('input', sync);
+      inputs.push(input);
+      lab.append(input);
+      gridEl.append(lab);
+    }
+    const totalRow = el('p', 'flex flex-wrap items-baseline justify-between gap-2 text-[13px]');
+    totalRow.append(totalEl, el('span', 'muted', `Minimum ${CART_MIN} per product`));
+    qtys.append(gridEl, totalRow, err);
+    // Show the current state without saving it again.
+    const n0 = totalOf(it);
+    totalEl.textContent = `Total: ${n0} pieces`;
+    if (n0 < CART_MIN) { err.textContent = `Minimum ${CART_MIN} pieces per product. Add ${CART_MIN - n0} more, or remove this product.`; li.classList.add('ring-2', 'ring-red-500/60'); }
+
+    // Actions.
+    const actions = el('div', 'flex flex-wrap gap-2 pt-1 border-t border-zinc-200/80 dark:border-white/10 pt-3');
+    const dup = iconBtn(`Duplicate ${it.name}`, ICON.copy, 'Duplicate');
+    dup.addEventListener('click', () => {
+      const copy = duplicateCartItem(it.id);
+      if (!copy) { announce(`You can have up to ${CART_MAX_ITEMS} products in one quote.`); return; }
+      render();
+      announce(`Duplicated ${it.name}. Change the color or sizes on the copy.`);
+      list.querySelector<HTMLElement>(`[data-id="${copy.id}"] input`)?.focus();
+    });
+    actions.append(dup);
+    if (it.placements.length) {
+      const reuse = iconBtn(`Use the same artwork on another product`, ICON.art, 'Use same artwork on another product');
+      reuse.addEventListener('click', () => { setCarry(it.id); location.href = '/catalog/'; });
+      actions.append(reuse);
+    }
+    const del = iconBtn(`Remove ${it.name}`, ICON.trash, 'Remove', 'text-red-600 dark:text-red-400 sm:ml-auto');
+    del.addEventListener('click', async () => {
+      drafts.delete(it.id);
+      await removeCartItem(it.id);
+      render();
+      announce(`Removed ${it.name} from your quote.`);
+      (list.querySelector<HTMLElement>('input') ?? document.querySelector<HTMLElement>('#cart-empty a'))?.focus();
+    });
+    actions.append(del);
+
+    li.append(head, qtys, actions);
+    return li;
+  }
+
+  // Other tabs (or the product page in another tab) changed the cart.
+  onCartChange(() => {
+    if (selfWrite) return;
+    if (list.contains(document.activeElement) && (document.activeElement as HTMLElement).tagName === 'INPUT') { summary(); return; }
+    render();
+  });
+
+  cartPersistsFiles().then((ok) => {
+    if (!ok) { warn.hidden = false; warn.textContent = "Your browser isn't letting us save files, so artwork added on other pages may be missing here. Keep this tab open until you send, or send each product on its own."; }
+  });
+  render();
+
+  // ── contact step + submit ──────────────────────────────────────────────────
+  const sheet = document.getElementById('cart-request')!;
+  const form = sheet.querySelector<HTMLFormElement>('[data-dr-form]')!;
+  const msg = sheet.querySelector<HTMLElement>('[data-dr-msg]')!;
+  const send = sheet.querySelector<HTMLButtonElement>('[data-dr-send]')!;
+  const done = sheet.querySelector<HTMLElement>('[data-dr-done]')!;
+  const actionsEl = sheet.querySelector<HTMLElement>('[data-dr-actions]')!;
+  wireSheet(sheet);
+  let sending = false;
+
+  const showMsg = (text: string, tone: 'error' | 'info', call = false) => {
+    msg.className = `rounded-xl px-4 py-3 text-sm font-medium ${tone === 'error' ? 'bg-red-500/10 text-red-700 dark:text-red-300' : 'bg-violet-500/10 text-violet-700 dark:text-violet-300'}`;
+    msg.textContent = text;
+    const tpl = sheet.querySelector<HTMLTemplateElement>('[data-dr-call]');
+    if (call && tpl) { const p = document.createElement('p'); p.append(tpl.content.cloneNode(true)); msg.append(p); }
+    msg.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  };
+  const setFieldErrors = (fields: Record<string, string> = {}) => {
+    form.querySelectorAll<HTMLElement>('.err[data-for]').forEach((e) => {
+      const t = fields[e.dataset.for!] || '';
+      e.textContent = t;
+      (form.elements.namedItem(e.dataset.for!) as HTMLInputElement | null)?.setAttribute('aria-invalid', String(!!t));
+    });
+  };
+
+  continueBtns.forEach((b) => b.addEventListener('click', () => {
+    const items = cartItems();
+    if (!items.length) return;
+    const bad = items.find((it) => totalOf(it) < CART_MIN);
+    if (bad) { list.querySelector<HTMLElement>(`[data-id="${bad.id}"] input`)?.focus(); return; }
+    const pieces = items.reduce((n, it) => n + it.total, 0);
+    sheet.querySelector('[data-dr-summary]')!.textContent = `${items.length} product${items.length === 1 ? '' : 's'} · ${pieces} pieces · ${items.reduce((n, it) => n + it.placements.length, 0)} artwork files`;
+    form.hidden = false;
+    actionsEl.hidden = false;
+    done.hidden = true;
+    msg.className = 'hidden';
+    openSheet(sheet, { focus: form.elements.namedItem('name') as HTMLInputElement });
+  }));
+
+  /** Re-encodes a PNG narrower, for when the mockups don't fit the request budget. */
+  async function shrinkPng(blob: Blob, width: number): Promise<Blob> {
+    try {
+      const bmp = await createImageBitmap(blob);
+      if (bmp.width <= width) return blob;
+      const cv = document.createElement('canvas');
+      cv.width = width; cv.height = Math.round((bmp.height * width) / bmp.width);
+      cv.getContext('2d')!.drawImage(bmp, 0, 0, cv.width, cv.height);
+      return (await new Promise<Blob | null>((r) => cv.toBlob(r, 'image/png'))) ?? blob;
+    } catch {
+      return blob;
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (sending) return;
+    setFieldErrors();
+    msg.className = 'hidden';
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+    const local: Record<string, string> = {};
+    if (!name) local.name = 'Please tell us your name.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) local.email = 'Enter a valid email so we can send your quote.';
+    if (Object.keys(local).length) {
+      setFieldErrors(local);
+      (form.elements.namedItem(Object.keys(local)[0]) as HTMLInputElement).focus();
+      return;
+    }
+    const items = cartItems();
+    if (!items.length) return;
+    const bad = items.find((it) => it.total < CART_MIN);
+    if (bad) { showMsg(`${bad.name} needs at least ${CART_MIN} pieces (${CART_MIN}-piece minimum per product).`, 'error'); return; }
+
+    const label = send.querySelector('span')!;
+    sending = true;
+    send.setAttribute('aria-disabled', 'true');
+    send.setAttribute('aria-busy', 'true');
+    label.textContent = 'Preparing files…';
+    try {
+      // Artwork first: it must all go. Then mockups in what's left, shrunk or dropped if needed.
+      const fd = new FormData(form);
+      const missing: string[] = [];
+      let artBytes = 0;
+      const art: { key: string; blob: Blob; name: string }[] = [];
+      for (const [i, it] of items.entries()) {
+        for (const [n, p] of it.placements.entries()) {
+          const blob = await getFile(p.fileKey);
+          if (!blob) { missing.push(`${p.file} (${it.name})`); continue; }
+          if (blob.size > MAX_ARTWORK_BYTES) { showMsg(`${p.file} is ${MB(blob.size)}. Please keep each file under 10 MB.`, 'error'); return; }
+          artBytes += blob.size;
+          art.push({ key: `item${i + 1}_artwork_${n + 1}`, blob: new File([blob], p.file, { type: p.fileType || blob.type }), name: p.file });
+        }
+      }
+      if (artBytes > MAX_TOTAL_BYTES - 200_000) {
+        showMsg(`Your artwork adds up to ${MB(artBytes)}, more than the 25 MB we can take in one request. Remove a product (you can send it separately) or use smaller files.`, 'error');
+        return;
+      }
+      if (missing.length) {
+        showMsg(`We couldn't find ${missing.length === 1 ? 'this file' : 'these files'} in your browser: ${missing.join(', ')}. Remove the product and add it again with its artwork, or email the file after sending.`, 'error');
+        return;
+      }
+      art.forEach((a) => fd.append(a.key, a.blob, a.name));
+      let budget = MAX_TOTAL_BYTES - artBytes - 300_000;
+      const shots: { key: string; blob: Blob }[] = [];
+      for (const [i, it] of items.entries()) for (const m of it.mockups) {
+        const blob = await getFile(m.key);
+        if (blob) shots.push({ key: `item${i + 1}_mockup_${m.side}`, blob });
+      }
+      let total = shots.reduce((n, s) => n + s.blob.size, 0);
+      if (total > budget) {
+        for (const s of shots) s.blob = await shrinkPng(s.blob, 600);
+        total = shots.reduce((n, s) => n + s.blob.size, 0);
+      }
+      let skipped = 0;
+      for (const s of shots) {
+        if (s.blob.size > budget) { skipped++; continue; }
+        budget -= s.blob.size;
+        fd.append(s.key, s.blob, `${s.key}.png`);
+      }
+
+      const garment = items.length > 1 ? MULTIPLE_PRODUCTS : garmentFor(items[0].cat, items[0].sub, items[0].name);
+      fd.set('garment', garment);
+      fd.set('quantity', String(items.reduce((n, it) => n + it.total, 0)));
+      fd.delete('decorations');
+      for (const d of new Set(items.flatMap((it) => (it.placements.length ? it.placements.map((p) => p.decoration) : it.decorations)))) fd.append('decorations', d);
+      fd.set('items', JSON.stringify(items.map((it) => ({
+        productName: it.name, style: it.style || undefined, brand: it.brand || undefined, color: it.color || undefined,
+        sizes: Object.fromEntries((it.sizeOrder.length ? it.sizeOrder : Object.keys(it.sizes)).filter((s) => it.sizes[s] > 0).map((s) => [s, it.sizes[s]])),
+        quantity: it.total,
+        decorations: it.placements.length ? [...new Set(it.placements.map((p) => p.decoration))] : it.decorations,
+        locations: it.placements.length ? it.placements.map((p) => p.location) : it.locations,
+        placements: it.placements.map((p) => ({
+          location: p.location, decoration: p.decoration, file: p.file,
+          widthIn: p.widthIn, heightIn: p.heightIn, fromTopIn: p.fromTopIn, fromCenterIn: p.fromCenterIn, notes: p.notes,
+        })),
+        url: it.url,
+      }))));
+
+      label.textContent = 'Sending…';
+      const res = await fetch('/api/quote', { method: 'POST', body: fd });
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; ref?: string; error?: string; fields?: Record<string, string>; fallback?: boolean };
+      if (res.ok && data.ok) {
+        const refEl = done.querySelector<HTMLElement>('[data-dr-ref]');
+        if (refEl) { refEl.hidden = !data.ref; refEl.querySelector('span')!.textContent = data.ref ?? ''; }
+        form.hidden = true;
+        actionsEl.hidden = true;
+        done.hidden = false;
+        done.focus();
+        await clearCart();
+        drafts.clear();
+        render();
+        if (data.ref) { sent.hidden = false; sent.querySelector('[data-ref]')!.textContent = data.ref; }
+        if (skipped) console.info(`quote cart: ${skipped} mockup(s) left out to stay under 25 MB`);
+        return;
+      }
+      setFieldErrors(data.fields);
+      const other = Object.entries(data.fields ?? {}).filter(([k]) => k !== 'name' && k !== 'email' && k !== 'items').map(([, v]) => v);
+      const fallback = !!data.fallback || res.status >= 500;
+      showMsg([data.error || 'Something went wrong. Please try again.', ...other].join(' '), 'error', fallback);
+      const firstBad = Object.keys(data.fields ?? {}).find((k) => k === 'name' || k === 'email');
+      if (firstBad) (form.elements.namedItem(firstBad) as HTMLInputElement).focus();
+    } catch {
+      showMsg(`We couldn't reach our server. Your quote is still saved here. Please try again, or call ${business.phoneDisplay}.`, 'error', true);
+    } finally {
+      sending = false;
+      send.removeAttribute('aria-disabled');
+      send.removeAttribute('aria-busy');
+      label.textContent = 'Send request';
+    }
+  });
+</script>

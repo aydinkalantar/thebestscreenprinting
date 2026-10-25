@@ -2,7 +2,8 @@
 // Design preview: the garment photo for the selected color with the customer's artwork placed
 // on it. All behaviour lives in design.ts; the product page mounts it and wires the quote panel.
 import { techniqueNames, type CatalogProduct } from '../../lib/catalog';
-import { spotsFor } from './areas';
+import { spotsFor, placeConfigFor, type Overrides } from './areas';
+import overrides from '../../../data/print-area-overrides.json';
 import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info } from '@lucide/astro';
 
 interface Props { p: CatalogProduct }
@@ -12,7 +13,8 @@ const first = p.colors[0];
 const front = first?.image || p.image;
 const back = first?.back || '';
 const methods = techniqueNames(p.techniques);
-const config = { spots, decorations: methods.length ? methods : ['Not sure yet'], name: p.name };
+const place = placeConfigFor(p, (overrides as Record<string, Overrides>)[p.id]);
+const config = { spots, decorations: methods.length ? methods : ['Not sure yet'], name: p.name, place, style: p.image };
 const first0 = spots[0];
 const chip = 'chip relative shrink-0 cursor-pointer select-none aria-pressed:border-violet-500 aria-pressed:bg-violet-500/10 aria-pressed:text-violet-700 dark:aria-pressed:text-violet-300 max-md:h-10';
 const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
@@ -48,6 +50,15 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
             <span data-dot class="hidden w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true"></span>{s.label}<span class="sr-only" data-has> (no artwork)</span>
           </button>
         ))}
+      </div>
+
+      <!-- Artwork carried over from another product in the quote ("Use same artwork"). -->
+      <div data-pending hidden class="mt-3 rounded-2xl border border-violet-300/70 dark:border-violet-400/30 bg-violet-500/[0.06] p-3 sm:p-4 grid gap-2" role="region" aria-label="Artwork from your quote">
+        <div class="flex items-start gap-2">
+          <p class="min-w-0 flex-1 text-[13px] leading-snug text-zinc-800 dark:text-zinc-200" data-pending-note></p>
+          <button type="button" data-pending-dismiss class="shrink-0 min-h-[32px] text-[12.5px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">Dismiss</button>
+        </div>
+        <ul data-pending-list class="grid gap-2"></ul>
       </div>
 
       <div data-panel class="mt-3 rounded-2xl border border-zinc-200/80 dark:border-white/10 bg-zinc-50/70 dark:bg-white/[0.03] p-3 sm:p-4">

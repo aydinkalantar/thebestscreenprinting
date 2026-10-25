@@ -2,7 +2,7 @@
 // Pure (no Worker APIs) so it can be rendered from Node for review.
 import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFImage, type PDFPage } from 'pdf-lib';
 import { business } from '../data/business';
-import { placementPosition, placementSide, placementSize, turnaroundTier, type Placement, type QuoteRequest } from './quote';
+import { placementPosition, placementSide, placementSize, sizesText, turnaroundTier, type Placement, type QuoteItem, type QuoteRequest } from './quote';
 
 /** Shop hours as written across the site (business.openingHours, Los Angeles time). */
 export const HOURS = 'Monday to Friday, 9am to 5pm Pacific';
@@ -25,7 +25,10 @@ export interface QuotePdfInput {
   mockups?: PdfMockup[];
   /** PNG bytes of the TBSP shield (public/icon-512.png). Optional: the header falls back to text only. */
   logoPng?: Uint8Array | null;
+  /** Quote cart: one entry per product, each with its own files and mockups. */
+  items?: PdfItem[];
 }
+export interface PdfItem { item: QuoteItem; artworkNames: string[]; mockups: PdfMockup[] }
 
 /** Keeps the PDF small enough to attach; past this the mockup images are left out (they are attached to the email anyway). */
 export const MAX_PDF_BYTES = 3 * 1024 * 1024;
@@ -49,9 +52,13 @@ export const turnaroundLine = (label: string) => {
 };
 
 export async function buildQuotePdf(input: QuotePdfInput): Promise<Uint8Array> {
+  const all = [...(input.mockups ?? []), ...(input.items ?? []).flatMap((i) => i.mockups)];
+  if (!all.length) return render(input, false);
+  // PNGs are embedded as they are, so their bytes are a floor for the PDF: skip a render that can't fit.
+  const pngBytes = all.reduce((n, m) => n + m.png.length, 0);
+  if (pngBytes > MAX_PDF_BYTES * 0.95) return render(input, false);
   const bytes = await render(input, true);
-  if (bytes.length <= MAX_PDF_BYTES || !input.mockups?.length) return bytes;
-  return render(input, false);
+  return bytes.length <= MAX_PDF_BYTES ? bytes : render(input, false);
 }
 
 async function render(input: QuotePdfInput, withImages: boolean): Promise<Uint8Array> {
@@ -130,31 +137,47 @@ async function render(input: QuotePdfInput, withImages: boolean): Promise<Uint8A
     }
   };
 
-  const COLS = [
-    { h: 'Location', w: 72 }, { h: 'Decoration', w: 78 }, { h: 'File', w: 104 },
-    { h: 'Size', w: 62 }, { h: 'Position', w: 112 }, { h: 'Notes', w: 88 },
-  ];
-  const table = (list: Placement[]) => {
+  /** A table with a shaded header row; rows split onto a new page (with the header again). */
+  const grid = (cols: { h: string; w: number }[], list: string[][]) => {
     const size = 8.5, lh = 11, pad = 5;
     const head = () => {
       ensure(lh + pad * 2 + 20);
       page.drawRectangle({ x: M, y: y - lh - pad * 2, width: CONTENT_W, height: lh + pad * 2, color: SOFT });
       let x = M;
-      for (const c of COLS) { text(c.h, x + pad, y - pad - size, { size, font: bold, color: MUTED }); x += c.w; }
+      for (const c of cols) { text(c.h, x + pad, y - pad - size, { size, font: bold, color: MUTED }); x += c.w; }
       y -= lh + pad * 2;
     };
     head();
-    for (const p of list) {
-      const cells = [p.location, p.decoration, p.file ?? '—', placementSize(p), placementPosition(p), p.notes ?? ''].map((v, i) => wrap(v, regular, size, COLS[i].w - pad * 2));
+    for (const row of list) {
+      const cells = row.map((v, i) => wrap(v, regular, size, cols[i].w - pad * 2));
       const h = Math.max(...cells.map((c) => c.length)) * lh + pad * 2;
       if (y - h < M + FOOTER_H) { newPage(); head(); }
       let x = M;
-      cells.forEach((lines, i) => { lines.forEach((line, j) => text(line, x + pad, y - pad - size - j * lh, { size })); x += COLS[i].w; });
+      cells.forEach((lines, i) => { lines.forEach((line, j) => text(line, x + pad, y - pad - size - j * lh, { size })); x += cols[i].w; });
       y -= h;
       page.drawLine({ start: { x: M, y }, end: { x: W - M, y }, thickness: 0.5, color: LINE });
     }
     y -= 6;
   };
+  const COLS = [
+    { h: 'Location', w: 72 }, { h: 'Decoration', w: 78 }, { h: 'File', w: 104 },
+    { h: 'Size', w: 62 }, { h: 'Position', w: 112 }, { h: 'Notes', w: 88 },
+  ];
+  const table = (list: Placement[]) => grid(COLS, list.map((p) => [p.location, p.decoration, p.file ?? '—', placementSize(p), placementPosition(p), p.notes ?? '']));
+
+  /** A mockup image in a bordered box of at most `maxH` points, or a note when images are left out. */
+  const mockupBox = (img: PDFImage | null, maxH: number) => {
+    if (!img) { paragraph('The mockup image is attached to the email as a PNG.', { color: MUTED, gap: 6 }); return; }
+    const boxH = maxH;
+    const scale = Math.min(CONTENT_W / img.width, boxH / img.height, 1.5);
+    const w = img.width * scale, h = img.height * scale;
+    page.drawRectangle({ x: M, y: y - boxH, width: CONTENT_W, height: boxH, borderColor: LINE, borderWidth: 0.75, color: rgb(1, 1, 1) });
+    page.drawImage(img, { x: M + (CONTENT_W - w) / 2, y: y - boxH + (boxH - h) / 2, width: w, height: h });
+    y -= boxH + 8;
+  };
+  const embed = async (m: PdfMockup) => { if (!withImages) return null; try { return await doc.embedPng(m.png); } catch { return null; } };
+  const sideTitle = (label: string) => label.replace(/^.*Mockup:\s*/i, '').replace(/^\w/, (c) => c.toUpperCase());
+  const items = input.items ?? [];
 
   // ── (a) Summary ────────────────────────────────────────────────────────────
   newPage();
@@ -190,22 +213,85 @@ async function render(input: QuotePdfInput, withImages: boolean): Promise<Uint8A
   heading('Order');
   const tier = turnaroundTier(q.turnaround);
   rows([
-    ['Garment', q.garment],
+    ['Garment', items.length ? `${q.garment} (${items.length} product${items.length === 1 ? '' : 's'})` : q.garment],
     ['Quantity', `${q.quantity} pieces`],
     ['Decoration', q.decorations.join(', ') || 'Not sure yet'],
     ['Turnaround', turnaroundLine(q.turnaround) + (tier.id === 'super-rush' ? `\n${business.superRushNote}` : '')],
     ['Needed by', formatNeededBy(q.deadline) || 'No date given'],
-    ['Artwork files', artworkNames.length ? artworkNames.join(', ') : 'None attached'],
-    ['Placements', placements.length ? `${placements.length} (see ${mockups.length ? 'mockup pages' : 'placement table'})` : 'None placed'],
+    ...(items.length ? [
+      ['Artwork files', `${items.reduce((n, it) => n + it.artworkNames.length, 0) || 'None'} attached (listed per product)`] as [string, string],
+    ] : [
+      ['Artwork files', artworkNames.length ? artworkNames.join(', ') : 'None attached'] as [string, string],
+      ['Placements', placements.length ? `${placements.length} (see ${mockups.length ? 'mockup pages' : 'placement table'})` : 'None placed'] as [string, string],
+    ]),
   ]);
+
+  if (items.length) {
+    heading(`Products (${items.length})`);
+    grid(
+      [{ h: '#', w: 22 }, { h: 'Product', w: 170 }, { h: 'Color', w: 80 }, { h: 'Sizes', w: 140 }, { h: 'Qty', w: 34 }, { h: 'Decoration', w: 70 }],
+      items.map(({ item: it }, i) => [
+        String(i + 1), [it.productName, [it.brand, it.style].filter(Boolean).join(' ')].filter(Boolean).join('\n'), it.color || '—',
+        sizesText(it.sizes) || '—', String(it.quantity),
+        [...new Set([...it.decorations, ...it.placements.map((p) => p.decoration)])].join(', ') || '—',
+      ]),
+    );
+  }
 
   if (q.details) {
     heading('Product details');
     paragraph(q.details, { size: 9.5 });
   }
 
-  heading('About your mockup');
-  ABOUT_MOCKUP.forEach((p) => paragraph(p, { size: 9, color: MUTED, gap: 4 }));
+  const aboutMockup = () => {
+    heading('About your mockup');
+    ABOUT_MOCKUP.forEach((p) => paragraph(p, { size: 9, color: MUTED, gap: 4 }));
+  };
+  // Cart PDFs put it after the products, so the summary stays on one page.
+  if (!items.length) aboutMockup();
+
+  // ── Quote cart: one section per product, with its mockups and placements ──
+  for (const [i, { item: it, artworkNames: names, mockups: ms }] of items.entries()) {
+    newPage();
+    text(`Product ${i + 1} of ${items.length}`, M, y - 9, { size: 9, font: bold, color: ACCENT });
+    rightText(ref, y - 9, 10, bold, ACCENT);
+    y -= 14;
+    for (const line of wrap(it.productName, bold, 16, CONTENT_W)) { text(line, M, y - 16, { size: 16, font: bold }); y -= 20; }
+    y -= 4;
+    rows([
+      ['Brand / style', [it.brand, it.style && `Style ${it.style}`].filter(Boolean).join(' · ') || '—'],
+      ['Color', it.color || '—'],
+      ['Sizes', sizesText(it.sizes) || '—'],
+      ['Quantity', `${it.quantity} pieces`],
+      ['Decoration', [...new Set([...it.decorations, ...it.placements.map((p) => p.decoration)])].join(', ') || 'Not sure yet'],
+      ['Print locations', (it.locations.length ? it.locations : it.placements.map((p) => p.location)).join(', ') || '—'],
+      ['Artwork files', names.length ? names.join(', ') : 'None attached'],
+    ]);
+    const shown = new Set<Placement>();
+    for (const m of ms) {
+      const side = it.placements.filter((p) => placementSide(p) === m.side);
+      side.forEach((p) => shown.add(p));
+      const tableH = side.length ? 40 + side.length * 34 : 0;
+      const img = await embed(m);
+      // Room for a useful image plus its table on this page, else a fresh page.
+      if (img && y - M - FOOTER_H - tableH < 250) {
+        newPage();
+        text(`Product ${i + 1} of ${items.length} · ${it.productName} (continued)`, M, y - 9, { size: 9, font: bold, color: MUTED });
+        rightText(ref, y - 9, 10, bold, ACCENT);
+        y -= 16;
+      }
+      heading(`${sideTitle(m.label)} mockup`);
+      mockupBox(img, Math.max(200, Math.min(380, y - M - FOOTER_H - tableH - 10)));
+      if (side.length) table(side);
+    }
+    const rest = it.placements.filter((p) => !shown.has(p));
+    if (rest.length) {
+      heading(ms.length ? 'Other placements' : 'Artwork placements');
+      table(rest);
+    }
+  }
+
+  if (items.length) aboutMockup();
 
   // ── (b) One page per mockup, with that side's placements ─────────────────
   const covered = new Set<Placement>();

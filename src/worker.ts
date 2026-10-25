@@ -1,7 +1,7 @@
 // Edge entry point. Static pages come from the ASSETS binding; anything the build
 // doesn't contain is checked against the legacy WordPress redirect map.
 import redirects from './redirects.json';
-import { parseQuote, parsePlacements, quoteEmail, requestNumber, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, ARTWORK_TYPES } from './lib/quote';
+import { parseQuote, parsePlacements, quoteEmail, requestNumber, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, MAX_ITEMS, MAX_PLACEMENTS, ARTWORK_TYPES, type ItemAssets } from './lib/quote';
 import { buildQuotePdf, type PdfMockup } from './lib/quote-pdf';
 import { confirmationEmail } from './lib/quote-confirm';
 import { business } from './data/business';
@@ -96,42 +96,55 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
   }
 
   const parsed = parseQuote(form);
-  if ('errors' in parsed) return json({ error: 'Please check the highlighted fields.', fields: parsed.errors }, 400);
+  if ('errors' in parsed) return json({ error: parsed.errors.items || 'Please check the highlighted fields.', fields: parsed.errors }, 400);
   const q = parsed.quote;
 
   // Artwork: the quote form's single `artwork` field, or one `artwork_<n>` per placed location
   // from the product page's design preview, plus its rendered `mockup_<side>` PNGs.
+  // Quote cart requests send the same per product: `item<i>_artwork_<n>` and `item<i>_mockup_<side>`.
+  const items = q.items ?? [];
   const toBase64 = async (f: File) => bytesToBase64(new Uint8Array(await f.arrayBuffer()));
   const artworkFiles: Attachment[] = [];
   const mockupFiles: Attachment[] = [];
   const artworkNames: string[] = [];
   const mockups: { cid: string; label: string }[] = [];
   const pdfMockups: PdfMockup[] = [];
+  const itemAssets: ItemAssets[] = items.map(() => ({ artworkNames: [], mockups: [] }));
+  const itemPdfMockups: PdfMockup[][] = items.map(() => []);
   let total = 0;
   for (const [key, value] of form.entries()) {
     if (typeof value === 'string' || value.size === 0) continue;
-    const isMockup = /^mockup_[a-z-]{1,20}$/.test(key);
-    if (!isMockup && key !== 'artwork' && !/^artwork_\d{1,2}$/.test(key)) continue;
+    const itemKey = /^item(\d{1,2})_(artwork_\d{1,2}|mockup_[a-z-]{1,20})$/.exec(key);
+    const itemIndex = itemKey ? Number(itemKey[1]) - 1 : -1;
+    if (itemKey && !itemAssets[itemIndex]) continue;
+    const field = itemKey ? itemKey[2] : key;
+    const isMockup = /^mockup_[a-z-]{1,20}$/.test(field);
+    if (!isMockup && !itemKey && key !== 'artwork' && !/^artwork_\d{1,2}$/.test(key)) continue;
     if (value.size > MAX_ARTWORK_BYTES) return json({ error: `${value.name || 'A file'} is too large. Please keep each file under 10 MB.`, fields: { artwork: 'Max 10 MB per file' } }, 400);
     total += value.size;
     if (total > MAX_TOTAL_BYTES) return json({ error: 'Your files are too large together. Please keep them under 25 MB in total.', fields: { artwork: 'Max 25 MB in total' } }, 400);
+    const prefix = itemKey ? `item${itemIndex + 1}-` : '';
     if (isMockup) {
-      if (value.type !== 'image/png' || mockups.length >= 4) continue;
-      const side = key.slice(7);
-      const label = `Mockup: ${side.replace(/-/g, ' ')}`;
+      if (value.type !== 'image/png') continue;
+      if (itemKey ? itemAssets[itemIndex].mockups.length >= 2 || mockupFiles.length >= MAX_ITEMS * 2 : mockups.length >= 4) continue;
+      const side = field.slice(7);
+      const label = `${itemKey ? `Product ${itemIndex + 1} · ` : ''}Mockup: ${side.replace(/-/g, ' ')}`;
       const png = new Uint8Array(await value.arrayBuffer());
-      mockups.push({ cid: `mockup-${side}`, label });
-      pdfMockups.push({ side, label, png });
-      mockupFiles.push({ filename: `mockup-${side}.png`, content: bytesToBase64(png), content_id: `mockup-${side}` });
+      const cid = `${prefix}mockup-${side}`;
+      (itemKey ? itemAssets[itemIndex].mockups : mockups).push({ cid, label });
+      (itemKey ? itemPdfMockups[itemIndex] : pdfMockups).push({ side, label, png });
+      mockupFiles.push({ filename: `${cid}.png`, content: bytesToBase64(png), content_id: cid });
       continue;
     }
     if (value.type && !ARTWORK_TYPES.includes(value.type)) return json({ error: 'Please upload PNG, JPG, SVG, PDF, AI or PSD artwork.', fields: { artwork: 'Unsupported file type' } }, 400);
-    if (artworkNames.length >= 8) continue;
-    const name = value.name.slice(0, 120) || `artwork-${artworkNames.length + 1}`;
+    if (artworkNames.length >= (itemKey ? MAX_ITEMS * MAX_PLACEMENTS : 8)) continue;
+    const base = value.name.slice(0, 120) || `artwork-${artworkNames.length + 1}`;
+    const name = `${prefix}${base}`;
     artworkNames.push(name);
+    if (itemKey) itemAssets[itemIndex].artworkNames.push(name);
     artworkFiles.push({ filename: name, content: await toBase64(value) });
   }
-  const placements = parsePlacements(form.get('placements'));
+  const placements = items.length ? [] : parsePlacements(form.get('placements'));
 
   if (!env.RESEND_API_KEY) {
     return json({ error: `Online quotes are not switched on yet. Please call ${business.phoneDisplay} or email ${business.email}.`, fallback: true }, 503);
@@ -144,14 +157,17 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
   try {
     const logoRes = await env.ASSETS.fetch(new Request(`${origin}/icon-512.png`)).catch(() => null);
     const logoPng = logoRes?.ok ? new Uint8Array(await logoRes.arrayBuffer()) : null;
-    const bytes = await buildQuotePdf({ ref, date: new Date(), quote: q, placements, artworkNames, mockups: pdfMockups, logoPng });
+    const bytes = await buildQuotePdf({
+      ref, date: new Date(), quote: q, placements, artworkNames, mockups: pdfMockups, logoPng,
+      items: items.map((item, i) => ({ item, artworkNames: itemAssets[i].artworkNames, mockups: itemPdfMockups[i] })),
+    });
     pdf = { filename: `${ref}-design-request.pdf`, content: bytesToBase64(bytes) };
   } catch (e) {
     console.error('quote pdf failed', ref, e);
   }
 
   // 1. The shop: everything, including the customer's original artwork.
-  const mail = quoteEmail(q, artworkNames, placements, mockups, ref);
+  const mail = quoteEmail(q, artworkNames, placements, mockups, ref, itemAssets);
   const shopAttachments = [...artworkFiles, ...mockupFiles, ...(pdf ? [pdf] : [])];
   const shopError = await sendEmail(env, {
     to: [env.QUOTE_TO || business.email],
@@ -169,7 +185,7 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
   // 2. The customer: a confirmation with the mockups and the PDF (never their own artwork back).
   // The shop already has the request, so a failure here is only logged.
   if (honeypotEmpty && humanVerified && (await allowConfirmation(request, origin))) {
-    const confirm = confirmationEmail(q, ref, mockups);
+    const confirm = confirmationEmail(q, ref, mockups, undefined, itemAssets);
     const customerAttachments = [...mockupFiles, ...(pdf ? [pdf] : [])];
     const customerError = await sendEmail(env, {
       to: [q.email],

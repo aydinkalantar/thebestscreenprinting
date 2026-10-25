@@ -6,7 +6,7 @@ import { business } from '../data/business';
 import { NAV } from '../data/nav';
 import { products } from '../lib/catalog';
 import { collectionTiles, brandTiles, styles } from './home/collections';
-import { Search, Phone, Sparkles, Moon, Sun, Menu, ChevronDown, ArrowRight, Wand2, Upload, Type, MessageSquareText, User, ShoppingBag, X } from '@lucide/astro';
+import { Search, Phone, Sparkles, Moon, Sun, Menu, ChevronDown, ArrowRight, Wand2, Upload, Type, MessageSquareText, User, ShoppingBag, X, ClipboardList } from '@lucide/astro';
 const here = Astro.url.pathname;
 const aiHref = '/quick-quote/';
 // Max lives in the studio, so it is only offered while the studio is live.
@@ -47,6 +47,7 @@ const menuBrands = brandTiles(8);
         <Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />
         <span class="leading-tight"><span class="block text-[12px] muted">{max ? 'Design & quote in minutes' : 'Reply within 1 business day'}</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">{max ? 'Ask Max' : 'Free quote'}</span></span>
       </a>
+      <a href="/quote-cart/" data-cart-link class="icon-btn relative hidden md:grid lg:hidden" aria-label="Your quote" title="Your quote"><ClipboardList class="w-4 h-4" aria-hidden="true" /><span data-cart-count hidden class="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-violet-600 text-white text-[10.5px] font-bold leading-[18px] text-center ring-2 ring-white dark:ring-[#0a0a0f]" aria-hidden="true">0</span></a>
       <button class="icon-btn theme-toggle max-md:w-11 max-md:h-11 max-md:rounded-full max-md:border-transparent dark:max-md:border-transparent max-md:text-zinc-700 dark:max-md:text-zinc-200" type="button" aria-label="Switch light or dark mode" data-theme-toggle>
         <Moon class="w-4 h-4 moon" aria-hidden="true" /><Sun class="w-4 h-4 sun" aria-hidden="true" />
       </button>
@@ -135,6 +136,7 @@ const menuBrands = brandTiles(8);
             <a href={`${business.studioUrl}/studio?panel=order`} rel="nofollow" class="icon-btn" aria-label="Cart"><ShoppingBag class="w-4 h-4" aria-hidden="true" /></a>
           </>
         )}
+        <a href="/quote-cart/" data-cart-link class="icon-btn relative" aria-label="Your quote" title="Your quote"><ClipboardList class="w-4 h-4" aria-hidden="true" /><span data-cart-count hidden class="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-violet-600 text-white text-[10.5px] font-bold leading-[18px] text-center ring-2 ring-white dark:ring-[#0a0a0f]" aria-hidden="true">0</span></a>
         <a href="/quick-quote/" class="btn-primary btn-sm">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
       </div>
     </div>
@@ -213,6 +215,7 @@ const menuBrands = brandTiles(8);
 
 <script>
   import { openSheet, closeSheet, wireSheet } from '../lib/sheet';
+  import '../lib/cart-badge';
 
   // Mobile menu drawer
   const drawer = document.querySelector<HTMLElement>('[data-menu]');

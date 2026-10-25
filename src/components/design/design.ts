@@ -4,9 +4,9 @@
 import { openSheet, wireSheet } from '../../lib/sheet';
 import { garmentFor, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, MAX_PLACEMENTS } from '../../lib/quote';
 import { business } from '../../data/business';
-import type { DesignSpot, Side } from './areas';
+import type { DesignSpot, PlaceConfig, Side } from './areas';
+import { analyzeImage, boxOf, placeSpots, templateRect, type Analysis, type Box, type Placed } from './placement';
 
-type Box = { x: number; y: number; w: number; h: number };
 interface Art {
   loc: string; file: File; kind: 'image' | 'file'; ext: string; url?: string; img?: HTMLImageElement;
   /** Height / width of the artwork itself. */
@@ -20,7 +20,13 @@ export interface Order {
   sizes: { size: string; n: number }[]; total: number;
 }
 interface Options { summary: HTMLElement | null; sheet: HTMLElement | null; getOrder: () => Order; onChange: () => void }
-type Config = { spots: DesignSpot[]; decorations: string[]; name: string };
+type Config = {
+  spots: DesignSpot[]; decorations: string[]; name: string;
+  /** Measured placement on collar garments (null: template only). */
+  place: PlaceConfig | null;
+  /** The product's style photo (used when a color has no photo of its own). */
+  style?: string;
+};
 
 /** File types we accept, by extension, with the MIME type the API expects. */
 const TYPES: Record<string, string> = {
@@ -101,7 +107,11 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   };
 
   const arts = new Map<string, Art>();
+  /** Photo analysis per photo URL (null: couldn't be measured), and the plain garment box for the template. */
+  const analyses = new Map<string, Analysis | null>();
   const boxes = new Map<string, Box>();
+  /** Print areas per side + photo. */
+  const layouts = new Map<string, Map<string, Placed>>();
   const aspects = new Map<string, number>(); // photo width / height
   let colorName = '';
   let front = photoEl.currentSrc || photoEl.src;
@@ -112,31 +122,53 @@ export function mountDesign(root: HTMLElement, opts: Options) {
 
   // ── geometry ───────────────────────────────────────────────────────────────
   const photoFor = (s: Side) => (s === 'back' ? back || front : front);
-  const ratio = (a: Art, sp: DesignSpot) => (a.aspect * sp.wIn) / sp.hIn; // art height / width, in print-area fractions
-  const artH = (a: Art) => a.w * ratio(a, spotById.get(a.loc)!);
-  /** A location's print area on a photo, as fractions of the photo. */
-  const areaRect = (sp: DesignSpot, url: string): Box => {
-    const b = boxes.get(url) ?? DEFAULT_BOX;
-    const aspect = aspects.get(url) ?? 0.8;
-    const w = sp.w * b.w;
-    const h = (w * aspect * sp.hIn) / sp.wIn;
-    return { x: b.x + b.w * sp.cx - w / 2, y: b.y + b.h * sp.top, w, h };
+  /** Measures a loaded photo once: collar, chest width and garment box (see placement.ts). */
+  const study = (url: string, img: HTMLImageElement) => {
+    if (!aspects.has(url)) aspects.set(url, img.naturalWidth / img.naturalHeight);
+    if (analyses.has(url)) return;
+    const a = analyzeImage(img);
+    analyses.set(url, a);
+    boxes.set(url, boxOf(a) ?? findBox(img));
   };
-  const minW = (sp: DesignSpot) => Math.max(0.04, 0.4 / sp.wIn);
+  /** All print areas on one side of one photo: measured where possible, else the template. */
+  const layout = (s: Side, url: string): Map<string, Placed> | null => {
+    const key = `${s}|${url}`;
+    const hit = layouts.get(key);
+    if (hit) return hit;
+    if (!analyses.has(url)) return null;
+    const aspect = aspects.get(url) ?? 0.8;
+    const g = cfg.place?.overrides?.['*'];
+    const fixed = g?.box ?? (url === cfg.style ? g?.styleBox : undefined);
+    const measured = cfg.place && !fixed ? placeSpots(analyses.get(url) ?? null, s, spots, cfg.place) : new Map<string, Placed>();
+    const box = fixed ?? boxes.get(url) ?? DEFAULT_BOX;
+    const out = new Map<string, Placed>();
+    for (const sp of spots) if (sp.side === s) out.set(sp.id, measured.get(sp.id) ?? templateRect(sp, box, aspect));
+    layouts.set(key, out);
+    return out;
+  };
+  /** A location's print area on a photo (fractions of the photo) and its size in inches. */
+  const placed = (sp: DesignSpot, url = photoFor(sp.side)): Placed =>
+    layout(sp.side, url)?.get(sp.id) ?? templateRect(sp, DEFAULT_BOX, aspects.get(url) ?? 0.8);
+  const areaRect = (sp: DesignSpot, url: string): Box => placed(sp, url);
+  /** Print-area size in inches on the photo being shown (smaller than the maximum on small garments). */
+  const dims = (sp: DesignSpot) => { const p = placed(sp); return { wIn: p.wIn, hIn: p.hIn }; };
+  const ratio = (a: Art, sp: DesignSpot) => { const d = dims(sp); return (a.aspect * d.wIn) / d.hIn; }; // art height / width, in print-area fractions
+  const artH = (a: Art) => a.w * ratio(a, spotById.get(a.loc)!);
+  const minW = (sp: DesignSpot) => Math.max(0.04, 0.4 / dims(sp).wIn);
   const maxW = (a: Art, x = a.x, y = a.y) => Math.max(0.01, Math.min(1 - x, (1 - y) / ratio(a, spotById.get(a.loc)!)));
   /** Largest fit inside the area; full-size areas start at the top, small ones centered. */
   const fit = (a: Art) => {
     const sp = spotById.get(a.loc)!;
     a.w = Math.min(1, 1 / ratio(a, sp));
     a.x = (1 - a.w) / 2;
-    a.y = sp.hIn >= 10 ? 0 : (1 - artH(a)) / 2;
+    a.y = dims(sp).hIn >= 10 ? 0 : (1 - artH(a)) / 2;
   };
   const measure = (a: Art) => {
-    const sp = spotById.get(a.loc)!;
+    const d = dims(spotById.get(a.loc)!);
     const h = artH(a);
     return {
-      widthIn: a.w * sp.wIn, heightIn: h * sp.hIn, fromTopIn: a.y * sp.hIn,
-      fromCenterIn: (a.x + a.w / 2 - 0.5) * sp.wIn,
+      widthIn: a.w * d.wIn, heightIn: h * d.hIn, fromTopIn: a.y * d.hIn,
+      fromCenterIn: (a.x + a.w / 2 - 0.5) * d.wIn,
     };
   };
   const describe = (a: Art) => {
@@ -162,8 +194,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   function onPhotoLoad() {
     const url = photoEl.currentSrc || photoEl.src;
     if (!photoEl.naturalWidth) return;
-    aspects.set(url, photoEl.naturalWidth / photoEl.naturalHeight);
-    if (!boxes.has(url)) boxes.set(url, findBox(photoEl));
+    study(url, photoEl);
     const a = aspects.get(url)!;
     stage.style.aspectRatio = String(a);
     stageWrap.style.width = `min(100%, calc(var(--stage-h) * ${a}))`;
@@ -214,6 +245,13 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     el.setAttribute('aria-label', `${sp.label} artwork, ${a.file.name}. ${sizeText(a)}. Arrow keys move it, plus and minus resize it.`);
   }
 
+  /** Keeps artwork inside its print area after the area changes (other color photo, photo measured). */
+  function keepInside(a: Art) {
+    a.w = Math.min(a.w, maxW(a, 0, 0));
+    a.x = clamp(a.x, 0, Math.max(0, 1 - a.w));
+    a.y = clamp(a.y, 0, Math.max(0, 1 - artH(a)));
+  }
+
   function renderLayer() {
     const url = photoFor(side);
     layer.replaceChildren();
@@ -234,6 +272,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       }
       const a = arts.get(sp.id);
       if (a) {
+        keepInside(a);
         placeArt(a);
         a.el!.classList.toggle('is-active', isActive);
         (a.el!.querySelector('[data-handle]') as HTMLElement).hidden = !isActive;
@@ -266,7 +305,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (!sp) return;
     const a = arts.get(active);
     panel.names.forEach((n) => { n.textContent = sp.label; });
-    panel.size.textContent = `Print area up to ${inch(sp.wIn)} × ${inch(sp.hIn)}`;
+    const d = dims(sp);
+    panel.size.textContent = `Print area up to ${inch(d.wIn)} × ${inch(d.hIn)}`;
     panel.addLabel.textContent = `Add artwork to ${sp.label.toLowerCase()}`;
     panel.empty.hidden = !!a;
     panel.filled.hidden = !a;
@@ -278,7 +318,57 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     }
   }
 
+  // ── artwork carried over from another product in the quote cart ────────────
+  const pendingBox = root.querySelector<HTMLElement>('[data-pending]');
+  type Pending = { file: File; decoration: string; notes?: string; location: string };
+  let pending: Pending[] = [];
+  let carriedNote = '';
+  function renderPending() {
+    if (!pendingBox) return;
+    pendingBox.hidden = !pending.length && !carriedNote;
+    const note = pendingBox.querySelector<HTMLElement>('[data-pending-note]');
+    if (note) note.textContent = carriedNote;
+    const ul = pendingBox.querySelector<HTMLElement>('[data-pending-list]');
+    if (!ul) return;
+    ul.replaceChildren();
+    const sp = spotById.get(active);
+    for (const [i, p] of pending.entries()) {
+      const li = document.createElement('li');
+      li.className = 'flex flex-wrap items-center gap-2';
+      const t = document.createElement('span');
+      t.className = 'min-w-0 flex-1 text-[13px] leading-snug';
+      const b = document.createElement('b');
+      b.className = 'block truncate text-zinc-900 dark:text-white';
+      b.textContent = p.file.name;
+      const m = document.createElement('span');
+      m.className = 'block text-[12px] muted';
+      m.textContent = `Was on ${p.location}, which this product doesn't have`;
+      t.append(b, m);
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn-quiet btn-sm max-md:h-11';
+      btn.textContent = sp ? `Place on ${sp.label.toLowerCase()}` : 'Place';
+      btn.addEventListener('click', async () => {
+        const target = active;
+        pending.splice(i, 1);
+        await addFile(target, p.file);
+        const a = arts.get(target);
+        if (a) { if (cfg.decorations.includes(p.decoration)) a.decoration = p.decoration; a.notes = p.notes ?? a.notes; }
+        render();
+      });
+      li.append(t, btn);
+      ul.append(li);
+    }
+  }
+  pendingBox?.querySelector('[data-pending-dismiss]')?.addEventListener('click', () => {
+    pending = [];
+    carriedNote = '';
+    renderPending();
+    pendingBox.dispatchEvent(new CustomEvent('pending-dismiss', { bubbles: true }));
+  });
+
   function render() {
+    renderPending();
     const showBack = hasBack();
     tabs.forEach((t) => {
       if (t.dataset.side === 'back') t.hidden = !showBack;
@@ -532,8 +622,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     try {
       const url = photoFor(s);
       const photo = await loadImage(url, true);
-      if (!aspects.has(url)) aspects.set(url, photo.naturalWidth / photo.naturalHeight);
-      if (!boxes.has(url)) boxes.set(url, findBox(photo));
+      study(url, photo);
       const W = Math.min(maxWidth, photo.naturalWidth || maxWidth);
       const H = Math.round((W * (photo.naturalHeight || 1250)) / (photo.naturalWidth || 1000));
       const cv = document.createElement('canvas');
@@ -580,9 +669,9 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     }
   }
 
-  async function mockups(budget: number) {
+  async function mockups(budget: number, widths = [1200, 900, 640]) {
     const sides = (['front', 'back'] as Side[]).filter((s) => spots.some((sp) => sp.side === s && arts.has(sp.id)));
-    for (const w of [1200, 900, 640]) {
+    for (const w of widths) {
       const out: { side: Side; blob: Blob }[] = [];
       for (const s of sides) { const blob = await renderMockup(s, w); if (blob) out.push({ side: s, blob }); }
       if (out.reduce((n, m) => n + m.blob.size, 0) <= budget) return out;
@@ -718,9 +807,52 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     openSheet(sheet, { focus: form.elements.namedItem('name') as HTMLInputElement });
   }
 
+  const r1 = (n: number) => Math.round(n * 10) / 10;
   // ── public API for the product page ────────────────────────────────────────
   return {
     count: () => arts.size,
+    /** Placed artwork with its files and measurements, for the quote cart. */
+    snapshot: () => ordered().map((a) => {
+      const m = measure(a);
+      return {
+        locId: a.loc, location: spotById.get(a.loc)!.label, decoration: a.decoration, notes: a.notes || undefined,
+        file: a.file.name, blob: new File([a.file], a.file.name, { type: TYPES[a.ext] || a.file.type || '' }) as Blob,
+        widthIn: r1(m.widthIn), heightIn: r1(m.heightIn), fromTopIn: r1(m.fromTopIn), fromCenterIn: r1(m.fromCenterIn),
+        x: a.x, y: a.y, w: a.w,
+      };
+    }),
+    /** Rendered mockups (PNG) for each side with artwork, shrunk to fit `budget` bytes. */
+    mockups: (budget: number) => mockups(budget, [900, 640]),
+    /** Bytes of artwork placed so far. */
+    bytes: () => totalBytes(),
+    /**
+     * Starts this product with artwork from another cart item: same location when this product
+     * has it (same id, else same name), otherwise offered as "pending artwork" to place by hand.
+     */
+    async loadArtwork(list: { locId: string; location: string; decoration: string; notes?: string; x: number; y: number; w: number; file: File }[], from = '') {
+      const placed: string[] = [];
+      for (const src of list) {
+        const sp = spotById.get(src.locId) ?? spots.find((x) => x.label.toLowerCase() === src.location.toLowerCase());
+        if (!sp || arts.has(sp.id)) { pending.push({ file: src.file, decoration: src.decoration, notes: src.notes, location: src.location }); continue; }
+        await addFile(sp.id, src.file);
+        const a = arts.get(sp.id);
+        if (!a) continue;
+        if (cfg.decorations.includes(src.decoration)) a.decoration = src.decoration;
+        a.notes = src.notes ?? '';
+        if (sp.id === src.locId && src.w > 0) {
+          a.w = clamp(src.w, Math.min(minW(sp), maxW(a, 0, 0)), maxW(a, 0, 0));
+          a.x = clamp(src.x, 0, 1 - a.w);
+          a.y = clamp(src.y, 0, Math.max(0, 1 - artH(a)));
+        }
+        placed.push(sp.label);
+      }
+      carriedNote = `Artwork from ${from || 'your quote'}${placed.length ? ` placed on: ${placed.join(', ')}.` : '.'} ${pending.length ? 'Choose a location above, then place the rest.' : 'Adjust it if you like.'}`;
+      const first = spots.find((x) => arts.has(x.id));
+      if (first) select(first.id, { zoom: false }); else render();
+      announce(carriedNote);
+      return { placed, pending: pending.length };
+    },
+    clearCarried() { pending = []; carriedNote = ''; renderPending(); },
     decorations: () => [...new Set(ordered().map((a) => a.decoration))],
     locations: () => ordered().map((a) => spotById.get(a.loc)!.label),
     openRequest,

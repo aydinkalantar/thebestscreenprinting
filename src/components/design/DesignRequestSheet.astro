@@ -5,25 +5,40 @@ import { business } from '../../data/business';
 import { LEAD_SOURCES } from '../../lib/quote';
 import { X, Send, CircleCheck, Phone } from '@lucide/astro';
 
+interface Props {
+  /** Root id; the form is `<id>-form`. The product page uses the default. */
+  id?: string;
+  title?: string;
+  /** Adds an optional "Anything else?" box (sent as `details`). */
+  notes?: boolean;
+  footer?: string;
+  doneText?: string;
+}
+const {
+  id = 'design-request', title = 'Send your design', notes = false,
+  footer = 'Your artwork files and mockups are attached. We reply within one business day.',
+  doneText = "We've got your design, sizes and artwork files.",
+} = Astro.props;
+const formId = `${id}-form`;
 const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] px-3.5 py-2.5 cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-violet-500';
 ---
-<div id="design-request" data-sheet="modal" hidden role="dialog" aria-modal="true" aria-labelledby="dr-title" class="fixed inset-0 z-[100] flex items-end md:items-center justify-center md:p-6">
+<div id={id} data-dr data-sheet="modal" hidden role="dialog" aria-modal="true" aria-labelledby={`${id}-title`} class="fixed inset-0 z-[100] flex items-end md:items-center justify-center md:p-6">
   <div class="absolute inset-0 bg-black/45" data-sheet-backdrop data-sheet-close></div>
   <div data-sheet-panel class="relative w-full md:max-w-xl max-h-[92dvh] md:max-h-[88vh] flex flex-col bg-white dark:bg-[#0d0d14] rounded-t-3xl md:rounded-2xl shadow-2xl border border-zinc-200/80 dark:border-white/10 max-md:border-x-0 max-md:border-b-0">
     <div class="shrink-0 px-5 pt-2 pb-3 border-b border-zinc-200/80 dark:border-white/10" data-sheet-grip>
       <div class="md:hidden mx-auto mb-2 h-1.5 w-10 rounded-full bg-zinc-300 dark:bg-white/20" aria-hidden="true"></div>
       <div class="flex items-center justify-between gap-3 md:pt-2">
-        <h2 id="dr-title" class="text-lg font-bold text-zinc-900 dark:text-white">Send your design</h2>
+        <h2 id={`${id}-title`} class="text-lg font-bold text-zinc-900 dark:text-white">{title}</h2>
         <button type="button" class="icon-btn w-10 h-10 rounded-xl" data-sheet-close aria-label="Close"><X class="w-[18px] h-[18px]" aria-hidden="true" /></button>
       </div>
       <p data-dr-summary class="mt-1 text-[13px] muted"></p>
     </div>
 
-    <form id="design-request-form" data-dr-form class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-4 grid gap-4 content-start" novalidate>
+    <form id={formId} data-dr-form class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-4 grid gap-4 content-start" novalidate>
       <div class="grid gap-4 sm:grid-cols-2">
-        <label class="label"><span>Name</span><input name="name" class="field" autocomplete="name" autocapitalize="words" enterkeyhint="next" required aria-describedby="dr-err-name" data-sheet-focus /><span class="err" id="dr-err-name" data-for="name"></span></label>
-        <label class="label"><span>Email</span><input name="email" class="field" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" required aria-describedby="dr-err-email" /><span class="err" id="dr-err-email" data-for="email"></span></label>
+        <label class="label"><span>Name</span><input name="name" class="field" autocomplete="name" autocapitalize="words" enterkeyhint="next" required aria-describedby={`${id}-err-name`} data-sheet-focus /><span class="err" id={`${id}-err-name`} data-for="name"></span></label>
+        <label class="label"><span>Email</span><input name="email" class="field" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" required aria-describedby={`${id}-err-email`} /><span class="err" id={`${id}-err-email`} data-for="email"></span></label>
         <label class="label"><span>Phone <small>(optional)</small></span><input name="phone" class="field" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" /></label>
         <label class="label"><span>Company or team <small>(optional)</small></span><input name="company" class="field" autocomplete="organization" enterkeyhint="next" /></label>
       </div>
@@ -52,6 +67,12 @@ const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:bor
         </label>
       </div>
 
+      {notes && (
+        <label class="label"><span>Anything else? <small>(optional)</small></span>
+          <textarea name="details" class="field !h-auto py-2.5" rows="3" maxlength="3000" placeholder="Ink or thread colors, names and numbers, delivery details…"></textarea>
+        </label>
+      )}
+
       <!-- Hidden from people; bots fill it in. -->
       <input class="absolute -left-[9999px] w-px h-px opacity-0" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
       {turnstileKey && <div class="cf-turnstile" data-sitekey={turnstileKey}></div>}
@@ -61,18 +82,21 @@ const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:bor
 
     <div data-dr-actions class="shrink-0 px-5 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] border-t border-zinc-200/80 dark:border-white/10 grid gap-1.5">
       <p class="mb-2 text-[12px] muted">Mockups are a visual guide. Final print size, placement and colors are confirmed on your proof before production.</p>
-      <button type="submit" form="design-request-form" data-dr-send class="btn-primary w-full h-12 text-[15px] aria-disabled:opacity-60 aria-disabled:cursor-wait"><Send class="w-4 h-4" aria-hidden="true" /><span>Send request</span></button>
-      <p class="text-[12px] muted text-center">Your artwork files and mockups are attached. We reply within one business day.</p>
+      <button type="submit" form={formId} data-dr-send class="btn-primary w-full h-12 text-[15px] aria-disabled:opacity-60 aria-disabled:cursor-wait"><Send class="w-4 h-4" aria-hidden="true" /><span>Send request</span></button>
+      <p class="text-[12px] muted text-center">{footer}</p>
     </div>
 
     <div data-dr-done hidden class="px-5 py-10 text-center grid justify-items-center gap-3" tabindex="-1" aria-live="polite">
       <CircleCheck class="w-12 h-12 text-emerald-500" aria-hidden="true" />
       <p class="text-xl font-bold text-zinc-900 dark:text-white">Thanks! We'll reply within one business day.</p>
       <p data-dr-ref hidden class="text-[15px] font-semibold text-zinc-900 dark:text-white">Your request number is <span class="text-violet-700 dark:text-violet-300 select-all"></span></p>
-      <p class="text-[14px] muted max-w-sm">We've got your design, sizes and artwork files. Questions in the meantime? Call <a class="font-semibold text-violet-700 dark:text-violet-300" href={`tel:${business.phone}`}>{business.phoneDisplay}</a>.</p>
+      <p class="text-[14px] muted max-w-sm">{doneText} Questions in the meantime? Call <a class="font-semibold text-violet-700 dark:text-violet-300" href={`tel:${business.phone}`}>{business.phoneDisplay}</a>.</p>
       <button type="button" class="btn-quiet mt-2" data-sheet-close>Done</button>
     </div>
     <template data-dr-call><a class="mt-2 inline-flex items-center gap-1.5 font-semibold underline underline-offset-2" href={`tel:${business.phone}`}><Phone class="w-4 h-4" aria-hidden="true" />Call {business.phoneDisplay}</a></template>
   </div>
 </div>
 {turnstileKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+<style is:global>
+  [data-dr] [hidden] { display: none !important; }
+</style>

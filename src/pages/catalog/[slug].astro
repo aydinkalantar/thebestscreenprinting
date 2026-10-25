@@ -6,7 +6,7 @@ import { products, CATEGORY_LABELS, COLLECTIONS, collectionHref, brandHref, tech
 import { business } from '../../data/business';
 import DesignPreview from '../../components/design/DesignPreview.astro';
 import DesignRequestSheet from '../../components/design/DesignRequestSheet.astro';
-import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send } from '@lucide/astro';
+import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X } from '@lucide/astro';
 
 export function getStaticPaths() {
   return products.map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -63,7 +63,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
       <p class="mt-4 text-[15px] muted">Priced per order with your decoration included. Pick a color and sizes, and we'll send a quote within one business day. Orders start at {min} pieces.</p>
 
       <form id="add-to-quote" class="mt-7 panel-raised p-5 sm:p-6 grid gap-6" novalidate
-        data-name={p.name} data-style={p.style ?? ''} data-brand={p.brand ?? ''} data-cat={p.category} data-sub={p.subcategory ?? ''} data-img={p.image} data-min={min}>
+        data-id={p.id} data-slug={p.slug} data-name={p.name} data-style={p.style ?? ''} data-brand={p.brand ?? ''} data-cat={p.category} data-sub={p.subcategory ?? ''} data-img={p.image} data-min={min}>
         <p class="text-lg font-bold text-zinc-900 dark:text-white -mb-2">Add to quote</p>
         {p.colors.length > 0 && (
           <fieldset>
@@ -91,7 +91,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           </div>
           <p class="mt-3 flex flex-wrap items-baseline justify-between gap-2 text-[13px]">
             <span class="font-semibold text-zinc-900 dark:text-white">Total: <span id="qty-total">0</span> pieces</span>
-            <span class="muted">Minimum {min} pieces per order</span>
+            <span class="muted">Minimum {min} pieces per product</span>
           </p>
         </fieldset>
 
@@ -122,10 +122,17 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         </fieldset>
 
         <div class="grid gap-2">
-          <button id="request-quote" type="submit" class="btn-primary w-full sm:w-auto sm:justify-self-start disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none" disabled>
-            <Send class="w-4 h-4" aria-hidden="true" />Request a quote
-          </button>
-          <p id="qty-hint" class="text-[13px] muted" aria-live="polite">Enter at least {min} pieces to request a quote.</p>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <button id="request-quote" type="submit" class="btn-primary w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none aria-busy:cursor-wait" disabled>
+              <ClipboardPlus class="w-4 h-4" aria-hidden="true" /><span>Add to quote</span>
+            </button>
+            <button id="request-single" type="button" class="text-[13.5px] font-semibold text-violet-700 dark:text-violet-300 hover:underline underline-offset-2 disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed max-sm:w-full max-sm:min-h-[44px]" disabled>
+              Request a quote for just this item
+            </button>
+          </div>
+          <p id="qty-hint" class="text-[13px] muted" aria-live="polite">Enter at least {min} pieces to add this product to your quote.</p>
+          <p id="cart-error" class="err" role="alert"></p>
+          <p class="text-[12.5px] muted">Quoting several products? Add each one to your quote and send them together. Minimum {min} pieces per product.</p>
         </div>
       </form>
 
@@ -169,13 +176,29 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           <span class="block mt-0.5 text-[12.5px] muted truncate"><b data-bar-total class="text-zinc-900 dark:text-white">0</b> pieces · min {min}</span>
         </span>
       </button>
-      <button type="submit" form="add-to-quote" data-bar-submit class="btn-primary h-12 px-3.5 text-[14px] shrink-0 disabled:opacity-50 disabled:shadow-none" disabled>
-        <Send class="w-4 h-4" aria-hidden="true" />Request a quote
+      <button type="submit" form="add-to-quote" data-bar-submit class="btn-primary h-12 px-3.5 text-[14px] shrink-0 disabled:opacity-50 disabled:shadow-none aria-busy:cursor-wait" disabled>
+        <ClipboardPlus class="w-4 h-4" aria-hidden="true" /><span>Add to quote</span>
       </button>
     </div>
   </div>
 
   <DesignRequestSheet />
+
+  <!-- Shown after "Add to quote". -->
+  <div id="cart-toast" hidden class="fixed z-[70] inset-x-3 bottom-[calc(88px+env(safe-area-inset-bottom))] md:inset-x-auto md:right-6 md:bottom-6 md:w-[380px] panel-raised p-4 shadow-2xl transition-all duration-200 opacity-0 translate-y-2 data-[open]:opacity-100 data-[open]:translate-y-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="flex items-start gap-3">
+      <img data-toast-img alt="" width="56" height="56" class="w-14 h-14 shrink-0 rounded-xl object-contain bg-zinc-50 dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10" />
+      <div class="min-w-0 flex-1">
+        <p class="flex items-center gap-1.5 text-[15px] font-bold text-zinc-900 dark:text-white"><CircleCheck class="w-[18px] h-[18px] text-emerald-500 shrink-0" aria-hidden="true" />Added to your quote</p>
+        <p data-toast-line class="mt-0.5 text-[13px] muted truncate"></p>
+      </div>
+      <button type="button" data-toast-close class="icon-btn w-9 h-9 shrink-0 -mr-1 -mt-1 border-transparent dark:border-transparent" aria-label="Close"><X class="w-4 h-4" aria-hidden="true" /></button>
+    </div>
+    <div class="mt-3 grid grid-cols-2 gap-2">
+      <a href="/quote-cart/" data-toast-view class="btn-primary h-11 text-[14px]"><span>View quote (<span data-toast-count>1</span>)</span></a>
+      <button type="button" data-toast-close class="btn-quiet h-11 text-[14px]">Keep browsing</button>
+    </div>
+  </div>
 
   {related.length > 0 && (
     <section class="mt-20">
@@ -191,11 +214,15 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 <script>
   import { mountDesign } from '../../components/design/design';
   import { setMaxContext } from '../../lib/max';
+  import { addToCart, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry } from '../../lib/cart';
+  import { MAX_TOTAL_BYTES } from '../../lib/quote';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
   const label = document.getElementById('color-name');
   const total = document.getElementById('qty-total')!;
   const hint = document.getElementById('qty-hint')!;
   const button = document.getElementById('request-quote') as HTMLButtonElement;
+  const single = document.getElementById('request-single') as HTMLButtonElement;
+  const cartError = document.getElementById('cart-error')!;
   const min = Number(form.dataset.min) || 12;
   const on = ['is-on', 'ring-2', 'ring-violet-500', 'ring-offset-2'];
   const swatches = [...document.querySelectorAll<HTMLButtonElement>('.swatch')];
@@ -249,13 +276,15 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     const placed = design?.count() ?? 0;
     total.textContent = String(n);
     button.disabled = n < min;
+    if (single) single.disabled = n < min;
+    if (n >= min && cartError) cartError.textContent = '';
     if (barTotal) barTotal.textContent = String(n);
     if (barSubmit) barSubmit.disabled = n < min;
     plainOnly.forEach((f) => { f.hidden = placed > 0; });
-    hint.textContent = n === 0 ? `Enter at least ${min} pieces to request a quote.`
-      : n < min ? `Add ${min - n} more piece${min - n === 1 ? '' : 's'} to reach the ${min}-piece minimum.`
-      : placed ? "Next we'll ask for your contact details, then send your design and files to our team."
-      : "We'll prefill the quote form with your selection.";
+    hint.textContent = n === 0 ? `Enter at least ${min} pieces to add this product to your quote.`
+      : n < min ? `Add ${min - n} more piece${min - n === 1 ? '' : 's'} to reach the ${min}-piece minimum for this product.`
+      : placed ? `${n} pieces with your artwork. Add it to your quote, then add more products or send it.`
+      : `${n} pieces. Add it to your quote, then add more products or send it.`;
   }
   inputs.forEach((i) => i.addEventListener('input', refresh));
   document.querySelector('[data-bar-sizes]')?.addEventListener('click', () => {
@@ -266,13 +295,16 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   if (swatches[0]) design.init({ name: color, front: colorImg, back: swatches[0].dataset.back || '' });
   refresh();
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  // ── quote cart ──────────────────────────────────────────────────────────────
+  const toast = document.getElementById('cart-toast')!;
+  const checked = (name: string) => [...form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)].map((c) => c.value);
+  const sizesMap = () => Object.fromEntries(inputs.filter((i) => qty(i) > 0).map((i) => [i.dataset.size || '', qty(i)]));
+
+  /** The previous flow: one product straight to the quote form (or the design sheet with artwork). */
+  function requestSingle() {
     const n = sum();
     if (n < min) { inputs[0]?.focus(); return; }
-    // Artwork placed: send everything from here (contact step in a sheet).
     if (design.count()) { design.openRequest(); return; }
-    const checked = (name: string) => [...form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)].map((c) => c.value);
     const q = new URLSearchParams();
     q.set('product', d.name || '');
     if (d.style) q.set('style', d.style);
@@ -288,5 +320,84 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     if (d.sub) q.set('sub', d.sub);
     q.set('img', colorImg || d.img || '');
     location.href = `/quick-quote/?${q.toString()}`;
-  });
+  }
+  single.addEventListener('click', requestSingle);
+
+  let toastTimer = 0;
+  const closeToast = () => {
+    clearTimeout(toastTimer);
+    toast.removeAttribute('data-open');
+    setTimeout(() => { if (!toast.hasAttribute('data-open')) toast.hidden = true; }, 200);
+  };
+  toast.querySelectorAll('[data-toast-close]').forEach((b) => b.addEventListener('click', closeToast));
+  toast.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeToast(); });
+  function showToast(line: string, img: string) {
+    toast.querySelector<HTMLElement>('[data-toast-line]')!.textContent = line;
+    toast.querySelector<HTMLElement>('[data-toast-count]')!.textContent = String(cartCount());
+    toast.querySelector<HTMLAnchorElement>('[data-toast-view]')!.setAttribute('aria-label', `View your quote, ${cartCount()} product${cartCount() === 1 ? '' : 's'}`);
+    const im = toast.querySelector<HTMLImageElement>('[data-toast-img]')!;
+    im.src = img;
+    toast.hidden = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => toast.setAttribute('data-open', '')));
+    clearTimeout(toastTimer);
+    // Stays while it has focus or the pointer; otherwise steps aside after a while.
+    const arm = () => { clearTimeout(toastTimer); toastTimer = window.setTimeout(() => { if (!toast.matches(':hover,:focus-within')) closeToast(); else arm(); }, 9000); };
+    arm();
+  }
+
+  const MB = (n: number) => `${(n / 1024 / 1024).toFixed(1)} MB`;
+  let adding = false;
+  async function addItem() {
+    if (adding) return;
+    cartError.textContent = '';
+    const n = sum();
+    if (n < min) { cartError.textContent = `Add at least ${min} pieces of this product (${min}-piece minimum per product).`; inputs.find((i) => !qty(i))?.focus(); return; }
+    // All artwork in the quote travels in one request: keep it under the 25 MB limit.
+    const cartBytes = cartItems().reduce((n, it) => n + it.placements.reduce((a, p) => a + p.size, 0), 0);
+    const mine = design.bytes();
+    if (cartBytes + mine > MAX_TOTAL_BYTES) {
+      cartError.textContent = `Your quote would have ${MB(cartBytes + mine)} of artwork, more than the 25 MB we can take in one request. Send your quote first, or use smaller files (PNG or PDF).`;
+      return;
+    }
+    adding = true;
+    const labels = [button, barSubmit].filter(Boolean).map((b) => b!.querySelector('span')!);
+    [button, barSubmit].forEach((b) => b?.setAttribute('aria-busy', 'true'));
+    labels.forEach((l) => { l.textContent = 'Adding…'; });
+    try {
+      const placements = design.snapshot();
+      const shots = placements.length ? await design.mockups(Math.max(400_000, Math.min(3_000_000, MAX_TOTAL_BYTES - cartBytes - mine - 2_000_000))) : [];
+      const item = await addToCart({
+        productId: d.id || '', slug: d.slug || '', name: d.name || '', brand: d.brand || '', style: d.style || '', cat: d.cat || '', sub: d.sub || '',
+        image: colorImg || d.img || '', url: location.origin + location.pathname, color,
+        sizeOrder: inputs.map((i) => i.dataset.size || ''), sizes: sizesMap(),
+        decorations: placements.length ? [...new Set(placements.map((p) => p.decoration))] : checked('decoration'),
+        locations: placements.length ? placements.map((p) => p.location) : checked('location'),
+        placements, mockups: shots.map((m) => ({ side: m.side, blob: m.blob })),
+      });
+      setCarry(null);
+      design.clearCarried();
+      if (!(await cartPersistsFiles()) && placements.length) {
+        cartError.textContent = "Your browser isn't letting us save files, so keep this tab open until you send your quote.";
+      }
+      inputs.forEach((i) => { i.value = ''; });
+      refresh();
+      showToast(`${item.name}${item.color ? ` · ${item.color}` : ''} · ${item.total} pieces`, item.image);
+    } catch (e) {
+      cartError.textContent = e instanceof Error ? e.message : 'Could not add this product. Please try again.';
+    } finally {
+      adding = false;
+      [button, barSubmit].forEach((b) => b?.removeAttribute('aria-busy'));
+      labels.forEach((l) => { l.textContent = 'Add to quote'; });
+    }
+  }
+
+  form.addEventListener('submit', (e) => { e.preventDefault(); addItem(); });
+
+  // "Use same artwork on another product": start this page with that item's artwork.
+  const carryId = getCarry();
+  if (carryId) {
+    const from = cartItem(carryId);
+    carryArtwork(carryId).then((list) => { if (list.length) design.loadArtwork(list, from ? `${from.name}` : ''); }).catch(() => {});
+  }
+  document.querySelector('[data-pending-dismiss]')?.addEventListener('click', () => setCarry(null));
 </script>

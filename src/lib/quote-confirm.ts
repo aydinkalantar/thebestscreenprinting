@@ -1,18 +1,23 @@
 // Confirmation email sent to the customer after a quote / design request.
 // Table layout with inline styles so it holds up in Gmail and Outlook.
 import { business } from '../data/business';
-import { esc, turnaroundTier, type QuoteRequest } from './quote';
+import { esc, sizesText, turnaroundTier, type ItemAssets, type QuoteRequest } from './quote';
 import { HOURS, MOCKUP_DISCLAIMER, formatNeededBy, turnaroundLine } from './quote-pdf';
 
 const LOGO = `${business.url}/icon-512.png`;
+const itemDecor = (it: NonNullable<QuoteRequest['items']>[number]) => {
+  const placed = it.placements.map((p) => `${p.location} (${p.decoration})`);
+  return placed.length ? placed.join(', ') : [it.decorations.join(', '), it.locations.join(', ')].filter(Boolean).join(' · ');
+};
 const FONT = "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
 
-export function confirmationEmail(q: QuoteRequest, ref: string, mockups: { cid: string; label: string }[] = [], logoUrl = LOGO) {
+export function confirmationEmail(q: QuoteRequest, ref: string, mockups: { cid: string; label: string }[] = [], logoUrl = LOGO, itemAssets: ItemAssets[] = []) {
+  const items = q.items ?? [];
   const first = q.name.split(/\s+/)[0] || q.name;
   const tier = turnaroundTier(q.turnaround);
   const summary: [string, string][] = [
     ['Request number', ref],
-    ['Product', q.garment],
+    ['Product', items.length > 1 ? `${items.length} products` : items.length ? items[0].productName : q.garment],
     ['Quantity', `${q.quantity} pieces`],
     ['Decoration', q.decorations.join(', ') || 'Not sure yet'],
     ['Turnaround', turnaroundLine(q.turnaround)],
@@ -31,6 +36,7 @@ export function confirmationEmail(q: QuoteRequest, ref: string, mockups: { cid: 
     `We got your request. Your request number is ${ref}.`,
     '',
     ...summary.map(([k, v]) => `${k}: ${v}`),
+    ...items.flatMap((it, i) => ['', `${i + 1}. ${it.productName}${it.color ? ` · ${it.color}` : ''}`, `   ${sizesText(it.sizes) || '—'} (${it.quantity} pieces)`, ...(itemDecor(it) ? [`   ${itemDecor(it)}`] : [])]),
     ...(tier.id === 'super-rush' ? [`(${business.superRushNote})`] : []),
     ...(q.details ? ['', 'Details:', q.details] : []),
     '',
@@ -46,6 +52,7 @@ export function confirmationEmail(q: QuoteRequest, ref: string, mockups: { cid: 
   ].join('\n');
 
   const cell = `${FONT};font-size:14px;line-height:20px;color:#18181b`;
+  const sideName = (label: string) => label.replace(/^.*Mockup:\s*/i, '').replace(/^\w/, (c) => c.toUpperCase());
   const muted = `${FONT};font-size:13px;line-height:19px;color:#71717a`;
   const rowsHtml = summary.map(([k, v], i) => `<tr>
 <td style="${muted};padding:8px 12px 8px 0;border-top:${i ? '1px solid #e4e4e7' : '0'};width:130px;vertical-align:top">${esc(k)}</td>
@@ -54,6 +61,19 @@ export function confirmationEmail(q: QuoteRequest, ref: string, mockups: { cid: 
   const mockupHtml = mockups.length
     ? `<tr><td style="padding:8px 32px 0">${mockups.map((m) => `<p style="${muted};margin:16px 0 6px;font-weight:600">${esc(m.label.replace(/^Mockup:\s*/i, '').replace(/^\w/, (c) => c.toUpperCase()))}</p><img src="cid:${m.cid}" alt="${esc(m.label)}" width="480" style="display:block;width:100%;max-width:480px;height:auto;border:1px solid #e4e4e7;border-radius:10px">`).join('')}
 <p style="${muted};margin:10px 0 0;font-size:12px">${esc(MOCKUP_DISCLAIMER)}</p></td></tr>`
+    : '';
+  const itemsHtml = items.length
+    ? `<tr><td style="padding:24px 32px 0"><h2 style="${FONT};margin:0 0 4px;font-size:17px;line-height:24px;color:#18181b">Your products</h2>${items.map((it, i) => {
+        const ms = itemAssets[i]?.mockups ?? [];
+        const decor = itemDecor(it);
+        return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:12px;border:1px solid #e4e4e7;border-radius:10px"><tr><td style="padding:14px 16px">
+<p style="${muted};margin:0;font-size:12px;font-weight:700;color:#6d28d9">PRODUCT ${i + 1} OF ${items.length}</p>
+<p style="${cell};margin:2px 0 0;font-weight:700">${esc(it.productName)}</p>
+<p style="${muted};margin:2px 0 0">${esc([it.color, `${it.quantity} pieces`].filter(Boolean).join(' · '))}</p>
+<p style="${muted};margin:2px 0 0">${esc(sizesText(it.sizes))}</p>${decor ? `<p style="${muted};margin:2px 0 0">${esc(decor)}</p>` : ''}
+${ms.map((m) => `<p style="${muted};margin:12px 0 6px;font-weight:600">${esc(sideName(m.label))}</p><img src="cid:${m.cid}" alt="${esc(`${it.productName}, ${sideName(m.label)}`)}" width="420" style="display:block;width:100%;max-width:420px;height:auto;border:1px solid #e4e4e7;border-radius:10px">`).join('')}
+</td></tr></table>`;
+      }).join('')}${itemAssets.some((a) => a.mockups.length) ? `<p style="${muted};margin:10px 0 0;font-size:12px">${esc(MOCKUP_DISCLAIMER)}</p>` : ''}</td></tr>`
     : '';
   const stepsHtml = steps.map((s, i) => `<tr>
 <td style="padding:6px 12px 6px 0;vertical-align:top;width:28px"><div style="${FONT};width:24px;height:24px;line-height:24px;border-radius:12px;background:#ede9fe;color:#6d28d9;font-size:12px;font-weight:700;text-align:center">${i + 1}</div></td>
@@ -81,10 +101,11 @@ export function confirmationEmail(q: QuoteRequest, ref: string, mockups: { cid: 
   </td></tr></table>
 </td></tr>
 ${mockupHtml}
+${itemsHtml}
 <tr><td style="padding:24px 32px 0">
   <h2 style="${FONT};margin:0 0 6px;font-size:17px;line-height:24px;color:#18181b">What happens next</h2>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${stepsHtml}</table>
-  <p style="${muted};margin:12px 0 0">Your Design Request Summary is attached as a PDF.</p>${mockups.length ? '' : `<p style="${muted};margin:6px 0 0;font-size:12px">${esc(MOCKUP_DISCLAIMER)}</p>`}
+  <p style="${muted};margin:12px 0 0">Your Design Request Summary is attached as a PDF.</p>${mockups.length || itemAssets.some((a) => a.mockups.length) ? '' : `<p style="${muted};margin:6px 0 0;font-size:12px">${esc(MOCKUP_DISCLAIMER)}</p>`}
 </td></tr>
 <tr><td style="padding:24px 32px 28px">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #e4e4e7"><tr><td style="padding-top:16px">

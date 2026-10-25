@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import { business } from '../data/business';
 import { LEAD_SOURCES, DECORATIONS, GARMENTS } from '../lib/quote';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import { Upload, Phone, Mail, Clock, Send, BadgeCheck } from '@lucide/astro';
+import { Upload, Phone, Mail, Clock, Send, BadgeCheck, ClipboardList, ArrowRight } from '@lucide/astro';
 
 const page = await getEntry('pages', 'quick-quote');
 const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
@@ -16,6 +16,16 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       <p class="eyebrow">Get a quote</p>
       <h1 class="mt-3 text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white">Tell us what you need</h1>
       <p class="mt-4 text-lg muted max-w-2xl">We reply with a personal quote within one business day. Everything is made in our own shops, and orders start at {business.shopMinimum} pieces.</p>
+
+      <!-- Shown when the quote cart has products (filled by the script below). -->
+      <a id="cart-banner" href="/quote-cart/" hidden class="mt-6 panel p-4 flex items-center gap-3 border-violet-400/50 bg-violet-500/[0.06] hover:bg-violet-500/10 transition-colors">
+        <span class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-600 text-white"><ClipboardList class="w-5 h-5" aria-hidden="true" /></span>
+        <span class="min-w-0 flex-1 leading-snug">
+          <span class="block text-[15px] font-semibold text-zinc-900 dark:text-white" data-cart-banner-text>You have products in your quote</span>
+          <span class="block text-[13px] muted">Review them and send them together, or use this form for something else.</span>
+        </span>
+        <span class="shrink-0 inline-flex items-center gap-1 text-[14px] font-semibold text-violet-700 dark:text-violet-300">Review<span class="max-sm:hidden">&nbsp;them</span><ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
+      </a>
 
       <form id="quote-form" class="mt-8 max-md:mt-6 panel-raised p-4 sm:p-7 grid grid-cols-[minmax(0,1fr)] gap-8" novalidate enctype="multipart/form-data">
         <!-- Filled in when the visitor comes from a product's "Add to quote" panel. -->
@@ -93,7 +103,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
         <p class="text-[12.5px] muted">Mockups are a visual guide. Final print size, placement and colors are confirmed on your proof before production.</p>
         <p class="form-msg hidden rounded-xl px-4 py-3 text-sm font-medium" role="status" aria-live="polite"></p>
         <!-- Phones: the submit button stays in reach at the bottom while filling the form. -->
-        <div class="md:contents max-md:sticky max-md:z-10 max-md:bottom-[var(--tabbar-h)] max-md:-mx-4 max-md:-mb-4 max-md:px-4 max-md:py-3 max-md:rounded-b-2xl max-md:bg-white/90 dark:max-md:bg-[#0d0d14]/90 max-md:backdrop-blur-xl max-md:border-t max-md:border-zinc-200/80 dark:max-md:border-white/10">
+        <div class="md:contents max-md:sticky max-md:z-10 max-md:bottom-[var(--tabbar-h)] max-md:-mx-4 max-md:-mb-4 max-md:px-4 max-md:pt-3 max-md:pb-[calc(12px+var(--orb-rise))] max-md:rounded-b-2xl max-md:bg-white/90 dark:max-md:bg-[#0d0d14]/90 max-md:backdrop-blur-xl max-md:border-t max-md:border-zinc-200/80 dark:max-md:border-white/10">
           <button class="btn-primary justify-self-start max-md:w-full max-md:h-12 max-md:text-[15px]" type="submit"><Send class="w-4 h-4" aria-hidden="true" /><span>Send my quote request</span></button>
         </div>
       </form>
@@ -117,9 +127,19 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   </div>
   {turnstileKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
 </Base>
+<style>#cart-banner[hidden] { display: none; }</style>
 
 <script>
   import { garmentFor } from '../lib/quote';
+  import { cartCount, cartPieces, onCartChange } from '../lib/cart';
+  const cartBanner = document.getElementById('cart-banner') as HTMLAnchorElement;
+  const showCartBanner = () => {
+    const n = cartCount();
+    cartBanner.hidden = n === 0;
+    cartBanner.querySelector('[data-cart-banner-text]')!.textContent = `You have ${n} product${n === 1 ? '' : 's'} in your quote (${cartPieces()} pieces)`;
+  };
+  showCartBanner();
+  onCartChange(showCartBanner);
   const form = document.getElementById('quote-form') as HTMLFormElement;
   const query = new URLSearchParams(location.search);
   const clean = (v: string | null, max = 120) => (v || '').replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max);
