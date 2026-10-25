@@ -9,12 +9,12 @@ summary: "Our second production facility puts TBSP in Northeast Ohio. Screen pri
 facts:
   - { label: "Service area", value: "Greater Cleveland, OH" }
   - { label: "Delivery", value: "Local drop-off by our team" }
-  - { label: "Screen printing", value: "From 24 pieces per design" }
+  - { label: "Minimum", value: "12 pieces per order" }
 faqs:
   - q: "Do you have a shop in Cleveland?"
     a: "Yes, we have a production facility in Cleveland. It is not a walk-in storefront, so orders are delivered by our team across Greater Cleveland. Our walk-in shop is in Los Angeles."
   - q: "What can I order in Cleveland?"
-    a: "The same services as in Los Angeles: screen printing from 24 pieces, embroidery, DTF and DTG printing, on tees, hoodies, hats, polos, bags and team uniforms."
+    a: "The same services as in Los Angeles: screen printing, embroidery, DTF and DTG printing, all from 12 pieces, on tees, hoodies, hats, polos, bags and team uniforms."
   - q: "Which areas do you deliver to?"
     a: "Cleveland and Greater Cleveland. Tell us your address with your quote request and we will confirm delivery for your order."
   - q: "How do I get a quote for a Cleveland order?"
@@ -35,9 +35,9 @@ You order exactly the way our LA customers do, and we handle the rest.
 
 Everything we do in LA is on the table here:
 
-- **[Screen printing](/screen-printing/)** for runs of 24+ pieces: thick, bold color and the best price per piece.
+- **[Screen printing](/screen-printing/)** for bold designs and bigger runs: thick, bold color and the best price per piece.
 - **[Embroidery](/services/embroidery/)** for caps, polos, jackets and workwear.
-- **[DTF transfers](/services/direct-to-film/)** and **[DTG printing](/services/direct-to-garment/)** for full-color art and small runs.
+- **[DTF transfers](/services/direct-to-film/)** and **[DTG printing](/services/direct-to-garment/)** for full-color and photo art.
 - **[Oversize prints](/services/large-format-screen-printing/)** when the design needs to go big.
 
 Pick your blanks from the [catalog](/catalog/): tees, hoodies, hats, bags and more.

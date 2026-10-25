@@ -1,20 +1,20 @@
 ---
 path: "/products/t-shirts/t-shirt-screen-printing-near-me/"
 title: "T-shirt Screen Printing Near Los Angeles | TBSP"
-description: "T-shirt screen printing near you in Downtown LA. Runs of 24+ shirts per design printed in-house, with a free art check and quotes within one business day."
+description: "T-shirt screen printing near you in Downtown LA. Runs from 12 shirts printed in-house, with a free art check and quotes within one business day."
 h1: "T-shirt screen printing near me"
 kind: product
 imported: false
-summary: "Real screens, real ink, printed under our own roof on South Broadway in Downtown LA. Screen printing starts at 24 shirts per design, and every order gets a free art check before it hits the press."
+summary: "Real screens, real ink, printed under our own roof on South Broadway in Downtown LA. Screen printing starts at 12 shirts, and every order gets a free art check before it hits the press."
 facts:
-  - { label: "Minimum", value: "24 shirts per design" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Where", value: "In-house at 2710 S Broadway Ave, Los Angeles" }
   - { label: "Best for", value: "Bulk tees for brands, events, teams and staff" }
 faqs:
   - q: "Do you outsource your screen printing?"
     a: "No. Screen printed orders are printed in-house at our Downtown Los Angeles shop."
-  - q: "What if I need fewer than 24 shirts?"
-    a: "Orders under 24 pieces are usually printed with direct-to-garment (DTG) or direct-to-film (DTF), which skip screen setup. DTG has no minimum and no setup fee."
+  - q: "What if my design is full color?"
+    a: "Full-color and photo designs are usually printed with direct-to-garment (DTG) or direct-to-film (DTF), which skip screen setup. Every order starts at 12 pieces."
   - q: "Can I bring my own shirts to be screen printed?"
     a: "Yes, we can print on customer-provided garments. Tell us the brand, fabric and quantity in your quote request so we can confirm."
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/t-shirt-screen-printing-near-me/"
@@ -31,7 +31,7 @@ Screen printing lays down a thick, opaque layer of ink for each color in your de
 - **A print that lasts** through repeated washing and wearing
 - **Better value per shirt** as your quantity climbs, because the screens are set up once
 
-It is the go-to for brands, artists, events, teams and staff uniforms, starting at 24 shirts of one design.
+It is the go-to for brands, artists, events, teams and staff uniforms, starting at 12 shirts.
 
 ## What affects the price of screen printed shirts?
 

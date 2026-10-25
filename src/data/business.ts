@@ -25,10 +25,10 @@ export const business = {
   ],
   // The design studio and customer accounts (the Next.js app) live here, noindexed.
   studioUrl: 'https://design.thebestscreenprinting.com',
-  // The studio is deployed; set to false to hide every link to it.
-  studioLive: true,
-  /** Orders this size and up are printed in our shop (quote); smaller ones go through the studio. */
-  shopMinimum: 24,
+  // Off until the studio is ready for production: hides every link to it, and Max.
+  studioLive: false,
+  /** Minimum order for every decoration method. Everything is made in-house; we don't decorate fewer. */
+  shopMinimum: 12,
   assistantName: 'Max',
   /**
    * Turnaround options shown across the site and offered on the quote form.

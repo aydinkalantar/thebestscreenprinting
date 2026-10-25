@@ -15,7 +15,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     <div>
       <p class="eyebrow">Get a quote</p>
       <h1 class="mt-3 text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white">Tell us what you need</h1>
-      <p class="mt-4 text-lg muted max-w-2xl">We reply with a personal quote within one business day. Orders of {business.shopMinimum}+ pieces are printed in our shop.</p>
+      <p class="mt-4 text-lg muted max-w-2xl">We reply with a personal quote within one business day. Everything is made in our own shops, and orders start at {business.shopMinimum} pieces.</p>
 
       <form id="quote-form" class="mt-8 panel-raised p-5 sm:p-7 grid gap-8" novalidate enctype="multipart/form-data">
         <fieldset class="grid gap-5">
@@ -29,7 +29,8 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
               <span class="err" data-for="garment"></span>
             </label>
             <label class="label"><span>Quantity</span>
-              <input name="quantity" class="field" type="number" min="1" inputmode="numeric" placeholder="e.g. 50" required />
+              <input name="quantity" class="field" type="number" min={business.shopMinimum} inputmode="numeric" placeholder="e.g. 50" required />
+              <span class="text-[12px] muted">Minimum {business.shopMinimum} pieces</span>
               <span class="err" data-for="quantity"></span>
             </label>
           </div>

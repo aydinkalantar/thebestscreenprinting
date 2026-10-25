@@ -56,7 +56,7 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
   if (!env.RESEND_API_KEY) {
     return json({ error: `Online quotes are not switched on yet. Please call ${business.phoneDisplay} or email ${business.email}.`, fallback: true }, 503);
   }
-  const mail = quoteEmail(q, business.shopMinimum, attachment?.filename);
+  const mail = quoteEmail(q, attachment?.filename);
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },

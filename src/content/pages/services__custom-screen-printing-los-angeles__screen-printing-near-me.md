@@ -5,14 +5,14 @@ description: "Looking for screen printing near you in Los Angeles? Seven questio
 h1: "Screen printing near me in Los Angeles"
 kind: service
 imported: false
-summary: "Not every shop down the street prints in-house. Here is how to vet a local screen printer, and how our Downtown LA shop stacks up: 24+ piece screen printing, free art checks and quotes within one business day."
+summary: "Not every shop down the street prints in-house. Here is how to vet a local screen printer, and how our Downtown LA shop stacks up: 12-piece minimum, free art checks and quotes within one business day."
 facts:
   - { label: "Location", value: "2710 S Broadway Ave, Downtown LA" }
-  - { label: "Minimum", value: "24 pieces per design" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Rush", value: "Normal, Rush or Super Rush" }
 faqs:
   - q: "Do you screen print in-house?"
-    a: "Yes. Screen printing orders of 24 or more pieces are printed in-house at our shop at 2710 S Broadway Ave in Downtown Los Angeles."
+    a: "Yes. Screen printing orders are printed in-house at our shop at 2710 S Broadway Ave in Downtown Los Angeles."
   - q: "What are your hours?"
     a: "Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la."
   - q: "Do you ship outside Los Angeles?"
@@ -29,7 +29,7 @@ Searching "screen printing near me" in LA turns up dozens of names. Some print o
 Ours: yes. Screen printing runs on our presses at 2710 S Broadway in Downtown LA.
 
 **2. What is your minimum?**
-Ours: 24 pieces per design for screen printing. Below that we recommend [DTG](/services/direct-to-garment/), which has no minimum and no setup fee, or [DTF](/services/direct-to-film/).
+Ours: 12 pieces per order, for every decoration method. For full-color or photo art we recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 
 **3. Will you check my art?**
 Ours: every order gets a free art check before printing, plus a proof to approve.

@@ -7,7 +7,7 @@ kind: product
 imported: false
 summary: "Tees, fleece, polos, hats, bags and more, decorated with screen printing, embroidery, DTG, DTF or heat transfer. Everything runs out of our Downtown LA shop, with quotes answered within one business day."
 facts:
-  - { label: "Minimum", value: "24 per design for screen printing; none for DTG" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Brands, events, teams, artists and businesses" }
 faqs:
@@ -44,10 +44,10 @@ Looking for a specific brand, color or fabric? Browse the full [catalog](/catalo
 
 The garment and your quantity decide it:
 
-- **[Screen printing](/screen-printing/)** for 24 or more pieces of one design, printed in-house
+- **[Screen printing](/screen-printing/)** for bold designs and bigger runs, printed in-house
 - **[Embroidery](/services/embroidery/)** for polos, hats, jackets and uniforms
-- **[Direct-to-garment](/services/direct-to-garment/)** for small runs and full-color art, with no minimum and no setup fee
-- **[Direct-to-film](/services/direct-to-film/)** for small runs on a wide range of fabrics
+- **[Direct-to-garment](/services/direct-to-garment/)** for full-color and photo art
+- **[Direct-to-film](/services/direct-to-film/)** for full-color art on a wide range of fabrics
 - **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** for names and numbers
 - **[Embossing](/services/embossing/)** for a raised, textured effect
 

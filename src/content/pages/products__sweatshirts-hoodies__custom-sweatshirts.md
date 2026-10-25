@@ -7,7 +7,7 @@ kind: product
 imported: false
 summary: "The crewneck is the hoodie's sharper sibling: clean neckline, wide canvas, no hood in the way. Screen printed, embroidered or DTG printed out of our Downtown LA shop."
 facts:
-  - { label: "Minimum", value: "24 per design for screen printing; none for DTG" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Methods", value: "Screen printing, embroidery, DTG, heat transfer" }
   - { label: "Best for", value: "Varsity looks, company gear, retail crewnecks" }
 faqs:
@@ -16,7 +16,7 @@ faqs:
   - q: "Does embroidery work on sweatshirts?"
     a: "Yes. Fleece holds stitches well, and an embroidered chest logo or arched wordmark is one of the most popular crewneck looks."
   - q: "Can I order a few sweatshirts, not dozens?"
-    a: "Yes. Direct-to-garment has no minimum and no setup fee. For 24 or more of one design, screen printing is usually the better value."
+    a: "Yes, from 12 pieces, our minimum for every order. For bigger runs of one design, screen printing is usually the better value."
 sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/custom-sweatshirts/"
 ---
 ## The crewneck has range
@@ -38,7 +38,7 @@ Throw it over a T-shirt for a weekend run. Wear it over a collared shirt to the 
 
 **The big back.** A full-back graphic with a small front hit. Strong for bands, events and merch drops via [screen printing](/screen-printing/).
 
-**The full-color piece.** Photo or painted artwork printed with [DTG](/services/direct-to-garment/), with no minimum, so a short run of an art print is easy.
+**The full-color piece.** Photo or painted artwork printed with [DTG](/services/direct-to-garment/), so a short run of an art print is easy.
 
 **The personalized set.** One shared design plus individual names or years added with [heat transfer](/services/heat-transfer-vinyl/).
 

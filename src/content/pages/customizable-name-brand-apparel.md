@@ -9,7 +9,7 @@ summary: "Your design deserves a shirt people already trust. We print and stitch
 facts:
   - { label: "Brands", value: "Bella + Canvas, Comfort Colors, Gildan, Next Level, American Apparel and more" }
   - { label: "Own garments", value: "Customer-supplied blanks welcome" }
-  - { label: "Small runs", value: "DTG with no minimum" }
+  - { label: "Minimum", value: "12 pieces per order" }
 faqs:
   - q: "Which brand is softest?"
     a: "Bella + Canvas, Next Level and American Apparel are known for soft, lightweight, fitted tees. Tri-blends from these brands are the softest of all."
@@ -66,7 +66,7 @@ For our specific top picks, see [the tees and hoodies we love](/the-best-custom-
 
 ## Any brand, any method
 
-Every brand above can be [screen printed](/screen-printing/) at 24+ pieces per design, printed with [DTG](/services/direct-to-garment/) with no minimum, or [embroidered](/services/embroidery/). Already have your blanks? We print on [your own shirts](/services/custom-screen-printing-los-angeles/screen-printing-on-your-shirts/) too.
+Every brand above can be [screen printed](/screen-printing/), printed with [DTG](/services/direct-to-garment/), or [embroidered](/services/embroidery/). Already have your blanks? We print on [your own shirts](/services/custom-screen-printing-los-angeles/screen-printing-on-your-shirts/) too. Every order starts at 12 pieces.
 
 ## Pick your blank
 

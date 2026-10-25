@@ -1,18 +1,18 @@
 ---
 path: "/services/heat-transfer-vinyl/"
 title: "Heat Transfer Vinyl Printing in Los Angeles | TBSP"
-description: "Heat transfer vinyl (HTV) in Downtown LA: dense, durable single-color prints for names, numbers and short runs. No minimums, and it works on most fabrics."
+description: "Heat transfer vinyl (HTV) in Downtown LA: dense, durable single-color prints for names, numbers and short runs. 12-piece minimum, and it works on most fabrics."
 h1: "Heat transfer vinyl (HTV) printing in Los Angeles"
 kind: service
 imported: false
-summary: "Dense, sharp, built-to-last vinyl for names, numbers and small batches, cut and pressed at our Downtown LA shop. HTV has no minimums and works on most fabrics."
+summary: "Dense, sharp, built-to-last vinyl for names, numbers and small batches, cut and pressed at our Downtown LA shop. HTV orders start at 12 pieces, and it works on most fabrics."
 facts:
-  - { label: "Minimum", value: "No minimums" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Colors", value: "Single color per vinyl layer" }
   - { label: "Best for", value: "Jersey names and numbers, small batches" }
 faqs:
   - q: "Is there a minimum for heat transfer vinyl?"
-    a: "No. HTV has no minimums, which makes it a good fit for one-offs and small batches."
+    a: "Yes. Like every order, HTV starts at 12 pieces, which makes it a good fit for small batches and personalized team orders."
   - q: "How long does heat transfer vinyl last?"
     a: "HTV is dense and durable, and it bonds permanently to the garment when pressed with the right time, temperature and pressure. That is why it is so common on sports jerseys."
   - q: "Can HTV do full-color designs?"
@@ -29,11 +29,11 @@ It is the look you know from sports jerseys, and for good reason.
 HTV is the right call when:
 
 - You need names and numbers on jerseys or team shirts
-- The order is small, since there are no minimums
+- The order is a small batch, from 12 pieces
 - The design is a solid color: lettering, numbers, simple shapes
 - You want a bold, opaque finish on most fabrics
 
-For full-color art on a short run, go [direct-to-film](/services/direct-to-film/) or [direct-to-garment](/services/direct-to-garment/). For 24 or more pieces of one design, [screen printing](/screen-printing/) usually comes out ahead. A popular combo: screen print the team design in bulk, then add individual names and numbers in vinyl.
+For full-color art on a short run, go [direct-to-film](/services/direct-to-film/) or [direct-to-garment](/services/direct-to-garment/). For bigger runs of one design, [screen printing](/screen-printing/) usually comes out ahead. A popular combo: screen print the team design in bulk, then add individual names and numbers in vinyl.
 
 ## How is heat transfer vinyl applied?
 

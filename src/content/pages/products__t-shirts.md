@@ -1,39 +1,39 @@
 ---
 path: "/products/t-shirts/"
 title: "Custom T-Shirt Printing in Los Angeles | TBSP"
-description: "Custom t-shirt printing in Downtown LA for brands, artists, events and teams. Screen printing from 24 pieces, DTG with no minimum, and rush slots available."
+description: "Custom t-shirt printing in Downtown LA for brands, artists, events and teams. Orders from 12 pieces, and rush slots available."
 h1: "Custom t-shirt printing"
 kind: product
 imported: false
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/"
-summary: "From one-off samples to full brand drops, we put your art on tees that people actually want to wear. Screen printing from 24 pieces of one design, DTG with no minimum, and Rush and Super Rush turnaround for tight deadlines."
+summary: "From 12-piece test runs to full brand drops, we put your art on tees that people actually want to wear. Orders start at 12 pieces, with Rush and Super Rush turnaround for tight deadlines."
 facts:
   - label: "Minimum"
-    value: "No minimum with DTG; 24 pieces for screen printing"
+    value: "12 pieces per order"
   - label: "Decoration"
     value: "Screen printing, DTG, DTF and embroidery"
   - label: "Rush"
     value: "Normal, Rush or Super Rush"
 faqs:
-  - q: "Can I order just one custom t-shirt?"
-    a: "Yes. DTG printing has no minimum and no setup fee, so single shirts and small runs are possible."
+  - q: "What is the minimum order for custom t-shirts?"
+    a: "12 pieces per order, for every decoration method. We do not print orders of fewer than 12 shirts."
   - q: "When is screen printing the better choice for t-shirts?"
-    a: "Screen printing is our core service for orders of 24 or more pieces of one design, printed in-house at our shop."
+    a: "Screen printing is our core service for bold designs with a few solid colors and bigger runs, printed in-house at our shop."
   - q: "How fast can I get custom t-shirts?"
     a: "Normal, Rush and Super Rush turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
   - q: "How long does it take to get a quote?"
     a: "We answer quote requests within one business day."
 ---
 
-The t-shirt is the most-worn piece of merch there is, so it should look and feel right. TBSP prints custom tees for clothing lines, online stores, artists, businesses, events and teams out of our shop in Downtown Los Angeles. Print one shirt with DTG or run a full drop with screen printing, and every order gets a free art check before ink hits fabric.
+The t-shirt is the most-worn piece of merch there is, so it should look and feel right. TBSP prints custom tees for clothing lines, online stores, artists, businesses, events and teams out of our shop in Downtown Los Angeles. Print a short run with DTG or a full drop with screen printing, and every order gets a free art check before ink hits fabric.
 
 ## Which printing method is right for my t-shirts?
 
 Quantity and artwork decide it.
 
-- **[Screen printing](/screen-printing/)** is our core service for 24 or more pieces of one design, printed in-house. Thick, saturated ink and crisp edges make it the go-to for brand drops, event shirts and team orders.
-- **[Direct-to-garment (DTG)](/services/direct-to-garment/)** prints full-color art straight into the shirt. No minimum, no setup fee. Made for samples, one-offs and small batches.
-- **[Direct-to-film (DTF)](/services/direct-to-film/)** presses a printed film onto the garment, another strong option for orders under 24 pieces.
+- **[Screen printing](/screen-printing/)** is our core service, printed in-house from 12 pieces. Thick, saturated ink and crisp edges make it the go-to for brand drops, event shirts and team orders.
+- **[Direct-to-garment (DTG)](/services/direct-to-garment/)** prints full-color art straight into the shirt. Made for photos, gradients and detailed, full-color designs.
+- **[Direct-to-film (DTF)](/services/direct-to-film/)** presses a printed film onto the garment, another strong option for full-color art.
 - **[Embroidery](/services/embroidery/)** adds a stitched chest logo on heavier tees, though it really shines on polos, hats and jackets.
 
 Still deciding? Send your design and quantity and we will point you to the right one.

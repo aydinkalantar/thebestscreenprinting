@@ -8,8 +8,8 @@ imported: false
 summary: "A great print starts with the right shirt. These are the tees and hoodies our Downtown LA shop reaches for most, for screen printing, embroidery, DTG and DTF."
 facts:
   - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF" }
-  - { label: "Screen printing", value: "24+ pieces per design" }
-  - { label: "Small runs", value: "DTG with no minimum" }
+  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Full-color art", value: "DTG and DTF" }
 faqs:
   - q: "What is the best T-shirt for screen printing?"
     a: "Bella + Canvas 3001 and Gildan 5000 are reliable all-rounders. The 3001 is softer and more fitted; the 5000 is heavier and more budget-friendly."
@@ -58,7 +58,7 @@ Size ranges and colors vary by style and stock, so check the [catalog](/catalog/
 
 ## Pick the method, too
 
-Bulk orders of 24+ pieces per design go on press with [screen printing](/screen-printing/). Short runs and one-offs go to [DTG](/services/direct-to-garment/), with no minimum. Stitched logos go to [embroidery](/services/embroidery/). Browse more on [custom T-shirts](/products/t-shirts/).
+Bold, few-color designs and bulk orders go on press with [screen printing](/screen-printing/). Full-color and photo art goes to [DTG](/services/direct-to-garment/). Every order starts at 12 pieces. Stitched logos go to [embroidery](/services/embroidery/). Browse more on [custom T-shirts](/products/t-shirts/).
 
 ## Put your design on one
 

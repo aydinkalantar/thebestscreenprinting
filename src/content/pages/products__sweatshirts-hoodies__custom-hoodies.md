@@ -8,17 +8,17 @@ imported: false
 summary: "The hoodie is the piece people actually keep, so it should look the part. Classic and oversized fits from XS to 5XL, decorated with screen printing, embroidery, DTG or heat transfer, all run out of our Downtown LA shop."
 facts:
   - { label: "Sizes", value: "XS to 5XL, classic and oversized fits" }
-  - { label: "Minimum", value: "24 per design for screen printing; none for DTG" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Best for", value: "Brand merch, crews, teams and company gear" }
 faqs:
   - q: "What is the best way to put a logo on a hoodie?"
-    a: "Screen printing is the standard for 24 or more pieces of one design. Embroidery gives a premium, stitched look for small logos on the chest. DTG is best for small runs and full-color artwork."
+    a: "Screen printing is the standard for bold, few-color designs and bigger runs. Embroidery gives a premium, stitched look for small logos on the chest. DTG is best for full-color artwork."
   - q: "Can you print on the hood and sleeves?"
     a: "Yes. Common locations are the front chest, full front, full back, sleeves and the hood. Each added location is a separate print, so it will show up in your quote."
   - q: "Do you have oversized hoodies?"
     a: "Yes. We carry both classic and oversized styles, in sizes from XS to 5XL."
-  - q: "Can I order a single custom hoodie?"
-    a: "Yes. Direct-to-garment printing has no minimum and no setup fee, so one-off hoodies are possible."
+  - q: "What is the minimum order for custom hoodies?"
+    a: "Orders start at 12 pieces, whichever decoration method you choose."
 sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/custom-hoodies/"
 ---
 ## Heavy fleece. Loud prints. Clean stitches.
@@ -27,11 +27,11 @@ A tee gets worn for a season. A good hoodie gets worn for years. That is why bra
 
 ## Four ways to make it yours
 
-**Screen printing.** Thick, opaque ink that sits bold on heavy fleece and survives wash after wash. Our go-to for 24 or more hoodies of one design. [See screen printing](/screen-printing/).
+**Screen printing.** Thick, opaque ink that sits bold on heavy fleece and survives wash after wash. Our go-to for bold designs and bigger runs, from 12 hoodies. [See screen printing](/screen-printing/).
 
 **Embroidery.** Thread instead of ink, for a raised, premium finish. A stitched chest logo turns a basic hoodie into something that feels retail. [See embroidery](/services/embroidery/).
 
-**Direct-to-garment.** Full-color artwork printed straight into the fabric, with no minimum and no setup fee. Ideal for samples, one-offs and photo-heavy designs. [See DTG](/services/direct-to-garment/).
+**Direct-to-garment.** Full-color artwork printed straight into the fabric, from 12 pieces. Ideal for photo-heavy and full-color designs. [See DTG](/services/direct-to-garment/).
 
 **Heat transfer.** Crisp names, numbers and small text, often layered on top of a screen printed design. [See heat transfer vinyl](/services/heat-transfer-vinyl/).
 

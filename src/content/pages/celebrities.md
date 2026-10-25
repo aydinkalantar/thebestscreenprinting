@@ -7,7 +7,7 @@ kind: audience
 imported: false
 summary: "Merch, crew gear and gifts that match the name on them. Screen printing, embroidery and full-color DTG for talent, managers and creative teams, made at our Downtown LA shop."
 facts:
-  - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Fan merch, tour and crew gear, gifts, wrap shirts" }
 faqs:
@@ -35,9 +35,9 @@ When your name is on the shirt, the shirt has to be right. Color matched. Placem
 
 ## Pick the finish, not just the shirt
 
-- **[Screen printing](/screen-printing/)** for 24 or more pieces of one design. Rich, solid ink and specialty effects, printed in-house.
+- **[Screen printing](/screen-printing/)** for bold designs and bigger runs, from 12 pieces. Rich, solid ink and specialty effects, printed in-house.
 - **[Embroidery](/services/embroidery/)** for a stitched, elevated look on [hats](/products/hats/), polos and jackets.
-- **[Direct-to-garment](/services/direct-to-garment/)** for photo-real or full-color art in small runs, with no minimum and no setup fee.
+- **[Direct-to-garment](/services/direct-to-garment/)** for photo-real or full-color art, from 12 pieces.
 - **[Direct-to-film](/services/direct-to-film/)** for crisp detail on fabrics and spots that are hard to print directly.
 
 Need help choosing? Tell us the look and we will recommend a method.

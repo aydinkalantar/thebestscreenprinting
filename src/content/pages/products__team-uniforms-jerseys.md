@@ -10,14 +10,14 @@ facts:
   - label: "Names and numbers"
     value: "Heat transfer, so every jersey can be different"
   - label: "Team crest"
-    value: "Screen printed in-house for 24+ pieces; DTG or DTF for smaller squads"
+    value: "Screen printed in-house; DTG or DTF for full-color crests"
   - label: "Quotes"
     value: "Answered within one business day"
 faqs:
   - q: "Can every jersey have a different name and number?"
     a: "Yes. Names and numbers are applied with heat transfer, which lets us change them piece by piece from your roster."
   - q: "What is the minimum for team jerseys?"
-    a: "There is no fixed minimum. Screen printing is used for 24 or more pieces of one design; smaller teams are usually printed with DTG or DTF, and DTG has no minimum or setup fee."
+    a: "Team orders start at 12 pieces. Bold, few-color crests are usually screen printed; full-color logos are usually printed with DTG or DTF."
   - q: "Can you embroider team polos, jackets and hats?"
     a: "Yes. We embroider polos, hats, jackets and uniforms for coaches, staff and players."
   - q: "Do you check my logo before printing?"
@@ -45,9 +45,9 @@ Send a roster with sizes, names and numbers. We build the whole order from that 
 
 One jersey, several techniques, each doing what it does best:
 
-- **[Screen printing](/screen-printing/)** lays down the team crest in thick, saturated ink when you have 24 or more pieces of one design. Printed in-house, built to survive the wash after every game.
+- **[Screen printing](/screen-printing/)** lays down the team crest in thick, saturated ink, from 12 pieces. Printed in-house, built to survive the wash after every game.
 - **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** handles names and numbers, crisp edges, different on every piece.
-- **[Direct to film](/services/direct-to-film/)** and DTG cover full-color logos for smaller squads, usually under 24 pieces.
+- **[Direct to film](/services/direct-to-film/)** and DTG cover full-color logos, gradients and photo detail.
 - **[Embroidery](/services/embroidery/)** stitches the logo onto coach polos, team jackets and hats for a sharp sideline look.
 
 Not sure which mix fits? Send your art and headcount. We will call it in the quote.

@@ -1,13 +1,13 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/custom-screen-printing/"
 title: "Custom Screen Printing In Los Angeles"
-description: "How a custom screen printing order works at TBSP in Los Angeles: what to send, the free art check, your proof, printing and pickup or shipping. 24+ pieces."
+description: "How a custom screen printing order works at TBSP in Los Angeles: what to send, the free art check, your proof, printing and pickup or shipping. From 12 pieces."
 h1: "Custom screen printing, step by step"
 kind: service
 imported: false
-summary: "From file to finished shirts in five clear steps, with no guesswork. Orders of 24+ pieces per design, a free art check on every job, and quotes answered within one business day."
+summary: "From file to finished shirts in five clear steps, with no guesswork. Orders from 12 pieces, a free art check on every job, and quotes answered within one business day."
 facts:
-  - { label: "Minimum", value: "24 pieces per design" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Quote reply", value: "Within one business day" }
   - { label: "Art check", value: "Free on every order" }
 faqs:
@@ -18,7 +18,7 @@ faqs:
   - q: "Do I approve a proof before printing?"
     a: "Yes. You see a proof showing placement, size and ink colors before we go to press."
   - q: "What if I only need 10 shirts?"
-    a: "Under 24 pieces, we usually recommend DTG or DTF printing instead. DTG has no minimum and no setup fee."
+    a: "Our minimum is 12 pieces per order, for every decoration method, so we would need at least 12 shirts."
 sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-los-angeles/custom-screen-printing/"
 ---
 ## Five steps from idea to ink
@@ -54,7 +54,7 @@ Grab your order at 2710 S Broadway or have it shipped. Need it bagged, tagged or
 
 ## Is screen printing the right method?
 
-If you need 24 or more pieces of one design, yes, almost always. It gives you the best price per piece and the toughest print. Smaller run or full-color photo art? Look at [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). Stitched logo on polos or caps? Go with [embroidery](/services/embroidery/).
+If your design is bold with a few solid colors, yes, almost always. It gives you the best price per piece and the toughest print. Full-color photo art? Look at [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). Stitched logo on polos or caps? Go with [embroidery](/services/embroidery/).
 
 ## Up against a deadline?
 

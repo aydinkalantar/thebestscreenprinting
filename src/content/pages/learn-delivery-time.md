@@ -28,7 +28,7 @@ Standard orders get the same mockup approval, free art check and quality checks 
 Launch next week? Event this weekend? Normal, Rush and Super Rush turnaround options are available at our Downtown LA shop. What makes rush possible:
 
 - **Garment stock.** Common blanks in common colors move fastest.
-- **Method.** [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) need no screens, so small runs turn quickly. [Screen printing](/screen-printing/) for 24+ pieces needs screens made first.
+- **Method.** [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) need no screens, so small runs turn quickly. [Screen printing](/screen-printing/) needs screens made first. Every order starts at 12 pieces.
 - **Approved art.** The sooner you approve the mockup, the sooner we print.
 
 Rush is quoted per order. Call (323) 433-0033 before you commit to a deadline, or read more on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).

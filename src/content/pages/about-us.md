@@ -16,16 +16,16 @@ That idea still drives the shop. You bring the art, the logo or just the concept
 
 ## Why does community sit at the center of what we do?
 
-Custom apparel is how groups show up together. A matching shirt turns a crowd into a crew: a team, a club, a company, a charity walk, a family reunion. We have always been about that, and it shapes how we work. Every order, whether it is one shirt or a full run for an event, gets the same attention.
+Custom apparel is how groups show up together. A matching shirt turns a crowd into a crew: a team, a club, a company, a charity walk, a family reunion. We have always been about that, and it shapes how we work. Every order, whether it is a dozen shirts or a full run for an event, gets the same attention.
 
 ## What we make
 
 Everything is produced out of our shop at 2710 S Broadway Avenue in Downtown Los Angeles.
 
-- **Screen printing** for orders of 24 or more pieces of one design, printed in-house. See [screen printing](/screen-printing/).
+- **Screen printing** for bold designs and bigger runs, printed in-house. See [screen printing](/screen-printing/).
 - **Embroidery** for polos, hats, jackets and uniforms. See [embroidery](/services/embroidery/).
-- **Direct-to-garment (DTG)** for full-color art with no minimum and no setup fee. See [DTG printing](/services/direct-to-garment/).
-- **Direct-to-film (DTF)** for small runs and bright detail on many fabrics. See [DTF printing](/services/direct-to-film/).
+- **Direct-to-garment (DTG)** for full-color and photo art. See [DTG printing](/services/direct-to-garment/).
+- **Direct-to-film (DTF)** for bright, full-color detail on many fabrics. See [DTF printing](/services/direct-to-film/).
 - **Heat transfer** for names and numbers. See [heat transfer vinyl](/services/heat-transfer-vinyl/).
 
 We print on [t-shirts](/products/t-shirts/), [hoodies and sweatshirts](/products/sweatshirts-hoodies/), [hats](/products/hats/), [team uniforms](/products/team-uniforms-jerseys/), bags, towels and more. Browse the [catalog](/catalog/) to see blanks.

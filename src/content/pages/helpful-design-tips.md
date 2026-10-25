@@ -74,8 +74,8 @@ Format is only half of it. A few habits make a big difference:
 
 Your art can steer the method:
 
-- **Few solid colors, 24+ pieces:** [screen printing](/screen-printing/).
-- **Photos, gradients or lots of colors, small runs:** [direct-to-garment](/services/direct-to-garment/) or [direct-to-film](/services/direct-to-film/).
+- **Few solid colors, bigger runs:** [screen printing](/screen-printing/).
+- **Photos, gradients or lots of colors:** [direct-to-garment](/services/direct-to-garment/) or [direct-to-film](/services/direct-to-film/).
 - **Logos on polos, hats and jackets:** [embroidery](/services/embroidery/).
 - **Names and numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/).
 

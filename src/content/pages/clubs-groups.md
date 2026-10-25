@@ -1,13 +1,13 @@
 ---
 path: "/clubs-groups/"
 title: "Specialty T-Shirts"
-description: "Custom shirts and hoodies for clubs, school groups, families, charities and crews, printed in Downtown LA. Screen printing for 24+, DTG with no minimum."
+description: "Custom shirts and hoodies for clubs, school groups, families, charities and crews, printed in Downtown LA. Orders start at 12 pieces."
 h1: "Specialty t-shirts for clubs and groups"
 kind: audience
 imported: false
-summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Downtown LA shop. Screen printing for 24+ pieces; DTG with no minimum for smaller groups."
+summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Downtown LA shop. Orders start at 12 pieces, for every decoration method."
 facts:
-  - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Clubs, school groups, reunions, charity walks, staff" }
 faqs:
@@ -16,7 +16,7 @@ faqs:
   - q: "Can we add individual names to each shirt?"
     a: "Yes. Names and numbers are usually added with heat transfer, on top of a screen printed or DTG design."
   - q: "Our group is small. Do we still qualify?"
-    a: "Yes. DTG has no minimum and no setup fee. Screen printing starts at 24 pieces of one design and usually gets cheaper per piece as quantity grows."
+    a: "Yes, as long as the order is 12 pieces or more. Screen printing usually gets cheaper per piece as quantity grows."
   - q: "Can you help us with the design?"
     a: "Send what you have, even a sketch. Every order gets a free art check, and we can talk through graphic design help by email."
 sourceUrl: "https://thebestscreenprinting.com/clubs-groups/"
@@ -37,8 +37,10 @@ A group shirt does a job. It makes a team look like a team, gets a cause noticed
 
 It comes down to how many shirts and how many colors.
 
-- **24 or more of one design:** [screen printing](/screen-printing/). Bold, solid ink that lasts, printed in-house.
-- **Fewer than 24, or full-color art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). DTG has no minimum and no setup fee.
+- **Bold, few-color designs:** [screen printing](/screen-printing/). Bold, solid ink that lasts, printed in-house.
+- **Full-color or photo art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
+
+Every order starts at 12 pieces.
 - **Names and numbers:** [heat transfer](/services/heat-transfer-vinyl/) to personalize each piece.
 - **Hats, polos and jackets:** [embroidery](/services/embroidery/) for a stitched logo.
 

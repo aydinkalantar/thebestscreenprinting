@@ -12,7 +12,7 @@ faqs:
   - q: "Where should I print on a zip-up hoodie?"
     a: "Left chest and full back are the classic zip-up placements, because the zipper splits the front. Sleeves are a strong extra."
   - q: "What is the minimum for screen printed hoodies?"
-    a: "Screen printing starts at 24 pieces of one design. For fewer hoodies, DTG or DTF is usually the better fit."
+    a: "Screen printing starts at 12 pieces, the same minimum as every order. For full-color or photo art, DTG or DTF is usually the better fit."
 sourceUrl: "https://thebestscreenprinting.com/the-screen-printing-on-the-hoodies/"
 ---
 Hoodies are the garment people keep. A good one gets worn for years, which makes it prime real estate for a design. But printing a hoodie is not the same as printing a tee. The fabric is thicker, the surface is interrupted by pockets, seams and zippers, and dark colors are the norm.
@@ -71,6 +71,6 @@ Wash inside out in cold water, tumble dry low or hang dry, and do not iron the p
 
 ## Screen printed hoodies at TBSP
 
-[Screen printing](/screen-printing/) is for orders of 24 or more pieces of one design, printed in-house at our Downtown LA shop. For fewer pieces or full-color art, we usually recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). Every order gets a free art check.
+[Screen printing](/screen-printing/) starts at 12 pieces and is printed in-house at our Downtown LA shop. For full-color or photo art, we usually recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). Every order gets a free art check.
 
 Ready to print hoodies? [Get a free quote](/quick-quote/).

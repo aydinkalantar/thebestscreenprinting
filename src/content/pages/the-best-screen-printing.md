@@ -27,8 +27,8 @@ The Best Screen Printing, TBSP for short, is a custom apparel shop at 2710 S Bro
 
 Launching a clothing line? We work with brand builders from the first sample to the restock.
 
-- **Sample with DTG.** Test a design on a single piece before committing to a run. No minimum, no setup fee.
-- **Go to press at 24+.** Screen printing gives you the best price per piece and a print that lasts, with effects like puff, discharge and foil to set your line apart. See [inks and effects](/services/custom-screen-printing-los-angeles/).
+- **Test with a short run.** Try a design on a 12-piece run before committing to a full drop.
+- **Scale up on press.** Screen printing gives you the best price per piece and a print that lasts, with effects like puff, discharge and foil to set your line apart. See [inks and effects](/services/custom-screen-printing-los-angeles/).
 - **Add premium details.** Embroidered chest logos, [embossing](/services/embossing/) and custom finishes.
 - **Make it retail-ready.** Folding, poly-bagging, custom labels and hang tags through [fulfillment](/fulfillment/).
 
@@ -38,7 +38,7 @@ T-shirts, hoodies, crewnecks, tanks, polos, hats, bags and team uniforms. Bring 
 
 ## Six methods, one shop
 
-[Screen printing](/screen-printing/) for bulk. [Embroidery](/services/embroidery/) for logos with texture. [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) for small runs and full-color art. [Heat transfer](/services/heat-transfer-vinyl/) for names and numbers. [Embossing](/services/embossing/) for a tactile, ink-free finish. Not sure which? Our [services overview](/services/) breaks it down.
+[Screen printing](/screen-printing/) for bulk. [Embroidery](/services/embroidery/) for logos with texture. [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) for full-color and photo art. [Heat transfer](/services/heat-transfer-vinyl/) for names and numbers. [Embossing](/services/embossing/) for a tactile, ink-free finish. Not sure which? Our [services overview](/services/) breaks it down.
 
 ## How fast can you get shirts?
 

@@ -58,7 +58,7 @@ const col = 'text-[15px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 da
       </div>
       <ul class="space-y-3 text-[15px]">
         <li><a class="flex items-center gap-3 text-zinc-800 dark:text-zinc-200" href={`tel:${business.phone}`}><Phone class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />{business.phoneDisplay}</a></li>
-        <li><a class="flex items-center gap-3 text-zinc-800 dark:text-zinc-200" href="/quick-quote/" data-ask-ai><Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />Ask Max</a></li>
+        <li><a class="flex items-center gap-3 text-zinc-800 dark:text-zinc-200" href="/quick-quote/" data-ask-ai><Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />{business.studioLive ? 'Ask Max' : 'Get a quote'}</a></li>
         <li><a class="flex items-center gap-3 text-zinc-800 dark:text-zinc-200" href={`mailto:${business.email}`}><Mail class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />{business.email}</a></li>
         <li class="flex items-start gap-3 text-zinc-800 dark:text-zinc-200"><MapPin class="w-5 h-5 mt-0.5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><span>{business.address.streetAddress}, {business.address.addressLocality}, {business.address.addressRegion} {business.address.postalCode}<br /><span class="muted">and Cleveland, Ohio</span></span></li>
       </ul>

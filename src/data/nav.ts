@@ -9,7 +9,7 @@ export const NAV: NavMenu[] = [
     label: 'Custom T-shirts', href: '/products/t-shirts/',
     columns: [
       { links: [{ label: 'Short sleeve t-shirts', href: '/catalog/?sub=t-shirts' }, { label: 'Long sleeve t-shirts', href: '/catalog/?sub=long-sleeves' }, { label: 'Tank tops', href: '/catalog/?sub=tank-tops' }] },
-      { links: [{ label: 'All-over print tees', href: '/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/' }, { label: 'No-minimum t-shirts', href: '/products/t-shirts/custom-all-over-t-shirt-printing-no-minimum/' }, { label: 'Screen printed t-shirts', href: '/products/t-shirts/t-shirt-screen-printing-near-me/' }] },
+      { links: [{ label: 'All-over print tees', href: '/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/' }, { label: 'Screen printed t-shirts', href: '/products/t-shirts/t-shirt-screen-printing-near-me/' }] },
       { links: [{ label: 'Rush & Super Rush tees', href: '/same-day-t-shirt-printing-los-angeles/' }, { label: 'Choosing a print method', href: '/products/t-shirts/custom-printed-t-shirts/' }, { label: 'Which blank to pick', href: '/the-best-custom-t-shirt-shop-in-la/' }] },
       { links: [{ label: 'View all custom t-shirts', href: '/products/t-shirts/' }] },
     ],

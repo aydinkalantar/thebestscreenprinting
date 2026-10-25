@@ -5,26 +5,26 @@ description: "Screen printing and embroidery for clothing and retail brands in L
 h1: "Branded apparel for retail"
 kind: audience
 imported: false
-summary: "Your drop, printed in Downtown LA by a shop that has printed for Netflix, Adidas and Nike. Runs of 24+ pieces of one design are screen printed in-house; samples and test runs go DTG or DTF."
+summary: "Your drop, printed in Downtown LA by a shop that has printed for Netflix, Adidas and Nike. Orders start at 12 pieces and are printed in-house; full-color test runs go DTG or DTF."
 facts:
   - label: "Production runs"
-    value: "24+ pieces of one design screen printed in-house"
-  - label: "Test runs and samples"
-    value: "DTG with no minimum and no setup fee"
+    value: "Screen printed in-house, from 12 pieces"
+  - label: "Test runs"
+    value: "DTG or DTF, from 12 pieces"
   - label: "Brands we have printed for"
     value: "Netflix, Adidas, Nike, YouTube, Google and others"
 faqs:
   - q: "Can I order a small test run before a full drop?"
-    a: "Yes. Runs under 24 pieces are usually printed with DTG or DTF, and DTG has no minimum and no setup fee."
+    a: "Yes. Test runs start at our 12-piece minimum, like every order. Full-color art usually runs as DTG or DTF; bold, few-color designs can be screen printed."
   - q: "Do you print in-house?"
-    a: "Orders of 24 or more pieces of one design are screen printed in-house at our Downtown LA shop."
+    a: "Yes. Every order is produced in-house at our own production facilities in Los Angeles and Cleveland."
   - q: "Will you review my artwork before printing?"
     a: "Yes. Every order gets a free art check, and you approve a mockup before production starts."
   - q: "How fast will I hear back on a quote?"
     a: "We answer quotes within one business day."
 ---
 
-Clothing labels, streetwear brands, artists, creators, companies with merch to move. We print for all of them out of our shop at 2710 S Broadway Avenue in Downtown LA, where runs of 24 or more pieces of one design are screen printed in-house. The list of brands we have printed for includes Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures.
+Clothing labels, streetwear brands, artists, creators, companies with merch to move. We print for all of them out of our shop at 2710 S Broadway Avenue in Downtown LA, where every order, from 12 pieces up, is printed in-house. The list of brands we have printed for includes Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures.
 
 ## What do brands print with us?
 
@@ -39,16 +39,16 @@ Pick your blanks by style and color in our [catalog](/catalog/).
 
 ## Which decoration methods do you offer?
 
-- **[Screen printing](/screen-printing/)** for production runs of 24 or more of one design. Heavy, opaque ink with a hand-pulled feel, printed in-house.
+- **[Screen printing](/screen-printing/)** for production runs and bold, few-color designs. Heavy, opaque ink with a hand-pulled feel, printed in-house.
 - **[Embroidery](/services/embroidery/)** for hats, polos, jackets and small chest logos with raised, textured thread.
-- **[Direct to film](/services/direct-to-film/)** and DTG for full-color art, gradients and runs under 24 pieces.
-- **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** for names, numbers and one-off personalization.
+- **[Direct to film](/services/direct-to-film/)** and DTG for full-color art, gradients and photo detail.
+- **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** for names, numbers and piece-by-piece personalization.
 
 The best collections mix them. Think a screen-printed front graphic with a matching embroidered cap.
 
 ## How should I plan a drop?
 
-Test first, then scale. Start with a short run to check fit, color and print placement. DTG has no minimum and no setup fee, so samples cost you nothing extra to set up. Once the design is locked and you need 24 or more pieces, move to screen printing for the production run.
+Test first, then scale. Start with a short run of 12 pieces to check fit, color and print placement. Once the design is locked, scale up to the full production run, with screen printing for bold, few-color designs and the best price on bigger runs.
 
 Get us your art early. Every file gets a free art check, and you approve a mockup before production. That is where you dial in size, placement and ink colors. Fewer colors usually means a lower cost per piece.
 

@@ -1,20 +1,20 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/screen-printing-on-your-shirts/"
 title: "Screen Printing On Your Shirts In Los Angeles"
-description: "Bring your own shirts, hoodies or cut-and-sew pieces and we will screen print them in Downtown LA. Local drop-off, a free art check and 24+ pieces per design."
+description: "Bring your own shirts, hoodies or cut-and-sew pieces and we will screen print them in Downtown LA. Local drop-off, a free art check and a 12-piece minimum."
 h1: "Screen printing on your shirts in Los Angeles"
 kind: service
 imported: false
-summary: "Your garments, our ink. Drop off your own blanks or cut-and-sew pieces at our Downtown LA shop and we will print them, with a free art check first. Screen printing runs at 24+ pieces per design."
+summary: "Your garments, our ink. Drop off your own blanks or cut-and-sew pieces at our Downtown LA shop and we will print them, with a free art check first. Orders start at 12 pieces."
 facts:
   - { label: "Garments", value: "Customer-supplied welcome" }
-  - { label: "Minimum", value: "24 pieces per design for screen printing" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Drop-off", value: "2710 S Broadway Ave, Mon–Fri 9am–5pm" }
 faqs:
   - q: "Can I bring my own shirts to be printed?"
     a: "Yes. We accept customer-supplied garments for printing, including blanks you bought elsewhere and pieces from your own cut-and-sew maker."
-  - q: "Can I bring fewer than 24 shirts?"
-    a: "Screen printing starts at 24 pieces per design. For fewer pieces we can usually print your garments with DTG or DTF instead."
+  - q: "How many shirts do I need to bring?"
+    a: "Orders start at 12 pieces. For full-color or photo art, we can usually print your garments with DTG or DTF instead of screens."
   - q: "Which garments print best?"
     a: "Cotton, polyester and blends all print well. Tell us the fabric content when you request a quote so we can choose the right ink."
   - q: "Do I need to wash the shirts before drop-off?"
@@ -49,7 +49,7 @@ Already have the perfect shirt? Maybe it is a heavyweight tee you love, a cut-an
 
 ## Short run on your own shirts?
 
-Screen printing starts at 24 pieces per design. For fewer, we can usually print your garments with [DTG](/services/direct-to-garment/), which has no minimum, or [DTF](/services/direct-to-film/), which handles polyester and blends well. Want stitching instead of ink? See [embroidery](/services/embroidery/).
+Orders start at 12 pieces. For full-color or photo art, we can usually print your garments with [DTG](/services/direct-to-garment/), or [DTF](/services/direct-to-film/), which handles polyester and blends well. Want stitching instead of ink? See [embroidery](/services/embroidery/).
 
 ## Prefer we supply the blanks?
 

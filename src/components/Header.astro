@@ -7,12 +7,20 @@ import { NAV } from '../data/nav';
 import { Search, Phone, Sparkles, Moon, Sun, Menu, ChevronDown, ArrowRight, Wand2, Upload, Type, MessageSquareText, User, ShoppingBag, X } from '@lucide/astro';
 const here = Astro.url.pathname;
 const aiHref = '/quick-quote/';
+// Max lives in the studio, so it is only offered while the studio is live.
+const max = business.studioLive;
+const nav = NAV.filter((m) => max || m.feature !== 'ai');
 ---
 <div class="bg-zinc-900 dark:bg-black text-white text-[13px]">
   <div class="wrap h-9 flex items-center justify-center gap-2 text-center">
     <Sparkles class="w-3.5 h-3.5 text-violet-300 shrink-0" aria-hidden="true" />
-    <span class="truncate">New: <b>Max</b>, your merch agent, picks the product, places your logo and quotes your order in minutes.</span>
-    <a href="/#max" class="font-semibold underline underline-offset-2 shrink-0">See how</a>
+    {max ? (
+      <><span class="truncate">New: <b>Max</b>, your merch agent, picks the product, places your logo and quotes your order in minutes.</span>
+      <a href="/#max" class="font-semibold underline underline-offset-2 shrink-0">See how</a></>
+    ) : (
+      <><span class="truncate">Printed in-house in Los Angeles and Cleveland. Orders start at {business.shopMinimum} pieces.</span>
+      <a href="/quick-quote/" class="font-semibold underline underline-offset-2 shrink-0">Get a quote</a></>
+    )}
   </div>
 </div>
 
@@ -20,7 +28,7 @@ const aiHref = '/quick-quote/';
   <!-- Row 1: logo · search/AI box · contact -->
   <div class="wrap h-16 flex items-center gap-4 lg:gap-8">
     <BrandMark />
-    <form class="relative flex-1 max-w-2xl hidden md:block" role="search" action="/search/" data-search>
+    <form class="relative flex-1 max-w-2xl hidden md:block" role="search" action="/search/" data-search data-max={max ? "1" : undefined}>
       <Search class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" aria-hidden="true" />
       <input name="q" type="search" autocomplete="off" placeholder="Search products, or describe what you need…" aria-label="Search or describe what you need"
         class="w-full h-11 rounded-full bg-zinc-100 dark:bg-white/[0.06] border border-transparent focus:border-violet-500 focus:bg-white dark:focus:bg-[#0d0d14] pl-11 pr-4 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 outline-none transition-colors" />
@@ -33,7 +41,7 @@ const aiHref = '/quick-quote/';
       </a>
       <a href={aiHref} data-ask-ai class="hidden lg:flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-zinc-100 dark:hover:bg-white/[0.06]">
         <Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />
-        <span class="leading-tight"><span class="block text-[12px] muted">Design &amp; quote in minutes</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">Ask Max</span></span>
+        <span class="leading-tight"><span class="block text-[12px] muted">{max ? 'Design & quote in minutes' : 'Reply within 1 business day'}</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">{max ? 'Ask Max' : 'Free quote'}</span></span>
       </a>
       <button class="icon-btn theme-toggle" type="button" aria-label="Switch light or dark mode" data-theme-toggle>
         <Moon class="w-4 h-4 moon" aria-hidden="true" /><Sun class="w-4 h-4 sun" aria-hidden="true" />
@@ -45,7 +53,7 @@ const aiHref = '/quick-quote/';
   <!-- Row 2: mega menus (desktop) -->
   <nav class="hidden lg:block border-t border-zinc-200/60 dark:border-white/[0.06]" aria-label="Main">
     <div class="wrap h-12 flex items-center gap-1">
-      {NAV.map((m) => (
+      {nav.map((m) => (
         <div class="group static">
           <a href={m.href} aria-current={here.startsWith(m.href) && m.href !== '/' ? 'page' : undefined}
             class:list={['inline-flex items-center gap-1 h-9 px-3 rounded-full text-[14px] font-bold transition-colors group-hover:bg-zinc-100 dark:group-hover:bg-white/[0.06] group-focus-within:bg-zinc-100 dark:group-focus-within:bg-white/[0.06]',
@@ -106,7 +114,7 @@ const aiHref = '/quick-quote/';
 
   <!-- Mobile: search row -->
   <div class="md:hidden wrap pb-3">
-    <form class="relative" role="search" action="/search/" data-search>
+    <form class="relative" role="search" action="/search/" data-search data-max={max ? "1" : undefined}>
       <Search class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" aria-hidden="true" />
       <input name="q" type="search" autocomplete="off" placeholder="Search or describe what you need…" aria-label="Search or describe what you need"
         class="w-full h-11 rounded-full bg-zinc-100 dark:bg-white/[0.06] border border-transparent focus:border-violet-500 pl-11 pr-4 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 outline-none" />
@@ -120,8 +128,8 @@ const aiHref = '/quick-quote/';
   <div class="absolute inset-0 bg-black/40" data-menu-close></div>
   <div class="absolute right-0 top-0 bottom-0 w-[86%] max-w-sm bg-white dark:bg-[#0d0d14] overflow-y-auto p-4">
     <div class="flex items-center justify-between mb-4"><BrandMark size="sm" /><button class="icon-btn" type="button" aria-label="Close menu" data-menu-close><X class="w-4 h-4" aria-hidden="true" /></button></div>
-    <a href={aiHref} data-ask-ai class="btn-primary w-full mb-3"><Sparkles class="w-4 h-4" aria-hidden="true" />Ask Max</a>
-    {NAV.map((m) => m.columns ? (
+    <a href={aiHref} data-ask-ai class="btn-primary w-full mb-3"><Sparkles class="w-4 h-4" aria-hidden="true" />{max ? 'Ask Max' : 'Get a quote'}</a>
+    {nav.map((m) => m.columns ? (
       <details class="border-b border-zinc-200/80 dark:border-white/10">
         <summary class="flex items-center justify-between py-3.5 font-bold text-zinc-900 dark:text-white cursor-pointer">{m.label}<ChevronDown class="chev w-4 h-4 transition-transform" aria-hidden="true" /></summary>
         <ul class="pb-3 space-y-2.5 pl-1">
@@ -161,7 +169,7 @@ const aiHref = '/quick-quote/';
       if (!q) { box.classList.add('hidden'); return; }
       const words = q.split(/\s+/);
       const hits = (await load()).filter((h) => words.every((w) => h.t.toLowerCase().includes(w))).slice(0, 7);
-      const ai = `<a href="${aiLink(input.value.trim())}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="text-sm"><b class="text-violet-700 dark:text-violet-300">Ask Max</b><span class="block muted truncate">“${esc(input.value.trim())}”</span></span></a>`;
+      const ai = `<a href="${aiLink(input.value.trim())}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="text-sm"><b class="text-violet-700 dark:text-violet-300">${form.dataset.max ? 'Ask Max' : 'Request a quote for'}</b><span class="block muted truncate">“${esc(input.value.trim())}”</span></span></a>`;
       const list = hits.map((h) => `<a href="${h.u}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06]">${h.i ? `<img src="${h.i}" alt="" class="w-9 h-9 rounded-lg object-contain bg-white">` : '<span class="w-9 h-9 rounded-lg grid place-items-center bg-zinc-100 dark:bg-white/[0.06] text-zinc-400">↗</span>'}<span class="text-sm text-zinc-800 dark:text-zinc-200">${esc(h.t)}</span></a>`).join('');
       box.innerHTML = ai + (list ? `<p class="px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-[0.1em] muted">Suggestions</p>${list}` : '');
       box.classList.remove('hidden');

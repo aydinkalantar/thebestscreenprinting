@@ -5,9 +5,9 @@ description: "Custom event apparel in Los Angeles: staff shirts, tour merch, giv
 h1: "Event apparel"
 kind: audience
 imported: false
-summary: "Shirts people actually keep wearing after the event. Screen printed in-house in Downtown LA for 24+ pieces of one design, with Rush and Super Rush turnaround for tight deadlines."
+summary: "Shirts people actually keep wearing after the event. Printed in-house in Downtown LA from 12 pieces, with Rush and Super Rush turnaround for tight deadlines."
 facts:
-  - label: "24+ pieces of one design"
+  - label: "Minimum 12 pieces"
     value: "Screen printed in-house in Downtown LA"
   - label: "Rush"
     value: "Normal, Rush or Super Rush; confirm by phone"
@@ -19,7 +19,7 @@ faqs:
   - q: "Can I pick up my order in Downtown LA?"
     a: "Yes. Our shop is at 2710 S Broadway Avenue, Los Angeles, CA 90007, open Monday through Friday, 9am to 5pm."
   - q: "What if I only need a few shirts for event staff?"
-    a: "Small runs under 24 pieces are usually printed with DTG or DTF. DTG has no minimum and no setup fee."
+    a: "Orders start at 12 pieces. Staff shirts with full-color art are usually printed with DTG or DTF."
   - q: "Can different staff roles have different shirts?"
     a: "Yes. Each design is quoted separately, and names or titles can be added with heat transfer."
 sourceUrl: "https://thebestscreenprinting.com/event-apparel/"
@@ -44,8 +44,10 @@ Browse blanks in our [catalog](/catalog/), or tell us the vibe and we will pull 
 
 Quantity and look decide it:
 
-- **24 or more pieces of one design:** [screen printing](/screen-printing/), in-house. Bold, opaque ink that pops under stage lights and holds up for years.
-- **Under 24 pieces:** usually DTG or [direct to film](/services/direct-to-film/), full color with no screens.
+- **Bold logos with a few colors:** [screen printing](/screen-printing/), in-house. Bold, opaque ink that pops under stage lights and holds up for years.
+- **Full-color or photo art:** usually DTG or [direct to film](/services/direct-to-film/), with no screens.
+
+Every order starts at 12 pieces.
 - **Polos, hats and jackets:** [embroidery](/services/embroidery/), clean stitched logos for the people in charge.
 - **Names, titles or numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/), different on every piece.
 

@@ -50,7 +50,7 @@ Logo merch beyond the T-shirt: bags, hats, towels and more. See [promotional pro
 
 ## How do you pick the right method?
 
-Quantity is the first filter. For 24 or more pieces of one design, [screen printing](/screen-printing/) is usually best. For fewer pieces or full-color photo art, [DTG](/services/direct-to-garment/) (no minimum, no setup fee) or [DTF](/services/direct-to-film/). For logos on polos, hats and jackets, [embroidery](/services/embroidery/). Compare all six on our [services overview](/services/).
+Artwork is the first filter, and every order starts at 12 pieces. For bold designs with a few solid colors, [screen printing](/screen-printing/) is usually best, with the best price on bigger runs. For full-color photo art, [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). For logos on polos, hats and jackets, [embroidery](/services/embroidery/). Compare all six on our [services overview](/services/).
 
 ## Who has worn our work?
 

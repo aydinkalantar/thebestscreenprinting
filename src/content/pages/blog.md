@@ -18,7 +18,7 @@ Ink, thread and the decisions in between. These guides explain how custom appare
 
 ## Direct to garment
 
-- [What is direct-to-garment printing and how does it work?](/what-is-direct-to-garment-printing-and-how-does-it-work/) Full color, no screens, no minimum.
+- [What is direct-to-garment printing and how does it work?](/what-is-direct-to-garment-printing-and-how-does-it-work/) Full color, no screens.
 
 ## Embroidery
 

@@ -1,15 +1,15 @@
 ---
 path: "/small-business/"
 title: "Printing for Small Businesses | Los Angeles"
-description: "Custom shirts, polos, hats and bags for Los Angeles small businesses: screen printing, embroidery and DTG with no minimum. Quotes in one business day."
+description: "Custom shirts, polos, hats and bags for Los Angeles small businesses: screen printing, embroidery and DTG from 12 pieces. Quotes in one business day."
 h1: "Printing for small businesses"
 kind: audience
 imported: false
 summary: "Put your name on everything your crew wears. From one DTG shirt to a full screen-printed run, made in our Downtown LA shop, with quotes back within one business day."
 facts:
-  - label: "Small runs"
-    value: "DTG has no minimum and no setup fee"
-  - label: "24+ pieces of one design"
+  - label: "Minimum"
+    value: "12 pieces per order"
+  - label: "Bigger runs"
     value: "Screen printed in-house"
   - label: "Before printing"
     value: "Free art check and mockup for approval"
@@ -25,7 +25,7 @@ faqs:
 sourceUrl: "https://thebestscreenprinting.com/small-business/"
 ---
 
-Your logo deserves better than a plain black tee. We print and embroider staff uniforms, merch and giveaways for cafes, salons, shops, studios and crews across LA, all from our shop at 2710 S Broadway Avenue in Downtown LA. Start with one shirt or start with a stack.
+Your logo deserves better than a plain black tee. We print and embroider staff uniforms, merch and giveaways for cafes, salons, shops, studios and crews across LA, all from our shop at 2710 S Broadway Avenue in Downtown LA. Start with a dozen shirts or start with a stack.
 
 ## What do small businesses order?
 
@@ -44,8 +44,10 @@ Browse t-shirts, polos, sweatshirts, hats, outerwear, bags and towels in our [ca
 
 Quantity and garment call the shot:
 
-- **Under 24 pieces:** usually DTG or [direct to film](/services/direct-to-film/). DTG has no minimum and no setup fee, perfect for the first batch of staff shirts.
-- **24 or more pieces of one design:** [screen printing](/screen-printing/), pulled in-house in rich, solid ink.
+- **Full-color or photo art:** usually DTG or [direct to film](/services/direct-to-film/), a good fit for the first batch of staff shirts.
+- **Bold logos with a few colors:** [screen printing](/screen-printing/), pulled in-house in rich, solid ink.
+
+Every order starts at 12 pieces.
 - **Polos, hats and jackets:** [embroidery](/services/embroidery/), dense thread that makes a uniform look sharp.
 - **Employee names:** [heat transfer vinyl](/services/heat-transfer-vinyl/), a different name on every shirt.
 
@@ -60,7 +62,7 @@ Not sure? Send the logo and the quantity. We will recommend a method in your quo
 
 ## Start small, scale up
 
-Plenty of businesses start with a short DTG run for staff, then switch to screen printing once they need 24 or more pieces of one design. Same logo, more shirts, better economics.
+Plenty of businesses start with a 12-piece run for staff, then move to screen printing once they need bigger runs of one design. Same logo, more shirts, better economics.
 
 ## Grand opening on Friday?
 

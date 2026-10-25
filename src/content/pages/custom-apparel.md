@@ -5,11 +5,11 @@ description: "Custom apparel printed and embroidered in Los Angeles: athletic we
 h1: "Custom apparel for every kind of wear"
 kind: product
 imported: false
-summary: "Tees to track jackets, aprons to jerseys: if it is made of fabric, we can probably put your design on it. Printed and stitched in Downtown LA, with screen printing at 24+ pieces and DTG with no minimum."
+summary: "Tees to track jackets, aprons to jerseys: if it is made of fabric, we can probably put your design on it. Printed and stitched in Downtown LA, with orders starting at 12 pieces."
 facts:
   - { label: "Categories", value: "Athletics, workwear, tees, tanks, sweatshirts, outerwear" }
-  - { label: "Screen printing", value: "24+ pieces per design" }
-  - { label: "Small runs", value: "DTG with no minimum" }
+  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Full-color art", value: "DTG and DTF" }
 faqs:
   - q: "Can you print on performance and moisture-wicking fabrics?"
     a: "Yes. Polyester and performance fabrics are often best decorated with DTF or heat transfer. Tell us the garment and we will recommend the method."
@@ -53,8 +53,8 @@ Hats, tote bags and towels round out a merch table or a welcome kit. See [hats](
 
 ## How do you pick the method for each item?
 
-- **24+ pieces of one design on tees or hoodies:** [screen printing](/screen-printing/).
-- **Small runs or full-color art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
+- **Bold, few-color designs on tees or hoodies:** [screen printing](/screen-printing/).
+- **Full-color or photo art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 - **Logos on caps, polos and jackets:** [embroidery](/services/embroidery/).
 - **Names and numbers:** heat transfer vinyl.
 

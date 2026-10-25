@@ -8,7 +8,7 @@ imported: false
 summary: "Ink, mesh and a squeegee: the method behind most printed shirts. How a shop turns your art into screens, the six types of screen printing and which inks do what."
 faqs:
   - q: "Is screen printing better than digital printing?"
-    a: "For solid colors and larger runs, screen printing is usually more vivid and durable at a better per-piece price. For small runs and photo-style art, digital methods like DTG are often the better fit."
+    a: "For solid colors and larger runs, screen printing is usually more vivid and durable at a better per-piece price. For photo-style art, digital methods like DTG are often the better fit."
   - q: "What fabrics can be screen printed?"
     a: "Cotton, polyester, blends, fleece, denim, canvas and more. Some synthetics need special inks or lower curing temperatures because they react to heat."
   - q: "How long does a screen print last?"
@@ -31,14 +31,14 @@ Want the hands-on version with a materials list? See [how to do t-shirt screen p
 4. **Printing.** The garment is loaded on a platen and positioned. Ink is pulled through each screen with a squeegee, by hand or by an automatic press.
 5. **Curing.** The printed garment travels through a dryer, which sets the ink so it survives washing.
 
-Setup is the slow part. Once screens are ready, each additional piece prints quickly. That is why screen printing gets more cost-effective as quantity rises. At TBSP, [screen printing](/screen-printing/) is for orders of 24 or more pieces of one design, printed in-house.
+Setup is the slow part. Once screens are ready, each additional piece prints quickly. That is why screen printing gets more cost-effective as quantity rises. At TBSP, [screen printing](/screen-printing/) starts at 12 pieces and is printed in-house.
 
 ## Screen printing vs digital printing
 
 Screen printing lays down one solid color per screen. Digital methods like [DTG](/what-is-direct-to-garment-printing-and-how-does-it-work/) print many colors at once from a file, with no screens.
 
 - **Screen printing** wins on vibrant solid colors, durability and price at volume.
-- **Digital printing** wins on small runs, photos and gradients, with no minimum.
+- **Digital printing** wins on short runs, photos and gradients.
 
 ## What are the types of screen printing?
 

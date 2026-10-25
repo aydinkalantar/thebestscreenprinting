@@ -5,16 +5,16 @@ description: "Silk screen printing in Los Angeles, explained: spot color, halfto
 h1: "Silk screen printing in Los Angeles"
 kind: service
 imported: false
-summary: "Same craft, six ways to separate your art, from bold spot colors to photo-real simulated process. Silk screen printing runs on orders of 24+ pieces per design at our Downtown LA shop, with a free art check on every job."
+summary: "Same craft, six ways to separate your art, from bold spot colors to photo-real simulated process. Silk screen printing runs on orders from 12 pieces at our Downtown LA shop, with a free art check on every job."
 facts:
-  - { label: "Minimum", value: "24 pieces per design" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Print styles", value: "Spot, halftone, grayscale, duotone, CMYK, simulated process" }
   - { label: "Best for", value: "Bulk tees, hoodies and merch" }
 faqs:
   - q: "Is silk screen printing the same as screen printing?"
     a: "Yes. The name comes from the silk mesh originally used for screens. Today the mesh is synthetic, but the process is the same."
   - q: "Can silk screen printing reproduce a photo?"
-    a: "Yes, using halftone, CMYK or simulated process separations. For very small runs of photo art, DTG is often the better option."
+    a: "Yes, using halftone, CMYK or simulated process separations. For short runs of photo art, DTG is often the better option."
   - q: "Which separation style is most common?"
     a: "Spot color. Each solid color in the design gets its own screen, which gives the brightest, most opaque result."
 sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-los-angeles/silk-screen-printing/"
@@ -53,7 +53,7 @@ You do not have to figure it out alone. Every order includes a free art check, a
 
 ## Where silk screen shines
 
-Bulk T-shirts, hoodies, crewnecks, tanks and tote bags for brands, events and teams. Once you hit 24 or more pieces of one design, screen printing gives you the best price per piece and a print that outlasts the shirt. Want texture or shine on top? See [inks and effects](/services/custom-screen-printing-los-angeles/). Need fewer pieces? Try [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
+Bulk T-shirts, hoodies, crewnecks, tanks and tote bags for brands, events and teams. On bigger runs of one design, screen printing gives you the best price per piece and a print that outlasts the shirt. Want texture or shine on top? See [inks and effects](/services/custom-screen-printing-los-angeles/). Full-color photo art? Try [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 
 For the full process from file to pickup, read [custom screen printing, step by step](/services/custom-screen-printing-los-angeles/custom-screen-printing/). For the fundamentals, see [screen printing](/screen-printing/).
 

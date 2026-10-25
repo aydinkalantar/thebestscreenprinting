@@ -1,18 +1,18 @@
 ---
 path: "/for/non-profits/"
 title: "Custom Shirts for Non-Profits in Los Angeles"
-description: "Volunteer, event and fundraiser shirts for Los Angeles non-profits, printed in Downtown LA. Screen printing for 24+, no-minimum DTG and a free art check."
+description: "Volunteer, event and fundraiser shirts for Los Angeles non-profits, printed in Downtown LA. Orders from 12 pieces and a free art check."
 h1: "Custom shirts for non-profits"
 kind: audience
 imported: false
-summary: "Shirts that rally people around your cause. Volunteer tees, walk and run shirts, and fundraiser merch printed in Downtown LA, with screen printing for 24+ pieces and no-minimum DTG."
+summary: "Shirts that rally people around your cause. Volunteer tees, walk and run shirts, and fundraiser merch printed in Downtown LA, with orders starting at 12 pieces."
 facts:
-  - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Volunteers, charity walks, galas, fundraiser merch" }
 faqs:
   - q: "What is the most budget-friendly way to print volunteer shirts?"
-    a: "Screen printing with one or two ink colors on a basic tee. Ordering 24 or more of one design and keeping the colors simple gives you the best per-piece price."
+    a: "Screen printing with one or two ink colors on a basic tee. Ordering more of one design and keeping the colors simple gives you the best per-piece price."
   - q: "Can we sell shirts to raise money?"
     a: "Yes. Many non-profits sell printed shirts at events. Order a quantity you can sell through, and keep a few extras of popular sizes."
   - q: "Can we print sponsor logos on the back?"
@@ -43,8 +43,10 @@ We print for Los Angeles non-profits, community groups and charity events from o
 
 ## Small group or big event?
 
-- **Under 24 pieces:** [direct-to-garment (DTG)](/services/direct-to-garment/) with no minimum and no setup fee, or [DTF](/services/direct-to-film/).
-- **24 or more of a design:** screen printing, printed in-house.
+- **Full-color or photo art:** [direct-to-garment (DTG)](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
+- **Bold logos with a few colors:** screen printing, printed in-house, with the best price on bigger runs.
+
+Every order starts at 12 pieces.
 - **Names on staff shirts:** [heat transfer](/services/heat-transfer-vinyl/).
 
 Organizing a club or community group too? See [specialty shirts for clubs and groups](/clubs-groups/).

@@ -27,7 +27,7 @@ We know that every project has its own story, whether it’s a new clothing line
 
 ## Custom Screen Printing Services
 
-Our screen printing services are perfect for businesses, sports teams, schools, and events. We specialize in direct-to-garment printing (DTG), direct-to-film printing (DTF), and heat transfer printing, with eco-friendly ink options for a soft-touch, durable finish. We offer full-color printing, bulk order discounts, and no minimum order requirements to meet your specific needs. Popular Products: Custom T-shirts, hoodies, sweatshirts, and tank tops Specialty Printing: Water-based inks, vintage wash prints, metallic inks
+Our screen printing services are perfect for businesses, sports teams, schools, and events. We specialize in direct-to-garment printing (DTG), direct-to-film printing (DTF), and heat transfer printing, with eco-friendly ink options for a soft-touch, durable finish. We offer full-color printing and bulk order discounts, with a 12-piece minimum per order. Popular Products: Custom T-shirts, hoodies, sweatshirts, and tank tops Specialty Printing: Water-based inks, vintage wash prints, metallic inks
 
 ## Professional Embroidery Services
 
@@ -35,7 +35,7 @@ Elevate your apparel with our professional embroidery services for logos, team u
 
 We’re more than just a print shop—we’re a team of local experts who genuinely care about making your experience smooth, enjoyable, and personal. As a community-focused business, we understand how important it is for your project to go smoothly, especially if you’re on a deadline or working on something truly meaningful. We’re here to listen to your ideas, help you make the right choices, and guide you through the entire process with ease.
 
-Our goal is to make creating custom apparel accessible and fun, whether you’re a business owner looking to boost brand awareness, a school team needing a new look, or an individual crafting one-of-a-kind items. And because we’re Bulk Screen Printing locally based in Downtown LA, Los Angeles, CA, we can offer personalized support, fast turnaround times, and a level of detail and quality control that only a neighborhood print shop can provide.
+Our goal is to make creating custom apparel accessible and fun, whether you’re a business owner looking to boost brand awareness, a school team needing a new look, or an individual bringing a custom design to life. And because we’re Bulk Screen Printing locally based in Downtown LA, Los Angeles, CA, we can offer personalized support, fast turnaround times, and a level of detail and quality control that only a neighborhood print shop can provide.
 
 So, if you have a project in mind—no matter how big or small—reach out to us today. We’d love to chat about how we can help bring your ideas to life with care, expertise, and a little Downtown LA, Los Angeles, CA flair. Thank you for considering The Best Screen Printing. We’re excited to work with you!
 
@@ -131,7 +131,7 @@ Our Mobile App puts creativity at your fingertips, allowing you to design custom
 
 We offer custom printing for a wide range of products, including T-shirts, hoodies, hats, tote bags, and team uniforms. If you don’t see your product listed, please reach out – we can likely accommodate!
 
-Yes! We offer no minimum orders on our screen printing services, so you can order as few or as many as you need.
+Our minimum is 12 pieces per order for every decoration method, and you can order as many as you need beyond that.
 
 Absolutely. We provide eco-friendly, water-based inks for screen printing that are durable and environmentally conscious.
 

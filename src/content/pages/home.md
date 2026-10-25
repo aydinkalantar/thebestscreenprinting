@@ -9,8 +9,6 @@ sourceUrl: "https://thebestscreenprinting.com/"
 ---
 #### LOS ANGELES APPAREL PRODUCTION
 
-Meet Max – your virtual production coordinator standing by to check slot availability, verify art, and lock in rush quotes instantly.
-
 #### Watch Video
 
 ## Screen Printing
@@ -35,7 +33,7 @@ A touch of distinction
 
 ## Direct To Garment (DTG)
 
-No Minimum / No Setup Fee
+Full Color / From 12 Pieces
 
 #### Our Products
 

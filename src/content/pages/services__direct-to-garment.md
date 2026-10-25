@@ -1,22 +1,22 @@
 ---
 path: "/services/direct-to-garment/"
 title: "Direct-to-Garment (DTG) Printing in Los Angeles"
-description: "DTG printing in Downtown LA: full-color, high-detail prints with no minimum and no setup fee. Ideal for samples, one-offs and runs under 24 pieces."
+description: "DTG printing in Downtown LA: full-color, high-detail prints from 12 pieces. Ideal for photos, gradients and multi-color designs."
 h1: "Direct-to-garment (DTG) printing in Los Angeles"
 kind: service
 imported: false
-summary: "Photo-level detail printed straight into the fabric, from one shirt to a short run, at our Downtown LA shop. DTG has no minimum and no setup fee, and every design gets a review and proof before it prints."
+summary: "Photo-level detail printed straight into the fabric, on runs from 12 pieces, at our Downtown LA shop. Every design gets a review and proof before it prints."
 facts:
-  - { label: "Minimum", value: "No minimum" }
-  - { label: "Setup fee", value: "None" }
-  - { label: "Best for", value: "Samples, one-offs and full-color designs" }
+  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Screens", value: "None needed" }
+  - { label: "Best for", value: "Full-color and photo designs" }
 faqs:
   - q: "Is there a minimum order for DTG printing?"
-    a: "No. DTG has no minimum and no setup fee, so you can print a single shirt or a short run of different designs."
+    a: "Yes. DTG orders start at 12 pieces, the same minimum as every order we produce."
   - q: "What file should I send for DTG?"
     a: "Send the highest resolution image you have. The more pixels in the file, the more detail ends up on the shirt. For business logos, ask your web or marketing team for the original files."
   - q: "When is screen printing better than DTG?"
-    a: "For larger orders of one design, screen printing is usually more cost efficient and faster. DTG is the better fit for small batches, samples and orders with many different designs."
+    a: "For larger orders of one design, screen printing is usually more cost efficient and faster. DTG is the better fit for full-color art, small batches and orders with several different designs."
   - q: "Will I see a proof before printing?"
     a: "Yes. Every design is inspected before printing, and we send you a final proof to approve before anything goes on a garment."
 sourceUrl: "https://thebestscreenprinting.com/services/direct-to-garment/"
@@ -29,13 +29,13 @@ DTG works like an inkjet printer built for apparel. Your design is printed direc
 
 DTG is the play when:
 
-- You need one piece or a short run with no minimum
+- You need a short run, from 12 pieces
 - You are printing several different designs in small quantities
 - Your artwork is too detailed or colorful for screens
-- You want samples before running a bigger order
+- You want a short test run before a bigger order
 - You are going for a vintage look, since the ink and fabric fade together over time
 
-For 24 or more pieces of a single design, [screen printing](/screen-printing/) is usually the faster, more cost-efficient route. Printing on polyester or blends? [Direct-to-film](/services/direct-to-film/) often handles those better.
+For bigger runs of a single design with a few solid colors, [screen printing](/screen-printing/) is usually the faster, more cost-efficient route. Printing on polyester or blends? [Direct-to-film](/services/direct-to-film/) often handles those better.
 
 ## How does the DTG process work?
 

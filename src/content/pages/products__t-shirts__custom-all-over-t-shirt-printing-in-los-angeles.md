@@ -56,7 +56,7 @@ All-over prints reward a little planning:
 
 ## Is all-over printing right for your design?
 
-If your design fits on the chest or back and you want it on cotton, screen printing or direct-to-garment is usually the better call. Compare them on [screen printing](/screen-printing/), [direct-to-garment](/services/direct-to-garment/) and [direct-to-film](/services/direct-to-film/). Need a handful of one-off all-over pieces, or a sample before a full run? See [all-over printing with no minimum](/products/t-shirts/custom-all-over-t-shirt-printing-no-minimum/). For the full range of blanks, browse [T-shirts](/products/t-shirts/) or [hoodies and sweatshirts](/products/sweatshirts-hoodies/).
+If your design fits on the chest or back and you want it on cotton, screen printing or direct-to-garment is usually the better call. Compare them on [screen printing](/screen-printing/), [direct-to-garment](/services/direct-to-garment/) and [direct-to-film](/services/direct-to-film/). Need a short run of all-over pieces before a full run? See [small-run all-over printing](/products/t-shirts/custom-all-over-t-shirt-printing-no-minimum/). For the full range of blanks, browse [T-shirts](/products/t-shirts/) or [hoodies and sweatshirts](/products/sweatshirts-hoodies/).
 
 ## Bring us the wild idea
 

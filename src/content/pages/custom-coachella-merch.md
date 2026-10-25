@@ -5,16 +5,16 @@ description: "Custom Coachella and festival merch from a Downtown LA print shop:
 h1: "Custom Coachella merch printing in Los Angeles"
 kind: audience
 imported: false
-summary: "Desert-ready merch for the festival weekend. Tees, tanks, hoodies, embroidered hats and totes for artists, brands, vendors and crews, printed in Downtown LA, with no minimum on DTG."
+summary: "Desert-ready merch for the festival weekend. Tees, tanks, hoodies, embroidered hats and totes for artists, brands, vendors and crews, printed in Downtown LA, from 12 pieces."
 facts:
-  - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Order by", value: "2 to 3 weeks before the festival is ideal" }
   - { label: "Best for", value: "Artist merch, brand activations, vendor staff, group fits" }
 faqs:
   - q: "How early should I order Coachella merch?"
     a: "Aim for at least 2 to 3 weeks before the festival. If you are cutting it close, Normal, Rush and Super Rush turnaround options are available. Call to confirm."
   - q: "Is there a minimum order?"
-    a: "Not with direct-to-garment printing, which has no minimum and no setup fee. Screen printing starts at 24 pieces of one design."
+    a: "Yes. Every order starts at 12 pieces, whichever decoration method you choose."
   - q: "Can you help design our festival merch?"
     a: "Yes. Send a sketch, a mood board or finished art. Every order gets a free art check, and we can talk through design help by email."
   - q: "Can I pick up the order in Los Angeles on the way to the desert?"
@@ -44,8 +44,8 @@ Coachella is a music festival, a runway and a brand stage all at once. The merch
 
 ## Which print method should I choose?
 
-- **24+ pieces of one design:** [screen printing](/screen-printing/). Solid, saturated ink, printed in-house.
-- **Small runs or full-color art:** [DTG](/services/direct-to-garment/) with no minimum, or [DTF](/services/direct-to-film/).
+- **Bold, few-color designs:** [screen printing](/screen-printing/). Solid, saturated ink, printed in-house.
+- **Full-color or photo art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 - **Logos on hats and jackets:** [embroidery](/services/embroidery/).
 - **Names on crew shirts:** [heat transfer](/services/heat-transfer-vinyl/).
 

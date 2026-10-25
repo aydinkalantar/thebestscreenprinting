@@ -14,7 +14,7 @@ faqs:
   - q: "Can I drop off my own hats or jackets for embroidery?"
     a: "Yes. We embroider customer-supplied garments. Tell us the brand and fabric when you request a quote so we can plan hooping and thread."
   - q: "Do you do single-piece embroidery?"
-    a: "Our embroidery minimum is 12 pieces per design. For a one-off, consider a DTG or DTF print, which have lower or no minimums."
+    a: "No. Our embroidery minimum is 12 pieces per design, and every order we produce, whatever the method, starts at 12 pieces."
   - q: "Can I pick up my embroidery order?"
     a: "Yes. Pick up at 2710 S Broadway Ave, Monday to Friday, 9am to 5pm."
 sourceUrl: "https://thebestscreenprinting.com/services/embroidery/embroidery-near-me/"

@@ -5,7 +5,7 @@ description: "Our Los Angeles production facility at 2710 S Broadway: screen pri
 h1: "Screen printing and embroidery in Los Angeles"
 kind: service
 imported: false
-summary: "Our home base: a Downtown LA production floor turning out merch for brands, tours and teams. Screen printing from 24 pieces, embroidery, DTF and DTG, with pickup and Rush and Super Rush."
+summary: "Our home base: a Downtown LA production floor turning out merch for brands, tours and teams. Screen printing, embroidery, DTF and DTG from 12 pieces, with pickup and Rush and Super Rush."
 facts:
   - { label: "Address", value: "2710 S Broadway, Los Angeles" }
   - { label: "Hours", value: "Mon–Fri, 9am–5pm" }
@@ -24,9 +24,9 @@ Downtown LA is where TBSP started and where most of our presses run every day. B
 
 ## What we make in Los Angeles
 
-- **[Screen printing](/screen-printing/)** from 24 pieces per design, pulled in-house.
+- **[Screen printing](/screen-printing/)** from 12 pieces, pulled in-house.
 - **[Embroidery](/services/embroidery/)** on caps, polos, jackets and workwear.
-- **[DTF transfers](/services/direct-to-film/)** and **[DTG printing](/services/direct-to-garment/)** for full color and small runs.
+- **[DTF transfers](/services/direct-to-film/)** and **[DTG printing](/services/direct-to-garment/)** for full color and photo detail.
 - **[Oversize prints](/services/large-format-screen-printing/)** and **[Rush and Super Rush](/same-day-t-shirt-printing-los-angeles/)** when the design or the deadline is big.
 
 ## Why work with an LA shop you can visit?

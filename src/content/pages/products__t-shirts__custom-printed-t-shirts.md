@@ -8,13 +8,13 @@ imported: false
 summary: "Five ways to put your design on a shirt, and the one that fits depends on your quantity, colors and fabric. We run all of them at our Downtown LA shop and recommend the right one with every quote."
 facts:
   - { label: "Methods", value: "Screen print, DTG, DTF, heat transfer, sublimation" }
-  - { label: "Minimum", value: "None for DTG; 24 pieces per design for screen printing" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Best for", value: "Matching the print to your quantity and artwork" }
 faqs:
   - q: "Which print method lasts the longest?"
     a: "Screen printing and sublimation are both very durable. Screen printed ink is thick and holds up to repeated washing, and sublimation dye becomes part of polyester fabric, so it cannot crack or peel."
   - q: "What is the best method for a full-color photo on a cotton shirt?"
-    a: "Direct-to-garment (DTG) prints full color straight into cotton with no minimum and no setup fee. Direct-to-film (DTF) is another option that works on a wider range of fabrics."
+    a: "Direct-to-garment (DTG) prints full color straight into cotton, with no screens to set up. Direct-to-film (DTF) is another option that works on a wider range of fabrics."
   - q: "Can I use more than one method on the same shirt?"
     a: "Yes. A common combination is a screen printed design with heat transfer names and numbers added on the back."
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/custom-printed-t-shirts/"
@@ -25,15 +25,15 @@ A custom printed tee can feel like a soft vintage print, a bold slab of opaque i
 
 ## Screen printing: bold color in bulk
 
-Ink is pushed through a mesh screen, one screen per color, layer by layer. The result is opaque, saturated color with a print that stands up to years of washing. Screen printing starts at 24 pieces of one design and is printed in-house at our shop.
+Ink is pushed through a mesh screen, one screen per color, layer by layer. The result is opaque, saturated color with a print that stands up to years of washing. Screen printing starts at 12 pieces and is printed in-house at our shop.
 
 **Choose it for:** staff shirts, events, teams, merch drops, designs with a few solid colors. [More on screen printing](/screen-printing/).
 
-## Direct-to-garment: full color, no minimum
+## Direct-to-garment: full color, fine detail
 
-DTG works like an inkjet printer for fabric, spraying water-based ink straight into the shirt. Unlimited colors, fine detail, soft feel, and no minimum or setup fee.
+DTG works like an inkjet printer for fabric, spraying water-based ink straight into the shirt. Unlimited colors, fine detail and a soft feel, with no screens.
 
-**Choose it for:** small runs, one-offs, photos and gradients on cotton. [More on DTG](/services/direct-to-garment/).
+**Choose it for:** short runs, photos and gradients on cotton. [More on DTG](/services/direct-to-garment/).
 
 ## Direct-to-film: small runs on more fabrics
 
@@ -57,7 +57,7 @@ Dye is turned to gas by heat and bonded into polyester fibers, covering the shir
 
 Start with three questions:
 
-1. **How many of one design?** 24 or more points to screen printing. Fewer points to DTG or DTF.
+1. **How many of one design?** Every order starts at 12 pieces. The bigger the run, the more screen printing pays off.
 2. **How many colors?** A few solid spot colors suit screens. Photos and gradients suit DTG, DTF or sublimation.
 3. **What fabric?** Cotton opens every option except sublimation. Polyester is where sublimation and DTF shine.
 

@@ -39,15 +39,16 @@ Any circumstances out of TBSP’S control (ie: weather delays, power outage, shi
 
 ## Minimums
 
-All minimums for TBS are listed independently through our website, but an approximate condensed version is:
+The minimum for every TBSP order is 12 pieces. This applies to every decoration method, including screen printing, DTG, DTF, heat transfer vinyl and embroidery. We do not decorate orders of fewer than 12 pieces.
 
-Screen printing:
+Some orders carry a higher minimum:
 
-- 1-3 Ink Colors: 12 Pieces Minimum
-- 4-6 Ink Colors: 50 Pieces Minimum
-- 7-10 Ink Colors: 100 Pieces Minimum
-- Any Order With Finishings: 50 Pieces Minimum
-- CMYK Process Printing: Depending on Complexity, either 50 or 100 Pieces Minimum
+- Screen printing, 1-3 ink colors: 12 pieces
+- Screen printing, 4-6 ink colors: 50 pieces
+- Screen printing, 7-10 ink colors: 100 pieces
+- Any order with finishings: 50 pieces
+- CMYK process printing: 50 or 100 pieces, depending on complexity
+- Embossing: 50 pieces
 
 If you have any questions about our minimums that cannot be answered in the information above please contact us.
 

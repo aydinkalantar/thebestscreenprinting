@@ -5,9 +5,9 @@ description: "Custom shirts, hoodies and uniforms for Los Angeles schools, clubs
 h1: "Custom apparel for schools"
 kind: audience
 imported: false
-summary: "School colors, done loud. Shirts, hoodies and uniforms for LA schools, clubs, teams and boosters, screen printed in-house for 24+ pieces of one design, with quotes back within one business day."
+summary: "School colors, done loud. Shirts, hoodies and uniforms for LA schools, clubs, teams and boosters, printed in-house from 12 pieces, with quotes back within one business day."
 facts:
-  - label: "24+ pieces of one design"
+  - label: "Minimum 12 pieces"
     value: "Screen printed in-house"
   - label: "Names and numbers"
     value: "Heat transfer for each student or player"
@@ -15,7 +15,7 @@ facts:
     value: "Answered within one business day"
 faqs:
   - q: "Can a small club order just a few shirts?"
-    a: "Yes. Orders under 24 pieces are usually printed with DTG or DTF, and DTG has no minimum and no setup fee."
+    a: "Yes, from 12 pieces. That is our minimum for every order, so small clubs and staff groups can order too."
   - q: "Can you add student names or numbers?"
     a: "Yes. Names and numbers are added with heat transfer, so each piece can be different."
   - q: "Can you embroider staff polos and jackets?"
@@ -40,8 +40,10 @@ Browse styles and colors in our [catalog](/catalog/).
 
 ## Which printing method fits a school order?
 
-- **Whole grade or whole school, 24 or more of one design:** [screen printing](/screen-printing/), in-house, in bold ink that matches your school colors.
-- **Small clubs and staff runs, under 24:** usually DTG or [direct to film](/services/direct-to-film/).
+- **Whole grade or whole school, bold school-color designs:** [screen printing](/screen-printing/), in-house, in bold ink that matches your school colors.
+- **Full-color or photo art:** usually DTG or [direct to film](/services/direct-to-film/).
+
+Every order starts at 12 pieces.
 - **Staff polos, jackets and hats:** [embroidery](/services/embroidery/), clean stitched crests.
 - **Student names and numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/).
 

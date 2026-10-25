@@ -1,4 +1,5 @@
 // Quote requests: shared between the form page and the Worker that emails them.
+import { business } from '../data/business';
 
 export const LEAD_SOURCES = [
   { id: 'google', label: 'Google search' },
@@ -52,6 +53,7 @@ export function parseQuote(form: FormData): { errors: Record<string, string> } |
   if (!EMAIL_RE.test(email)) errors.email = 'Enter a valid email so we can send your quote.';
   if (!garment) errors.garment = 'Pick what you want printed.';
   if (!Number.isFinite(quantity) || quantity < 1 || quantity > 100000) errors.quantity = 'How many pieces do you need?';
+  else if (quantity < business.shopMinimum) errors.quantity = `Orders start at ${business.shopMinimum} pieces.`;
   if (Object.keys(errors).length) return { errors };
   return {
     quote: {
@@ -68,12 +70,11 @@ export function parseQuote(form: FormData): { errors: Record<string, string> } |
 
 const esc = (t: string) => t.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
-export function quoteEmail(q: QuoteRequest, shopMinimum: number, artworkName?: string) {
-  const route = q.quantity >= shopMinimum ? `Shop order (${shopMinimum}+)` : `Small run (under ${shopMinimum})`;
+export function quoteEmail(q: QuoteRequest, artworkName?: string) {
   const source = LEAD_SOURCES.find((l) => l.id === q.leadSource)?.label ?? 'Not given';
   const rows: [string, string][] = [
     ['Name', q.name], ['Email', q.email], ['Phone', q.phone ?? '—'], ['Company', q.company ?? '—'],
-    ['What', q.garment], ['Quantity', `${q.quantity} (${route})`], ['Decoration', q.decorations.join(', ') || '—'],
+    ['What', q.garment], ['Quantity', String(q.quantity)], ['Decoration', q.decorations.join(', ') || '—'],
     ['Turnaround', q.turnaround], ['Needed by', q.deadline ?? '—'], ['Artwork', artworkName ?? 'None attached'], ['Found us via', source],
   ];
   const subject = `${q.turnaround === 'Normal' ? '' : `[${q.turnaround.toUpperCase()}] `}Quote request: ${q.quantity} × ${q.garment} — ${q.name}`;

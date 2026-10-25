@@ -11,14 +11,14 @@ facts:
   - label: "Rush"
     value: "Normal, Rush or Super Rush"
   - label: "Minimum"
-    value: "No minimum with DTG; 24 pieces for screen printing"
+    value: "12 pieces per order"
   - label: "Hours"
     value: "Mon to Fri, 9am to 5pm, 2710 S Broadway"
 faqs:
   - q: "Can I get custom t-shirts printed the same day in Los Angeles?"
     a: "Yes, same-day slots are available for many orders. Call (323) 433-0033 or request a quote with your deadline so we can confirm before you commit."
   - q: "Is there a minimum for same-day shirts?"
-    a: "DTG has no minimum and no setup fee, so small rush orders are possible. Screen printing starts at 24 pieces of one design."
+    a: "Same-day orders follow our 12-piece minimum, like every order. DTG skips screen setup, so small rush orders are possible."
   - q: "Can I pick up my rush order at the shop?"
     a: "Our shop is at 2710 S Broadway Avenue in Downtown Los Angeles, open Monday through Friday, 9am to 5pm. Ask about pickup when you confirm your order."
   - q: "What do you need from me to start a rush order?"
@@ -31,9 +31,9 @@ Event this weekend. Shoot tomorrow. Launch moved up. We get it. TBSP runs same-d
 
 The right method comes down to how many shirts you need and what your art looks like.
 
-- **[Screen printing](/screen-printing/)** is our core service for 24 or more pieces of one design. Printed in-house, with bold, solid ink.
-- **[Direct-to-garment (DTG)](/services/direct-to-garment/)** handles small runs and full-color art. No minimum, no setup fee.
-- **[Direct-to-film (DTF)](/services/direct-to-film/)** is another fast option for orders under 24 pieces and fabrics where DTG is not the fit.
+- **[Screen printing](/screen-printing/)** is our core service, from 12 pieces. Printed in-house, with bold, solid ink.
+- **[Direct-to-garment (DTG)](/services/direct-to-garment/)** handles full-color and photo art, with no screens.
+- **[Direct-to-film (DTF)](/services/direct-to-film/)** is another fast option for full-color art and fabrics where DTG is not the fit.
 
 Not sure which one? Give us your quantity and deadline and we will call the play.
 

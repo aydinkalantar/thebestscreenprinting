@@ -7,14 +7,14 @@ kind: audience
 imported: false
 summary: "Swag people keep. Branded tees, embroidered hats, totes and towels for campaigns, launches and giveaways, printed at our Downtown LA shop for brands that have included Netflix, Google and Amazon Alexa."
 facts:
-  - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Rush", value: "Normal, Rush or Super Rush" }
   - { label: "Best for", value: "Giveaways, launches, activations, client gifts" }
 faqs:
   - q: "What promotional products get used the most?"
     a: "Wearables and carry items: t-shirts, hats, hoodies and tote bags. They stay in use long after the event, so your logo keeps getting seen."
   - q: "How do I lower the cost per piece?"
-    a: "Order 24 or more of one design for screen printing, keep the ink colors to a minimum and limit print locations. Quantity spreads setup across more pieces."
+    a: "Order more of one design for screen printing, keep the ink colors to a minimum and limit print locations. Quantity spreads setup across more pieces."
   - q: "Can I see the product before the full order?"
     a: "Every order gets a mockup for approval. Ask about samples when you request a quote."
   - q: "How fast can you deliver promo items?"
@@ -39,9 +39,9 @@ Browse blanks in the [catalog](/catalog/).
 
 ## Which method fits a promo run?
 
-- **[Screen printing](/screen-printing/)** for 24 or more pieces of one design: bold color and the best per-piece value, printed in-house.
+- **[Screen printing](/screen-printing/)** for bold, few-color designs: bold color and the best per-piece value, printed in-house.
 - **[Embroidery](/services/embroidery/)** for hats, polos and jackets that feel high-end.
-- **[DTG](/services/direct-to-garment/)** for small runs or full-color art, with no minimum and no setup fee.
+- **[DTG](/services/direct-to-garment/)** for full-color and photo art, from 12 pieces.
 - **[DTF](/services/direct-to-film/)** for detailed logos on fabrics that are hard to print directly.
 - **[Large-format screen printing](/services/large-format-screen-printing/)** for oversized statement prints.
 

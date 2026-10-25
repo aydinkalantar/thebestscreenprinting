@@ -35,8 +35,9 @@ Quotes come back within one business day, with no obligation. [Request one here]
 
 It depends on the method:
 
-- **Screen printing:** 24 or more pieces of one design, printed in-house. See [screen printing](/screen-printing/).
-- **Under 24 pieces:** usually [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). DTG has no minimum and no setup fee.
+- **Every method:** 12 pieces per order. We do not decorate orders of fewer than 12 pieces.
+- **Screen printing:** bold designs with a few solid colors, printed in-house. See [screen printing](/screen-printing/).
+- **Full-color or photo art:** usually [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 - **Embroidery:** for polos, hats, jackets and uniforms. See [embroidery](/services/embroidery/).
 - **Names and numbers:** [heat transfer](/services/heat-transfer-vinyl/).
 

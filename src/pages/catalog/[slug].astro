@@ -13,7 +13,7 @@ const { p } = Astro.props as { p: CatalogProduct };
 const methods = techniqueNames(p.techniques);
 const category = CATEGORY_LABELS[p.category] || p.category;
 const related = products.filter((x) => x.category === p.category && x.id !== p.id).slice(0, 4);
-const description = `Custom ${p.name} printed with your logo or design. ${methods.join(', ')}. From ${money(p.fromPrice)} each, no minimum for small runs, ${business.shopMinimum}+ pieces printed in our Downtown LA shop.`;
+const description = `Custom ${p.name} printed with your logo or design. ${methods.join(', ')}. From ${money(p.fromPrice)} each, orders from ${business.shopMinimum} pieces, made in our own shops.`;
 const url = `${business.url}/catalog/${p.slug}/`;
 const jsonLd = [
   {
@@ -81,7 +81,7 @@ const jsonLd = [
         {!business.studioLive && (
           <div class="panel p-4 flex gap-3"><Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><p class="text-[13px] muted">Online design is coming soon. Until then, send your artwork with a quote request.</p></div>
         )}
-        <div class="panel p-4 flex gap-3"><Users class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><p class="text-[13px] muted">Ordering {business.shopMinimum}+? We'll quote screen printing or embroidery from our shop, usually lower per piece.</p></div>
+        <div class="panel p-4 flex gap-3"><Users class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><p class="text-[13px] muted">Orders start at {business.shopMinimum} pieces. Bigger runs bring the price per piece down.</p></div>
       </div>
     </div>
   </div>

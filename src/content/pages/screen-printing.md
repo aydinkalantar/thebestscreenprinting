@@ -1,18 +1,18 @@
 ---
 path: "/screen-printing/"
 title: "Screen Printing in Los Angeles | TBSP"
-description: "Custom screen printing in Downtown LA for runs of 24+ pieces per design. Printed in-house, free art check, quotes in one business day, rush slots available."
+description: "Custom screen printing in Downtown LA for runs from 12 pieces. Printed in-house, free art check, quotes in one business day, rush slots available."
 h1: "Screen printing in Los Angeles"
 kind: service
 imported: false
-summary: "Bold, solid ink that outlasts the wash cycle, pulled in-house at our Downtown LA shop. Screen printing starts at 24 pieces per design, with Rush and Super Rush turnaround for tight deadlines and quotes back within one business day."
+summary: "Bold, solid ink that outlasts the wash cycle, pulled in-house at our Downtown LA shop. Screen printing starts at 12 pieces, with Rush and Super Rush turnaround for tight deadlines and quotes back within one business day."
 facts:
-  - { label: "Minimum", value: "24 pieces per design" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Rush", value: "Same-day and next-day slots available" }
   - { label: "Best for", value: "Merch drops, events, teams and staff shirts" }
 faqs:
   - q: "What is the minimum order for screen printing?"
-    a: "Screen printing starts at 24 pieces of one design. For smaller runs we usually recommend direct-to-garment (DTG) or direct-to-film (DTF) printing, which skip the screen setup."
+    a: "Screen printing starts at 12 pieces, the same minimum as every order. For full-color or photo art we usually recommend direct-to-garment (DTG) or direct-to-film (DTF) printing, which skip the screen setup."
   - q: "Can I get screen printed shirts the same day?"
     a: "Normal, Rush and Super Rush turnaround options are available. It depends on quantity, colors and garment stock, so send your details through the quick quote form and we will confirm."
   - q: "Do you check my artwork before printing?"
@@ -29,7 +29,7 @@ It is the core of what we do. Every screen printed order is pulled in-house at o
 
 ## When should you choose screen printing?
 
-When the count hits 24 or more pieces of the same design, screen printing wins. Screens take time to set up, but once they are locked in, every extra piece prints fast. On bigger runs that means better value and quicker production than any digital method.
+For bold designs with a few solid colors, and especially on bigger runs, screen printing wins. Screens take time to set up, but once they are locked in, every extra piece prints fast. On bigger runs that means better value and quicker production than any digital method.
 
 It is built for:
 
@@ -39,7 +39,7 @@ It is built for:
 - Staff and company apparel
 - Artwork with bold, solid spot colors
 
-Under 24 pieces, or printing a full-color photo? Go [direct-to-garment](/services/direct-to-garment/) or [direct-to-film](/services/direct-to-film/). Want a stitched logo on caps, polos or jackets? That is [embroidery](/services/embroidery/).
+Printing a full-color photo or a design with lots of gradients? Go [direct-to-garment](/services/direct-to-garment/) or [direct-to-film](/services/direct-to-film/). Want a stitched logo on caps, polos or jackets? That is [embroidery](/services/embroidery/).
 
 ## What can we print on?
 

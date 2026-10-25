@@ -8,7 +8,7 @@ imported: false
 summary: "Full color, straight from the file, no screens. How DTG printing works step by step, what it does best and when another method is the better call."
 faqs:
   - q: "Is there a minimum for DTG printing?"
-    a: "Not at TBSP. DTG has no minimum and no setup fee, so you can print a single shirt."
+    a: "Yes. At TBSP, DTG orders start at 12 pieces, the same minimum as every order."
   - q: "How do I care for a DTG print?"
     a: "Wash inside out in cold water, skip bleach and tumble dry low or hang dry. Avoid ironing directly on the print."
   - q: "Can DTG print white ink on dark shirts?"
@@ -39,12 +39,12 @@ The result is a detailed, full-color print with a soft feel, because the ink sit
 
 ## What is DTG best for?
 
-- **Small runs.** One shirt, ten shirts, a sample before a big order.
+- **Short runs.** A dozen shirts, or a test run before a big order.
 - **Full-color art.** Photos, gradients, illustrations and designs with lots of colors.
 - **Variety.** A different design on every shirt costs no more in setup than one design.
-- **Samples and test drops.** See what a design looks like on fabric before committing to a run.
+- **Test drops.** See what a design looks like on fabric before committing to a bigger run.
 
-At TBSP, [DTG printing](/services/direct-to-garment/) has no minimum and no setup fee.
+At TBSP, [DTG printing](/services/direct-to-garment/) starts at 12 pieces.
 
 ## What fabrics work best with DTG?
 
@@ -54,18 +54,18 @@ DTG performs best on **100% cotton** and high-cotton blends. The water-based ink
 
 DTG is not always the answer. [Screen printing](/screen-printing/) is usually the better pick when:
 
-- You need **24 or more pieces** of one design. Screens take time to set up, but each additional piece prints fast, so per-piece cost drops with quantity.
+- You need **a bigger run** of one design. Screens take time to set up, but each additional piece prints fast, so per-piece cost drops with quantity.
 - Your design uses **a few solid spot colors** that need to be extra bold and opaque.
 - You want **specialty effects** like puff or metallic inks.
 
-Under 24 pieces, we usually recommend DTG or DTF. Learn how the screen process works in [what is screen printing and how is it done](/what-is-screen-printing-and-how-is-it-done/).
+For full-color or photo art, we usually recommend DTG or DTF. Learn how the screen process works in [what is screen printing and how is it done](/what-is-screen-printing-and-how-is-it-done/).
 
 ## DTG vs DTF at a glance
 
 - **DTG** prints directly into the fabric. Softer feel, best on cotton.
 - **DTF** prints onto a film that is heat-pressed on. Works on a wider range of fabrics and placements, with a slightly smoother surface feel.
 
-Both skip screens and suit small runs. Tell us your garment and design and we will recommend the right one.
+Both skip screens and suit full-color art. Tell us your garment and design and we will recommend the right one.
 
 ## Do you need fast turnaround?
 

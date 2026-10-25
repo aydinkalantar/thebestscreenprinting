@@ -7,7 +7,7 @@ kind: audience
 imported: false
 summary: "Uniforms that work a double shift as branding. Embroidered polos and hats, printed staff tees and aprons for LA restaurants, cafes, bars and food trucks, made in Downtown LA."
 facts:
-  - { label: "Minimum", value: "None with DTG; 24+ per design for screen printing" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Best for", value: "Front of house, kitchen crews, merch for regulars" }
   - { label: "Reorders", value: "Art and mockups saved for easy reorders" }
 faqs:
@@ -18,7 +18,7 @@ faqs:
   - q: "How do reorders work when we hire new staff?"
     a: "We save your artwork and mockups, so you can reorder by emailing sales@tbsp.la or calling (323) 433-0033."
   - q: "Can we sell shirts to customers too?"
-    a: "Yes. Many restaurants sell tees, hats and totes to regulars. Screen printing for 24+ pieces gives the best per-piece price for merch."
+    a: "Yes. Many restaurants sell tees, hats and totes to regulars. Screen printing gives the best per-piece price on bigger merch runs."
 ---
 ## Your logo, on every shift
 
@@ -38,9 +38,9 @@ We make restaurant apparel for kitchens, cafes, bars, bakeries and food trucks a
 
 **[Embroidery](/services/embroidery/)** stitches your logo into the fabric. It looks clean, reads as premium and handles frequent washing well. Best for polos, hats, aprons and jackets.
 
-**[Screen printing](/screen-printing/)** lays down bold ink for 24 or more pieces of one design. Best for staff tees and merch with big graphics.
+**[Screen printing](/screen-printing/)** lays down bold ink, from 12 pieces. Best for staff tees and merch with big graphics.
 
-**[DTG](/services/direct-to-garment/)** suits small teams or full-color art, with no minimum and no setup fee.
+**[DTG](/services/direct-to-garment/)** suits full-color and photo art, from 12 pieces.
 
 Need names on uniforms? We add them with [heat transfer](/services/heat-transfer-vinyl/).
 
@@ -53,7 +53,7 @@ Need names on uniforms? We add them with [heat transfer](/services/heat-transfer
 
 ## Merch your regulars will buy
 
-A great restaurant tee or hat becomes free advertising every time a regular wears it around town. Keep the design simple and tied to your name or neighborhood, pick a quality blank and stock a few sizes at the counter. [Screen printing](/screen-printing/) for 24 or more pieces keeps the per-piece cost down.
+A great restaurant tee or hat becomes free advertising every time a regular wears it around town. Keep the design simple and tied to your name or neighborhood, pick a quality blank and stock a few sizes at the counter. [Screen printing](/screen-printing/) on bigger runs keeps the per-piece cost down.
 
 ## Easy reorders
 

@@ -8,7 +8,7 @@ imported: false
 summary: "Straight answers on minimums, pricing, art, print methods, rush, pickup and shipping. Still stuck? Call (323) 433-0033 or email sales@tbsp.la."
 faqs:
   - q: "Is there a minimum order?"
-    a: "Not for every method. DTG has no minimum and no setup fee. Orders of 24 or more pieces of one design are screen printed in-house; orders under 24 pieces are usually printed with DTG or DTF."
+    a: "Yes. Every order has a 12-piece minimum, for every decoration method, and every order is produced in-house at our own facilities in Los Angeles and Cleveland."
   - q: "What determines the price of my order?"
     a: "Mainly four things: the garment you choose, the number of ink colors, the number of print locations and the total quantity. Personalization and samples can also affect the price."
   - q: "How can I lower the cost per item?"

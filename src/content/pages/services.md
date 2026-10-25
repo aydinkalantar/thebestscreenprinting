@@ -5,14 +5,14 @@ description: "Screen printing, embroidery, DTG, DTF, heat transfer and embossing
 h1: "Our services"
 kind: service
 imported: false
-summary: "Ink, thread, film and texture, all decorated at our Downtown LA shop. Screen printing for 24+ pieces, DTG with no minimum, embroidery for hats, polos and uniforms, and quotes answered within one business day."
+summary: "Ink, thread, film and texture, all decorated at our Downtown LA shop. Orders from 12 pieces, screen printing and DTG, embroidery for hats, polos and uniforms, and quotes answered within one business day."
 facts:
-  - { label: "Screen printing", value: "24+ pieces per design" }
-  - { label: "Small runs", value: "DTG and DTF, no minimum on DTG" }
+  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Full-color art", value: "DTG and DTF" }
   - { label: "Rush", value: "Normal, Rush or Super Rush" }
 faqs:
   - q: "Which printing method is cheapest for my order?"
-    a: "It depends on quantity and colors. For 24 or more pieces of one design, screen printing is usually the most cost-effective. Under 24 pieces, DTG or DTF usually wins because there are no screens to set up."
+    a: "It depends on quantity and colors. For bold designs with a few solid colors, screen printing is usually the most cost-effective, and the price per piece drops as the run grows. For full-color or photo art, DTG or DTF usually wins because there are no screens to set up. Every order starts at 12 pieces."
   - q: "Can I combine methods on one order?"
     a: "Yes. A common combo is screen printed tees for an event plus embroidered polos or hats for staff. We quote each item with the method that suits it."
   - q: "Do you check my artwork before printing?"
@@ -27,7 +27,7 @@ Every method has a sweet spot. The trick is matching your quantity, artwork and 
 
 ### Screen printing
 
-Thick, opaque ink pushed through mesh, one screen per color. Solid color, serious durability and the best price per piece once you hit 24 or more of one design. It also unlocks effects like puff, high density, foil and glow-in-the-dark. Start at [screen printing](/screen-printing/), or dig into [inks and effects](/services/custom-screen-printing-los-angeles/).
+Thick, opaque ink pushed through mesh, one screen per color. Solid color, serious durability and the best price per piece on bigger runs of one design. It also unlocks effects like puff, high density, foil and glow-in-the-dark. Start at [screen printing](/screen-printing/), or dig into [inks and effects](/services/custom-screen-printing-los-angeles/).
 
 ### Embroidery
 
@@ -35,11 +35,11 @@ Your logo stitched in thread, with real texture and a finish that reads premium.
 
 ### Direct-to-garment (DTG)
 
-A digital printer lays ink straight into the fabric. Full color, fine detail, soft hand, and no minimum or setup fee, so one shirt is as easy as twenty. See [DTG printing](/services/direct-to-garment/).
+A digital printer lays ink straight into the fabric. Full color, fine detail and a soft hand, with no screens to set up. See [DTG printing](/services/direct-to-garment/).
 
 ### Direct-to-film (DTF)
 
-Your design is printed onto film and heat-pressed onto the garment. Vivid color on cotton, blends and polyester, which makes it a strong pick for small runs on mixed fabrics. See [DTF printing](/services/direct-to-film/).
+Your design is printed onto film and heat-pressed onto the garment. Vivid color on cotton, blends and polyester, which makes it a strong pick for full-color art on mixed fabrics. See [DTF printing](/services/direct-to-film/).
 
 ### Heat transfer vinyl
 
@@ -53,7 +53,7 @@ No ink, just texture. Raised logos and patterns pressed into the fabric for a qu
 
 Start with three questions:
 
-- **How many pieces?** 24+ of one design points to screen printing. Fewer points to DTG or DTF.
+- **How many pieces?** Every order starts at 12. The bigger the run of one design, the more screen printing pays off.
 - **What does the art look like?** A few solid colors print beautifully on screen. Photos and gradients belong on DTG or DTF.
 - **What is the garment?** Hats, polos and jackets usually look best embroidered. Jerseys with individual names want heat transfer.
 

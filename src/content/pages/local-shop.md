@@ -39,7 +39,7 @@ This is where it happens. Screens get burned, ink gets mixed, needles fly and fi
 
 ## What we make here
 
-[Screen printing](/screen-printing/) for 24+ pieces per design, printed in-house. [Embroidery](/services/embroidery/) for hats, polos, jackets and uniforms. [DTG](/services/direct-to-garment/) with no minimum and no setup fee. [DTF](/services/direct-to-film/) for full color on cotton, blends and polyester. [Heat transfer](/services/heat-transfer-vinyl/) for names and numbers. Plus [embossing](/services/embossing/) and [large format](/services/large-format-screen-printing/) prints.
+[Screen printing](/screen-printing/) for bold designs and bigger runs, printed in-house. [Embroidery](/services/embroidery/) for hats, polos, jackets and uniforms. [DTG](/services/direct-to-garment/) for full-color and photo art. [DTF](/services/direct-to-film/) for full color on cotton, blends and polyester. [Heat transfer](/services/heat-transfer-vinyl/) for names and numbers. Plus [embossing](/services/embossing/) and [large format](/services/large-format-screen-printing/) prints.
 
 ## How do rush orders work at the shop?
 

@@ -1,38 +1,38 @@
 ---
 path: "/services/direct-to-garment/direct-to-garment-printing-near-me/"
 title: "Direct To Garment Printing Near Los Angeles"
-description: "No-minimum DTG printing in Downtown Los Angeles. One shirt or a short run, full color, no setup fee, with a free art check and local pickup on S Broadway."
-h1: "Direct-to-garment printing near me, no minimum"
+description: "DTG printing in Downtown Los Angeles from 12 pieces. Full color, no screens, with a free art check and local pickup on S Broadway."
+h1: "Direct-to-garment printing near me"
 kind: service
 imported: false
-summary: "One shirt? Twelve different designs? No problem. DTG prints full-color art straight into the fabric with no minimum and no setup fee, at our Downtown LA shop with local pickup."
+summary: "Full-color art? Several different designs? No problem. DTG prints full-color art straight into the fabric from 12 pieces, at our Downtown LA shop with local pickup."
 facts:
-  - { label: "Minimum", value: "None" }
-  - { label: "Setup fee", value: "None" }
-  - { label: "Best for", value: "Samples, one-offs, short runs and photo art" }
+  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Screens", value: "None needed" }
+  - { label: "Best for", value: "Short runs, multi-design orders and photo art" }
 faqs:
   - q: "Can I order just one DTG shirt?"
-    a: "Yes. DTG has no minimum and no setup fee, so a single shirt is a normal order."
+    a: "No. DTG orders start at 12 pieces, the same minimum as every order we produce."
   - q: "Can every shirt in my order have a different design?"
     a: "Yes. Because there are no screens, DTG is the fastest way to print many different designs in small quantities."
   - q: "What is the difference between DTG and DTF?"
     a: "DTG prints ink directly into the fabric for a seamless, soft feel that fades with the garment over time. DTF transfers a printed film, which adds a subtle layer you can feel and works well on polyester and blends."
   - q: "When should I switch to screen printing?"
-    a: "Once you need 24 or more pieces of the same design, screen printing usually becomes more cost-effective."
+    a: "On bigger runs of the same design, especially with a few solid colors, screen printing usually becomes more cost-effective."
 sourceUrl: "https://thebestscreenprinting.com/services/direct-to-garment/direct-to-garment-printing-near-me/"
 ---
-## No minimum. No setup. No waiting on screens.
+## No screens. No waiting on screens.
 
-Direct-to-garment printing works like a giant inkjet for clothing. Your digital file goes straight from screen to shirt, with every color, gradient and fine line intact. No screens to burn means no setup fee and no minimum. Print one. Print nine. Print a different design on each.
+Direct-to-garment printing works like a giant inkjet for clothing. Your digital file goes straight from screen to shirt, with every color, gradient and fine line intact. No screens to burn means no waiting. Orders start at 12 pieces, and you can print a different design on each.
 
 We run DTG at our shop at 2710 S Broadway in Downtown Los Angeles, so you can drop by, pick up and get on with your day.
 
-## Who orders DTG in small runs?
+## Who orders DTG?
 
-- **Brands testing a design** before committing to a full screen printed run. We often print DTG samples before bigger orders.
+- **Brands testing a design** before committing to a full screen printed run. A short DTG run is a common first step before bigger orders.
 - **Artists** selling limited editions or made-to-order pieces.
-- **Gifts and one-offs**: a birthday shirt, a family photo, a single custom hoodie.
-- **Small teams and crews** that need a handful of shirts, not a box.
+- **Celebrations and reunions**: a family photo or birthday design on a dozen shirts.
+- **Small teams and crews** that need a dozen shirts, not a box.
 - **Multi-design drops** where every piece is different.
 
 ## What artwork works best?
@@ -51,8 +51,8 @@ Because you are printing with a Downtown LA shop, you can collect your order in 
 
 ## When to move up to screen printing
 
-DTG is perfect for small numbers. Once you need 24 or more of the same design, [screen printing](/screen-printing/) usually gives a better price per piece. Read the full [DTG overview](/services/direct-to-garment/), or browse tees in the [catalog](/catalog/).
+DTG is perfect for full-color art and short runs. On bigger runs of the same design, [screen printing](/screen-printing/) usually gives a better price per piece. Read the full [DTG overview](/services/direct-to-garment/), or browse tees in the [catalog](/catalog/).
 
-## Print your first piece
+## Print your first run
 
 Upload your design through the [quick quote form](/quick-quote/) and we will reply within one business day.

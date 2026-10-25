@@ -12,7 +12,7 @@ faqs:
   - q: "Why does my print wash out?"
     a: "Usually because the ink was not fully cured. Each ink type needs enough heat for long enough to set, so follow the ink maker's curing guidance."
   - q: "When is it better to use a print shop?"
-    a: "Multi-color designs, dark garments, tight deadlines and runs of 24 or more pieces are where a shop's presses, dryers and registration pay off."
+    a: "Multi-color designs, dark garments, tight deadlines and bigger runs are where a shop's presses, dryers and registration pay off."
 sourceUrl: "https://thebestscreenprinting.com/how-to-do-t-shirt-screen-printing/"
 ---
 The t-shirt is the most-worn custom garment on the planet: at the gym, at work, at school, on the street and on the couch. Screen printing is the classic way to put a design on one. Here is how it works, step by step, whether you are trying it yourself or just want to know what happens on our presses.
@@ -87,6 +87,6 @@ Look for clean edges, full coverage, correct placement and no smudges. Let the s
 
 On a production press, the steps are the same but the scale is not. Multi-head presses hold several screens in perfect registration, conveyor dryers cure every shirt at a consistent temperature, and experienced printers dial in ink and pressure for each fabric. That consistency matters when you need dozens or hundreds of identical shirts.
 
-At TBSP, [screen printing](/screen-printing/) for orders of 24 or more pieces of one design is printed in-house at our Downtown LA shop. Smaller runs and full-color photo art are usually better on [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), which skip screens entirely. Not sure which is right? Read about [DTG printing](/what-is-direct-to-garment-printing-and-how-does-it-work/).
+At TBSP, [screen printing](/screen-printing/) starts at 12 pieces and is printed in-house at our Downtown LA shop. Full-color photo art is usually better on [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), which skip screens entirely. Not sure which is right? Read about [DTG printing](/what-is-direct-to-garment-printing-and-how-does-it-work/).
 
 Want shirts without the darkroom? [Get a free quote](/quick-quote/).
