@@ -21,7 +21,7 @@ The fastest way to get help is to reach the people printing your order.
 
 - **A new quote.** Send your quantity, garment, print locations and number of ink colors through the [quick quote form](/quick-quote/). Quotes are answered within one business day.
 - **Artwork questions.** Not sure if your file will print well, or how many colors it needs? Every order gets a free art check before printing. See our [design tips](/helpful-design-tips/).
-- **Rush timing.** Normal, Rush and Super Rush turnaround options are available. Call to confirm before you commit to a deadline.
+- **Rush timing.** Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call to confirm before you commit to a deadline.
 - **Reorders.** We keep your artwork and mockups on file, so a reorder can start with one email or call.
 - **A problem with an order.** Contact us within 24 hours of receiving it. Our [shipping and delivery](/shipping-and-delivery/) page covers what is reprinted or refunded.
 

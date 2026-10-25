@@ -1,15 +1,17 @@
 ---
 path: "/rush-order-screen-printing-chinatown-la-ca/"
-title: "Rush Order Screen Printing In Chinatown LA, CA"
-description: "Welcome to The Best Screen Printing, your trusted local partner for high-quality Rush Order Screen Printing in Chinatown LA, Los Angeles, CA! We’re more than"
-h1: "Rush Order Screen Printing in Chinatown LA, Los Angeles, CA"
+title: "Rush & Super Rush Screen Printing In Chinatown LA, CA"
+description: "Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA: Rush arrives in 1 week (+15%), Super Rush in 3 business days (+30%). 12-piece minimum, made in-house."
+h1: "Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/rush-order-screen-printing-chinatown-la-ca/"
 ---
-### Discover high-quality Rush Order Screen Printing in Chinatown LA, Los Angeles, CA.
+### Discover high-quality Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA.
 
-Welcome to The Best Screen Printing, your trusted local partner for high-quality Rush Order Screen Printing in Chinatown LA, Los Angeles, CA! We’re more than just a print shop—we’re passionate about helping our community look great and stand out. From eye-catching business uniforms to fun and functional branded gear for schools, clubs, and organizations, we bring creativity and care to every project. We know how important it is to find affordable, top-quality Rush Order Screen Printing that not only meet but exceed your expectations on speed and value. At The Best Screen Printing Company, we specialize in making your designs come to life on everything from customized T-shirts and hoodies to team sports gear and promotional products. Whether you need a unique look for an event, matching gear for a team, or branded swag that truly reflects your brand, our Rush Order Screen Printing offer the best in quality, durability, and turnaround times to fit your schedule and budget.
+Welcome to The Best Screen Printing, your trusted local partner for high-quality Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA! We’re more than just a print shop—we’re passionate about helping our community look great and stand out. From eye-catching business uniforms to fun and functional branded gear for schools, clubs, and organizations, we bring creativity and care to every project. We know how important it is to find affordable, top-quality Rush & Super Rush Screen Printing that not only meet but exceed your expectations on speed and value. At The Best Screen Printing Company, we specialize in making your designs come to life on everything from customized T-shirts and hoodies to team sports gear and promotional products. Whether you need a unique look for an event, matching gear for a team, or branded swag that truly reflects your brand, our Rush & Super Rush Screen Printing offer the best in quality, durability, and turnaround times to fit your schedule and budget.
+
+How fast is rush? Every order is made in-house in Los Angeles and Cleveland, with a 12-piece minimum. Normal (Standard Delivery) is estimated to arrive in about 2 weeks. Rush (One-Week Rush Delivery) arrives at your doorstep in 1 week and adds 15% to the order cost. Super Rush (3-Day Super Rush Delivery) arrives in 3 business days and adds 30% to the order cost; order by 2:00 PM ET on Tuesday to have items in hand by Friday. Super Rush is not available for all products, styles or PO Box addresses. See [delivery times](/learn-delivery-time/) for details.
 
 ## GET A FREE QUOTE TODAY
 
@@ -19,7 +21,7 @@ Welcome to The Best Screen Printing, your trusted local partner for high-quality
 
 ★★★★★ 50+ REVIEWS
 
-## Rush Order Screen Printing in Chinatown LA, Los Angeles, CA
+## Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA
 
 We’re thrilled you’ve stopped by to learn more about us and our services. At The Best Screen Printing, we don’t just print designs on t-shirts—we help bring your unique vision to life. Our passion lies in creating high-quality, customized products that reflect your style, brand, or message, and we’re proud to be a part of the vibrant Chinatown LA, Los Angeles, CA community that we serve.
 
@@ -35,7 +37,7 @@ Elevate your apparel with our professional embroidery services for logos, team u
 
 We’re more than just a print shop—we’re a team of local experts who genuinely care about making your experience smooth, enjoyable, and personal. As a community-focused business, we understand how important it is for your project to go smoothly, especially if you’re on a deadline or working on something truly meaningful. We’re here to listen to your ideas, help you make the right choices, and guide you through the entire process with ease.
 
-Our goal is to make creating custom apparel accessible and fun, whether you’re a business owner looking to boost brand awareness, a school team needing a new look, or an individual bringing a custom design to life. And because we’re Rush Order Screen Printing locally based in Chinatown LA, Los Angeles, CA, we can offer personalized support, fast turnaround times, and a level of detail and quality control that only a neighborhood print shop can provide.
+Our goal is to make creating custom apparel accessible and fun, whether you’re a business owner looking to boost brand awareness, a school team needing a new look, or an individual bringing a custom design to life. And because we’re Rush & Super Rush Screen Printing locally based in Chinatown LA, Los Angeles, CA, we can offer personalized support, fast turnaround times, and a level of detail and quality control that only a neighborhood print shop can provide.
 
 So, if you have a project in mind—no matter how big or small—reach out to us today. We’d love to chat about how we can help bring your ideas to life with care, expertise, and a little Chinatown LA, Los Angeles, CA flair. Thank you for considering The Best Screen Printing. We’re excited to work with you!
 
@@ -49,7 +51,7 @@ Oh wow! They are really The Best! We needed custom hats to be embroidered. It wa
 
 ## Bring Your Design To Life
 
-Contact us today to learn more about Rush Order Screen Printing in Chinatown LA, Los Angeles, CA and how we can help bring your designs to life!
+Contact us today to learn more about Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA and how we can help bring your designs to life!
 
 ## Our Apparel Decoration Services
 

@@ -66,7 +66,7 @@ Plenty of businesses start with a 12-piece run for staff, then move to screen pr
 
 ## Grand opening on Friday?
 
-Rush and Super Rush turnaround are open for tight deadlines. Call us to confirm before you plan around a date. Details on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
+Rush (1 week, +15%) and Super Rush (3 business days, +30%) are open for tight deadlines. Call us to confirm before you plan around a date. Details on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Launches, pop-ups and your own line
 

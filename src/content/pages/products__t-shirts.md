@@ -1,7 +1,7 @@
 ---
 path: "/products/t-shirts/"
 title: "Custom T-Shirt Printing in Los Angeles | TBSP"
-description: "Custom t-shirt printing in Downtown LA for brands, artists, events and teams. Orders from 12 pieces, and rush slots available."
+description: "Custom t-shirt printing in Downtown LA for brands, artists, events and teams. Orders from 12 pieces, and Rush and Super Rush available."
 h1: "Custom t-shirt printing"
 kind: product
 imported: false
@@ -12,15 +12,15 @@ facts:
     value: "12 pieces per order"
   - label: "Decoration"
     value: "Screen printing, DTG, DTF and embroidery"
-  - label: "Rush"
-    value: "Normal, Rush or Super Rush"
+  - label: "Turnaround"
+    value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
 faqs:
   - q: "What is the minimum order for custom t-shirts?"
     a: "12 pieces per order, for every decoration method. We do not print orders of fewer than 12 shirts."
   - q: "When is screen printing the better choice for t-shirts?"
     a: "Screen printing is our core service for bold designs with a few solid colors and bigger runs, printed in-house at our shop."
   - q: "How fast can I get custom t-shirts?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
   - q: "How long does it take to get a quote?"
     a: "We answer quote requests within one business day."
 ---

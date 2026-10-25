@@ -35,10 +35,12 @@ export const business = {
    * `time` is filled in once confirmed; until then pages say it's confirmed with the quote.
    */
   turnaround: [
-    { id: 'normal', name: 'Normal', time: null as string | null, note: 'Standard production time' },
-    { id: 'rush', name: 'Rush', time: null as string | null, note: 'Faster, for tighter deadlines' },
-    { id: 'super-rush', name: 'Super Rush', time: null as string | null, note: 'Our fastest option' },
+    { id: 'normal', name: 'Normal', time: 'About 2 weeks', fee: null as string | null, note: 'Standard delivery, estimated to arrive in about two weeks.' },
+    { id: 'rush', name: 'Rush', time: '1 week', fee: '+15%' as string | null, note: 'One-week rush delivery, at your doorstep in a week.' },
+    { id: 'super-rush', name: 'Super Rush', time: '3 business days', fee: '+30%' as string | null, note: 'Order by 2:00 PM ET Tuesday to have it in hand by Friday.' },
   ],
+  /** Fine print for Super Rush. */
+  superRushNote: 'Not available for all products, styles or PO Box addresses.',
   /** Areas we serve without a shop address there (service-area business). */
   serviceAreas: ['Los Angeles, CA', 'Cleveland, OH'],
 } as const;

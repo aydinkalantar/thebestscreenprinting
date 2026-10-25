@@ -61,9 +61,9 @@ Price comes down to the garment, the number of ink colors, the number of print l
 
 Every order gets a free art check and a mockup for approval. If the design started as a sketch in a notebook, send a clear photo or scan and ask about our graphic design help.
 
-## Game is tomorrow?
+## Game day coming up?
 
-Rush and Super Rush turnaround are open for tight deadlines. Call (323) 433-0033 to confirm before you plan around a date. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
+Rush (1 week, +15%) and Super Rush (3 business days, +30%) are open for tight deadlines. Call (323) 433-0033 to confirm before you plan around a date. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Rep your school
 

@@ -1,7 +1,7 @@
 ---
 path: "/the-best-screen-printing/"
-title: "Same Day Shirt Print | The Best Screen Printing In LA"
-description: "The Best Screen Printing is a Downtown LA print shop for brands, artists, events and teams. Screen printing, embroidery, DTG and DTF, with rush slots."
+title: "Rush Shirt Printing | The Best Screen Printing In LA"
+description: "The Best Screen Printing is a Downtown LA print shop for brands, artists, events and teams. Screen printing, embroidery, DTG and DTF, with Rush and Super Rush."
 h1: "The Best Screen Printing in LA"
 kind: core
 imported: false
@@ -9,12 +9,12 @@ summary: "A Downtown LA print shop that has put ink on shirts for Netflix, Adida
 facts:
   - { label: "Location", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
   - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF, heat transfer, embossing" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Can you help me start a clothing brand?"
     a: "Yes. We print first runs, samples and restocks for new labels, and can handle finishing like folding, bagging, custom labels and hang tags for retail-ready product."
-  - q: "Can I get shirts printed the same day?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 or request a quote with your deadline and we will confirm."
+  - q: "How fast can I get shirts printed?"
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call (323) 433-0033 or request a quote with your deadline and we will confirm."
   - q: "What brands have you printed for?"
     a: "Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures, along with many independent LA brands, events and teams."
 sourceUrl: "https://thebestscreenprinting.com/the-best-screen-printing/"
@@ -42,7 +42,7 @@ T-shirts, hoodies, crewnecks, tanks, polos, hats, bags and team uniforms. Bring 
 
 ## How fast can you get shirts?
 
-Fast, when it counts. Rush and Super Rush turnaround are open for tight deadlines. Quantity, colors and garment stock all play a part, so tell us your date up front and we will confirm. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
+Fast, when it counts. Rush (1 week, +15%) and Super Rush (3 business days, +30%) are open for tight deadlines. Quantity, colors and garment stock all play a part, so tell us your date up front and we will confirm. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Why brands come back
 

@@ -10,15 +10,15 @@ summary: "Your logo, stitched in thread and worn every day. We embroider custom 
 facts:
   - label: "Decoration"
     value: "Embroidery"
-  - label: "Rush"
-    value: "Normal, Rush or Super Rush"
+  - label: "Turnaround"
+    value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
   - label: "Art"
     value: "Free art check before production"
 faqs:
   - q: "Can you put my logo on hats?"
     a: "Yes. We embroider logos on hats. Send your artwork with a quote request and we will check that it works at hat size."
   - q: "Can I get custom hats on a rush?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
   - q: "Can I order hats together with shirts and hoodies?"
     a: "Yes. We quote hats alongside t-shirts, hoodies and other apparel so the whole order is planned together."
   - q: "How soon will I get a quote?"
@@ -61,7 +61,7 @@ Yes, and it is one of the best ways to make merch feel like a collection. Pair h
 
 ## Short on time?
 
-Normal, Rush and Super Rush turnaround options are available. See our [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/) page for how rush jobs work, and include your deadline when you reach out.
+Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. See our [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/) page for how rush jobs work, and include your deadline when you reach out.
 
 ## Get your hats made
 

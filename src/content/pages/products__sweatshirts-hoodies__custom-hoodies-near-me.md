@@ -8,13 +8,13 @@ imported: false
 summary: "Hoodies are a feel-it-first purchase, and our Downtown LA shop lets you do exactly that. Stop by 2710 S Broadway Avenue, Monday to Friday, 9am to 5pm, to talk through blanks and pick up your order."
 facts:
   - { label: "Where", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "LA brands, crews and teams who want to see it first" }
 faqs:
   - q: "Can I talk through hoodie options in person?"
     a: "Yes. Call ahead at (323) 433-0033 and come by the shop to talk through fabric weight, fit and color before you commit."
   - q: "Can I get custom hoodies fast in Los Angeles?"
-    a: "Normal, Rush and Super Rush turnaround options are available. It depends on quantity, method and garment stock, so confirm by phone or with a quote."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. It depends on quantity, method and garment stock, so confirm by phone or with a quote."
   - q: "Can you print on hoodies I already have?"
     a: "Yes, we can decorate customer-provided garments. Let us know the brand, fabric and quantity in your quote request so we can confirm the best method."
 sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/custom-hoodies-near-me/"
@@ -28,7 +28,7 @@ Fleece weight, the hand of the fabric, how the hood sits, whether the fit is cla
 - **Talk blanks in person.** Work through fabric weight, fit and color with us instead of guessing from a photo.
 - **Settle the design in one conversation.** Bring your art, a sample hoodie you love or a rough idea, and leave with a plan.
 - **Pick up on your schedule.** Collect your order Monday through Friday, 9am to 5pm, with no shipping window to wait out.
-- **Real rush options.** Normal, Rush and Super Rush turnaround options are available. Local pickup means no carrier day stacked on top.
+- **Real rush options.** Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Local pickup means no carrier day stacked on top.
 - **One call reaches the shop floor.** Questions go to the people working on your job.
 
 ## What should I bring to the shop?
@@ -48,7 +48,7 @@ Los Angeles runs on hoodies. Early call times on set, cold nights at outdoor sho
 
 ## How we decorate them
 
-In-house [screen printing](/screen-printing/) handles bold designs and bigger runs. [Embroidery](/services/embroidery/) gives a stitched logo with a premium finish. [DTG](/services/direct-to-garment/) covers full-color art, and [heat transfer](/services/heat-transfer-vinyl/) adds names and numbers. For print locations, fits and sizing, see [custom hoodies in Los Angeles](/products/sweatshirts-hoodies/custom-hoodies/). Rushing? Read our [same-day printing checklist](/products/t-shirts/same-day-t-shirt-printing-near-me/) first.
+In-house [screen printing](/screen-printing/) handles bold designs and bigger runs. [Embroidery](/services/embroidery/) gives a stitched logo with a premium finish. [DTG](/services/direct-to-garment/) covers full-color art, and [heat transfer](/services/heat-transfer-vinyl/) adds names and numbers. For print locations, fits and sizing, see [custom hoodies in Los Angeles](/products/sweatshirts-hoodies/custom-hoodies/). Rushing? Read our [rush printing checklist](/products/t-shirts/same-day-t-shirt-printing-near-me/) first.
 
 ## Come by or send it over
 

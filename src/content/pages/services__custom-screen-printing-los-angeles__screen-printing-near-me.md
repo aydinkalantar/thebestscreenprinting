@@ -9,7 +9,7 @@ summary: "Not every shop down the street prints in-house. Here is how to vet a l
 facts:
   - { label: "Location", value: "2710 S Broadway Ave, Downtown LA" }
   - { label: "Minimum", value: "12 pieces per order" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Do you screen print in-house?"
     a: "Yes. Screen printing orders are printed in-house at our shop at 2710 S Broadway Ave in Downtown Los Angeles."
@@ -38,7 +38,7 @@ Ours: every order gets a free art check before printing, plus a proof to approve
 Ours: within one business day.
 
 **5. Can you rush?**
-Ours: Normal, Rush and Super Rush turnaround options are available. We confirm by phone or with your quote. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
+Ours: Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. We confirm by phone or with your quote. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 **6. What else can you do?**
 Ours: [embroidery](/services/embroidery/), [heat transfer](/services/heat-transfer-vinyl/) for names and numbers, [embossing](/services/embossing/) and [large format](/services/large-format-screen-printing/) prints. One shop, one invoice.

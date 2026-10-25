@@ -9,7 +9,7 @@ summary: "Full-color prints that go where screens can't: cotton, polyester, blen
 facts:
   - { label: "Best for", value: "Full-color short runs, from 12 pieces" }
   - { label: "Fabrics", value: "Cotton, polyester and blends" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "What is DTF printing?"
     a: "DTF stands for direct-to-film. The design is printed onto a special film, then heat pressed onto the garment, leaving a full-color print that sits on the fabric surface."
@@ -18,7 +18,7 @@ faqs:
   - q: "Can DTF print on polyester?"
     a: "Yes. DTF prints on cotton, polyester and blends, which makes it a strong pick for performance wear and mixed-fabric orders."
   - q: "Can I get a DTF order rushed?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Send your details through the quick quote form and we will confirm what is possible for your job."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Send your details through the quick quote form and we will confirm what is possible for your job."
 ---
 ## Full color, any fabric, small runs
 
@@ -56,7 +56,7 @@ Bring your own pieces or browse the [catalog](/catalog/).
 3. **Print and press.** Your design is printed onto film and heat pressed onto each garment.
 4. **Pickup or ship.** Grab it at our DTLA shop or have it shipped.
 
-Need it fast? Rush and Super Rush turnaround are open for tight deadlines. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
+Need it fast? Rush (1 week, +15%) and Super Rush (3 business days, +30%) are open for tight deadlines. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Let's press it
 

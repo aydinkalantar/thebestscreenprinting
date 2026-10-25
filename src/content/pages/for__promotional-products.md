@@ -1,14 +1,14 @@
 ---
 path: "/for/promotional-products/"
 title: "Promotional Product Printing in Los Angeles"
-description: "Branded promo apparel and merch printed in Downtown LA: giveaway tees, embroidered hats, totes and towels for campaigns, launches and events, with rush slots."
+description: "Branded promo apparel and merch printed in Downtown LA: giveaway tees, embroidered hats, totes and towels for campaigns, launches and events, with Rush and Super Rush."
 h1: "Promotional product printing"
 kind: audience
 imported: false
 summary: "Swag people keep. Branded tees, embroidered hats, totes and towels for campaigns, launches and giveaways, printed at our Downtown LA shop for brands that have included Netflix, Google and Amazon Alexa."
 facts:
   - { label: "Minimum", value: "12 pieces per order" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Giveaways, launches, activations, client gifts" }
 faqs:
   - q: "What promotional products get used the most?"
@@ -18,7 +18,7 @@ faqs:
   - q: "Can I see the product before the full order?"
     a: "Every order gets a mockup for approval. Ask about samples when you request a quote."
   - q: "How fast can you deliver promo items?"
-    a: "Quotes are answered within one business day, and Normal, Rush and Super Rush turnaround options are available. Share your in-hands date with your quote request."
+    a: "Quotes are answered within one business day, and Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Share your in-hands date with your quote request."
 ---
 ## Promo that does not end up in the trash
 

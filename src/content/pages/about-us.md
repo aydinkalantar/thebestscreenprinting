@@ -38,7 +38,7 @@ Brands, artists, events and teams. Our presses have run work for names like Netf
 
 - **Free art check.** Every file is reviewed before anything is printed.
 - **Fast answers.** Quotes come back within one business day.
-- **Rush when you need it.** Normal, Rush and Super Rush turnaround options are available. Call or request a quote to confirm.
+- **Rush when you need it.** Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call or request a quote to confirm.
 
 ## Come by the shop
 

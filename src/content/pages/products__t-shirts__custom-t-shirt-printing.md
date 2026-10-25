@@ -9,7 +9,7 @@ summary: "From idea to folded stack in five clear steps, run out of our Downtown
 facts:
   - { label: "Quote", value: "Answered within one business day" }
   - { label: "Art check", value: "Free on every order" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "What do I need to start a custom t-shirt order?"
     a: "Your artwork (or an idea), the shirt style and color, a rough quantity by size, where you want the print, and your deadline. If something is missing, we will help you fill it in."
@@ -55,7 +55,7 @@ Before anything goes on press, we check your artwork for resolution, thin lines,
 
 ## Step 4: We print
 
-Your order goes into production. If you are racing a date, ask about rush: Normal, Rush and Super Rush turnaround options are available. Details are on our [Rush and Super Rush printing](/products/t-shirts/same-day-t-shirt-printing-near-me/) page.
+Your order goes into production. If you are racing a date, ask about rush: Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Details are on our [Rush and Super Rush printing](/products/t-shirts/same-day-t-shirt-printing-near-me/) page.
 
 ## Step 5: Pick up or ship
 

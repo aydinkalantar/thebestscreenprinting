@@ -9,7 +9,7 @@ summary: "Our home base: a Downtown LA production floor turning out merch for br
 facts:
   - { label: "Address", value: "2710 S Broadway, Los Angeles" }
   - { label: "Hours", value: "Mon–Fri, 9am–5pm" }
-  - { label: "Rush", value: "Same-day slots available" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Where is your Los Angeles shop?"
     a: "At 2710 S Broadway Avenue, Los Angeles, CA 90007, just south of Downtown. We're open Monday to Friday, 9am to 5pm."
@@ -18,7 +18,7 @@ faqs:
   - q: "Do you deliver across Los Angeles?"
     a: "Yes. We ship and deliver across LA County and beyond. Delivery options and timing come with your quote."
   - q: "How fast can you print in LA?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Send your deadline with the quote request or call us to check today's slots."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Send your deadline with the quote request or call us to check which option fits your products."
 ---
 Downtown LA is where TBSP started and where most of our presses run every day. Brands, tours, film crews, restaurants and teams come here for merch that looks right the first time.
 
@@ -52,16 +52,16 @@ All of Los Angeles, from the Valley to the South Bay. Some of the neighborhoods 
 - [Direct-to-Garment Printing in Eagle Rock](/direct-to-garment-printing-eagle-rock-ca/)
 - [Direct-to-Garment Printing in North Hollywood](/direct-to-garment-printing-north-hollywood-ca/)
 - [Heat Transfer Vinyl in Downtown LA](/heat-transfer-vinyl-downtown-la-ca/)
-- [Rush Order Screen Printing in Chinatown LA](/rush-order-screen-printing-chinatown-la-ca/)
-- [Same Day Screen Printing in Encino](/same-day-screen-printing-encino-ca/)
-- [Same Day Screen Printing in Koreatown LA](/same-day-screen-printing-koreatown-la-ca/)
-- [Same Day Screen Printing in Marina del Rey](/same-day-screen-printing-marina-del-rey-ca/)
-- [Same Day Screen Printing in Panorama City](/same-day-screen-printing-panorama-city-ca/)
-- [Same Day Screen Printing in Redondo Beach](/same-day-screen-printing-redondo-beach-ca/)
-- [Same Day Screen Printing in Woodland Hills](/same-day-screen-printing-woodland-hills-ca/)
-- [Same Day T-Shirt Printing in Beverly Hills](/same-day-t-shirt-printing-beverly-hills-ca/)
-- [Same Day T-Shirt Printing in San Fernando](/same-day-t-shirt-printing-san-fernando-ca/)
-- [Same Day T-Shirt Printing in Woodland Hills](/same-day-t-shirt-printing-woodland-hills-ca/)
+- [Rush & Super Rush Screen Printing in Chinatown LA](/rush-order-screen-printing-chinatown-la-ca/)
+- [Rush & Super Rush Screen Printing in Encino](/same-day-screen-printing-encino-ca/)
+- [Rush & Super Rush Screen Printing in Koreatown LA](/same-day-screen-printing-koreatown-la-ca/)
+- [Rush & Super Rush Screen Printing in Marina del Rey](/same-day-screen-printing-marina-del-rey-ca/)
+- [Rush & Super Rush Screen Printing in Panorama City](/same-day-screen-printing-panorama-city-ca/)
+- [Rush & Super Rush Screen Printing in Redondo Beach](/same-day-screen-printing-redondo-beach-ca/)
+- [Rush & Super Rush Screen Printing in Woodland Hills](/same-day-screen-printing-woodland-hills-ca/)
+- [Rush & Super Rush T-Shirt Printing in Beverly Hills](/same-day-t-shirt-printing-beverly-hills-ca/)
+- [Rush & Super Rush T-Shirt Printing in San Fernando](/same-day-t-shirt-printing-san-fernando-ca/)
+- [Rush & Super Rush T-Shirt Printing in Woodland Hills](/same-day-t-shirt-printing-woodland-hills-ca/)
 - [Screen Printing for Small Businesses in Sylmar](/screen-printing-for-small-businesses-in-sylmar-ca/)
 - [Team Uniform Printing in Carson](/team-uniform-printing-in-carson-ca/)
 - [Team Uniform Printing in Eagle Rock](/team-uniform-printing-in-eagle-rock-ca/)

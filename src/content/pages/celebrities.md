@@ -8,7 +8,7 @@ imported: false
 summary: "Merch, crew gear and gifts that match the name on them. Screen printing, embroidery and full-color DTG for talent, managers and creative teams, made at our Downtown LA shop."
 facts:
   - { label: "Minimum", value: "12 pieces per order" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Fan merch, tour and crew gear, gifts, wrap shirts" }
 faqs:
   - q: "Can we see a sample before the full run?"
@@ -18,7 +18,7 @@ faqs:
   - q: "Do you offer design help?"
     a: "Yes. Email sales@tbsp.la to ask about graphic design assistance for creating or editing artwork."
   - q: "How fast can you turn an order?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 to confirm for your quantity and garment."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call (323) 433-0033 to confirm for your quantity and garment."
 sourceUrl: "https://thebestscreenprinting.com/celebrities/"
 ---
 ## Built for people whose name is the brand

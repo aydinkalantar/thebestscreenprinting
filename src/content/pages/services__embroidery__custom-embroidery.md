@@ -57,4 +57,4 @@ Because your logo is already digitized, reorders for new hires are straightforwa
 
 ## Outfit your team
 
-Send your logo, garment list and headcount through the [quick quote form](/quick-quote/). We answer within one business day. Normal, Rush and Super Rush turnaround options are available.
+Send your logo, garment list and headcount through the [quick quote form](/quick-quote/). We answer within one business day. Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available.

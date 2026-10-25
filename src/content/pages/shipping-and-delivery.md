@@ -1,16 +1,16 @@
 ---
 path: "/shipping-and-delivery/"
 title: "Shipping And Delivery"
-description: "TBSP shipping, reorders, reprints and refunds: free standard shipping on online orders, a 2pm PT production cutoff, mockup approval and a 24-hour issue window."
+description: "TBSP shipping, reorders, reprints and refunds: Normal, Rush and Super Rush delivery, the Super Rush cutoff, mockup approval and a 24-hour issue window."
 h1: "Shipping, reorders and returns"
 kind: core
 imported: false
-summary: "Clear rules, no surprises: how your order ships, how reorders work and what happens if something goes wrong. Free standard shipping on online orders, 2pm PT production cutoff Monday to Friday."
+summary: "Clear rules, no surprises: how your order ships, how reorders work and what happens if something goes wrong. Normal delivery in about 2 weeks, Rush in 1 week (+15%), Super Rush in 3 business days (+30%)."
 faqs:
-  - q: "Is shipping free?"
-    a: "Online orders include a free standard shipping method of about two weeks. Faster shipping options are offered when you place the order, and shipping on in-store orders is arranged with our team."
+  - q: "How long does delivery take?"
+    a: "Standard Delivery is estimated to arrive in about 2 weeks. One-Week Rush Delivery arrives in 1 week and adds 15% to the order cost. 3-Day Super Rush Delivery arrives in 3 business days and adds 30%. Shipping on in-store orders is arranged with our team."
   - q: "What time do I need to order by?"
-    a: "Shipping deadlines and production cutoffs are 2pm Pacific, Monday to Friday."
+    a: "For Super Rush, order by 2:00 PM ET on Tuesday to have items in hand by Friday. Super Rush is not available for all products, styles or PO Box addresses."
   - q: "How long do I have to report a problem?"
     a: "Let us know within 24 hours of receiving your order so we can resolve it."
   - q: "Can I change my order after approving the mockup?"
@@ -19,9 +19,13 @@ sourceUrl: "https://thebestscreenprinting.com/shipping-and-delivery/"
 ---
 ## How does shipping work?
 
-Online orders ship with a free standard method of about two weeks. Faster options are available when you place your order. For orders placed in store, a member of our team sets up shipping with you directly.
+Every order is made in-house in Los Angeles and Cleveland, with a 12-piece minimum. Pick the delivery option that fits your date:
 
-Production cutoff is **2pm Pacific, Monday to Friday**. Orders approved after the cutoff start the next business day.
+- **Normal (Standard Delivery):** estimated to arrive in about 2 weeks.
+- **Rush (One-Week Rush Delivery):** arrives at your doorstep in 1 week and adds 15% to the order cost.
+- **Super Rush (3-Day Super Rush Delivery):** arrives in 3 business days and adds 30% to the order cost.
+
+Super Rush cutoff: order by **2:00 PM ET on Tuesday** to have items in hand by Friday. Super Rush is not available for all products, styles or PO Box addresses. For orders placed in store, a member of our team sets up shipping with you directly.
 
 Need it sooner? See [delivery times](/learn-delivery-time/) for rush options, or check [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 

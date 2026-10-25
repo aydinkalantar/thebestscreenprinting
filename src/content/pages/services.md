@@ -9,7 +9,7 @@ summary: "Ink, thread, film and texture, all decorated at our Downtown LA shop. 
 facts:
   - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Full-color art", value: "DTG and DTF" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Which printing method is cheapest for my order?"
     a: "It depends on quantity and colors. For bold designs with a few solid colors, screen printing is usually the most cost-effective, and the price per piece drops as the run grows. For full-color or photo art, DTG or DTF usually wins because there are no screens to set up. Every order starts at 12 pieces."
@@ -18,7 +18,7 @@ faqs:
   - q: "Do you check my artwork before printing?"
     a: "Every order gets a free art check before production, so issues like low resolution or thin lines are caught before anything is printed or stitched."
   - q: "Can I get my order rushed?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Call or request a quote with your deadline and we will confirm what is possible."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call or request a quote with your deadline and we will confirm what is possible."
 sourceUrl: "https://thebestscreenprinting.com/services/"
 ---
 ## Six ways to put your design on a garment
@@ -61,7 +61,7 @@ Not sure? Send the design and we will recommend a method, then run it through a 
 
 ## Need it this week?
 
-Rush and Super Rush turnaround are open for tight deadlines. Read how it works on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/), then browse blanks in the [catalog](/catalog/).
+Rush (1 week, +15%) and Super Rush (3 business days, +30%) are open for tight deadlines. Read how it works on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/), then browse blanks in the [catalog](/catalog/).
 
 ## Start your order
 

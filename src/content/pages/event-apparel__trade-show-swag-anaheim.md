@@ -1,18 +1,18 @@
 ---
 path: "/event-apparel/trade-show-swag-anaheim/"
 title: "Trade Show & Event Apparel Printing Anaheim | The Best Screen Printing"
-description: "Trade show swag and booth apparel for Anaheim events: staff shirts, embroidered polos, hats and totes printed in Downtown LA, with rush slots for tight dates."
+description: "Trade show swag and booth apparel for Anaheim events: staff shirts, embroidered polos, hats and totes printed in Downtown LA, with Rush and Super Rush for tight dates."
 h1: "Trade show swag and event apparel for Anaheim"
 kind: audience
 imported: false
 summary: "Look like the booth everyone stops at. Staff shirts, embroidered polos, hats and branded totes for Anaheim trade shows and conventions, printed in Downtown Los Angeles."
 facts:
   - { label: "Minimum", value: "12 pieces per order" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Booth staff, giveaways, conference teams" }
 faqs:
   - q: "Can you get our booth shirts done before the show?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Tell us your show date in the quote request and we will confirm what is possible."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Tell us your show date in the quote request and we will confirm what is possible."
   - q: "Do you deliver to Anaheim?"
     a: "We ship orders, and you can also pick up at our Downtown LA shop at 2710 S Broadway Avenue on the way to the show."
   - q: "What is the best giveaway item for a trade show?"
@@ -54,7 +54,7 @@ At a trade show, your team is the billboard. Matching shirts make your staff eas
 3. **Approve the mockup.** Production starts after approval.
 4. **Pick up or ship.** Collect in Downtown LA or have it shipped.
 
-If the show is close, Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 to confirm.
+If the show is close, Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call (323) 433-0033 to confirm.
 
 ## Trusted by brands
 

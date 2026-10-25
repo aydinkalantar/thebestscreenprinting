@@ -58,7 +58,7 @@ If your design is bold with a few solid colors, yes, almost always. It gives you
 
 ## Up against a deadline?
 
-Normal, Rush and Super Rush turnaround options are available. Tell us your date when you ask for a quote and we will confirm. More on [same-day printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/).
+Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Tell us your date when you ask for a quote and we will confirm. More on [Rush and Super Rush printing in Los Angeles](/same-day-t-shirt-printing-los-angeles/).
 
 ## Ready to start?
 

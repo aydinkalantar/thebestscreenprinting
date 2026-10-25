@@ -29,7 +29,7 @@ Ordering shirts online from a print shop three states away means waiting on boxe
 - **Talk blanks in person.** Work through shirt weights, fabrics and colors before you commit.
 - **Talk it through.** Bring artwork, a sample shirt or just an idea, and work it out face to face.
 - **Fix it fast.** Need to tweak a size breakdown or add a few pieces? A phone call reaches the people running your job.
-- **Rush is realistic.** Normal, Rush and Super Rush turnaround options are available, and being close means no shipping day to add on top.
+- **Rush is realistic.** Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available, and being close means no shipping day to add on top.
 
 ## Who walks through our door
 

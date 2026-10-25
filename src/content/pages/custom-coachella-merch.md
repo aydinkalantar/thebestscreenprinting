@@ -12,7 +12,7 @@ facts:
   - { label: "Best for", value: "Artist merch, brand activations, vendor staff, group fits" }
 faqs:
   - q: "How early should I order Coachella merch?"
-    a: "Aim for at least 2 to 3 weeks before the festival. If you are cutting it close, Normal, Rush and Super Rush turnaround options are available. Call to confirm."
+    a: "Aim for at least 2 to 3 weeks before the festival. If you are cutting it close, Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call to confirm."
   - q: "Is there a minimum order?"
     a: "Yes. Every order starts at 12 pieces, whichever decoration method you choose."
   - q: "Can you help design our festival merch?"
@@ -58,6 +58,6 @@ Choose lighter colors and breathable fabrics for daytime pieces. Light-colored g
 3. **Approve the mockup.** We send a digital proof before production.
 4. **Pick up or ship.** Grab it in Downtown LA or have it delivered.
 
-Running late? Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 to check.
+Running late? Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call (323) 433-0033 to check.
 
 Festival season is coming. [Get a free quote](/quick-quote/) for your Coachella merch.

@@ -1,15 +1,17 @@
 ---
 path: "/same-day-t-shirt-printing-san-fernando-ca/"
-title: "Same Day T-Shirt Printing In San Fernando, CA"
-description: "Welcome to The Best Screen Printing Company your trusted local partner for Same Day T-Shirt Printing services near by San Fernando, Los Angeles, CA. We"
-h1: "Same Day T-Shirt Printing in San Fernando, Los Angeles, CA"
+title: "Rush & Super Rush T-Shirt Printing In San Fernando, CA"
+description: "Rush & Super Rush T-Shirt Printing in San Fernando, Los Angeles, CA: Rush arrives in 1 week (+15%), Super Rush in 3 business days (+30%). 12-piece minimum, made in-house."
+h1: "Rush & Super Rush T-Shirt Printing in San Fernando, Los Angeles, CA"
 kind: location
 imported: true
 sourceUrl: "https://thebestscreenprinting.com/same-day-t-shirt-printing-san-fernando-ca/"
 ---
-### Discover high-quality Same Day T-Shirt Printing in San Fernando, Los Angeles, CA.
+### Discover high-quality Rush & Super Rush T-Shirt Printing in San Fernando, Los Angeles, CA.
 
-Welcome to The Best Screen Printing Company your trusted local partner for Same Day T-Shirt Printing services near by San Fernando, Los Angeles, CA. We specialize in delivering high-quality Same Day T-Shirt Printing, supporting small business uniforms, and creating branded promotional products for schools, clubs, and organizations. At The Best Screen Printing Company, we understand the importance of affordable, quality Same Day T-Shirt Printing with fast turnaround times to meet your deadlines. Whether you need customized T-shirts, hoodies, or sports gear, our Same Day T-Shirt Printing service offers the best value for your budget.
+Welcome to The Best Screen Printing Company your trusted local partner for Rush & Super Rush T-Shirt Printing services near by San Fernando, Los Angeles, CA. We specialize in delivering high-quality Rush & Super Rush T-Shirt Printing, supporting small business uniforms, and creating branded promotional products for schools, clubs, and organizations. At The Best Screen Printing Company, we understand the importance of affordable, quality Rush & Super Rush T-Shirt Printing with fast turnaround times to meet your deadlines. Whether you need customized T-shirts, hoodies, or sports gear, our Rush & Super Rush T-Shirt Printing service offers the best value for your budget.
+
+How fast is rush? Every order is made in-house in Los Angeles and Cleveland, with a 12-piece minimum. Normal (Standard Delivery) is estimated to arrive in about 2 weeks. Rush (One-Week Rush Delivery) arrives at your doorstep in 1 week and adds 15% to the order cost. Super Rush (3-Day Super Rush Delivery) arrives in 3 business days and adds 30% to the order cost; order by 2:00 PM ET on Tuesday to have items in hand by Friday. Super Rush is not available for all products, styles or PO Box addresses. See [delivery times](/learn-delivery-time/) for details.
 
 ## GET A FREE QUOTE TODAY
 
@@ -19,11 +21,11 @@ Welcome to The Best Screen Printing Company your trusted local partner for Same 
 
 ★★★★★ 50+ REVIEWS
 
-## Same Day T-Shirt Printing in San Fernando, Los Angeles, CA
+## Rush & Super Rush T-Shirt Printing in San Fernando, Los Angeles, CA
 
 At The Best Screen Printing, we are proud to be recognized as the top choice for custom apparel printing in San Fernando, Los Angeles, CA. We specialize in bringing high-quality, vibrant designs to life on a wide range of products, including t-shirts, hoodies, hats, bags, and other apparel and promotional items. Our state-of-the-art equipment and experienced team ensure that each print is bold, precise, and durable, capturing your design with perfect detail.
 
-Whether you’re a business looking to promote your brand, a sports team needing custom uniforms, or an individual with a unique design in mind, we handle projects of all sizes with the same level of expertise and care. Our dedication to quality, quick turnaround times, and personalized customer service have earned us a reputation as Same Day T-Shirt Printing San Fernando, Los Angeles, CA top apparel decoration company.
+Whether you’re a business looking to promote your brand, a sports team needing custom uniforms, or an individual with a unique design in mind, we handle projects of all sizes with the same level of expertise and care. Our dedication to quality, quick turnaround times, and personalized customer service have earned us a reputation as Rush & Super Rush T-Shirt Printing San Fernando, Los Angeles, CA top apparel decoration company.
 
 From small local businesses to large-scale corporate orders, we’ve helped clients throughout San Fernando, Los Angeles, CA make a lasting impression with eye-catching, customized apparel. Trust The Best Screen Printing to take your project to the next level—bringing your vision to life in a way that truly stands out! Discover why we’re the #1 choice for custom apparel and experience the difference of working with a company committed to excellence.
 
@@ -45,7 +47,7 @@ Oh wow! They are really The Best! We needed custom hats to be embroidered. It wa
 
 ## Bring Your Design To Life
 
-Contact us today to learn more about Same Day T-Shirt Printing in San Fernando, Los Angeles, CA and how we can help bring your designs to life!
+Contact us today to learn more about Rush & Super Rush T-Shirt Printing in San Fernando, Los Angeles, CA and how we can help bring your designs to life!
 
 ## Our Apparel Decoration Services
 

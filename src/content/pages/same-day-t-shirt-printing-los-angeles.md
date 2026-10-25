@@ -1,31 +1,41 @@
 ---
 path: "/same-day-t-shirt-printing-los-angeles/"
-title: "Same Day T-Shirt Printing Los Angeles | The Best Screen Printing"
-description: "Same-day and next-day custom t-shirt printing in Downtown LA. Screen printing, DTG and DTF rush slots for many orders. Send your deadline and we'll confirm."
-h1: "Same-day t-shirt printing in Los Angeles"
+title: "Rush & Super Rush T-Shirt Printing Los Angeles | The Best Screen Printing"
+description: "Rush and Super Rush custom t-shirt printing in Los Angeles. One-Week Rush (+15%) or 3-Day Super Rush (+30%), made in-house in Los Angeles and Cleveland."
+h1: "Rush & Super Rush t-shirt printing in Los Angeles"
 kind: service
 imported: false
 sourceUrl: "https://thebestscreenprinting.com/same-day-t-shirt-printing-los-angeles/"
-summary: "Deadline tomorrow? Shirts today. Normal, Rush and Super Rush turnaround options are available at our Downtown LA shop; call or send your deadline with a quote request to lock one in."
+summary: "Deadline coming up fast? Pick Rush (arrives in 1 week, +15%) or Super Rush (arrives in 3 business days, +30%). Order Super Rush by 2:00 PM ET on Tuesday to have it in hand by Friday."
 facts:
-  - label: "Rush"
-    value: "Normal, Rush or Super Rush"
+  - label: "Turnaround"
+    value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
   - label: "Minimum"
     value: "12 pieces per order"
   - label: "Hours"
     value: "Mon to Fri, 9am to 5pm, 2710 S Broadway"
 faqs:
-  - q: "Can I get custom t-shirts printed the same day in Los Angeles?"
-    a: "Yes, same-day slots are available for many orders. Call (323) 433-0033 or request a quote with your deadline so we can confirm before you commit."
-  - q: "Is there a minimum for same-day shirts?"
-    a: "Same-day orders follow our 12-piece minimum, like every order. DTG skips screen setup, so small rush orders are possible."
+  - q: "What is the fastest turnaround for custom t-shirts in Los Angeles?"
+    a: "Our fastest option is 3-Day Super Rush Delivery, which arrives in 3 business days and adds 30% to the order cost. Order by 2:00 PM ET on Tuesday to have items in hand by Friday."
+  - q: "How much does rush cost?"
+    a: "One-Week Rush Delivery adds 15% to the order cost and arrives in 1 week. 3-Day Super Rush Delivery adds 30% and arrives in 3 business days. Normal Standard Delivery arrives in about 2 weeks at no extra cost."
+  - q: "Is there a minimum for rush shirts?"
+    a: "Rush and Super Rush orders follow our 12-piece minimum, like every order."
+  - q: "Is Super Rush available for every order?"
+    a: "No. Super Rush is not available for all products, styles or PO Box addresses. Call (323) 433-0033 or request a quote and we will tell you which options fit your order."
   - q: "Can I pick up my rush order at the shop?"
     a: "Our shop is at 2710 S Broadway Avenue in Downtown Los Angeles, open Monday through Friday, 9am to 5pm. Ask about pickup when you confirm your order."
   - q: "What do you need from me to start a rush order?"
     a: "Your artwork, the shirt style and color, sizes and quantities, and your deadline. We do a free art check before printing."
 ---
 
-Event this weekend. Shoot tomorrow. Launch moved up. We get it. TBSP runs same-day and next-day rush slots for many custom t-shirt orders out of our shop at 2710 S Broadway in Downtown Los Angeles. Slots depend on the job and the schedule, so call (323) 433-0033 or send your deadline with a quote request and we will tell you straight whether we can hit it.
+Event next weekend. Shoot next week. Launch moved up. We get it. Every TBSP order is made in-house in Los Angeles and Cleveland, and you pick the speed:
+
+- **Normal (Standard Delivery):** estimated to arrive in about 2 weeks.
+- **Rush (One-Week Rush Delivery):** arrives at your doorstep in 1 week and adds 15% to the order cost.
+- **Super Rush (3-Day Super Rush Delivery):** arrives in 3 business days and adds 30% to the order cost. Order by 2:00 PM ET on Tuesday to have items in hand by Friday. Not available for all products, styles or PO Box addresses.
+
+Not sure which one fits your date? Call (323) 433-0033 or send your deadline with a quote request. More detail is on [delivery times](/learn-delivery-time/).
 
 ## Which printing methods can run on a rush?
 
@@ -37,14 +47,14 @@ The right method comes down to how many shirts you need and what your art looks 
 
 Not sure which one? Give us your quantity and deadline and we will call the play.
 
-## How do I lock in a same-day or next-day slot?
+## How do I place a Rush or Super Rush order?
 
 1. **Send the details.** Use the [quick quote form](/quick-quote/) or call. Include your artwork, shirt style and color, size breakdown and the date you need them.
-2. **Confirm the slot.** We check the press schedule and blank stock, then confirm whether your deadline is a go.
+2. **Pick your option.** Rush arrives in 1 week (+15%); Super Rush arrives in 3 business days (+30%). We confirm Super Rush is available for your products and address.
 3. **Approve the art.** Every order gets a free art check before printing. Fast approvals keep rush jobs moving.
-4. **Print and pick up.** Ink goes down, shirts come off the line, and we let you know when they are ready.
+4. **Print and deliver.** Ink goes down, shirts come off the line, and we let you know when they ship or are ready for pickup.
 
-## Make your rush run faster
+## Make your rush run smoother
 
 - **Print-ready art.** Vector files or high-resolution images skip the cleanup. If your file needs work, say so up front.
 - **Easy blanks.** Common styles and colors are quicker to source. Browse the [catalog](/catalog/) or our [t-shirts](/products/t-shirts/) page.
@@ -57,8 +67,8 @@ Rush orders come from event organizers, film and production crews, brands with a
 
 ## Can rush orders include hoodies, hats or embroidery?
 
-Often, yes. Rush slots are not just for tees. Ask about [sweatshirts and hoodies](/products/sweatshirts-hoodies/), [hats](/products/hats/), [embroidery](/services/embroidery/) and [oversize prints](/services/large-format-screen-printing/) when you send your deadline, and we will tell you what can make it in time.
+Often, yes. Rush is not just for tees, though Super Rush is not available for all products or styles. Ask about [sweatshirts and hoodies](/products/sweatshirts-hoodies/), [hats](/products/hats/), [embroidery](/services/embroidery/) and [oversize prints](/services/large-format-screen-printing/) when you send your deadline, and we will tell you which options fit.
 
 ## On the clock? Start here
 
-Send your design, quantities and deadline through our [quick quote form](/quick-quote/). We answer quotes within one business day, but for same-day jobs, the fastest move is a call to (323) 433-0033, Monday through Friday, 9am to 5pm.
+Send your design, quantities and deadline through our [quick quote form](/quick-quote/). We answer quotes within one business day, but for Super Rush jobs, the fastest move is a call to (323) 433-0033, Monday through Friday, 9am to 5pm.

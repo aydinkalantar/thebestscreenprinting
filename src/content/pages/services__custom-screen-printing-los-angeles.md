@@ -1,6 +1,6 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/"
-title: "Custom Screen Printing Los Angeles | Rush & Same Day Delivery"
+title: "Custom Screen Printing Los Angeles | Rush & Super Rush Delivery"
 description: "Plastisol, water-based and discharge inks plus puff, high density, foil, glitter and glow effects. Custom screen printing in Downtown Los Angeles, from 12 pieces."
 h1: "Custom screen printing in Los Angeles: inks and effects"
 kind: service

@@ -43,7 +43,7 @@ This is where it happens. Screens get burned, ink gets mixed, needles fly and fi
 
 ## How do rush orders work at the shop?
 
-Normal, Rush and Super Rush turnaround options are available. Call before you come in so we can check press time and garment stock, then confirm your pickup time. More on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
+Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call before you come in so we can check press time and garment stock, then confirm your pickup time. More on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 ## Not in DTLA?
 

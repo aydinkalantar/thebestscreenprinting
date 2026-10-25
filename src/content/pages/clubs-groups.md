@@ -8,7 +8,7 @@ imported: false
 summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Downtown LA shop. Orders start at 12 pieces, for every decoration method."
 facts:
   - { label: "Minimum", value: "12 pieces per order" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Clubs, school groups, reunions, charity walks, staff" }
 faqs:
   - q: "Can everyone in the group get a different size?"

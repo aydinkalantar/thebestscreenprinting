@@ -58,7 +58,7 @@ Hats, tote bags and towels round out a merch table or a welcome kit. See [hats](
 - **Logos on caps, polos and jackets:** [embroidery](/services/embroidery/).
 - **Names and numbers:** heat transfer vinyl.
 
-Every order gets a free art check before production, and Normal, Rush and Super Rush turnaround options are available.
+Every order gets a free art check before production, and Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available.
 
 ## Find your garment
 

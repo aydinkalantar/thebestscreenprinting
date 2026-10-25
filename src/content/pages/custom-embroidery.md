@@ -5,11 +5,11 @@ description: "Custom embroidery in Los Angeles for events, promotions and merch:
 h1: "Custom embroidery in Los Angeles"
 kind: service
 imported: false
-summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Downtown LA shop with a 12-piece minimum per design, digitizing included and rush slots for many orders."
+summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Downtown LA shop with a 12-piece minimum per design, digitizing included and Rush and Super Rush options."
 facts:
   - { label: "Minimum", value: "12 pieces per design" }
   - { label: "Setup", value: "Digitizing included" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "What products can be embroidered?"
     a: "Hats and caps, polos, hoodies, crewnecks, jackets, tote bags, towels and more. Fabric matters, so tell us the garment when you request a quote."
@@ -40,7 +40,7 @@ Printing wins on big graphics, photos and fine detail. Embroidery wins on small 
 1. **Pick your hero piece.** Caps and hoodies get worn. Choose what your audience will actually use.
 2. **Keep the logo bold.** Clean shapes and a short color list stitch the sharpest.
 3. **Hit the minimum.** 12 pieces per design. Mix garments as long as the design is the same.
-4. **Tell us the date.** Normal, Rush and Super Rush turnaround options are available. Confirm by phone or in your quote.
+4. **Tell us the date.** Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Confirm by phone or in your quote.
 
 ## Want a specific stitch style?
 

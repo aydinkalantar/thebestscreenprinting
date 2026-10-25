@@ -5,7 +5,7 @@ description: "Ship, split or pick up your printed apparel from TBSP in Los Angel
 h1: "Fulfillment services"
 kind: service
 imported: false
-summary: "Printed today, on the shelf or on the road next. TBSP ships your order across the continental US, splits it across locations, or finishes it retail-ready with folding, bagging, labels and hang tags."
+summary: "Made in-house, on the shelf or on the road next. TBSP ships your order across the continental US, splits it across locations, or finishes it retail-ready with folding, bagging, labels and hang tags."
 facts:
   - { label: "Shipping", value: "Continental US via UPS/FedEx, plus freight and courier" }
   - { label: "Pickup", value: "Free at 2710 S Broadway Ave, Los Angeles" }
@@ -32,8 +32,8 @@ We ship across the continental US. Choose the carrier that fits the job:
 - **UPS or FedEx.** The default for most orders.
 - **USPS.** For international orders.
 - **Freight.** For large orders.
-- **Courier.** For local same-day deliveries around LA.
-- **Continental Cargo.** For nationwide same-day or next-day delivery. Call our office to arrange it.
+- **Courier.** For local deliveries around LA.
+- **Continental Cargo.** For expedited nationwide delivery. Call our office to arrange it.
 
 Specify the carrier, destination and priority on your order. Every shipment is insured and declared at its actual per-piece value. Using FedEx on your own account? Include your account number.
 

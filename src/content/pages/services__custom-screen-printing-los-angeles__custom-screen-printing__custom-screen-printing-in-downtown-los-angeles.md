@@ -1,7 +1,7 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/"
 title: "Custom Screen Printing In Downtown Los Angeles"
-description: "Custom screen printing made in Downtown Los Angeles at 2710 S Broadway. Local pickup, rush slots for many orders and a free art check. 12-piece minimum."
+description: "Custom screen printing made in Downtown Los Angeles at 2710 S Broadway. Local pickup, Rush and Super Rush options and a free art check. 12-piece minimum."
 h1: "Custom screen printing in Downtown Los Angeles"
 kind: service
 imported: false
@@ -16,7 +16,7 @@ faqs:
   - q: "Do you print for businesses and events in DTLA?"
     a: "Yes. We print for local brands, venues, restaurants, events and teams, as well as companies such as Netflix, Adidas, Nike, YouTube and Google."
   - q: "Can a Downtown LA order be rushed?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 or request a quote with your deadline and we will confirm."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call (323) 433-0033 or request a quote with your deadline and we will confirm."
 sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/"
 ---
 ## Made on Broadway
@@ -28,7 +28,7 @@ We have put ink on garments for Netflix, Adidas, Nike, YouTube, Google, Amazon A
 ## Why print local in DTLA?
 
 - **Pick up, skip shipping.** Collect your order at the shop and get it into hands faster.
-- **Rush that actually works.** Normal, Rush and Super Rush turnaround options are available, and local pickup removes transit time from the equation.
+- **Rush that actually works.** Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available, and local pickup removes transit time from the equation.
 - **Eyes on the job.** Stop by to talk through placement, ink colors or garment choices in person.
 - **Fewer surprises.** Every order gets a free art check and a proof before anything is printed.
 

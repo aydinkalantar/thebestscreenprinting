@@ -53,7 +53,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
           <div class="grid gap-2" role="radiogroup" aria-label="Turnaround">
             <span class="label"><span>Turnaround</span></span>
             <div class="flex flex-wrap gap-2">
-              {business.turnaround.map((t, i) => <label class="chip cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300"><input type="radio" name="turnaround" value={t.id} checked={i === 0} class="accent-violet-600" />{t.name}</label>)}
+              {business.turnaround.map((t, i) => <label class="chip cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300"><input type="radio" name="turnaround" value={t.id} checked={i === 0} class="accent-violet-600" />{t.name} <span class="muted font-medium">· {t.time}{t.fee ? ` · ${t.fee}` : ''}</span></label>)}
             </div>
           </div>
           <div class="grid gap-4 sm:grid-cols-2">

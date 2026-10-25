@@ -12,8 +12,8 @@ facts:
     value: "12 pieces per order"
   - label: "Decoration"
     value: "Screen printing, DTG, DTF and embroidery"
-  - label: "Rush"
-    value: "Normal, Rush or Super Rush"
+  - label: "Turnaround"
+    value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
 faqs:
   - q: "Can you screen print on hoodies?"
     a: "Yes. Screen printing is our core service, from 12 pieces, and hoodies and sweatshirts are common orders."
@@ -22,7 +22,7 @@ faqs:
   - q: "Do you embroider hoodies and sweatshirts?"
     a: "Embroidery is available on many sweatshirts and hoodies, as well as on jackets, polos and hats. Send your logo and we will check that it suits the garment."
   - q: "How quickly can I get custom hoodies?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
 ---
 
 A good hoodie gets worn until the cuffs fray. TBSP makes custom hoodies and sweatshirts for brands, artists, teams, schools, crews and events at our shop in Downtown Los Angeles. We screen print in-house from 12 pieces, handle full-color art with DTG or DTF, and embroider logos when you want the texture of thread.
@@ -56,7 +56,7 @@ Hoodies are a staple for clothing brands, sports teams, school clubs and work cr
 
 ## Need them fast?
 
-Rush slots are available for many orders. Check our [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/) page for how rush jobs work, then send us your deadline.
+Rush (1 week, +15%) and Super Rush (3 business days, +30%) are available for many orders. Check our [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/) page for how rush jobs work, then send us your deadline.
 
 ## Start your hoodie order
 

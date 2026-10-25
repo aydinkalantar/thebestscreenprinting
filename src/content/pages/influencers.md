@@ -1,14 +1,14 @@
 ---
 path: "/influencers/"
 title: "Printing For Influencers"
-description: "Creator merch printed in Downtown LA: test a design with a 12-piece DTG run, then scale the drop with screen printing, embroidered hats and fast rush slots."
+description: "Creator merch printed in Downtown LA: test a design with a 12-piece DTG run, then scale the drop with screen printing, embroidered hats and Rush and Super Rush options."
 h1: "Merch printing for influencers and creators"
 kind: audience
 imported: false
 summary: "Your audience, wearing your brand. Test a design with a 12-piece DTG run, then scale the drop with screen printing and embroidery, all from our Downtown LA shop."
 facts:
   - { label: "Minimum", value: "12 pieces per order" }
-  - { label: "Rush", value: "Normal, Rush or Super Rush" }
+  - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Merch drops, test runs, giveaways, content shoots" }
 faqs:
   - q: "Can I order a test run before my drop?"
@@ -18,7 +18,7 @@ faqs:
   - q: "Can you print my design on hats?"
     a: "Yes. Embroidery is the go-to for hats, giving your logo a raised, stitched finish."
   - q: "How quickly can I get merch for a shoot?"
-    a: "Normal, Rush and Super Rush turnaround options are available. Call (323) 433-0033 to confirm."
+    a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call (323) 433-0033 to confirm."
 sourceUrl: "https://thebestscreenprinting.com/influencers/"
 ---
 ## Merch that looks like you made it on purpose
