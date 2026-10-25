@@ -84,7 +84,7 @@ const kept = new Set<string>(redirects.keep);
 /** Old WordPress slugs without the `-ca` suffix already 301'd to the `-ca` version. */
 function legacyCandidates(path: string): string[] {
   const p = path.endsWith('/') ? path : `${path}/`;
-  const out = [p];
+  const out = p === path ? [p] : [p, path]; // file-like paths (old sitemaps) are stored without the slash
   if (!p.endsWith('-ca/') && /^\/[a-z0-9-]+\/$/.test(p)) out.push(p.replace(/\/$/, '-ca/'));
   return out;
 }
