@@ -22,7 +22,8 @@ const auth = 'Basic ' + Buffer.from(`${SS_ACCOUNT}:${SS_API_KEY}`).toString('bas
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function get(path) {
   for (let attempt = 1; ; attempt++) {
-    const res = await fetch(`${API}${path}`, { headers: { Authorization: auth } });
+    const res = await fetch(`${API}${path}`, { headers: { Authorization: auth } }).catch((e) => (attempt >= 4 ? Promise.reject(e) : null));
+    if (!res) { await sleep(3000 * attempt); continue; } // dropped connection: retry
     if (res.ok) return res.json();
     if (attempt >= 3 || res.status < 500 && res.status !== 429) throw new Error(`S&S ${path}: ${res.status} ${await res.text()}`);
     await sleep(3000 * attempt);
@@ -42,7 +43,8 @@ for (const c of curated) {
   const style = byKey.get(`${c.brand}|${c.style}`.toLowerCase());
   if (!style) { console.warn(`skip: ${c.brand} ${c.style} not found at S&S`); continue; }
   await sleep(1100); // S&S allows 60 requests a minute
-  const skus = await get(`/products/?styleid=${style.styleID}`);
+  const skus = await get(`/products/?styleid=${style.styleID}`).catch((e) => { console.warn(`skip: ${c.brand} ${c.style} (${e.message.slice(0, 80)})`); return null; });
+  if (!skus) continue;
   const colors = new Map();
   const sizes = new Map();
   for (const k of skus) {
@@ -51,6 +53,8 @@ for (const c of curated) {
   }
   const features = [...(style.description || '').matchAll(/<li>(.*?)<\/li>/g)].map((m) => clean(m[1].replace(/<[^>]+>/g, ''))).filter(Boolean).slice(0, 8);
   const colorList = [...colors.values()];
+  // Skip thin styles (closeouts, near out of stock) unless we hand-picked them.
+  if (!c.featured && !c.keep && colorList.length < 3) { console.warn(`skip: ${c.brand} ${c.style} has ${colorList.length} colors in stock`); continue; }
   const name = `${style.brandName} ${style.styleName} ${clean(style.title)}`;
   products.push({
     id: `ss-${style.styleID}`,

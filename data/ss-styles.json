@@ -10,7 +10,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -23,7 +24,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -36,7 +38,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Hanes",
@@ -49,7 +52,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Hanes",
@@ -62,7 +66,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "JERZEES",
@@ -75,7 +80,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "BELLA + CANVAS",
@@ -88,7 +94,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "BELLA + CANVAS",
@@ -101,7 +108,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Comfort Colors",
@@ -114,7 +122,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Next Level",
@@ -127,7 +136,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Next Level",
@@ -140,7 +150,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "American Apparel",
@@ -153,7 +164,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Shaka Wear",
@@ -166,7 +178,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Augusta Sportswear",
@@ -178,7 +191,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Badger",
@@ -190,7 +204,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Russell Athletic",
@@ -202,7 +217,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -215,7 +231,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -228,7 +245,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "BELLA + CANVAS",
@@ -241,7 +259,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Comfort Colors",
@@ -254,7 +273,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Columbia",
@@ -266,7 +286,8 @@
    "DTF",
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "BELLA + CANVAS",
@@ -279,7 +300,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -291,7 +313,8 @@
    "SCREEN",
    "DTF"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Adidas",
@@ -303,7 +326,8 @@
    "SCREEN",
    "DTF"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Under Armour",
@@ -315,7 +339,8 @@
    "SCREEN",
    "DTF"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Harriton",
@@ -327,7 +352,8 @@
    "SCREEN",
    "DTF"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -340,7 +366,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Independent Trading Co.",
@@ -353,7 +380,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Independent Trading Co.",
@@ -366,7 +394,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Independent Trading Co.",
@@ -379,7 +408,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Independent Trading Co.",
@@ -392,7 +422,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "BELLA + CANVAS",
@@ -405,7 +436,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Comfort Colors",
@@ -418,7 +450,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Next Level",
@@ -431,7 +464,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Champion",
@@ -444,7 +478,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Champion",
@@ -457,7 +492,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Hanes",
@@ -470,7 +506,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "JERZEES",
@@ -483,7 +520,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Lane Seven",
@@ -496,7 +534,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "BELLA + CANVAS",
@@ -509,7 +548,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Independent Trading Co.",
@@ -522,7 +562,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -535,7 +576,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Comfort Colors",
@@ -548,7 +590,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Independent Trading Co.",
@@ -561,7 +604,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Richardson",
@@ -571,7 +615,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Richardson",
@@ -581,7 +626,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Richardson",
@@ -591,7 +637,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Richardson",
@@ -601,7 +648,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "YP Classics",
@@ -611,7 +659,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Richardson",
@@ -621,7 +670,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "YP Classics",
@@ -631,7 +681,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Richardson",
@@ -641,7 +692,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Flexfit",
@@ -651,7 +703,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "YP Classics",
@@ -661,7 +714,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Sportsman",
@@ -671,7 +725,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Sportsman",
@@ -681,7 +736,8 @@
   "techniques": [
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Liberty Bags",
@@ -692,7 +748,8 @@
    "SCREEN",
    "DTF"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Q-Tees",
@@ -703,7 +760,8 @@
    "SCREEN",
    "DTF"
   ],
-  "featured": true
+  "featured": true,
+  "keep": true
  },
  {
   "brand": "Q-Tees",
@@ -714,7 +772,8 @@
    "SCREEN",
    "DTF"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -726,7 +785,8 @@
    "DTF",
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Independent Trading Co.",
@@ -738,7 +798,8 @@
    "DTF",
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Champion",
@@ -750,7 +811,8 @@
    "DTF",
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Independent Trading Co.",
@@ -762,7 +824,8 @@
    "DTF",
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Independent Trading Co.",
@@ -774,7 +837,8 @@
    "DTF",
    "EMBROIDERY"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -787,7 +851,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "BELLA + CANVAS",
@@ -800,7 +865,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Next Level",
@@ -813,7 +879,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Next Level",
@@ -826,7 +893,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -839,7 +907,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "BELLA + CANVAS",
@@ -852,7 +921,8 @@
    "DTF",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Gildan",
@@ -865,7 +935,8 @@
    "EMBROIDERY",
    "HTV"
   ],
-  "featured": false
+  "featured": false,
+  "keep": true
  },
  {
   "brand": "Augusta Sportswear",
@@ -877,6 +948,4878 @@
    "DTF",
    "EMBROIDERY",
    "HTV"
+  ],
+  "featured": false,
+  "keep": true
+ },
+ {
+  "brand": "Gildan",
+  "style": "18250",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18810",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5000T",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64PLSMA",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "75500",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "8000T",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "SF000B",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "12000",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "12500",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18000B",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18100",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18200",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18600",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "18600B",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "19000",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "19500",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "2000B",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "2000L",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "2000T",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "2200",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "2300",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "2410",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "3000",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "3000B",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "42000",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "42000B",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "42400",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "500VTL",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "50PLSMA",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5100P",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5200",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5300",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5400B",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5700",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "5V00L",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64000B",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64000BCVC",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64000CVC",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64000L",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64001LCVC",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64200",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64200L",
+  "category": "womens",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64220LCVC",
+  "category": "womens",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64400",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64440CVC",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64800",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64800L",
+  "category": "womens",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64V00",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64V00L",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "64ZEE",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "65000",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "65000B",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "65000L",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "6750L",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "75000",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "8000",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "8000B",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "8300",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "8400",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "85800",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "880",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "980",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "987",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "H000",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "H400",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "SF000",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "SF008",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "SF100",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "SF500",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "SF500B",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Gildan",
+  "style": "SF600",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "100B",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "1010",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "1012",
+  "category": "womens",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "1013",
+  "category": "womens",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "1019",
+  "category": "womens",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "1080",
+  "category": "kids",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "1200",
+  "category": "kids",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3000",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3001ECO",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3001U",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3003",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3005",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3005CVC",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3006",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3010",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3014",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3021",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3150",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3200",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3201",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3301",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3413",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3415",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3425",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3480CVC",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3480Y",
+  "category": "kids",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3483",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3484",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3501CVC",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3511",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3512",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3513",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3650",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3655",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3719T",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3719Y",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3724",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3725",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3727",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3729",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3737",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3738",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3739T",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3739Y",
+  "category": "kids",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3759",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3787",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3880",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3901",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3909",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3911",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3939",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "3945",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "4610",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "4651",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "4711",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "4719",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "4737",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "4739",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "4740",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "4810GD",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "4851GD",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6004",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6005",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6035",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6110",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6110GD",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6400CVC",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6405",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6405CVC",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6413",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6415",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6482",
+  "category": "womens",
+  "subcategory": "crop-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6488",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6500",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6501",
+  "category": "womens",
+  "subcategory": "crop-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6824GD",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "6882GD",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "7501",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "7502",
+  "category": "womens",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "7503",
+  "category": "womens",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "7505",
+  "category": "womens",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "7511",
+  "category": "womens",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "7519",
+  "category": "womens",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8413",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8435",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8801",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8804",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8815",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8816",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8821",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8850",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8852",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "BELLA + CANVAS",
+  "style": "8855",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1468L",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1570L",
+  "category": "womens",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1580L",
+  "category": "womens",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "2717",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "2717L",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "6045",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "CCET0",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "CCNT0",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "CCRC0",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "CCSB0",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "CCSC0",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "CCST0",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "CCWC0",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1466",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1468",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1469",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1545",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1566L",
+  "category": "womens",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1567",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1580",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "1745",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "3023CL",
+  "category": "womens",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "4017",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "4410",
+  "category": "apparel",
+  "subcategory": "long-sleeves",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "6030",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Comfort Colors",
+  "style": "9360",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "2050",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "3200",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "3533",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "3600SW",
+  "category": "apparel",
+  "subcategory": "t-shirts",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "3633",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "5013",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "5080",
+  "category": "womens",
+  "subcategory": "crop-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "6233",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "6333",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "6733",
+  "category": "apparel",
+  "subcategory": "tank-tops",
+  "techniques": [
+   "SCREEN",
+   "DTG",
+   "DTF",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9000",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9001",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9002",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9003",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9007",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9300",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9301",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9302",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9304",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9307",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9600",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9601",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9602",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9643",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Next Level",
+  "style": "9803",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND280ZIP",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND420ZIP",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "AFX64CRP",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "AFX90UN",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "AFX90UNZ",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP100PFZ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP10PANT",
+  "category": "pants",
+  "subcategory": "sweatpants",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP120PFV",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP200PFZ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP20PQ",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP220PFV",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP25PH",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP30PZ",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP35SSZ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP40SHZ",
+  "category": "sweatshirts",
+  "subcategory": "zip-hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP52BMR",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP54LWP",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP550Z",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP560V",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP64CRP",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP90SHZ",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP94NAW",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP95NB",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "EXP99CNB",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND20SRT",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND280SL",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND3000",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND330BLV",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND40RP",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND420XD",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "IND5000C",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "INDDUFBAG",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "INDLUXCREW",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "INDLUXHOOD",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM20SRT",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM2500",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM30SBC",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM33SBP",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM3500",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM3500TD",
+  "category": "sweatshirts",
+  "subcategory": "crewnecks",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM4500MW",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM4500TD",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM50STMW",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM50STTD",
+  "category": "pants",
+  "subcategory": "shorts",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "PRM90HT",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Independent Trading Co.",
+  "style": "SS1000",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CHHC0",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CHR001",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CHRL01",
+  "category": "womens",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CHRT0",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CHTB0",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "S7CB0",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CHP115",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CHP180",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CO100",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CO125",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CO126",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "CO200",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Champion",
+  "style": "S171",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Hanes",
+  "style": "054X",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Hanes",
+  "style": "F170",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Hanes",
+  "style": "OG700",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Hanes",
+  "style": "RS170",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "436MP",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "436MPR",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "437F",
+  "category": "womens",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "437LR",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "437MSR",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "437R",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "443M",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "443W",
+  "category": "womens",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "4997MR",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "537MR",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "700MR",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "90MR",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "96CR",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "JERZEES",
+  "style": "97CR",
+  "category": "sweatshirts",
+  "subcategory": "hoodies",
+  "techniques": [
+   "SCREEN",
+   "DTF",
+   "EMBROIDERY",
+   "HTV"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "American Apparel",
+  "style": "FTJ77",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SH3MWONJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SH3NORJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHCNW",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHNWJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHBJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHCJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHCVBJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHLLJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHMJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHNTJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Shaka Wear",
+  "style": "SHPFJ",
+  "category": "outerwear",
+  "subcategory": "jackets",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112FPC",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112T",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112WH",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "168P",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "323FPC",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "355",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "356",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "110",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "111",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "111P",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112FP",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112FPR",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112P",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112PFP",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112PL",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112PM",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "112PT",
+  "category": "hats",
+  "subcategory": "trucker-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "134",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "141R",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "143R",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "146R",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "169",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "212",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "224RE",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "225",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "253",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "254RE",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "256P",
+  "category": "hats",
+  "subcategory": "snapbacks",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Richardson",
+  "style": "326",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "YP Classics",
+  "style": "1500KC",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "YP Classics",
+  "style": "1501KC",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "YP Classics",
+  "style": "1501P",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "YP Classics",
+  "style": "2501KC",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "YP Classics",
+  "style": "6245EC",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "YP Classics",
+  "style": "6245PT",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Flexfit",
+  "style": "5001",
+  "category": "hats",
+  "subcategory": "fitted-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Sportsman",
+  "style": "SP45",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Sportsman",
+  "style": "SP55",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Sportsman",
+  "style": "SP03",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Sportsman",
+  "style": "SP08",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Sportsman",
+  "style": "SP09",
+  "category": "hats",
+  "subcategory": "beanies",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Sportsman",
+  "style": "SP1700",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Atlantis Headwear",
+  "style": "DADHATFP",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Atlantis Headwear",
+  "style": "FRASER",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Valucap",
+  "style": "9610",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Valucap",
+  "style": "AH35",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Valucap",
+  "style": "VC300A",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Valucap",
+  "style": "VC300Y",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Big Accessories",
+  "style": "BA611",
+  "category": "hats",
+  "subcategory": "dad-hats",
+  "techniques": [
+   "EMBROIDERY"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M205L",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M205T",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M215",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M215W",
+  "category": "womens",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M105T",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M105W",
+  "category": "womens",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M200",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M200W",
+  "category": "womens",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M205",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M205P",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M205W",
+  "category": "womens",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M208",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M208L",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M211",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M211L",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M265L",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M265P",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M315",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M345",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M348",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M348L",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M348LT",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M348P",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M348T",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M354",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M385",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M386",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Harriton",
+  "style": "M386T",
+  "category": "apparel",
+  "subcategory": "polos",
+  "techniques": [
+   "EMBROIDERY",
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "1106",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "1703",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "1710",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "1825",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "1905",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "1915",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "1920",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "417",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "511",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Augusta Sportswear",
+  "style": "600",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Russell Athletic",
+  "style": "MLB6B0",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "Russell Athletic",
+  "style": "UB84UCS",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "econscious",
+  "style": "EC8202",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "econscious",
+  "style": "EC8204",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "econscious",
+  "style": "EC8300",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "econscious",
+  "style": "EC8502",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
+  ],
+  "featured": false
+ },
+ {
+  "brand": "econscious",
+  "style": "EC8800",
+  "category": "accessories",
+  "subcategory": "totes",
+  "techniques": [
+   "SCREEN",
+   "DTF"
   ],
   "featured": false
  }
