@@ -17,7 +17,14 @@ interface Env {
   QUOTE_FROM?: string;
   /** Cloudflare Turnstile secret (secret). When set, the form must carry a valid token. */
   TURNSTILE_SECRET?: string;
+  /** Studio admin intake for site quotes (https://design.thebestscreenprinting.com/api/intake/site-quote). */
+  STUDIO_INTAKE_URL?: string;
+  /** Shared secret for the intake (secret; the studio's SITE_INTAKE_SECRET). */
+  STUDIO_INTAKE_SECRET?: string;
 }
+
+/** Minimal Workers execution context: work that may finish after the response. */
+interface Ctx { waitUntil(p: Promise<unknown>): void }
 
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
@@ -74,7 +81,7 @@ async function allowConfirmation(request: Request, origin: string): Promise<bool
   }
 }
 
-async function handleQuote(request: Request, env: Env): Promise<Response> {
+async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Response> {
   const len = Number(request.headers.get('content-length') || 0);
   if (len > MAX_TOTAL_BYTES + 500_000) return json({ error: 'Your files are too large together. Please keep them under 25 MB in total.' }, 413);
   let form: FormData;
@@ -182,6 +189,20 @@ async function handleQuote(request: Request, env: Env): Promise<Response> {
     return json({ error: `We could not send your request. Please call ${business.phoneDisplay} or email ${business.email}.`, fallback: true }, 502);
   }
 
+  // The request also goes into the studio admin as an order. It runs after the response
+  // and never changes what the customer sees; the email above stays the source of truth.
+  if (env.STUDIO_INTAKE_URL && env.STUDIO_INTAKE_SECRET && ctx) {
+    ctx.waitUntil(
+      fetch(env.STUDIO_INTAKE_URL, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', authorization: `Bearer ${env.STUDIO_INTAKE_SECRET}` },
+        body: JSON.stringify({ ref, quote: q, artwork: artworkNames }),
+      })
+        .then(async (r) => { if (!r.ok) console.error('studio intake failed', ref, r.status, (await r.text().catch(() => '')).slice(0, 300)); })
+        .catch((e) => console.error('studio intake failed', ref, e)),
+    );
+  }
+
   // 2. The customer: a confirmation with the mockups and the PDF (never their own artwork back).
   // The shop already has the request, so a failure here is only logged.
   if (honeypotEmpty && humanVerified && (await allowConfirmation(request, origin))) {
@@ -231,7 +252,7 @@ function withHeaders(res: Response, env: Env): Response {
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx?: Ctx): Promise<Response> {
     const url = new URL(request.url);
 
     if (url.hostname === 'www.thebestscreenprinting.com') {
@@ -246,7 +267,7 @@ export default {
 
     if (url.pathname === '/api/quote') {
       if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
-      return handleQuote(request, env);
+      return handleQuote(request, env, ctx);
     }
 
     const legacy = resolveLegacy(url.pathname);
