@@ -38,11 +38,13 @@ function row(dl: HTMLElement, label: string, value: string, strong = false) {
 
 function renderTotals(el: HTMLElement) {
   const dl = el.querySelector<HTMLElement>('[data-os-totals]')!;
+  const terr = el.querySelector<HTMLElement>('[data-os-turn-err]');
+  if (terr) { terr.hidden = !totals?.turnaroundError; terr.textContent = totals?.turnaroundError || ''; }
   dl.replaceChildren();
   if (!totals || !current) return;
   row(dl, 'Products', money(totals.subtotal));
   if (totals.setup) row(dl, 'Setup / screens', money(totals.setup));
-  if (totals.rush) row(dl, 'Rush fee', money(totals.rush));
+  if (totals.rush) row(dl, `${totals.turnaround === 'superrush' ? 'Super Rush' : 'Rush'} fee${totals.rushPercent ? ` (+${totals.rushPercent}%)` : ''}`, money(totals.rush));
   row(dl, 'Shipping', totals.shipping ? money(totals.shipping) : 'Free');
   if (totals.tax) row(dl, `Tax (${totals.taxRate}%)`, money(totals.tax));
   row(dl, 'Total', money(totals.total), true);
@@ -54,12 +56,38 @@ function renderTotals(el: HTMLElement) {
 const deliveryOf = (form: HTMLFormElement) => (form.querySelector<HTMLInputElement>('input[name="delivery"]:checked')?.value || 'pickup') as 'pickup' | 'ship';
 const turnOf = (form: HTMLFormElement) => (form.querySelector<HTMLInputElement>('input[name="turnaround"]:checked')?.value || 'normal') as Turnaround;
 
+const pieces = (items: PriceItemInput[]) => items.reduce((n, it) => n + Object.values(it.sizes).reduce((a, b) => a + b, 0), 0);
+let turnDays: Partial<Record<Turnaround, number>> = {};
+
+function setupTurnaround(el: HTMLElement, opts: import('./online').TurnaroundOptions | undefined, items: PriceItemInput[]) {
+  const turn = el.querySelector<HTMLElement>('[data-os-turn]')!;
+  turnPriced = !!opts && !!(opts.rush || opts.superrush);
+  turn.hidden = !turnPriced;
+  turnDays = {};
+  if (!opts) return;
+  const n = pieces(items);
+  (['normal', 'rush', 'superrush'] as Turnaround[]).forEach((k) => {
+    const o = (opts as Record<string, { days: number; percent?: number; maxPieces?: number } | undefined>)[k];
+    const row = el.querySelector<HTMLElement>(`[data-os-turn-opt="${k}"]`)!;
+    const input = row.querySelector('input')!;
+    const tooMany = !!(o?.maxPieces && n > o.maxPieces);
+    row.hidden = !o;
+    input.disabled = !o || tooMany;
+    if (o) {
+      turnDays[k] = o.days;
+      const meta = row.querySelector('[data-os-turn-meta]')!;
+      meta.textContent = ` · ${o.days} business day${o.days === 1 ? '' : 's'}${o.percent ? ` · +${o.percent}%` : ''}${tooMany ? ` · up to ${o.maxPieces} pieces` : ''}`;
+    }
+    if ((!o || tooMany) && input.checked) (el.querySelector<HTMLInputElement>('[data-os-turn-opt="normal"] input')!).checked = true;
+  });
+}
+
 /** Ready dates under each turnaround choice (the studio's date when it sends one for the selected option). */
 function renderReady(el: HTMLElement) {
   el.querySelectorAll<HTMLElement>('[data-os-ready]').forEach((n) => {
     const k = n.dataset.osReady as Turnaround;
     const chosen = (el.querySelector<HTMLInputElement>('input[name="turnaround"]:checked')?.value || 'normal') === k;
-    const date = chosen && totals?.readyBy ? new Date(totals.readyBy) : estimate(BUSINESS_DAYS[k] ?? 10);
+    const date = chosen && totals?.readyBy ? new Date(totals.readyBy) : estimate(turnDays[k] ?? BUSINESS_DAYS[k] ?? 10);
     n.textContent = `Ready around ${fmtDate(date)} after proof approval`;
   });
 }
@@ -81,7 +109,7 @@ function wire(el: HTMLElement) {
     if ((t.name !== 'delivery' && t.name !== 'turnaround') || !current) return;
     if (t.name === 'delivery') address.hidden = t.value !== 'ship';
     const res = await fetchPrices(current.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined);
-    if (res?.enabled && res.totals) { totals = res.totals; renderTotals(el); }
+    if (res?.enabled && res.totals) { totals = res.totals; renderTotals(el); renderReady(el); }
   });
 
   let sending = false;
@@ -121,7 +149,8 @@ function wire(el: HTMLElement) {
     sending = false;
     send.removeAttribute('aria-busy'); send.removeAttribute('aria-disabled');
     label.textContent = 'Continue to secure payment';
-    if (res.field) setErr(res.field === 'address' ? 'address' : res.field, res.error);
+    if (res.field === 'turnaround') { const terr = el.querySelector<HTMLElement>('[data-os-turn-err]'); if (terr) { terr.hidden = false; terr.textContent = res.error; } }
+    else if (res.field) setErr(res.field === 'address' ? 'address' : res.field, res.error);
     showMsg(res.invoiceUrl ? `${res.error} ` : res.error);
     if (res.invoiceUrl) {
       const a = document.createElement('a');
@@ -159,20 +188,10 @@ export function openOrder(req: OrderRequest) {
   const fullIn = full.querySelector('input')!, depIn = dep.querySelector('input')!;
   if (!payment.options.includes(fullIn.checked ? 'full' : depIn.checked ? 'deposit' : ('' as 'full'))) (payment.options[0] === 'deposit' ? depIn : fullIn).checked = true;
   renderTotals(el);
-  // Does the studio price Rush / Super Rush yet? Only then is the choice offered.
-  const turn = el.querySelector<HTMLElement>('[data-os-turn]')!;
+  // Turnaround choices come from the studio (only the ones that are on, with their % and days).
+  setupTurnaround(el, req.price.turnaround, req.items);
   const form = el.querySelector<HTMLFormElement>('[data-os-form]')!;
-  turn.hidden = !turnPriced;
-  fetchPrices(req.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : 'rush').then((r) => {
-    if (!r?.enabled || !r.totals) return;
-    if (!turnPriced && typeof r.totals.rush === 'number') {
-      turnPriced = true;
-      turn.hidden = false;
-      // The probe priced Rush; price what's actually selected.
-      fetchPrices(req.items, deliveryOf(form), undefined, turnOf(form)).then((x) => { if (x?.enabled && x.totals) { totals = x.totals; renderTotals(el); renderReady(el); } });
-    } else if (turnPriced || deliveryOf(form) === 'ship') { totals = r.totals; renderTotals(el); }
-    renderReady(el);
-  });
+  if (deliveryOf(form) === 'ship' || turnPriced) fetchPrices(req.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined).then((r) => { if (r?.enabled && r.totals) { totals = r.totals; renderTotals(el); renderReady(el); } });
   renderReady(el);
   openSheet(el);
 }

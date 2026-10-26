@@ -13,11 +13,12 @@ export interface PricedItem {
   sizePrices: Record<string, number>; basePrice: number; subtotal: number; setup: number;
   next: { qty: number; perPiece: number } | null; stockShort: { size: string; stock: number }[];
 }
-export interface Totals { subtotal: number; setup: number; shipping: number; tax: number; taxRate: number; total: number; /** Rush / Super Rush fee, when the studio prices turnaround. */ rush?: number; /** Estimated ready date (ISO). */ readyBy?: string }
+export interface Totals { subtotal: number; setup: number; shipping: number; tax: number; taxRate: number; total: number; /** Rush / Super Rush fee, when the studio prices turnaround. */ rush?: number; rushPercent?: number; turnaround?: string; /** Estimated ready date (ISO). */ readyBy?: string; businessDays?: number; /** e.g. Super Rush over its piece limit. */ turnaroundError?: string }
+export type TurnaroundOptions = { normal: { days: number }; rush?: { percent: number; days: number }; superrush?: { percent: number; days: number; maxPieces?: number } };
 export type Turnaround = 'normal' | 'rush' | 'superrush';
 export type PriceResponse =
   | { enabled: false }
-  | { enabled: true; items: PricedItem[]; totals: Totals | null; payment: { options: ('full' | 'deposit')[]; depositPercent: number }; delivery: { pickup: string | null; shipping: number | null } };
+  | { enabled: true; items: PricedItem[]; totals: Totals | null; payment: { options: ('full' | 'deposit')[]; depositPercent: number }; delivery: { pickup: string | null; shipping: number | null }; /** Present once the studio prices turnaround; only the options that are on. */ turnaround?: TurnaroundOptions };
 
 /** Size of a placed artwork, in inches (DTF and other methods are priced by print size). */
 export const printSize = (w?: number, h?: number) => (w && h && w > 0 && h > 0 ? { widthIn: Math.round(w * 10) / 10, heightIn: Math.round(h * 10) / 10 } : {});
