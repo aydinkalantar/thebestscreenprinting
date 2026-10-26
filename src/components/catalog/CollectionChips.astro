@@ -1,11 +1,11 @@
 ---
 // Links to every non-empty collection page, with product counts.
 import { COLLECTIONS, collectionHref, collectionProducts, products } from '../../lib/catalog';
-interface Props { current?: string; label?: string }
-const { current, label = 'Shop by category' } = Astro.props;
+interface Props { current?: string; label?: string; class?: string }
+const { current, label = 'Shop by category', class: cls } = Astro.props;
 const items = COLLECTIONS.map((c) => ({ ...c, count: collectionProducts(c.slug).length })).filter((c) => c.count > 0);
 ---
-<nav aria-label={label} class="mt-8 -mx-4 px-4 flex gap-2 md:flex-wrap max-md:mt-5 m-rail m-rail-auto">
+<nav aria-label={label} class:list={["mt-8 -mx-4 px-4 flex gap-2 md:flex-wrap max-md:mt-5 m-rail m-rail-auto", cls]}>
   <a href="/catalog/" class:list={['chip shrink-0 max-md:!h-10', { 'is-on': !current }]} aria-current={!current ? 'page' : undefined}>All <span class="muted font-medium">{products.length}</span></a>
   {items.map((c) => (
     <a href={collectionHref(c.slug)} class:list={['chip shrink-0 max-md:!h-10', { 'is-on': current === c.slug }]} aria-current={current === c.slug ? 'page' : undefined}>

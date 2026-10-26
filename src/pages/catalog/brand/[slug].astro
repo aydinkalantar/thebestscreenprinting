@@ -38,12 +38,12 @@ const jsonLd = [
 <Base title={`Custom ${name} Apparel | TBSP`} description={description} jsonLd={jsonLd}>
   <Breadcrumbs items={[{ label: 'Catalog', href: '/catalog/' }, { label: name }]} />
   <p class="eyebrow">Brand</p>
-  <h1 class="mt-3 text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white">Custom {name} apparel</h1>
-  <p class="mt-4 text-lg muted max-w-2xl">
+  <h1 class="mt-2 text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white">Custom {name} apparel</h1>
+  <p class="mt-2 text-[15px] sm:text-base muted max-w-2xl">
     {items.length} {name} style{items.length === 1 ? '' : 's'} ready for your logo, printed in-house in Los Angeles and Cleveland. Orders start at {business.shopMinimum} pieces.{methods && ` Available with ${methods}.`}
   </p>
 
-  <nav aria-label="Other brands" class="mt-8 -mx-4 px-4 flex gap-2 overflow-x-auto no-scrollbar sm:flex-wrap sm:overflow-visible">
+  <nav aria-label="Other brands" class="mt-6 -mx-4 px-4 flex gap-2 overflow-x-auto no-scrollbar">
     <a href="/catalog/" class="chip shrink-0">All brands</a>
     {BRANDS.map((b) => (
       <a href={brandHref(b.name)} class:list={['chip shrink-0', { 'is-on': b.slug === slug }]} aria-current={b.slug === slug ? 'page' : undefined}>{b.name} <span class="muted font-medium">{b.count}</span></a>
