@@ -161,5 +161,10 @@
     "*": {
       "frontCollarDy": 1.5
     }
+  },
+  "ss-9253": {
+    "*": {
+      "frontCollarDy": 3.5
+    }
   }
 }
