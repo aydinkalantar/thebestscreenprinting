@@ -262,6 +262,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       const area = document.createElement('div');
       area.className = 'd-area';
       area.dataset.area = sp.id;
+      area.classList.toggle('has-art', arts.has(sp.id));
       Object.assign(area.style, { left: `${r.x * 100}%`, top: `${r.y * 100}%`, width: `${r.w * 100}%`, height: `${r.h * 100}%` });
       const isActive = sp.id === active;
       if (isActive) {
@@ -309,6 +310,17 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     zoomer.style.setProperty('--z', String(s));
   }
   zoomBtn.addEventListener('click', () => { zoomed = !zoomed; applyZoom(); });
+  // "Preview": hides print areas, labels and handles to see just the product with the artwork.
+  const cleanBtn = q<HTMLButtonElement>('[data-clean]');
+  const setClean = (on: boolean) => {
+    stage.classList.toggle('is-clean', on);
+    cleanBtn.setAttribute('aria-pressed', String(on));
+    cleanBtn.querySelector('[data-clean-label]')!.textContent = on ? 'Edit' : 'Preview';
+  };
+  cleanBtn.addEventListener('click', () => setClean(!stage.classList.contains('is-clean')));
+  // Any editing (chips, upload, drag) brings the guides back.
+  stage.addEventListener('pointerdown', (e) => { if (!(e.target as HTMLElement).closest('[data-clean]')) setClean(false); });
+  root.querySelector('[data-chips]')?.addEventListener('click', () => setClean(false));
 
   function renderPanel() {
     const sp = spotById.get(active);

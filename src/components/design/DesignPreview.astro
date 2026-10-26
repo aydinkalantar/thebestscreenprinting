@@ -4,7 +4,7 @@
 import { techniqueNames, type CatalogProduct } from '../../lib/catalog';
 import { spotsFor, placeConfigFor, type Overrides } from './areas';
 import overrides from '../../../data/print-area-overrides.json';
-import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info } from '@lucide/astro';
+import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info, Eye } from '@lucide/astro';
 
 interface Props { p: CatalogProduct }
 const { p } = Astro.props;
@@ -38,6 +38,7 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
           <div data-layer class="absolute inset-0"></div>
         </div>
         <p data-stage-note hidden class="absolute left-2 right-2 bottom-2 rounded-lg bg-white/90 dark:bg-black/70 px-2.5 py-1.5 text-[12px] font-medium text-zinc-700 dark:text-zinc-200 text-center"></p>
+        <button type="button" data-clean aria-pressed="false" class="absolute left-2 top-2 inline-flex items-center gap-1.5 h-10 px-3.5 rounded-full border border-zinc-200 dark:border-white/10 bg-white/90 dark:bg-black/60 backdrop-blur text-[13px] font-semibold text-zinc-800 dark:text-zinc-100 hover:border-violet-300 aria-pressed:bg-violet-600 aria-pressed:text-white aria-pressed:border-violet-600" title="Show the product without guides"><Eye class="w-4 h-4" aria-hidden="true" /><span data-clean-label>Preview</span></button>
         <button type="button" data-zoom hidden class="absolute right-2 top-2 icon-btn w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 backdrop-blur" aria-pressed="false" aria-label="Zoom in on the print area"><ZoomIn data-zoom-in class="w-[18px] h-[18px]" aria-hidden="true" /><ZoomOut data-zoom-out class="hidden w-[18px] h-[18px]" aria-hidden="true" /></button>
       </div>
     </div>
@@ -134,6 +135,18 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
   [data-design] .d-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px; overflow: hidden; border: calc(1.5px / var(--z)) dashed rgb(124 58 237); background: rgba(255,255,255,.82); color: rgb(76 29 149); text-align: center; font-weight: 700; line-height: 1.1; container-type: size; }
   [data-design] .d-ph b { font-size: clamp(7px, 22cqmin, 15px); }
   [data-design] .d-ph span { font-size: clamp(6px, 11cqmin, 11px); font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* Guides step back so the artwork reads as it will print: on hover-capable screens they show
+     only while the pointer is on the garment (or something in it has focus); "Preview" hides them everywhere. */
+  [data-design] .d-area, [data-design] .d-area-label, [data-design] .d-handle, [data-design] .d-art { transition: outline-color .2s, background-color .2s, opacity .2s, box-shadow .2s; }
+  @media (hover: hover) {
+    [data-design] [data-stage]:not(:hover):not(:focus-within):not(.is-drop) .d-area.has-art { outline-color: transparent; background: transparent; }
+    [data-design] [data-stage]:not(:hover):not(:focus-within):not(.is-drop) .d-area.has-art .d-area-label,
+    [data-design] [data-stage]:not(:hover):not(:focus-within):not(.is-drop) .d-handle { opacity: 0; }
+    [data-design] [data-stage]:not(:hover):not(:focus-within):not(.is-drop) .d-art.is-active { box-shadow: none; }
+  }
+  [data-design] [data-stage].is-clean .d-area { outline-color: transparent !important; background: transparent !important; }
+  [data-design] [data-stage].is-clean .d-area-label, [data-design] [data-stage].is-clean .d-handle, [data-design] [data-stage].is-clean .d-drop { opacity: 0 !important; pointer-events: none; }
+  [data-design] [data-stage].is-clean .d-art { box-shadow: none !important; }
   [data-design] .d-drop { position: absolute; inset: 0; pointer-events: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 6px; color: rgb(109 40 217); text-align: center; cursor: pointer; container-type: size; border-radius: 2px; transition: background .15s; }
   [data-design] .d-drop:hover, [data-design] .d-drop:focus-visible, [data-design] [data-stage].is-drop .d-drop { background: rgba(139, 92, 246, .16); }
   [data-design] .d-drop:focus-visible { outline: 2px solid rgb(124 58 237); outline-offset: 2px; }
