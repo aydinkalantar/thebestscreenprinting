@@ -13,7 +13,8 @@ export interface PricedItem {
   sizePrices: Record<string, number>; basePrice: number; subtotal: number; setup: number;
   next: { qty: number; perPiece: number } | null; stockShort: { size: string; stock: number }[];
 }
-export interface Totals { subtotal: number; setup: number; shipping: number; tax: number; taxRate: number; total: number }
+export interface Totals { subtotal: number; setup: number; shipping: number; tax: number; taxRate: number; total: number; /** Rush / Super Rush fee, when the studio prices turnaround. */ rush?: number; /** Estimated ready date (ISO). */ readyBy?: string }
+export type Turnaround = 'normal' | 'rush' | 'superrush';
 export type PriceResponse =
   | { enabled: false }
   | { enabled: true; items: PricedItem[]; totals: Totals | null; payment: { options: ('full' | 'deposit')[]; depositPercent: number }; delivery: { pickup: string | null; shipping: number | null } };
@@ -24,10 +25,10 @@ export const printSize = (w?: number, h?: number) => (w && h && w > 0 && h > 0 ?
 export const money = (n: number) => `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 /** Prices a set of items. Returns null when the studio can't be reached (the site then just shows the quote flow). */
-export async function fetchPrices(items: PriceItemInput[], delivery: 'pickup' | 'ship' = 'pickup', signal?: AbortSignal): Promise<PriceResponse | null> {
+export async function fetchPrices(items: PriceItemInput[], delivery: 'pickup' | 'ship' = 'pickup', signal?: AbortSignal, turnaround?: Turnaround): Promise<PriceResponse | null> {
   try {
     const res = await fetch(`${STUDIO_API}/api/public/price`, {
-      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ items, delivery }), signal,
+      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ items, delivery, ...(turnaround ? { turnaround } : {}) }), signal,
     });
     if (!res.ok) return null;
     return (await res.json()) as PriceResponse;

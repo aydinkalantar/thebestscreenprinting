@@ -7,7 +7,7 @@ import { business } from '../../data/business';
 import DesignPreview from '../../components/design/DesignPreview.astro';
 import DesignRequestSheet from '../../components/design/DesignRequestSheet.astro';
 import OrderSheet from '../../components/design/OrderSheet.astro';
-import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X, Upload, CreditCard } from '@lucide/astro';
+import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X, Upload, CreditCard, ShoppingBag } from '@lucide/astro';
 
 export function getStaticPaths() {
   return products.map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -66,7 +66,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 
       <form id="add-to-quote" class="mt-7 panel-raised p-5 sm:p-6 grid grid-cols-[minmax(0,1fr)] gap-6 min-w-0" novalidate
         data-id={p.id} data-slug={p.slug} data-name={p.name} data-style={p.style ?? ''} data-brand={p.brand ?? ''} data-cat={p.category} data-sub={p.subcategory ?? ''} data-img={p.image} data-min={min}>
-        <p class="text-lg font-bold text-zinc-900 dark:text-white -mb-2">Add to quote</p>
+        <p class="text-lg font-bold text-zinc-900 dark:text-white -mb-2">Customize &amp; order</p>
         {p.colors.length > 0 && (
           <fieldset>
             <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>1</span>Color · <span id="color-name" class="normal-case tracking-normal text-zinc-900 dark:text-white text-[13px]">{p.colors[0].name}</span></legend>
@@ -149,15 +149,15 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         <div class="grid gap-2">
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
             <button id="request-quote" type="submit" class="btn-primary w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none aria-busy:cursor-wait" disabled>
-              <ClipboardPlus class="w-4 h-4" aria-hidden="true" /><span>Add to quote</span>
+              <ShoppingBag class="w-4 h-4" aria-hidden="true" /><span>Add to cart</span>
             </button>
             <button id="request-single" type="button" class="text-[13.5px] font-semibold text-violet-700 dark:text-violet-300 hover:underline underline-offset-2 disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed max-sm:w-full max-sm:min-h-[44px]" disabled>
               Request a quote for just this item
             </button>
           </div>
-          <p id="qty-hint" class="text-[13px] muted" aria-live="polite">Enter at least {min} pieces to add this product to your quote.</p>
+          <p id="qty-hint" class="text-[13px] muted" aria-live="polite">Enter at least {min} pieces to add this product to your cart.</p>
           <p id="cart-error" class="err" role="alert"></p>
-          <p class="text-[12.5px] muted">Quoting several products? Add each one to your quote and send them together. Minimum {min} pieces per product.</p>
+          <p class="text-[12.5px] muted">Ordering several products? Add each one to your cart, then check out or request one quote for all of them. Minimum {min} pieces per product.</p>
         </div>
       </form>
 
@@ -190,7 +190,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   </div>
 
   <!-- Phones: sticky action bar (replaces the tab bar on this page). It drives the
-       "Add to quote" form above, so the minimum and the quote link stay in one place. -->
+       "Add to cart" form above, so the minimum and the quote link stay in one place. -->
   <div data-pdp-bar class="md:hidden fixed inset-x-0 bottom-0 z-[60] border-t border-zinc-200/80 dark:border-white/10 bg-white/90 dark:bg-[#0a0a0f]/90 backdrop-blur-xl backdrop-saturate-150 pb-[env(safe-area-inset-bottom)]">
     <div class="px-4 h-[76px] flex items-center gap-2.5">
       <button type="button" data-max-open aria-haspopup="dialog" aria-label="Ask Max about this product" class="press max-orb relative w-11 h-11 shrink-0"><Sparkles class="w-5 h-5" aria-hidden="true" /></button>
@@ -202,7 +202,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         </span>
       </button>
       <button type="submit" form="add-to-quote" data-bar-submit class="btn-primary h-12 px-3.5 text-[14px] shrink-0 disabled:opacity-50 disabled:shadow-none aria-busy:cursor-wait" disabled>
-        <ClipboardPlus class="w-4 h-4" aria-hidden="true" /><span>Add to quote</span>
+        <ShoppingBag class="w-4 h-4" aria-hidden="true" /><span>Add to cart</span>
       </button>
     </div>
   </div>
@@ -210,18 +210,18 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   <DesignRequestSheet />
   <OrderSheet />
 
-  <!-- Shown after "Add to quote". -->
+  <!-- Shown after "Add to cart". -->
   <div id="cart-toast" hidden class="fixed z-[70] inset-x-3 bottom-[calc(88px+env(safe-area-inset-bottom))] md:inset-x-auto md:right-6 md:bottom-6 md:w-[380px] panel-raised p-4 shadow-2xl transition-all duration-200 opacity-0 translate-y-2 data-[open]:opacity-100 data-[open]:translate-y-0" role="status" aria-live="polite" aria-atomic="true">
     <div class="flex items-start gap-3">
       <img data-toast-img alt="" width="56" height="56" class="w-14 h-14 shrink-0 rounded-xl object-contain bg-zinc-50 dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10" />
       <div class="min-w-0 flex-1">
-        <p class="flex items-center gap-1.5 text-[15px] font-bold text-zinc-900 dark:text-white"><CircleCheck class="w-[18px] h-[18px] text-emerald-500 shrink-0" aria-hidden="true" />Added to your quote</p>
+        <p class="flex items-center gap-1.5 text-[15px] font-bold text-zinc-900 dark:text-white"><CircleCheck class="w-[18px] h-[18px] text-emerald-500 shrink-0" aria-hidden="true" />Added to your cart</p>
         <p data-toast-line class="mt-0.5 text-[13px] muted truncate"></p>
       </div>
       <button type="button" data-toast-close class="icon-btn w-9 h-9 shrink-0 -mr-1 -mt-1 border-transparent dark:border-transparent" aria-label="Close"><X class="w-4 h-4" aria-hidden="true" /></button>
     </div>
     <div class="mt-3 grid grid-cols-2 gap-2">
-      <a href="/quote-cart/" data-toast-view class="btn-primary h-11 text-[14px]"><span>View quote (<span data-toast-count>1</span>)</span></a>
+      <a href="/quote-cart/" data-toast-view class="btn-primary h-11 text-[14px]"><span>View cart (<span data-toast-count>1</span>)</span></a>
       <button type="button" data-toast-close class="btn-quiet h-11 text-[14px]">Keep browsing</button>
     </div>
   </div>
@@ -317,10 +317,10 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     if (barTotal) barTotal.textContent = String(n);
     if (barSubmit) barSubmit.disabled = n < min;
     plainOnly.forEach((f) => { f.hidden = placed > 0; });
-    hint.textContent = n === 0 ? `Enter at least ${min} pieces to add this product to your quote.`
+    hint.textContent = n === 0 ? `Enter at least ${min} pieces to add this product to your cart.`
       : n < min ? `Add ${min - n} more piece${min - n === 1 ? '' : 's'} to reach the ${min}-piece minimum for this product.`
-      : placed ? `${n} pieces with your artwork. Add it to your quote, then add more products or send it.`
-      : `${n} pieces. Add it to your quote, then add more products or send it.`;
+      : placed ? `${n} pieces with your artwork. Order it now, or add it to your cart.`
+      : `${n} pieces. Order it now, or add it to your cart.`;
     window.dispatchEvent(new Event('tbsp-pdp-change'));
   }
   inputs.forEach((i) => i.addEventListener('input', refresh));
@@ -371,7 +371,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   function showToast(line: string, img: string) {
     toast.querySelector<HTMLElement>('[data-toast-line]')!.textContent = line;
     toast.querySelector<HTMLElement>('[data-toast-count]')!.textContent = String(cartCount());
-    toast.querySelector<HTMLAnchorElement>('[data-toast-view]')!.setAttribute('aria-label', `View your quote, ${cartCount()} product${cartCount() === 1 ? '' : 's'}`);
+    toast.querySelector<HTMLAnchorElement>('[data-toast-view]')!.setAttribute('aria-label', `View your cart, ${cartCount()} product${cartCount() === 1 ? '' : 's'}`);
     const im = toast.querySelector<HTMLImageElement>('[data-toast-img]')!;
     im.src = img;
     toast.hidden = false;
@@ -387,7 +387,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   const editId = new URLSearchParams(location.search).get('edit');
   const editing = editId ? cartItem(editId) : undefined;
   const editItem = editing && editing.slug === d.slug ? editing : undefined;
-  const actionText = editItem ? 'Save changes' : 'Add to quote';
+  const actionText = editItem ? 'Save changes' : 'Add to cart';
   let adding = false;
   async function addItem() {
     if (adding) return;
@@ -398,7 +398,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     const cartBytes = cartItems().filter((it) => it.id !== editItem?.id).reduce((n, it) => n + it.placements.reduce((a, p) => a + p.size, 0), 0);
     const mine = design.bytes();
     if (cartBytes + mine > MAX_TOTAL_BYTES) {
-      cartError.textContent = `Your quote would have ${MB(cartBytes + mine)} of artwork, more than the 25 MB we can take in one request. Send your quote first, or use smaller files (PNG or PDF).`;
+      cartError.textContent = `Your cart would have ${MB(cartBytes + mine)} of artwork, more than the 25 MB we can take in one request. Send your quote first, or use smaller files (PNG or PDF).`;
       return;
     }
     adding = true;
@@ -426,7 +426,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
       setCarry(null);
       design.clearCarried();
       if (!(await cartPersistsFiles()) && placements.length) {
-        cartError.textContent = "Your browser isn't letting us save files, so keep this tab open until you send your quote.";
+        cartError.textContent = "Your browser isn't letting us save files, so keep this tab open until you check out or send your quote.";
       }
       inputs.forEach((i) => { i.value = ''; });
       refresh();
@@ -608,12 +608,12 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     ip('body').hidden = !ok;
     orderBtn.hidden = !ok;
     ip('foot').hidden = !ok;
-    // With a price on screen, "Order & pay" leads and "Add to quote" steps back.
+    // With a price on screen, "Order & pay" leads and "Add to cart" steps back.
     button.classList.replace(ok ? 'btn-primary' : 'btn-quiet', ok ? 'btn-quiet' : 'btn-primary');
     ip('quote').hidden = ok;
     ip('status').textContent = '';
     if (!ok) {
-      ip('quote').textContent = it?.quoteOnly ? `${it.quoteOnly}. Add it to your quote and we'll price it for you.` : '';
+      ip('quote').textContent = it?.quoteOnly ? `${it.quoteOnly}. Add it to your cart and request a quote, and we'll price it for you.` : '';
       lastPrice = null;
       return;
     }

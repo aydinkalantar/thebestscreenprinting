@@ -1,14 +1,28 @@
 // Behaviour for <OrderSheet />: fills it from a price answer, re-prices when delivery changes,
 // and sends the order (with artwork) to the studio, then goes to the card payment page.
-import { fetchPrices, money, placeOrder, type PriceItemInput, type PriceResponse, type Totals } from './online';
+import { fetchPrices, money, placeOrder, type PriceItemInput, type PriceResponse, type Totals, type Turnaround } from './online';
 import { openSheet, wireSheet } from './sheet';
 
 export interface OrderArtwork { itemIndex: number; placement: string; file: File }
-export interface OrderRequest { items: PriceItemInput[]; artwork: OrderArtwork[]; price: Extract<PriceResponse, { enabled: true }>; summary: string }
+export interface OrderRequest { items: PriceItemInput[]; artwork: OrderArtwork[]; price: Extract<PriceResponse, { enabled: true }>; summary: string; /** Cart items being bought: removed on the thank-you page. */ cartIds?: string[] }
+
+/** Remembered while the customer is at Stripe, so the thank-you page can tidy the cart. */
+export const CHECKOUT_KEY = 'tbsp-checkout';
 
 let wired = false;
 let current: OrderRequest | null = null;
 let totals: Totals | null = null;
+/** Whether the studio prices turnaround (answers with totals.rush); until then only Normal is offered. */
+let turnPriced = false;
+
+const BUSINESS_DAYS: Record<Turnaround, number> = { normal: 10, rush: 5, superrush: 3 };
+/** Rough ready date from today, skipping weekends, when the studio doesn't send one. */
+function estimate(days: number) {
+  const d = new Date();
+  while (days > 0) { d.setDate(d.getDate() + 1); if (d.getDay() % 6) days--; }
+  return d;
+}
+const fmtDate = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
 const sheet = () => document.getElementById('order-sheet');
 
@@ -28,12 +42,26 @@ function renderTotals(el: HTMLElement) {
   if (!totals || !current) return;
   row(dl, 'Products', money(totals.subtotal));
   if (totals.setup) row(dl, 'Setup / screens', money(totals.setup));
+  if (totals.rush) row(dl, 'Rush fee', money(totals.rush));
   row(dl, 'Shipping', totals.shipping ? money(totals.shipping) : 'Free');
   if (totals.tax) row(dl, `Tax (${totals.taxRate}%)`, money(totals.tax));
   row(dl, 'Total', money(totals.total), true);
   const pct = current.price.payment.depositPercent;
   el.querySelector('[data-os-full-amount]')!.textContent = `· ${money(totals.total)}`;
   el.querySelector('[data-os-deposit-amount]')!.textContent = `· ${pct}% now, ${money(Math.round(totals.total * pct) / 100)}`;
+}
+
+const deliveryOf = (form: HTMLFormElement) => (form.querySelector<HTMLInputElement>('input[name="delivery"]:checked')?.value || 'pickup') as 'pickup' | 'ship';
+const turnOf = (form: HTMLFormElement) => (form.querySelector<HTMLInputElement>('input[name="turnaround"]:checked')?.value || 'normal') as Turnaround;
+
+/** Ready dates under each turnaround choice (the studio's date when it sends one for the selected option). */
+function renderReady(el: HTMLElement) {
+  el.querySelectorAll<HTMLElement>('[data-os-ready]').forEach((n) => {
+    const k = n.dataset.osReady as Turnaround;
+    const chosen = (el.querySelector<HTMLInputElement>('input[name="turnaround"]:checked')?.value || 'normal') === k;
+    const date = chosen && totals?.readyBy ? new Date(totals.readyBy) : estimate(BUSINESS_DAYS[k] ?? 10);
+    n.textContent = `Ready around ${fmtDate(date)} after proof approval`;
+  });
 }
 
 function wire(el: HTMLElement) {
@@ -50,9 +78,9 @@ function wire(el: HTMLElement) {
 
   form.addEventListener('change', async (e) => {
     const t = e.target as HTMLInputElement;
-    if (t.name !== 'delivery' || !current) return;
-    address.hidden = t.value !== 'ship';
-    const res = await fetchPrices(current.items, t.value as 'pickup' | 'ship');
+    if ((t.name !== 'delivery' && t.name !== 'turnaround') || !current) return;
+    if (t.name === 'delivery') address.hidden = t.value !== 'ship';
+    const res = await fetchPrices(current.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined);
     if (res?.enabled && res.totals) { totals = res.totals; renderTotals(el); }
   });
 
@@ -62,7 +90,7 @@ function wire(el: HTMLElement) {
     form.querySelectorAll<HTMLElement>('.err').forEach((x) => { x.textContent = ''; });
     msg.className = 'hidden';
     const name = val('name'), email = val('email');
-    const delivery = (form.querySelector<HTMLInputElement>('input[name="delivery"]:checked')?.value || 'pickup') as 'pickup' | 'ship';
+    const delivery = deliveryOf(form);
     let bad = '';
     if (!name) { setErr('name', 'Please enter your name.'); bad ||= 'name'; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setErr('email', 'Enter a valid email for your receipt and proof.'); bad ||= 'email'; }
@@ -75,6 +103,8 @@ function wire(el: HTMLElement) {
       items: current.items, delivery, pay,
       ...(delivery === 'ship' ? { address: { street: val('street'), city: val('city'), state: val('state'), zip: val('zip') } } : {}),
       notes: val('notes') || undefined, leadSource: val('leadSource') || undefined,
+      ...(turnPriced ? { turnaround: turnOf(form) } : {}),
+      returnUrl: location.href,
     }));
     for (const a of current.artwork) fd.append(`art_${a.itemIndex}_${a.placement.slice(0, 40)}`, a.file, a.file.name);
     sending = true;
@@ -84,6 +114,7 @@ function wire(el: HTMLElement) {
     const res = await placeOrder(fd);
     if (res.ok) {
       label.textContent = 'Opening secure payment…';
+      try { localStorage.setItem(CHECKOUT_KEY, JSON.stringify({ orderNumber: res.orderNumber, email, cartIds: current.cartIds || [], at: Date.now() })); } catch { /* ignore */ }
       location.href = res.checkoutUrl;
       return;
     }
@@ -128,7 +159,20 @@ export function openOrder(req: OrderRequest) {
   const fullIn = full.querySelector('input')!, depIn = dep.querySelector('input')!;
   if (!payment.options.includes(fullIn.checked ? 'full' : depIn.checked ? 'deposit' : ('' as 'full'))) (payment.options[0] === 'deposit' ? depIn : fullIn).checked = true;
   renderTotals(el);
-  // Pickup vs shipping changes the total: price the choice that's selected.
-  if (shipInput.checked) fetchPrices(req.items, 'ship').then((r) => { if (r?.enabled && r.totals) { totals = r.totals; renderTotals(el); } });
+  // Does the studio price Rush / Super Rush yet? Only then is the choice offered.
+  const turn = el.querySelector<HTMLElement>('[data-os-turn]')!;
+  const form = el.querySelector<HTMLFormElement>('[data-os-form]')!;
+  turn.hidden = !turnPriced;
+  fetchPrices(req.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : 'rush').then((r) => {
+    if (!r?.enabled || !r.totals) return;
+    if (!turnPriced && typeof r.totals.rush === 'number') {
+      turnPriced = true;
+      turn.hidden = false;
+      // The probe priced Rush; price what's actually selected.
+      fetchPrices(req.items, deliveryOf(form), undefined, turnOf(form)).then((x) => { if (x?.enabled && x.totals) { totals = x.totals; renderTotals(el); renderReady(el); } });
+    } else if (turnPriced || deliveryOf(form) === 'ship') { totals = r.totals; renderTotals(el); }
+    renderReady(el);
+  });
+  renderReady(el);
   openSheet(el);
 }

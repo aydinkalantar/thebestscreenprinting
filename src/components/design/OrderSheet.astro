@@ -4,6 +4,7 @@
 // Product pages and the quote cart fill it from src/lib/online.ts price answers.
 import { X, Lock, ShieldCheck } from '@lucide/astro';
 import { LEAD_SOURCES } from '../../lib/quote';
+import { business } from '../../data/business';
 
 const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] px-3.5 py-2.5 cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-violet-500';
 ---
@@ -31,6 +32,21 @@ const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:bor
         <legend class="label mb-2">Delivery</legend>
         <label class={radio} data-os-pickup><input type="radio" name="delivery" value="pickup" class="mt-1 accent-violet-600" /><span class="min-w-0 text-[13.5px] leading-snug"><span class="font-semibold text-zinc-900 dark:text-white">Pickup</span> <span class="muted">· free</span><span data-os-pickup-note class="block text-[12.5px] muted"></span></span></label>
         <label class={radio} data-os-ship><input type="radio" name="delivery" value="ship" class="mt-1 accent-violet-600" /><span class="min-w-0 text-[13.5px] leading-snug"><span class="font-semibold text-zinc-900 dark:text-white">Shipping</span> <span data-os-ship-price class="muted"></span><span class="block text-[12.5px] muted">Anywhere in the US</span></span></label>
+      </fieldset>
+
+      <!-- Shown only when the studio prices turnaround (totals.rush in its answer). -->
+      <fieldset data-os-turn hidden class="grid gap-2">
+        <legend class="label mb-2">Turnaround</legend>
+        {business.turnaround.map((t, i) => (
+          <label class={radio}>
+            <input type="radio" name="turnaround" value={t.id.replace('-', '')} checked={i === 0} class="mt-1 accent-violet-600" />
+            <span class="min-w-0 text-[13.5px] leading-snug">
+              <span class="font-semibold text-zinc-900 dark:text-white">{t.name}</span><span class="muted"> · {t.time}{t.fee ? ` · ${t.fee}` : ''}</span>
+              <span class="block text-[12.5px] muted" data-os-ready={t.id.replace('-', '')}></span>
+            </span>
+          </label>
+        ))}
+        <p class="text-[12px] muted">{business.superRushNote} Turnaround starts once your proof is approved.</p>
       </fieldset>
 
       <div data-os-address hidden class="grid gap-4 sm:grid-cols-6">

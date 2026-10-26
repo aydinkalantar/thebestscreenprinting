@@ -31,7 +31,7 @@ This Privacy Policy explains how The Best Screen Printing ("TBSP", "we", "us" or
 
 **Information collected automatically.** Like most websites, our hosting and security provider receives technical information when you visit, such as your IP address, browser type, device type, the pages you request and the date and time. We use it to deliver the Site, keep it secure and prevent spam and abuse.
 
-**Information stored in your browser.** Your quote cart (including the artwork you add to it) and your light or dark mode choice are saved in your own browser, on your device. They are sent to us only when you submit a quote request. You can clear them at any time by clearing your browser's site data.
+**Information stored in your browser.** Your cart (including the artwork you add to it) and your light or dark mode choice are saved in your own browser, on your device. They are sent to us only when you submit a quote request. You can clear them at any time by clearing your browser's site data.
 
 ## 2. How we use your information
 
@@ -63,7 +63,7 @@ If you give us your mobile number or text us, we may text you about your quote o
 
 ## 5. Cookies and similar technologies
 
-The Site uses only what it needs to work: your browser storage for your quote cart and display settings, and security checks by our hosting provider. We do not use advertising trackers or sell information to ad networks.
+The Site uses only what it needs to work: your browser storage for your cart and display settings, and security checks by our hosting provider. We do not use advertising trackers or sell information to ad networks.
 
 Some pages show content from other services, such as YouTube videos or product photos from our garment suppliers. Videos load only when you press play, and those services may collect information under their own privacy policies.
 

@@ -1,0 +1,143 @@
+---
+// Track my order: order number + email → status from the studio admin
+// (POST /api/public/order-status { number, email }). Until that endpoint exists, it explains how to reach us.
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { business } from '../data/business';
+import { Search, Phone } from '@lucide/astro';
+---
+<Base title="Track my order | TBSP" description="Check the status of your TBSP order with your order number and email." noindex>
+  <Breadcrumbs items={[{ label: 'Track my order' }]} />
+  <div class="max-w-2xl">
+    <p class="eyebrow">Orders</p>
+    <h1 class="mt-2 text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white">Track my order</h1>
+    <p class="mt-2 text-[15px] muted">Enter the order number from your receipt (it starts with VP-) and the email you used.</p>
+
+    <form data-track-form class="mt-6 panel-raised p-5 grid gap-4 sm:grid-cols-[1fr_1fr_auto] sm:items-end" novalidate>
+      <label class="label"><span>Order number</span><input name="n" class="field" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="VP-1234" required /></label>
+      <label class="label"><span>Email</span><input name="email" type="email" inputmode="email" class="field" autocomplete="email" autocapitalize="off" spellcheck="false" required /></label>
+      <button type="submit" class="btn-primary h-11 aria-busy:cursor-wait"><Search class="w-4 h-4" aria-hidden="true" /><span>Track</span></button>
+      <p data-track-err class="err sm:col-span-3" role="alert"></p>
+    </form>
+
+    <section data-track-result hidden class="mt-6 panel-raised p-5 sm:p-6 grid gap-5" aria-live="polite">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <p class="text-lg font-bold text-zinc-900 dark:text-white">Order <span data-r-number></span></p>
+        <p data-r-ready class="text-[14px] font-semibold text-emerald-700 dark:text-emerald-400"></p>
+      </div>
+      <ol data-r-steps class="grid gap-0"></ol>
+      <ul data-r-items class="grid gap-1 text-[14px] muted"></ul>
+      <dl data-r-money class="grid grid-cols-[1fr_auto] gap-y-1 text-[14px]"></dl>
+      <div data-r-actions class="flex flex-wrap gap-2"></div>
+    </section>
+
+    <p class="mt-6 flex items-start gap-2 text-[14px] muted"><Phone class="w-4 h-4 mt-0.5 shrink-0 text-violet-600 dark:text-violet-300" aria-hidden="true" /><span>Need help? Call <a class="font-semibold text-violet-700 dark:text-violet-300" href={`tel:${business.phone}`}>{business.phoneDisplay}</a>, Mon–Fri 9am–5pm PT.</span></p>
+  </div>
+</Base>
+
+<style is:global>
+  [data-track-result][hidden] { display: none !important; }
+</style>
+
+<script>
+  import { STUDIO_API, money } from '../lib/online';
+  import { business } from '../data/business';
+
+  interface Status {
+    orderNumber: string; status: string;
+    steps: { key: string; label: string; done: boolean; at?: string }[];
+    items: { title: string; color?: string; quantity: number }[];
+    total: number; paid: number; balance: number;
+    invoiceUrl?: string; proofUrl?: string; trackingUrl?: string; readyBy?: string;
+  }
+  const form = document.querySelector<HTMLFormElement>('[data-track-form]')!;
+  const err = document.querySelector<HTMLElement>('[data-track-err]')!;
+  const out = document.querySelector<HTMLElement>('[data-track-result]')!;
+  const r = (k: string) => out.querySelector<HTMLElement>(`[data-r-${k}]`)!;
+  const nIn = form.elements.namedItem('n') as HTMLInputElement;
+  const eIn = form.elements.namedItem('email') as HTMLInputElement;
+  const fmt = (iso?: string) => (iso ? new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '');
+
+  const qn = new URLSearchParams(location.search).get('n');
+  if (qn) nIn.value = qn.replace(/[^A-Za-z0-9-]/g, '').slice(0, 30);
+  try {
+    const last = JSON.parse(localStorage.getItem('tbsp-last-order') || '{}');
+    if (last.email && (!qn || last.n === nIn.value)) { eIn.value = last.email; if (!qn) nIn.value = last.n || ''; }
+  } catch { /* ignore */ }
+
+  function show(s: Status) {
+    r('number').textContent = s.orderNumber;
+    r('ready').textContent = s.readyBy ? `Ready around ${fmt(s.readyBy)}` : '';
+    const steps = r('steps');
+    steps.replaceChildren();
+    const current = s.steps.findIndex((x) => !x.done);
+    s.steps.forEach((st, i) => {
+      const li = document.createElement('li');
+      li.className = 'relative flex gap-3 pb-4 last:pb-0';
+      const dot = document.createElement('span');
+      dot.className = `relative z-10 mt-0.5 w-6 h-6 shrink-0 rounded-full grid place-items-center text-[12px] font-bold ${st.done ? 'bg-emerald-500 text-white' : i === current ? 'bg-violet-600 text-white ring-4 ring-violet-500/20' : 'bg-zinc-200 dark:bg-white/10 text-zinc-500'}`;
+      dot.textContent = st.done ? '✓' : String(i + 1);
+      if (i < s.steps.length - 1) {
+        const line = document.createElement('span');
+        line.className = `absolute left-[11px] top-7 bottom-0 w-0.5 ${st.done ? 'bg-emerald-500' : 'bg-zinc-200 dark:bg-white/10'}`;
+        li.append(line);
+      }
+      const txt = document.createElement('div');
+      txt.className = 'min-w-0';
+      const t = document.createElement('p');
+      t.className = `text-[15px] ${i === current ? 'font-bold text-zinc-900 dark:text-white' : st.done ? 'font-semibold text-zinc-800 dark:text-zinc-200' : 'muted'}`;
+      t.textContent = st.label;
+      txt.append(t);
+      if (st.at) { const d = document.createElement('p'); d.className = 'text-[12.5px] muted'; d.textContent = fmt(st.at); txt.append(d); }
+      li.append(dot, txt);
+      steps.append(li);
+    });
+    r('items').replaceChildren(...s.items.map((it) => Object.assign(document.createElement('li'), { textContent: `${it.quantity} × ${it.title}${it.color ? ` · ${it.color}` : ''}` })));
+    const m = r('money');
+    m.replaceChildren();
+    const row = (a: string, b: string, strong = false) => {
+      m.append(Object.assign(document.createElement('dt'), { textContent: a, className: strong ? 'font-bold text-zinc-900 dark:text-white' : 'muted' }));
+      m.append(Object.assign(document.createElement('dd'), { textContent: b, className: `text-right ${strong ? 'font-bold' : 'font-semibold'} text-zinc-900 dark:text-white` }));
+    };
+    row('Order total', money(s.total));
+    row('Paid', money(s.paid));
+    if (s.balance > 0.005) row('Balance due', money(s.balance), true);
+    const acts = r('actions');
+    acts.replaceChildren();
+    const link = (href: string, text: string, primary = false) => Object.assign(document.createElement('a'), { href, textContent: text, className: primary ? 'btn-primary' : 'btn-quiet', rel: 'noopener' });
+    if (s.proofUrl) acts.append(link(s.proofUrl, 'Review your proof', true));
+    if (s.balance > 0.005 && s.invoiceUrl) acts.append(link(s.invoiceUrl, `Pay balance ${money(s.balance)}`, !s.proofUrl));
+    if (s.trackingUrl) acts.append(link(s.trackingUrl, 'Track the shipment'));
+    if (s.invoiceUrl && !(s.balance > 0.005)) acts.append(link(s.invoiceUrl, 'View invoice'));
+    out.hidden = false;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    err.textContent = '';
+    const n = nIn.value.trim().toUpperCase(), email = eIn.value.trim().toLowerCase();
+    if (!n) { err.textContent = 'Enter your order number.'; nIn.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'Enter the email you used for the order.'; eIn.focus(); return; }
+    const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    btn.setAttribute('aria-busy', 'true');
+    try {
+      const res = await fetch(`${STUDIO_API}/api/public/order-status`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ number: n, email }) });
+      if (res.ok) {
+        show((await res.json()) as Status);
+        try { localStorage.setItem('tbsp-last-order', JSON.stringify({ n, email })); } catch { /* ignore */ }
+      } else if (res.status === 404) {
+        const body = await res.json().catch(() => null) as { error?: string } | null;
+        out.hidden = true;
+        err.textContent = body?.error || `We couldn't find that order. Check the number and email, or call ${business.phoneDisplay}.`;
+      } else {
+        out.hidden = true;
+        err.textContent = `Online tracking isn't available right now. Call ${business.phoneDisplay} or email ${business.email} and we'll tell you where your order is.`;
+      }
+    } catch {
+      out.hidden = true;
+      err.textContent = `Online tracking isn't available right now. Call ${business.phoneDisplay} or email ${business.email} and we'll tell you where your order is.`;
+    } finally {
+      btn.removeAttribute('aria-busy');
+    }
+  });
+</script>

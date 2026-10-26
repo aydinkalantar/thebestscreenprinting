@@ -21,7 +21,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       <a id="cart-banner" href="/quote-cart/" hidden class="mt-6 panel p-4 flex items-center gap-3 border-violet-400/50 bg-violet-500/[0.06] hover:bg-violet-500/10 transition-colors">
         <span class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-600 text-white"><ClipboardList class="w-5 h-5" aria-hidden="true" /></span>
         <span class="min-w-0 flex-1 leading-snug">
-          <span class="block text-[15px] font-semibold text-zinc-900 dark:text-white" data-cart-banner-text>You have products in your quote</span>
+          <span class="block text-[15px] font-semibold text-zinc-900 dark:text-white" data-cart-banner-text>You have products in your cart</span>
           <span class="block text-[13px] muted">Review them and send them together, or use this form for something else.</span>
         </span>
         <span class="shrink-0 inline-flex items-center gap-1 text-[14px] font-semibold text-violet-700 dark:text-violet-300">Review<span class="max-sm:hidden">&nbsp;them</span><ArrowRight class="w-4 h-4" aria-hidden="true" /></span>
@@ -136,7 +136,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   const showCartBanner = () => {
     const n = cartCount();
     cartBanner.hidden = n === 0;
-    cartBanner.querySelector('[data-cart-banner-text]')!.textContent = `You have ${n} product${n === 1 ? '' : 's'} in your quote (${cartPieces()} pieces)`;
+    cartBanner.querySelector('[data-cart-banner-text]')!.textContent = `You have ${n} product${n === 1 ? '' : 's'} in your cart (${cartPieces()} pieces)`;
   };
   showCartBanner();
   onCartChange(showCartBanner);

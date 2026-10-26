@@ -1,5 +1,5 @@
 ---
-// Quote cart: every product the customer added with "Add to quote", sent as one request.
+// Cart: every product the customer added with "Add to cart". Checked out online (online orders) or sent as one quote request.
 // Items live in the browser (src/lib/cart.ts); this page lists them, lets the customer fix
 // quantities (6-piece minimum per product), then collects contact details and posts it all to
 // /api/quote as `items` + `item<i>_artwork_<n>` / `item<i>_mockup_<side>` files.
@@ -17,13 +17,13 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   .filter((c): c is (typeof COLLECTIONS)[number] => !!c)
   .slice(0, 4);
 ---
-<Base title="Your quote | TBSP" description="The products you picked for a custom printing quote." noindex>
-  <Breadcrumbs items={[{ label: 'Get a quote', href: '/quick-quote/' }, { label: 'Your quote' }]} />
+<Base title="Your cart | TBSP" description="The products you picked: check out online or request one quote." noindex>
+  <Breadcrumbs items={[{ label: 'Products', href: '/catalog/' }, { label: 'Cart' }]} />
   <div id="cart-grid" class="grid gap-8 lg:gap-10 grid-cols-[minmax(0,1fr)]">
     <div class="min-w-0">
-      <p class="eyebrow">Quote cart</p>
-      <h1 class="mt-3 text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white">Your quote</h1>
-      <p class="mt-3 text-[15px] muted max-w-3xl">Everything here goes to our team in one request, and we reply with one quote within one business day. Minimum {min} pieces per product.</p>
+      <p class="eyebrow">Cart</p>
+      <h1 class="mt-3 text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white">Your cart</h1>
+      <p class="mt-3 text-[15px] muted max-w-3xl">Check out and pay online, or send everything as one quote request and we reply within one business day. Minimum {min} pieces per product.</p>
 
       <div id="cart-sent" hidden tabindex="-1" class="mt-6 panel p-5 sm:p-6 border-emerald-500/40 bg-emerald-500/[0.06] grid gap-2" role="status">
         <p class="flex items-center gap-2 text-lg font-bold text-zinc-900 dark:text-white"><CircleCheck class="w-6 h-6 text-emerald-500 shrink-0" aria-hidden="true" />Request sent. Thank you!</p>
@@ -33,12 +33,12 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
 
       <p id="cart-warn" hidden class="mt-6 rounded-xl px-4 py-3 text-sm font-medium bg-amber-500/10 text-amber-800 dark:text-amber-300" role="status"></p>
 
-      <ul id="cart-list" class="mt-6 grid gap-4" aria-label="Products in your quote"></ul>
+      <ul id="cart-list" class="mt-6 grid gap-4" aria-label="Products in your cart"></ul>
 
       <div id="cart-empty" hidden class="mt-6 panel p-6 sm:p-10 text-center grid justify-items-center gap-3">
         <span class="w-14 h-14 rounded-2xl grid place-items-center bg-violet-500/10 text-violet-600 dark:text-violet-300"><ClipboardList class="w-7 h-7" aria-hidden="true" /></span>
-        <p class="text-xl font-bold text-zinc-900 dark:text-white">Your quote is empty</p>
-        <p class="text-[14.5px] muted max-w-md">Pick a product, choose a color and sizes ({min}+ pieces per product), add your artwork if you have it, then tap <b>Add to quote</b>. Add as many products as you like and send them together.</p>
+        <p class="text-xl font-bold text-zinc-900 dark:text-white">Your cart is empty</p>
+        <p class="text-[14.5px] muted max-w-md">Pick a product, choose a color and sizes ({min}+ pieces per product), add your artwork if you have it, then tap <b>Add to cart</b>. Add as many products as you like, then check out or request one quote.</p>
         <div class="mt-2 flex flex-wrap justify-center gap-2">
           <a href="/catalog/" class="btn-primary">Browse the catalog<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
           {shortcuts.map((c) => <a href={collectionHref(c.slug)} class="btn-quiet">{c.label}</a>)}
@@ -65,7 +65,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
           <p class="text-[12px] muted">Tax is added at checkout. Free art proof before we print.</p>
         </div>
         <p data-cp-note hidden class="text-[12.5px] muted"></p>
-        <button type="button" data-continue class="btn-primary w-full h-12 text-[15px] disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"><span data-continue-label>Continue</span><ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
+        <button type="button" data-continue class="btn-primary w-full h-12 text-[15px] disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"><span data-continue-label>Request a quote</span><ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
         <p data-quote-info class="flex gap-1.5 text-[12.5px] muted"><Info class="w-4 h-4 shrink-0 mt-px" aria-hidden="true" />Prices depend on your sizes, colors and decoration, so we quote every order personally. Nothing is charged now.</p>
       </div>
       <div class="mt-4 panel p-5 text-sm">
@@ -82,7 +82,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
         <span class="block text-[14px] font-semibold text-zinc-900 dark:text-white"><span data-sum-items>0</span> products · <span data-sum-pieces>0</span> pieces</span>
         <span data-sum-error class="block text-[12.5px] text-red-600 dark:text-red-400 truncate empty:hidden" aria-live="polite"></span>
       </p>
-      <button type="button" data-continue data-bar-continue class="btn-primary h-12 px-5 text-[15px] shrink-0 disabled:opacity-50 disabled:shadow-none"><span data-continue-label>Continue</span><ArrowRight data-continue-arrow class="w-4 h-4" aria-hidden="true" /></button>
+      <button type="button" data-continue data-bar-continue class="btn-primary h-12 px-5 text-[15px] shrink-0 disabled:opacity-50 disabled:shadow-none"><span data-continue-label>Request a quote</span><ArrowRight data-continue-arrow class="w-4 h-4" aria-hidden="true" /></button>
       <button type="button" data-pay hidden class="btn-primary h-12 px-4 text-[15px] shrink-0 disabled:opacity-50 disabled:shadow-none"><CreditCard class="w-4 h-4" aria-hidden="true" /><span data-pay-label>Pay</span></button>
     </div>
   </div>
@@ -336,7 +336,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
       drafts.delete(it.id);
       await removeCartItem(it.id);
       render();
-      announce(`Removed ${it.name} from your quote.`);
+      announce(`Removed ${it.name} from your cart.`);
       (list.querySelector<HTMLElement>('input') ?? document.querySelector<HTMLElement>('#cart-empty a'))?.focus();
     });
     actions.append(del);
@@ -519,7 +519,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
       const firstBad = Object.keys(data.fields ?? {}).find((k) => k === 'name' || k === 'email');
       if (firstBad) (form.elements.namedItem(firstBad) as HTMLInputElement).focus();
     } catch {
-      showMsg(`We couldn't reach our server. Your quote is still saved here. Please try again, or call ${business.phoneDisplay}.`, 'error', true);
+      showMsg(`We couldn't reach our server. Your cart is still saved here. Please try again, or call ${business.phoneDisplay}.`, 'error', true);
     } finally {
       sending = false;
       send.removeAttribute('aria-disabled');
@@ -554,7 +554,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     document.querySelectorAll<HTMLButtonElement>('[data-continue]').forEach((b) => {
       const label = b.querySelector('[data-continue-label]')!;
       const inBar = b.hasAttribute('data-bar-continue');
-      label.textContent = on ? (inBar ? 'Quote' : 'Request a quote instead') : 'Continue';
+      label.textContent = on ? (inBar ? 'Quote' : 'Request a quote instead') : 'Request a quote';
       b.classList.toggle('btn-primary', !on);
       b.classList.toggle('btn-quiet', on);
       b.classList.toggle('px-5', !on || !inBar);
@@ -615,6 +615,6 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     }
     payBtns.forEach((x) => { x.disabled = false; });
     const pieces = items.reduce((n, it) => n + it.total, 0);
-    openOrder({ items: input, artwork, price: res, summary: `${items.length} product${items.length === 1 ? '' : 's'} · ${pieces} pieces · ${artwork.length} artwork file${artwork.length === 1 ? '' : 's'}` });
+    openOrder({ items: input, artwork, price: res, cartIds: items.map((it) => it.id), summary: `${items.length} product${items.length === 1 ? '' : 's'} · ${pieces} pieces · ${artwork.length} artwork file${artwork.length === 1 ? '' : 's'}` });
   }));
 </script>

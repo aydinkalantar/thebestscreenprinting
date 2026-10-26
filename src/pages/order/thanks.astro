@@ -1,0 +1,65 @@
+---
+// Where Stripe sends customers after paying for an online order (?n=<order number>).
+// Shows what happens next, links to tracking, and removes the bought products from the cart.
+import Base from '../../layouts/Base.astro';
+import { business } from '../../data/business';
+import { CircleCheck, Mail, FileCheck2, Printer, PackageCheck, ArrowRight, Phone } from '@lucide/astro';
+
+const steps = [
+  { icon: Mail, title: 'Receipt by email', text: 'Your payment receipt and invoice are on their way to your inbox.' },
+  { icon: FileCheck2, title: 'Art proof within 1 business day', text: 'We check your artwork and email a proof showing size, placement and colors. Nothing prints until you approve it.' },
+  { icon: Printer, title: 'Printing', text: 'Once you approve, your order goes into production. Your turnaround starts then.' },
+  { icon: PackageCheck, title: 'Ready', text: `We let you know when it's ready for pickup at ${business.address.streetAddress}, or when it ships.` },
+];
+---
+<Base title="Thank you for your order | TBSP" description="Your order is in. Here's what happens next." noindex>
+  <div class="max-w-2xl mx-auto">
+    <div class="panel-raised p-6 sm:p-8 text-center grid justify-items-center gap-3">
+      <span class="w-16 h-16 rounded-full grid place-items-center bg-emerald-500/10 text-emerald-600"><CircleCheck class="w-9 h-9" aria-hidden="true" /></span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white">Thank you for your order!</h1>
+      <p data-order-line class="text-[15.5px] muted">Your order is in, and our team has it.</p>
+      <div class="mt-2 flex flex-wrap justify-center gap-2">
+        <a data-track-link href="/track/" class="btn-primary">Track my order<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+        <a href="/catalog/" class="btn-quiet">Keep shopping</a>
+      </div>
+    </div>
+
+    <h2 class="mt-10 text-xl font-bold text-zinc-900 dark:text-white">What happens next</h2>
+    <ol class="mt-4 grid gap-3">
+      {steps.map((s, i) => (
+        <li class="panel p-4 flex gap-3.5">
+          <span class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-500/10 text-violet-600 dark:text-violet-300"><s.icon class="w-5 h-5" aria-hidden="true" /></span>
+          <div>
+            <p class="font-bold text-zinc-900 dark:text-white"><span class="muted font-semibold mr-1">{i + 1}.</span>{s.title}</p>
+            <p class="mt-0.5 text-[14px] muted">{s.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <p class="mt-6 flex items-start gap-2 text-[14px] muted"><Phone class="w-4 h-4 mt-0.5 shrink-0 text-violet-600 dark:text-violet-300" aria-hidden="true" /><span>Questions? Call <a class="font-semibold text-violet-700 dark:text-violet-300" href={`tel:${business.phone}`}>{business.phoneDisplay}</a> or email <a class="font-semibold text-violet-700 dark:text-violet-300" href={`mailto:${business.email}`}>{business.email}</a>.</span></p>
+  </div>
+</Base>
+
+<script>
+  import { removeCartItem } from '../../lib/cart';
+  import { CHECKOUT_KEY } from '../../lib/order-sheet';
+
+  const n = (new URLSearchParams(location.search).get('n') || '').replace(/[^A-Za-z0-9-]/g, '').slice(0, 30);
+  let saved: { orderNumber?: string; email?: string; cartIds?: string[] } = {};
+  try { saved = JSON.parse(localStorage.getItem(CHECKOUT_KEY) || '{}'); } catch { /* ignore */ }
+  const number = n || saved.orderNumber || '';
+  if (number) {
+    const line = document.querySelector<HTMLElement>('[data-order-line]')!;
+    line.replaceChildren('Your order number is ', Object.assign(document.createElement('b'), { textContent: number, className: 'text-violet-700 dark:text-violet-300 select-all' }), '. Keep it for any questions.');
+    document.querySelector<HTMLAnchorElement>('[data-track-link]')!.href = `/track/?n=${encodeURIComponent(number)}`;
+    // Pre-fills the tracking form on this device (kept out of the URL).
+    if (saved.orderNumber === number && saved.email) { try { localStorage.setItem('tbsp-last-order', JSON.stringify({ n: number, email: saved.email })); } catch { /* ignore */ } }
+  }
+  // The products just paid for leave the cart.
+  if (saved.orderNumber && saved.orderNumber === number) {
+    (async () => {
+      for (const id of saved.cartIds || []) await removeCartItem(id);
+      try { localStorage.removeItem(CHECKOUT_KEY); } catch { /* ignore */ }
+    })();
+  }
+</script>
