@@ -1,247 +1,217 @@
 ---
 path: "/terms-conditions/"
 title: "Terms & Conditions | The Best Screen Printing"
-description: "Terms & Conditions"
+description: "Order terms for The Best Screen Printing (TBSP): minimums, turnaround, artwork and proofs, payment, changes, cancellations, spoilage, claims and reprints."
 h1: "Terms & Conditions"
 kind: legal
-imported: true
+updated: "2026-10-25"
+summary: "The rules for every TBSP order: minimums, turnaround, artwork and proofs, payment, changes, cancellations, claims and reprints. Please read them before you place an order."
+facts:
+  - label: "Minimum order"
+    value: "12 pieces"
+  - label: "Turnaround starts"
+    value: "After payment + proof approval"
+  - label: "Report problems within"
+    value: "48 hours of delivery"
 sourceUrl: "https://thebestscreenprinting.com/terms-conditions/"
 ---
-- Turnaround Time
-- Minimums
-- Terms
-- Artwork
-- About Your Mockup
-- Max Imprint Sizes
-- Screens
-- Out of Stock Items
-- Collar & Seam Printing
-- Hoodie Printing
-- Specific Measurements When Printing
-- Changes to Your Order After Payment
-- Cancellations & Restocking Fees
-- Must-Have Dates
-- Shipping
-- Holidays
-- Screen Printing
-- DTG
-- Returned Checks
-- Garment Disclaimer
+These Terms & Conditions apply to every order placed with The Best Screen Printing ("TBSP", "we", "us" or "our"). By approving a quote, an invoice or a proof, you ("the customer") agree to these terms. If anything here is unclear, please [contact us](#16-contact-us) before you place your order.
 
-## Turnaround Time
+## 1. Quotes and payment
 
-The turnaround time on your order with The Best Screen Printing (hereafter TBSP) starts when you’ve paid in full, we have all information required to complete your order (all artwork, correct tag files, all fonts required for editable tags, all shipping info, etc.) & your Mocks have been approved. Delay in receipt of *any* of this info could result in production delays. Most mocks are sent within 24-48 hours, after receiving payment and all necessary information.
+- Every order starts with a quote. Once you approve it, we send an invoice.
+- Orders must be **paid in full before production starts**, unless TBSP staff approve other terms in writing.
+- If you pay by check, the turnaround time starts when the check clears.
+- A **$30.00 fee** applies to any returned check.
 
-Our turnaround options are Normal (Standard Delivery, estimated to arrive in about 2 weeks), Rush (One-Week Rush Delivery, arrives in 1 week, adds 15% to the order cost) and Super Rush (3-Day Super Rush Delivery, arrives in 3 business days, adds 30% to the order cost). Super Rush is not available for all products, styles or PO Box addresses. Complex orders/add-ons may increase turnaround. Delay in approval of mock ups could also result in production delays. Each finishing service (printed tags, hem tags, etc.) will add extra time to the turn around on orders, adding roughly 2 days per finishing to the turnaround time. The most up-to-date turnaround time will be listed on your quote and invoice.
+*Example:* a company approves our quote and we send the invoice. They pay a week later. Their order goes on the production schedule the day the payment is received, not the day the quote was approved.
 
-If you have a deadline for your order, it is very important that you let us know when placing your order and a rush fee may apply if there is not enough time to complete your order under normal circumstances. If you do not advise us about a due date until after your order has been paid for and pushed through our system, we may not be able to accommodate your request.
+## 2. Minimums
 
-Any circumstances out of TBSP’S control (ie: weather delays, power outage, shipping errors by the supplier, etc.) may also require more time and are not factored into the initial turnaround time estimate.
+The minimum for every TBSP order is **12 pieces**. This applies to every decoration method, including screen printing, DTG, DTF, heat transfer vinyl and embroidery. We do not decorate orders of fewer than 12 pieces.
 
-## Minimums
+Some orders have a higher minimum:
 
-The minimum for every TBSP order is 12 pieces. This applies to every decoration method, including screen printing, DTG, DTF, heat transfer vinyl and embroidery. We do not decorate orders of fewer than 12 pieces.
+| Order type | Minimum |
+| --- | --- |
+| Screen printing, 1–3 ink colors | 12 pieces |
+| Screen printing, 4–6 ink colors | 50 pieces |
+| Screen printing, 7–10 ink colors | 100 pieces |
+| Any order with finishings (printed tags, hem tags, etc.) | 50 pieces |
+| CMYK process printing | 50 or 100 pieces, depending on complexity |
+| Embossing | 50 pieces |
 
-Some orders carry a higher minimum:
+## 3. Turnaround time
 
-- Screen printing, 1-3 ink colors: 12 pieces
-- Screen printing, 4-6 ink colors: 50 pieces
-- Screen printing, 7-10 ink colors: 100 pieces
-- Any order with finishings: 50 pieces
-- CMYK process printing: 50 or 100 pieces, depending on complexity
-- Embossing: 50 pieces
+Turnaround starts only when **all** of these are done:
 
-If you have any questions about our minimums that cannot be answered in the information above please contact us.
+1. your order is paid in full
+2. we have everything needed to complete it (all artwork, tag files, fonts for editable tags, shipping details, etc.)
+3. you have approved your mockup
 
-## Terms
+Most mockups are sent within 24–48 hours after we receive payment and all the information we need. A delay in any of these steps can delay production.
 
-Orders must be paid in full before the order begins unless otherwise approved by TBSP staff. If you pay via check, the turnaround time clock on your order will not begin until your check clears.
+| Option | Estimated delivery | Cost |
+| --- | --- | --- |
+| Normal | About 2 weeks | Standard |
+| Rush | 1 week | +15% of the order cost |
+| Super Rush | 3 business days | +30% of the order cost |
 
-Example: ABC, Inc. emails TBSP about placing a T-Shirt order. TBSP sends ABC a Quote. ABC approves the quote and TBSP sends an Invoice. ACB waits a week, then pays for the order. Once payment is received, TBSP places the order on the schedule.
+- Super Rush is not available for all products, styles or PO Box addresses.
+- Each finishing service (printed tags, hem tags, etc.) adds about 2 days.
+- Complex orders and add-ons may take longer.
+- The current turnaround for your order is shown on your quote and invoice.
+- Events outside our control (weather, power outages, supplier shipping errors, etc.) are not included in turnaround estimates and may add time.
 
-## Artwork
+### Deadlines
 
-All files must be vector format or at least 300 DPI. The design should be sized to the size you would like it to print. Text must be converted to outlines. Printing can only be as good as the artwork. TBSP will not be responsible for poor quality printing due to poor artwork. TBSP is not responsible for any misspellings, errors, or issues in your art file. We do our best to catch these errors and point them out to you, but we may not catch them all. If it is in your art file and on your approval, that is how we will print it.
+If you need your order by a certain date, **tell us when you request your quote**. A rush fee may apply if there is not enough time under Normal turnaround. If you tell us about a deadline only after your order is paid and in production, we may not be able to meet it. We do everything we can to meet requested dates, but we can only guarantee a date when a Rush or Super Rush fee is paid.
 
-All artwork is to be approved via a digital mock-up through email received from Art department ([email protected]).
+### Holidays
 
-Artwork must be checked for spelling, color, sizes ordered, placement of the art and accuracy of artwork by the customer. It is very important to look over every detail of the mockup, as this is how your garments will print. Be informed that we use conditional garment while creating mock-up for “provided garment” orders.
+We are closed on the days below. They are not business days and do not count toward turnaround time:
 
-## About Your Mockup
-
-Your mockup is a digital preview made to help us quote and plan your order. It is not an exact representation of the finished product. Screens, cameras and garment photos show color differently, and each decoration method, fabric and garment color affects how ink and thread look in real life. Print size and placement are approximate and may be adjusted to fit the garment's sizes and seams and to follow production best practices.
-
-Before anything is produced, we send you a digital proof with the final artwork size, placement and colors (including PMS or thread colors when provided). Production starts only after you approve it. If exact color matching matters, tell us your PMS colors or ask for a pre-production sample.
-
-## Art Approval | Order Proofing
-
-TBSP will not accept responsibility for corrections not implemented and/or requested after artwork approval. Any modifications requested after customer approval will result in production delays and could require additional expenses. Any delays in the approval process longer than 24 hours after receipt of the mockup could result in production delays. Please, check your spam box if you do not get your mock-up approval within 24-48 hours before getting in touch with us. It is your responsibility to follow up for mock-up approvals.
-
-## Max Imprint Sizes
-
-Please note that not all shirts are sewn exactly the same. The following dimensions are to be used for reference as a “safe” zone to avoid printing on any seams or edges. Please check the individual product page for exact measurements for the product you are looking for.
-
-- Girls Small – 11” W x 18” H
-- Girls Medium – 12” W x 19” H
-- Girls Large – 12” W x 20” H
-- Girls Extra Large – 12” W x 21” H
-- Unisex Extra Small – 12” W x 20” H
-- Unisex Small – 13” W x 22” H
-- Unisex Medium – 15” W x 23” H
-- Unisex Large – 17” W x 24” H
-- Youth Small – 13” W x 13” H
-- Youth Medium – 13” W x 16” H
-- Youth Large – 14” W x 19” H
-
-NOTE: Any print that goes over a seam can result in imperfections in the print. (Which can be very cool-looking, if you’re into that.)
-
-## Screens
-
-We charge setup fees and try to keep your artwork on screens about 3 months. Please note that by default, like the rest of the industry we will use the same set of screens per design ordered; that is, the graphic will print the exact same size, no matter the size of the item we are printing on. If you would like to have different screen sizes made for different item sizes, please let us know ahead of time. Each set of screens will be considered a different order, with setup, pricing and minimums charged accordingly. Please keep the max imprint sizes in mind when printing girl and youth sized shirts.
-
-Example: ABC, Inc. orders 36 Girls shirts and 60 Unisex shirts with the same design, but sizes the design differently for the two sets of shirts. TBSP will have to make two sets of screens. ABC, Inc. will be charged a screen for the 36 Quantity pricing for the Girls shirts and extra screen for 50-99 Quantity pricing for the Unisex shirts. It will NOT be considered the 100 Quantity pricing.
-
-## Out of Stock Items
-
-TBSP is not responsible for items that are out of stock. While we check items we know to have potential stock issues, all garments are ordered after your order is placed, and we cannot guarantee their availability. If items are out of stock, we will provide you with a list of possible replacements and get it approved by you before using your chosen item.
-
-## Collar & Seam Printing
-
-Although TBSP has the latest equipment available, inconsistencies may occur in registration and ink coverage when printing near or over the collar, seams, or any other edges. Any large prints may run the risk of going over the sleeve seam. These are all considered acceptable goods and will not be considered for reprints.
-
-## Hoodie Printing
-
-Although TBSP has the latest equipment available, inconsistencies may occur in registration and ink coverage when printing over the zipper, pockets or any other uneven surfaces. TBSP will not be responsible for these inconsistencies.
-
-## Specific Measurements When Printing
-
-Even though TBSP’s printing operators have over 15 years of experience, there is no way to effectively and efficiently measure a distance from the collar on each shirt as each garment is loaded onto the press by hand. If you request a print that is 2” down from the collar, we will use that as a guide and do our best to make sure that all shirts hit that target, but not all shirts will hit exactly at 2”, they may be off by as much as an inch in either direction. This will not be considered a misprint and TBSP will not reprint or refund these shirts.
-
-## Changes to Your Order After Payment
-
-Any change made to your order that is not due to a stock issue on behalf of the stock suppliers will be subject to a change fee of $50.00 in addition to the additional costs to make the changes. Any changes to your order after it has been placed will delay your order, even if you have paid a rush fee and/or have given us a required date. It is very important that you do not place your order until you are certain that’s what you want. Once the process begins, everyone in our shop starts to work on different aspects of the job, changes become costly and time consuming.
-
-Example: ABC,Inc places an order for 60 Gildan 5000 shirts in Royal Blue. TBSP then orders the shirts to prepare for printing. Three days later, ABC Inc wants to change the order to now print on Gildan 5000 White tees. TBSP has to re-write the order and ship the black shirts back to the supplier (paying a 35% restocking fee + shipping costs) then pay to have them ship new shirts out.
-
-## Cancellations & Restocking Fees
-
-Cancellations made after order has been placed will be subject to a 35% restocking fee plus any additional fees required to cover services already rendered. No cancellations will be accepted once production or any manipulation of the garments (tag removal, printed tags, printing, hem tagging, etc.) has begun on the order.
-
-Example: ABC places an order for 60 shirts. TBSP then orders the shirts to prepare for printing. Two days later, ABC needs to cancel the order (for any reason). TBSP has to return the shirts to the manufacturer, incurring shipping fees and restocking fees. TBSP refunds ABC for their order minus necessary cancellation fees.
-
-## Must-Have Dates
-
-TBSP will do everything we can to meet any requested date, but we cannot guarantee it unless Rush fees are paid.
-
-## Shipping
-
-TBSP cannot be responsible for any shipping delays caused by the shipping company.
-
-Examples: UPS cannot deliver your package on time due to inclement weather. | UPS delivers your package to the wrong address (although provided the correct address) and you do not receive your products on time.
-
-## Holidays
-
-Just like you, we like to spend the holidays with our families and friends. For that reason, we are closed for the following holidays. These days will not be considered operational business days and will not count towards turnaround time:
-
-- New Year’s Day
+- New Year's Eve and New Year's Day
 - Memorial Day
 - Independence Day
 - Labor Day
-- Thanksgiving Day
-- The Day After Thanksgiving
-- Christmas Eve
-- Christmas Day
-- The Day After Christmas
-- New Year’s Eve
+- Thanksgiving Day and the day after Thanksgiving
+- Christmas Eve, Christmas Day and the day after Christmas
 
-Under-Runs & Spoilage
+## 4. Artwork
 
-## Screen Printing
+- Files must be **vector** or at least **300 DPI**, sized to the size you want printed, with text converted to outlines.
+- A print can only be as good as the artwork. TBSP is not responsible for poor print quality caused by poor artwork.
+- TBSP is not responsible for misspellings, errors or other issues in your art file. We try to catch problems and point them out, but we may not catch them all. If it is in your art file and on your approved proof, that is how it will print.
+- You must have the right to use any artwork, logo or trademark you send us.
 
-Due to the nature of this business, TBSP will not be responsible for under-runs or spoilage up to 3% on jobs of 100 shirts per design, and up to 10% on jobs of less than 100 pieces. (Spoilage must be more than 10 shirts per design for a reprint). Please keep this in mind when ordering (it is never a bad idea to order extras). We always do our best to get you what you ordered. We will refund you the cost of any items shorted from your order but will not process a reprint for less than 10% of your order (or 10 shirts minimum).
+## 5. Mockups and proof approval
 
-## Direct to Garment
+Your mockup is a digital preview that helps us quote and plan your order. It is **not an exact picture of the finished product**. Screens, cameras and garment photos show color differently, and each decoration method, fabric and garment color changes how ink and thread look. Print size and placement are approximate and may be adjusted to fit the garment's sizes and seams and to follow production best practices. For orders on customer-provided garments, the mockup uses a standard garment.
 
-Spoilage rate for DTG printing is 10% and we cannot guarantee consistency of colors since DTG printing machine uses water-base inks and color of garment can affect the result.
+Before anything is produced, we email you a digital proof with the final artwork size, placement and colors (including PMS or thread colors when provided). **Production starts only after you approve it.** If exact color matching matters, tell us your PMS colors or ask for a pre-production sample.
 
-TBSP will not, at any time, be responsible for any lost profits on items shorted from your order. (IE: If you paid $12.00 per shirt to get the shirt printed, but you sell them for $35.00, TBSP is only responsible for the $7.50 you would have paid us for printing the shirt).
+- Check every detail of your proof: spelling, colors, sizes ordered, placement and accuracy of the artwork. This is how your order will print.
+- TBSP is not responsible for corrections requested after you approve the proof. Changes after approval delay production and may cost extra.
+- Approving later than 24 hours after you receive the proof may delay production.
+- If you have not received your proof within 24–48 hours, check your spam folder, then contact us. Following up on your proof is your responsibility.
 
-## Returned Checks
+## 6. Print size and placement
 
-There will be a $30.00 returned check fee.
+### Maximum print sizes
 
-## Garment Disclaimer
+Not all garments are sewn exactly the same. These sizes are a "safe zone" to avoid printing on seams or edges. Check the product page for the exact measurements of each product.
 
-The Garments Provided by TBSP
+| Garment size | Max print (W × H) |
+| --- | --- |
+| Youth Small | 13" × 13" |
+| Youth Medium | 13" × 16" |
+| Youth Large | 14" × 19" |
+| Unisex X-Small | 12" × 20" |
+| Unisex Small | 13" × 22" |
+| Unisex Medium | 15" × 23" |
+| Unisex Large | 17" × 24" |
+| Girls Small | 11" × 18" |
+| Girls Medium | 12" × 19" |
+| Girls Large | 12" × 20" |
+| Girls X-Large | 12" × 21" |
 
-TBSP is not responsible for manufacturer defects such as color inconsistencies, stitching errors, mislabeled garments, loose/inconsistent stitching, and/or garment defects (holes in garments, ripped seams, etc.). We try our hardest to inspect the garments as we print them, but we cannot guarantee each garment. We are not the manufacturers of these garments, so we cannot ensure their construction. We highly recommend ordering 5% extra of each size if an exact count is important.
+### Collars, seams, zippers and pockets
 
-Some manufacturers over-dye their garments. Over-dying is the process of re-dying a garment after it’s initial manufacturing period. This is done for any number of reasons, including color correction, clearing out of colors that didn’t sell (purple shirts aren’t selling so the manufacturer dyes them black to sell them as black shirts), etc. Because of this factor, TBSP cannot 100% guarantee exact color consistency on coloring with discharge printing or discharge based services (Premium Standard). This is most noticeable on white ink prints (showing a slight off-white tinge), but can sometimes be seen with other colors. If you are concerned about the possibility of over-dying on a garment you are interested in or would like more information or alternate print methods, please contact us. We will be glad to provide you with any information that may help you avoid this issue.
+Printing near or over collars, seams, zippers, pockets or other uneven surfaces can cause small differences in registration and ink coverage. Large prints may run over the sleeve seam. These are considered acceptable and are not eligible for reprints.
 
-The Garments Provided by Customer
+### Exact measurements
 
-TBSP does not carry any responsibility for replacing the provided garments by customers. TBSP offers the garment styles and brands which we have tested on technologies we do apply on them such as DTG, Heat Transfer Vinyl and Screen Printing. We usually accept garments provided by customers, but since we have no idea if they will be in a good fabric content for requested technology we can’t offer replacement of garment regardless of its price. In case of misprint or mistakes TBSP offers free re-print on a generic unisex t-shirt brands we do carry. TBSP DOES NOT REFUND FOR PROVIDED GARMENT.
+Each garment is loaded onto the press by hand. If you ask for a print, for example, 2" below the collar, we use that as our target, but placement can vary by up to 1" in either direction. This is not a misprint and is not eligible for a reprint or refund.
 
-Satisfaction
+## 7. Screens and setup
 
-TBSP will not be responsible for your satisfaction with the garments printed on or the printed artwork. We are always available to counsel any customer to ensure you pick a garment that matches your needs but we also need you to do your due diligence on the garment choice. If you are unsure of what garment to select, we can gladly order a number of blank samples for you to choose from. The samples will be billed at a per piece rate and shipped without printing. Blank samples will not credit to the cost of your order.
+- Screen printing includes setup fees. We try to keep your screens for about 3 months for reorders.
+- Like the rest of the industry, we use **one set of screens per design**, so the design prints the same size on every garment size. Keep the maximum print sizes above in mind for youth and girls' sizes.
+- If you want the design in different sizes for different garment sizes, tell us before ordering. Each set of screens is treated as a separate order, with its own setup, pricing and minimums.
 
-Quality Assurance
+*Example:* a company orders 36 girls' shirts and 60 unisex shirts with the same design, sized differently for each. We make two sets of screens. The girls' shirts are priced at the 36-piece tier and the unisex shirts at the 50–99 tier, each with its own setup. It is not priced as one 96-piece order.
 
-We try to check every garment as it comes off of the press, but there are times where some mistakes will make it out the door. It is your responsibility as the customer to check over garments as you pick them up. TBSP will not be responsible for errors with your order if notified after 48 hours of picking up or receiving the goods. TBSP also will not be responsible for any lost income, customers, accounts, and/or contracts if defective garments are sent out to your final customer. While TBSP does quality checks on the garments, the final quality assurance check lies in the hands of you, our customer.
+## 8. Garments
 
-Claims & Reprints
+### Stock availability
 
-We go to great lengths to try to ensure that every order that leaves our facility is correct. All of our customers are valued customers, regardless of size, and we want you all to know that. Any order printed differently than the mock-up approved will be granted a reprint of the defective product. All claims must be submitted within 48 hours of date of delivery or pick-up. Please email [email protected] to submit your claim. If TBSP is responsible for any errors in your order, we will gladly accept responsibility for the issues and will reprint the shirts printed in error. We do not offer refunds, but will gladly reprint any production errors that exceed the spoilage rate.
+Garments are ordered after your order is placed, and we cannot guarantee they will be in stock. TBSP is not responsible for out-of-stock items. If something is unavailable, we will suggest replacements and get your approval before using one.
 
-We will require that you ship the misprinted shirts back to our shop (we will provide you with a UPS label and will cover shipping costs). TBSP will not be responsible for any shirts sold or given away prior to returning the order.
+### Garments supplied by TBSP
 
-Example: If you order 100 shirts and you’ve sold 15 but then you discover a print defect and you return only 85 shirts to TBSP, we are only responsible for the reprinting of the remaining 85 shirts).
+- TBSP is not responsible for manufacturer defects such as color inconsistencies, stitching errors, mislabeled sizes, holes or ripped seams. We inspect garments as we print, but we are not the manufacturer and cannot guarantee every piece. If an exact count matters, we recommend ordering about 5% extra of each size.
+- Some manufacturers over-dye garments (re-dye them after manufacturing). Because of this, we cannot fully guarantee color consistency with discharge printing. It is most visible on white ink, which can show a slight off-white tint. Ask us about other print methods if this is a concern.
 
-Code of Conduct
+### Garments supplied by you
 
-We are committed to:
+- We usually accept customer-provided garments, but we cannot know how every fabric will react to each decoration method.
+- **TBSP does not replace or refund customer-provided garments**, whatever their price.
+- If we make a misprint, we reprint for free on a generic unisex garment brand that we carry.
 
-- a standard of excellence in every aspect of our business, where ever we do business.
-- ethical and responsible conduct in all of our operations
-- respect for the rights of all individuals
-- respect for the environment
+### Choosing the right garment
 
-Nondiscrimination
+We are always happy to help you choose a garment, but the final choice is yours. If you are unsure, we can order blank samples for you. Samples are billed per piece, shipped unprinted, and are not credited toward your order.
 
-TBSP will not discriminate in hiring and employment practices, including salary, benefits, advancement, discipline, termination or retirement, on the basis of race, religion, age, nationality, social or ethnic origin, sexual orientation, gender, political opinion or disability.
+## 9. Changes after payment
 
-Association
+Once your order is placed, our team starts working on it right away, so changes are costly and slow everything down. Please place your order only when you are sure.
 
-TBSP will respect the rights of employees to associate, organize and bargain collectively in a lawful and peaceful manner, without penalty or interference.
+- Any change not caused by a supplier stock issue has a **$50.00 change fee**, plus the extra cost of the change.
+- Any change delays your order, even if you paid a rush fee or gave us a deadline.
 
-Health and Safety
+*Example:* a company orders 60 royal blue shirts and we order them from the supplier. Three days later, they switch to white shirts. We must send the royal blue shirts back (paying a 35% restocking fee and shipping) and order new ones.
 
-TBSP will provide employees with a safe and healthy workplace in compliance with all applicable laws and regulations, ensuring at a minimum reasonable access to potable water and sanitary facilities; fire safety; and adequate lighting and ventilation. TBSP will also ensure that the same standards of health and safety are applied in any housing that they provide for employees.
+## 10. Cancellations
 
-Compensation
+- Cancelling after your order is placed carries a **35% restocking fee**, plus any costs for work already done.
+- **No cancellations** once production or any work on the garments (tag removal, printed tags, printing, hem tags, etc.) has started.
 
-TBSP recognizes that wages are essential to meeting employees’ basic needs. At a minimum, it complies with all applicable wage and hour laws and regulations, including those relating to minimum wages, overtime, maximum hours, piece rates and other elements of compensation, and provide legally mandated benefits. TBSP will compensate employees for overtime hours at such premium rate as is legally required or, if there is no legally prescribed premium rate, at a rate at least equal to the regular hourly compensation rate.
+When a cancellation is accepted, we refund the order minus these fees.
 
-Protection of the Environment
+## 11. Shipping
 
-TBSP complies with all applicable environmental laws and regulations.
+TBSP is not responsible for delays or errors caused by the shipping carrier, such as weather delays or a package delivered to the wrong address when the correct address was given.
 
-Other Laws
+## 12. Spoilage and under-runs
 
-TBSP will comply with all applicable laws and regulations, including those pertaining to the manufacturing, pricing, sale and distribution of merchandise. All references to “applicable laws and regulations” in this Code of Conduct include local and national codes, rules and regulations as well as applicable treaties and voluntary industry standards.
+Small losses are normal in garment decoration. Please keep this in mind and consider ordering a few extras.
 
-- Local Shop
-- Services Screen Printing
-- Direct to Garment (DTG)
-- Embroidery
-- Embossing
-- Heat Transfer Vinyl
-- Products
-- Solutions
-- About Blog
-- Help Shipping and Delivery
-- Learn More About Delivery Time
-- Helpful Design Tips
-- Support
-- Get a Free Quote
+- **Screen printing:** we are not responsible for spoilage or under-runs up to **3%** on jobs of 100+ pieces per design, and up to **10%** on jobs under 100 pieces. A reprint requires spoilage above 10% of the order (and at least 10 pieces per design). Below that, we refund the cost of any missing pieces.
+- **DTG printing:** the spoilage rate is **10%**. DTG uses water-based inks and the garment color affects the result, so we cannot guarantee exact color consistency.
+- **Lost profits:** TBSP is never responsible for lost profits on missing or defective pieces. For example, if you paid us $12.00 per shirt and planned to sell each one for $35.00, our responsibility is limited to the $12.00 you paid us.
+
+## 13. Quality check, claims and reprints
+
+We check garments as they come off the press, but mistakes can still happen, so **please check your order as soon as you receive or pick it up.**
+
+- Report any problem within **48 hours** of delivery or pick-up by emailing [sales@tbsp.la](mailto:sales@tbsp.la). We cannot accept claims after that.
+- If your order was printed differently from the proof you approved, we **reprint the defective pieces**. We do not offer refunds, but we gladly reprint production errors above the spoilage rates in section 12.
+- Send the misprinted pieces back to us. We provide a UPS label and cover the shipping.
+- We are not responsible for pieces sold or given away before they are returned. *Example:* if you received 100 shirts, sold 15, then found a print defect and returned 85, we reprint the 85 returned shirts.
+- TBSP is not responsible for lost income, customers, accounts or contracts if defective pieces are sent on to your own customers. The final quality check is yours.
+
+## 14. Your satisfaction
+
+We will always help you choose the right garment and decoration, and we send a proof for your approval before anything prints. TBSP is not responsible for your personal satisfaction with a garment or artwork that you chose and approved.
+
+## 15. Our code of conduct
+
+We are committed to excellence in everything we do, to ethical and responsible conduct, to respect for every person, and to respect for the environment. In particular, TBSP:
+
+- does not discriminate in hiring or employment on the basis of race, religion, age, nationality, social or ethnic origin, sexual orientation, gender, political opinion or disability
+- respects employees' right to associate, organize and bargain collectively, lawfully and peacefully, without penalty
+- provides a safe and healthy workplace that meets all applicable laws, including clean drinking water and sanitary facilities, fire safety, and proper lighting and ventilation
+- follows all wage and hour laws, including minimum wage, overtime and legally required benefits
+- follows all applicable environmental laws and all other laws for the making, pricing, sale and distribution of our products
+
+## 16. Contact us
+
+Questions about these terms or your order:
+
+**The Best Screen Printing (TBSP)**<br>
+2710 S Broadway Avenue, Los Angeles, CA 90007<br>
+Phone: [(323) 433-0033](tel:+13234330033)<br>
+Email: [sales@tbsp.la](mailto:sales@tbsp.la)
+
+We may update these terms from time to time. The version in effect when you approve your quote or invoice applies to your order. See also our [Privacy Policy](/privacy-policy/).

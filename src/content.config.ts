@@ -20,6 +20,8 @@ const pages = defineCollection({
     facts: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
     // Rendered as an FAQ section and FAQPage schema.
     faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    // Legal pages: date shown as "Last updated" (YYYY-MM-DD).
+    updated: z.string().optional(),
     sourceUrl: z.string().optional(),
   }),
 });
