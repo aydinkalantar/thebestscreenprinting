@@ -645,7 +645,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
       row.hidden = !opt;
       artBox.querySelector(`[data-art-price="${k}"]`)!.textContent = opt ? `${k === 'custom' || (opt as { from?: boolean }).from ? 'from ' : ''}${money(opt.price)}` : '';
     });
-    const terms = [`2 revisions included${o.revisionPrice ? `, then ${money(o.revisionPrice)} each` : ''}`, o.extraDays ? `adds about ${o.extraDays} business days before your proof` : '', 'non-refundable once work starts'].filter(Boolean);
+    const terms = [`${o.revisionsIncluded ?? 2} revision${(o.revisionsIncluded ?? 2) === 1 ? '' : 's'} included${o.revisionPrice ? `, then ${money(o.revisionPrice)} each` : ''}`, o.extraDays ? `adds about ${o.extraDays} business days before your proof` : '', 'non-refundable once work starts'].filter(Boolean);
     artBox.querySelector('[data-art-terms]')!.textContent = `${terms.join(' · ')}. You get the final file.`;
     // Suggest it when the artwork has a problem, or when there's no artwork yet.
     const sug = artBox.querySelector<HTMLElement>('[data-art-suggest]')!;

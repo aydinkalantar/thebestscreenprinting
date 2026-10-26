@@ -10,7 +10,7 @@ export interface PriceLocation { placement: string; method: string; colors?: num
 export type ArtHelpType = 'cleanup' | 'layout' | 'custom';
 export interface ArtHelp { type: ArtHelpType; notes?: string }
 export interface PriceItemInput { brand: string; style: string; color: string; sizes: Record<string, number>; locations: PriceLocation[]; productName?: string; artHelp?: ArtHelp }
-export interface ArtHelpOptions { cleanup?: { price: number }; layout?: { price: number }; custom?: { price: number; from?: boolean }; revisionPrice?: number; extraDays?: number }
+export interface ArtHelpOptions { cleanup?: { price: number }; layout?: { price: number }; custom?: { price: number; from?: boolean }; revisionPrice?: number; extraDays?: number; revisionsIncluded?: number }
 export const ART_HELP_LABELS: Record<ArtHelpType, string> = { cleanup: 'Art cleanup / vectorize', layout: 'Text or simple layout', custom: 'Custom design' };
 export interface PricedItem {
   ok: boolean; quoteOnly?: string; title: string; color: string; quantity: number;
