@@ -13,16 +13,28 @@ const aiHref = '/quick-quote/';
 const max = business.studioLive;
 const nav = NAV.filter((m) => max || m.feature !== 'ai');
 const menuBrands = brandTiles(8);
+// Announcement bar: short selling points that take turns (static for reduced motion).
+const promos = [
+  { text: `Instant prices and online checkout, from ${business.shopMinimum} pieces.`, cta: 'Shop now', href: '/catalog/' },
+  { text: 'Rush in 1 week. Super Rush in 3 business days.', cta: 'Turnaround', href: '/learn-delivery-time/' },
+  { text: 'Free art proof on every order, before anything prints.', cta: 'Get a quote', href: '/quick-quote/' },
+  { text: 'Printed in-house in Los Angeles and Cleveland. Pickup or shipping.', cta: 'Track an order', href: '/track/' },
+];
 ---
 <div class="bg-zinc-900 dark:bg-black text-white text-[11.5px] md:text-[13px] pt-[env(safe-area-inset-top)] md:pt-0">
   <div class="wrap h-7 md:h-9 flex items-center justify-center gap-2 max-md:gap-1.5 text-center">
-    <Sparkles class="w-3.5 h-3.5 text-violet-300 shrink-0" aria-hidden="true" />
     {max ? (
-      <><span class="truncate">New: <b>Max</b>, your merch agent, picks the product, places your logo and quotes your order in minutes.</span>
+      <><Sparkles class="w-3.5 h-3.5 text-violet-300 shrink-0" aria-hidden="true" /><span class="truncate">New: <b>Max</b>, your merch agent, picks the product, places your logo and quotes your order in minutes.</span>
       <a href="/#max" class="font-semibold underline underline-offset-2 shrink-0">See how</a></>
     ) : (
-      <><span class="truncate">Printed in-house in Los Angeles and Cleveland. Orders start at {business.shopMinimum} pieces.</span>
-      <a href="/quick-quote/" class="font-semibold underline underline-offset-2 shrink-0">Get a quote</a></>
+      <div data-promo class="relative min-w-0 flex-1 max-w-3xl h-full" aria-live="off">
+        {promos.map((m, i) => (
+          <p data-promo-item class:list={['absolute inset-0 flex items-center justify-center gap-2 max-md:gap-1.5 transition-opacity duration-500', i ? 'opacity-0 pointer-events-none' : '']} aria-hidden={i ? 'true' : undefined}>
+            <Sparkles class="w-3.5 h-3.5 text-violet-300 shrink-0" aria-hidden="true" /><span class="truncate">{m.text}</span>
+            <a href={m.href} tabindex={i ? -1 : undefined} class="font-semibold underline underline-offset-2 shrink-0">{m.cta}</a>
+          </p>
+        ))}
+      </div>
     )}
   </div>
 </div>
@@ -323,4 +335,31 @@ const menuBrands = brandTiles(8);
   }, { passive: true });
   // Keyboard users tabbing into the header always see it.
   document.querySelector('[data-app-header]')?.addEventListener('focusin', () => root.classList.remove('hdr-hidden'));
+</script>
+
+<script is:inline>
+  // Rotate the announcement bar every 5 s; pauses on hover/focus; off for reduced motion.
+  (() => {
+    const box = document.querySelector('[data-promo]');
+    if (!box || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const items = [...box.querySelectorAll('[data-promo-item]')];
+    if (items.length < 2) return;
+    let i = 0, paused = false;
+    box.addEventListener('mouseenter', () => { paused = true; });
+    box.addEventListener('mouseleave', () => { paused = false; });
+    box.addEventListener('focusin', () => { paused = true; });
+    box.addEventListener('focusout', () => { paused = false; });
+    setInterval(() => {
+      if (paused || document.hidden) return;
+      const prev = items[i];
+      i = (i + 1) % items.length;
+      const next = items[i];
+      for (const [el, on] of [[prev, false], [next, true]]) {
+        el.classList.toggle('opacity-0', !on);
+        el.classList.toggle('pointer-events-none', !on);
+        if (on) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden', 'true');
+        const a = el.querySelector('a'); if (a) { if (on) a.removeAttribute('tabindex'); else a.tabIndex = -1; }
+      }
+    }, 5000);
+  })();
 </script>
