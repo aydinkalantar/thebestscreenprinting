@@ -130,7 +130,7 @@ function wire(el: HTMLElement) {
     fd.set('data', JSON.stringify({
       contact: { name, email, phone: val('phone') || undefined, company: val('company') || undefined },
       items: current.items, delivery, pay,
-      ...(delivery === 'ship' ? { address: { street: val('street'), city: val('city'), state: val('state'), zip: val('zip') } } : {}),
+      ...(delivery === 'ship' ? { address: { street: [val('street'), val('street2')].filter(Boolean).join(', '), city: val('city'), state: val('state'), zip: val('zip') } } : {}),
       notes: val('notes') || undefined, leadSource: val('leadSource') || undefined,
       ...(turnPriced ? { turnaround: turnOf(form) } : {}),
       returnUrl: location.href,

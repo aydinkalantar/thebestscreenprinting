@@ -6,6 +6,8 @@ import { X, Lock, ShieldCheck } from '@lucide/astro';
 import { LEAD_SOURCES } from '../../lib/quote';
 import { business } from '../../data/business';
 
+const US_STATES = 'AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY'.split(' ');
+
 const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] px-3.5 py-2.5 cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-violet-500';
 ---
 <div id="order-sheet" data-sheet="modal" hidden role="dialog" aria-modal="true" aria-labelledby="order-sheet-title" class="fixed inset-0 z-[100] flex items-end md:items-center justify-center md:p-6">
@@ -51,10 +53,17 @@ const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:bor
       </fieldset>
 
       <div data-os-address hidden class="grid gap-4 sm:grid-cols-6">
-        <label class="label sm:col-span-6"><span>Street address</span><input name="street" class="field" autocomplete="street-address" /><span class="err" data-for="address"></span></label>
-        <label class="label sm:col-span-3"><span>City</span><input name="city" class="field" autocomplete="address-level2" /></label>
-        <label class="label sm:col-span-1"><span>State</span><input name="state" class="field" autocomplete="address-level1" maxlength="20" /></label>
-        <label class="label sm:col-span-2"><span>ZIP</span><input name="zip" class="field" autocomplete="postal-code" inputmode="numeric" maxlength="10" /></label>
+        <label class="label sm:col-span-6"><span>Street address</span><input name="street" class="field" autocomplete="shipping address-line1" autocapitalize="words" /><span class="err" data-for="address"></span></label>
+        <label class="label sm:col-span-6"><span>Apt, suite, unit <small>(optional)</small></span><input name="street2" class="field" autocomplete="shipping address-line2" /></label>
+        <label class="label sm:col-span-3"><span>City</span><input name="city" class="field" autocomplete="shipping address-level2" autocapitalize="words" /></label>
+        <label class="label sm:col-span-1"><span>State</span>
+          <select name="state" class="field !px-2" autocomplete="shipping address-level1">
+            <option value=""></option>
+            {US_STATES.map((st) => <option value={st}>{st}</option>)}
+          </select>
+        </label>
+        <label class="label sm:col-span-2"><span>ZIP</span><input name="zip" class="field" autocomplete="shipping postal-code" inputmode="numeric" maxlength="10" /></label>
+        <input type="hidden" name="country" value="US" autocomplete="shipping country" />
       </div>
 
       <fieldset data-os-pay class="grid gap-2">
