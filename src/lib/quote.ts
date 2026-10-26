@@ -95,7 +95,7 @@ export const sizesText = (sizes: Record<string, number>) => Object.entries(sizes
 
 /**
  * Reads the quote cart's `items` JSON. Each item must reach the shop minimum on its own
- * ("12-piece minimum per product"). Unknown fields are dropped.
+ * ("6-piece minimum per product"). Unknown fields are dropped.
  */
 export function parseItems(raw: FormDataEntryValue | null): { items: QuoteItem[] } | { error: string } | null {
   if (typeof raw !== 'string' || !raw.trim()) return null;

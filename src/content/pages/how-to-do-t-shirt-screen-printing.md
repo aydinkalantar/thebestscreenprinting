@@ -87,6 +87,6 @@ Look for clean edges, full coverage, correct placement and no smudges. Let the s
 
 On a production press, the steps are the same but the scale is not. Multi-head presses hold several screens in perfect registration, conveyor dryers cure every shirt at a consistent temperature, and experienced printers dial in ink and pressure for each fabric. That consistency matters when you need dozens or hundreds of identical shirts.
 
-At TBSP, [screen printing](/screen-printing/) starts at 12 pieces and is printed in-house at our Downtown LA shop. Full-color photo art is usually better on [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), which skip screens entirely. Not sure which is right? Read about [DTG printing](/what-is-direct-to-garment-printing-and-how-does-it-work/).
+At TBSP, [screen printing](/screen-printing/) starts at 6 pieces and is printed in-house at our Downtown LA shop. Full-color photo art is usually better on [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), which skip screens entirely. Not sure which is right? Read about [DTG printing](/what-is-direct-to-garment-printing-and-how-does-it-work/).
 
 Want shirts without the darkroom? [Get a free quote](/quick-quote/).

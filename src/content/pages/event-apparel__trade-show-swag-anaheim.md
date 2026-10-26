@@ -7,7 +7,7 @@ kind: audience
 imported: false
 summary: "Look like the booth everyone stops at. Staff shirts, embroidered polos, hats and branded totes for Anaheim trade shows and conventions, printed in Downtown Los Angeles."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Booth staff, giveaways, conference teams" }
 faqs:
@@ -44,7 +44,7 @@ At a trade show, your team is the billboard. Matching shirts make your staff eas
 
 - **[Screen printing](/screen-printing/)** for bold, few-color designs. The best value for giveaway quantities.
 - **[Embroidery](/services/embroidery/)** for staff polos, hats and jackets.
-- **[DTG](/services/direct-to-garment/)** for staff runs with full-color art, from 12 pieces.
+- **[DTG](/services/direct-to-garment/)** for staff runs with full-color art, from 6 pieces.
 - **[Heat transfer](/services/heat-transfer-vinyl/)** to add individual names to staff shirts.
 
 ## How do we hit the show date?

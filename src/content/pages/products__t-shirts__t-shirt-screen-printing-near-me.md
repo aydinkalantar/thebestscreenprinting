@@ -7,14 +7,14 @@ kind: product
 imported: false
 summary: "Real screens, real ink, printed under our own roof on South Broadway in Downtown LA. Screen printing starts at 12 shirts, and every order gets a free art check before it hits the press."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Where", value: "In-house at 2710 S Broadway Ave, Los Angeles" }
   - { label: "Best for", value: "Bulk tees for brands, events, teams and staff" }
 faqs:
   - q: "Do you outsource your screen printing?"
     a: "No. Screen printed orders are printed in-house at our Downtown Los Angeles shop."
   - q: "What if my design is full color?"
-    a: "Full-color and photo designs are usually printed with direct-to-garment (DTG) or direct-to-film (DTF), which skip screen setup. Every order starts at 12 pieces."
+    a: "Full-color and photo designs are usually printed with direct-to-garment (DTG) or direct-to-film (DTF), which skip screen setup. Every order starts at 6 pieces."
   - q: "Can I bring my own shirts to be screen printed?"
     a: "Yes, we can print on customer-provided garments. Tell us the brand, fabric and quantity in your quote request so we can confirm."
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/t-shirt-screen-printing-near-me/"

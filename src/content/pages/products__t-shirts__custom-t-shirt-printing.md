@@ -40,7 +40,7 @@ We answer within one business day with a price and a recommended print method. T
 
 ## How do we pick the print method?
 
-The artwork decides it, and every order starts at 12 pieces:
+The artwork decides it, and every order starts at 6 pieces:
 
 - **Bold designs with a few solid colors:** [screen printing](/screen-printing/), done in-house, for bold, durable color and the best price on bigger runs
 - **Full-color or photo art:** usually [direct-to-garment](/services/direct-to-garment/) or [direct-to-film](/services/direct-to-film/), with no screens to set up

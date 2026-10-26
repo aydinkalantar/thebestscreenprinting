@@ -1,18 +1,18 @@
 ---
 path: "/influencers/"
 title: "Printing For Influencers"
-description: "Creator merch printed in Downtown LA: test a design with a 12-piece DTG run, then scale the drop with screen printing, embroidered hats and Rush and Super Rush options."
+description: "Creator merch printed in Downtown LA: test a design with a 6-piece DTG run, then scale the drop with screen printing, embroidered hats and Rush and Super Rush options."
 h1: "Merch printing for influencers and creators"
 kind: audience
 imported: false
-summary: "Your audience, wearing your brand. Test a design with a 12-piece DTG run, then scale the drop with screen printing and embroidery, all from our Downtown LA shop."
+summary: "Your audience, wearing your brand. Test a design with a 6-piece DTG run, then scale the drop with screen printing and embroidery, all from our Downtown LA shop."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Merch drops, test runs, giveaways, content shoots" }
 faqs:
   - q: "Can I order a test run before my drop?"
-    a: "Yes. A test run starts at 12 pieces, our minimum for every order, so you have enough to shoot and wear-test."
+    a: "Yes. A test run starts at 6 pieces, our minimum for every order, so you have enough to shoot and wear-test."
   - q: "When does screen printing make sense for merch?"
     a: "Once your design is locked and you are ordering a bigger run. The per-piece price usually drops as quantity grows, and the ink is bold and durable."
   - q: "Can you print my design on hats?"
@@ -29,7 +29,7 @@ Your followers can tell the difference between a logo slapped on a cheap tee and
 
 The smartest drops start with proof.
 
-1. **Test it.** Print a 12-piece run with [direct-to-garment (DTG)](/services/direct-to-garment/). Shoot it, wear it, post it.
+1. **Test it.** Print a 6-piece run with [direct-to-garment (DTG)](/services/direct-to-garment/). Shoot it, wear it, post it.
 2. **Read the room.** See which colorway and design your audience actually wants.
 3. **Scale it.** Once you need a bigger run of a design, move to [screen printing](/screen-printing/) for bold ink and a better per-piece price.
 

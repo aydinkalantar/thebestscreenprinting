@@ -1,14 +1,14 @@
 ---
 path: "/small-business/"
 title: "Printing for Small Businesses | Los Angeles"
-description: "Custom shirts, polos, hats and bags for Los Angeles small businesses: screen printing, embroidery and DTG from 12 pieces. Quotes in one business day."
+description: "Custom shirts, polos, hats and bags for Los Angeles small businesses: screen printing, embroidery and DTG from 6 pieces. Quotes in one business day."
 h1: "Printing for small businesses"
 kind: audience
 imported: false
 summary: "Put your name on everything your crew wears. From one DTG shirt to a full screen-printed run, made in our Downtown LA shop, with quotes back within one business day."
 facts:
   - label: "Minimum"
-    value: "12 pieces per order"
+    value: "6 pieces per order"
   - label: "Bigger runs"
     value: "Screen printed in-house"
   - label: "Before printing"
@@ -47,7 +47,7 @@ Quantity and garment call the shot:
 - **Full-color or photo art:** usually DTG or [direct to film](/services/direct-to-film/), a good fit for the first batch of staff shirts.
 - **Bold logos with a few colors:** [screen printing](/screen-printing/), pulled in-house in rich, solid ink.
 
-Every order starts at 12 pieces.
+Every order starts at 6 pieces.
 - **Polos, hats and jackets:** [embroidery](/services/embroidery/), dense thread that makes a uniform look sharp.
 - **Employee names:** [heat transfer vinyl](/services/heat-transfer-vinyl/), a different name on every shirt.
 
@@ -62,7 +62,7 @@ Not sure? Send the logo and the quantity. We will recommend a method in your quo
 
 ## Start small, scale up
 
-Plenty of businesses start with a 12-piece run for staff, then move to screen printing once they need bigger runs of one design. Same logo, more shirts, better economics.
+Plenty of businesses start with a 6-piece run for staff, then move to screen printing once they need bigger runs of one design. Same logo, more shirts, better economics.
 
 ## Grand opening on Friday?
 

@@ -12,7 +12,7 @@ faqs:
   - q: "How should I wash embroidered clothes?"
     a: "Wash inside-out in cold water, skip bleach, and air dry or tumble low. Do not iron directly on the stitching."
   - q: "What is the minimum for embroidery at TBSP?"
-    a: "12 pieces per design, with digitizing and setup included."
+    a: "6 pieces per design, with digitizing and setup included."
 sourceUrl: "https://thebestscreenprinting.com/embroidery-on-clothes/"
 ---
 Embroidery has decorated clothing for centuries, long before anyone pulled a squeegee across a screen. Today the needle is driven by a machine and the design by a digital file, but the core idea is the same: thread stitched into fabric, building a design you can see and feel. Here is what actually matters when you want to embroider clothes, whether it is a dozen caps or a full staff uniform program.
@@ -80,4 +80,4 @@ Choose embroidery for small logos, a premium feel and garments that face hard we
 
 ## Ready to stitch?
 
-TBSP embroiders in Downtown Los Angeles with a 12-piece minimum per design. Send your logo, garment and quantity through the [quick quote form](/quick-quote/) and we will reply within one business day.
+TBSP embroiders in Downtown Los Angeles with a 6-piece minimum per design. Send your logo, garment and quantity through the [quick quote form](/quick-quote/) and we will reply within one business day.

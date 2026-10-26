@@ -9,7 +9,7 @@ summary: "Made in-house, on the shelf or on the road next. TBSP ships your order
 facts:
   - { label: "Shipping", value: "Continental US via UPS/FedEx, plus freight and courier" }
   - { label: "Pickup", value: "Free at 2710 S Broadway Ave, Los Angeles" }
-  - { label: "Finishing minimum", value: "12 pieces (100 for hang tags)" }
+  - { label: "Finishing minimum", value: "6 pieces (100 for hang tags)" }
 faqs:
   - q: "What is blind shipping?"
     a: "We ship your order with your return address on the package instead of ours, at no extra cost. It is ideal for designers and resellers who do not want TBSP branding to reach their clients."
@@ -57,7 +57,7 @@ Turn printed apparel into product that is ready for the rack.
 - **Custom labels.** Remove the manufacturer's tag and add your own customer-supplied label. Available on screen printing, DTG and embroidery orders. Mention if labels are sorted by size.
 - **Hang tags.** Attach your tags or have us print them. Use them for branding, care instructions, promo codes, download codes or sponsor info.
 
-Folding, bagging and labels have a 12-piece minimum. Hang tags have a 100-piece minimum. Finishing adds time to your turnaround, so we confirm the timeline and per-piece pricing with your quote. Request finishing in the special instructions when you order.
+Folding, bagging and labels have a 6-piece minimum. Hang tags have a 100-piece minimum. Finishing adds time to your turnaround, so we confirm the timeline and per-piece pricing with your quote. Request finishing in the special instructions when you order.
 
 ## Building a brand?
 

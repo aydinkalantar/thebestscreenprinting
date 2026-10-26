@@ -44,7 +44,7 @@ T-shirts are where most projects start, but they rarely end there. In the same o
 - [Team uniforms and jerseys](/products/team-uniforms-jerseys/)
 - [Tote bags](/products/bags/)
 
-Methods include in-house [screen printing](/screen-printing/), [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) for full-color art, [embroidery](/services/embroidery/) and [heat transfer](/services/heat-transfer-vinyl/), all from 12 pieces.
+Methods include in-house [screen printing](/screen-printing/), [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) for full-color art, [embroidery](/services/embroidery/) and [heat transfer](/services/heat-transfer-vinyl/), all from 6 pieces.
 
 ## How do I order for local pickup?
 

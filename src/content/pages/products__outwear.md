@@ -8,7 +8,7 @@ imported: false
 summary: "The jacket is the top layer, so it is the one everybody sees. Embroidered logos, printed backs and personalized names on outerwear for crews, staff, teams and brands, out of our Downtown LA shop."
 facts:
   - { label: "Methods", value: "Embroidery, screen printing, heat transfer" }
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Best for", value: "Crew jackets, staff uniforms, teams, brand outerwear" }
 faqs:
   - q: "What is the best way to brand a jacket?"
@@ -38,7 +38,7 @@ Looking for a specific style or color? Check the [catalog](/catalog/) or ask us 
 
 **[Embroidery](/services/embroidery/)** is the classic for outerwear. A stitched chest logo looks sharp, holds up to weather and wear, and gives a jacket that uniform-grade finish. It is our main method for jackets, polos, hats and uniforms.
 
-**[Screen printing](/screen-printing/)** owns the big back graphic. Bold, opaque ink across the back panel for crew jackets, tour gear and merch. In-house, from 12 pieces.
+**[Screen printing](/screen-printing/)** owns the big back graphic. Bold, opaque ink across the back panel for crew jackets, tour gear and merch. In-house, from 6 pieces.
 
 **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** adds names, titles and numbers so each jacket belongs to one person.
 

@@ -5,7 +5,7 @@ description: "How long custom apparel takes at TBSP: Normal delivery in about 2 
 h1: "From the design studio to your door"
 kind: core
 imported: false
-summary: "Plan your deadline with confidence. Pick Normal (about 2 weeks), Rush (1 week, +15%) or Super Rush (3 business days, +30%). Every order starts at 12 pieces."
+summary: "Plan your deadline with confidence. Pick Normal (about 2 weeks), Rush (1 week, +15%) or Super Rush (3 business days, +30%). Every order starts at 6 pieces."
 faqs:
   - q: "How long does a normal order take?"
     a: "Standard Delivery is estimated to arrive in about 2 weeks. It is the default option and adds nothing to your order cost."
@@ -25,7 +25,7 @@ sourceUrl: "https://thebestscreenprinting.com/learn-delivery-time/"
 
 Not in a hurry? Standard Delivery is estimated to arrive in **about 2 weeks**. It adds nothing to your order cost.
 
-Normal orders get the same mockup approval, free art check and quality checks as every TBSP order. Everything is made in-house in Los Angeles and Cleveland, and every order starts at 12 pieces.
+Normal orders get the same mockup approval, free art check and quality checks as every TBSP order. Everything is made in-house in Los Angeles and Cleveland, and every order starts at 6 pieces.
 
 ## Rush: One-Week Rush Delivery
 
@@ -38,7 +38,7 @@ Event this weekend? **3-Day Super Rush Delivery** arrives in **3 business days**
 What helps a rush order go smoothly:
 
 - **Garment stock.** Common blanks in common colors move fastest.
-- **Method.** [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) need no screens. [Screen printing](/screen-printing/) needs screens made first. Every order starts at 12 pieces.
+- **Method.** [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) need no screens. [Screen printing](/screen-printing/) needs screens made first. Every order starts at 6 pieces.
 - **Approved art.** The sooner you approve the mockup, the sooner we print.
 
 Call (323) 433-0033 before you commit to a deadline, or read more on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).

@@ -27,7 +27,7 @@ The Best Screen Printing, TBSP for short, is a custom apparel shop at 2710 S Bro
 
 Launching a clothing line? We work with brand builders from the first sample to the restock.
 
-- **Test with a short run.** Try a design on a 12-piece run before committing to a full drop.
+- **Test with a short run.** Try a design on a 6-piece run before committing to a full drop.
 - **Scale up on press.** Screen printing gives you the best price per piece and a print that lasts, with effects like puff, discharge and foil to set your line apart. See [inks and effects](/services/custom-screen-printing-los-angeles/).
 - **Add premium details.** Embroidered chest logos, [embossing](/services/embossing/) and custom finishes.
 - **Make it retail-ready.** Folding, poly-bagging, custom labels and hang tags through [fulfillment](/fulfillment/).

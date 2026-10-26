@@ -8,7 +8,7 @@ imported: false
 summary: "The hoodie is the piece people actually keep, so it should look the part. Classic and oversized fits from XS to 5XL, decorated with screen printing, embroidery, DTG or heat transfer, all run out of our Downtown LA shop."
 facts:
   - { label: "Sizes", value: "XS to 5XL, classic and oversized fits" }
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Best for", value: "Brand merch, crews, teams and company gear" }
 faqs:
   - q: "What is the best way to put a logo on a hoodie?"
@@ -18,7 +18,7 @@ faqs:
   - q: "Do you have oversized hoodies?"
     a: "Yes. We carry both classic and oversized styles, in sizes from XS to 5XL."
   - q: "What is the minimum order for custom hoodies?"
-    a: "Orders start at 12 pieces, whichever decoration method you choose."
+    a: "Orders start at 6 pieces, whichever decoration method you choose."
 sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/custom-hoodies/"
 ---
 ## Heavy fleece. Loud prints. Clean stitches.
@@ -31,7 +31,7 @@ A tee gets worn for a season. A good hoodie gets worn for years. That is why bra
 
 **Embroidery.** Thread instead of ink, for a raised, premium finish. A stitched chest logo turns a basic hoodie into something that feels retail. [See embroidery](/services/embroidery/).
 
-**Direct-to-garment.** Full-color artwork printed straight into the fabric, from 12 pieces. Ideal for photo-heavy and full-color designs. [See DTG](/services/direct-to-garment/).
+**Direct-to-garment.** Full-color artwork printed straight into the fabric, from 6 pieces. Ideal for photo-heavy and full-color designs. [See DTG](/services/direct-to-garment/).
 
 **Heat transfer.** Crisp names, numbers and small text, often layered on top of a screen printed design. [See heat transfer vinyl](/services/heat-transfer-vinyl/).
 

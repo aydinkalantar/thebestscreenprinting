@@ -36,7 +36,7 @@ Embossing makes sense when:
 - You are ordering 50 pieces or more of one design
 - You have time to plan, since embossing is a longer process
 
-Need a raised logo on a smaller run? [3D puff embroidery](/services/embroidery/) starts at 12 pieces. Want bold color instead of texture? Go with [screen printing](/screen-printing/), [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), all from 12 pieces.
+Need a raised logo on a smaller run? [3D puff embroidery](/services/embroidery/) starts at 6 pieces. Want bold color instead of texture? Go with [screen printing](/screen-printing/), [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), all from 6 pieces.
 
 ## Why does embossing take longer?
 

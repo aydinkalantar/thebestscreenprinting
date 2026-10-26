@@ -7,7 +7,7 @@ kind: product
 imported: false
 summary: "Tees, fleece, polos, hats, bags and more, decorated with screen printing, embroidery, DTG, DTF or heat transfer. Everything runs out of our Downtown LA shop, with quotes answered within one business day."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Brands, events, teams, artists and businesses" }
 faqs:

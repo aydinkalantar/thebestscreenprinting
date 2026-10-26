@@ -7,7 +7,7 @@ kind: audience
 imported: false
 summary: "Swag people keep. Branded tees, embroidered hats, totes and towels for campaigns, launches and giveaways, printed at our Downtown LA shop for brands that have included Netflix, Google and Amazon Alexa."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Giveaways, launches, activations, client gifts" }
 faqs:
@@ -41,7 +41,7 @@ Browse blanks in the [catalog](/catalog/).
 
 - **[Screen printing](/screen-printing/)** for bold, few-color designs: bold color and the best per-piece value, printed in-house.
 - **[Embroidery](/services/embroidery/)** for hats, polos and jackets that feel high-end.
-- **[DTG](/services/direct-to-garment/)** for full-color and photo art, from 12 pieces.
+- **[DTG](/services/direct-to-garment/)** for full-color and photo art, from 6 pieces.
 - **[DTF](/services/direct-to-film/)** for detailed logos on fabrics that are hard to print directly.
 - **[Large-format screen printing](/services/large-format-screen-printing/)** for oversized statement prints.
 

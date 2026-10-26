@@ -5,9 +5,9 @@ description: "Custom event apparel in Los Angeles: staff shirts, tour merch, giv
 h1: "Event apparel"
 kind: audience
 imported: false
-summary: "Shirts people actually keep wearing after the event. Printed in-house in Downtown LA from 12 pieces, with Rush and Super Rush turnaround for tight deadlines."
+summary: "Shirts people actually keep wearing after the event. Printed in-house in Downtown LA from 6 pieces, with Rush and Super Rush turnaround for tight deadlines."
 facts:
-  - label: "Minimum 12 pieces"
+  - label: "Minimum 6 pieces"
     value: "Screen printed in-house in Downtown LA"
   - label: "Turnaround"
     value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
@@ -19,7 +19,7 @@ faqs:
   - q: "Can I pick up my order in Downtown LA?"
     a: "Yes. Our shop is at 2710 S Broadway Avenue, Los Angeles, CA 90007, open Monday through Friday, 9am to 5pm."
   - q: "What if I only need a few shirts for event staff?"
-    a: "Orders start at 12 pieces. Staff shirts with full-color art are usually printed with DTG or DTF."
+    a: "Orders start at 6 pieces. Staff shirts with full-color art are usually printed with DTG or DTF."
   - q: "Can different staff roles have different shirts?"
     a: "Yes. Each design is quoted separately, and names or titles can be added with heat transfer."
 sourceUrl: "https://thebestscreenprinting.com/event-apparel/"
@@ -47,7 +47,7 @@ Quantity and look decide it:
 - **Bold logos with a few colors:** [screen printing](/screen-printing/), in-house. Bold, opaque ink that pops under stage lights and holds up for years.
 - **Full-color or photo art:** usually DTG or [direct to film](/services/direct-to-film/), with no screens.
 
-Every order starts at 12 pieces.
+Every order starts at 6 pieces.
 - **Polos, hats and jackets:** [embroidery](/services/embroidery/), clean stitched logos for the people in charge.
 - **Names, titles or numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/), different on every piece.
 

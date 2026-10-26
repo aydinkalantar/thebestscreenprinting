@@ -5,9 +5,9 @@ description: "Silk screen printing in Los Angeles, explained: spot color, halfto
 h1: "Silk screen printing in Los Angeles"
 kind: service
 imported: false
-summary: "Same craft, six ways to separate your art, from bold spot colors to photo-real simulated process. Silk screen printing runs on orders from 12 pieces at our Downtown LA shop, with a free art check on every job."
+summary: "Same craft, six ways to separate your art, from bold spot colors to photo-real simulated process. Silk screen printing runs on orders from 6 pieces at our Downtown LA shop, with a free art check on every job."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Print styles", value: "Spot, halftone, grayscale, duotone, CMYK, simulated process" }
   - { label: "Best for", value: "Bulk tees, hoodies and merch" }
 faqs:

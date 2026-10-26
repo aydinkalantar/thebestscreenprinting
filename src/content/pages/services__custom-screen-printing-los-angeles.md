@@ -1,13 +1,13 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/"
 title: "Custom Screen Printing Los Angeles | Rush & Super Rush Delivery"
-description: "Plastisol, water-based and discharge inks plus puff, high density, foil, glitter and glow effects. Custom screen printing in Downtown Los Angeles, from 12 pieces."
+description: "Plastisol, water-based and discharge inks plus puff, high density, foil, glitter and glow effects. Custom screen printing in Downtown Los Angeles, from 6 pieces."
 h1: "Custom screen printing in Los Angeles: inks and effects"
 kind: service
 imported: false
-summary: "Same screen, very different results: a soft water-based hand, punchy plastisol, or effects like puff, foil and glow. Screen printing starts at 12 pieces, printed in-house in Downtown LA with Rush and Super Rush turnaround for tight deadlines."
+summary: "Same screen, very different results: a soft water-based hand, punchy plastisol, or effects like puff, foil and glow. Screen printing starts at 6 pieces, printed in-house in Downtown LA with Rush and Super Rush turnaround for tight deadlines."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Standard ink", value: "Plastisol, included in standard pricing" }
   - { label: "Effects", value: "Discharge, puff, high density, gel, foil, metallic, glitter, glow" }
 faqs:

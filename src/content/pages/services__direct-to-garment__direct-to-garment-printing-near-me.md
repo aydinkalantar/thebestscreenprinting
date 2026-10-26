@@ -1,18 +1,18 @@
 ---
 path: "/services/direct-to-garment/direct-to-garment-printing-near-me/"
 title: "Direct To Garment Printing Near Los Angeles"
-description: "DTG printing in Downtown Los Angeles from 12 pieces. Full color, no screens, with a free art check and local pickup on S Broadway."
+description: "DTG printing in Downtown Los Angeles from 6 pieces. Full color, no screens, with a free art check and local pickup on S Broadway."
 h1: "Direct-to-garment printing near me"
 kind: service
 imported: false
-summary: "Full-color art? Several different designs? No problem. DTG prints full-color art straight into the fabric from 12 pieces, at our Downtown LA shop with local pickup."
+summary: "Full-color art? Several different designs? No problem. DTG prints full-color art straight into the fabric from 6 pieces, at our Downtown LA shop with local pickup."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Screens", value: "None needed" }
   - { label: "Best for", value: "Short runs, multi-design orders and photo art" }
 faqs:
   - q: "Can I order just one DTG shirt?"
-    a: "No. DTG orders start at 12 pieces, the same minimum as every order we produce."
+    a: "No. DTG orders start at 6 pieces, the same minimum as every order we produce."
   - q: "Can every shirt in my order have a different design?"
     a: "Yes. Because there are no screens, DTG is the fastest way to print many different designs in small quantities."
   - q: "What is the difference between DTG and DTF?"
@@ -23,7 +23,7 @@ sourceUrl: "https://thebestscreenprinting.com/services/direct-to-garment/direct-
 ---
 ## No screens. No waiting on screens.
 
-Direct-to-garment printing works like a giant inkjet for clothing. Your digital file goes straight from screen to shirt, with every color, gradient and fine line intact. No screens to burn means no waiting. Orders start at 12 pieces, and you can print a different design on each.
+Direct-to-garment printing works like a giant inkjet for clothing. Your digital file goes straight from screen to shirt, with every color, gradient and fine line intact. No screens to burn means no waiting. Orders start at 6 pieces, and you can print a different design on each.
 
 We run DTG at our shop at 2710 S Broadway in Downtown Los Angeles, so you can drop by, pick up and get on with your day.
 

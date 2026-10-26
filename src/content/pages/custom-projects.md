@@ -18,7 +18,7 @@ faqs:
   - q: "How much does a custom project cost?"
     a: "Every custom project is quoted individually, because fabric, construction, decoration and quantity all change the price. We reply with a personal quote within one business day."
   - q: "Is there a minimum order?"
-    a: "It depends on the project. Embossing starts at 50 pieces; cut and sew and sublimation minimums are confirmed with your quote, and no order goes below 12 pieces."
+    a: "It depends on the project. Embossing starts at 50 pieces; cut and sew and sublimation minimums are confirmed with your quote, and no order goes below 6 pieces."
 ---
 Some ideas don't fit on a blank. A hoodie in your own fabric and fit. A jersey printed edge to edge. A logo pressed into the fleece instead of printed on it. That's what custom projects are for.
 

@@ -1,20 +1,20 @@
 ---
 path: "/services/direct-to-film/"
 title: "Direct-to-Film (DTF) Printing in Los Angeles"
-description: "DTF printing in Downtown LA: full-color transfers on cotton, polyester and blends. Built for full-color short runs from 12 pieces, with a free art check on every order."
+description: "DTF printing in Downtown LA: full-color transfers on cotton, polyester and blends. Built for full-color short runs from 6 pieces, with a free art check on every order."
 h1: "Direct-to-film (DTF) printing in Los Angeles"
 kind: service
 imported: false
-summary: "Full-color prints that go where screens can't: cotton, polyester, blends and short runs, printed at our Downtown LA shop. DTF is one of our go-to methods for full-color art, orders start at 12 pieces, and every file gets a free art check."
+summary: "Full-color prints that go where screens can't: cotton, polyester, blends and short runs, printed at our Downtown LA shop. DTF is one of our go-to methods for full-color art, orders start at 6 pieces, and every file gets a free art check."
 facts:
-  - { label: "Best for", value: "Full-color short runs, from 12 pieces" }
+  - { label: "Best for", value: "Full-color short runs, from 6 pieces" }
   - { label: "Fabrics", value: "Cotton, polyester and blends" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "What is DTF printing?"
     a: "DTF stands for direct-to-film. The design is printed onto a special film, then heat pressed onto the garment, leaving a full-color print that sits on the fabric surface."
   - q: "Is DTF or DTG better for a small order?"
-    a: "Both work for small orders, from 12 pieces. DTG gives the softest feel on cotton, while DTF handles polyester and blends well and layers a thin film you can feel slightly to the touch."
+    a: "Both work for small orders, from 6 pieces. DTG gives the softest feel on cotton, while DTF handles polyester and blends well and layers a thin film you can feel slightly to the touch."
   - q: "Can DTF print on polyester?"
     a: "Yes. DTF prints on cotton, polyester and blends, which makes it a strong pick for performance wear and mixed-fabric orders."
   - q: "Can I get a DTF order rushed?"
@@ -28,7 +28,7 @@ DTF is the move when you need a full-color design on a short run, or on fabric t
 
 DTF earns its spot when:
 
-- You need a short run of a design, from 12 pieces
+- You need a short run of a design, from 6 pieces
 - The garment is polyester, a blend, or performance fabric
 - The design is full color, with gradients or photo detail
 - You want a test run before committing to a bigger order

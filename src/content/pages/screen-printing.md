@@ -1,18 +1,18 @@
 ---
 path: "/screen-printing/"
 title: "Screen Printing in Los Angeles | TBSP"
-description: "Custom screen printing in Downtown LA for runs from 12 pieces. Printed in-house, free art check, quotes in one business day, Rush and Super Rush available."
+description: "Custom screen printing in Downtown LA for runs from 6 pieces. Printed in-house, free art check, quotes in one business day, Rush and Super Rush available."
 h1: "Screen printing in Los Angeles"
 kind: service
 imported: false
-summary: "Bold, solid ink that outlasts the wash cycle, pulled in-house at our Downtown LA shop. Screen printing starts at 12 pieces, with Rush and Super Rush turnaround for tight deadlines and quotes back within one business day."
+summary: "Bold, solid ink that outlasts the wash cycle, pulled in-house at our Downtown LA shop. Screen printing starts at 6 pieces, with Rush and Super Rush turnaround for tight deadlines and quotes back within one business day."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Merch drops, events, teams and staff shirts" }
 faqs:
   - q: "What is the minimum order for screen printing?"
-    a: "Screen printing starts at 12 pieces, the same minimum as every order. For full-color or photo art we usually recommend direct-to-garment (DTG) or direct-to-film (DTF) printing, which skip the screen setup."
+    a: "Screen printing starts at 6 pieces, the same minimum as every order. For full-color or photo art we usually recommend direct-to-garment (DTG) or direct-to-film (DTF) printing, which skip the screen setup."
   - q: "How fast can I get screen printed shirts?"
     a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. It depends on quantity, colors and garment stock, so send your details through the quick quote form and we will confirm."
   - q: "Do you check my artwork before printing?"

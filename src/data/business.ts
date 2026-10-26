@@ -28,7 +28,7 @@ export const business = {
   // Off until the studio is ready for production: hides every link to it, and Max.
   studioLive: false,
   /** Minimum order for every decoration method. Everything is made in-house; we don't decorate fewer. */
-  shopMinimum: 12,
+  shopMinimum: 6,
   assistantName: 'Max',
   /**
    * Turnaround options shown across the site and offered on the quote form.

@@ -9,12 +9,12 @@ summary: "Our second production facility puts TBSP in Northeast Ohio. Screen pri
 facts:
   - { label: "Service area", value: "Greater Cleveland, OH" }
   - { label: "Delivery", value: "Local drop-off by our team" }
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
 faqs:
   - q: "Do you have a shop in Cleveland?"
     a: "Yes, we have a production facility in Cleveland. It is not a walk-in storefront, so orders are delivered by our team across Greater Cleveland. Our walk-in shop is in Los Angeles."
   - q: "What can I order in Cleveland?"
-    a: "The same services as in Los Angeles: screen printing, embroidery, DTF and DTG printing, all from 12 pieces, on tees, hoodies, hats, polos, bags and team uniforms."
+    a: "The same services as in Los Angeles: screen printing, embroidery, DTF and DTG printing, all from 6 pieces, on tees, hoodies, hats, polos, bags and team uniforms."
   - q: "Which areas do you deliver to?"
     a: "Cleveland and Greater Cleveland. Tell us your address with your quote request and we will confirm delivery for your order."
   - q: "How do I get a quote for a Cleveland order?"

@@ -8,7 +8,7 @@ imported: false
 summary: "Five ways to put your design on a shirt, and the one that fits depends on your quantity, colors and fabric. We run all of them at our Downtown LA shop and recommend the right one with every quote."
 facts:
   - { label: "Methods", value: "Screen print, DTG, DTF, heat transfer, sublimation" }
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Best for", value: "Matching the print to your quantity and artwork" }
 faqs:
   - q: "Which print method lasts the longest?"
@@ -25,7 +25,7 @@ A custom printed tee can feel like a soft vintage print, a bold slab of opaque i
 
 ## Screen printing: bold color in bulk
 
-Ink is pushed through a mesh screen, one screen per color, layer by layer. The result is opaque, saturated color with a print that stands up to years of washing. Screen printing starts at 12 pieces and is printed in-house at our shop.
+Ink is pushed through a mesh screen, one screen per color, layer by layer. The result is opaque, saturated color with a print that stands up to years of washing. Screen printing starts at 6 pieces and is printed in-house at our shop.
 
 **Choose it for:** staff shirts, events, teams, merch drops, designs with a few solid colors. [More on screen printing](/screen-printing/).
 
@@ -57,7 +57,7 @@ Dye is turned to gas by heat and bonded into polyester fibers, covering the shir
 
 Start with three questions:
 
-1. **How many of one design?** Every order starts at 12 pieces. The bigger the run, the more screen printing pays off.
+1. **How many of one design?** Every order starts at 6 pieces. The bigger the run, the more screen printing pays off.
 2. **How many colors?** A few solid spot colors suit screens. Photos and gradients suit DTG, DTF or sublimation.
 3. **What fabric?** Cotton opens every option except sublimation. Polyester is where sublimation and DTF shine.
 

@@ -1,13 +1,13 @@
 ---
 path: "/clubs-groups/"
 title: "Specialty T-Shirts"
-description: "Custom shirts and hoodies for clubs, school groups, families, charities and crews, printed in Downtown LA. Orders start at 12 pieces."
+description: "Custom shirts and hoodies for clubs, school groups, families, charities and crews, printed in Downtown LA. Orders start at 6 pieces."
 h1: "Specialty t-shirts for clubs and groups"
 kind: audience
 imported: false
-summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Downtown LA shop. Orders start at 12 pieces, for every decoration method."
+summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Downtown LA shop. Orders start at 6 pieces, for every decoration method."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Clubs, school groups, reunions, charity walks, staff" }
 faqs:
@@ -16,7 +16,7 @@ faqs:
   - q: "Can we add individual names to each shirt?"
     a: "Yes. Names and numbers are usually added with heat transfer, on top of a screen printed or DTG design."
   - q: "Our group is small. Do we still qualify?"
-    a: "Yes, as long as the order is 12 pieces or more. Screen printing usually gets cheaper per piece as quantity grows."
+    a: "Yes, as long as the order is 6 pieces or more. Screen printing usually gets cheaper per piece as quantity grows."
   - q: "Can you help us with the design?"
     a: "Send what you have, even a sketch. Every order gets a free art check, and we can talk through graphic design help by email."
 sourceUrl: "https://thebestscreenprinting.com/clubs-groups/"
@@ -40,7 +40,7 @@ It comes down to how many shirts and how many colors.
 - **Bold, few-color designs:** [screen printing](/screen-printing/). Bold, solid ink that lasts, printed in-house.
 - **Full-color or photo art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 
-Every order starts at 12 pieces.
+Every order starts at 6 pieces.
 - **Names and numbers:** [heat transfer](/services/heat-transfer-vinyl/) to personalize each piece.
 - **Hats, polos and jackets:** [embroidery](/services/embroidery/) for a stitched logo.
 

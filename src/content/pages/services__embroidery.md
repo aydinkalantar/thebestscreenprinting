@@ -1,18 +1,18 @@
 ---
 path: "/services/embroidery/"
 title: "Embroidery Services in Los Angeles"
-description: "Custom embroidery in Downtown LA on caps, polos, jackets and uniforms. 12-piece minimum per design, digitizing and setup included, 3D puff available."
+description: "Custom embroidery in Downtown LA on caps, polos, jackets and uniforms. 6-piece minimum per design, digitizing and setup included, 3D puff available."
 h1: "Embroidery services in Los Angeles"
 kind: service
 imported: false
-summary: "Thread-built logos with real texture, stitched on caps, polos, jackets and uniforms at our Downtown LA shop. 12-piece minimum per design, with digitizing and setup included and no hidden setup fees."
+summary: "Thread-built logos with real texture, stitched on caps, polos, jackets and uniforms at our Downtown LA shop. 6-piece minimum per design, with digitizing and setup included and no hidden setup fees."
 facts:
-  - { label: "Minimum", value: "12 pieces per design" }
+  - { label: "Minimum", value: "6 pieces per design" }
   - { label: "Setup", value: "Digitizing and setup included" }
   - { label: "Best for", value: "Caps, uniforms, polos and jackets" }
 faqs:
   - q: "What is the minimum order for custom embroidery?"
-    a: "Our embroidery minimum is 12 pieces per design. Send the quantity and garments with your quote request and we will confirm the details."
+    a: "Our embroidery minimum is 6 pieces per design. Send the quantity and garments with your quote request and we will confirm the details."
   - q: "Do you charge a digitizing fee?"
     a: "No. Our prices include all digitizing and setup costs, so there are no hidden setup fees on embroidery orders."
   - q: "What is 3D puff embroidery?"

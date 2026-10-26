@@ -5,16 +5,16 @@ description: "Custom Coachella and festival merch from a Downtown LA print shop:
 h1: "Custom Coachella merch printing in Los Angeles"
 kind: audience
 imported: false
-summary: "Desert-ready merch for the festival weekend. Tees, tanks, hoodies, embroidered hats and totes for artists, brands, vendors and crews, printed in Downtown LA, from 12 pieces."
+summary: "Desert-ready merch for the festival weekend. Tees, tanks, hoodies, embroidered hats and totes for artists, brands, vendors and crews, printed in Downtown LA, from 6 pieces."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Order by", value: "2 to 3 weeks before the festival is ideal" }
   - { label: "Best for", value: "Artist merch, brand activations, vendor staff, group fits" }
 faqs:
   - q: "How early should I order Coachella merch?"
     a: "Aim for at least 2 to 3 weeks before the festival. If you are cutting it close, Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call to confirm."
   - q: "Is there a minimum order?"
-    a: "Yes. Every order starts at 12 pieces, whichever decoration method you choose."
+    a: "Yes. Every order starts at 6 pieces, whichever decoration method you choose."
   - q: "Can you help design our festival merch?"
     a: "Yes. Send a sketch, a mood board or finished art. Every order gets a free art check, and we can talk through design help by email."
   - q: "Can I pick up the order in Los Angeles on the way to the desert?"

@@ -1,18 +1,18 @@
 ---
 path: "/services/direct-to-garment/"
 title: "Direct-to-Garment (DTG) Printing in Los Angeles"
-description: "DTG printing in Downtown LA: full-color, high-detail prints from 12 pieces. Ideal for photos, gradients and multi-color designs."
+description: "DTG printing in Downtown LA: full-color, high-detail prints from 6 pieces. Ideal for photos, gradients and multi-color designs."
 h1: "Direct-to-garment (DTG) printing in Los Angeles"
 kind: service
 imported: false
-summary: "Photo-level detail printed straight into the fabric, on runs from 12 pieces, at our Downtown LA shop. Every design gets a review and proof before it prints."
+summary: "Photo-level detail printed straight into the fabric, on runs from 6 pieces, at our Downtown LA shop. Every design gets a review and proof before it prints."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Screens", value: "None needed" }
   - { label: "Best for", value: "Full-color and photo designs" }
 faqs:
   - q: "Is there a minimum order for DTG printing?"
-    a: "Yes. DTG orders start at 12 pieces, the same minimum as every order we produce."
+    a: "Yes. DTG orders start at 6 pieces, the same minimum as every order we produce."
   - q: "What file should I send for DTG?"
     a: "Send the highest resolution image you have. The more pixels in the file, the more detail ends up on the shirt. For business logos, ask your web or marketing team for the original files."
   - q: "When is screen printing better than DTG?"
@@ -29,7 +29,7 @@ DTG works like an inkjet printer built for apparel. Your design is printed direc
 
 DTG is the play when:
 
-- You need a short run, from 12 pieces
+- You need a short run, from 6 pieces
 - You are printing several different designs in small quantities
 - Your artwork is too detailed or colorful for screens
 - You want a short test run before a bigger order

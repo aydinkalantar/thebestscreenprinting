@@ -19,7 +19,7 @@ sourceUrl: "https://thebestscreenprinting.com/shipping-and-delivery/"
 ---
 ## How does shipping work?
 
-Every order is made in-house in Los Angeles and Cleveland, with a 12-piece minimum. Pick the delivery option that fits your date:
+Every order is made in-house in Los Angeles and Cleveland, with a 6-piece minimum. Pick the delivery option that fits your date:
 
 - **Normal (Standard Delivery):** estimated to arrive in about 2 weeks.
 - **Rush (One-Week Rush Delivery):** arrives at your doorstep in 1 week and adds 15% to the order cost.

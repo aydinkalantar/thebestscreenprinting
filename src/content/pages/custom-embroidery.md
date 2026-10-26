@@ -1,13 +1,13 @@
 ---
 path: "/custom-embroidery/"
 title: "Custom Embroidery | The Best Screen Printing"
-description: "Custom embroidery in Los Angeles for events, promotions and merch: stitched hats, polos, hoodies, jackets and bags. 12-piece minimum, digitizing included."
+description: "Custom embroidery in Los Angeles for events, promotions and merch: stitched hats, polos, hoodies, jackets and bags. 6-piece minimum, digitizing included."
 h1: "Custom embroidery in Los Angeles"
 kind: service
 imported: false
-summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Downtown LA shop with a 12-piece minimum per design, digitizing included and Rush and Super Rush options."
+summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Downtown LA shop with a 6-piece minimum per design, digitizing included and Rush and Super Rush options."
 facts:
-  - { label: "Minimum", value: "12 pieces per design" }
+  - { label: "Minimum", value: "6 pieces per design" }
   - { label: "Setup", value: "Digitizing included" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
@@ -39,7 +39,7 @@ Printing wins on big graphics, photos and fine detail. Embroidery wins on small 
 
 1. **Pick your hero piece.** Caps and hoodies get worn. Choose what your audience will actually use.
 2. **Keep the logo bold.** Clean shapes and a short color list stitch the sharpest.
-3. **Hit the minimum.** 12 pieces per design. Mix garments as long as the design is the same.
+3. **Hit the minimum.** 6 pieces per design. Mix garments as long as the design is the same.
 4. **Tell us the date.** Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Confirm by phone or in your quote.
 
 ## Want a specific stitch style?

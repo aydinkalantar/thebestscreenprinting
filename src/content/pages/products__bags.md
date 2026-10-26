@@ -7,7 +7,7 @@ kind: product
 imported: false
 summary: "A tote gets carried, seen and reused for years, which makes it one of the hardest-working pieces of merch you can make. Screen printed or embroidered on one or both sides, out of our Downtown LA shop."
 facts:
-  - { label: "Minimum", value: "12 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Methods", value: "Screen printing and embroidery" }
   - { label: "Best for", value: "Retail merch, events, giveaways, conferences" }
 faqs:
@@ -34,7 +34,7 @@ Not sure which bag fits the budget or the use? Browse blanks in our [catalog](/c
 
 ## How do I choose a decoration method for a bag?
 
-**[Screen printing](/screen-printing/)** is the go-to for totes. Ink sinks into canvas and cotton, colors stay solid, and the large flat panel is perfect for bold graphics. It starts at 12 pieces and is printed in-house.
+**[Screen printing](/screen-printing/)** is the go-to for totes. Ink sinks into canvas and cotton, colors stay solid, and the large flat panel is perfect for bold graphics. It starts at 6 pieces and is printed in-house.
 
 **[Embroidery](/services/embroidery/)** adds a stitched, premium logo. It works best on sturdier fabrics and smaller designs, and it looks great on backpacks and higher-end totes.
 
