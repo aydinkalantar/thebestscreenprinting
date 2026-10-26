@@ -394,7 +394,9 @@ function sleeveSpot(a: Analysis, sc: Scale, dir: 1 | -1, wIn: number, hIn: numbe
   }
   if (rows.length < 3 * ppi * (long ? 2 : 0.6)) return null;
   if (long) {
-    wIn = q(Math.min(wIn, Math.max(1, Math.min(...rows.map((r) => r.w)) / ppi - 0.5)));
+    // From the front only part of a long sleeve shows, but the print wraps the outer sleeve:
+    // keep a usable width (3"+, up to the full size) rather than the visible strip.
+    wIn = q(Math.min(wIn, Math.max(3, Math.min(...rows.map((r) => r.w)) / ppi - 0.5)));
     // Long sleeve: runs down the sleeve from just below the shoulder seam.
     const first = rows[0].y + 1.5 * ppi;
     const span = rows.filter((r) => r.y >= first);
