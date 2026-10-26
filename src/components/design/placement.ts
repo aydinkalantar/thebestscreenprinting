@@ -193,7 +193,7 @@ export function boxOf(a: Analysis | null): Box | null {
 }
 
 /** One placed print area: rectangle as fractions of the photo, and its real size in inches. */
-export interface Placed { x: number; y: number; w: number; h: number; wIn: number; hIn: number; how: 'measured' | 'template' }
+export interface Placed { x: number; y: number; w: number; h: number; wIn: number; hIn: number; how: 'measured' | 'template' | 'manual' }
 
 export interface Collar { y: number; how: 'neckline' | 'collar' | 'hood' }
 

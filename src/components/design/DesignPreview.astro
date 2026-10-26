@@ -2,19 +2,20 @@
 // Design preview: the garment photo for the selected color with the customer's artwork placed
 // on it. All behaviour lives in design.ts; the product page mounts it and wires the quote panel.
 import { techniqueNames, type CatalogProduct } from '../../lib/catalog';
-import { spotsFor, placeConfigFor, type Overrides } from './areas';
+import { spotsFor, placeConfigFor, applyPrintAreas, type Overrides, type PrintAreas } from './areas';
 import overrides from '../../../data/print-area-overrides.json';
 import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info, Eye } from '@lucide/astro';
 
 interface Props { p: CatalogProduct }
 const { p } = Astro.props;
-const spots = spotsFor(p);
+const printAreas = (p as { printAreas?: PrintAreas }).printAreas ?? null;
+const spots = applyPrintAreas(spotsFor(p), printAreas);
 const first = p.colors[0];
 const front = first?.image || p.image;
 const back = first?.back || '';
 const methods = techniqueNames(p.techniques);
 const place = placeConfigFor(p, (overrides as Record<string, Overrides>)[p.id]);
-const config = { spots, decorations: methods.length ? methods : ['Not sure yet'], name: p.name, place, style: p.image };
+const config = { spots, decorations: methods.length ? methods : ['Not sure yet'], name: p.name, place, style: p.image, printAreas };
 const first0 = spots[0];
 const chip = 'chip relative shrink-0 cursor-pointer select-none aria-pressed:border-violet-500 aria-pressed:bg-violet-500/10 aria-pressed:text-violet-700 dark:aria-pressed:text-violet-300 max-md:h-10';
 const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';

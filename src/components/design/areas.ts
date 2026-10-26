@@ -230,7 +230,7 @@ export function templateFor(category: string, subcategory = '', name = ''): keyo
 export const isYouth = (p: { category: string; name: string }) => p.category === 'kids' || /\b(youth|toddler|infant|kids?)\b/i.test(p.name);
 
 /** One location as the browser uses it: position on the photo plus its size in inches. */
-export interface DesignSpot { id: string; label: string; side: Side; cx: number; top: number; w: number; wIn: number; hIn: number }
+export interface DesignSpot { id: string; label: string; side: Side; cx: number; top: number; w: number; wIn: number; hIn: number; /** Decorations allowed here (admin setting); all when absent. */ methods?: string[] }
 
 export function spotsFor(p: { category: string; subcategory?: string | null; name: string }): DesignSpot[] {
   const scale = isYouth(p) ? YOUTH_SCALE : 1;
@@ -238,6 +238,29 @@ export function spotsFor(p: { category: string; subcategory?: string | null; nam
   return TEMPLATES[templateFor(p.category, p.subcategory ?? '', p.name)].map(({ size, ...s }) => ({
     ...s, wIn: round(PRINT_SIZES[size].w), hIn: round(PRINT_SIZES[size].h),
   }));
+}
+
+/**
+ * Print areas set by hand in Admin › Products (synced into the catalog as `printAreas`).
+ * Boxes are fractions of the product photo; anything not set keeps the automatic placement.
+ */
+export interface ManualBox { side: Side; x: number; y: number; w: number; h: number }
+export interface PrintAreas {
+  locations?: Record<string, { enabled?: boolean; box?: ManualBox; wIn?: number; hIn?: number; methods?: string[] }>;
+  /** Per color name: boxes for photos shot differently from the default color. */
+  colors?: Record<string, Record<string, { box?: ManualBox }>>;
+}
+
+/** Locations after the admin's settings: switched-off ones removed, sizes and allowed methods applied. */
+export function applyPrintAreas(spots: DesignSpot[], pa?: PrintAreas | null): DesignSpot[] {
+  const loc = pa?.locations ?? {};
+  return spots
+    .filter((s) => loc[s.id]?.enabled !== false)
+    .map((s) => {
+      const o = loc[s.id];
+      if (!o) return s;
+      return { ...s, ...(o.wIn ? { wIn: o.wIn } : {}), ...(o.hIn ? { hIn: o.hIn } : {}), ...(o.methods?.length ? { methods: o.methods } : {}) };
+    });
 }
 
 /** Measured-placement settings for a product (null for hats, bags and pants: template only). */

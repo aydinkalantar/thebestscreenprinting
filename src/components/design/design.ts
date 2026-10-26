@@ -4,7 +4,7 @@
 import { openSheet, wireSheet } from '../../lib/sheet';
 import { garmentFor, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, MAX_PLACEMENTS } from '../../lib/quote';
 import { business } from '../../data/business';
-import type { DesignSpot, PlaceConfig, Side } from './areas';
+import type { DesignSpot, PlaceConfig, PrintAreas, Side } from './areas';
 import { analyzeImage, boxOf, placeSpots, templateRect, type Analysis, type Box, type Placed } from './placement';
 
 interface Art {
@@ -26,6 +26,8 @@ type Config = {
   place: PlaceConfig | null;
   /** The product's style photo (used when a color has no photo of its own). */
   style?: string;
+  /** Hand-set print areas from the admin (they win over the automatic placement). */
+  printAreas?: PrintAreas | null;
 };
 
 /** File types we accept, by extension, with the MIME type the API expects. */
@@ -85,6 +87,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   const cfg = JSON.parse(root.dataset.config || '{}') as Config;
   const spots = cfg.spots;
   const spotById = new Map(spots.map((s) => [s.id, s]));
+  /** Decorations offered on a location: the admin's list for it, else all of the product's. */
+  const allowedFor = (id: string) => { const m = spotById.get(id)?.methods?.filter((x) => cfg.decorations.includes(x)); return m?.length ? m : cfg.decorations; };
   const q = <T extends Element = HTMLElement>(sel: string) => root.querySelector<T>(sel)!;
   const qa = <T extends Element = HTMLElement>(sel: string) => [...root.querySelectorAll<T>(sel)];
 
@@ -131,6 +135,12 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     analyses.set(url, a);
     boxes.set(url, boxOf(a) ?? findBox(img));
   };
+  /** The admin's box for a location on this side: the current color's own, else the default. */
+  const manualBox = (sp: DesignSpot, s: Side) => {
+    const pa = cfg.printAreas;
+    const b = (colorName && pa?.colors?.[colorName]?.[sp.id]?.box) || pa?.locations?.[sp.id]?.box;
+    return b && b.side === s && b.w > 0 && b.h > 0 ? b : null;
+  };
   /** All print areas on one side of one photo: measured where possible, else the template. */
   const layout = (s: Side, url: string): Map<string, Placed> | null => {
     const key = `${s}|${url}`;
@@ -143,7 +153,11 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     const measured = cfg.place && !fixed ? placeSpots(analyses.get(url) ?? null, s, spots, cfg.place) : new Map<string, Placed>();
     const box = fixed ?? boxes.get(url) ?? DEFAULT_BOX;
     const out = new Map<string, Placed>();
-    for (const sp of spots) if (sp.side === s) out.set(sp.id, measured.get(sp.id) ?? templateRect(sp, box, aspect));
+    for (const sp of spots) {
+      if (sp.side !== s) continue;
+      const manual = manualBox(sp, s);
+      out.set(sp.id, manual ? { x: manual.x, y: manual.y, w: manual.w, h: manual.h, wIn: sp.wIn, hIn: sp.hIn, how: 'manual' } : measured.get(sp.id) ?? templateRect(sp, box, aspect));
+    }
     layouts.set(key, out);
     return out;
   };
@@ -335,6 +349,10 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (a) {
       panel.file.textContent = a.kind === 'file' ? `${a.file.name} (preview not available, we'll use the file)` : a.file.name;
       panel.readout.textContent = describe(a);
+      // Only the decorations allowed on this location.
+      const allowed = allowedFor(sp.id);
+      [...panel.decoration.options].forEach((o) => { o.hidden = o.disabled = !allowed.includes(o.value); });
+      if (!allowed.includes(a.decoration)) a.decoration = allowed[0];
       panel.decoration.value = a.decoration;
       if (document.activeElement !== panel.notes) panel.notes.value = a.notes;
     }
@@ -549,7 +567,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     const prev = arts.get(loc);
     const a: Art = {
       loc, file, ext, kind: 'file', aspect: 1, x: 0, y: 0, w: 1,
-      decoration: prev?.decoration ?? cfg.decorations[0], notes: prev?.notes ?? '',
+      decoration: prev?.decoration ?? allowedFor(loc)[0], notes: prev?.notes ?? '',
     };
     if (DRAWABLE.has(ext)) {
       const url = URL.createObjectURL(file);
