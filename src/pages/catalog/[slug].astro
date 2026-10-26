@@ -6,7 +6,7 @@ import { products, CATEGORY_LABELS, COLLECTIONS, collectionHref, brandHref, tech
 import { business } from '../../data/business';
 import DesignPreview from '../../components/design/DesignPreview.astro';
 import DesignRequestSheet from '../../components/design/DesignRequestSheet.astro';
-import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X } from '@lucide/astro';
+import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X, Upload } from '@lucide/astro';
 
 export function getStaticPaths() {
   return products.map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -44,6 +44,7 @@ const jsonLd = [
     ],
   },
 ];
+const step = 'inline-grid place-items-center w-5 h-5 mr-2 rounded-full bg-violet-600 text-white text-[11px] font-bold tracking-normal align-[1px]';
 const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300';
 ---
 <Base title={`Custom ${p.name} | TBSP Los Angeles`} description={description} jsonLd={jsonLd}>
@@ -67,7 +68,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         <p class="text-lg font-bold text-zinc-900 dark:text-white -mb-2">Add to quote</p>
         {p.colors.length > 0 && (
           <fieldset>
-            <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400">Color · <span id="color-name" class="normal-case tracking-normal text-zinc-900 dark:text-white text-[13px]">{p.colors[0].name}</span></legend>
+            <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>1</span>Color · <span id="color-name" class="normal-case tracking-normal text-zinc-900 dark:text-white text-[13px]">{p.colors[0].name}</span></legend>
             <div class="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label="Color">
               {p.colors.map((c, i) => (
                 <button type="button" role="radio" hidden={i >= SWATCH_LIMIT} aria-checked={i === 0 ? 'true' : 'false'} class:list={['swatch w-8 h-8 max-md:w-10 max-md:h-10 rounded-full border border-zinc-300 dark:border-white/20 transition-shadow', { 'is-on ring-2 ring-violet-500 ring-offset-2 ring-offset-white dark:ring-offset-[#0d0d14]': i === 0 }]} style={`background:${c.hex}`} title={c.name} aria-label={c.name} data-name={c.name} data-img={c.image || ''} data-back={c.back || ''}></button>
@@ -80,7 +81,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         )}
 
         <fieldset>
-          <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400">Quantity by size</legend>
+          <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>{p.colors.length > 0 ? 2 : 1}</span>Quantity by size</legend>
           <div class="mt-3 grid grid-cols-3 sm:grid-cols-4 gap-2.5">
             {p.sizes.map((s) => (
               <label class="grid gap-1 text-center">
@@ -95,14 +96,18 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           </p>
         </fieldset>
 
-        <!-- Filled by the design preview once artwork is placed. -->
-        <div data-design-summary hidden class="grid grid-cols-[minmax(0,1fr)] gap-1 min-w-0">
+        <!-- Step 3: artwork. The list is filled by the design preview. -->
+        <div data-design-summary class="grid grid-cols-[minmax(0,1fr)] gap-2 min-w-0">
           <div class="flex items-baseline justify-between gap-3">
-            <p class="eyebrow !text-zinc-500 dark:!text-zinc-400">Your artwork</p>
-            <a href="#design" class="text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add more</a>
+            <p class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>3</span>Your artwork <span class="normal-case tracking-normal font-medium">(optional)</span></p>
+            <a href="#design" data-art-some hidden class="text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add more</a>
           </div>
-          <ul data-list class="divide-y divide-zinc-200/80 dark:divide-white/10"></ul>
-          <p data-bytes class="text-[12px] muted"></p>
+          <div data-art-none class="flex flex-wrap items-center gap-3 rounded-xl border border-dashed border-zinc-300 dark:border-white/15 px-4 py-3">
+            <p class="min-w-0 flex-1 text-[13px] muted">Upload your logo to see it on the product. No file yet? Skip this, you can send it later.</p>
+            <button type="button" data-art-upload class="btn-quiet btn-sm max-md:h-11 max-sm:w-full"><Upload class="w-4 h-4" aria-hidden="true" />Upload artwork</button>
+          </div>
+          <ul data-list data-art-some hidden class="divide-y divide-zinc-200/80 dark:divide-white/10"></ul>
+          <p data-bytes data-art-some hidden class="text-[12px] muted"></p>
         </div>
 
         {methods.length > 0 && (
@@ -211,6 +216,11 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   )}
 </Base>
 
+<style is:global>
+  /* `hidden` must win over the display utilities used on the same elements. */
+  #add-to-quote [hidden] { display: none !important; }
+</style>
+
 <script>
   import { mountDesign } from '../../components/design/design';
   import { setMaxContext } from '../../lib/max';
@@ -254,6 +264,8 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     }),
     onChange: () => refresh(),
   });
+
+  form.querySelector('[data-art-upload]')?.addEventListener('click', () => design.pickFile());
 
   swatches.forEach((b) => b.addEventListener('click', () => {
     swatches.forEach((x) => { on.forEach((c) => x.classList.toggle(c, x === b)); x.setAttribute('aria-checked', String(x === b)); });

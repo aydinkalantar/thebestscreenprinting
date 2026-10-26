@@ -40,6 +40,7 @@ const inch = (n: number) => `${(Math.round(n * 10) / 10).toString()}"`;
 const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
 const extOf = (name: string) => (name.split('.').pop() || '').toLowerCase();
 const ICON = {
+  upload: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>',
   pencil: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/></svg>',
   trash: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
 };
@@ -277,6 +278,15 @@ export function mountDesign(root: HTMLElement, opts: Options) {
         a.el!.classList.toggle('is-active', isActive);
         (a.el!.querySelector('[data-handle]') as HTMLElement).hidden = !isActive;
         area.append(a.el!);
+      } else if (isActive) {
+        // Empty print area: the area itself is the upload button (click or drop a file).
+        const add = document.createElement('button');
+        add.type = 'button';
+        add.className = 'd-drop';
+        add.innerHTML = `${ICON.upload}<b>Add your artwork</b><span>${matchMedia('(pointer: coarse)').matches ? 'Tap to upload' : 'Click or drop a file'}</span>`;
+        add.setAttribute('aria-label', `Add artwork to the ${sp.label.toLowerCase()}`);
+        add.addEventListener('click', () => fileInput.click());
+        area.append(add);
       }
       layer.append(area);
     }
@@ -493,6 +503,18 @@ export function mountDesign(root: HTMLElement, opts: Options) {
 
   // ── files ──────────────────────────────────────────────────────────────────
   q('[data-add]').addEventListener('click', () => fileInput.click());
+  // Drop a file anywhere on the garment: it goes to the selected location.
+  let dragDepth = 0;
+  stage.addEventListener('dragenter', (e) => { if (e.dataTransfer?.types.includes('Files')) { e.preventDefault(); dragDepth++; stage.classList.add('is-drop'); } });
+  stage.addEventListener('dragover', (e) => { if (e.dataTransfer?.types.includes('Files')) { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; } });
+  stage.addEventListener('dragleave', () => { dragDepth = Math.max(0, dragDepth - 1); if (!dragDepth) stage.classList.remove('is-drop'); });
+  stage.addEventListener('drop', async (e) => {
+    e.preventDefault();
+    dragDepth = 0;
+    stage.classList.remove('is-drop');
+    const file = e.dataTransfer?.files?.[0];
+    if (file) await addFile(active, file);
+  });
   q('[data-replace]').addEventListener('click', () => fileInput.click());
   fileInput.addEventListener('change', async () => {
     const file = fileInput.files?.[0];
@@ -575,7 +597,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     const box = opts.summary;
     if (!box) return;
     const list = ordered();
-    box.hidden = !list.length;
+    box.querySelectorAll<HTMLElement>('[data-art-none]').forEach((n) => { n.hidden = list.length > 0; });
+    box.querySelectorAll<HTMLElement>('[data-art-some]').forEach((n) => { n.hidden = !list.length; });
     const ul = box.querySelector('[data-list]')!;
     ul.replaceChildren();
     for (const a of list) {
@@ -810,6 +833,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   const r1 = (n: number) => Math.round(n * 10) / 10;
   // ── public API for the product page ────────────────────────────────────────
   return {
+    /** Opens the file picker for the selected location (the quote panel's Upload button). */
+    pickFile: () => fileInput.click(),
     count: () => arts.size,
     /** Placed artwork with its files and measurements, for the quote cart. */
     snapshot: () => ordered().map((a) => {
