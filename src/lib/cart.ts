@@ -40,6 +40,8 @@ export interface CartItem {
   mockups: { side: string; key: string; size: number }[];
   /** Screen printing: ink colors per location, as chosen in the price box. */
   inks?: Record<string, number>;
+  /** Paid artwork help (cleanup, layout or custom design), with the customer's notes. */
+  artHelp?: { type: 'cleanup' | 'layout' | 'custom'; notes?: string };
 }
 export type NewCartItem = Omit<CartItem, 'id' | 'addedAt' | 'placements' | 'mockups' | 'total'> & {
   placements: (Omit<CartPlacement, 'fileKey' | 'fileType' | 'size'> & { blob: Blob })[];

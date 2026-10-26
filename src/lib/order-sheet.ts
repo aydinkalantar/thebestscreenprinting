@@ -44,6 +44,7 @@ function renderTotals(el: HTMLElement) {
   if (!totals || !current) return;
   row(dl, 'Products', money(totals.subtotal));
   if (totals.setup) row(dl, 'Setup / screens', money(totals.setup));
+  if (totals.art) row(dl, 'Artwork help', money(totals.art));
   if (totals.rush) row(dl, `${totals.turnaround === 'superrush' ? 'Super Rush' : 'Rush'} fee${totals.rushPercent ? ` (+${totals.rushPercent}%)` : ''}`, money(totals.rush));
   row(dl, 'Shipping', totals.shipping ? money(totals.shipping) : 'Free');
   if (totals.tax) row(dl, `Tax (${totals.taxRate}%)`, money(totals.tax));

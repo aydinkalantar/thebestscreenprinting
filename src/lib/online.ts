@@ -7,18 +7,23 @@ import { business } from '../data/business';
 export const STUDIO_API = (import.meta.env.PUBLIC_STUDIO_API as string | undefined) || business.studioUrl;
 
 export interface PriceLocation { placement: string; method: string; colors?: number; widthIn?: number; heightIn?: number }
-export interface PriceItemInput { brand: string; style: string; color: string; sizes: Record<string, number>; locations: PriceLocation[]; productName?: string }
+export type ArtHelpType = 'cleanup' | 'layout' | 'custom';
+export interface ArtHelp { type: ArtHelpType; notes?: string }
+export interface PriceItemInput { brand: string; style: string; color: string; sizes: Record<string, number>; locations: PriceLocation[]; productName?: string; artHelp?: ArtHelp }
+export interface ArtHelpOptions { cleanup?: { price: number }; layout?: { price: number }; custom?: { price: number; from?: boolean }; revisionPrice?: number; extraDays?: number }
+export const ART_HELP_LABELS: Record<ArtHelpType, string> = { cleanup: 'Art cleanup / vectorize', layout: 'Text or simple layout', custom: 'Custom design' };
 export interface PricedItem {
   ok: boolean; quoteOnly?: string; title: string; color: string; quantity: number;
   sizePrices: Record<string, number>; basePrice: number; subtotal: number; setup: number;
   next: { qty: number; perPiece: number } | null; stockShort: { size: string; stock: number }[];
+  /** Artwork help fee for this item, when asked for. */ artFee?: number;
 }
-export interface Totals { subtotal: number; setup: number; shipping: number; tax: number; taxRate: number; total: number; /** Rush / Super Rush fee, when the studio prices turnaround. */ rush?: number; rushPercent?: number; turnaround?: string; /** Estimated ready date (ISO). */ readyBy?: string; businessDays?: number; /** e.g. Super Rush over its piece limit. */ turnaroundError?: string }
+export interface Totals { subtotal: number; setup: number; shipping: number; tax: number; taxRate: number; total: number; /** Rush / Super Rush fee, when the studio prices turnaround. */ rush?: number; /** Artwork help fees. */ art?: number; rushPercent?: number; turnaround?: string; /** Estimated ready date (ISO). */ readyBy?: string; businessDays?: number; /** e.g. Super Rush over its piece limit. */ turnaroundError?: string }
 export type TurnaroundOptions = { normal: { days: number }; rush?: { percent: number; days: number }; superrush?: { percent: number; days: number; maxPieces?: number } };
 export type Turnaround = 'normal' | 'rush' | 'superrush';
 export type PriceResponse =
   | { enabled: false }
-  | { enabled: true; items: PricedItem[]; totals: Totals | null; payment: { options: ('full' | 'deposit')[]; depositPercent: number }; delivery: { pickup: string | null; shipping: number | null }; /** Present once the studio prices turnaround; only the options that are on. */ turnaround?: TurnaroundOptions };
+  | { enabled: true; items: PricedItem[]; totals: Totals | null; payment: { options: ('full' | 'deposit')[]; depositPercent: number }; delivery: { pickup: string | null; shipping: number | null }; /** Present once the studio prices turnaround; only the options that are on. */ turnaround?: TurnaroundOptions; /** Present when the artwork help service is on. */ artHelp?: ArtHelpOptions };
 
 /** Size of a placed artwork, in inches (DTF and other methods are priced by print size). */
 export const printSize = (w?: number, h?: number) => (w && h && w > 0 && h > 0 ? { widthIn: Math.round(w * 10) / 10, heightIn: Math.round(h * 10) / 10 } : {});

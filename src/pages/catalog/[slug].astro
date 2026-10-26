@@ -134,6 +134,27 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
             <span data-ip-status class="text-[12px] muted" aria-live="polite"></span>
           </div>
           <div data-ip-inks class="grid gap-2"></div>
+          <!-- Paid artwork help (shown when the studio offers it). -->
+          <div data-ip-art hidden class="grid gap-2 rounded-xl border border-dashed border-zinc-300 dark:border-white/15 p-3">
+            <div data-art-suggest hidden class="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-violet-500/10 px-3 py-2 text-[13px] text-violet-800 dark:text-violet-200">
+              <span data-art-suggest-text></span>
+              <button type="button" data-art-suggest-btn class="font-semibold underline underline-offset-2"></button>
+            </div>
+            <label class="flex items-center gap-2.5 text-[14px] font-semibold text-zinc-900 dark:text-white cursor-pointer"><input type="checkbox" data-art-on class="w-4 h-4 accent-violet-600" />Need help with your artwork?</label>
+            <div data-art-opts hidden class="grid gap-2">
+              {(['cleanup', 'layout', 'custom'] as const).map((k, i) => (
+                <label class="flex items-start gap-2.5 rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] px-3 py-2 cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10" data-art-opt={k}>
+                  <input type="radio" name="artHelp" value={k} checked={i === 0} class="mt-1 accent-violet-600" />
+                  <span class="min-w-0 flex-1 text-[13.5px] leading-snug">
+                    <span class="flex justify-between gap-2"><span class="font-semibold text-zinc-900 dark:text-white">{ { cleanup: 'Art cleanup / vectorize', layout: 'Text or simple layout', custom: 'Custom design' }[k] }</span><span class="font-semibold text-zinc-900 dark:text-white" data-art-price={k}></span></span>
+                    <span class="block text-[12.5px] muted">{ { cleanup: 'Make a blurry or low-res logo sharp and print-ready.', layout: 'Names, team text, or arranging logos you already have.', custom: 'A new design from your idea. We confirm the final price before starting.' }[k] }</span>
+                  </span>
+                </label>
+              ))}
+              <textarea data-art-notes rows="2" maxlength="1000" class="field !h-auto py-2 text-[14px]" placeholder="Tell us what you need, e.g. clean up our logo and add “Staff” under it"></textarea>
+              <p data-art-terms class="text-[12px] muted"></p>
+            </div>
+          </div>
           <div data-ip-body hidden class="grid gap-1.5">
             <p class="flex items-baseline gap-2 flex-wrap"><span data-ip-each class="text-[26px] leading-none font-bold text-zinc-900 dark:text-white"></span><span class="text-[14px] muted">per piece</span></p>
             <p data-ip-sizes class="text-[12.5px] muted"></p>
@@ -247,7 +268,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   import { setMaxContext } from '../../lib/max';
   import { addToCart, replaceCartItem, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry } from '../../lib/cart';
   import { MAX_TOTAL_BYTES } from '../../lib/quote';
-  import { fetchPrices, money, printSize, type PriceItemInput, type PriceResponse } from '../../lib/online';
+  import { fetchPrices, money, printSize, type ArtHelp, type ArtHelpType, type PriceItemInput, type PriceResponse } from '../../lib/online';
   import { openOrder, type OrderArtwork } from '../../lib/order-sheet';
   import { countInks, dpiFor, inksOn, type InkCount } from '../../components/design/colors';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
@@ -416,6 +437,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         locations: placements.length ? placements.map((p) => p.location) : checked('location'),
         placements, mockups: shots.map((m) => ({ side: m.side, blob: m.blob })),
         inks: Object.fromEntries(effectiveInks),
+        ...artHelpInput(),
       };
       if (editItem) {
         await replaceCartItem(editItem.id, input);
@@ -531,7 +553,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
       });
     }
     return {
-      item: { brand: d.brand || '', style: d.style || '', color, sizes: sizesMap(), locations, productName: d.name || '' },
+      item: { brand: d.brand || '', style: d.style || '', color, sizes: sizesMap(), locations, productName: d.name || '', ...artHelpInput() },
       artwork: placements.map((p) => ({ itemIndex: 0, placement: p.location, file: new File([p.blob], p.file, { type: p.blob.type }) })),
     };
   }
@@ -600,9 +622,67 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     }
   }
 
+  // ── artwork help ──
+  const artBox = ip('art');
+  const artOn = artBox.querySelector<HTMLInputElement>('[data-art-on]')!;
+  const artOpts = artBox.querySelector<HTMLElement>('[data-art-opts]')!;
+  const artNotes = artBox.querySelector<HTMLTextAreaElement>('[data-art-notes]')!;
+  const artType = () => (artBox.querySelector<HTMLInputElement>('input[name="artHelp"]:checked')?.value || 'cleanup') as ArtHelpType;
+  let artOffered = false;
+  function artHelpInput(): { artHelp?: ArtHelp } {
+    if (!artOffered || !artOn.checked) return {};
+    const notes = artNotes.value.trim().slice(0, 1000);
+    return { artHelp: { type: artType(), ...(notes ? { notes } : {}) } };
+  }
+  function renderArtHelp(res: Extract<PriceResponse, { enabled: true }>) {
+    const o = res.artHelp;
+    artOffered = !!(o && (o.cleanup || o.layout || o.custom));
+    artBox.hidden = !artOffered;
+    if (!o || !artOffered) return;
+    (['cleanup', 'layout', 'custom'] as ArtHelpType[]).forEach((k) => {
+      const opt = o[k];
+      const row = artBox.querySelector<HTMLElement>(`[data-art-opt="${k}"]`)!;
+      row.hidden = !opt;
+      artBox.querySelector(`[data-art-price="${k}"]`)!.textContent = opt ? `${k === 'custom' || (opt as { from?: boolean }).from ? 'from ' : ''}${money(opt.price)}` : '';
+    });
+    const terms = [`2 revisions included${o.revisionPrice ? `, then ${money(o.revisionPrice)} each` : ''}`, o.extraDays ? `adds about ${o.extraDays} business days before your proof` : '', 'non-refundable once work starts'].filter(Boolean);
+    artBox.querySelector('[data-art-terms]')!.textContent = `${terms.join(' · ')}. You get the final file.`;
+    // Suggest it when the artwork has a problem, or when there's no artwork yet.
+    const sug = artBox.querySelector<HTMLElement>('[data-art-suggest]')!;
+    const rows = inkRows.filter((r) => r.ink && r.ink !== 'pending' && r.ink.kind !== 'unknown');
+    const lowRes = rows.some((r) => { const f = r.ink as Exclude<InkCount, { kind: 'unknown' }>; return !f.vector && r.widthIn && dpiFor(f.widthPx, r.widthIn) < 150; });
+    const offer = !artOn.checked && (lowRes && o.cleanup ? { type: 'cleanup' as ArtHelpType, text: 'Your file may print soft.' } : !design.count() && o.layout ? { type: 'layout' as ArtHelpType, text: 'No artwork yet? We can make it for you.' } : null);
+    sug.hidden = !offer;
+    if (offer) {
+      sug.querySelector('[data-art-suggest-text]')!.textContent = offer.text;
+      const b = sug.querySelector<HTMLButtonElement>('[data-art-suggest-btn]')!;
+      const price = o[offer.type]!.price;
+      b.textContent = `${offer.type === 'cleanup' ? 'Add art cleanup' : 'Get design help'} (${offer.type === 'custom' ? 'from ' : ''}${money(price)})`;
+      b.onclick = () => {
+        artOn.checked = true;
+        artBox.querySelector<HTMLInputElement>(`input[name="artHelp"][value="${offer.type}"]`)!.checked = true;
+        artOpts.hidden = false;
+        sug.hidden = true;
+        schedulePrice(0);
+        artNotes.focus();
+      };
+    }
+  }
+  artOn.addEventListener('change', () => { artOpts.hidden = !artOn.checked; schedulePrice(0); });
+  artBox.addEventListener('change', (e) => { if ((e.target as HTMLInputElement).name === 'artHelp') schedulePrice(0); });
+  artNotes.addEventListener('input', () => schedulePrice(800));
+  // Editing a cart item that had artwork help: keep it selected.
+  if (editItem?.artHelp) {
+    artOn.checked = true;
+    artOpts.hidden = false;
+    artBox.querySelector<HTMLInputElement>(`input[name="artHelp"][value="${editItem.artHelp.type}"]`)!.checked = true;
+    artNotes.value = editItem.artHelp.notes || '';
+  }
+
   function showPrice(res: PriceResponse | null, input: { item: PriceItemInput; artwork: OrderArtwork[] } | null) {
     if (!res || !res.enabled) { instant.hidden = true; lastPrice = null; button.classList.replace('btn-quiet', 'btn-primary'); return; }
     instant.hidden = false;
+    renderArtHelp(res);
     const it = res.items[0];
     const ok = !!(input && it?.ok && res.totals);
     ip('body').hidden = !ok;
@@ -632,7 +712,8 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     };
     line(`${it.quantity} pieces`, money(it.subtotal));
     if (it.setup) line('Setup / screens', money(it.setup));
-    line('Total before tax', money(res.totals!.subtotal + res.totals!.setup), true);
+    if (it.artFee) line('Artwork help', money(it.artFee));
+    line('Total before tax', money(res.totals!.subtotal + res.totals!.setup + (res.totals!.art || 0)), true);
     ip('next').hidden = !it.next;
     if (it.next) ip('next').textContent = `Order ${it.next.qty} or more and pay ${money(it.next.perPiece)} each.`;
     ip('stock').hidden = !it.stockShort.length;
