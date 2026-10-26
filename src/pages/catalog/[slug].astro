@@ -6,7 +6,8 @@ import { products, CATEGORY_LABELS, COLLECTIONS, collectionHref, brandHref, tech
 import { business } from '../../data/business';
 import DesignPreview from '../../components/design/DesignPreview.astro';
 import DesignRequestSheet from '../../components/design/DesignRequestSheet.astro';
-import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X, Upload } from '@lucide/astro';
+import OrderSheet from '../../components/design/OrderSheet.astro';
+import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X, Upload, CreditCard } from '@lucide/astro';
 
 export function getStaticPaths() {
   return products.map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -126,6 +127,25 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           </div>
         </fieldset>
 
+        <!-- Step 4: instant price + "Order & pay". Hidden unless online orders are on in the studio admin. -->
+        <section data-instant hidden class="grid gap-3 rounded-2xl border border-violet-300/60 dark:border-violet-400/25 bg-violet-500/[0.05] p-4" aria-labelledby="ip-title">
+          <div class="flex items-baseline justify-between gap-3">
+            <p id="ip-title" class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>4</span>Your price</p>
+            <span data-ip-status class="text-[12px] muted" aria-live="polite"></span>
+          </div>
+          <div data-ip-inks class="grid gap-2"></div>
+          <div data-ip-body hidden class="grid gap-1.5">
+            <p class="flex items-baseline gap-2 flex-wrap"><span data-ip-each class="text-[26px] leading-none font-bold text-zinc-900 dark:text-white"></span><span class="text-[14px] muted">per piece</span></p>
+            <p data-ip-sizes class="text-[12.5px] muted"></p>
+            <dl data-ip-lines class="mt-1 grid grid-cols-[1fr_auto] gap-y-1 text-[14px]"></dl>
+            <p data-ip-next hidden class="mt-1 text-[13px] font-medium text-emerald-700 dark:text-emerald-400"></p>
+            <p data-ip-stock hidden class="text-[13px] font-medium text-amber-700 dark:text-amber-300"></p>
+          </div>
+          <p data-ip-quote hidden class="text-[13px] muted"></p>
+          <button type="button" data-ip-order hidden class="btn-primary w-full h-12 text-[15px] disabled:opacity-50 disabled:shadow-none"><CreditCard class="w-4 h-4" aria-hidden="true" /><span>Order &amp; pay now</span></button>
+          <p data-ip-foot hidden class="text-[12px] muted">Tax is added at checkout. Free art proof before we print.</p>
+        </section>
+
         <div class="grid gap-2">
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
             <button id="request-quote" type="submit" class="btn-primary w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none aria-busy:cursor-wait" disabled>
@@ -188,6 +208,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   </div>
 
   <DesignRequestSheet />
+  <OrderSheet />
 
   <!-- Shown after "Add to quote". -->
   <div id="cart-toast" hidden class="fixed z-[70] inset-x-3 bottom-[calc(88px+env(safe-area-inset-bottom))] md:inset-x-auto md:right-6 md:bottom-6 md:w-[380px] panel-raised p-4 shadow-2xl transition-all duration-200 opacity-0 translate-y-2 data-[open]:opacity-100 data-[open]:translate-y-0" role="status" aria-live="polite" aria-atomic="true">
@@ -226,6 +247,8 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   import { setMaxContext } from '../../lib/max';
   import { addToCart, replaceCartItem, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry } from '../../lib/cart';
   import { MAX_TOTAL_BYTES } from '../../lib/quote';
+  import { fetchPrices, money, type PriceItemInput, type PriceResponse } from '../../lib/online';
+  import { openOrder, type OrderArtwork } from '../../lib/order-sheet';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
   const label = document.getElementById('color-name');
   const total = document.getElementById('qty-total')!;
@@ -297,6 +320,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
       : n < min ? `Add ${min - n} more piece${min - n === 1 ? '' : 's'} to reach the ${min}-piece minimum for this product.`
       : placed ? `${n} pieces with your artwork. Add it to your quote, then add more products or send it.`
       : `${n} pieces. Add it to your quote, then add more products or send it.`;
+    window.dispatchEvent(new Event('tbsp-pdp-change'));
   }
   inputs.forEach((i) => i.addEventListener('input', refresh));
   document.querySelector('[data-bar-sizes]')?.addEventListener('click', () => {
@@ -450,4 +474,137 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   }
 
   document.querySelector('[data-pending-dismiss]')?.addEventListener('click', () => setCarry(null));
+
+  // ── instant price + "Order & pay" (online orders) ────────────────────────────
+  const instant = form.querySelector<HTMLElement>('[data-instant]')!;
+  const ip = (k: string) => instant.querySelector<HTMLElement>(`[data-ip-${k}]`)!;
+  const orderBtn = ip('order') as HTMLButtonElement;
+  const inks = new Map<string, number>();
+  const isScreen = (m: string) => /screen/i.test(m);
+  let priceTimer = 0;
+  let priceCtl: AbortController | null = null;
+  let lastPrice: Extract<PriceResponse, { enabled: true }> | null = null;
+  let lastInput: { item: PriceItemInput; artwork: OrderArtwork[] } | null = null;
+
+  /** The product as the studio prices it, or a reason it can't be priced yet. */
+  function priceInput(): { item: PriceItemInput; artwork: OrderArtwork[] } | string {
+    const n = sum();
+    if (n < min) return `Enter at least ${min} pieces to see your price.`;
+    const placements = design.snapshot();
+    const ink = (place: string, method: string) => (isScreen(method) ? { colors: inks.get(place) || 1 } : {});
+    let locations: PriceItemInput['locations'];
+    if (placements.length) locations = placements.map((p) => ({ placement: p.location, method: p.decoration, ...ink(p.location, p.decoration) }));
+    else {
+      const decos = checked('decoration'), locs = checked('location');
+      if (!decos.length) return 'Choose a decoration to see your price.';
+      if (!locs.length) return 'Choose a print location to see your price.';
+      locations = locs.map((l) => ({ placement: l, method: decos[0], ...ink(l, decos[0]) }));
+    }
+    return {
+      item: { brand: d.brand || '', style: d.style || '', color, sizes: sizesMap(), locations, productName: d.name || '' },
+      artwork: placements.map((p) => ({ itemIndex: 0, placement: p.location, file: new File([p.blob], p.file, { type: p.blob.type }) })),
+    };
+  }
+
+  /** One "ink colors" choice per screen printed location (screen printing is priced by colors). */
+  function renderInks(item: PriceItemInput | null) {
+    const box = ip('inks');
+    const rows = (item?.locations || []).filter((l) => isScreen(l.method));
+    const key = rows.map((l) => l.placement).join('|');
+    if (box.dataset.key === key) return;
+    box.dataset.key = key;
+    box.replaceChildren();
+    for (const l of rows) {
+      const lab = document.createElement('label');
+      lab.className = 'flex items-center justify-between gap-3 text-[13.5px]';
+      const t = document.createElement('span');
+      t.className = 'text-zinc-800 dark:text-zinc-200';
+      t.textContent = `${l.placement}: ink colors in your design`;
+      const sel = document.createElement('select');
+      sel.className = 'field !h-9 !w-auto !py-0 !pr-8 !text-[14px] font-semibold';
+      for (let c = 1; c <= 6; c++) { const o = document.createElement('option'); o.value = String(c); o.textContent = c === 6 ? '6+' : String(c); sel.append(o); }
+      sel.value = String(inks.get(l.placement) || 1);
+      sel.setAttribute('aria-label', `Ink colors on the ${l.placement.toLowerCase()}`);
+      sel.addEventListener('change', () => { inks.set(l.placement, Number(sel.value)); schedulePrice(0); });
+      lab.append(t, sel);
+      box.append(lab);
+    }
+  }
+
+  function showPrice(res: PriceResponse | null, input: { item: PriceItemInput; artwork: OrderArtwork[] } | null) {
+    if (!res || !res.enabled) { instant.hidden = true; lastPrice = null; button.classList.replace('btn-quiet', 'btn-primary'); return; }
+    instant.hidden = false;
+    const it = res.items[0];
+    const ok = !!(input && it?.ok && res.totals);
+    ip('body').hidden = !ok;
+    orderBtn.hidden = !ok;
+    ip('foot').hidden = !ok;
+    // With a price on screen, "Order & pay" leads and "Add to quote" steps back.
+    button.classList.replace(ok ? 'btn-primary' : 'btn-quiet', ok ? 'btn-quiet' : 'btn-primary');
+    ip('quote').hidden = ok;
+    ip('status').textContent = '';
+    if (!ok) {
+      ip('quote').textContent = it?.quoteOnly ? `${it.quoteOnly}. Add it to your quote and we'll price it for you.` : '';
+      lastPrice = null;
+      return;
+    }
+    lastPrice = res; lastInput = input;
+    const prices = Object.values(it.sizePrices);
+    const lo = Math.min(...prices), hi = Math.max(...prices);
+    ip('each').textContent = lo === hi ? money(lo) : `${money(lo)}–${money(hi)}`;
+    const extra = Object.entries(it.sizePrices).filter(([, p]) => p > lo);
+    ip('sizes').textContent = extra.length ? `${extra.map(([s]) => s).join(', ')}: ${money(Math.max(...extra.map(([, p]) => p)))} each (larger sizes cost more)` : '';
+    const dl = ip('lines');
+    dl.replaceChildren();
+    const line = (a: string, b: string, strong = false) => {
+      const dt = document.createElement('dt'); dt.className = strong ? 'font-bold text-zinc-900 dark:text-white' : 'muted'; dt.textContent = a;
+      const dd = document.createElement('dd'); dd.className = `text-right ${strong ? 'font-bold' : 'font-semibold'} text-zinc-900 dark:text-white`; dd.textContent = b;
+      dl.append(dt, dd);
+    };
+    line(`${it.quantity} pieces`, money(it.subtotal));
+    if (it.setup) line('Setup / screens', money(it.setup));
+    line('Total before tax', money(res.totals!.subtotal + res.totals!.setup), true);
+    ip('next').hidden = !it.next;
+    if (it.next) ip('next').textContent = `Order ${it.next.qty} or more and pay ${money(it.next.perPiece)} each.`;
+    ip('stock').hidden = !it.stockShort.length;
+    if (it.stockShort.length) ip('stock').textContent = `Low stock: ${it.stockShort.map((s) => `${s.size} (${s.stock} left)`).join(', ')}. We'll confirm a replacement before printing.`;
+  }
+
+  async function runPrice() {
+    const input = priceInput();
+    priceCtl?.abort();
+    if (typeof input === 'string') {
+      renderInks(null);
+      if (!instant.hidden || lastPrice) { ip('body').hidden = true; orderBtn.hidden = true; ip('foot').hidden = true; ip('quote').hidden = false; ip('quote').textContent = input; }
+      lastPrice = null;
+      return;
+    }
+    renderInks(input.item);
+    ip('status').textContent = 'Updating…';
+    orderBtn.disabled = true;
+    priceCtl = new AbortController();
+    const res = await fetchPrices([input.item], 'pickup', priceCtl.signal);
+    if (priceCtl.signal.aborted) return;
+    orderBtn.disabled = false;
+    showPrice(res, input);
+  }
+  function schedulePrice(delay = 450) { clearTimeout(priceTimer); priceTimer = window.setTimeout(runPrice, delay); }
+
+  window.addEventListener('tbsp-pdp-change', () => schedulePrice());
+  form.addEventListener('change', (e) => { if ((e.target as HTMLElement).matches('input[name="decoration"],input[name="location"]')) schedulePrice(0); });
+  swatches.forEach((b) => b.addEventListener('click', () => schedulePrice(0)));
+  // Ask once at load: when online orders are off the section never shows.
+  fetchPrices([{ brand: d.brand || '', style: d.style || '', color, sizes: {}, locations: [] }]).then((r) => {
+    if (r?.enabled) { instant.hidden = false; runPrice(); }
+  });
+
+  orderBtn.addEventListener('click', async () => {
+    const input = priceInput();
+    if (typeof input === 'string' || !lastPrice) return;
+    orderBtn.disabled = true;
+    const res = await fetchPrices([input.item]);
+    orderBtn.disabled = false;
+    if (!res?.enabled || !res.items[0]?.ok || !res.totals) { showPrice(res, input); return; }
+    openOrder({ items: [input.item], artwork: input.artwork, price: res, summary: `${d.name}${color ? ` · ${color}` : ''} · ${sum()} pieces` });
+  });
 </script>
