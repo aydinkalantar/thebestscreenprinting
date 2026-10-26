@@ -38,6 +38,8 @@ export interface CartItem {
   decorations: string[]; locations: string[];
   placements: CartPlacement[];
   mockups: { side: string; key: string; size: number }[];
+  /** Screen printing: ink colors per location, as chosen in the price box. */
+  inks?: Record<string, number>;
 }
 export type NewCartItem = Omit<CartItem, 'id' | 'addedAt' | 'placements' | 'mockups' | 'total'> & {
   placements: (Omit<CartPlacement, 'fileKey' | 'fileType' | 'size'> & { blob: Blob })[];

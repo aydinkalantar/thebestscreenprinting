@@ -6,7 +6,7 @@ import { business } from '../data/business';
 
 export const STUDIO_API = (import.meta.env.PUBLIC_STUDIO_API as string | undefined) || business.studioUrl;
 
-export interface PriceLocation { placement: string; method: string; colors?: number }
+export interface PriceLocation { placement: string; method: string; colors?: number; widthIn?: number; heightIn?: number }
 export interface PriceItemInput { brand: string; style: string; color: string; sizes: Record<string, number>; locations: PriceLocation[]; productName?: string }
 export interface PricedItem {
   ok: boolean; quoteOnly?: string; title: string; color: string; quantity: number;
@@ -17,6 +17,9 @@ export interface Totals { subtotal: number; setup: number; shipping: number; tax
 export type PriceResponse =
   | { enabled: false }
   | { enabled: true; items: PricedItem[]; totals: Totals | null; payment: { options: ('full' | 'deposit')[]; depositPercent: number }; delivery: { pickup: string | null; shipping: number | null } };
+
+/** Size of a placed artwork, in inches (DTF and other methods are priced by print size). */
+export const printSize = (w?: number, h?: number) => (w && h && w > 0 && h > 0 ? { widthIn: Math.round(w * 10) / 10, heightIn: Math.round(h * 10) / 10 } : {});
 
 export const money = (n: number) => `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 

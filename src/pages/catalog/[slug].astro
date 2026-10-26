@@ -247,7 +247,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   import { setMaxContext } from '../../lib/max';
   import { addToCart, replaceCartItem, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry } from '../../lib/cart';
   import { MAX_TOTAL_BYTES } from '../../lib/quote';
-  import { fetchPrices, money, type PriceItemInput, type PriceResponse } from '../../lib/online';
+  import { fetchPrices, money, printSize, type PriceItemInput, type PriceResponse } from '../../lib/online';
   import { openOrder, type OrderArtwork } from '../../lib/order-sheet';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
   const label = document.getElementById('color-name');
@@ -414,6 +414,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         decorations: placements.length ? [...new Set(placements.map((p) => p.decoration))] : checked('decoration'),
         locations: placements.length ? placements.map((p) => p.location) : checked('location'),
         placements, mockups: shots.map((m) => ({ side: m.side, blob: m.blob })),
+        inks: Object.fromEntries(inks),
       };
       if (editItem) {
         await replaceCartItem(editItem.id, input);
@@ -493,7 +494,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     const placements = design.snapshot();
     const ink = (place: string, method: string) => (isScreen(method) ? { colors: inks.get(place) || 1 } : {});
     let locations: PriceItemInput['locations'];
-    if (placements.length) locations = placements.map((p) => ({ placement: p.location, method: p.decoration, ...ink(p.location, p.decoration) }));
+    if (placements.length) locations = placements.map((p) => ({ placement: p.location, method: p.decoration, ...ink(p.location, p.decoration), ...printSize(p.widthIn, p.heightIn) }));
     else {
       const decos = checked('decoration'), locs = checked('location');
       if (!decos.length) return 'Choose a decoration to see your price.';
