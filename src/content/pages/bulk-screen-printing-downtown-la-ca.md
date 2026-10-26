@@ -35,7 +35,7 @@ Elevate your apparel with our professional embroidery services for logos, team u
 
 We’re more than just a print shop—we’re a team of local experts who genuinely care about making your experience smooth, enjoyable, and personal. As a community-focused business, we understand how important it is for your project to go smoothly, especially if you’re on a deadline or working on something truly meaningful. We’re here to listen to your ideas, help you make the right choices, and guide you through the entire process with ease.
 
-Our goal is to make creating custom apparel accessible and fun, whether you’re a business owner looking to boost brand awareness, a school team needing a new look, or an individual bringing a custom design to life. And because we’re Bulk Screen Printing locally based in Downtown LA, Los Angeles, CA, we can offer personalized support, fast turnaround times, and a level of detail and quality control that only a neighborhood print shop can provide.
+Our goal is to make creating custom apparel accessible and fun, whether you’re a business owner looking to boost brand awareness, a school team needing a new look, or an individual bringing a custom design to life. And because we’re Bulk Screen Printing based in Los Angeles and serving Downtown LA, we can offer personalized support, fast turnaround times, and a level of detail and quality control that only a neighborhood print shop can provide.
 
 So, if you have a project in mind—no matter how big or small—reach out to us today. We’d love to chat about how we can help bring your ideas to life with care, expertise, and a little Downtown LA, Los Angeles, CA flair. Thank you for considering The Best Screen Printing. We’re excited to work with you!
 
@@ -148,7 +148,7 @@ While our primary service area is Los Angeles, we also ship custom orders to Dow
 
 ## Contact
 
-Address: 2710 S Broadway Avenue Los Angeles, California 90007 Customer Service: +1-323-433-0033 Email: [email protected] Hours: Monday, Tuesday, Wednesday, Thursday, Friday9:00 am – 5:00 pm Office
+Address: 5738 Holmes Ave., Los Angeles, California 90058 Customer Service: +1-323-433-0033 Email: [email protected] Hours: Monday, Tuesday, Wednesday, Thursday, Friday9:00 am – 5:00 pm Office
 
 - Local Shop
 - Services Screen Printing

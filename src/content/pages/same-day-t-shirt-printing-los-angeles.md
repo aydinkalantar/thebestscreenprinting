@@ -13,7 +13,7 @@ facts:
   - label: "Minimum"
     value: "6 pieces per order"
   - label: "Hours"
-    value: "Mon to Fri, 9am to 5pm, 2710 S Broadway"
+    value: "Mon to Fri, 9am to 5pm, 5738 Holmes Ave."
 faqs:
   - q: "What is the fastest turnaround for custom t-shirts in Los Angeles?"
     a: "Our fastest option is 3-Day Super Rush Delivery, which arrives in 3 business days and adds 30% to the order cost. Order by 2:00 PM ET on Tuesday to have items in hand by Friday."
@@ -24,7 +24,7 @@ faqs:
   - q: "Is Super Rush available for every order?"
     a: "No. Super Rush is not available for all products, styles or PO Box addresses. Call (323) 433-0033 or request a quote and we will tell you which options fit your order."
   - q: "Can I pick up my rush order at the shop?"
-    a: "Our shop is at 2710 S Broadway Avenue in Downtown Los Angeles, open Monday through Friday, 9am to 5pm. Ask about pickup when you confirm your order."
+    a: "Our shop is at 5738 Holmes Ave. in Los Angeles, open Monday through Friday, 9am to 5pm. Ask about pickup when you confirm your order."
   - q: "What do you need from me to start a rush order?"
     a: "Your artwork, the shirt style and color, sizes and quantities, and your deadline. We do a free art check before printing."
 ---

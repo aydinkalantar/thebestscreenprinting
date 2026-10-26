@@ -8,7 +8,7 @@ imported: false
 summary: "Made in-house, on the shelf or on the road next. TBSP ships your order across the continental US, splits it across locations, or finishes it retail-ready with folding, bagging, labels and hang tags."
 facts:
   - { label: "Shipping", value: "Continental US via UPS/FedEx, plus freight and courier" }
-  - { label: "Pickup", value: "Free at 2710 S Broadway Ave, Los Angeles" }
+  - { label: "Pickup", value: "Free at 5738 Holmes Ave., Los Angeles" }
   - { label: "Finishing minimum", value: "6 pieces (100 for hang tags)" }
 faqs:
   - q: "What is blind shipping?"
@@ -47,7 +47,7 @@ Choose **blind shipping** and your return address goes on the package instead of
 
 ## Grab it
 
-Live or work in LA, or just passing through on tour? Pick up your order at 2710 S Broadway Ave at no additional cost. Choose "Pick Up" when you order. Pickup hours are Monday to Friday, 9am to 5pm.
+Live or work in LA, or just passing through on tour? Pick up your order at 5738 Holmes Ave. at no additional cost. Choose "Pick Up" when you order. Pickup hours are Monday to Friday, 9am to 5pm.
 
 ## What does retail-ready finishing include?
 

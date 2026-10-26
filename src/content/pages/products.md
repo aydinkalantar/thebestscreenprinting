@@ -1,11 +1,11 @@
 ---
 path: "/products/"
 title: "Products | The Best Screen Printing"
-description: "Custom T-shirts, hoodies, polos, hats, tank tops, tote bags, outerwear and towels, screen printed or embroidered at our Downtown Los Angeles shop."
+description: "Custom T-shirts, hoodies, polos, hats, tank tops, tote bags, outerwear and towels, screen printed or embroidered at our Los Angeles shop."
 h1: "Custom apparel and products"
 kind: product
 imported: false
-summary: "Tees, fleece, polos, hats, bags and more, decorated with screen printing, embroidery, DTG, DTF or heat transfer. Everything runs out of our Downtown LA shop, with quotes answered within one business day."
+summary: "Tees, fleece, polos, hats, bags and more, decorated with screen printing, embroidery, DTG, DTF or heat transfer. Everything runs out of our Los Angeles shop, with quotes answered within one business day."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }

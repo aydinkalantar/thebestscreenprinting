@@ -1,11 +1,11 @@
 ---
 path: "/services/direct-to-garment/"
 title: "Direct-to-Garment (DTG) Printing in Los Angeles"
-description: "DTG printing in Downtown LA: full-color, high-detail prints from 6 pieces. Ideal for photos, gradients and multi-color designs."
+description: "DTG printing in Los Angeles: full-color, high-detail prints from 6 pieces. Ideal for photos, gradients and multi-color designs."
 h1: "Direct-to-garment (DTG) printing in Los Angeles"
 kind: service
 imported: false
-summary: "Photo-level detail printed straight into the fabric, on runs from 6 pieces, at our Downtown LA shop. Every design gets a review and proof before it prints."
+summary: "Photo-level detail printed straight into the fabric, on runs from 6 pieces, at our Los Angeles shop. Every design gets a review and proof before it prints."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Screens", value: "None needed" }

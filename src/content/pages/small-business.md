@@ -5,7 +5,7 @@ description: "Custom shirts, polos, hats and bags for Los Angeles small business
 h1: "Printing for small businesses"
 kind: audience
 imported: false
-summary: "Put your name on everything your crew wears. From one DTG shirt to a full screen-printed run, made in our Downtown LA shop, with quotes back within one business day."
+summary: "Put your name on everything your crew wears. From one DTG shirt to a full screen-printed run, made in our Los Angeles shop, with quotes back within one business day."
 facts:
   - label: "Minimum"
     value: "6 pieces per order"
@@ -25,7 +25,7 @@ faqs:
 sourceUrl: "https://thebestscreenprinting.com/small-business/"
 ---
 
-Your logo deserves better than a plain black tee. We print and embroider staff uniforms, merch and giveaways for cafes, salons, shops, studios and crews across LA, all from our shop at 2710 S Broadway Avenue in Downtown LA. Start with a dozen shirts or start with a stack.
+Your logo deserves better than a plain black tee. We print and embroider staff uniforms, merch and giveaways for cafes, salons, shops, studios and crews across LA, all from our shop at 5738 Holmes Ave. in Los Angeles. Start with a dozen shirts or start with a stack.
 
 ## What do small businesses order?
 

@@ -1,11 +1,11 @@
 ---
 path: "/services/embossing/"
 title: "Garment Embossing in Los Angeles | TBSP"
-description: "Garment embossing in Downtown LA: raised or debossed designs pressed into fabric with a custom metal die, blind or with foil. 50-piece minimum per design."
+description: "Garment embossing in Los Angeles: raised or debossed designs pressed into fabric with a custom metal die, blind or with foil. 50-piece minimum per design."
 h1: "Garment embossing in Los Angeles"
 kind: service
 imported: false
-summary: "Your design pressed into the fabric itself, raised or sunken, no ink required, made at our Downtown LA shop. Embossing uses a custom metal die, comes blind or with foil, and has a 50-piece minimum."
+summary: "Your design pressed into the fabric itself, raised or sunken, no ink required, made at our Los Angeles shop. Embossing uses a custom metal die, comes blind or with foil, and has a 50-piece minimum."
 facts:
   - { label: "Minimum", value: "50 pieces" }
   - { label: "Styles", value: "Blind embossing and foil" }

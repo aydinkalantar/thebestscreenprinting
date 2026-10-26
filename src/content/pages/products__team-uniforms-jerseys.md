@@ -1,11 +1,11 @@
 ---
 path: "/products/team-uniforms-jerseys/"
 title: "Team Uniforms & Jerseys | Los Angeles"
-description: "Custom team uniforms and jerseys in Los Angeles: screen-printed crests, heat-transfer names and numbers, embroidered coach gear. Made in Downtown LA."
+description: "Custom team uniforms and jerseys in Los Angeles: screen-printed crests, heat-transfer names and numbers, embroidered coach gear. Made in Los Angeles."
 h1: "Team uniforms and jerseys"
 kind: product
 imported: false
-summary: "Jerseys that look like a team before the first whistle. Logos screen printed or embroidered in our Downtown LA shop, names and numbers pressed from your roster, quotes back within one business day."
+summary: "Jerseys that look like a team before the first whistle. Logos screen printed or embroidered in our Los Angeles shop, names and numbers pressed from your roster, quotes back within one business day."
 facts:
   - label: "Names and numbers"
     value: "Heat transfer, so every jersey can be different"
@@ -27,7 +27,7 @@ faqs:
 sourceUrl: "https://thebestscreenprinting.com/products/team-uniforms-jerseys/"
 ---
 
-Your team should look the part. We print and embroider uniforms for leagues, clubs, schools and company teams out of our shop at 2710 S Broadway Avenue in Downtown LA. The crest goes on in ink or thread. Names and numbers go on from your roster, one player at a time.
+Your team should look the part. We print and embroider uniforms for leagues, clubs, schools and company teams out of our shop at 5738 Holmes Ave. in Los Angeles. The crest goes on in ink or thread. Names and numbers go on from your roster, one player at a time.
 
 ## Built from your roster
 

@@ -5,7 +5,7 @@ description: "Custom embroidery in Los Angeles for events, promotions and merch:
 h1: "Custom embroidery in Los Angeles"
 kind: service
 imported: false
-summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Downtown LA shop with a 6-piece minimum per design, digitizing included and Rush and Super Rush options."
+summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Los Angeles shop with a 6-piece minimum per design, digitizing included and Rush and Super Rush options."
 facts:
   - { label: "Minimum", value: "6 pieces per design" }
   - { label: "Setup", value: "Digitizing included" }
@@ -48,7 +48,7 @@ Flat embroidery, 3D puff, appliqué, patches, chenille and monograms each create
 
 ## Visit or call
 
-We are at 2710 S Broadway Ave, Los Angeles, CA 90007, open Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la.
+We are at 5738 Holmes Ave., Los Angeles, CA 90058, open Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la.
 
 ## Get your stitch count
 

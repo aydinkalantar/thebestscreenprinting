@@ -1,11 +1,11 @@
 ---
 path: "/products/business-and-polos-landings/"
 title: "Custom Business Polos in Los Angeles | TBSP"
-description: "Custom embroidered polos and business apparel in Los Angeles. Stitched logos for staff, sales teams, restaurants and events, made in Downtown LA."
+description: "Custom embroidered polos and business apparel in Los Angeles. Stitched logos for staff, sales teams, restaurants and events, made in Los Angeles."
 h1: "Custom business polos"
 kind: product
 imported: false
-summary: "A polo with a stitched logo says your team means business without saying a word. Embroidered and printed polos for staff, sales teams, hospitality and events, out of our Downtown LA shop."
+summary: "A polo with a stitched logo says your team means business without saying a word. Embroidered and printed polos for staff, sales teams, hospitality and events, out of our Los Angeles shop."
 facts:
   - { label: "Method", value: "Embroidery for logos; heat transfer for names" }
   - { label: "Quotes", value: "Answered within one business day" }

@@ -1,7 +1,7 @@
 ---
 path: "/products/t-shirts/"
 title: "Custom T-Shirt Printing in Los Angeles | TBSP"
-description: "Custom t-shirt printing in Downtown LA for brands, artists, events and teams. Orders from 6 pieces, and Rush and Super Rush available."
+description: "Custom t-shirt printing in Los Angeles for brands, artists, events and teams. Orders from 6 pieces, and Rush and Super Rush available."
 h1: "Custom t-shirt printing"
 kind: product
 imported: false
@@ -25,7 +25,7 @@ faqs:
     a: "We answer quote requests within one business day."
 ---
 
-The t-shirt is the most-worn piece of merch there is, so it should look and feel right. TBSP prints custom tees for clothing lines, online stores, artists, businesses, events and teams out of our shop in Downtown Los Angeles. Print a short run with DTG or a full drop with screen printing, and every order gets a free art check before ink hits fabric.
+The t-shirt is the most-worn piece of merch there is, so it should look and feel right. TBSP prints custom tees for clothing lines, online stores, artists, businesses, events and teams out of our shop in Los Angeles. Print a short run with DTG or a full drop with screen printing, and every order gets a free art check before ink hits fabric.
 
 ## Which printing method is right for my t-shirts?
 
@@ -62,4 +62,4 @@ Match your tees with [sweatshirts and hoodies](/products/sweatshirts-hoodies/) o
 
 ## Let's make your shirts
 
-Send your design, shirt style, quantities and deadline through our [quick quote form](/quick-quote/) and we will reply within one business day. Or call (323) 433-0033 and come by 2710 S Broadway, Monday through Friday, 9am to 5pm.
+Send your design, shirt style, quantities and deadline through our [quick quote form](/quick-quote/) and we will reply within one business day. Or call (323) 433-0033 and come by 5738 Holmes Ave., Monday through Friday, 9am to 5pm.

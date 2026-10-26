@@ -1,12 +1,12 @@
 ---
 path: "/products/hats/"
 title: "Custom Embroidered Hats in Los Angeles | TBSP"
-description: "Custom embroidered hats for brands, artists, businesses and teams, stitched at our Downtown Los Angeles shop. Free art check and a quote in one business day."
+description: "Custom embroidered hats for brands, artists, businesses and teams, stitched at our Los Angeles shop. Free art check and a quote in one business day."
 h1: "Custom embroidered hats"
 kind: product
 imported: false
 sourceUrl: "https://thebestscreenprinting.com/products/hats/"
-summary: "Your logo, stitched in thread and worn every day. We embroider custom hats in Downtown LA with a free art check, quotes within one business day, and Rush and Super Rush turnaround for tight deadlines."
+summary: "Your logo, stitched in thread and worn every day. We embroider custom hats in Los Angeles with a free art check, quotes within one business day, and Rush and Super Rush turnaround for tight deadlines."
 facts:
   - label: "Decoration"
     value: "Embroidery"
@@ -25,7 +25,7 @@ faqs:
     a: "We answer quote requests within one business day."
 ---
 
-A hat is the merch people actually wear out the door. TBSP embroiders custom hats for clothing brands, artists, businesses, teams, schools and events at our shop in Downtown Los Angeles. Send your logo and the hat you want, and we will check the art for free and get you a quote within one business day.
+A hat is the merch people actually wear out the door. TBSP embroiders custom hats for clothing brands, artists, businesses, teams, schools and events at our shop in Los Angeles. Send your logo and the hat you want, and we will check the art for free and get you a quote within one business day.
 
 ## Why is embroidery the go-to for hats?
 
@@ -65,4 +65,4 @@ Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30
 
 ## Get your hats made
 
-Send your logo, hat style, color, quantity and deadline through our [quick quote form](/quick-quote/) and we will reply within one business day. Or call (323) 433-0033 and swing by 2710 S Broadway, Monday through Friday, 9am to 5pm.
+Send your logo, hat style, color, quantity and deadline through our [quick quote form](/quick-quote/) and we will reply within one business day. Or call (323) 433-0033 and swing by 5738 Holmes Ave., Monday through Friday, 9am to 5pm.

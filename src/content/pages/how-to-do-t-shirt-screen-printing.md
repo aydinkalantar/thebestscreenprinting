@@ -5,7 +5,7 @@ description: "A step-by-step guide to screen printing a t-shirt by hand: the mat
 h1: "How to do t-shirt screen printing"
 kind: blog
 imported: false
-summary: "From blank screen to finished shirt. A hands-on walkthrough of the gear and the ten steps behind every screen printed tee, from a Downtown LA print shop."
+summary: "From blank screen to finished shirt. A hands-on walkthrough of the gear and the ten steps behind every screen printed tee, from a Los Angeles print shop."
 faqs:
   - q: "Can I screen print a t-shirt at home?"
     a: "Yes, with a screen, emulsion, a light source for exposure, ink, a squeegee and a way to cure the ink. Single-color designs are the easiest place to start."
@@ -87,6 +87,6 @@ Look for clean edges, full coverage, correct placement and no smudges. Let the s
 
 On a production press, the steps are the same but the scale is not. Multi-head presses hold several screens in perfect registration, conveyor dryers cure every shirt at a consistent temperature, and experienced printers dial in ink and pressure for each fabric. That consistency matters when you need dozens or hundreds of identical shirts.
 
-At TBSP, [screen printing](/screen-printing/) starts at 6 pieces and is printed in-house at our Downtown LA shop. Full-color photo art is usually better on [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), which skip screens entirely. Not sure which is right? Read about [DTG printing](/what-is-direct-to-garment-printing-and-how-does-it-work/).
+At TBSP, [screen printing](/screen-printing/) starts at 6 pieces and is printed in-house at our Los Angeles shop. Full-color photo art is usually better on [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), which skip screens entirely. Not sure which is right? Read about [DTG printing](/what-is-direct-to-garment-printing-and-how-does-it-work/).
 
 Want shirts without the darkroom? [Get a free quote](/quick-quote/).

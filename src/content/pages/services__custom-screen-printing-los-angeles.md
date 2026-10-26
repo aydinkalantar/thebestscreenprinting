@@ -1,11 +1,11 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/"
 title: "Custom Screen Printing Los Angeles | Rush & Super Rush Delivery"
-description: "Plastisol, water-based and discharge inks plus puff, high density, foil, glitter and glow effects. Custom screen printing in Downtown Los Angeles, from 6 pieces."
+description: "Plastisol, water-based and discharge inks plus puff, high density, foil, glitter and glow effects. Custom screen printing in Los Angeles, from 6 pieces."
 h1: "Custom screen printing in Los Angeles: inks and effects"
 kind: service
 imported: false
-summary: "Same screen, very different results: a soft water-based hand, punchy plastisol, or effects like puff, foil and glow. Screen printing starts at 6 pieces, printed in-house in Downtown LA with Rush and Super Rush turnaround for tight deadlines."
+summary: "Same screen, very different results: a soft water-based hand, punchy plastisol, or effects like puff, foil and glow. Screen printing starts at 6 pieces, printed in-house in Los Angeles with Rush and Super Rush turnaround for tight deadlines."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Standard ink", value: "Plastisol, included in standard pricing" }
@@ -23,7 +23,7 @@ sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-lo
 ---
 ## Ink is half the design
 
-The screen sets the shape. The ink sets the feel. Pick the wrong one and a great graphic looks flat. Pick the right one and the same art feels like retail. This page is your field guide to the inks and effects we run on press in Downtown LA. For the basics of the method itself, start at [screen printing](/screen-printing/).
+The screen sets the shape. The ink sets the feel. Pick the wrong one and a great graphic looks flat. Pick the right one and the same art feels like retail. This page is your field guide to the inks and effects we run on press in Los Angeles. For the basics of the method itself, start at [screen printing](/screen-printing/).
 
 ## The two workhorse inks
 

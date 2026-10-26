@@ -1,11 +1,11 @@
 ---
 path: "/services/direct-to-garment/direct-to-garment-printing-near-me/"
 title: "Direct To Garment Printing Near Los Angeles"
-description: "DTG printing in Downtown Los Angeles from 6 pieces. Full color, no screens, with a free art check and local pickup on S Broadway."
+description: "DTG printing in Los Angeles from 6 pieces. Full color, no screens, with a free art check and local pickup in Los Angeles."
 h1: "Direct-to-garment printing near me"
 kind: service
 imported: false
-summary: "Full-color art? Several different designs? No problem. DTG prints full-color art straight into the fabric from 6 pieces, at our Downtown LA shop with local pickup."
+summary: "Full-color art? Several different designs? No problem. DTG prints full-color art straight into the fabric from 6 pieces, at our Los Angeles shop with local pickup."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Screens", value: "None needed" }
@@ -25,7 +25,7 @@ sourceUrl: "https://thebestscreenprinting.com/services/direct-to-garment/direct-
 
 Direct-to-garment printing works like a giant inkjet for clothing. Your digital file goes straight from screen to shirt, with every color, gradient and fine line intact. No screens to burn means no waiting. Orders start at 6 pieces, and you can print a different design on each.
 
-We run DTG at our shop at 2710 S Broadway in Downtown Los Angeles, so you can drop by, pick up and get on with your day.
+We run DTG at our shop at 5738 Holmes Ave. in Los Angeles, so you can drop by, pick up and get on with your day.
 
 ## Who orders DTG?
 

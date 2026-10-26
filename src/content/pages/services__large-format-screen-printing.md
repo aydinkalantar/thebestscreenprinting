@@ -1,16 +1,16 @@
 ---
 path: "/services/large-format-screen-printing/"
 title: "Oversize & Large Format Screen Printing in Los Angeles | TBSP"
-description: "Jumbo and oversize screen prints for brands, artists and events, pulled in-house at our Downtown LA shop. 6-piece minimum, free art check, quotes in a day."
+description: "Jumbo and oversize screen prints for brands, artists and events, pulled in-house at our Los Angeles shop. 6-piece minimum, free art check, quotes in a day."
 h1: "Oversize and large format screen printing"
 kind: service
 imported: false
-summary: "Big art deserves a big canvas: we screen print oversize and jumbo graphics that run past a standard chest or back print. Printed in-house in Downtown LA, 6-piece minimum, free art check, quotes within one business day."
+summary: "Big art deserves a big canvas: we screen print oversize and jumbo graphics that run past a standard chest or back print. Printed in-house in Los Angeles, 6-piece minimum, free art check, quotes within one business day."
 facts:
   - label: "Minimum"
     value: "6 pieces per order"
   - label: "Where"
-    value: "Printed in-house at 2710 S Broadway, Los Angeles"
+    value: "Printed in-house at 5738 Holmes Ave., Los Angeles"
   - label: "Art"
     value: "Free art check before printing"
 faqs:
@@ -24,7 +24,7 @@ faqs:
     a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
 ---
 
-Go big. TBSP pulls oversize and jumbo screen prints at our shop at 2710 S Broadway in Downtown Los Angeles, for designs that need more room than a standard chest or back print. Bring 6 or more pieces and we will put your art on press, after a free art check to make sure it holds up at full size.
+Go big. TBSP pulls oversize and jumbo screen prints at our shop at 5738 Holmes Ave. in Los Angeles, for designs that need more room than a standard chest or back print. Bring 6 or more pieces and we will put your art on press, after a free art check to make sure it holds up at full size.
 
 ## Prints that fill the shirt
 

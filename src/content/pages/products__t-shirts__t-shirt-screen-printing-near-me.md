@@ -1,18 +1,18 @@
 ---
 path: "/products/t-shirts/t-shirt-screen-printing-near-me/"
 title: "T-shirt Screen Printing Near Los Angeles | TBSP"
-description: "T-shirt screen printing near you in Downtown LA. Runs from 12 shirts printed in-house, with a free art check and quotes within one business day."
+description: "T-shirt screen printing near you in Los Angeles. Runs from 12 shirts printed in-house, with a free art check and quotes within one business day."
 h1: "T-shirt screen printing near me"
 kind: product
 imported: false
-summary: "Real screens, real ink, printed under our own roof on South Broadway in Downtown LA. Screen printing starts at 12 shirts, and every order gets a free art check before it hits the press."
+summary: "Real screens, real ink, printed under our own roof in Los Angeles. Screen printing starts at 12 shirts, and every order gets a free art check before it hits the press."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
-  - { label: "Where", value: "In-house at 2710 S Broadway Ave, Los Angeles" }
+  - { label: "Where", value: "In-house at 5738 Holmes Ave., Los Angeles" }
   - { label: "Best for", value: "Bulk tees for brands, events, teams and staff" }
 faqs:
   - q: "Do you outsource your screen printing?"
-    a: "No. Screen printed orders are printed in-house at our Downtown Los Angeles shop."
+    a: "No. Screen printed orders are printed in-house at our Los Angeles shop."
   - q: "What if my design is full color?"
     a: "Full-color and photo designs are usually printed with direct-to-garment (DTG) or direct-to-film (DTF), which skip screen setup. Every order starts at 6 pieces."
   - q: "Can I bring my own shirts to be screen printed?"
@@ -21,7 +21,7 @@ sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/t-shirt-screen-p
 ---
 ## Screens burned here. Ink pulled here.
 
-Plenty of "local" print shops are a storefront in front of someone else's press. Ours is the press. Every screen printed T-shirt order is printed in-house at 2710 S Broadway Avenue in Downtown LA, which means the people quoting your job are standing next to the people printing it.
+Plenty of "local" print shops are a storefront in front of someone else's press. Ours is the press. Every screen printed T-shirt order is printed in-house at 5738 Holmes Ave. in Los Angeles, which means the people quoting your job are standing next to the people printing it.
 
 ## What makes screen printed tees worth it?
 

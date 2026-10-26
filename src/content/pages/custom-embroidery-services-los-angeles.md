@@ -5,7 +5,7 @@ description: "Flat, 3D puff, appliqué, patches, chenille and monogram embroider
 h1: "Custom embroidery styles in Los Angeles"
 kind: service
 imported: false
-summary: "Six ways to stitch a logo, from clean flat embroidery to raised 3D puff and fuzzy chenille. Embroidered in Downtown LA with a 6-piece minimum per design, digitizing included and shipping anywhere."
+summary: "Six ways to stitch a logo, from clean flat embroidery to raised 3D puff and fuzzy chenille. Embroidered in Los Angeles with a 6-piece minimum per design, digitizing included and shipping anywhere."
 facts:
   - { label: "Styles", value: "Flat, 3D puff, appliqué, patches, chenille, monogram" }
   - { label: "Minimum", value: "6 pieces per design" }
@@ -23,7 +23,7 @@ sourceUrl: "https://thebestscreenprinting.com/custom-embroidery-services-los-ang
 ---
 ## Pick your stitch
 
-Embroidery is not one look. It is a whole toolkit. The style you choose changes how your logo catches light, how it feels in the hand and how it reads from across the street. Here is what we stitch in Downtown LA, and when each one shines.
+Embroidery is not one look. It is a whole toolkit. The style you choose changes how your logo catches light, how it feels in the hand and how it reads from across the street. Here is what we stitch in Los Angeles, and when each one shines.
 
 ## Flat embroidery
 
@@ -67,7 +67,7 @@ Initials or short names in a clean script or block letter. Small, personal and p
 2. **Digitize.** Your logo becomes a stitch file. Included in the price.
 3. **Free art check.** We confirm it will stitch clean before production.
 4. **Stitch.** Our multi-head machines run your design across the order for consistent results.
-5. **Quality check and pickup.** Collect at 2710 S Broadway or have it shipped.
+5. **Quality check and pickup.** Collect at 5738 Holmes Ave. or have it shipped.
 
 ## Which style should you choose?
 

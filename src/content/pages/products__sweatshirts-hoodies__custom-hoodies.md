@@ -1,11 +1,11 @@
 ---
 path: "/products/sweatshirts-hoodies/custom-hoodies/"
 title: "Custom Hoodies Los Angeles | TBSP"
-description: "Custom hoodies in Los Angeles: screen printed, embroidered, DTG or heat transfer. Classic and oversized fits in sizes XS to 5XL, printed in Downtown LA."
+description: "Custom hoodies in Los Angeles: screen printed, embroidered, DTG or heat transfer. Classic and oversized fits in sizes XS to 5XL, printed in Los Angeles."
 h1: "Custom hoodies in Los Angeles"
 kind: product
 imported: false
-summary: "The hoodie is the piece people actually keep, so it should look the part. Classic and oversized fits from XS to 5XL, decorated with screen printing, embroidery, DTG or heat transfer, all run out of our Downtown LA shop."
+summary: "The hoodie is the piece people actually keep, so it should look the part. Classic and oversized fits from XS to 5XL, decorated with screen printing, embroidery, DTG or heat transfer, all run out of our Los Angeles shop."
 facts:
   - { label: "Sizes", value: "XS to 5XL, classic and oversized fits" }
   - { label: "Minimum", value: "6 pieces per order" }
@@ -23,7 +23,7 @@ sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/custo
 ---
 ## Heavy fleece. Loud prints. Clean stitches.
 
-A tee gets worn for a season. A good hoodie gets worn for years. That is why brands build drops around them, companies hand them out to the team, and crews live in them on set. We decorate hoodies out of our Downtown LA shop, in classic and oversized fits from XS to 5XL.
+A tee gets worn for a season. A good hoodie gets worn for years. That is why brands build drops around them, companies hand them out to the team, and crews live in them on set. We decorate hoodies out of our Los Angeles shop, in classic and oversized fits from XS to 5XL.
 
 ## Four ways to make it yours
 

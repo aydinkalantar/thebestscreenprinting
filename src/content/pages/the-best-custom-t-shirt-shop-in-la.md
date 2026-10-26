@@ -5,7 +5,7 @@ description: "Our favorite blank tees and hoodies for custom printing in LA: Bel
 h1: "The best custom T-shirt shop in LA, and the blanks we love"
 kind: core
 imported: false
-summary: "A great print starts with the right shirt. These are the tees and hoodies our Downtown LA shop reaches for most, for screen printing, embroidery, DTG and DTF."
+summary: "A great print starts with the right shirt. These are the tees and hoodies our Los Angeles shop reaches for most, for screen printing, embroidery, DTG and DTF."
 facts:
   - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF" }
   - { label: "Minimum", value: "6 pieces per order" }

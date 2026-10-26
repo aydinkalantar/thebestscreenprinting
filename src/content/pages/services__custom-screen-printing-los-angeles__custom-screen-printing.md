@@ -23,7 +23,7 @@ sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-lo
 ---
 ## Five steps from idea to ink
 
-Screen printing rewards a clean start. Get the details right up front and the press does the rest. Here is exactly how an order moves through our Downtown LA shop.
+Screen printing rewards a clean start. Get the details right up front and the press does the rest. Here is exactly how an order moves through our Los Angeles shop.
 
 ### 1. Send the brief
 
@@ -43,7 +43,7 @@ We separate your design into colors and burn one screen per color. Each color is
 
 ### 5. Pickup or delivery
 
-Grab your order at 2710 S Broadway or have it shipped. Need it bagged, tagged or sent to several addresses? That is [fulfillment](/fulfillment/).
+Grab your order at 5738 Holmes Ave. or have it shipped. Need it bagged, tagged or sent to several addresses? That is [fulfillment](/fulfillment/).
 
 ## What makes a design screen-print friendly?
 

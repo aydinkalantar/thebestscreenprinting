@@ -5,7 +5,7 @@ description: "Name brand blanks we customize in Los Angeles: Bella + Canvas, Com
 h1: "Customizable name brand apparel"
 kind: product
 imported: false
-summary: "Your design deserves a shirt people already trust. We print and stitch on the major blank brands, from soft fashion fits to heavyweight workhorses, at our Downtown LA shop."
+summary: "Your design deserves a shirt people already trust. We print and stitch on the major blank brands, from soft fashion fits to heavyweight workhorses, at our Los Angeles shop."
 facts:
   - { label: "Brands", value: "Bella + Canvas, Comfort Colors, Gildan, Next Level, American Apparel and more" }
   - { label: "Own garments", value: "Customer-supplied blanks welcome" }

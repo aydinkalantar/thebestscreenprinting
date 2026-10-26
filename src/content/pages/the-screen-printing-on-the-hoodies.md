@@ -71,6 +71,6 @@ Wash inside out in cold water, tumble dry low or hang dry, and do not iron the p
 
 ## Screen printed hoodies at TBSP
 
-[Screen printing](/screen-printing/) starts at 6 pieces and is printed in-house at our Downtown LA shop. For full-color or photo art, we usually recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). Every order gets a free art check.
+[Screen printing](/screen-printing/) starts at 6 pieces and is printed in-house at our Los Angeles shop. For full-color or photo art, we usually recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/). Every order gets a free art check.
 
 Ready to print hoodies? [Get a free quote](/quick-quote/).

@@ -5,7 +5,7 @@ description: "Custom tote bags and printed bags in Los Angeles. Screen printed o
 h1: "Custom bags and tote bags"
 kind: product
 imported: false
-summary: "A tote gets carried, seen and reused for years, which makes it one of the hardest-working pieces of merch you can make. Screen printed or embroidered on one or both sides, out of our Downtown LA shop."
+summary: "A tote gets carried, seen and reused for years, which makes it one of the hardest-working pieces of merch you can make. Screen printed or embroidered on one or both sides, out of our Los Angeles shop."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Methods", value: "Screen printing and embroidery" }

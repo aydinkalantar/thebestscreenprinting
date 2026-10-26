@@ -1,13 +1,13 @@
 ---
 path: "/products/sweatshirts-hoodies/custom-hoodies-near-me/"
 title: "Custom Hoodies Near Me | Los Angeles | TBSP"
-description: "Custom hoodies near you in Downtown LA. Feel the fleece in person, sort out your design face to face, and pick up your order at our South Broadway shop."
+description: "Custom hoodies near you in Los Angeles. Feel the fleece in person, sort out your design face to face, and pick up your order at our Los Angeles shop."
 h1: "Custom hoodies near me"
 kind: product
 imported: false
-summary: "Hoodies are a feel-it-first purchase, and our Downtown LA shop lets you do exactly that. Stop by 2710 S Broadway Avenue, Monday to Friday, 9am to 5pm, to talk through blanks and pick up your order."
+summary: "Hoodies are a feel-it-first purchase, and our Los Angeles shop lets you do exactly that. Stop by 5738 Holmes Ave., Monday to Friday, 9am to 5pm, to talk through blanks and pick up your order."
 facts:
-  - { label: "Where", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
+  - { label: "Where", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "LA brands, crews and teams who want to see it first" }
 faqs:
@@ -21,7 +21,7 @@ sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/custo
 ---
 ## Hoodies are a touch-it product
 
-Fleece weight, the hand of the fabric, how the hood sits, whether the fit is classic or oversized: you can read about all of it, but you understand it in about two seconds once it is in your hands. That is the case for a local shop. TBSP is at 2710 S Broadway Avenue in Downtown LA, and you can come talk it through in person.
+Fleece weight, the hand of the fabric, how the hood sits, whether the fit is classic or oversized: you can read about all of it, but you understand it in about two seconds once it is in your hands. That is the case for a local shop. TBSP is at 5738 Holmes Ave. in Los Angeles, and you can come talk it through in person.
 
 ## Why order hoodies from a shop down the street?
 
@@ -52,4 +52,4 @@ In-house [screen printing](/screen-printing/) handles bold designs and bigger ru
 
 ## Come by or send it over
 
-[Get a quick quote](/quick-quote/), call (323) 433-0033 or email sales@tbsp.la, then swing by South Broadway to pick up your hoodies.
+[Get a quick quote](/quick-quote/), call (323) 433-0033 or email sales@tbsp.la, then swing by our shop to pick up your hoodies.

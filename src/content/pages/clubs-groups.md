@@ -1,11 +1,11 @@
 ---
 path: "/clubs-groups/"
 title: "Specialty T-Shirts"
-description: "Custom shirts and hoodies for clubs, school groups, families, charities and crews, printed in Downtown LA. Orders start at 6 pieces."
+description: "Custom shirts and hoodies for clubs, school groups, families, charities and crews, printed in Los Angeles. Orders start at 6 pieces."
 h1: "Specialty t-shirts for clubs and groups"
 kind: audience
 imported: false
-summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Downtown LA shop. Orders start at 6 pieces, for every decoration method."
+summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Los Angeles shop. Orders start at 6 pieces, for every decoration method."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -54,6 +54,6 @@ Tees are the classic, but groups also go for [hoodies and sweatshirts](/products
 2. **Send your art.** A finished file or a rough idea. Every order gets a free art check.
 3. **Get your quote.** Answered within one business day.
 4. **Approve the mockup.** Check placement, colors and sizes, then we print.
-5. **Pick up or ship.** Grab it at 2710 S Broadway Avenue in Downtown LA, or have it shipped.
+5. **Pick up or ship.** Grab it at 5738 Holmes Ave. in Los Angeles, or have it shipped.
 
 Rounding up the crew? [Get a free quote](/quick-quote/).

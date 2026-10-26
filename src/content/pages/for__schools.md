@@ -1,7 +1,7 @@
 ---
 path: "/for/schools/"
 title: "School Apparel Printing in Los Angeles"
-description: "Custom shirts, hoodies and uniforms for Los Angeles schools, clubs and booster groups. Screen printing, embroidery and names and numbers in Downtown LA."
+description: "Custom shirts, hoodies and uniforms for Los Angeles schools, clubs and booster groups. Screen printing, embroidery and names and numbers in Los Angeles."
 h1: "Custom apparel for schools"
 kind: audience
 imported: false
@@ -21,10 +21,10 @@ faqs:
   - q: "Can you embroider staff polos and jackets?"
     a: "Yes. We embroider polos, hats, jackets and uniforms."
   - q: "Can we pick up the order at your shop?"
-    a: "Yes. Our shop is at 2710 S Broadway Avenue, Los Angeles, CA 90007, open Monday through Friday, 9am to 5pm."
+    a: "Yes. Our shop is at 5738 Holmes Ave., Los Angeles, CA 90058, open Monday through Friday, 9am to 5pm."
 ---
 
-Spirit week, game day, senior year, the robotics team's first competition. We make the shirts that show up in every photo. Schools, clubs, sports teams, booster groups and PTAs across LA order from our Downtown LA shop for screen printing, embroidery and personalized names and numbers.
+Spirit week, game day, senior year, the robotics team's first competition. We make the shirts that show up in every photo. Schools, clubs, sports teams, booster groups and PTAs across LA order from our Los Angeles shop for screen printing, embroidery and personalized names and numbers.
 
 ## What do schools order?
 

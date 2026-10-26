@@ -1,11 +1,11 @@
 ---
 path: "/for/non-profits/"
 title: "Custom Shirts for Non-Profits in Los Angeles"
-description: "Volunteer, event and fundraiser shirts for Los Angeles non-profits, printed in Downtown LA. Orders from 6 pieces and a free art check."
+description: "Volunteer, event and fundraiser shirts for Los Angeles non-profits, printed in Los Angeles. Orders from 6 pieces and a free art check."
 h1: "Custom shirts for non-profits"
 kind: audience
 imported: false
-summary: "Shirts that rally people around your cause. Volunteer tees, walk and run shirts, and fundraiser merch printed in Downtown LA, with orders starting at 6 pieces."
+summary: "Shirts that rally people around your cause. Volunteer tees, walk and run shirts, and fundraiser merch printed in Los Angeles, with orders starting at 6 pieces."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -24,7 +24,7 @@ faqs:
 
 A good cause shirt does three jobs. It makes volunteers easy to spot. It makes your event look organized and serious. And it keeps telling your story every time someone wears it afterward.
 
-We print for Los Angeles non-profits, community groups and charity events from our shop at 2710 S Broadway Avenue in Downtown LA.
+We print for Los Angeles non-profits, community groups and charity events from our shop at 5738 Holmes Ave. in Los Angeles.
 
 ## What do non-profits order?
 
@@ -56,6 +56,6 @@ Organizing a club or community group too? See [specialty shirts for clubs and gr
 1. Send your logo or artwork. Every order gets a free art check.
 2. Get your quote within one business day.
 3. Approve the mockup.
-4. Pick up in Downtown LA or have it shipped.
+4. Pick up in Los Angeles or have it shipped.
 
 Planning your next event? [Get a free quote](/quick-quote/).

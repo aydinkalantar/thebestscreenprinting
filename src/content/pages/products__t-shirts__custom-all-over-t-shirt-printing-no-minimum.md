@@ -5,7 +5,7 @@ description: "All-over t-shirt printing in Los Angeles from 6 pieces. Order a sh
 h1: "Custom all-over t-shirt printing, from 6 pieces"
 kind: product
 imported: false
-summary: "Twelve shirts or one hundred, every all-over piece is printed on its own, so every shirt can carry a different design. Dye-sublimation on polyester, pressed at our Downtown LA shop."
+summary: "Twelve shirts or one hundred, every all-over piece is printed on its own, so every shirt can carry a different design. Dye-sublimation on polyester, pressed at our Los Angeles shop."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Method", value: "Dye-sublimation on polyester" }

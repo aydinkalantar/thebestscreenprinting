@@ -1,13 +1,13 @@
 ---
 path: "/local-shop/"
 title: "Local Shop | The Best Screen Printing"
-description: "Visit TBSP at 2710 S Broadway Ave in Downtown Los Angeles. Screen printing, embroidery, DTG and DTF, with drop-off and pickup Monday to Friday, 9am to 5pm."
-h1: "Our local print shop in Downtown LA"
+description: "Visit TBSP at 5738 Holmes Ave. in Los Angeles. Screen printing, embroidery, DTG and DTF, with drop-off and pickup Monday to Friday, 9am to 5pm."
+h1: "Our local print shop in Los Angeles"
 kind: core
 imported: false
-summary: "Walk in with an idea, walk out with a plan. Our shop at 2710 S Broadway is where your shirts get printed, stitched and picked up, Monday to Friday, 9am to 5pm."
+summary: "Walk in with an idea, walk out with a plan. Our shop at 5738 Holmes Ave. is where your shirts get printed, stitched and picked up, Monday to Friday, 9am to 5pm."
 facts:
-  - { label: "Address", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
+  - { label: "Address", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Hours", value: "Mon–Fri, 9am–5pm" }
   - { label: "Contact", value: "(323) 433-0033 · sales@tbsp.la" }
 faqs:
@@ -19,9 +19,9 @@ faqs:
     a: "Yes. Picking up your order at the shop has no additional cost."
 sourceUrl: "https://thebestscreenprinting.com/local-shop/"
 ---
-## Screen printing, embroidery, DTG and DTF, in one DTLA building
+## Screen printing, embroidery, DTG and DTF, in one Los Angeles building
 
-This is where it happens. Screens get burned, ink gets mixed, needles fly and finished orders stack up for pickup, all at 2710 S Broadway in Downtown Los Angeles. You can order online, but there is something to be said for walking in and seeing your shirt before it ships.
+This is where it happens. Screens get burned, ink gets mixed, needles fly and finished orders stack up for pickup, all at 5738 Holmes Ave. in Los Angeles. You can order online, but there is something to be said for walking in and seeing your shirt before it ships.
 
 ## What you can do at the shop
 
@@ -45,13 +45,13 @@ This is where it happens. Screens get burned, ink gets mixed, needles fly and fi
 
 Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call before you come in so we can check press time and garment stock, then confirm your pickup time. More on [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
-## Not in DTLA?
+## Not in Los Angeles?
 
 We ship across the continental US and can split orders across several addresses. See [fulfillment](/fulfillment/). Comparing local shops? Our checklist on [screen printing near me](/services/custom-screen-printing-los-angeles/screen-printing-near-me/) covers what to ask.
 
 ## Find us
 
-2710 S Broadway Ave, Los Angeles, CA 90007. Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la.
+5738 Holmes Ave., Los Angeles, CA 90058. Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la.
 
 ## Before you visit
 

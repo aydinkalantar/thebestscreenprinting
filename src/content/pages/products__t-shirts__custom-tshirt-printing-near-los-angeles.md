@@ -1,27 +1,27 @@
 ---
 path: "/products/t-shirts/custom-tshirt-printing-near-los-angeles/"
 title: "Custom T-shirt Printing Near Los Angeles | TBSP"
-description: "Custom t-shirt printing near Los Angeles with local pickup at our Downtown LA shop on South Broadway. Mon–Fri 9am–5pm, or have your order shipped."
+description: "Custom t-shirt printing near Los Angeles with local pickup at our Los Angeles shop. Mon–Fri 9am–5pm, or have your order shipped."
 h1: "Custom t-shirt printing near Los Angeles"
 kind: product
 imported: false
-summary: "A real print shop in Downtown LA where you can talk to a person, see your shirts and carry them out the door. Open Monday to Friday, 9am to 5pm, at 2710 S Broadway Avenue."
+summary: "A real print shop in Los Angeles where you can talk to a person, see your shirts and carry them out the door. Open Monday to Friday, 9am to 5pm, at 5738 Holmes Ave."
 facts:
-  - { label: "Address", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
+  - { label: "Address", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Hours", value: "Mon–Fri, 9am–5pm" }
   - { label: "Pickup", value: "Local pickup at the shop, or shipping" }
 faqs:
   - q: "Where is your shop?"
-    a: "We are at 2710 S Broadway Avenue, Los Angeles, CA 90007, in Downtown LA."
+    a: "We are at 5738 Holmes Ave., Los Angeles, CA 90058, in Los Angeles."
   - q: "Can I pick up my order instead of having it shipped?"
     a: "Yes. Local pickup is available at our shop Monday through Friday, 9am to 5pm. We will let you know when your order is ready."
   - q: "Do I need an appointment to stop by?"
     a: "Call ahead at (323) 433-0033 so the right person is free to walk through your project with you, especially if you are bringing garments or samples."
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/custom-tshirt-printing-near-los-angeles/"
 ---
-## Your print shop is on South Broadway
+## Your print shop is on Holmes Avenue
 
-Ordering shirts online from a print shop three states away means waiting on boxes, guessing at colors and hoping the tracking number moves. When the shop is in Downtown LA, you can skip most of that. TBSP is at 2710 S Broadway Avenue, open Monday through Friday from 9am to 5pm, and every screen printed order is printed under our own roof.
+Ordering shirts online from a print shop three states away means waiting on boxes, guessing at colors and hoping the tracking number moves. When the shop is in Los Angeles, you can skip most of that. TBSP is at 5738 Holmes Ave., open Monday through Friday from 9am to 5pm, and every screen printed order is printed under our own roof.
 
 ## Why does local matter for custom tees?
 

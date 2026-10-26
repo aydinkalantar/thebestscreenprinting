@@ -1,15 +1,15 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/screen-printing-on-your-shirts/"
 title: "Screen Printing On Your Shirts In Los Angeles"
-description: "Bring your own shirts, hoodies or cut-and-sew pieces and we will screen print them in Downtown LA. Local drop-off, a free art check and a 6-piece minimum."
+description: "Bring your own shirts, hoodies or cut-and-sew pieces and we will screen print them in Los Angeles. Local drop-off, a free art check and a 6-piece minimum."
 h1: "Screen printing on your shirts in Los Angeles"
 kind: service
 imported: false
-summary: "Your garments, our ink. Drop off your own blanks or cut-and-sew pieces at our Downtown LA shop and we will print them, with a free art check first. Orders start at 6 pieces."
+summary: "Your garments, our ink. Drop off your own blanks or cut-and-sew pieces at our Los Angeles shop and we will print them, with a free art check first. Orders start at 6 pieces."
 facts:
   - { label: "Garments", value: "Customer-supplied welcome" }
   - { label: "Minimum", value: "6 pieces per order" }
-  - { label: "Drop-off", value: "2710 S Broadway Ave, Mon–Fri 9am–5pm" }
+  - { label: "Drop-off", value: "5738 Holmes Ave., Mon–Fri 9am–5pm" }
 faqs:
   - q: "Can I bring my own shirts to be printed?"
     a: "Yes. We accept customer-supplied garments for printing, including blanks you bought elsewhere and pieces from your own cut-and-sew maker."
@@ -23,7 +23,7 @@ sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-lo
 ---
 ## Your blanks, our presses
 
-Already have the perfect shirt? Maybe it is a heavyweight tee you love, a cut-and-sew piece from your own pattern maker, or a box of extras from the last drop. Bring them in. We screen print customer-supplied garments at our Downtown LA shop, so your vision stays exactly as you planned it.
+Already have the perfect shirt? Maybe it is a heavyweight tee you love, a cut-and-sew piece from your own pattern maker, or a box of extras from the last drop. Bring them in. We screen print customer-supplied garments at our Los Angeles shop, so your vision stays exactly as you planned it.
 
 ## Who brings their own garments?
 
@@ -36,7 +36,7 @@ Already have the perfect shirt? Maybe it is a heavyweight tee you love, a cut-an
 
 1. **Get a quote.** Tell us the garment brand, fabric and quantity, plus your design and print locations. We reply within one business day.
 2. **Free art check.** We review your file and send a proof for approval.
-3. **Drop off.** Bring the garments to 2710 S Broadway, Monday to Friday, 9am to 5pm. Sorted by size makes life easier for everyone.
+3. **Drop off.** Bring the garments to 5738 Holmes Ave., Monday to Friday, 9am to 5pm. Sorted by size makes life easier for everyone.
 4. **Print and cure.** Your shirts go on press and through the dryer like any other order.
 5. **Pick up.** Collect them at the shop, or ask about [shipping and fulfillment](/fulfillment/).
 

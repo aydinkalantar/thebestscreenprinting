@@ -1,11 +1,11 @@
 ---
 path: "/products/sweatshirts-hoodies/custom-sweatshirts/"
 title: "Custom Sweatshirts Los Angeles | TBSP"
-description: "Custom crewneck sweatshirts in Los Angeles, screen printed or embroidered in Downtown LA. Clean, collegiate and corporate looks with a free art check."
+description: "Custom crewneck sweatshirts in Los Angeles, screen printed or embroidered in Los Angeles. Clean, collegiate and corporate looks with a free art check."
 h1: "Custom sweatshirts in Los Angeles"
 kind: product
 imported: false
-summary: "The crewneck is the hoodie's sharper sibling: clean neckline, wide canvas, no hood in the way. Screen printed, embroidered or DTG printed out of our Downtown LA shop."
+summary: "The crewneck is the hoodie's sharper sibling: clean neckline, wide canvas, no hood in the way. Screen printed, embroidered or DTG printed out of our Los Angeles shop."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Methods", value: "Screen printing, embroidery, DTG, heat transfer" }

@@ -1,11 +1,11 @@
 ---
 path: "/services/heat-transfer-vinyl/"
 title: "Heat Transfer Vinyl Printing in Los Angeles | TBSP"
-description: "Heat transfer vinyl (HTV) in Downtown LA: dense, durable single-color prints for names, numbers and short runs. 6-piece minimum, and it works on most fabrics."
+description: "Heat transfer vinyl (HTV) in Los Angeles: dense, durable single-color prints for names, numbers and short runs. 6-piece minimum, and it works on most fabrics."
 h1: "Heat transfer vinyl (HTV) printing in Los Angeles"
 kind: service
 imported: false
-summary: "Dense, sharp, built-to-last vinyl for names, numbers and small batches, cut and pressed at our Downtown LA shop. HTV orders start at 6 pieces, and it works on most fabrics."
+summary: "Dense, sharp, built-to-last vinyl for names, numbers and small batches, cut and pressed at our Los Angeles shop. HTV orders start at 6 pieces, and it works on most fabrics."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Colors", value: "Single color per vinyl layer" }

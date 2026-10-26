@@ -68,6 +68,6 @@ Besides the top thread, machine embroidery uses a **bobbin thread** underneath t
 
 ## Embroidery at TBSP
 
-We embroider polos, hats, jackets and uniforms at our Downtown LA shop. Send your logo and we will review it before anything is stitched. Every order gets a free art check. See [embroidery services](/services/embroidery/), browse [hats](/products/hats/), or compare methods in [embroidery vs screen printing](/what-is-the-difference-between-embroidery-and-screen-printing/).
+We embroider polos, hats, jackets and uniforms at our Los Angeles shop. Send your logo and we will review it before anything is stitched. Every order gets a free art check. See [embroidery services](/services/embroidery/), browse [hats](/products/hats/), or compare methods in [embroidery vs screen printing](/what-is-the-difference-between-embroidery-and-screen-printing/).
 
 Ready for a stitched logo? [Get a free quote](/quick-quote/).

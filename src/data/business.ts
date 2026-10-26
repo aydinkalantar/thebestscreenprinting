@@ -8,10 +8,10 @@ export const business = {
   phoneDisplay: '(323) 433-0033',
   email: 'sales@tbsp.la',
   address: {
-    streetAddress: '2710 S Broadway Avenue',
+    streetAddress: '5738 Holmes Ave.',
     addressLocality: 'Los Angeles',
     addressRegion: 'CA',
-    postalCode: '90007',
+    postalCode: '90058',
     addressCountry: 'US',
   },
   openingHours: ['Mo-Fr 09:00-17:00'],

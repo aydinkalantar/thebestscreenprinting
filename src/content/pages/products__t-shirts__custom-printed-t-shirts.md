@@ -5,7 +5,7 @@ description: "Custom printed t-shirts in Los Angeles: screen printing, DTG, DTF,
 h1: "Custom printed t-shirts in Los Angeles"
 kind: product
 imported: false
-summary: "Five ways to put your design on a shirt, and the one that fits depends on your quantity, colors and fabric. We run all of them at our Downtown LA shop and recommend the right one with every quote."
+summary: "Five ways to put your design on a shirt, and the one that fits depends on your quantity, colors and fabric. We run all of them at our Los Angeles shop and recommend the right one with every quote."
 facts:
   - { label: "Methods", value: "Screen print, DTG, DTF, heat transfer, sublimation" }
   - { label: "Minimum", value: "6 pieces per order" }

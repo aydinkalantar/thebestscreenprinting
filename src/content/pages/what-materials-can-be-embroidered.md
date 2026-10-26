@@ -65,6 +65,6 @@ Machines range from home models to commercial multi-head machines that stitch se
 
 ## Embroidery at TBSP
 
-We embroider polos, hats, jackets and uniforms at our Downtown LA shop. Every order gets a free art check, and we will tell you if a design needs tweaks to stitch well on your material. See [embroidery services](/services/embroidery/) and [embroidery on clothes](/embroidery-on-clothes/).
+We embroider polos, hats, jackets and uniforms at our Los Angeles shop. Every order gets a free art check, and we will tell you if a design needs tweaks to stitch well on your material. See [embroidery services](/services/embroidery/) and [embroidery on clothes](/embroidery-on-clothes/).
 
 Have something to stitch? [Get a free quote](/quick-quote/).

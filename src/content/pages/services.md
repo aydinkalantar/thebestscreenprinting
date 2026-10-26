@@ -1,11 +1,11 @@
 ---
 path: "/services/"
 title: "Services | Screen Printing, Embroidery, DTG & DTF in Los Angeles"
-description: "Screen printing, embroidery, DTG, DTF, heat transfer and embossing under one roof in Downtown LA. Pick the right method for your run and get a quote fast."
+description: "Screen printing, embroidery, DTG, DTF, heat transfer and embossing under one roof in Los Angeles. Pick the right method for your run and get a quote fast."
 h1: "Our services"
 kind: service
 imported: false
-summary: "Ink, thread, film and texture, all decorated at our Downtown LA shop. Orders from 6 pieces, screen printing and DTG, embroidery for hats, polos and uniforms, and quotes answered within one business day."
+summary: "Ink, thread, film and texture, all decorated at our Los Angeles shop. Orders from 6 pieces, screen printing and DTG, embroidery for hats, polos and uniforms, and quotes answered within one business day."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Full-color art", value: "DTG and DTF" }
@@ -23,7 +23,7 @@ sourceUrl: "https://thebestscreenprinting.com/services/"
 ---
 ## Six ways to put your design on a garment
 
-Every method has a sweet spot. The trick is matching your quantity, artwork and fabric to the right one. Here is the short version of what we run at 2710 S Broadway in Downtown LA.
+Every method has a sweet spot. The trick is matching your quantity, artwork and fabric to the right one. Here is the short version of what we run at 5738 Holmes Ave. in Los Angeles.
 
 ### Screen printing
 

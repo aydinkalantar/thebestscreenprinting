@@ -1,23 +1,23 @@
 ---
 path: "/event-apparel/"
 title: "Event Apparel Printing | Los Angeles"
-description: "Custom event apparel in Los Angeles: staff shirts, tour merch, giveaways and volunteer tees, screen printed or embroidered in our Downtown LA shop."
+description: "Custom event apparel in Los Angeles: staff shirts, tour merch, giveaways and volunteer tees, screen printed or embroidered in our Los Angeles shop."
 h1: "Event apparel"
 kind: audience
 imported: false
-summary: "Shirts people actually keep wearing after the event. Printed in-house in Downtown LA from 6 pieces, with Rush and Super Rush turnaround for tight deadlines."
+summary: "Shirts people actually keep wearing after the event. Printed in-house in Los Angeles from 6 pieces, with Rush and Super Rush turnaround for tight deadlines."
 facts:
   - label: "Minimum 6 pieces"
-    value: "Screen printed in-house in Downtown LA"
+    value: "Screen printed in-house in Los Angeles"
   - label: "Turnaround"
     value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
   - label: "Location"
-    value: "2710 S Broadway Ave, Los Angeles, CA 90007"
+    value: "5738 Holmes Ave., Los Angeles, CA 90058"
 faqs:
   - q: "Can you print event shirts on short notice?"
     a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call (323) 433-0033 or request a quote to confirm your date."
-  - q: "Can I pick up my order in Downtown LA?"
-    a: "Yes. Our shop is at 2710 S Broadway Avenue, Los Angeles, CA 90007, open Monday through Friday, 9am to 5pm."
+  - q: "Can I pick up my order in Los Angeles?"
+    a: "Yes. Our shop is at 5738 Holmes Ave., Los Angeles, CA 90058, open Monday through Friday, 9am to 5pm."
   - q: "What if I only need a few shirts for event staff?"
     a: "Orders start at 6 pieces. Staff shirts with full-color art are usually printed with DTG or DTF."
   - q: "Can different staff roles have different shirts?"
@@ -25,7 +25,7 @@ faqs:
 sourceUrl: "https://thebestscreenprinting.com/event-apparel/"
 ---
 
-Festivals, launches, tours, conferences, fundraisers, block parties. If it has a crowd, it needs a shirt. We print event apparel out of our Downtown LA shop, with screen printing in-house, embroidery for the crew that runs the show, and Rush or Super Rush when the date is close.
+Festivals, launches, tours, conferences, fundraisers, block parties. If it has a crowd, it needs a shirt. We print event apparel out of our Los Angeles shop, with screen printing in-house, embroidery for the crew that runs the show, and Rush or Super Rush when the date is close.
 
 ## What gets printed for events?
 

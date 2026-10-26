@@ -1,7 +1,7 @@
 ---
 path: "/products/sweatshirts-hoodies/"
 title: "Custom Sweatshirts & Hoodies in Los Angeles | TBSP"
-description: "Custom hoodies and sweatshirts, screen printed or embroidered in Downtown LA. Orders from 6 pieces and a free art check."
+description: "Custom hoodies and sweatshirts, screen printed or embroidered in Los Angeles. Orders from 6 pieces and a free art check."
 h1: "Custom sweatshirts and hoodies"
 kind: product
 imported: false
@@ -25,7 +25,7 @@ faqs:
     a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Request a quote with your deadline or call (323) 433-0033 to confirm."
 ---
 
-A good hoodie gets worn until the cuffs fray. TBSP makes custom hoodies and sweatshirts for brands, artists, teams, schools, crews and events at our shop in Downtown Los Angeles. We screen print in-house from 6 pieces, handle full-color art with DTG or DTF, and embroider logos when you want the texture of thread.
+A good hoodie gets worn until the cuffs fray. TBSP makes custom hoodies and sweatshirts for brands, artists, teams, schools, crews and events at our shop in Los Angeles. We screen print in-house from 6 pieces, handle full-color art with DTG or DTF, and embroider logos when you want the texture of thread.
 
 ## Which decoration works best on hoodies and sweatshirts?
 

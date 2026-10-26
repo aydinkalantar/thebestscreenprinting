@@ -1,11 +1,11 @@
 ---
 path: "/influencers/"
 title: "Printing For Influencers"
-description: "Creator merch printed in Downtown LA: test a design with a 6-piece DTG run, then scale the drop with screen printing, embroidered hats and Rush and Super Rush options."
+description: "Creator merch printed in Los Angeles: test a design with a 6-piece DTG run, then scale the drop with screen printing, embroidered hats and Rush and Super Rush options."
 h1: "Merch printing for influencers and creators"
 kind: audience
 imported: false
-summary: "Your audience, wearing your brand. Test a design with a 6-piece DTG run, then scale the drop with screen printing and embroidery, all from our Downtown LA shop."
+summary: "Your audience, wearing your brand. Test a design with a 6-piece DTG run, then scale the drop with screen printing and embroidery, all from our Los Angeles shop."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -56,6 +56,6 @@ Send your file and we will review it before printing. Every order gets a free ar
 
 ## Local and fast
 
-We are at 2710 S Broadway Avenue in Downtown LA. Pick up in person or have it shipped. Quotes are answered within one business day.
+We are at 5738 Holmes Ave. in Los Angeles. Pick up in person or have it shipped. Quotes are answered within one business day.
 
 Ready to drop? [Get a free quote](/quick-quote/).

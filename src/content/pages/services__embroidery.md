@@ -1,11 +1,11 @@
 ---
 path: "/services/embroidery/"
 title: "Embroidery Services in Los Angeles"
-description: "Custom embroidery in Downtown LA on caps, polos, jackets and uniforms. 6-piece minimum per design, digitizing and setup included, 3D puff available."
+description: "Custom embroidery in Los Angeles on caps, polos, jackets and uniforms. 6-piece minimum per design, digitizing and setup included, 3D puff available."
 h1: "Embroidery services in Los Angeles"
 kind: service
 imported: false
-summary: "Thread-built logos with real texture, stitched on caps, polos, jackets and uniforms at our Downtown LA shop. 6-piece minimum per design, with digitizing and setup included and no hidden setup fees."
+summary: "Thread-built logos with real texture, stitched on caps, polos, jackets and uniforms at our Los Angeles shop. 6-piece minimum per design, with digitizing and setup included and no hidden setup fees."
 facts:
   - { label: "Minimum", value: "6 pieces per design" }
   - { label: "Setup", value: "Digitizing and setup included" }

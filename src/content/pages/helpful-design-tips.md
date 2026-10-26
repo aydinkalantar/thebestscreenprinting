@@ -1,7 +1,7 @@
 ---
 path: "/helpful-design-tips/"
 title: "Helpful Design Tips | The Best Screen Printing"
-description: "Seven design tips from a Downtown LA print shop: contrast, shaped text, fewer colors, audience, originality, idea notes and the file formats we accept."
+description: "Seven design tips from a Los Angeles print shop: contrast, shaped text, fewer colors, audience, originality, idea notes and the file formats we accept."
 h1: "Helpful design tips"
 kind: blog
 imported: false
@@ -13,7 +13,7 @@ faqs:
     a: "Yes. Every order gets a free art check before anything is printed."
 sourceUrl: "https://thebestscreenprinting.com/helpful-design-tips/"
 ---
-A design that looks great on a laptop can fall flat on a shirt. Fabric has texture, garments have color, and every print method has its own rules. These tips come from what we see on the press every day at our Downtown LA shop.
+A design that looks great on a laptop can fall flat on a shirt. Fabric has texture, garments have color, and every print method has its own rules. These tips come from what we see on the press every day at our Los Angeles shop.
 
 ## 01. Use contrasting colors
 

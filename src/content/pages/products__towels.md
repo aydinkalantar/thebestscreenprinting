@@ -1,11 +1,11 @@
 ---
 path: "/products/towels/"
 title: "Custom Towels in Los Angeles | TBSP"
-description: "Custom embroidered and printed towels in Los Angeles for gyms, teams, hotels and events. Choose the towel, the method and the placement, made in Downtown LA."
+description: "Custom embroidered and printed towels in Los Angeles for gyms, teams, hotels and events. Choose the towel, the method and the placement, made in Los Angeles."
 h1: "Custom towels"
 kind: product
 imported: false
-summary: "Towels get used every day, which means your logo does too. Embroidered or printed towels for gyms, teams, hospitality and events, decorated out of our Downtown LA shop."
+summary: "Towels get used every day, which means your logo does too. Embroidered or printed towels for gyms, teams, hospitality and events, decorated out of our Los Angeles shop."
 facts:
   - { label: "Methods", value: "Embroidery and printing" }
   - { label: "Quotes", value: "Answered within one business day" }

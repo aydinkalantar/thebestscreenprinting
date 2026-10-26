@@ -1,11 +1,11 @@
 ---
 path: "/towels/"
 title: "Towels | The Best Screen Printing"
-description: "Branded towels for LA gyms, studios, hotels, spas, teams and events. Embroidered or printed with your logo, ordered in a few steps from our Downtown LA shop."
+description: "Branded towels for LA gyms, studios, hotels, spas, teams and events. Embroidered or printed with your logo, ordered in a few steps from our Los Angeles shop."
 h1: "Branded towels for your business"
 kind: product
 imported: false
-summary: "Gyms, studios, hotels, teams and events all have a reason to put their name on a towel. Here is how each one uses them, and how to order from our Downtown LA shop."
+summary: "Gyms, studios, hotels, teams and events all have a reason to put their name on a towel. Here is how each one uses them, and how to order from our Los Angeles shop."
 facts:
   - { label: "Methods", value: "Embroidery and printing" }
   - { label: "Art check", value: "Free on every order" }
@@ -48,8 +48,8 @@ Beach towels and gym towels are strong merch add-ons, and a big, bold design tur
 1. **Send your logo** and tell us how the towels will be used.
 2. **Get a quote** within one business day, with a recommended towel and decoration method.
 3. **Free art check.** We size and simplify your design for thread or ink.
-4. **Production** out of our Downtown LA shop.
-5. **Pick up** at 2710 S Broadway Avenue, Monday to Friday, 9am to 5pm, or have them shipped.
+4. **Production** out of our Los Angeles shop.
+5. **Pick up** at 5738 Holmes Ave., Monday to Friday, 9am to 5pm, or have them shipped.
 
 For towel types, embroidery versus print and placement options, see [custom towels](/products/towels/). To complete the look, add [embroidered hats](/products/hats/), [polos](/products/business-and-polos-landings/) or [tote bags](/products/bags/).
 

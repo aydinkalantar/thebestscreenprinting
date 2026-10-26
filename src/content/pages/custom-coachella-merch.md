@@ -1,11 +1,11 @@
 ---
 path: "/custom-coachella-merch/"
 title: "Custom Coachella Merch | Screen Printing & Embroidery In LA"
-description: "Custom Coachella and festival merch from a Downtown LA print shop: tees, tanks, hoodies, embroidered hats and totes for artists, brands and crews. Order early."
+description: "Custom Coachella and festival merch from a Los Angeles print shop: tees, tanks, hoodies, embroidered hats and totes for artists, brands and crews. Order early."
 h1: "Custom Coachella merch printing in Los Angeles"
 kind: audience
 imported: false
-summary: "Desert-ready merch for the festival weekend. Tees, tanks, hoodies, embroidered hats and totes for artists, brands, vendors and crews, printed in Downtown LA, from 6 pieces."
+summary: "Desert-ready merch for the festival weekend. Tees, tanks, hoodies, embroidered hats and totes for artists, brands, vendors and crews, printed in Los Angeles, from 6 pieces."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Order by", value: "2 to 3 weeks before the festival is ideal" }
@@ -18,12 +18,12 @@ faqs:
   - q: "Can you help design our festival merch?"
     a: "Yes. Send a sketch, a mood board or finished art. Every order gets a free art check, and we can talk through design help by email."
   - q: "Can I pick up the order in Los Angeles on the way to the desert?"
-    a: "Yes. Pick up at 2710 S Broadway Avenue in Downtown LA, Monday to Friday, 9am to 5pm, or have it shipped."
+    a: "Yes. Pick up at 5738 Holmes Ave. in Los Angeles, Monday to Friday, 9am to 5pm, or have it shipped."
 sourceUrl: "https://thebestscreenprinting.com/custom-coachella-merch/"
 ---
 ## Made for the desert
 
-Coachella is a music festival, a runway and a brand stage all at once. The merch has to work in 100-degree afternoons and cold desert nights, and it has to photograph well. We print it all in Downtown LA, a straight shot down the 10 from the Coachella Valley.
+Coachella is a music festival, a runway and a brand stage all at once. The merch has to work in 100-degree afternoons and cold desert nights, and it has to photograph well. We print it all in Los Angeles, a straight shot down the 10 from the Coachella Valley.
 
 ## What festival merch works best?
 
@@ -56,7 +56,7 @@ Choose lighter colors and breathable fabrics for daytime pieces. Light-colored g
 1. **Send your design** or work through an idea with us.
 2. **Pick your products** from the [catalog](/catalog/).
 3. **Approve the mockup.** We send a digital proof before production.
-4. **Pick up or ship.** Grab it in Downtown LA or have it delivered.
+4. **Pick up or ship.** Grab it in Los Angeles or have it delivered.
 
 Running late? Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call (323) 433-0033 to check.
 

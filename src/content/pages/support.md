@@ -5,7 +5,7 @@ description: "Get help with a TBSP order: quotes, artwork, reorders, rush timing
 h1: "Support"
 kind: core
 imported: false
-summary: "Real people, real answers, from our Downtown LA shop. Call (323) 433-0033 or email sales@tbsp.la, Monday to Friday, 9am to 5pm."
+summary: "Real people, real answers, from our Los Angeles shop. Call (323) 433-0033 or email sales@tbsp.la, Monday to Friday, 9am to 5pm."
 sourceUrl: "https://thebestscreenprinting.com/support/"
 ---
 ## Talk to the shop
@@ -14,7 +14,7 @@ The fastest way to get help is to reach the people printing your order.
 
 - **Phone:** (323) 433-0033
 - **Email:** sales@tbsp.la
-- **Visit:** 2710 S Broadway Avenue, Los Angeles, CA 90007
+- **Visit:** 5738 Holmes Ave., Los Angeles, CA 90058
 - **Hours:** Monday to Friday, 9am to 5pm
 
 ## What can we help with?

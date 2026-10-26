@@ -1,7 +1,7 @@
 ---
 path: "/solutions/"
 title: "Solutions | The Best Screen Printing"
-description: "Custom apparel solutions for brands, restaurants, schools, nonprofits, events, teams and small businesses, printed and stitched in Downtown Los Angeles."
+description: "Custom apparel solutions for brands, restaurants, schools, nonprofits, events, teams and small businesses, printed and stitched in Los Angeles."
 h1: "Custom apparel solutions for every kind of crew"
 kind: core
 imported: false

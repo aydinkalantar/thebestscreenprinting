@@ -1,13 +1,13 @@
 ---
 path: "/services/embroidery/embroidery-near-me/"
 title: "Embroidery Near Me In Los Angeles"
-description: "Local embroidery in Downtown Los Angeles. Drop off garments, pick up finished hats and polos, and ask about Rush and Super Rush. 6-piece minimum per design."
+description: "Local embroidery in Los Angeles. Drop off garments, pick up finished hats and polos, and ask about Rush and Super Rush. 6-piece minimum per design."
 h1: "Embroidery near me in Los Angeles"
 kind: service
 imported: false
-summary: "Machine embroidery stitched in Downtown LA. Drop off your garments or pick from our catalog, then collect at the shop. 6 pieces per design, digitizing included."
+summary: "Machine embroidery stitched in Los Angeles. Drop off your garments or pick from our catalog, then collect at the shop. 6 pieces per design, digitizing included."
 facts:
-  - { label: "Location", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
+  - { label: "Location", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Minimum", value: "6 pieces per design" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
@@ -16,12 +16,12 @@ faqs:
   - q: "Do you do single-piece embroidery?"
     a: "No. Our embroidery minimum is 6 pieces per design, and every order we produce, whatever the method, starts at 6 pieces."
   - q: "Can I pick up my embroidery order?"
-    a: "Yes. Pick up at 2710 S Broadway Ave, Monday to Friday, 9am to 5pm."
+    a: "Yes. Pick up at 5738 Holmes Ave., Monday to Friday, 9am to 5pm."
 sourceUrl: "https://thebestscreenprinting.com/services/embroidery/embroidery-near-me/"
 ---
 ## Thread, stitched downtown
 
-When you need embroidery in LA, distance matters. A local shop means you can drop off garments in person, check thread colors against your brand, and pick up the minute the job is done. Our embroidery machines run at 2710 S Broadway in Downtown Los Angeles.
+When you need embroidery in LA, distance matters. A local shop means you can drop off garments in person, check thread colors against your brand, and pick up the minute the job is done. Our embroidery machines run at 5738 Holmes Ave. in Los Angeles.
 
 ## Why go local for embroidery?
 

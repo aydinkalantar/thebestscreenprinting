@@ -1,11 +1,11 @@
 ---
 path: "/products/sweatshirts-hoodies/customize-sweatshirt/"
 title: "Customize Sweatshirt Los Angeles | TBSP"
-description: "Customize a sweatshirt in Los Angeles: pick the garment color, ink or thread, and placement, then get a free art check before we print in Downtown LA."
+description: "Customize a sweatshirt in Los Angeles: pick the garment color, ink or thread, and placement, then get a free art check before we print in Los Angeles."
 h1: "Customize your sweatshirt in Los Angeles"
 kind: product
 imported: false
-summary: "Great sweatshirts are designed, not just printed. Here is how to choose garment color, ink or thread, and placement so your design lands, with a free art check on every order at our Downtown LA shop."
+summary: "Great sweatshirts are designed, not just printed. Here is how to choose garment color, ink or thread, and placement so your design lands, with a free art check on every order at our Los Angeles shop."
 facts:
   - { label: "Art check", value: "Free on every order" }
   - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF, heat transfer" }

@@ -5,7 +5,7 @@ description: "Custom all-over t-shirt printing in Los Angeles. Dye-sublimation c
 h1: "Custom all-over t-shirt printing in Los Angeles"
 kind: product
 imported: false
-summary: "Edge to edge, front to back, sleeves included: all-over prints that turn the whole shirt into the canvas. Done with dye-sublimation on polyester at our Downtown LA shop, with a free art check before anything is pressed."
+summary: "Edge to edge, front to back, sleeves included: all-over prints that turn the whole shirt into the canvas. Done with dye-sublimation on polyester at our Los Angeles shop, with a free art check before anything is pressed."
 facts:
   - { label: "Method", value: "Dye-sublimation, pressed panel by panel" }
   - { label: "Fabric", value: "Polyester garments with a light base color" }
@@ -25,7 +25,7 @@ sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/custom-all-over-
 
 Most printing puts a logo in a box on the chest. All-over printing ignores the box. Your artwork runs across the front, wraps around the back and carries down both sleeves, so the shirt reads as one continuous piece of design: a photo, a pattern, a gradient, a texture, a full-bleed graphic with no blank fabric framing it.
 
-It is the look behind a lot of streetwear, festival merch and brand drops, and we press it right here at our Downtown LA shop on South Broadway.
+It is the look behind a lot of streetwear, festival merch and brand drops, and we press it right here at our Los Angeles shop.
 
 ## How does all-over printing work?
 

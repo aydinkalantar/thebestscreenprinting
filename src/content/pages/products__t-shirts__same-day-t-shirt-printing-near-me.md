@@ -51,9 +51,9 @@ None of these are deal breakers on a normal schedule. On a rush, each one eats i
 
 It depends on the artwork. Every order starts at 6 pieces. For bold designs with a few solid colors, [screen printing](/screen-printing/) is printed in-house and moves fast once screens are set. For full-color or photo art, [DTG](/services/direct-to-garment/) skips screens entirely, and [DTF](/services/direct-to-film/) is another quick option. Need names on the back? [Heat transfer vinyl](/services/heat-transfer-vinyl/) adds them without a new screen.
 
-## Pickup in Downtown LA
+## Pickup in Los Angeles
 
-Rush orders pair best with local pickup at 2710 S Broadway Avenue, Monday through Friday, 9am to 5pm. No waiting on a carrier. See [custom t-shirt printing near Los Angeles](/products/t-shirts/custom-tshirt-printing-near-los-angeles/) for pickup details.
+Rush orders pair best with local pickup at 5738 Holmes Ave., Monday through Friday, 9am to 5pm. No waiting on a carrier. See [custom t-shirt printing near Los Angeles](/products/t-shirts/custom-tshirt-printing-near-los-angeles/) for pickup details.
 
 ## Beat the clock
 

@@ -1,11 +1,11 @@
 ---
 path: "/products/outwear/"
 title: "Custom Jackets & Outerwear in Los Angeles | TBSP"
-description: "Custom jackets and outerwear in Los Angeles. Embroidered chest logos, printed back graphics and names for crews, staff, teams and brands, made in Downtown LA."
+description: "Custom jackets and outerwear in Los Angeles. Embroidered chest logos, printed back graphics and names for crews, staff, teams and brands, made in Los Angeles."
 h1: "Custom jackets and outerwear"
 kind: product
 imported: false
-summary: "The jacket is the top layer, so it is the one everybody sees. Embroidered logos, printed backs and personalized names on outerwear for crews, staff, teams and brands, out of our Downtown LA shop."
+summary: "The jacket is the top layer, so it is the one everybody sees. Embroidered logos, printed backs and personalized names on outerwear for crews, staff, teams and brands, out of our Los Angeles shop."
 facts:
   - { label: "Methods", value: "Embroidery, screen printing, heat transfer" }
   - { label: "Minimum", value: "6 pieces per order" }

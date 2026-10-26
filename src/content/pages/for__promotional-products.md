@@ -1,11 +1,11 @@
 ---
 path: "/for/promotional-products/"
 title: "Promotional Product Printing in Los Angeles"
-description: "Branded promo apparel and merch printed in Downtown LA: giveaway tees, embroidered hats, totes and towels for campaigns, launches and events, with Rush and Super Rush."
+description: "Branded promo apparel and merch printed in Los Angeles: giveaway tees, embroidered hats, totes and towels for campaigns, launches and events, with Rush and Super Rush."
 h1: "Promotional product printing"
 kind: audience
 imported: false
-summary: "Swag people keep. Branded tees, embroidered hats, totes and towels for campaigns, launches and giveaways, printed at our Downtown LA shop for brands that have included Netflix, Google and Amazon Alexa."
+summary: "Swag people keep. Branded tees, embroidered hats, totes and towels for campaigns, launches and giveaways, printed at our Los Angeles shop for brands that have included Netflix, Google and Amazon Alexa."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -51,7 +51,7 @@ Browse blanks in the [catalog](/catalog/).
 2. **Set the in-hands date** and work backward.
 3. **Send vector art** if you have it. Every order gets a free art check.
 4. **Approve the mockup**, then we print.
-5. **Pick up or ship.** Collect at 2710 S Broadway Avenue in Downtown LA, or have it shipped.
+5. **Pick up or ship.** Collect at 5738 Holmes Ave. in Los Angeles, or have it shipped.
 
 Heading to a show? See [trade show swag](/event-apparel/trade-show-swag-anaheim/) and [event apparel](/event-apparel/).
 

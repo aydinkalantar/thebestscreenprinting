@@ -80,4 +80,4 @@ Choose embroidery for small logos, a premium feel and garments that face hard we
 
 ## Ready to stitch?
 
-TBSP embroiders in Downtown Los Angeles with a 6-piece minimum per design. Send your logo, garment and quantity through the [quick quote form](/quick-quote/) and we will reply within one business day.
+TBSP embroiders in Los Angeles with a 6-piece minimum per design. Send your logo, garment and quantity through the [quick quote form](/quick-quote/) and we will reply within one business day.

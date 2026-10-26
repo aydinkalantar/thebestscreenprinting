@@ -5,7 +5,7 @@ description: "Custom t-shirt printing in Los Angeles, step by step: send your ar
 h1: "Custom t-shirt printing in Los Angeles"
 kind: product
 imported: false
-summary: "From idea to folded stack in five clear steps, run out of our Downtown LA shop. Quotes within one business day, a free art check on every order, and Rush and Super Rush turnaround for many jobs."
+summary: "From idea to folded stack in five clear steps, run out of our Los Angeles shop. Quotes within one business day, a free art check on every order, and Rush and Super Rush turnaround for many jobs."
 facts:
   - { label: "Quote", value: "Answered within one business day" }
   - { label: "Art check", value: "Free on every order" }
@@ -23,7 +23,7 @@ sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/custom-t-shirt-p
 ---
 ## Your design. Our ink. Five steps.
 
-Custom tees should not come with a learning curve. Whether it is merch for a brand, shirts for an event or a run for your team, every order at TBSP moves through the same straightforward path, run out of our shop at 2710 S Broadway Avenue in Downtown LA.
+Custom tees should not come with a learning curve. Whether it is merch for a brand, shirts for an event or a run for your team, every order at TBSP moves through the same straightforward path, run out of our shop at 5738 Holmes Ave. in Los Angeles.
 
 ## Step 1: Send the idea
 
@@ -59,7 +59,7 @@ Your order goes into production. If you are racing a date, ask about rush: Norma
 
 ## Step 5: Pick up or ship
 
-Grab your order from our Downtown LA shop during business hours, Monday through Friday, 9am to 5pm, or have it shipped. Live nearby? See [custom t-shirt printing near Los Angeles](/products/t-shirts/custom-tshirt-printing-near-los-angeles/) for local pickup.
+Grab your order from our Los Angeles shop during business hours, Monday through Friday, 9am to 5pm, or have it shipped. Live nearby? See [custom t-shirt printing near Los Angeles](/products/t-shirts/custom-tshirt-printing-near-los-angeles/) for local pickup.
 
 ## Ready when you are
 

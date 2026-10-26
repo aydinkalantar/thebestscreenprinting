@@ -1,11 +1,11 @@
 ---
 path: "/services/direct-to-film/"
 title: "Direct-to-Film (DTF) Printing in Los Angeles"
-description: "DTF printing in Downtown LA: full-color transfers on cotton, polyester and blends. Built for full-color short runs from 6 pieces, with a free art check on every order."
+description: "DTF printing in Los Angeles: full-color transfers on cotton, polyester and blends. Built for full-color short runs from 6 pieces, with a free art check on every order."
 h1: "Direct-to-film (DTF) printing in Los Angeles"
 kind: service
 imported: false
-summary: "Full-color prints that go where screens can't: cotton, polyester, blends and short runs, printed at our Downtown LA shop. DTF is one of our go-to methods for full-color art, orders start at 6 pieces, and every file gets a free art check."
+summary: "Full-color prints that go where screens can't: cotton, polyester, blends and short runs, printed at our Los Angeles shop. DTF is one of our go-to methods for full-color art, orders start at 6 pieces, and every file gets a free art check."
 facts:
   - { label: "Best for", value: "Full-color short runs, from 6 pieces" }
   - { label: "Fabrics", value: "Cotton, polyester and blends" }

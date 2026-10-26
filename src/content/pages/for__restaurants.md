@@ -5,7 +5,7 @@ description: "Custom restaurant uniforms in LA: embroidered polos and hats, prin
 h1: "Custom clothing for restaurants"
 kind: audience
 imported: false
-summary: "Uniforms that work a double shift as branding. Embroidered polos and hats, printed staff tees and aprons for LA restaurants, cafes, bars and food trucks, made in Downtown LA."
+summary: "Uniforms that work a double shift as branding. Embroidered polos and hats, printed staff tees and aprons for LA restaurants, cafes, bars and food trucks, made in Los Angeles."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Best for", value: "Front of house, kitchen crews, merch for regulars" }
@@ -24,7 +24,7 @@ faqs:
 
 Your staff are the face of the room. Matching uniforms make a team look sharp and make it easy for guests to know who to ask. And when the shirt is good enough, regulars start asking to buy one.
 
-We make restaurant apparel for kitchens, cafes, bars, bakeries and food trucks across Los Angeles, from our shop at 2710 S Broadway Avenue.
+We make restaurant apparel for kitchens, cafes, bars, bakeries and food trucks across Los Angeles, from our shop at 5738 Holmes Ave.
 
 ## What do restaurants order?
 

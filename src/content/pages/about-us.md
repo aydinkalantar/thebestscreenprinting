@@ -1,11 +1,11 @@
 ---
 path: "/about-us/"
 title: "About Us | The Best Screen Printing"
-description: "Meet TBSP, a family-started screen printing and embroidery shop in Downtown LA printing for brands, artists, teams and communities at 2710 S Broadway Ave."
+description: "Meet TBSP, a family-started screen printing and embroidery shop in Los Angeles printing for brands, artists, teams and communities at 5738 Holmes Ave."
 h1: "About The Best Screen Printing"
 kind: core
 imported: false
-summary: "A Downtown LA print shop built on one idea: custom apparel should be easy to design, easy to order and made to bring people together. Screen printing, embroidery, DTG, DTF and heat transfer at 2710 S Broadway Avenue, Los Angeles."
+summary: "A Los Angeles print shop built on one idea: custom apparel should be easy to design, easy to order and made to bring people together. Screen printing, embroidery, DTG, DTF and heat transfer at 5738 Holmes Ave., Los Angeles."
 sourceUrl: "https://thebestscreenprinting.com/about-us/"
 ---
 ## Started by brothers in Los Angeles
@@ -20,7 +20,7 @@ Custom apparel is how groups show up together. A matching shirt turns a crowd in
 
 ## What we make
 
-Everything is produced out of our shop at 2710 S Broadway Avenue in Downtown Los Angeles.
+Everything is produced out of our shop at 5738 Holmes Ave. in Los Angeles.
 
 - **Screen printing** for bold designs and bigger runs, printed in-house. See [screen printing](/screen-printing/).
 - **Embroidery** for polos, hats, jackets and uniforms. See [embroidery](/services/embroidery/).
@@ -42,6 +42,6 @@ Brands, artists, events and teams. Our presses have run work for names like Netf
 
 ## Come by the shop
 
-2710 S Broadway Avenue, Los Angeles, CA 90007. Open Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la.
+5738 Holmes Ave., Los Angeles, CA 90058. Open Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la.
 
 Ready to start? [Get a free quote](/quick-quote/).

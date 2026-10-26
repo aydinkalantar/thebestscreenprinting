@@ -1,11 +1,11 @@
 ---
 path: "/for/retail-brands/"
 title: "Branded Apparel Printing for Retail Brands | Los Angeles"
-description: "Screen printing and embroidery for clothing and retail brands in Los Angeles. In-house production in Downtown LA, free art check, quotes in one business day."
+description: "Screen printing and embroidery for clothing and retail brands in Los Angeles. In-house production in Los Angeles, free art check, quotes in one business day."
 h1: "Branded apparel for retail"
 kind: audience
 imported: false
-summary: "Your drop, printed in Downtown LA by a shop that has printed for Netflix, Adidas and Nike. Orders start at 6 pieces and are printed in-house; full-color test runs go DTG or DTF."
+summary: "Your drop, printed in Los Angeles by a shop that has printed for Netflix, Adidas and Nike. Orders start at 6 pieces and are printed in-house; full-color test runs go DTG or DTF."
 facts:
   - label: "Production runs"
     value: "Screen printed in-house, from 6 pieces"
@@ -24,7 +24,7 @@ faqs:
     a: "We answer quotes within one business day."
 ---
 
-Clothing labels, streetwear brands, artists, creators, companies with merch to move. We print for all of them out of our shop at 2710 S Broadway Avenue in Downtown LA, where every order, from 6 pieces up, is printed in-house. The list of brands we have printed for includes Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures.
+Clothing labels, streetwear brands, artists, creators, companies with merch to move. We print for all of them out of our shop at 5738 Holmes Ave. in Los Angeles, where every order, from 6 pieces up, is printed in-house. The list of brands we have printed for includes Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures.
 
 ## What do brands print with us?
 

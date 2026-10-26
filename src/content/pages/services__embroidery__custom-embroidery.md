@@ -5,7 +5,7 @@ description: "Custom embroidered uniforms and workwear in Los Angeles: logos on 
 h1: "Custom embroidery for uniforms and workwear in Los Angeles"
 kind: service
 imported: false
-summary: "Your logo, stitched sharp on every polo, cap and jacket your team wears. Custom embroidery at our Downtown LA shop starts at 6 pieces per design, with digitizing and setup included."
+summary: "Your logo, stitched sharp on every polo, cap and jacket your team wears. Custom embroidery at our Los Angeles shop starts at 6 pieces per design, with digitizing and setup included."
 facts:
   - { label: "Minimum", value: "6 pieces per design" }
   - { label: "Setup", value: "Digitizing included, no hidden setup fees" }

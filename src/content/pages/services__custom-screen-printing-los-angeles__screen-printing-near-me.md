@@ -1,18 +1,18 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/screen-printing-near-me/"
 title: "Screen Printing Near Me"
-description: "Looking for screen printing near you in Los Angeles? Seven questions to ask any local print shop, and how TBSP in Downtown LA answers each one."
+description: "Looking for screen printing near you in Los Angeles? Seven questions to ask any local print shop, and how TBSP in Los Angeles answers each one."
 h1: "Screen printing near me in Los Angeles"
 kind: service
 imported: false
-summary: "Not every shop down the street prints in-house. Here is how to vet a local screen printer, and how our Downtown LA shop stacks up: 6-piece minimum, free art checks and quotes within one business day."
+summary: "Not every shop down the street prints in-house. Here is how to vet a local screen printer, and how our Los Angeles shop stacks up: 6-piece minimum, free art checks and quotes within one business day."
 facts:
-  - { label: "Location", value: "2710 S Broadway Ave, Downtown LA" }
+  - { label: "Location", value: "5738 Holmes Ave., Downtown LA" }
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Do you screen print in-house?"
-    a: "Yes. Screen printing orders are printed in-house at our shop at 2710 S Broadway Ave in Downtown Los Angeles."
+    a: "Yes. Screen printing orders are printed in-house at our shop at 5738 Holmes Ave. in Los Angeles."
   - q: "What are your hours?"
     a: "Monday to Friday, 9am to 5pm. Call (323) 433-0033 or email sales@tbsp.la."
   - q: "Do you ship outside Los Angeles?"
@@ -26,7 +26,7 @@ Searching "screen printing near me" in LA turns up dozens of names. Some print o
 ## Seven questions to ask a local screen printer
 
 **1. Do you print in-house?**
-Ours: yes. Screen printing runs on our presses at 2710 S Broadway in Downtown LA.
+Ours: yes. Screen printing runs on our presses at 5738 Holmes Ave. in Los Angeles.
 
 **2. What is your minimum?**
 Ours: 6 pieces per order, for every decoration method. For full-color or photo art we recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
@@ -59,7 +59,7 @@ A nearby shop means you can pick up instead of waiting on a carrier, swing by to
 
 ## Find us
 
-2710 S Broadway Ave, Los Angeles, CA 90007. Open Monday to Friday, 9am to 5pm. Planning a visit? Check the [local shop page](/local-shop/). Want to see how an order runs? Read [custom screen printing, step by step](/services/custom-screen-printing-los-angeles/custom-screen-printing/).
+5738 Holmes Ave., Los Angeles, CA 90058. Open Monday to Friday, 9am to 5pm. Planning a visit? Check the [local shop page](/local-shop/). Want to see how an order runs? Read [custom screen printing, step by step](/services/custom-screen-printing-los-angeles/custom-screen-printing/).
 
 ## Skip the search
 

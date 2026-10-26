@@ -45,7 +45,7 @@ Call (323) 433-0033 before you commit to a deadline, or read more on [Rush and S
 
 ## Can I pick up my order in Los Angeles?
 
-Yes. Local pickup at 2710 S Broadway Avenue, Los Angeles, CA 90007 skips transit time entirely. Pickup hours are Monday to Friday, 9am to 5pm.
+Yes. Local pickup at 5738 Holmes Ave., Los Angeles, CA 90058 skips transit time entirely. Pickup hours are Monday to Friday, 9am to 5pm.
 
 ## How to hit your date
 

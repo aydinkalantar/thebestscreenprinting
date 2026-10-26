@@ -148,7 +148,7 @@ While our primary service area is Los Angeles, we also ship custom orders to Kor
 
 ## Contact
 
-Address: 2710 S Broadway Avenue Los Angeles, California 90007 Customer Service: +1-323-433-0033 Email: [email protected] Hours: Monday, Tuesday, Wednesday, Thursday, Friday9:00 am – 5:00 pm Office
+Address: 5738 Holmes Ave., Los Angeles, California 90058 Customer Service: +1-323-433-0033 Email: [email protected] Hours: Monday, Tuesday, Wednesday, Thursday, Friday9:00 am – 5:00 pm Office
 
 - Local Shop
 - Services Screen Printing

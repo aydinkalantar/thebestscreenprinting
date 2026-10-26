@@ -5,7 +5,7 @@ description: "Custom apparel for talent, managers and creative teams in LA: scre
 h1: "Custom printing for celebrities and talent"
 kind: audience
 imported: false
-summary: "Merch, crew gear and gifts that match the name on them. Screen printing, embroidery and full-color DTG for talent, managers and creative teams, made at our Downtown LA shop."
+summary: "Merch, crew gear and gifts that match the name on them. Screen printing, embroidery and full-color DTG for talent, managers and creative teams, made at our Los Angeles shop."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }

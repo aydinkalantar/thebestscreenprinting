@@ -1,11 +1,11 @@
 ---
 path: "/screen-printing/"
 title: "Screen Printing in Los Angeles | TBSP"
-description: "Custom screen printing in Downtown LA for runs from 6 pieces. Printed in-house, free art check, quotes in one business day, Rush and Super Rush available."
+description: "Custom screen printing in Los Angeles for runs from 6 pieces. Printed in-house, free art check, quotes in one business day, Rush and Super Rush available."
 h1: "Screen printing in Los Angeles"
 kind: service
 imported: false
-summary: "Bold, solid ink that outlasts the wash cycle, pulled in-house at our Downtown LA shop. Screen printing starts at 6 pieces, with Rush and Super Rush turnaround for tight deadlines and quotes back within one business day."
+summary: "Bold, solid ink that outlasts the wash cycle, pulled in-house at our Los Angeles shop. Screen printing starts at 6 pieces, with Rush and Super Rush turnaround for tight deadlines and quotes back within one business day."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -25,7 +25,7 @@ sourceUrl: "https://thebestscreenprinting.com/screen-printing/"
 
 Screen printing is how the shirts you actually keep get made. Ink is pushed through a fine mesh screen, one color at a time, and cured so it bonds to the fabric. The result is thick, opaque color with crisp edges that stays sharp wash after wash.
 
-It is the core of what we do. Every screen printed order is pulled in-house at our shop at 2710 S Broadway Avenue in Downtown LA, by the people you talked to about the job.
+It is the core of what we do. Every screen printed order is pulled in-house at our shop at 5738 Holmes Ave. in Los Angeles, by the people you talked to about the job.
 
 ## When should you choose screen printing?
 

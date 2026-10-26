@@ -71,4 +71,4 @@ When a design does not meet the guidelines, we will work with you on an alternat
 
 ## Still stuck?
 
-Call (323) 433-0033, email sales@tbsp.la or visit us at 2710 S Broadway Avenue, Los Angeles. Or skip ahead and [get a free quote](/quick-quote/).
+Call (323) 433-0033, email sales@tbsp.la or visit us at 5738 Holmes Ave., Los Angeles. Or skip ahead and [get a free quote](/quick-quote/).

@@ -1,27 +1,27 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/"
 title: "Custom Screen Printing In Downtown Los Angeles"
-description: "Custom screen printing made in Downtown Los Angeles at 2710 S Broadway. Local pickup, Rush and Super Rush options and a free art check. 6-piece minimum."
+description: "Custom screen printing for Downtown Los Angeles, made at our shop on Holmes Ave., minutes from DTLA. Local pickup, Rush and Super Rush options and a free art check. 6-piece minimum."
 h1: "Custom screen printing in Downtown Los Angeles"
 kind: service
 imported: false
-summary: "Printed on S Broadway, picked up on S Broadway. Our DTLA shop screen prints orders from 6 pieces in-house, with local pickup and Rush and Super Rush turnaround for tight deadlines."
+summary: "Printed minutes from Downtown LA and ready for pickup. Our Los Angeles shop screen prints orders from 6 pieces in-house, with local pickup and Rush and Super Rush turnaround for tight deadlines."
 facts:
-  - { label: "Location", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
+  - { label: "Location", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Hours", value: "Mon–Fri, 9am–5pm" }
   - { label: "Minimum", value: "6 pieces per order" }
 faqs:
   - q: "Can I pick up my order in Downtown LA?"
-    a: "Yes. Orders can be picked up at our shop at 2710 S Broadway Ave, Los Angeles, CA 90007, Monday to Friday, 9am to 5pm."
+    a: "Yes. Orders can be picked up at our shop at 5738 Holmes Ave., Los Angeles, CA 90058, a short drive from DTLA, Monday to Friday, 9am to 5pm."
   - q: "Do you print for businesses and events in DTLA?"
     a: "Yes. We print for local brands, venues, restaurants, events and teams, as well as companies such as Netflix, Adidas, Nike, YouTube and Google."
   - q: "Can a Downtown LA order be rushed?"
     a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Call (323) 433-0033 or request a quote with your deadline and we will confirm."
 sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/"
 ---
-## Made on Broadway
+## Made minutes from DTLA
 
-Our presses run at 2710 S Broadway in Downtown Los Angeles. That means your shirts are printed down the street, not across the country. You talk to the people who pull the squeegee, and you can see your job before it leaves the building.
+Our presses run at 5738 Holmes Ave. in Los Angeles, a short drive from Downtown. That means your shirts are printed across town, not across the country. You talk to the people who pull the squeegee, and you can see your job before it leaves the building.
 
 We have put ink on garments for Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures. The same presses print for neighborhood brands, venues and teams every week.
 

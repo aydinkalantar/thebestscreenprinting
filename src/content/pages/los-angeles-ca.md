@@ -1,18 +1,18 @@
 ---
 path: "/los-angeles-ca/"
 title: "Screen Printing & Embroidery in Los Angeles | TBSP"
-description: "Our Los Angeles production facility at 2710 S Broadway: screen printing, embroidery, DTF and DTG with pickup, Rush and Super Rush turnaround and delivery across LA."
+description: "Our Los Angeles production facility at 5738 Holmes Ave.: screen printing, embroidery, DTF and DTG with pickup, Rush and Super Rush turnaround and delivery across LA."
 h1: "Screen printing and embroidery in Los Angeles"
 kind: service
 imported: false
 summary: "Our home base: a Downtown LA production floor turning out merch for brands, tours and teams. Screen printing, embroidery, DTF and DTG from 6 pieces, with pickup and Rush and Super Rush."
 facts:
-  - { label: "Address", value: "2710 S Broadway, Los Angeles" }
+  - { label: "Address", value: "5738 Holmes Ave., Los Angeles" }
   - { label: "Hours", value: "Mon–Fri, 9am–5pm" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Where is your Los Angeles shop?"
-    a: "At 2710 S Broadway Avenue, Los Angeles, CA 90007, just south of Downtown. We're open Monday to Friday, 9am to 5pm."
+    a: "At 5738 Holmes Ave., Los Angeles, CA 90058, just south of Downtown. We're open Monday to Friday, 9am to 5pm."
   - q: "Can I pick up my order in Los Angeles?"
     a: "Yes. Pickup is free during shop hours. Tell us when you request a quote and we'll confirm the pickup time with your order."
   - q: "Do you deliver across Los Angeles?"
@@ -31,14 +31,14 @@ Downtown LA is where TBSP started and where most of our presses run every day. B
 
 ## Why work with an LA shop you can visit?
 
-Because you can talk to the people printing your job. Drop off garments, check a sample, pick up on your way across town. Read more about [visiting the shop](/local-shop/) and [printing in Downtown LA](/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/).
+Because you can talk to the people printing your job. Drop off garments, check a sample, pick up on your way across town. Read more about [visiting the shop](/local-shop/) and [printing in Los Angeles](/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/).
 
 ## Which neighborhoods do you serve?
 
 All of Los Angeles, from the Valley to the South Bay. Some of the neighborhoods we print for:
 
 - [Branded Apparel for Retail in Tarzana](/branded-apparel-for-retail-in-tarzana-ca/)
-- [Bulk Screen Printing in Downtown LA](/bulk-screen-printing-downtown-la-ca/)
+- [Bulk Screen Printing in Los Angeles](/bulk-screen-printing-downtown-la-ca/)
 - [Custom Embroidery in Echo Park](/custom-embroidery-echo-park-ca/)
 - [Custom Embroidery in El Sereno](/custom-embroidery-el-sereno-ca/)
 - [Custom Embroidery in Hawthorne](/custom-embroidery-hawthorne-ca/)
@@ -51,7 +51,7 @@ All of Los Angeles, from the Valley to the South Bay. Some of the neighborhoods 
 - [Custom T-Shirt Printing in Winnetka](/custom-t-shirt-printing-winnetka-ca/)
 - [Direct-to-Garment Printing in Eagle Rock](/direct-to-garment-printing-eagle-rock-ca/)
 - [Direct-to-Garment Printing in North Hollywood](/direct-to-garment-printing-north-hollywood-ca/)
-- [Heat Transfer Vinyl in Downtown LA](/heat-transfer-vinyl-downtown-la-ca/)
+- [Heat Transfer Vinyl in Los Angeles](/heat-transfer-vinyl-downtown-la-ca/)
 - [Rush & Super Rush Screen Printing in Chinatown LA](/rush-order-screen-printing-chinatown-la-ca/)
 - [Rush & Super Rush Screen Printing in Encino](/same-day-screen-printing-encino-ca/)
 - [Rush & Super Rush Screen Printing in Koreatown LA](/same-day-screen-printing-koreatown-la-ca/)

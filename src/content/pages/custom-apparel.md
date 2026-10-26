@@ -5,7 +5,7 @@ description: "Custom apparel printed and embroidered in Los Angeles: athletic we
 h1: "Custom apparel for every kind of wear"
 kind: product
 imported: false
-summary: "Tees to track jackets, aprons to jerseys: if it is made of fabric, we can probably put your design on it. Printed and stitched in Downtown LA, with orders starting at 6 pieces."
+summary: "Tees to track jackets, aprons to jerseys: if it is made of fabric, we can probably put your design on it. Printed and stitched in Los Angeles, with orders starting at 6 pieces."
 facts:
   - { label: "Categories", value: "Athletics, workwear, tees, tanks, sweatshirts, outerwear" }
   - { label: "Minimum", value: "6 pieces per order" }
@@ -21,7 +21,7 @@ sourceUrl: "https://thebestscreenprinting.com/custom-apparel/"
 ---
 ## If it is fabric, it is a canvas
 
-T-shirts are where most people start. They are rarely where they stop. Here is the range of apparel we decorate at our Downtown LA shop, grouped the way people actually shop for it.
+T-shirts are where most people start. They are rarely where they stop. Here is the range of apparel we decorate at our Los Angeles shop, grouped the way people actually shop for it.
 
 ## Athletics and performance
 

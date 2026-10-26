@@ -1,11 +1,11 @@
 ---
 path: "/blog/"
 title: "Blog | The Best Screen Printing"
-description: "Straight-talk guides from a Downtown LA print shop: how screen printing works, DTG explained, embroidery thread and materials, hoodie printing and design tips."
+description: "Straight-talk guides from a Los Angeles print shop: how screen printing works, DTG explained, embroidery thread and materials, hoodie printing and design tips."
 h1: "Blog"
 kind: blog
 imported: false
-summary: "Shop-floor knowledge, written down. Guides on screen printing, DTG and embroidery from the TBSP team in Downtown Los Angeles."
+summary: "Shop-floor knowledge, written down. Guides on screen printing, DTG and embroidery from the TBSP team in Los Angeles."
 sourceUrl: "https://thebestscreenprinting.com/blog/"
 ---
 Ink, thread and the decisions in between. These guides explain how custom apparel actually gets made, so you can pick the right method and send art that prints clean.

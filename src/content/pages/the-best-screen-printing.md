@@ -1,13 +1,13 @@
 ---
 path: "/the-best-screen-printing/"
 title: "Rush Shirt Printing | The Best Screen Printing In LA"
-description: "The Best Screen Printing is a Downtown LA print shop for brands, artists, events and teams. Screen printing, embroidery, DTG and DTF, with Rush and Super Rush."
+description: "The Best Screen Printing is a Los Angeles print shop for brands, artists, events and teams. Screen printing, embroidery, DTG and DTF, with Rush and Super Rush."
 h1: "The Best Screen Printing in LA"
 kind: core
 imported: false
-summary: "A Downtown LA print shop that has put ink on shirts for Netflix, Adidas, Nike and Google, and for the brand you are launching next month. Screen printing, embroidery, DTG and DTF, with Rush and Super Rush turnaround for tight deadlines."
+summary: "A Los Angeles print shop that has put ink on shirts for Netflix, Adidas, Nike and Google, and for the brand you are launching next month. Screen printing, embroidery, DTG and DTF, with Rush and Super Rush turnaround for tight deadlines."
 facts:
-  - { label: "Location", value: "2710 S Broadway Ave, Los Angeles, CA 90007" }
+  - { label: "Location", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF, heat transfer, embossing" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
@@ -21,7 +21,7 @@ sourceUrl: "https://thebestscreenprinting.com/the-best-screen-printing/"
 ---
 ## Ink, thread and deadlines, handled in DTLA
 
-The Best Screen Printing, TBSP for short, is a custom apparel shop at 2710 S Broadway in Downtown Los Angeles. We print and stitch for big names and brand-new labels alike: Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures have all worn our work. So do independent LA labels, artists, events and teams.
+The Best Screen Printing, TBSP for short, is a custom apparel shop at 5738 Holmes Ave. in Los Angeles. We print and stitch for big names and brand-new labels alike: Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures have all worn our work. So do independent LA labels, artists, events and teams.
 
 ## Build a brand, not just a box of shirts
 

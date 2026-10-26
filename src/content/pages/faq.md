@@ -30,7 +30,7 @@ faqs:
   - q: "Can you rush my order?"
     a: "Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. Availability depends on the garment, method and shop schedule, so confirm by phone or in your quote."
   - q: "Can I pick up my order?"
-    a: "Yes. Our shop is at 2710 S Broadway Avenue, Los Angeles, CA 90007, open Monday through Friday, 9am to 5pm."
+    a: "Yes. Our shop is at 5738 Holmes Ave., Los Angeles, CA 90058, open Monday through Friday, 9am to 5pm."
   - q: "Do you ship orders?"
     a: "Yes. Tell us your delivery address when you request a quote, and we will include shipping options for your order."
 sourceUrl: "https://thebestscreenprinting.com/faq/"
