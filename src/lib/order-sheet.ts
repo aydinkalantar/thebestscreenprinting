@@ -2,6 +2,7 @@
 // and sends the order (with artwork) to the studio, then goes to the card payment page.
 import { fetchPrices, money, placeOrder, type PriceItemInput, type PriceResponse, type Totals, type Turnaround } from './online';
 import { openSheet, wireSheet } from './sheet';
+import { attachAddressAutocomplete } from './address-autocomplete';
 
 export interface OrderArtwork { itemIndex: number; placement: string; file: File }
 export interface OrderRequest { items: PriceItemInput[]; artwork: OrderArtwork[]; price: Extract<PriceResponse, { enabled: true }>; summary: string; /** Cart items being bought: removed on the thank-you page. */ cartIds?: string[] }
@@ -102,6 +103,15 @@ function wire(el: HTMLElement) {
   const msg = el.querySelector<HTMLElement>('[data-os-msg]')!;
   const address = el.querySelector<HTMLElement>('[data-os-address]')!;
   const val = (n: string) => ((form.elements.namedItem(n) as HTMLInputElement | null)?.value || '').trim();
+  // Shipping address: Google suggestions while typing fill city, state and ZIP.
+  const field = (n: string) => form.elements.namedItem(n) as HTMLInputElement | HTMLSelectElement;
+  attachAddressAutocomplete(field('street') as HTMLInputElement, (a) => {
+    if (a.street) field('street').value = a.street;
+    if (a.city) field('city').value = a.city;
+    if (a.state) field('state').value = a.state;
+    if (a.zip) field('zip').value = a.zip;
+    (field('street2') as HTMLInputElement).focus();
+  });
   const showMsg = (t: string) => { msg.className = 'rounded-xl px-4 py-3 text-sm font-medium bg-red-500/10 text-red-700 dark:text-red-300'; msg.textContent = t; msg.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); };
   const setErr = (field: string, t: string) => { const e = form.querySelector<HTMLElement>(`.err[data-for="${field}"]`); if (e) e.textContent = t; };
 
