@@ -14,7 +14,7 @@
 }
 
 @layer components {
-  .wrap { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+  .wrap { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
 
   /* Buttons — same shapes as the studio's primary / quiet buttons */
   .btn { @apply inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all active:scale-[0.98]; }

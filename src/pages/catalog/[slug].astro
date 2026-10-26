@@ -48,7 +48,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 ---
 <Base title={`Custom ${p.name} | TBSP Los Angeles`} description={description} jsonLd={jsonLd}>
   <Breadcrumbs items={[{ label: 'Catalog', href: '/catalog/' }, { label: category, href: categoryHref }, { label: p.name }]} />
-  <div class="grid gap-4 md:gap-10 lg:grid-cols-2">
+  <div class="grid gap-4 md:gap-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
     <div class="min-w-0 lg:order-none">
       <DesignPreview p={p} />
     </div>
@@ -62,7 +62,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
       )}
       <p class="mt-4 text-[15px] muted">Priced per order with your decoration included. Pick a color and sizes, and we'll send a quote within one business day. Orders start at {min} pieces.</p>
 
-      <form id="add-to-quote" class="mt-7 panel-raised p-5 sm:p-6 grid gap-6" novalidate
+      <form id="add-to-quote" class="mt-7 panel-raised p-5 sm:p-6 grid grid-cols-[minmax(0,1fr)] gap-6 min-w-0" novalidate
         data-id={p.id} data-slug={p.slug} data-name={p.name} data-style={p.style ?? ''} data-brand={p.brand ?? ''} data-cat={p.category} data-sub={p.subcategory ?? ''} data-img={p.image} data-min={min}>
         <p class="text-lg font-bold text-zinc-900 dark:text-white -mb-2">Add to quote</p>
         {p.colors.length > 0 && (
@@ -96,7 +96,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         </fieldset>
 
         <!-- Filled by the design preview once artwork is placed. -->
-        <div data-design-summary hidden class="grid gap-1">
+        <div data-design-summary hidden class="grid grid-cols-[minmax(0,1fr)] gap-1 min-w-0">
           <div class="flex items-baseline justify-between gap-3">
             <p class="eyebrow !text-zinc-500 dark:!text-zinc-400">Your artwork</p>
             <a href="#design" class="text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add more</a>
