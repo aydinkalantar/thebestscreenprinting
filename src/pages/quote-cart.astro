@@ -8,7 +8,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import DesignRequestSheet from '../components/design/DesignRequestSheet.astro';
 import { business } from '../data/business';
 import { COLLECTIONS, collectionHref } from '../lib/catalog';
-import { ClipboardList, Plus, ArrowRight, CircleCheck, Phone, Info, CreditCard } from '@lucide/astro';
+import { ClipboardList, Plus, ArrowRight, CircleCheck, Phone, Info, CreditCard, Lock } from '@lucide/astro';
 import OrderSheet from '../components/design/OrderSheet.astro';
 
 const min = business.shopMinimum;
@@ -62,7 +62,8 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
         <div data-cp hidden class="grid gap-2.5 rounded-xl border border-violet-300/60 dark:border-violet-400/25 bg-violet-500/[0.05] p-3.5">
           <dl data-cp-lines class="grid grid-cols-[1fr_auto] gap-y-1 text-[14px]"></dl>
           <button type="button" data-pay class="btn-primary w-full h-12 text-[15px] disabled:opacity-50 disabled:shadow-none"><CreditCard class="w-4 h-4" aria-hidden="true" /><span>Order &amp; pay</span></button>
-          <p class="text-[12px] muted">Tax is added at checkout. Free art proof before we print.</p>
+          <p data-cp-ship class="text-[12.5px] muted"></p>
+          <p class="flex items-center gap-1.5 text-[12px] muted"><Lock class="w-3.5 h-3.5 shrink-0" aria-hidden="true" />Secure checkout by Stripe · Free art proof · Tax added at checkout</p>
         </div>
         <p data-cp-note hidden class="text-[12.5px] muted"></p>
         <button type="button" data-continue class="btn-primary w-full h-12 text-[15px] disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed"><span data-continue-label>Request a quote</span><ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
@@ -161,7 +162,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     const bad = items.filter((it) => totalOf(it) < CART_MIN);
     document.querySelectorAll('[data-sum-items]').forEach((n) => { n.textContent = String(items.length); });
     document.querySelectorAll('[data-sum-pieces]').forEach((n) => { n.textContent = String(pieces); });
-    document.querySelectorAll('[data-sum-files]').forEach((n) => { n.textContent = files ? `${files} · ${MB(bytes)}` : '0'; });
+    document.querySelectorAll('[data-sum-files]').forEach((n) => { n.textContent = String(files); });
     const error = bad.length ? `${bad.length === 1 ? 'One product needs' : `${bad.length} products need`} at least ${CART_MIN} pieces.`
       : bytes > MAX_TOTAL_BYTES ? `Artwork is ${MB(bytes)}, over the 25 MB limit. Remove a product or use smaller files.` : '';
     document.querySelectorAll('[data-sum-error]').forEach((n) => { n.textContent = error; });
@@ -303,7 +304,10 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     }
     const totalRow = el('p', 'flex flex-wrap items-baseline justify-between gap-2 text-[13px]');
     totalRow.append(totalEl, el('span', 'muted', `Minimum ${CART_MIN} per product`));
-    qtys.append(gridEl, totalRow, err);
+    // Filled by the instant price (online orders): price per piece, product total, next price break.
+    const priceBox = el('div', 'hidden rounded-xl bg-zinc-50 dark:bg-white/[0.04] px-3.5 py-2.5 text-[13.5px] grid gap-0.5');
+    priceBox.dataset.priceFor = it.id;
+    qtys.append(gridEl, totalRow, err, priceBox);
     // Show the current state without saving it again.
     const n0 = totalOf(it);
     totalEl.textContent = `Total: ${n0} pieces`;
@@ -311,7 +315,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
 
     // Actions.
     const actions = el('div', 'flex flex-wrap gap-2 pt-1 border-t border-zinc-200/80 dark:border-white/10 pt-3');
-    const edit = el('a', 'btn-primary btn-sm max-md:h-11');
+    const edit = el('a', 'btn-quiet btn-sm max-md:h-11');
     edit.href = `${link.pathname}?edit=${encodeURIComponent(it.id)}`;
     edit.innerHTML = ICON.edit;
     edit.append(el('span', '', 'Edit'));
@@ -327,7 +331,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     });
     actions.append(dup);
     if (it.placements.length) {
-      const reuse = iconBtn(`Use the same artwork on another product`, ICON.art, 'Use same artwork on another product');
+      const reuse = iconBtn(`Use the same artwork on another product`, ICON.art, 'Same art on another product');
       reuse.addEventListener('click', () => { setCarry(it.id); location.href = '/catalog/'; });
       actions.append(reuse);
     }
@@ -567,12 +571,13 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   async function priceCart() {
     const items = cartItems();
     cpCtl?.abort();
-    if (!items.length || items.some((it) => totalOf(it) < CART_MIN)) { setPayMode(false); cpNote.hidden = true; return; }
+    if (!items.length || items.some((it) => totalOf(it) < CART_MIN)) { setPayMode(false); cpNote.hidden = true; fillItemPrices(null, items); return; }
     cpCtl = new AbortController();
     payBtns.forEach((b) => { b.disabled = true; });
     const res = await fetchPrices(priceItems(), 'pickup', cpCtl.signal);
     if (cpCtl.signal.aborted) return;
-    if (!res || !res.enabled) { cpPrice = null; setPayMode(false); cpNote.hidden = true; return; }
+    if (!res || !res.enabled) { cpPrice = null; setPayMode(false); cpNote.hidden = true; fillItemPrices(null, items); return; }
+    fillItemPrices(res, items);
     const bad = res.items.map((r, i) => ({ r, it: items[i] })).filter(({ r }) => !r.ok);
     if (bad.length || !res.totals) {
       cpPrice = null;
@@ -590,10 +595,47 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
       const dd = document.createElement('dd'); dd.className = `text-right ${strong ? 'font-bold' : 'font-semibold'} text-zinc-900 dark:text-white`; dd.textContent = b;
       dl.append(dt, dd);
     };
-    res.items.forEach((r, i) => line(`${items[i]?.name.replace(/^(.{0,34}).*$/, (m, a) => (m.length > 34 ? `${a}…` : m))} · ${r.quantity}`, money(r.subtotal)));
+    res.items.forEach((r, i) => line(`${shortName(items[i])} · ${r.quantity} pcs`, money(r.subtotal)));
     if (res.totals.setup) line('Setup / screens', money(res.totals.setup));
     line('Total before tax', money(res.totals.subtotal + res.totals.setup), true);
+    const ship = cp.querySelector<HTMLElement>('[data-cp-ship]')!;
+    const { pickup, shipping } = res.delivery;
+    ship.textContent = pickup != null && shipping != null ? `Delivery: free pickup or shipping ${money(shipping)}, chosen at checkout.`
+      : shipping != null ? `Shipping ${money(shipping)} is added at checkout.` : pickup != null ? 'Free pickup in Los Angeles.' : '';
     setPayMode(true, res.totals.subtotal + res.totals.setup);
+  }
+
+  /** "Comfort Colors 6014" rather than the full product name. */
+  const shortName = (it?: CartItem) => (it ? ([it.brand, it.style].filter(Boolean).join(' ') || it.name.slice(0, 30)) : 'Product');
+
+  /** Price per piece, product total and the next price break on each product card. */
+  function fillItemPrices(res: PriceResponse | null, items: CartItem[]) {
+    items.forEach((it, i) => {
+      const box = list.querySelector<HTMLElement>(`[data-price-for="${it.id}"]`);
+      if (!box) return;
+      const r = res && res.enabled ? res.items[i] : null;
+      box.replaceChildren();
+      box.classList.toggle('hidden', !r);
+      box.classList.toggle('grid', !!r);
+      if (!r) return;
+      if (!r.ok) {
+        box.append(el('p', 'muted', `${r.quoteOnly || 'Priced by quote'}. We'll price this one personally.`));
+        return;
+      }
+      const prices = Object.values(r.sizePrices);
+      const lo = Math.min(...prices);
+      const top = el('p', 'flex flex-wrap items-baseline justify-between gap-x-3');
+      const each = el('span', 'text-zinc-900 dark:text-white');
+      each.append(el('b', 'text-[15px]', money(lo)), document.createTextNode(' each'));
+      const more = Object.entries(r.sizePrices).filter(([, p]) => p > lo);
+      if (more.length) each.append(el('span', 'muted', ` · ${more.map(([k, p]) => `${k} ${money(p)}`).join(', ')}`));
+      const tot = el('span', 'font-semibold text-zinc-900 dark:text-white', `${money(r.subtotal)}${r.setup ? ` + ${money(r.setup)} setup` : ''}`);
+      top.append(each, tot);
+      box.append(top);
+      // Only a nudge when the next price break is within reach (at most double the current quantity).
+      if (r.next && r.next.qty - r.quantity <= r.quantity) box.append(el('p', 'text-[13px] font-medium text-emerald-700 dark:text-emerald-400', `Add ${r.next.qty - r.quantity} more (${r.next.qty} total) and pay ${money(r.next.perPiece)} each.`));
+      if (r.stockShort.length) box.append(el('p', 'text-[13px] font-medium text-amber-700 dark:text-amber-300', `Low stock: ${r.stockShort.map((x) => `${x.size} (${x.stock} left)`).join(', ')}.`));
+    });
   }
   const scheduleCart = (delay = 450) => { clearTimeout(cpTimer); cpTimer = window.setTimeout(priceCart, delay); };
   window.addEventListener('tbsp-cart-summary', () => scheduleCart());
