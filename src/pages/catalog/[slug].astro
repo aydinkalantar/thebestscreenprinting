@@ -214,7 +214,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 <script>
   import { mountDesign } from '../../components/design/design';
   import { setMaxContext } from '../../lib/max';
-  import { addToCart, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry } from '../../lib/cart';
+  import { addToCart, replaceCartItem, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry } from '../../lib/cart';
   import { MAX_TOTAL_BYTES } from '../../lib/quote';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
   const label = document.getElementById('color-name');
@@ -346,6 +346,11 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   }
 
   const MB = (n: number) => `${(n / 1024 / 1024).toFixed(1)} MB`;
+  // "Edit" from the quote cart: /catalog/<slug>/?edit=<item id> loads that item here and saves over it.
+  const editId = new URLSearchParams(location.search).get('edit');
+  const editing = editId ? cartItem(editId) : undefined;
+  const editItem = editing && editing.slug === d.slug ? editing : undefined;
+  const actionText = editItem ? 'Save changes' : 'Add to quote';
   let adding = false;
   async function addItem() {
     if (adding) return;
@@ -353,7 +358,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     const n = sum();
     if (n < min) { cartError.textContent = `Add at least ${min} pieces of this product (${min}-piece minimum per product).`; inputs.find((i) => !qty(i))?.focus(); return; }
     // All artwork in the quote travels in one request: keep it under the 25 MB limit.
-    const cartBytes = cartItems().reduce((n, it) => n + it.placements.reduce((a, p) => a + p.size, 0), 0);
+    const cartBytes = cartItems().filter((it) => it.id !== editItem?.id).reduce((n, it) => n + it.placements.reduce((a, p) => a + p.size, 0), 0);
     const mine = design.bytes();
     if (cartBytes + mine > MAX_TOTAL_BYTES) {
       cartError.textContent = `Your quote would have ${MB(cartBytes + mine)} of artwork, more than the 25 MB we can take in one request. Send your quote first, or use smaller files (PNG or PDF).`;
@@ -366,14 +371,20 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     try {
       const placements = design.snapshot();
       const shots = placements.length ? await design.mockups(Math.max(400_000, Math.min(3_000_000, MAX_TOTAL_BYTES - cartBytes - mine - 2_000_000))) : [];
-      const item = await addToCart({
+      const input = {
         productId: d.id || '', slug: d.slug || '', name: d.name || '', brand: d.brand || '', style: d.style || '', cat: d.cat || '', sub: d.sub || '',
         image: colorImg || d.img || '', url: location.origin + location.pathname, color,
         sizeOrder: inputs.map((i) => i.dataset.size || ''), sizes: sizesMap(),
         decorations: placements.length ? [...new Set(placements.map((p) => p.decoration))] : checked('decoration'),
         locations: placements.length ? placements.map((p) => p.location) : checked('location'),
         placements, mockups: shots.map((m) => ({ side: m.side, blob: m.blob })),
-      });
+      };
+      if (editItem) {
+        await replaceCartItem(editItem.id, input);
+        location.href = '/quote-cart/';
+        return;
+      }
+      const item = await addToCart(input);
       setCarry(null);
       design.clearCarried();
       if (!(await cartPersistsFiles()) && placements.length) {
@@ -387,17 +398,44 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     } finally {
       adding = false;
       [button, barSubmit].forEach((b) => b?.removeAttribute('aria-busy'));
-      labels.forEach((l) => { l.textContent = 'Add to quote'; });
+      labels.forEach((l) => { l.textContent = actionText; });
     }
   }
 
   form.addEventListener('submit', (e) => { e.preventDefault(); addItem(); });
 
-  // "Use same artwork on another product": start this page with that item's artwork.
-  const carryId = getCarry();
-  if (carryId) {
-    const from = cartItem(carryId);
-    carryArtwork(carryId).then((list) => { if (list.length) design.loadArtwork(list, from ? `${from.name}` : ''); }).catch(() => {});
+  if (editItem) {
+    // Same color, sizes, decoration and artwork as in the quote; the buttons save over it.
+    const sw = swatches.find((b) => b.dataset.name === editItem.color);
+    if (sw) { sw.hidden = false; sw.click(); }
+    inputs.forEach((i) => { const v = editItem.sizes[i.dataset.size || '']; i.value = v ? String(v) : ''; });
+    form.querySelectorAll<HTMLInputElement>('input[name="decoration"]').forEach((c) => { c.checked = editItem.decorations.includes(c.value); });
+    form.querySelectorAll<HTMLInputElement>('input[name="location"]').forEach((c) => { c.checked = editItem.locations.includes(c.value); });
+    [button, barSubmit].forEach((b) => { const l = b?.querySelector('span'); if (l) l.textContent = actionText; });
+    single.hidden = true;
+    const head = form.querySelector('p');
+    if (head) {
+      head.textContent = 'Edit this product';
+      const back = document.createElement('a');
+      back.href = '/quote-cart/';
+      back.className = 'ml-3 text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline';
+      back.textContent = 'Cancel';
+      head.append(back);
+    }
+    refresh();
+    if (editItem.placements.length) {
+      carryArtwork(editItem.id)
+        .then((list) => { if (list.length) design.loadArtwork(list, editItem.name, 'Your artwork from the quote is loaded. Move or resize it, then tap Save changes.'); })
+        .catch(() => {});
+    }
+  } else {
+    // "Use same artwork on another product": start this page with that item's artwork.
+    const carryId = getCarry();
+    if (carryId) {
+      const from = cartItem(carryId);
+      carryArtwork(carryId).then((list) => { if (list.length) design.loadArtwork(list, from ? `${from.name}` : ''); }).catch(() => {});
+    }
   }
+
   document.querySelector('[data-pending-dismiss]')?.addEventListener('click', () => setCarry(null));
 </script>

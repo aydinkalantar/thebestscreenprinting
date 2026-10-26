@@ -194,6 +194,36 @@ export async function addToCart(input: NewCartItem): Promise<CartItem> {
   return item;
 }
 
+/**
+ * Replaces an item with a newly configured version (the "Edit" flow on the product page),
+ * keeping its id and its place in the list. New files get fresh keys, so a duplicate that
+ * shared the old files keeps them; files nothing uses any more are removed.
+ */
+export async function replaceCartItem(id: string, input: NewCartItem): Promise<CartItem> {
+  const old = cartItem(id);
+  if (!old) throw new Error('This product is no longer in your quote. Add it again.');
+  const total = sumSizes(input.sizes);
+  if (total < CART_MIN) throw new Error(`Add at least ${CART_MIN} pieces of this product (${CART_MIN}-piece minimum per product).`);
+  const prefix = `${id}-${uid()}`;
+  const placements: CartPlacement[] = [];
+  for (const [n, p] of input.placements.entries()) {
+    const fileKey = `${prefix}/art-${n + 1}`;
+    await putFile(fileKey, p.blob);
+    const { blob, ...rest } = p;
+    placements.push({ ...rest, fileKey, fileType: blob.type, size: blob.size });
+  }
+  const mockups: CartItem['mockups'] = [];
+  for (const m of input.mockups) {
+    const key = `${prefix}/mockup-${m.side}`;
+    await putFile(key, m.blob);
+    mockups.push({ side: m.side, key, size: m.blob.size });
+  }
+  const item: CartItem = { ...input, id, addedAt: old.addedAt, total, placements, mockups };
+  writeIndex(readIndex().map((it) => (it.id === id ? item : it)));
+  await gc();
+  return item;
+}
+
 export function updateCartItem(id: string, patch: Partial<Pick<CartItem, 'sizes'>>) {
   const items = readIndex().map((it) => {
     if (it.id !== id) return it;

@@ -829,7 +829,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
      * Starts this product with artwork from another cart item: same location when this product
      * has it (same id, else same name), otherwise offered as "pending artwork" to place by hand.
      */
-    async loadArtwork(list: { locId: string; location: string; decoration: string; notes?: string; x: number; y: number; w: number; file: File }[], from = '') {
+    async loadArtwork(list: { locId: string; location: string; decoration: string; notes?: string; x: number; y: number; w: number; file: File }[], from = '', note = '') {
       const placed: string[] = [];
       for (const src of list) {
         const sp = spotById.get(src.locId) ?? spots.find((x) => x.label.toLowerCase() === src.location.toLowerCase());
@@ -846,7 +846,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
         }
         placed.push(sp.label);
       }
-      carriedNote = `Artwork from ${from || 'your quote'}${placed.length ? ` placed on: ${placed.join(', ')}.` : '.'} ${pending.length ? 'Choose a location above, then place the rest.' : 'Adjust it if you like.'}`;
+      carriedNote = note || `Artwork from ${from || 'your quote'}${placed.length ? ` placed on: ${placed.join(', ')}.` : '.'} ${pending.length ? 'Choose a location above, then place the rest.' : 'Adjust it if you like.'}`;
       const first = spots.find((x) => arts.has(x.id));
       if (first) select(first.id, { zoom: false }); else render();
       announce(carriedNote);
