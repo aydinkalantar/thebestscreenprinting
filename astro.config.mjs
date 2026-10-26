@@ -10,7 +10,7 @@ export default defineConfig({
   build: { format: 'directory' },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/thank-you/') && !page.includes('/quote-cart/'),
+      filter: (page) => !['/thank-you/', '/quote-cart/', '/order/thanks/', '/track/'].some((p) => page.includes(p)),
     }),
   ],
 });
