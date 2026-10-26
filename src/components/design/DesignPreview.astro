@@ -8,7 +8,12 @@ import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info, E
 
 interface Props { p: CatalogProduct }
 const { p } = Astro.props;
-const printAreas = (p as { printAreas?: PrintAreas }).printAreas ?? null;
+// Admin print areas list allowed decorations by technique id (SCREEN, EMBROIDERY…): show them by name.
+const rawAreas = (p as { printAreas?: PrintAreas }).printAreas ?? null;
+const printAreas: PrintAreas | null = rawAreas && {
+  ...rawAreas,
+  locations: Object.fromEntries(Object.entries(rawAreas.locations ?? {}).map(([k, v]) => [k, v.methods ? { ...v, methods: techniqueNames(v.methods) } : v])),
+};
 const spots = applyPrintAreas(spotsFor(p), printAreas);
 const first = p.colors[0];
 const front = first?.image || p.image;
