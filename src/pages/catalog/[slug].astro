@@ -249,7 +249,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   import { MAX_TOTAL_BYTES } from '../../lib/quote';
   import { fetchPrices, money, printSize, type PriceItemInput, type PriceResponse } from '../../lib/online';
   import { openOrder, type OrderArtwork } from '../../lib/order-sheet';
-  import { countInks, dpiFor, type InkCount } from '../../components/design/colors';
+  import { countInks, dpiFor, inksOn, type InkCount } from '../../components/design/colors';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
   const label = document.getElementById('color-name');
   const total = document.getElementById('qty-total')!;
@@ -491,6 +491,8 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   /** The product as the studio prices it, or a reason it can't be priced yet. */
   /** Detected ink colors per placed artwork, keyed by location + file. */
   const detected = new Map<string, InkCount | 'pending'>();
+  /** The selected garment color as CSS (inks that match it don't print). */
+  const garmentColor = () => swatches.find((b) => b.getAttribute('aria-checked') === 'true')?.style.background || '';
   const artKey = (loc: string, p: { file: string; blob: Blob }) => `${loc}|${p.file}|${p.blob.size}`;
   /** Ink colors a screen printed location is priced at: what the artwork shows, never less. */
   const effectiveInks = new Map<string, number>();
@@ -505,7 +507,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     inkRows = [];
     const ink = (place: string, method: string, found?: InkCount | 'pending') => {
       if (!isScreen(method)) return {};
-      const auto = found && found !== 'pending' && found.kind === 'spot' ? found.count : 0;
+      const auto = found && found !== 'pending' && found.kind === 'spot' ? inksOn(found, garmentColor()).length : 0;
       // Full color can't be screen printed at an instant price: the studio answers "priced by quote".
       const colors = found && found !== 'pending' && found.kind === 'full' ? 99 : Math.max(auto, inks.get(place) || 1);
       effectiveInks.set(place, colors);
@@ -547,7 +549,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   /** Per location: the ink colors found in the artwork (screen printing is priced by colors). */
   function renderInks() {
     const box = ip('inks');
-    const key = JSON.stringify(inkRows.map((r) => [r.placement, r.method, r.ink === 'pending' ? 'p' : r.ink?.kind, r.ink && r.ink !== 'pending' && r.ink.kind === 'spot' ? r.ink.count : 0]));
+    const key = JSON.stringify([garmentColor(), inkRows.map((r) => [r.placement, r.method, r.ink === 'pending' ? 'p' : r.ink?.kind, r.ink && r.ink !== 'pending' && r.ink.kind === 'spot' ? r.ink.count : 0])]);
     if (box.dataset.key === key) return;
     box.dataset.key = key;
     box.replaceChildren();
@@ -559,22 +561,23 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
       const t = document.createElement('span');
       t.className = 'min-w-0 flex items-center gap-2 text-zinc-800 dark:text-zinc-200';
       const label = document.createElement('span');
+      const shown = found?.kind === 'spot' ? inksOn(found, garmentColor()) : [];
       if (r.ink === 'pending') label.textContent = `${r.placement}: checking your artwork colors…`;
       else if (found?.kind === 'full') label.innerHTML = `<b>${r.placement}:</b> full-color design`;
-      else if (found?.kind === 'spot') label.innerHTML = `<b>${r.placement}:</b> ${found.count} ink color${found.count === 1 ? '' : 's'} found`;
+      else if (found?.kind === 'spot') label.innerHTML = `<b>${r.placement}:</b> ${shown.length} ink color${shown.length === 1 ? '' : 's'} found`;
       else label.textContent = `${r.placement}: ink colors in your design`;
       t.append(label);
-      if (found?.kind === 'spot' && found.colors.length) {
+      if (shown.length) {
         const dots = document.createElement('span');
         dots.className = 'flex -space-x-1';
         dots.setAttribute('aria-hidden', 'true');
-        for (const c of found.colors) { const dot = document.createElement('span'); dot.className = 'w-4 h-4 rounded-full border border-zinc-300 dark:border-white/30'; dot.style.background = c; dots.append(dot); }
+        for (const c of shown) { const dot = document.createElement('span'); dot.className = 'w-4 h-4 rounded-full border border-zinc-300 dark:border-white/30'; dot.style.background = c; dots.append(dot); }
         t.append(dots);
       }
       row.append(t);
       if (screen && found?.kind !== 'full' && r.ink !== 'pending') {
         // The count can go up (the customer knows better) but never below what the artwork shows.
-        const floor = found?.kind === 'spot' ? found.count : 1;
+        const floor = shown.length || 1;
         const sel = document.createElement('select');
         sel.className = 'field !h-9 !w-auto !py-0 !pr-8 !text-[14px] font-semibold';
         for (let c = floor; c <= 6; c++) { const o = document.createElement('option'); o.value = String(c); o.textContent = c === 6 ? '6+' : String(c); sel.append(o); }

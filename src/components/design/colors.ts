@@ -132,5 +132,22 @@ export async function countInks(file: Blob): Promise<InkCount> {
   return { kind: 'spot', count: Math.max(1, main.length), colors: main.map((cl) => hex(cl.c)), ...size };
 }
 
+const rgbOf = (css: string): number[] | null => {
+  const h = /^#([0-9a-f]{6})$/i.exec(css.trim());
+  if (h) return [0, 2, 4].map((i) => parseInt(h[1].slice(i, i + 2), 16));
+  const m = /rgba?\(\s*(\d+)[ ,]+(\d+)[ ,]+(\d+)/i.exec(css);
+  return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
+};
+
+/**
+ * Inks that actually print on this garment color: an ink matching the garment
+ * (black on a black tee) isn't printed, so it isn't counted. At least one.
+ */
+export function inksOn(found: Extract<InkCount, { kind: 'spot' }>, garment: string): string[] {
+  const g = rgbOf(garment);
+  const kept = g ? found.colors.filter((c) => { const r = rgbOf(c); return !r || Math.hypot(r[0] - g[0], r[1] - g[1], r[2] - g[2]) >= 40; }) : found.colors;
+  return kept.length ? kept : found.colors.slice(0, 1);
+}
+
 /** Effective print resolution: under ~150 DPI prints look soft. */
 export const dpiFor = (widthPx: number, widthIn: number) => (widthIn > 0 ? Math.round(widthPx / widthIn) : 0);
