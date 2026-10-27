@@ -1,0 +1,26 @@
+---
+// Real customer reviews (src/data/reviews.ts): a grid on desktop, a swipeable row on phones.
+import { reviews, reviewsUrl } from '../data/reviews';
+import { Star, ArrowRight } from '@lucide/astro';
+interface Props { limit?: number }
+const { limit = 6 } = Astro.props;
+---
+<div>
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <p class="eyebrow">Google reviews</p>
+      <h2 class="section-title mt-2">Brands and teams that <span class="hl">came back</span></h2>
+    </div>
+    <a href={reviewsUrl} target="_blank" rel="noopener" class="max-sm:hidden inline-flex items-center gap-1 font-semibold text-zinc-900 dark:text-white hover:text-violet-700 dark:hover:text-violet-300">Read them on Google<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+  </div>
+  <ul class="mt-5 md:mt-8 grid gap-4 md:grid-cols-3 m-rail [--rail-w:82%]">
+    {reviews.slice(0, limit).map((r) => (
+      <li class="snap-start panel p-5 flex flex-col gap-3">
+        <span class="flex gap-0.5 text-amber-500" aria-hidden="true">{[0, 1, 2, 3, 4].map(() => <Star class="w-4 h-4 fill-current" />)}</span>
+        <p class="text-[15px] leading-7 text-zinc-800 dark:text-zinc-200">“{r.text}”</p>
+        <p class="mt-auto text-[13px] muted"><b class="text-zinc-900 dark:text-white">{r.name}</b> · {r.tag}</p>
+      </li>
+    ))}
+  </ul>
+  <a href={reviewsUrl} target="_blank" rel="noopener" class="sm:hidden mt-4 inline-flex items-center gap-1 font-semibold text-violet-700 dark:text-violet-300">Read them on Google<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+</div>

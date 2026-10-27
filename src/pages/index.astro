@@ -1,5 +1,7 @@
 ---
 import MaxDemo from '../components/MaxDemo.astro';
+import Reviews from '../components/Reviews.astro';
+import { reviews } from '../data/reviews';
 import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Faq from '../components/Faq.astro';
@@ -14,7 +16,7 @@ import { products, featuredProducts } from '../lib/catalog';
 import { collectionTiles, brandTiles, styles } from '../components/home/collections';
 import {
   ArrowRight, Phone, MapPin, Clock, Shirt, Scissors, Layers, Flame, Stamp, Printer, Maximize, Zap,
-  Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck,
+  Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck, Star,
 } from '@lucide/astro';
 
 // Title and description stay as the live homepage has them (they rank). The H1 is short and bold;
@@ -102,6 +104,10 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
           <li class="flex items-center gap-1.5"><Zap class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Rush &amp; Super Rush</li>
           <li class="flex items-center gap-1.5"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Free art proof on every order</li>
         </ul>
+        <a href="#reviews" class="mt-4 sm:mt-5 flex items-start gap-3 max-w-xl group">
+          <span class="flex gap-0.5 pt-1 text-amber-500 shrink-0" aria-hidden="true">{[0, 1, 2, 3, 4].map(() => <Star class="w-3.5 h-3.5 fill-current" />)}</span>
+          <span class="text-[13.5px] leading-6 text-zinc-700 dark:text-zinc-300">“{reviews[0].text.split('. ')[0]}.” <span class="muted">{reviews[0].name}, Google review</span> <span class="font-semibold text-violet-700 dark:text-violet-300 group-hover:underline">More reviews</span></span>
+        </a>
       </div>
 
       <HeroStudio />
@@ -124,6 +130,9 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   {business.maxLive && <section class="wrap mt-14 md:mt-20 scroll-mt-40" id="max" data-max-only>
     <MaxDemo />
   </section>}
+
+  <!-- Real customer reviews -->
+  <section class="wrap mt-14 md:mt-20" id="reviews"><Reviews /></section>
 
   <!-- Categories -->
   <section class="wrap mt-20" aria-labelledby="cat-title">
