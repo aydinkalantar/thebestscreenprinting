@@ -7,9 +7,9 @@ import { AudioLines, Sparkles, PhoneOff, Check, Mic } from '@lucide/astro';
 
 const steps = [
   { n: 1, title: 'Tap Talk to Max', line: 'Or type, if you prefer. He listens on any phone or computer.' },
-  { n: 2, title: 'Say what you need', line: 'What, how many and by when. He picks the product, checks your logo and splits the sizes.' },
-  { n: 3, title: 'Get a real price', line: 'Change anything out loud, like a back print, and the price updates right away.' },
-  { n: 4, title: 'Pay or send as a quote', line: 'Order in one tap, or let our team take it from there. You approve a proof first.' },
+  { n: 2, title: 'Say what you need', line: 'What, how many and by when. He picks the product and splits the sizes.' },
+  { n: 3, title: 'Send your designs', line: 'He checks each one and places it: front, back or sleeve, each with the right print method.' },
+  { n: 4, title: 'Get your price and order', line: 'Change anything out loud and the price updates. Pay in one tap or send it as a quote. You approve a proof first.' },
 ];
 ---
 <div class="grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10" id="max-demo">
@@ -65,6 +65,24 @@ const steps = [
   </div>
 </div>
 
+<template id="max-demo-upload">
+  <div class="d-me !p-1.5 !pr-3 flex items-center gap-2">
+    <span class="grid place-items-center w-11 h-11 rounded-lg bg-[#5b1a2a]"><img src="/images/brand/tbsp-mark-negative.svg" alt="" class="w-7 h-7" /></span>
+    <span class="leading-tight"><span class="block text-[12.5px] font-semibold">crew-logo.png</span><span class="block text-[11px] text-white/75">Design attached</span></span>
+  </div>
+</template>
+<template id="max-demo-front">
+  <div class="d-card flex gap-3 items-center rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2 pr-3">
+    <span class="relative w-14 h-16 shrink-0 rounded-lg bg-zinc-50"><img src="https://cdn.ssactivewear.com/Images/Color/30067_f_fl.jpg" alt="" class="absolute inset-0 w-full h-full object-contain" loading="lazy" /><img src="/images/brand/tbsp-mark-negative.svg" alt="" class="absolute left-1/2 top-[34%] w-[30%] -translate-x-1/2" /></span>
+    <div class="min-w-0 leading-tight"><p class="text-[13px] font-bold text-zinc-900 dark:text-white">Front · Screen print</p><p class="text-[11.5px] muted">crew-logo.png · 2 colors · 11" wide</p><p class="mt-1 text-[11px] font-semibold text-emerald-600">Clean file, ready to print</p></div>
+  </div>
+</template>
+<template id="max-demo-back">
+  <div class="d-card flex gap-3 items-center rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2 pr-3">
+    <span class="relative grid place-items-center w-14 h-16 shrink-0 rounded-lg bg-[#5b1a2a] text-white text-[9px] font-black tracking-widest">CREW</span>
+    <div class="min-w-0 leading-tight"><p class="text-[13px] font-bold text-zinc-900 dark:text-white">Back · Screen print</p><p class="text-[11.5px] muted">Your name · 1 color · 12" wide</p></div>
+  </div>
+</template>
 <template id="max-demo-product">
   <div class="d-card flex gap-3 items-center rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2 pr-3">
     <img src="https://cdn.ssactivewear.com/Images/Color/30067_f_fl.jpg" alt="" class="w-14 h-16 object-contain rounded-lg bg-zinc-50" loading="lazy" />
@@ -140,17 +158,22 @@ const steps = [
       start.style.opacity = '0'; await wait(250, id); start.hidden = true;
       call.classList.remove('opacity-0', 'translate-y-3');
       step(2); talking('you'); await wait(500, id);
-      await type(msg('d-me'), 'I need 36 hoodies for our crew, logo on the chest, by the 15th.', id);
+      await type(msg('d-me'), 'I need 36 maroon hoodies for our crew by the 15th.', id);
       await wait(500, id); talking('max');
-      await type(msg('d-bot'), 'Got it. The Gildan 18500 is our most popular for crews. Here’s your order with the real price, ready by the 12th.', id, 24);
-      card('max-demo-product'); await wait(700, id);
-      step(3); const cart = card('max-demo-cart'); talking('you'); await wait(1300, id);
+      await type(msg('d-bot'), 'Got it, the Gildan 18500. Send me your logo and I’ll put it on.', id, 24);
+      // The design goes in right in the chat, and Max places it.
+      step(3); talking('off'); await wait(700, id);
+      card('max-demo-upload'); await wait(900, id); talking('max');
+      await type(msg('d-bot'), 'Clean, 2 colors. It’s on the chest in screen print.', id, 24);
+      card('max-demo-front'); talking('you'); await wait(1200, id);
       await type(msg('d-me'), 'Add our name on the back.', id);
       await wait(400, id); talking('max');
+      card('max-demo-back'); await wait(600, id);
+      step(4); const cart = card('max-demo-cart');
       const price = q('[data-d-price]', cart), lines = q('[data-d-lines]', cart);
-      price.textContent = '$1,368.00'; price.classList.add('d-flash'); lines.textContent = 'Front + back print · S–2XL size split · Ready by the 12th';
-      await type(msg('d-bot'), 'Done. Back print added, the price is updated.', id, 24);
-      step(4); talking('off'); await wait(900, id);
+      price.textContent = '$1,368.00'; lines.textContent = 'Front + back print · S–2XL size split · Ready by the 12th';
+      await type(msg('d-bot'), 'Here’s your price, ready by the 12th.', id, 24);
+      talking('off'); await wait(900, id);
       await tap(q('[data-d-pay]', cart), id);
       await wait(3200, id);
     }
