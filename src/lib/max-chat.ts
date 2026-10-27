@@ -8,6 +8,7 @@ import { addToCart, cartItems } from './cart';
 import { countInks, type InkCount } from '../components/design/colors';
 import { business } from '../data/business';
 import { openMax } from './max';
+import { setupVoice, type VoiceConfig } from './max-voice';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 interface CartLine extends PriceItemInput { productId?: string; slug?: string; image?: string; why?: string; name?: string }
@@ -174,6 +175,10 @@ if (sheet) {
     log.append(row); scroll();
   }
 
+  const voice = setupVoice(sheet, input, { onFinal: (t) => ask(t), say: (t) => bubble('assistant', t) });
+  // Closing the panel stops him mid-sentence.
+  new MutationObserver(() => { if (sheet.hidden) voice.stop(); }).observe(sheet, { attributes: true, attributeFilter: ['hidden'] });
+
   // ── talking to the studio ──
   function typing() { const t = el('div', 'max-bubble max-bot max-typing'); t.innerHTML = '<span></span><span></span><span></span>'; t.setAttribute('aria-label', 'Max is typing'); log.append(t); scroll(); return t; }
 
@@ -212,7 +217,7 @@ if (sheet) {
         }
       }
       dots.remove();
-      if (reply) { messages.push({ role: 'assistant', content: reply }); save(); }
+      if (reply) { messages.push({ role: 'assistant', content: reply }); save(); voice.speak(reply); }
     } catch {
       dots.remove();
       // Max isn't reachable: the message still reaches the team through the quote form.
@@ -238,10 +243,23 @@ if (sheet) {
   (async () => {
     const fab = document.querySelector<HTMLElement>('[data-max-fab]');
     let on: boolean | null = null;
-    try { const c = JSON.parse(sessionStorage.getItem('tbsp-max-on') || 'null'); if (c && Date.now() - c.at < 60_000) on = c.on; } catch { /* ignore */ }
+    let voiceCfg: VoiceConfig | null = null;
+    let greeting = '', suggestions: string[] = [];
+    try { const c = JSON.parse(sessionStorage.getItem('tbsp-max-on') || 'null'); if (c && Date.now() - c.at < 60_000) ({ on, voice: voiceCfg = null, greeting = '', suggestions = [] } = c); } catch { /* ignore */ }
     if (on === null) {
-      on = await fetch(`${STUDIO_API}/api/public/max`).then((r) => (r.ok ? r.json() : { enabled: false })).then((d) => !!d.enabled).catch(() => false);
-      try { sessionStorage.setItem('tbsp-max-on', JSON.stringify({ on, at: Date.now() })); } catch { /* ignore */ }
+      const d = await fetch(`${STUDIO_API}/api/public/max`).then((r) => (r.ok ? r.json() : { enabled: false })).catch(() => ({ enabled: false }));
+      on = !!d.enabled; voiceCfg = d.voice || null;
+      greeting = typeof d.greeting === 'string' ? d.greeting.trim() : '';
+      suggestions = Array.isArray(d.suggestions) ? d.suggestions.filter((x: unknown) => typeof x === 'string' && x.trim()).slice(0, 4) : [];
+      try { sessionStorage.setItem('tbsp-max-on', JSON.stringify({ on, voice: voiceCfg, greeting, suggestions, at: Date.now() })); } catch { /* ignore */ }
+    }
+    voice.configure(voiceCfg);
+    // The admin's opening line and tap-to-ask suggestions (Settings › Online orders › Max).
+    if (greeting) sheet.querySelector('[data-max-greeting]')!.textContent = greeting;
+    if (suggestions.length) {
+      const box = sheet.querySelector<HTMLElement>('[data-max-starters]')!;
+      const logo = box.querySelector('[data-max-logo]');
+      box.replaceChildren(...suggestions.map((t) => { const b = el('button', 'chip !h-auto py-2 text-left text-[13.5px]', t); b.type = 'button'; b.dataset.maxStarter = ''; return b; }), ...(logo ? [logo] : []));
     }
     // Max-only buttons and sections show once he's confirmed on (see [data-max-only] in global.css).
     document.documentElement.dataset.max = on ? 'on' : 'off';
@@ -251,15 +269,17 @@ if (sheet) {
   // Restore an earlier conversation in this tab (text only).
   if (messages.length) { intro.hidden = true; reset.hidden = false; for (const m of messages) bubble(m.role, m.content); }
 
-  form.addEventListener('submit', (e) => { e.preventDefault(); const t = input.value; input.value = ''; input.style.height = ''; ask(t); });
+  form.addEventListener('submit', (e) => { e.preventDefault(); voice.typed(); const t = input.value; input.value = ''; input.style.height = ''; ask(t); });
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); form.requestSubmit(); } });
   input.addEventListener('input', () => { input.style.height = 'auto'; input.style.height = `${Math.min(input.scrollHeight, 144)}px`; });
-  sheet.querySelectorAll<HTMLButtonElement>('[data-max-starter]').forEach((b) => b.addEventListener('click', () => {
-    if (/logo/i.test(b.textContent || '')) { fileIn.click(); return; }
-    ask(b.textContent || '');
-  }));
+  sheet.querySelector('[data-max-starters]')!.addEventListener('click', (e) => {
+    const b = (e.target as Element).closest<HTMLButtonElement>('[data-max-starter]');
+    if (!b) return;
+    if (b.hasAttribute('data-max-logo')) { fileIn.click(); return; }
+    voice.typed(); ask(b.textContent || '');
+  });
   reset.addEventListener('click', () => {
-    messages = []; art.length = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
+    voice.stop(); messages = []; art.length = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
     [...log.children].forEach((c) => { if (c !== intro) c.remove(); });
     filesBox.replaceChildren(); filesBox.hidden = true;
     intro.hidden = false; reset.hidden = true;
