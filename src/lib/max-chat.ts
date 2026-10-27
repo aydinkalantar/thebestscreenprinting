@@ -120,7 +120,7 @@ if (sheet) {
       for (const [li, l] of it.locations.entries()) {
         const a = artFor(l, li);
         const line = el('p', 'muted flex items-center gap-1.5');
-        if (a?.url) { const t = el('img', 'w-5 h-5 rounded object-contain bg-zinc-100 dark:bg-white/10'); t.src = a.url; t.alt = ''; line.append(t); }
+        if (a?.url) { const t = el('img', 'w-5 h-5 rounded object-contain bg-zinc-400/70 dark:bg-zinc-600'); t.src = a.url; t.alt = ''; line.append(t); }
         line.append(el('span', '', `${l.placement}: ${l.method}${l.colors ? `, ${l.colors} color${l.colors === 1 ? '' : 's'}` : ''}${a ? ` · ${a.file.name.slice(0, 28)}` : ''}`));
         info.append(line);
       }
@@ -255,29 +255,48 @@ if (sheet) {
   // elsewhere a card shows it, and "See it on the product" opens the preview with it in place.
   /** Every design Max placed per product (location -> design), so "See it" brings them all. */
   const placedOn = new Map<string, Map<string, { a: (typeof art)[number]; method: string }>>();
+  /** Product page, name and photo for an id: from products Max showed, else the site's index. */
+  let index: Promise<Record<string, [string, string, string]>> | null = null;
+  async function productInfo(pid: string) {
+    const hit = seen.get(pid);
+    if (hit) return hit;
+    index ??= fetch('/max-products.json').then((r) => r.json()).catch(() => ({}));
+    const x = (await index)[pid];
+    return x ? { slug: x[0], name: x[1], image: x[2] } : undefined;
+  }
   function placementCard(e: Extract<MaxEvent, { type: 'placement' }>) {
     const a = artById(e.artId) ?? (art.length === 1 ? art[0] : undefined);
     if (!a) return;
     const here = document.getElementById('add-to-quote')?.dataset;
     const pid = e.productId || here?.id || '';
-    const prod = seen.get(pid);
     if (!placedOn.has(pid)) placedOn.set(pid, new Map());
     placedOn.get(pid)!.set(e.placement, { a, method: e.method });
     const what = `${e.placement} · ${e.method}${e.colors ? ` · ${e.colors} color${e.colors === 1 ? '' : 's'}` : ''}${e.widthIn ? ` · about ${Math.round(e.widthIn * 10) / 10}" wide` : ''}`;
     const card = el('div', 'flex items-center gap-3 rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2.5');
-    const pic = el('div', 'relative w-16 h-16 shrink-0 rounded-xl bg-zinc-50 dark:bg-white/[0.04] overflow-hidden');
-    // Product photos are fronts: the design sits on it only for front locations.
-    const onPhoto = !!prod?.image && !/back|sleeve|neck|hood/i.test(e.placement);
-    if (onPhoto) { const g = el('img', 'absolute inset-0 w-full h-full object-contain'); g.src = prod!.image!; g.alt = ''; pic.append(g); }
-    if (a.url) { const t = el('img', onPhoto ? 'absolute left-1/2 top-[30%] w-[38%] -translate-x-1/2 object-contain drop-shadow' : 'absolute inset-1 object-contain'); t.src = a.url; t.alt = ''; pic.append(t); }
+    // A mid-gray backdrop keeps white and black designs visible until the product photo loads.
+    const pic = el('div', 'relative w-16 h-16 shrink-0 rounded-xl bg-zinc-400/70 dark:bg-zinc-600 overflow-hidden');
+    const artImg = a.url ? el('img', 'absolute inset-1.5 w-[calc(100%-0.75rem)] h-[calc(100%-0.75rem)] object-contain') : null;
+    if (artImg) { artImg.src = a.url!; artImg.alt = ''; pic.append(artImg); }
     const info = el('div', 'min-w-0 flex-1 text-[13px] leading-snug');
     info.append(el('p', 'font-semibold text-zinc-900 dark:text-white truncate', a.file.name), el('p', 'muted', what));
     card.append(pic, info);
+    log.append(card); scroll();
     if (here?.id && here.id === pid) {
       // On this product's page: place it on the preview right away.
       window.dispatchEvent(new CustomEvent('tbsp-max-place', { detail: { file: a.file, location: e.placement, method: e.method } }));
       info.append(el('p', 'text-emerald-700 dark:text-emerald-400 font-semibold', 'Placed on the preview. Close this chat to see it and adjust.'));
-    } else if (prod?.slug) {
+      return;
+    }
+    void productInfo(pid).then((prod) => {
+      if (!prod) return;
+      info.firstElementChild!.textContent = `${prod.name.slice(0, 40)} · ${a.file.name}`;
+      // Product photos are fronts: the design sits on it only for front locations.
+      if (prod.image && !/back|sleeve|neck|hood/i.test(e.placement)) {
+        const g = el('img', 'absolute inset-0 w-full h-full object-contain bg-white'); g.src = prod.image; g.alt = '';
+        pic.prepend(g);
+        if (artImg) artImg.className = 'absolute left-1/2 top-[30%] w-[38%] -translate-x-1/2 object-contain drop-shadow';
+      }
+      if (!prod.slug) return;
       const see = el('button', 'btn-quiet btn-sm shrink-0', 'See it'); see.type = 'button';
       see.addEventListener('click', async () => {
         see.disabled = true;
@@ -292,9 +311,9 @@ if (sheet) {
         location.href = `/catalog/${prod.slug}/`;
       });
       card.append(see);
-    }
-    log.append(card); scroll();
+    });
   }
+
 
   function handoffCard(e: Extract<MaxEvent, { type: 'handoff' }>) {
     if (e.text) bubble('assistant', e.text);
@@ -520,7 +539,7 @@ if (sheet) {
     filesBox.hidden = !art.length;
     filesBox.replaceChildren(...art.map((a) => {
       const chip = el('span', 'chip !h-9 !pl-1 !pr-1.5 gap-1.5 text-[12.5px]');
-      if (a.url) { const t = el('img', 'w-7 h-7 rounded-md object-contain bg-white dark:bg-white/10'); t.src = a.url; t.alt = ''; chip.append(t); } else chip.append(el('span', 'px-1', '📎'));
+      if (a.url) { const t = el('img', 'w-7 h-7 rounded-md object-contain bg-zinc-400/70 dark:bg-zinc-600'); t.src = a.url; t.alt = ''; chip.append(t); } else chip.append(el('span', 'px-1', '📎'));
       chip.append(el('span', 'max-w-[9rem] truncate', a.file.name));
       const x = el('button', 'grid place-items-center w-6 h-6 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10', '×'); x.type = 'button'; x.setAttribute('aria-label', `Remove ${a.file.name}`);
       x.addEventListener('click', () => { art.splice(art.indexOf(a), 1); if (a.url) URL.revokeObjectURL(a.url); renderFiles(); });
