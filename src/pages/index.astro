@@ -149,7 +149,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   </section>
 
   <!-- Max, the merch agent: what makes TBSP different -->
-  {business.maxLive && <section class="wrap mt-20 scroll-mt-40" id="max">
+  {business.maxLive && <section class="wrap mt-20 scroll-mt-40" id="max" data-max-only>
     <div class="grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10">
       <div class="relative bg-zinc-100 dark:bg-white/[0.04] p-8 sm:p-10 grid gap-3 content-center">
         {[
@@ -293,7 +293,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     document.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach((b) => b.addEventListener('click', () => { input.value = b.dataset.prompt!; input.focus(); }));
     heroForm.addEventListener('submit', (e) => {
       // Max takes it from here (he falls back to the quote form if the shop can't be reached).
-      if (document.querySelector('[data-max-sheet]')) { e.preventDefault(); window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: input.value })); input.value = ''; }
+      if (document.documentElement.dataset.max === 'on' && document.querySelector('[data-max-sheet]')) { e.preventDefault(); window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: input.value })); input.value = ''; }
     });
   }
 </script>

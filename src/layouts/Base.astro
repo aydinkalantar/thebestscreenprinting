@@ -63,6 +63,7 @@ const schema = [localBusinessJsonLd, ...jsonLd];
     <!-- Same theme rule as the studio: a saved choice wins, otherwise follow the OS. -->
     <script is:inline>
       try {
+        try { const m = JSON.parse(sessionStorage.getItem('tbsp-max-on') || 'null'); if (m && Date.now() - m.at < 60000) document.documentElement.dataset.max = m.on ? 'on' : 'off'; } catch (e) {}
         const t = localStorage.getItem('theme');
         const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.classList.add(dark ? 'dark' : 'light');

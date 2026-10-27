@@ -243,7 +243,9 @@ if (sheet) {
       on = await fetch(`${STUDIO_API}/api/public/max`).then((r) => (r.ok ? r.json() : { enabled: false })).then((d) => !!d.enabled).catch(() => false);
       try { sessionStorage.setItem('tbsp-max-on', JSON.stringify({ on, at: Date.now() })); } catch { /* ignore */ }
     }
-    if (fab && !on) fab.style.display = 'none';
+    // Max-only buttons and sections show once he's confirmed on (see [data-max-only] in global.css).
+    document.documentElement.dataset.max = on ? 'on' : 'off';
+    void fab;
   })();
 
   // Restore an earlier conversation in this tab (text only).

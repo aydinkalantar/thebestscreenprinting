@@ -202,3 +202,7 @@ html.sheet-lock body { position: fixed; left: 0; right: 0; overflow: hidden; }
 /* Quantity boxes: no spinner arrows (typing is faster, and they look cleaner). */
 input[type='number']::-webkit-inner-spin-button, input[type='number']::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input[type='number'] { -moz-appearance: textfield; appearance: textfield; }
+
+/* Max-only UI shows once the studio confirms he's on (html[data-max="on"], set by max-chat.ts); the alternatives otherwise. */
+html:not([data-max="on"]) [data-max-only] { display: none !important; }
+html[data-max="on"] [data-max-alt] { display: none !important; }

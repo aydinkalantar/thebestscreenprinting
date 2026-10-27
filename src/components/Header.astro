@@ -57,7 +57,7 @@ const promos = [
       </a>
       <a href={aiHref} data-ask-ai class="hidden lg:flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-zinc-100 dark:hover:bg-white/[0.06]">
         <Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300" aria-hidden="true" />
-        <span class="leading-tight"><span class="block text-[12px] muted">{max ? 'Design & quote in minutes' : 'Reply within 1 business day'}</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">{max ? 'Ask Max' : 'Free quote'}</span></span>
+        <span class="leading-tight" data-max-only><span class="block text-[12px] muted">Your merch agent</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">Ask Max</span></span><span class="leading-tight" data-max-alt><span class="block text-[12px] muted">Reply within 1 business day</span><span class="block text-[13px] font-bold text-violet-700 dark:text-violet-300">Free quote</span></span>
       </a>
       <a href="/quote-cart/" data-cart-link class="icon-btn relative hidden md:grid lg:hidden" aria-label="Cart" title="Cart"><ShoppingBag class="w-4 h-4" aria-hidden="true" /><span data-cart-count hidden class="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-violet-600 text-white text-[10.5px] font-bold leading-[18px] text-center ring-2 ring-white dark:ring-[#0a0a0f]" aria-hidden="true">0</span></a>
       <button class="icon-btn theme-toggle max-md:w-11 max-md:h-11 max-md:rounded-full max-md:border-transparent dark:max-md:border-transparent max-md:text-zinc-700 dark:max-md:text-zinc-200" type="button" aria-label="Switch light or dark mode" data-theme-toggle>
@@ -220,7 +220,7 @@ const promos = [
       ))}
     </div>
     <div class="shrink-0 border-t border-zinc-200/80 dark:border-white/10 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] grid gap-2.5">
-      <a href={aiHref} data-ask-ai class="btn-primary w-full h-12 text-[15px]"><Sparkles class="w-4 h-4" aria-hidden="true" />{max ? 'Ask Max' : 'Get a quote'}</a>
+      <a href={aiHref} data-ask-ai class="btn-primary w-full h-12 text-[15px]"><Sparkles class="w-4 h-4" aria-hidden="true" /><span data-max-only>Ask Max</span><span data-max-alt>Get a quote</span></a>
       <a href={`tel:${business.phone}`} class="btn-quiet w-full h-auto min-h-12 py-2 !whitespace-normal text-center text-[15px]"><Phone class="w-4 h-4" aria-hidden="true" /><span>Talk to a real person: <span class="whitespace-nowrap">{business.phoneDisplay}</span></span></a>
     </div>
   </div>
@@ -244,7 +244,7 @@ const promos = [
   const askMax = (text = '') => {
     const open = document.querySelector<HTMLButtonElement>('#tb-assistant [data-open]');
     if (open) { open.click(); return true; }
-    if (!document.querySelector('[data-max-sheet]')) return false;
+    if (document.documentElement.dataset.max !== 'on' || !document.querySelector('[data-max-sheet]')) return false;
     window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: text }));
     return true;
   };
@@ -287,7 +287,7 @@ const promos = [
       if (!q) { box.classList.add('hidden'); return; }
       const hits = rank(await load(), q);
       if (input.value.trim() !== q) return; // a newer keystroke already rendered
-      const ai = `<a href="${aiLink(q)}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="min-w-0 text-sm"><b class="text-violet-700 dark:text-violet-300">${form.dataset.max ? 'Ask Max' : 'Request a quote for'}</b><span class="block muted truncate">“${esc(q)}”</span></span></a>`;
+      const ai = `<a href="${aiLink(q)}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="min-w-0 text-sm"><b class="text-violet-700 dark:text-violet-300">${document.documentElement.dataset.max === 'on' ? 'Ask Max' : 'Request a quote for'}</b><span class="block muted truncate">“${esc(q)}”</span></span></a>`;
       const list = group('Products', hits.filter((h) => h.k === 'product').slice(0, 6))
         + group('Categories & brands', hits.filter((h) => h.k === 'collection' || h.k === 'brand').slice(0, 3))
         + group('Pages', hits.filter((h) => h.k === 'page').slice(0, 3));
