@@ -112,6 +112,8 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
   const items = q.items ?? [];
   const toBase64 = async (f: File) => bytesToBase64(new Uint8Array(await f.arrayBuffer()));
   const artworkFiles: Attachment[] = [];
+  /** The same artwork for the studio intake, with the product and original name it belongs to. */
+  const intakeArt: { name: string; file: string; type: string; data: string; itemIndex?: number }[] = [];
   const mockupFiles: Attachment[] = [];
   const artworkNames: string[] = [];
   const mockups: { cid: string; label: string }[] = [];
@@ -149,7 +151,9 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
     const name = `${prefix}${base}`;
     artworkNames.push(name);
     if (itemKey) itemAssets[itemIndex].artworkNames.push(name);
-    artworkFiles.push({ filename: name, content: await toBase64(value) });
+    const data = await toBase64(value);
+    artworkFiles.push({ filename: name, content: data });
+    intakeArt.push({ name, file: base, type: value.type || 'application/octet-stream', data, ...(itemKey ? { itemIndex } : {}) });
   }
   const placements = items.length ? [] : parsePlacements(form.get('placements'));
 
@@ -196,7 +200,15 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
       fetch(env.STUDIO_INTAKE_URL, {
         method: 'POST',
         headers: { 'content-type': 'application/json', authorization: `Bearer ${env.STUDIO_INTAKE_SECRET}` },
-        body: JSON.stringify({ ref, quote: q, artwork: artworkNames }),
+        body: JSON.stringify({
+          ref, quote: q, artwork: artworkNames,
+          // The files themselves, so the admin can make mockups without opening the email.
+          artworkFiles: intakeArt.map(({ file, itemIndex, ...a }) => {
+            const list = itemIndex !== undefined ? items[itemIndex]?.placements ?? [] : placements;
+            const placement = list.find((pl) => pl.file === file)?.location;
+            return { ...a, ...(itemIndex !== undefined ? { itemIndex } : {}), ...(placement ? { placement } : {}) };
+          }),
+        }),
       })
         .then(async (r) => { if (!r.ok) console.error('studio intake failed', ref, r.status, (await r.text().catch(() => '')).slice(0, 300)); })
         .catch((e) => console.error('studio intake failed', ref, e)),
