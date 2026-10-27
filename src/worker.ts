@@ -114,6 +114,8 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
   const artworkFiles: Attachment[] = [];
   /** The same artwork for the studio intake, with the product and original name it belongs to. */
   const intakeArt: { name: string; file: string; type: string; data: string; itemIndex?: number }[] = [];
+  /** Rendered mockups (the customer's design on the product) for the studio intake. */
+  const intakeMockups: { side: string; data: string; itemIndex?: number }[] = [];
   const mockupFiles: Attachment[] = [];
   const artworkNames: string[] = [];
   const mockups: { cid: string; label: string }[] = [];
@@ -142,7 +144,9 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
       const cid = `${prefix}mockup-${side}`;
       (itemKey ? itemAssets[itemIndex].mockups : mockups).push({ cid, label });
       (itemKey ? itemPdfMockups[itemIndex] : pdfMockups).push({ side, label, png });
-      mockupFiles.push({ filename: `${cid}.png`, content: bytesToBase64(png), content_id: cid });
+      const b64 = bytesToBase64(png);
+      mockupFiles.push({ filename: `${cid}.png`, content: b64, content_id: cid });
+      if (png.length <= 6 * 1024 * 1024) intakeMockups.push({ side, data: b64, ...(itemKey ? { itemIndex } : {}) });
       continue;
     }
     if (value.type && !ARTWORK_TYPES.includes(value.type)) return json({ error: 'Please upload PNG, JPG, SVG, PDF, AI or PSD artwork.', fields: { artwork: 'Unsupported file type' } }, 400);
@@ -201,7 +205,8 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
         method: 'POST',
         headers: { 'content-type': 'application/json', authorization: `Bearer ${env.STUDIO_INTAKE_SECRET}` },
         body: JSON.stringify({
-          ref, quote: q, artwork: artworkNames,
+          ref, quote: q, artwork: artworkNames, placements,
+          mockupFiles: intakeMockups,
           // The files themselves, so the admin can make mockups without opening the email.
           artworkFiles: intakeArt.map(({ file, itemIndex, ...a }) => {
             const list = itemIndex !== undefined ? items[itemIndex]?.placements ?? [] : placements;
