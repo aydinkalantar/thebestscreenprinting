@@ -9,6 +9,9 @@
   html { @apply scroll-smooth antialiased; background: var(--tb-bg); }
   body { @apply font-sans text-zinc-900 dark:text-zinc-100 bg-white dark:bg-[#0a0a0f]; }
   h1, h2, h3 { @apply font-display tracking-tight; }
+  /* Headlines: heavy and tight, so they read strong at a glance. */
+  h1 { font-weight: 800; letter-spacing: -0.03em; }
+  h2 { font-weight: 800; letter-spacing: -0.02em; }
   :focus-visible { @apply outline-none ring-2 ring-violet-500 ring-offset-2 ring-offset-white dark:ring-offset-[#0a0a0f]; }
   ::selection { @apply bg-violet-500/20; }
 }
@@ -35,7 +38,9 @@
   .chip { @apply inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.04] text-[13px] font-semibold text-zinc-700 dark:text-zinc-200 hover:border-violet-400/60 transition-colors; }
   .chip.is-on { @apply border-violet-500 bg-violet-500/10 text-violet-700 dark:text-violet-300; }
 
-  .section-title { @apply text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white; }
+  .section-title { @apply text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white; }
+  /* One highlighted word or phrase in a headline. */
+  .hl { @apply text-violet-600 dark:text-violet-400; }
   .muted { @apply text-zinc-500 dark:text-zinc-400; }
 
   /* Form fields — the studio's input style */

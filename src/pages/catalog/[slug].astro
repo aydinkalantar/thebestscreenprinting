@@ -55,7 +55,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     </div>
     <div class="min-w-0">
       <p class="eyebrow"><a href={categoryHref} class="hover:underline">{category}</a></p>
-      <h1 class="mt-3 text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white">{p.name}</h1>
+      <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white">{p.name}</h1>
       {p.brand && (
         <p class="mt-2 text-[14px] muted">
           <a href={brandHref(p.brand)} class="font-semibold text-zinc-700 dark:text-zinc-300 hover:text-violet-700 dark:hover:text-violet-300 underline-offset-2 hover:underline">{p.brand}</a>{p.style && <> · Style {p.style}</>}

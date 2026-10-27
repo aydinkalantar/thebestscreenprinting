@@ -17,7 +17,8 @@ import {
   Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck,
 } from '@lucide/astro';
 
-// Title, description and H1 stay exactly as the live homepage has them (they rank).
+// Title and description stay as the live homepage has them (they rank). The H1 is short and bold;
+// the services and cities it used to carry sit in the label above and the line below it.
 const home = await getEntry('pages', 'home');
 const title = home?.data.title ?? 'Custom Apparel Printing Los Angeles | TBSP';
 const description = home?.data.description ?? '';
@@ -81,20 +82,21 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_80%_20%,rgba(124,58,237,0.16),transparent_70%)] dark:bg-[radial-gradient(60%_60%_at_80%_20%,rgba(139,92,246,0.22),transparent_70%)]" aria-hidden="true"></div>
     <div class="wrap pt-5 sm:pt-20 pb-8 sm:pb-12 md:pb-16 grid gap-7 sm:gap-10 md:gap-12 grid-cols-[minmax(0,1fr)] lg:grid-cols-[1.05fr_0.95fr] items-center">
       <div class="min-w-0">
-        <p class="pill"><MapPin class="w-3.5 h-3.5" aria-hidden="true" />Production in Los Angeles &amp; Cleveland</p>
-        <h1 class="mt-4 sm:mt-5 text-[2.5rem] sm:text-6xl break-words font-bold leading-[1.02] text-zinc-900 dark:text-white">{h1}</h1>
+        <p class="eyebrow"><MapPin class="w-3.5 h-3.5" aria-hidden="true" />Screen printing &amp; embroidery<span class="max-sm:hidden"> · Los Angeles &amp; Cleveland</span></p>
+        <h1 class="mt-3 sm:mt-4 text-[2.6rem] sm:text-[4rem] break-words leading-[0.98] text-zinc-900 dark:text-white">Custom merch, done right <span class="hl">and on time.</span></h1>
         <p class="mt-4 sm:mt-5 text-lg leading-8 muted max-w-xl" data-hero-intro>
-          Bold ink, clean stitches and merch people actually keep. Made in-house in Los Angeles and Cleveland, from {business.shopMinimum} pieces.
+          For brands, events &amp; teams. Made in-house from {business.shopMinimum} pieces, with a free art proof on every order.
         </p>
         <form class="mt-5 sm:mt-6 panel-raised p-2 flex items-center gap-2 max-w-xl" action="/quick-quote/" data-hero-ai>
-          <span class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-600 text-white"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
+          <button type="button" data-hero-talk data-max-only class="h-10 shrink-0 rounded-xl px-3 flex items-center gap-1.5 bg-violet-600 hover:bg-violet-700 text-white text-[14px] font-semibold" aria-label="Talk to Max"><Mic class="w-5 h-5" aria-hidden="true" /><span class="max-sm:hidden">Talk to Max</span></button>
+          <span data-max-alt class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-600 text-white"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
           <input name="details" required placeholder="Describe your order: what, how many, by when" aria-label="Describe your order" data-hero-input class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] max-md:text-base text-zinc-900 dark:text-white placeholder:text-zinc-500" />
           <button class="btn-primary btn-sm" type="submit">Start<ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
         </form>
         <div class="mt-3 flex gap-2 overflow-x-auto no-scrollbar max-w-xl max-md:-mx-4 max-md:px-4">
           {aiPrompts.map((p) => <button type="button" class="chip shrink-0 whitespace-nowrap !h-8 max-md:!h-9 !text-[12.5px]" data-prompt={p}>{p}</button>)}
         </div>
-        <p class="mt-3 text-[13.5px] muted">or <a href="/catalog/" class="font-semibold text-violet-700 dark:text-violet-300 hover:underline">shop products</a> · <a href="/quick-quote/" class="font-semibold text-violet-700 dark:text-violet-300 hover:underline">request a quote</a></p>
+        <p class="mt-3 text-[13.5px] muted"><b class="text-zinc-900 dark:text-white">Tees with your logo from $9.75 each</b> (48 pieces, 1-color print, plus a one-time $25 setup) · <a href="/catalog/" class="font-semibold text-violet-700 dark:text-violet-300 hover:underline">shop products</a> · <a href="/quick-quote/" class="font-semibold text-violet-700 dark:text-violet-300 hover:underline">request a quote</a></p>
         <ul class="mt-4 sm:mt-5 flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1.5 sm:gap-y-2 text-[12.5px] sm:text-[13px] font-medium muted">
           <li class="flex items-center gap-1.5"><BadgeCheck class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Instant prices, or a quote within 1 business day</li>
           <li class="flex items-center gap-1.5"><Zap class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Rush &amp; Super Rush</li>
@@ -267,6 +269,8 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   const heroForm = document.querySelector<HTMLFormElement>('[data-hero-ai]');
   if (heroForm) {
     const input = heroForm.querySelector('input')!;
+    // The mic starts a voice call with Max straight away.
+    heroForm.querySelector('[data-hero-talk]')?.addEventListener('click', () => window.dispatchEvent(new Event('tbsp-max-talk')));
     // With Max on, a suggestion starts the conversation right away; otherwise it fills the box.
     const maxOn = () => document.documentElement.dataset.max === 'on' && !!document.querySelector('[data-max-sheet]');
     document.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach((b) => b.addEventListener('click', () => {

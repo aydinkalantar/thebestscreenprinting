@@ -375,6 +375,13 @@ if (sheet) {
   const setMode = (m: 'voice' | 'chat') => { try { localStorage.setItem(MODE_KEY, m); } catch { /* ignore */ } };
   const prefersChat = () => { try { return localStorage.getItem(MODE_KEY) === 'chat'; } catch { return false; } };
   let talkFirst = false;
+  // "Talk to Max" buttons: always a call (or push-to-talk where calls aren't available).
+  window.addEventListener('tbsp-max-talk', () => {
+    if (liveOn) setMode('voice');
+    openMax('');
+    if (liveOn) { if (!call && !calling) void beginCall(); }
+    else if (voice.canListen) voice.listen();
+  });
   window.addEventListener('tbsp-max-open', () => { if (liveOn && talkFirst && !prefersChat() && !call && !calling) void beginCall(true); });
   sheet.querySelector('[data-max-to-chat]')?.addEventListener('click', () => {
     setMode('chat'); endCall();
