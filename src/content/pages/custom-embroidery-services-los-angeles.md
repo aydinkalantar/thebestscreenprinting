@@ -5,7 +5,7 @@ description: "Flat, 3D puff, appliqué, patches, chenille and monogram embroider
 h1: "Custom embroidery styles in Los Angeles"
 kind: service
 imported: false
-summary: "Six ways to stitch a logo, from clean flat embroidery to raised 3D puff and fuzzy chenille. Embroidered in Los Angeles with a 6-piece minimum per design, digitizing included and shipping anywhere."
+summary: "Six ways to stitch a logo, from clean flat embroidery to raised 3D puff and fuzzy chenille. Embroidered in Los Angeles with a 6-piece minimum per design, a one-time $75 digitizing fee and shipping anywhere."
 facts:
   - { label: "Styles", value: "Flat, 3D puff, appliqué, patches, chenille, monogram" }
   - { label: "Minimum", value: "6 pieces per design" }

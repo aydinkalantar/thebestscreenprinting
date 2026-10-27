@@ -1,11 +1,11 @@
 ---
 path: "/custom-embroidery/"
 title: "Custom Embroidery | The Best Screen Printing"
-description: "Custom embroidery in Los Angeles for events, promotions and merch: stitched hats, polos, hoodies, jackets and bags. 6-piece minimum, digitizing included."
+description: "Custom embroidery in Los Angeles for events, promotions and merch: stitched hats, polos, hoodies, jackets and bags. 6-piece minimum, $75 one-time digitizing."
 h1: "Custom embroidery in Los Angeles"
 kind: service
 imported: false
-summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Los Angeles shop with a 6-piece minimum per design, digitizing included and Rush and Super Rush options."
+summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Los Angeles shop with a 6-piece minimum per design, a one-time $75 digitizing fee and Rush and Super Rush options."
 facts:
   - { label: "Minimum", value: "6 pieces per design" }
   - { label: "Setup", value: "Digitizing included" }

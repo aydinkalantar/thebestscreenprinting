@@ -12,7 +12,7 @@ faqs:
   - q: "How should I wash embroidered clothes?"
     a: "Wash inside-out in cold water, skip bleach, and air dry or tumble low. Do not iron directly on the stitching."
   - q: "What is the minimum for embroidery at TBSP?"
-    a: "6 pieces per design, with digitizing and setup included."
+    a: "6 pieces per design, plus a one-time $75 digitizing fee per logo."
 sourceUrl: "https://thebestscreenprinting.com/embroidery-on-clothes/"
 ---
 Embroidery has decorated clothing for centuries, long before anyone pulled a squeegee across a screen. Today the needle is driven by a machine and the design by a digital file, but the core idea is the same: thread stitched into fabric, building a design you can see and feel. Here is what actually matters when you want to embroider clothes, whether it is a dozen caps or a full staff uniform program.
@@ -34,7 +34,7 @@ Very thin, sheer or slippery fabrics are the hardest. If your garment is delicat
 
 ### Step 1: Digitizing
 
-Your logo starts as an image. A digitizer converts it into a stitch file, a set of instructions telling the machine where every stitch goes, which direction it runs, what type of stitch to use and in what order the colors are sewn. Good digitizing is the difference between a crisp logo and a lumpy one. At TBSP, digitizing is included in the price.
+Your logo starts as an image. A digitizer converts it into a stitch file, a set of instructions telling the machine where every stitch goes, which direction it runs, what type of stitch to use and in what order the colors are sewn. Good digitizing is the difference between a crisp logo and a lumpy one. At TBSP, digitizing is a one-time $75 fee per logo, and we keep the file for your reorders.
 
 ### Step 2: Hooping
 
