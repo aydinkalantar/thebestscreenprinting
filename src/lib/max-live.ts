@@ -186,7 +186,7 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents, hist
     const past = history.filter((h) => h.content.trim()).slice(-20);
     if (past.length) {
       send({ clientContent: { turns: past.map((h) => ({ role: h.role === 'user' ? 'user' : 'model', parts: [{ text: h.content.slice(0, 1500) }] })), turnComplete: false } });
-      send({ realtimeInput: { text: '[call resumed: the visitor is back. Welcome them back in one short sentence and continue from where you left off, without repeating the greeting]' } });
+      send({ realtimeInput: { text: '[call resumed: the visitor is back. Welcome them back in one short sentence and ask what they need now. Only bring up the earlier conversation if they do. Do not repeat the greeting]' } });
     } else if (typeof t.start === 'string' && t.start) send({ realtimeInput: { text: t.start } });
     // The call can last 30 minutes.
     timer = window.setTimeout(() => end('time'), 29.5 * 60_000);

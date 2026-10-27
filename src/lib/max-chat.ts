@@ -42,6 +42,10 @@ if (sheet) {
   const reset = sheet.querySelector<HTMLButtonElement>('[data-max-reset]')!;
 
   let messages: Msg[] = [];
+  /** When the conversation was last active (a call only picks it up if it's recent). */
+  let lastAt = 0;
+  /** Language of Max's voice (admin setting), to tell real words from transcribed room noise. */
+  let voiceLang = 'en-US';
   let sessionId = '';
   let busy = false;
   /** The visitor's logo(s), checked in the browser; sent to Max as a summary, kept for checkout. */
@@ -54,10 +58,10 @@ if (sheet) {
   try {
     // Kept on this device for a week, so Max remembers a visitor who closes the chat or comes back later.
     const saved = JSON.parse(localStorage.getItem(KEY) || sessionStorage.getItem(KEY) || 'null');
-    if (saved?.messages?.length && (!saved.at || Date.now() - saved.at < 7 * 864e5)) { messages = saved.messages; sessionId = saved.sessionId; }
+    if (saved?.messages?.length && (!saved.at || Date.now() - saved.at < 7 * 864e5)) { messages = saved.messages; sessionId = saved.sessionId; lastAt = saved.at || 0; }
   } catch { /* ignore */ }
   if (!sessionId) sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30), at: Date.now() })); } catch { /* ignore */ } };
+  const save = () => { lastAt = Date.now(); try { localStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30), at: lastAt })); } catch { /* ignore */ } };
 
   const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls = '', text = '') => {
     const n = document.createElement(tag);
@@ -333,6 +337,16 @@ if (sheet) {
   // Closing the panel stops him mid-sentence and hangs up.
   new MutationObserver(() => { if (sheet.hidden) { voice.stop(); endCall(); } }).observe(sheet, { attributes: true, attributeFilter: ['hidden'] });
 
+  // Words common in what visitors say, by language (Max's admin voice language picks the list).
+  const COMMON: Record<string, RegExp> = {
+    en: /\b(i|i'm|im|my|me|we|our|you|the|a|an|to|for|and|on|in|with|of|need|want|like|can|do|is|it|yes|no|yeah|ok|okay|hi|hello|hey|bye|thanks|please|what|how|much|many|shirt|shirts|tee|tees|hoodie|hoodies|hat|hats|logo|print|front|back|black|white|price|order)\b/i,
+    es: /\b(yo|mi|me|quiero|necesito|para|con|el|la|los|las|un|una|de|en|y|que|sí|si|no|hola|gracias|camisetas?|playeras?|sudaderas?|gorras?|logo)\b/i,
+  };
+  const soundsLikeSpeech = (t: string) => {
+    const re = COMMON[voiceLang.slice(0, 2)];
+    return !re || re.test(t) || /\d/.test(t) || t.trim().split(/\s+/).length >= 8;
+  };
+
   // ── live call ──
   const callBar = sheet.querySelector<HTMLElement>('[data-max-call]')!;
   const callStatus = sheet.querySelector<HTMLElement>('[data-max-call-status]')!;
@@ -377,6 +391,15 @@ if (sheet) {
         },
         caption: (who, text, done) => {
           if (!text) return;
+          // Room noise sometimes transcribes as words in another language: don't show it as the visitor's message.
+          if (who === 'user' && !soundsLikeSpeech(text)) {
+            if (done) { live.user?.remove(); delete live.user; }
+            return;
+          }
+          // The same answer twice in a row (a repeated turn) shows once.
+          if (who === 'assistant' && done && messages.at(-1)?.role === 'assistant' && messages.at(-1)!.content.trim() === text.trim()) {
+            live.assistant?.remove(); delete live.assistant; return;
+          }
           let b = live[who];
           if (!b) {
             b = live[who] = bubble(who, '');
@@ -387,7 +410,7 @@ if (sheet) {
           if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); }
         },
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
-      }, messages.slice());
+      }, Date.now() - lastAt < 3 * 3600_000 ? messages.slice() : []);
       calling = false;
       for (const t of queued.splice(0)) call?.sendText(t);
     } catch (err) {
@@ -499,6 +522,7 @@ if (sheet) {
       try { sessionStorage.setItem('tbsp-max-on', JSON.stringify({ on, voice: voiceCfg, greeting, suggestions, at: Date.now() })); } catch { /* ignore */ }
     }
     voice.configure(voiceCfg);
+    voiceLang = voiceCfg?.lang || 'en-US';
     liveOn = !!(on && voiceCfg?.live && navigator.mediaDevices?.getUserMedia && 'WebSocket' in window && 'AudioWorkletNode' in window);
     // Talk by default: the chat opens on a big "Talk to Max" (one tap still starts it).
     callCta.hidden = !(liveOn && voiceCfg?.talkByDefault);
