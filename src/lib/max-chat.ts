@@ -42,11 +42,12 @@ if (sheet) {
   const art: { file: File; ink: InkCount }[] = [];
 
   try {
-    const saved = JSON.parse(sessionStorage.getItem(KEY) || 'null');
-    if (saved?.messages?.length) { messages = saved.messages; sessionId = saved.sessionId; }
+    // Kept on this device for a week, so Max remembers a visitor who closes the chat or comes back later.
+    const saved = JSON.parse(localStorage.getItem(KEY) || sessionStorage.getItem(KEY) || 'null');
+    if (saved?.messages?.length && (!saved.at || Date.now() - saved.at < 7 * 864e5)) { messages = saved.messages; sessionId = saved.sessionId; }
   } catch { /* ignore */ }
   if (!sessionId) sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
-  const save = () => { try { sessionStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30) })); } catch { /* ignore */ } };
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30), at: Date.now() })); } catch { /* ignore */ } };
 
   const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls = '', text = '') => {
     const n = document.createElement(tag);
@@ -238,7 +239,7 @@ if (sheet) {
           if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); }
         },
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
-      });
+      }, messages.slice());
       calling = false;
     } catch (err) {
       calling = false; call = null; paintCall(false);

@@ -49,7 +49,7 @@ const toB64 = (buf: ArrayBuffer) => {
   return btoa(s);
 };
 
-export async function startLiveCall(context: () => unknown, on: LiveEvents) {
+export async function startLiveCall(context: () => unknown, on: LiveEvents, history: { role: 'user' | 'assistant'; content: string }[] = []) {
   // Audio must start inside the tap that began the call (iOS), so create both contexts first.
   const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
   let out = new AC({ sampleRate: 24000 });
@@ -182,7 +182,12 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
     };
     on.status('listening');
     // Newer studios hand a cue that makes Max say the admin greeting first, in the right language.
-    if (typeof t.start === 'string' && t.start) send({ realtimeInput: { text: t.start } });
+    // A new call picks up the conversation so far (typed or spoken), so Max remembers the visitor.
+    const past = history.filter((h) => h.content.trim()).slice(-20);
+    if (past.length) {
+      send({ clientContent: { turns: past.map((h) => ({ role: h.role === 'user' ? 'user' : 'model', parts: [{ text: h.content.slice(0, 1500) }] })), turnComplete: false } });
+      send({ realtimeInput: { text: '[call resumed: the visitor is back. Welcome them back in one short sentence and continue from where you left off, without repeating the greeting]' } });
+    } else if (typeof t.start === 'string' && t.start) send({ realtimeInput: { text: t.start } });
     // The call can last 30 minutes.
     timer = window.setTimeout(() => end('time'), 29.5 * 60_000);
     // Hang up when nobody has spoken for a while, or the visitor leaves the tab (saves the line).
