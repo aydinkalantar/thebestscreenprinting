@@ -132,7 +132,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   </section>}
 
   <!-- Real customer reviews -->
-  <section class="wrap mt-14 md:mt-20" id="reviews"><Reviews /></section>
+  <section class="wrap mt-14 md:mt-20" id="reviews"><Reviews limit={3} /></section>
 
   <!-- Categories -->
   <section class="wrap mt-20" aria-labelledby="cat-title">
