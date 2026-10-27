@@ -4,7 +4,7 @@
 // If the studio can't be reached, the visitor's message goes to the quote form instead.
 import { STUDIO_API, fetchPrices, money, type PriceItemInput, type PriceResponse } from './online';
 import { openOrder, type OrderArtwork } from './order-sheet';
-import { addToCart, cartItems } from './cart';
+import { addToCart, cartItems, putFile } from './cart';
 import { countInks, type InkCount } from '../components/design/colors';
 import { business } from '../data/business';
 import { openMax } from './max';
@@ -13,7 +13,9 @@ import { startLiveCall, LiveUnavailable } from './max-live';
 import { getContact, saveContact, forgetContact, isEmail, type Contact } from './contact';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
-interface CartLine extends PriceItemInput { productId?: string; slug?: string; image?: string; why?: string; name?: string }
+interface CartLine extends Omit<PriceItemInput, 'locations'> {
+  locations: (PriceItemInput['locations'][number] & { artId?: string })[];
+  productId?: string; slug?: string; image?: string; why?: string; name?: string }
 type MaxEvent =
   | { type: 'text'; delta: string }
   | { type: 'products'; items: { id: string; slug: string; name: string; brand?: string; style?: string; image?: string; why?: string }[] }
@@ -22,6 +24,7 @@ type MaxEvent =
   | { type: 'handoff'; text?: string }
   | ({ type: 'contact' } & Contact)
   | { type: 'forget' }
+  | { type: 'placement'; artId: string; productId?: string; placement: string; method: string; colors?: number; widthIn?: number }
   | { type: 'error'; text: string }
   | { type: 'done' };
 
@@ -42,7 +45,11 @@ if (sheet) {
   let sessionId = '';
   let busy = false;
   /** The visitor's logo(s), checked in the browser; sent to Max as a summary, kept for checkout. */
-  const art: { file: File; ink: InkCount }[] = [];
+  const art: { id: string; file: File; ink: InkCount; url?: string }[] = [];
+  let artSeq = 0;
+  const artById = (id?: string) => (id ? art.find((a) => a.id === id) : undefined);
+  /** The design Max put on a location; with a single design, it goes on each product's first location. */
+  const artFor = (loc: { artId?: string }, li: number) => artById(loc.artId) ?? (art.length === 1 && li === 0 && !loc.artId ? art[0] : undefined);
 
   try {
     // Kept on this device for a week, so Max remembers a visitor who closes the chat or comes back later.
@@ -73,12 +80,15 @@ if (sheet) {
       // Confirmed details, so Max can greet by name and fill the order.
       ...(getContact() ? { contact: getContact() } : {}),
       cart: cartItems().map((it) => ({ brand: it.brand, style: it.style, color: it.color, sizes: it.sizes, productName: it.name })),
-      artwork: art.map(({ file, ink }) => ({ name: file.name, kind: ink.kind, ...(ink.kind === 'spot' ? { colors: ink.count } : {}), ...(ink.kind !== 'unknown' && !ink.vector ? { widthPx: ink.widthPx } : {}) })),
+      artwork: art.map(({ id, file, ink }) => ({ id, name: file.name, kind: ink.kind, ...(ink.kind === 'spot' ? { colors: ink.count } : {}), ...(ink.kind !== 'unknown' && !ink.vector ? { widthPx: ink.widthPx } : {}) })),
     };
   }
 
   // ── cards ──
+  /** Products Max has shown, to put a design on the right page. */
+  const seen = new Map<string, { slug: string; name: string; image?: string }>();
   function productsCard(e: Extract<MaxEvent, { type: 'products' }>) {
+    for (const p of e.items) seen.set(p.id, { slug: p.slug, name: p.name, image: p.image });
     const rail = el('div', 'flex gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 pb-1');
     for (const p of e.items.slice(0, 8)) {
       const a = el('a', 'press shrink-0 w-36 rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2 grid gap-1.5');
@@ -107,7 +117,13 @@ if (sheet) {
       info.append(name);
       const qty = Object.values(it.sizes).reduce((a, b) => a + b, 0);
       info.append(el('p', 'muted', `${it.color} · ${qty} pcs (${Object.entries(it.sizes).map(([s, n]) => `${s} ${n}`).join(', ')})`));
-      info.append(el('p', 'muted', it.locations.map((l) => `${l.placement}: ${l.method}${l.colors ? `, ${l.colors} color${l.colors === 1 ? '' : 's'}` : ''}`).join(' · ')));
+      for (const [li, l] of it.locations.entries()) {
+        const a = artFor(l, li);
+        const line = el('p', 'muted flex items-center gap-1.5');
+        if (a?.url) { const t = el('img', 'w-5 h-5 rounded object-contain bg-zinc-100 dark:bg-white/10'); t.src = a.url; t.alt = ''; line.append(t); }
+        line.append(el('span', '', `${l.placement}: ${l.method}${l.colors ? `, ${l.colors} color${l.colors === 1 ? '' : 's'}` : ''}${a ? ` · ${a.file.name.slice(0, 28)}` : ''}`));
+        info.append(line);
+      }
       if (it.why) info.append(el('p', 'mt-0.5 text-violet-700 dark:text-violet-300', it.why));
       row.append(info);
       const p = pr?.items[i];
@@ -131,26 +147,30 @@ if (sheet) {
     pay.addEventListener('click', async () => {
       const res = await fetchPrices(e.items.map(forPrice));
       if (!res?.enabled || !res.totals || res.items.some((x) => !x.ok)) { bubble('assistant', 'Prices just changed, let me check again.'); return; }
-      // The visitor's logo goes on each product's first location.
-      const artwork: OrderArtwork[] = art.length ? e.items.map((it, i) => ({ itemIndex: i, placement: it.locations[0]?.placement || 'Front', file: art[0].file })) : [];
+      // Each location's design, as Max placed them.
+      const artwork: OrderArtwork[] = e.items.flatMap((it, i) => it.locations.flatMap((l, li) => { const a = artFor(l, li); return a ? [{ itemIndex: i, placement: l.placement, file: a.file }] : []; }));
       const pieces = e.items.reduce((n, it) => n + Object.values(it.sizes).reduce((a, b) => a + b, 0), 0);
       openOrder({ items: e.items.map(forPrice), artwork, price: res, summary: `${e.items.length} product${e.items.length === 1 ? '' : 's'} · ${pieces} pieces` });
     });
-    add.addEventListener('click', async () => {
-      add.disabled = true;
-      try {
-        for (const it of e.items) {
-          await addToCart({
+    /** One of Max's products as a cart item, with each location's design attached (placed on the product page). */
+    const toCart = (it: CartLine) => addToCart({
             productId: it.productId || '', slug: it.slug || '', name: it.name || it.productName || `${it.brand} ${it.style}`, brand: it.brand, style: it.style, cat: '', sub: '',
             image: it.image || '', url: it.slug ? `${location.origin}/catalog/${it.slug}/` : location.origin, color: it.color,
             sizeOrder: Object.keys(it.sizes), sizes: it.sizes,
             decorations: [...new Set(it.locations.map((l) => l.method))], locations: it.locations.map((l) => l.placement),
-            placements: [], mockups: [],
+            placements: it.locations.flatMap((l, li) => {
+              const a = artFor(l, li);
+              return a ? [{ locId: '', location: l.placement, decoration: l.method, file: a.file.name, blob: a.file as Blob, widthIn: l.widthIn || 0, heightIn: l.heightIn || 0, fromTopIn: 0, fromCenterIn: 0, x: 0, y: 0, w: 0 }] : [];
+            }),
+            mockups: [],
             inks: Object.fromEntries(it.locations.filter((l) => l.colors).map((l) => [l.placement, l.colors!])),
           });
-        }
+    add.addEventListener('click', async () => {
+      add.disabled = true;
+      try {
+        for (const it of e.items) await toCart(it);
         add.textContent = 'Added ✓';
-        bubble('assistant', `Added to your cart. ${art.length ? 'Add your logo on each product page, or send it with your order.' : ''}`.trim());
+        bubble('assistant', 'Added to your cart.');
       } catch (err) {
         add.disabled = false;
         bubble('assistant', err instanceof Error ? err.message : 'Could not add to the cart.');
@@ -158,6 +178,17 @@ if (sheet) {
     });
     actions.append(pay, add);
     card.append(actions);
+    // See and adjust the designs on the real product preview (moves within the printable area).
+    if (art.length) for (const it of e.items.filter((x) => x.slug && x.locations.some((l, li) => artFor(l, li)))) {
+      const see = el('button', 'btn-quiet h-10 text-[13.5px] w-full', e.items.length > 1 ? `See it on the ${(it.name || it.productName || it.style).slice(0, 30)}` : 'See it on the product & adjust');
+      see.type = 'button';
+      see.addEventListener('click', async () => {
+        see.disabled = true;
+        try { const c = await toCart(it); location.href = `/catalog/${it.slug}/?edit=${encodeURIComponent(c.id)}`; }
+        catch (err) { see.disabled = false; bubble('assistant', err instanceof Error ? err.message : 'Could not open the preview.'); }
+      });
+      card.append(see);
+    }
     log.append(card); scroll();
   }
 
@@ -218,6 +249,51 @@ if (sheet) {
   function forget() {
     forgetContact();
     bubble('assistant', 'Done, I’ve removed your details from this device.');
+  }
+
+  // Max put a design on a location. On that product's page it goes straight onto the live preview;
+  // elsewhere a card shows it, and "See it on the product" opens the preview with it in place.
+  /** Every design Max placed per product (location -> design), so "See it" brings them all. */
+  const placedOn = new Map<string, Map<string, { a: (typeof art)[number]; method: string }>>();
+  function placementCard(e: Extract<MaxEvent, { type: 'placement' }>) {
+    const a = artById(e.artId) ?? (art.length === 1 ? art[0] : undefined);
+    if (!a) return;
+    const here = document.getElementById('add-to-quote')?.dataset;
+    const pid = e.productId || here?.id || '';
+    const prod = seen.get(pid);
+    if (!placedOn.has(pid)) placedOn.set(pid, new Map());
+    placedOn.get(pid)!.set(e.placement, { a, method: e.method });
+    const what = `${e.placement} · ${e.method}${e.colors ? ` · ${e.colors} color${e.colors === 1 ? '' : 's'}` : ''}${e.widthIn ? ` · about ${Math.round(e.widthIn * 10) / 10}" wide` : ''}`;
+    const card = el('div', 'flex items-center gap-3 rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2.5');
+    const pic = el('div', 'relative w-16 h-16 shrink-0 rounded-xl bg-zinc-50 dark:bg-white/[0.04] overflow-hidden');
+    // Product photos are fronts: the design sits on it only for front locations.
+    const onPhoto = !!prod?.image && !/back|sleeve|neck|hood/i.test(e.placement);
+    if (onPhoto) { const g = el('img', 'absolute inset-0 w-full h-full object-contain'); g.src = prod!.image!; g.alt = ''; pic.append(g); }
+    if (a.url) { const t = el('img', onPhoto ? 'absolute left-1/2 top-[30%] w-[38%] -translate-x-1/2 object-contain drop-shadow' : 'absolute inset-1 object-contain'); t.src = a.url; t.alt = ''; pic.append(t); }
+    const info = el('div', 'min-w-0 flex-1 text-[13px] leading-snug');
+    info.append(el('p', 'font-semibold text-zinc-900 dark:text-white truncate', a.file.name), el('p', 'muted', what));
+    card.append(pic, info);
+    if (here?.id && here.id === pid) {
+      // On this product's page: place it on the preview right away.
+      window.dispatchEvent(new CustomEvent('tbsp-max-place', { detail: { file: a.file, location: e.placement, method: e.method } }));
+      info.append(el('p', 'text-emerald-700 dark:text-emerald-400 font-semibold', 'Placed on the preview. Close this chat to see it and adjust.'));
+    } else if (prod?.slug) {
+      const see = el('button', 'btn-quiet btn-sm shrink-0', 'See it'); see.type = 'button';
+      see.addEventListener('click', async () => {
+        see.disabled = true;
+        // Every design Max placed on this product goes along (front and back, say).
+        const list: { key: string; name: string; type: string; location: string; method: string }[] = [];
+        for (const [loc, x] of placedOn.get(pid)!) {
+          const key = `max/${sessionId}/${x.a.id}`;
+          await putFile(key, x.a.file);
+          list.push({ key, name: x.a.file.name, type: x.a.file.type, location: loc, method: x.method });
+        }
+        try { sessionStorage.setItem('tbsp-max-place', JSON.stringify({ productId: pid, list })); } catch { /* ignore */ }
+        location.href = `/catalog/${prod.slug}/`;
+      });
+      card.append(see);
+    }
+    log.append(card); scroll();
   }
 
   function handoffCard(e: Extract<MaxEvent, { type: 'handoff' }>) {
@@ -321,7 +397,7 @@ if (sheet) {
   function typing() { const t = el('div', 'max-bubble max-bot max-typing'); t.innerHTML = '<span></span><span></span><span></span>'; t.setAttribute('aria-label', 'Max is typing'); log.append(t); scroll(); return t; }
 
   function render(ev: MaxEvent) {
-    if (ev.type === 'contact') contactCard(ev); else if (ev.type === 'forget') forget();
+    if (ev.type === 'contact') contactCard(ev); else if (ev.type === 'forget') forget(); else if (ev.type === 'placement') placementCard(ev);
     else if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); else if (ev.type === 'error') bubble('assistant', ev.text);
   }
 
@@ -433,11 +509,25 @@ if (sheet) {
     voice.typed(); ask(b.textContent || '');
   });
   reset.addEventListener('click', () => {
-    voice.stop(); endCall(); messages = []; art.length = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
+    voice.stop(); endCall(); messages = []; art.length = 0; artSeq = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
     [...log.children].forEach((c) => { if (c !== intro) c.remove(); });
     filesBox.replaceChildren(); filesBox.hidden = true;
     intro.hidden = false; reset.hidden = true;
   });
+
+  // Designs: each is checked here (colors, full color, size), shown above the box, and summarized to Max.
+  function renderFiles() {
+    filesBox.hidden = !art.length;
+    filesBox.replaceChildren(...art.map((a) => {
+      const chip = el('span', 'chip !h-9 !pl-1 !pr-1.5 gap-1.5 text-[12.5px]');
+      if (a.url) { const t = el('img', 'w-7 h-7 rounded-md object-contain bg-white dark:bg-white/10'); t.src = a.url; t.alt = ''; chip.append(t); } else chip.append(el('span', 'px-1', '📎'));
+      chip.append(el('span', 'max-w-[9rem] truncate', a.file.name));
+      const x = el('button', 'grid place-items-center w-6 h-6 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10', '×'); x.type = 'button'; x.setAttribute('aria-label', `Remove ${a.file.name}`);
+      x.addEventListener('click', () => { art.splice(art.indexOf(a), 1); if (a.url) URL.revokeObjectURL(a.url); renderFiles(); });
+      chip.append(x);
+      return chip;
+    }));
+  }
 
   // Logo: checked here (colors, full color, size) and summarized to Max.
   sheet.querySelector('[data-max-attach]')!.addEventListener('click', () => fileIn.click());
@@ -445,11 +535,15 @@ if (sheet) {
     const f = fileIn.files?.[0]; fileIn.value = '';
     if (!f) return;
     if (f.size > 10 * 1024 * 1024) { bubble('assistant', 'That file is over 10 MB. Please send a smaller one, or email it to us.'); return; }
+    if (art.length >= 6) { bubble('assistant', 'That’s 6 designs already. Remove one, or send the rest with your order.'); return; }
     const ink = await countInks(f).catch(() => ({ kind: 'unknown' }) as InkCount);
-    art.splice(0, art.length, { file: f, ink });
-    filesBox.hidden = false;
-    filesBox.replaceChildren(el('span', 'chip !h-8 text-[12.5px]', `📎 ${f.name.slice(0, 40)}`));
+    const id = `a${++artSeq}`;
+    art.push({ id, file: f, ink, url: f.type.startsWith('image/') ? URL.createObjectURL(f) : undefined });
+    renderFiles();
     const summary = ink.kind === 'spot' ? `${ink.count} color${ink.count === 1 ? '' : 's'}` : ink.kind === 'full' ? 'full color' : 'file type I can’t preview';
-    ask(`Here's my logo (${f.name}, ${summary}).`);
+    const low = ink.kind !== 'unknown' && !ink.vector && ink.widthPx && ink.widthPx < 1000 ? ', low resolution' : '';
+    // On a call it's a note to Max; in the chat it reads as the visitor's message.
+    if (call) { bubble('user', `📎 ${f.name}`); call.sendText(`[visitor uploaded design ${id}: ${f.name}, ${summary}${low}. Ask where it goes and how it should be decorated if that isn't clear yet.]`); }
+    else ask(`Here's ${art.length > 1 ? 'another design' : 'my design'}: ${f.name} (${summary}${low}).`);
   });
 }

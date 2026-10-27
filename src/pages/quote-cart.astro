@@ -244,7 +244,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
       for (const p of it.placements) {
         const row = el('li', 'leading-snug');
         row.append(el('b', 'font-semibold text-zinc-800 dark:text-zinc-200', `${p.location} · ${p.decoration}`));
-        row.append(el('span', 'block muted break-all', `${p.file} · ≈ ${inch(p.widthIn)} × ${inch(p.heightIn)}${p.notes ? ` · ${p.notes}` : ''}`));
+        row.append(el('span', 'block muted break-all', `${p.file}${p.widthIn > 0 ? ` · ≈ ${inch(p.widthIn)} × ${inch(p.heightIn)}` : ' · placed by Max, tap Edit to adjust'}${p.notes ? ` · ${p.notes}` : ''}`));
         ul.append(row);
       }
       info.append(ul);

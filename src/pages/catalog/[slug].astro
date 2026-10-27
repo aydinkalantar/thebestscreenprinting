@@ -264,7 +264,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 <script>
   import { mountDesign } from '../../components/design/design';
   import { setMaxContext } from '../../lib/max';
-  import { addToCart, replaceCartItem, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry } from '../../lib/cart';
+  import { addToCart, replaceCartItem, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry, getFile } from '../../lib/cart';
   import { MAX_TOTAL_BYTES } from '../../lib/quote';
   import { fetchPrices, money, printSize, type ArtHelp, type ArtHelpType, type PriceItemInput, type PriceResponse } from '../../lib/online';
   import { openOrder, type OrderArtwork } from '../../lib/order-sheet';
@@ -496,6 +496,21 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   }
 
   document.querySelector('[data-pending-dismiss]')?.addEventListener('click', () => setCarry(null));
+
+  // Designs Max placed: live from the chat on this page, or carried over from the chat on another page.
+  const maxPlace = (list: { file: File; location: string; method: string }[]) =>
+    design.loadArtwork(list.map((x) => ({ locId: '', location: x.location, decoration: x.method, x: 0, y: 0, w: 0, file: x.file })), 'Max', 'Max placed your design. Move or resize it, then pick your sizes.');
+  window.addEventListener('tbsp-max-place', (e) => { const x = (e as CustomEvent<{ file: File; location: string; method: string }>).detail; if (x?.file) void maxPlace([x]); });
+  try {
+    const carried = JSON.parse(sessionStorage.getItem('tbsp-max-place') || 'null');
+    if (carried?.productId && carried.productId === d.id && !editItem) {
+      sessionStorage.removeItem('tbsp-max-place');
+      Promise.all(carried.list.map(async (x: { key: string; name: string; type: string; location: string; method: string }) => {
+        const blob = await getFile(x.key);
+        return blob ? { file: new File([blob], x.name, { type: x.type || blob.type }), location: x.location, method: x.method } : null;
+      })).then((l) => { const ok = l.filter(Boolean) as { file: File; location: string; method: string }[]; if (ok.length) void maxPlace(ok); }).catch(() => {});
+    }
+  } catch { /* ignore */ }
 
   // ── instant price + "Order & pay" (online orders) ────────────────────────────
   const instant = form.querySelector<HTMLElement>('[data-instant]')!;

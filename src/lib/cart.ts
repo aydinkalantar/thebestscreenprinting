@@ -87,7 +87,7 @@ async function tx<T>(mode: IDBTransactionMode, run: (s: IDBObjectStore) => IDBRe
 }
 
 /** Stores a file. Saved as bytes + type (Safari has been unreliable with Blobs in IndexedDB). */
-async function putFile(key: string, blob: Blob) {
+export async function putFile(key: string, blob: Blob) {
   memoryFiles.set(key, blob);
   if (!idbOk) return;
   try {
