@@ -65,11 +65,14 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
   let heard = '', said = '';
   let timer = 0;
   let ready = false;
+  let lastActive = Date.now();
+  let idle = 0;
 
   const end = (why?: string) => {
     if (ended) return;
     ended = true;
-    clearTimeout(timer);
+    clearTimeout(timer); clearInterval(idle);
+    document.removeEventListener('visibilitychange', onHide);
     try { ws?.close(); } catch { /* ignore */ }
     node?.disconnect(); stream?.getTracks().forEach((t) => t.stop());
     void mic.close().catch(() => {}); void out.close().catch(() => {});
@@ -77,6 +80,7 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
     if (said) on.caption('assistant', said, true);
     on.status('ended', why);
   };
+  function onHide() { if (document.hidden) end('idle'); }
   const flush = () => { playing.forEach((s) => { try { s.stop(); } catch { /* ignore */ } }); playing.clear(); nextAt = 0; };
   const send = (m: unknown) => { if (ws?.readyState === WebSocket.OPEN) ws.send(JSON.stringify(m)); };
 
@@ -96,8 +100,28 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
     await mic.audioWorklet.addModule(url); URL.revokeObjectURL(url);
     node = new AudioWorkletNode(mic, 'max-pcm');
     mic.createMediaStreamSource(stream).connect(node);
+    // Only speech is sent (silence costs as much as talking): a simple voice gate with a
+    // short pre-roll so first words aren't clipped, and a hold so pauses don't cut sentences.
+    const pre: ArrayBuffer[] = [];
+    let floor = 0.01, hold = 0, open = false;
     node.port.onmessage = (e) => {
-      if (!muted && ready) send({ realtimeInput: { audio: { mimeType: 'audio/pcm;rate=16000', data: toB64(e.data) } } });
+      if (muted || !ready) return;
+      const pcm = new Int16Array(e.data as ArrayBuffer);
+      let sum = 0; for (let i = 0; i < pcm.length; i++) sum += (pcm[i] / 32768) ** 2;
+      const rms = Math.sqrt(sum / (pcm.length || 1));
+      // Track the room's noise level; Max's own voice leaking back needs a louder voice to break in.
+      floor = rms < floor ? floor * 0.9 + rms * 0.1 : floor * 0.995 + rms * 0.005;
+      const loud = rms > Math.max(0.015, floor * (playing.size ? 4 : 2.5));
+      if (loud) { hold = 8; } else if (hold > 0) hold--;
+      const chunk = { realtimeInput: { audio: { mimeType: 'audio/pcm;rate=16000', data: '' } } };
+      if (hold > 0) {
+        if (!open) { open = true; for (const b of pre.splice(0)) { chunk.realtimeInput.audio.data = toB64(b); send(chunk); } }
+        chunk.realtimeInput.audio.data = toB64(e.data); send(chunk);
+        lastActive = Date.now();
+      } else {
+        if (open) { open = false; send({ realtimeInput: { audioStreamEnd: true } }); }
+        pre.push(e.data); if (pre.length > 3) pre.shift();
+      }
     };
 
     ws = new WebSocket(`${t.wsUrl}${t.wsUrl.includes('?') ? '&' : '?'}access_token=${encodeURIComponent(t.token)}`);
@@ -121,6 +145,7 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
       const sc = m.serverContent;
       if (sc) {
         if (sc.interrupted) { flush(); on.status('listening'); }
+        lastActive = Date.now();
         if (sc.inputTranscription?.text) { heard += sc.inputTranscription.text; on.caption('user', heard.trim(), false); }
         if (sc.outputTranscription?.text) {
           if (heard) { on.caption('user', heard.trim(), true); heard = ''; }
@@ -149,10 +174,16 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
     on.status('listening');
     // The call can last 30 minutes.
     timer = window.setTimeout(() => end('time'), 29.5 * 60_000);
+    // Hang up when nobody has spoken for a while, or the visitor leaves the tab (saves the line).
+    idle = window.setInterval(() => { if (!playing.size && Date.now() - lastActive > 75_000) end('idle'); }, 5000);
+    document.addEventListener('visibilitychange', onHide);
   } catch (err) {
     end();
     throw err instanceof LiveUnavailable || (err as Error)?.name === 'NotAllowedError' || (err as Error)?.name === 'NotFoundError' ? err : new LiveUnavailable(String(err));
   }
+
+  let outGain: GainNode | null = null;
+  const gain = () => { if (!outGain || outGain.context !== out) { outGain = out.createGain(); outGain.gain.value = 0.9; outGain.connect(out.destination); } return outGain; };
 
   function play(b64: string) {
     const bin = atob(b64);
@@ -160,8 +191,8 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
     for (let i = 0; i < n; i++) { const v = bin.charCodeAt(2 * i) | (bin.charCodeAt(2 * i + 1) << 8); f[i] = (v > 0x7fff ? v - 0x10000 : v) / 32768; }
     if (out.state === 'closed') out = new AC({ sampleRate: 24000 });
     const buf = out.createBuffer(1, n, 24000); buf.copyToChannel(f, 0);
-    const src = out.createBufferSource(); src.buffer = buf; src.connect(out.destination);
-    const now = out.currentTime; if (nextAt < now) nextAt = now + 0.03;
+    const src = out.createBufferSource(); src.buffer = buf; src.connect(gain());
+    const now = out.currentTime; if (nextAt < now) nextAt = now + 0.12;
     src.start(nextAt); nextAt += buf.duration;
     playing.add(src); on.status('talking');
     src.onended = () => { playing.delete(src); if (!playing.size && !ended) on.status('listening'); };
@@ -170,7 +201,7 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
   return {
     end: () => end(),
     /** Typed text during the call. */
-    sendText(text: string) { send({ realtimeInput: { text } }); },
+    sendText(text: string) { lastActive = Date.now(); send({ realtimeInput: { text } }); },
     /** Mute the mic (Max still talks). */
     setMuted(m: boolean) { muted = m; if (m) send({ realtimeInput: { audioStreamEnd: true } }); },
     get muted() { return muted; },

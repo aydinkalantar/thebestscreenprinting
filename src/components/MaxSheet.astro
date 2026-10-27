@@ -88,6 +88,8 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
 
 <style is:global>
   [data-max-sheet] [hidden] { display: none !important; }
+  /* Cards in the conversation never get squeezed (a scrolling row can collapse to 0 height in a grid). */
+  [data-max-log] > * { min-height: min-content; flex-shrink: 0; }
   .max-bubble { max-width: 88%; padding: 0.6rem 0.85rem; border-radius: 1.1rem; font-size: 14.5px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
   .max-bot { justify-self: start; background: rgb(244 244 245); color: rgb(24 24 27); border-bottom-left-radius: 0.35rem; }
   .max-me { justify-self: end; background: rgb(124 58 237); color: #fff; border-bottom-right-radius: 0.35rem; }
