@@ -49,7 +49,7 @@ const toB64 = (buf: ArrayBuffer) => {
   return btoa(s);
 };
 
-export async function startLiveCall(context: () => unknown, on: LiveEvents, history: { role: 'user' | 'assistant'; content: string }[] = []) {
+export async function startLiveCall(context: () => unknown, on: LiveEvents, history: { role: 'user' | 'assistant'; content: string }[] = [], firstWords: () => string = () => '') {
   // Audio must start inside the tap that began the call (iOS), so create both contexts first.
   const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
   let out = new AC({ sampleRate: 24000 });
@@ -184,10 +184,14 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents, hist
     // Newer studios hand a cue that makes Max say the admin greeting first, in the right language.
     // A new call picks up the conversation so far (typed or spoken), so Max remembers the visitor.
     const past = history.filter((h) => h.content.trim()).slice(-20);
-    if (past.length) {
-      send({ clientContent: { turns: past.map((h) => ({ role: h.role === 'user' ? 'user' : 'model', parts: [{ text: h.content.slice(0, 1500) }] })), turnComplete: false } });
+    // A message the visitor sent while connecting (a home page prompt, say) opens the call instead of the greeting.
+    const first = firstWords();
+    if (past.length) send({ clientContent: { turns: past.map((h) => ({ role: h.role === 'user' ? 'user' : 'model', parts: [{ text: h.content.slice(0, 1500) }] })), turnComplete: false } });
+    if (past.length && !first) {
       send({ realtimeInput: { text: '[call resumed: the visitor is back. Welcome them back in one short sentence and ask what they need now. Only bring up the earlier conversation if they do. Do not repeat the greeting]' } });
-    } else if (typeof t.start === 'string' && t.start) send({ realtimeInput: { text: t.start } });
+    }
+    if (first) send({ realtimeInput: { text: first } });
+    else if (!past.length && typeof t.start === 'string' && t.start) send({ realtimeInput: { text: t.start } });
     // The call can last 30 minutes.
     timer = window.setTimeout(() => end('time'), 29.5 * 60_000);
     // Hang up when nobody has spoken for a while, or the visitor leaves the tab (saves the line).

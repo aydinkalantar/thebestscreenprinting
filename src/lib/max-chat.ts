@@ -332,7 +332,7 @@ if (sheet) {
     onFinal: (t) => ask(t),
     say: (t) => bubble('assistant', t),
     // With live calls on, the mic starts (or ends) a call instead of push-to-talk.
-    onMic: () => { if (!liveOn) return false; if (call || calling) endCall(); else void beginCall(); return true; },
+    onMic: () => { if (!liveOn) return false; if (call || calling) endCall(); else { setMode('voice'); void beginCall(); } return true; },
   });
   // Closing the panel stops him mid-sentence and hangs up.
   new MutationObserver(() => { if (sheet.hidden) { voice.stop(); endCall(); } }).observe(sheet, { attributes: true, attributeFilter: ['hidden'] });
@@ -369,7 +369,19 @@ if (sheet) {
     if (!on) callOrb.classList.remove('is-talking');
   };
   function endCall() { call?.end(); }
-  async function beginCall() {
+  // Voice first: with "talk by default" on, the tap that opens Max starts the call (one tap, and the
+  // browser counts it for the mic). Visitors who switch to chat or block the mic stay in chat.
+  const MODE_KEY = 'tbsp-max-mode';
+  const setMode = (m: 'voice' | 'chat') => { try { localStorage.setItem(MODE_KEY, m); } catch { /* ignore */ } };
+  const prefersChat = () => { try { return localStorage.getItem(MODE_KEY) === 'chat'; } catch { return false; } };
+  let talkFirst = false;
+  window.addEventListener('tbsp-max-open', () => { if (liveOn && talkFirst && !prefersChat() && !call && !calling) void beginCall(true); });
+  sheet.querySelector('[data-max-to-chat]')?.addEventListener('click', () => {
+    setMode('chat'); endCall();
+    input.focus();
+  });
+
+  async function beginCall(auto = false) {
     if (calling || call) return;
     calling = true; voice.stop();
     intro.hidden = true; reset.hidden = false;
@@ -410,12 +422,17 @@ if (sheet) {
           if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); }
         },
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
-      }, Date.now() - lastAt < 3 * 3600_000 ? messages.slice() : []);
+      }, Date.now() - lastAt < 3 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'));
       calling = false;
       for (const t of queued.splice(0)) call?.sendText(t);
     } catch (err) {
-      calling = false; call = null; paintCall(false); queued.length = 0;
+      calling = false; call = null; paintCall(false);
+      // Anything typed while connecting still gets an answer, in the chat.
+      const waiting = queued.splice(0).join('\n');
+      if (waiting) void ask(waiting, true);
       const name = (err as Error)?.name;
+      // Opened straight into a call that couldn't start: just stay in chat, ready to type.
+      if (auto) { if (name === 'NotAllowedError') setMode('chat'); if (!waiting) input.focus(); return; }
       if (name === 'NotAllowedError') bubble('assistant', 'I can’t hear you because the microphone is blocked. Allow it in your browser’s site settings, or just type.');
       else if (name === 'NotFoundError') bubble('assistant', 'I can’t find a microphone on this device. You can type instead.');
       else if (voice.canListen) { bubble('assistant', 'My call line is busy right now, so speak after the beep and I’ll answer here.'); voice.listen(); }
@@ -423,7 +440,7 @@ if (sheet) {
       void (err instanceof LiveUnavailable);
     }
   }
-  callCta.addEventListener('click', () => void beginCall());
+  callCta.addEventListener('click', () => { setMode('voice'); void beginCall(); });
   sheet.querySelector('[data-max-call-end]')!.addEventListener('click', endCall);
   callMute.addEventListener('click', () => {
     if (!call) return;
@@ -443,7 +460,8 @@ if (sheet) {
     else if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); else if (ev.type === 'error') bubble('assistant', ev.text);
   }
 
-  async function ask(text: string) {
+  /** `shown`: the message is already in the chat (typed while a call was connecting). */
+  async function ask(text: string, shown = false) {
     text = text.trim();
     // On a call, typed text and tapped choices go to Max live.
     if (text && (call || calling)) {
@@ -455,9 +473,7 @@ if (sheet) {
     if (!text || busy) return;
     busy = true; send.disabled = true;
     intro.hidden = true; reset.hidden = false;
-    bubble('user', text);
-    messages.push({ role: 'user', content: text });
-    save();
+    if (!shown) { bubble('user', text); messages.push({ role: 'user', content: text }); save(); }
     const dots = typing();
     let reply = '';
     let out: HTMLElement | null = null;
@@ -525,7 +541,8 @@ if (sheet) {
     voiceLang = voiceCfg?.lang || 'en-US';
     liveOn = !!(on && voiceCfg?.live && navigator.mediaDevices?.getUserMedia && 'WebSocket' in window && 'AudioWorkletNode' in window);
     // Talk by default: the chat opens on a big "Talk to Max" (one tap still starts it).
-    callCta.hidden = !(liveOn && voiceCfg?.talkByDefault);
+    talkFirst = !!voiceCfg?.talkByDefault;
+    callCta.hidden = !(liveOn && talkFirst);
     // The admin's opening line and tap-to-ask suggestions (Settings › Online orders › Max).
     if (greeting) sheet.querySelector('[data-max-greeting]')!.textContent = greeting;
     if (suggestions.length) {

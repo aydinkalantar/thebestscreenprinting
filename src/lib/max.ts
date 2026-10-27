@@ -40,6 +40,8 @@ export function openMax(prefill: string = context) {
   if (MODE !== 'sheet' && openAssistant()) return;
   if (MODE === 'assistant') return;
   openMaxSheet(prefill);
+  // Still inside the visitor's tap: Max can start a voice call from here (max-chat.ts).
+  window.dispatchEvent(new Event('tbsp-max-open'));
 }
 
 // Any [data-max-open] button opens Max.
