@@ -258,7 +258,8 @@ if (sheet) {
     if (greeting) sheet.querySelector('[data-max-greeting]')!.textContent = greeting;
     if (suggestions.length) {
       const box = sheet.querySelector<HTMLElement>('[data-max-starters]')!;
-      const logo = box.querySelector('[data-max-logo]');
+      // Keep the send-your-logo chip unless the admin already offers logo help.
+      const logo = suggestions.some((t) => /logo/i.test(t)) ? null : box.querySelector('[data-max-logo]');
       box.replaceChildren(...suggestions.map((t) => { const b = el('button', 'chip !h-auto py-2 text-left text-[13.5px]', t); b.type = 'button'; b.dataset.maxStarter = ''; return b; }), ...(logo ? [logo] : []));
     }
     // Max-only buttons and sections show once he's confirmed on (see [data-max-only] in global.css).
