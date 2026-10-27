@@ -5,7 +5,7 @@
 import { business } from '../data/business';
 // Checkout lives here so Max (and every page) can open it.
 import OrderSheet from './design/OrderSheet.astro';
-import { X, ArrowUp, Phone, MessageSquareText, Mail, Sparkles, Paperclip, RotateCcw, Mic, Square, Volume2, VolumeX } from '@lucide/astro';
+import { X, ArrowUp, Phone, MessageSquareText, Mail, Sparkles, Paperclip, RotateCcw, Mic, MicOff, Square, Volume2, VolumeX, PhoneOff, AudioLines } from '@lucide/astro';
 const starters = [
   '50 black tees with our logo',
   'Hoodies for my team of 20',
@@ -43,6 +43,10 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
       <!-- Shown until the first message. -->
       <div data-max-intro class="grid gap-4">
         <div data-max-greeting class="max-bubble max-bot">Hi, I'm Max. Tell me what you need, like the product, how many and when, and I'll put together your order with real prices. You can also send me your logo and I'll check it.</div>
+        <button type="button" data-max-call-cta hidden class="press flex items-center gap-3 w-full rounded-2xl bg-violet-600 hover:bg-violet-700 text-white px-4 py-3.5 text-left shadow-lg shadow-violet-600/20">
+          <span class="relative grid place-items-center w-11 h-11 rounded-full bg-white/15 shrink-0"><span class="absolute inset-0 rounded-full bg-white/25 animate-ping" aria-hidden="true"></span><AudioLines class="relative w-5 h-5" aria-hidden="true" /></span>
+          <span class="leading-tight"><span class="block text-[16px] font-bold">Talk to Max</span><span class="block text-[12.5px] text-white/80">Tap and just say what you need</span></span>
+        </button>
         <div data-max-starters class="flex flex-wrap gap-2">
           {starters.map((s) => <button type="button" data-max-starter data-max-logo={/^check my logo/i.test(s) ? '' : undefined} class="chip !h-auto py-2 text-left text-[13.5px]">{s}</button>)}
         </div>
@@ -56,6 +60,15 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
 
     <form data-max-form class="shrink-0 border-t border-zinc-200/80 dark:border-white/10 p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
       <div data-max-files hidden class="mb-2 flex flex-wrap gap-2"></div>
+      <div data-max-call hidden class="mb-2 flex items-center gap-3 rounded-2xl bg-violet-50 dark:bg-violet-500/10 border border-violet-200/70 dark:border-violet-400/20 px-3 py-2" aria-live="polite">
+        <span data-max-call-orb class="max-orb relative w-10 h-10 shrink-0" aria-hidden="true"><Sparkles class="w-4 h-4" /></span>
+        <div class="min-w-0 flex-1 leading-tight">
+          <p data-max-call-status class="text-[14px] font-semibold text-zinc-900 dark:text-white">Connecting…</p>
+          <p class="text-[12px] muted">Talk naturally. You can interrupt him anytime.</p>
+        </div>
+        <button type="button" data-max-call-mute aria-pressed="false" class="icon-btn w-10 h-10 rounded-full shrink-0" aria-label="Mute" title="Mute"><Mic data-on class="w-[18px] h-[18px]" aria-hidden="true" /><MicOff data-off hidden class="w-[18px] h-[18px] text-rose-600" aria-hidden="true" /></button>
+        <button type="button" data-max-call-end class="press inline-flex items-center gap-1.5 h-10 px-3.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-[13.5px] font-semibold shrink-0"><PhoneOff class="w-4 h-4" aria-hidden="true" />End</button>
+      </div>
       <p data-max-listening hidden class="mb-2 flex items-center gap-2 text-[13px] font-semibold text-rose-600 dark:text-rose-400" aria-live="polite"><span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse" aria-hidden="true"></span><span data-max-listening-text>Listening… speak now</span></p>
       <div class="flex items-end gap-2">
         <button type="button" data-max-attach class="icon-btn w-11 h-11 rounded-xl shrink-0" aria-label="Send Max your logo" title="Send your logo"><Paperclip class="w-[18px] h-[18px]" aria-hidden="true" /></button>
@@ -80,6 +93,8 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
   .max-me { justify-self: end; background: rgb(124 58 237); color: #fff; border-bottom-right-radius: 0.35rem; }
   .dark .max-bot { background: rgba(255,255,255,0.07); color: rgb(244 244 245); }
   [data-max-mic].is-on { background: rgb(225 29 72); color: #fff; border-color: transparent; box-shadow: 0 0 0 4px rgba(225,29,72,0.2); }
+  [data-max-call-orb].is-talking { animation: max-talk 0.9s ease-in-out infinite; }
+  @keyframes max-talk { 50% { transform: scale(1.12); } }
   .max-typing span { display: inline-block; width: 6px; height: 6px; margin: 0 2px; border-radius: 9999px; background: currentColor; opacity: 0.4; animation: max-dot 1s infinite; }
   .max-typing span:nth-child(2) { animation-delay: 0.15s; } .max-typing span:nth-child(3) { animation-delay: 0.3s; }
   @keyframes max-dot { 50% { opacity: 1; transform: translateY(-2px); } }

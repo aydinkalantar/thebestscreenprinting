@@ -9,6 +9,7 @@ import { countInks, type InkCount } from '../components/design/colors';
 import { business } from '../data/business';
 import { openMax } from './max';
 import { setupVoice, type VoiceConfig } from './max-voice';
+import { startLiveCall, LiveUnavailable } from './max-live';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 interface CartLine extends PriceItemInput { productId?: string; slug?: string; image?: string; why?: string; name?: string }
@@ -175,15 +176,96 @@ if (sheet) {
     log.append(row); scroll();
   }
 
-  const voice = setupVoice(sheet, input, { onFinal: (t) => ask(t), say: (t) => bubble('assistant', t) });
-  // Closing the panel stops him mid-sentence.
-  new MutationObserver(() => { if (sheet.hidden) voice.stop(); }).observe(sheet, { attributes: true, attributeFilter: ['hidden'] });
+  const voice = setupVoice(sheet, input, {
+    onFinal: (t) => ask(t),
+    say: (t) => bubble('assistant', t),
+    // With live calls on, the mic starts (or ends) a call instead of push-to-talk.
+    onMic: () => { if (!liveOn) return false; if (call || calling) endCall(); else void beginCall(); return true; },
+  });
+  // Closing the panel stops him mid-sentence and hangs up.
+  new MutationObserver(() => { if (sheet.hidden) { voice.stop(); endCall(); } }).observe(sheet, { attributes: true, attributeFilter: ['hidden'] });
+
+  // ── live call ──
+  const callBar = sheet.querySelector<HTMLElement>('[data-max-call]')!;
+  const callStatus = sheet.querySelector<HTMLElement>('[data-max-call-status]')!;
+  const callOrb = sheet.querySelector<HTMLElement>('[data-max-call-orb]')!;
+  const callMute = sheet.querySelector<HTMLButtonElement>('[data-max-call-mute]')!;
+  const callCta = sheet.querySelector<HTMLButtonElement>('[data-max-call-cta]')!;
+  const micBtn = sheet.querySelector<HTMLButtonElement>('[data-max-mic]')!;
+  let liveOn = false;
+  let calling = false;
+  let call: Awaited<ReturnType<typeof startLiveCall>> | null = null;
+  const live: Partial<Record<Msg['role'], HTMLElement>> = {};
+  const paintCall = (on: boolean) => {
+    callBar.hidden = !on;
+    micBtn.classList.toggle('is-on', on);
+    micBtn.querySelector('[data-idle]')!.toggleAttribute('hidden', on);
+    micBtn.querySelector('[data-stop]')!.toggleAttribute('hidden', !on);
+    micBtn.setAttribute('aria-label', on ? 'End the call' : 'Talk to Max');
+    micBtn.title = on ? 'End the call' : 'Talk to Max';
+    if (!on) callOrb.classList.remove('is-talking');
+  };
+  function endCall() { call?.end(); }
+  async function beginCall() {
+    if (calling || call) return;
+    calling = true; voice.stop();
+    intro.hidden = true; reset.hidden = false;
+    paintCall(true); callStatus.textContent = 'Connecting…';
+    callMute.setAttribute('aria-pressed', 'false');
+    try {
+      call = await startLiveCall(context, {
+        status: (st, why) => {
+          if (st === 'ended') {
+            call = null; calling = false; paintCall(false);
+            if (why === 'time') bubble('assistant', 'Our call timed out. Tap the mic to talk again, or keep typing.');
+            else if (why === 'dropped') bubble('assistant', 'The call dropped. Tap the mic to talk again, or keep typing.');
+            return;
+          }
+          callStatus.textContent = st === 'connecting' ? 'Connecting…' : st === 'talking' ? 'Max is talking…' : (call?.muted ? 'Muted' : 'Listening…');
+          callOrb.classList.toggle('is-talking', st === 'talking');
+        },
+        caption: (who, text, done) => {
+          if (!text) return;
+          const b = live[who] || (live[who] = bubble(who, ''));
+          b.textContent = text; scroll();
+          if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); }
+        },
+        events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
+      });
+      calling = false;
+    } catch (err) {
+      calling = false; call = null; paintCall(false);
+      const name = (err as Error)?.name;
+      if (name === 'NotAllowedError') bubble('assistant', 'I can’t hear you because the microphone is blocked. Allow it in your browser’s site settings, or just type.');
+      else if (name === 'NotFoundError') bubble('assistant', 'I can’t find a microphone on this device. You can type instead.');
+      else if (voice.canListen) { bubble('assistant', 'My call line is busy right now, so speak after the beep and I’ll answer here.'); voice.listen(); }
+      else bubble('assistant', 'My call line is busy right now. Type your message and I’ll answer here.');
+      void (err instanceof LiveUnavailable);
+    }
+  }
+  callCta.addEventListener('click', () => void beginCall());
+  sheet.querySelector('[data-max-call-end]')!.addEventListener('click', endCall);
+  callMute.addEventListener('click', () => {
+    if (!call) return;
+    const m = !call.muted; call.setMuted(m);
+    callMute.setAttribute('aria-pressed', String(m));
+    callMute.querySelector('[data-on]')!.toggleAttribute('hidden', m);
+    callMute.querySelector('[data-off]')!.toggleAttribute('hidden', !m);
+    callMute.setAttribute('aria-label', m ? 'Unmute' : 'Mute'); callMute.title = m ? 'Unmute' : 'Mute';
+    callStatus.textContent = m ? 'Muted' : 'Listening…';
+  });
 
   // ── talking to the studio ──
   function typing() { const t = el('div', 'max-bubble max-bot max-typing'); t.innerHTML = '<span></span><span></span><span></span>'; t.setAttribute('aria-label', 'Max is typing'); log.append(t); scroll(); return t; }
 
+  function render(ev: MaxEvent) {
+    if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); else if (ev.type === 'error') bubble('assistant', ev.text);
+  }
+
   async function ask(text: string) {
     text = text.trim();
+    // On a call, typed text and tapped choices go to Max live.
+    if (text && call) { bubble('user', text); messages.push({ role: 'user', content: text }); save(); call.sendText(text); return; }
     if (!text || busy) return;
     busy = true; send.disabled = true;
     intro.hidden = true; reset.hidden = false;
@@ -213,7 +295,7 @@ if (sheet) {
           try { ev = JSON.parse(line); } catch { continue; }
           dots.remove();
           if (ev.type === 'text') { if (!out) out = bubble('assistant', ''); reply += ev.delta; out.textContent = reply; scroll(); }
-          else { out = null; if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); else if (ev.type === 'error') bubble('assistant', ev.text); }
+          else { out = null; render(ev); }
         }
       }
       dots.remove();
@@ -254,6 +336,9 @@ if (sheet) {
       try { sessionStorage.setItem('tbsp-max-on', JSON.stringify({ on, voice: voiceCfg, greeting, suggestions, at: Date.now() })); } catch { /* ignore */ }
     }
     voice.configure(voiceCfg);
+    liveOn = !!(on && voiceCfg?.live && navigator.mediaDevices?.getUserMedia && 'WebSocket' in window && 'AudioWorkletNode' in window);
+    // Talk by default: the chat opens on a big "Talk to Max" (one tap still starts it).
+    callCta.hidden = !(liveOn && voiceCfg?.talkByDefault);
     // The admin's opening line and tap-to-ask suggestions (Settings › Online orders › Max).
     if (greeting) sheet.querySelector('[data-max-greeting]')!.textContent = greeting;
     if (suggestions.length) {
@@ -280,7 +365,7 @@ if (sheet) {
     voice.typed(); ask(b.textContent || '');
   });
   reset.addEventListener('click', () => {
-    voice.stop(); messages = []; art.length = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
+    voice.stop(); endCall(); messages = []; art.length = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
     [...log.children].forEach((c) => { if (c !== intro) c.remove(); });
     filesBox.replaceChildren(); filesBox.hidden = true;
     intro.hidden = false; reset.hidden = true;

@@ -4,6 +4,11 @@
 // The mic only asks for permission when tapped; where the browser can't do it, the button stays hidden.
 
 export interface VoiceConfig {
+  /** Live calls with Max's natural voice (studio token + voice model). */
+  live?: boolean;
+  liveVoice?: string;
+  /** Open the chat ready to talk (one tap still starts the call). */
+  talkByDefault?: boolean;
   /** Show the mic. */
   listen?: boolean;
   /** Show the read-aloud toggle. */
@@ -29,7 +34,7 @@ type RecognitionCtor = new () => Recognition;
 
 const PREF = 'tbsp-max-speak';
 
-export function setupVoice(sheet: HTMLElement, input: HTMLTextAreaElement, opts: { onFinal: (text: string) => void; say: (text: string) => void }) {
+export function setupVoice(sheet: HTMLElement, input: HTMLTextAreaElement, opts: { onFinal: (text: string) => void; say: (text: string) => void; /** Return true to take the mic tap (a live call). */ onMic?: () => boolean }) {
   const mic = sheet.querySelector<HTMLButtonElement>('[data-max-mic]')!;
   const speakBtn = sheet.querySelector<HTMLButtonElement>('[data-max-speak]')!;
   const listening = sheet.querySelector<HTMLElement>('[data-max-listening]')!;
@@ -134,7 +139,7 @@ export function setupVoice(sheet: HTMLElement, input: HTMLTextAreaElement, opts:
     try { rec.start(); setListening(true); } catch { rec = null; setListening(false); }
   }
 
-  mic.addEventListener('click', () => (rec ? stopListening() : startListening()));
+  mic.addEventListener('click', () => { if (!rec && opts.onMic?.()) return; if (rec) stopListening(); else startListening(); });
   speakBtn.addEventListener('click', () => {
     const on = !speaking();
     try { localStorage.setItem(PREF, on ? 'on' : 'off'); } catch { /* ignore */ }
@@ -148,14 +153,16 @@ export function setupVoice(sheet: HTMLElement, input: HTMLTextAreaElement, opts:
       listen: c?.listen ?? true, speak: c?.speak ?? true, autoSpeak: c?.autoSpeak ?? true,
       lang: c?.lang || 'en-US', voiceName: c?.voiceName || '', rate: c?.rate || 1,
     };
-    mic.hidden = !(Rec && cfg.listen);
+    mic.hidden = !((Rec || c?.live) && cfg.listen);
     speakBtn.hidden = !(synth && cfg.speak);
     if (!mic.hidden || !speakBtn.hidden) paintSpeak();
   }
   configure(null);
 
   return {
-    configure, speak,
+    configure, speak, listen: startListening,
+    /** The browser can do push-to-talk. */
+    canListen: !!Rec,
     /** Typed messages: back to the visitor's own toggle (or quiet). */
     typed() { byVoice = false; unlock(); paintSpeak(); },
     stop() { hush(); if (rec) rec.abort(); },
