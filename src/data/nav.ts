@@ -12,7 +12,7 @@ export const NAV: NavMenu[] = [
     columns: [
       { links: [{ label: 'Short sleeve t-shirts', href: '/catalog/?sub=t-shirts' }, { label: 'Long sleeve t-shirts', href: '/catalog/?sub=long-sleeves' }, { label: 'Tank tops', href: '/catalog/?sub=tank-tops' }] },
       { links: [{ label: 'All-over print tees', href: '/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/' }, { label: 'Screen printed t-shirts', href: '/products/t-shirts/t-shirt-screen-printing-near-me/' }] },
-      { links: [{ label: 'Rush & Super Rush tees', href: '/same-day-t-shirt-printing-los-angeles/' }, { label: 'Choosing a print method', href: '/products/t-shirts/custom-printed-t-shirts/' }, { label: 'Which blank to pick', href: '/the-best-custom-t-shirt-shop-in-la/' }] },
+      { links: [{ label: 'Rush & Super Rush tees', href: '/same-day-t-shirt-printing-los-angeles/' }, { label: 'Choosing a print method', href: '/screen-printing-vs-dtf-vs-dtg/' }, { label: 'Which blank to pick', href: '/the-best-custom-t-shirt-shop-in-la/' }] },
       { links: [{ label: 'View all custom t-shirts', href: '/products/t-shirts/' }] },
     ],
   },
@@ -40,7 +40,7 @@ export const NAV: NavMenu[] = [
     columns: [
       { title: 'For business', links: [{ label: 'Small businesses', href: '/small-business/' }, { label: 'Clothing brands', href: '/for/retail-brands/' }, { label: 'Restaurants', href: '/for/restaurants/' }, { label: 'Staff uniforms', href: '/services/embroidery/custom-embroidery/' }, { label: 'Fulfillment', href: '/fulfillment/' }, { label: 'Custom projects', href: '/custom-projects/' }] },
       { title: 'For groups & events', links: [{ label: 'Events & tours', href: '/event-apparel/' }, { label: 'Teams & leagues', href: '/products/team-uniforms-jerseys/' }, { label: 'Schools', href: '/for/schools/' }, { label: 'Non-profits', href: '/for/non-profits/' }, { label: 'Clubs & groups', href: '/clubs-groups/' }] },
-      { title: 'Tools & resources', links: [{ label: 'Get a quote', href: '/quick-quote/' }, { label: 'Turnaround options', href: '/learn-delivery-time/' }, { label: 'Design tips', href: '/helpful-design-tips/' }, { label: 'Guides & articles', href: '/blog/' }, { label: 'FAQ', href: '/faq/' }] },
+      { title: 'Tools & resources', links: [{ label: 'Get a quote', href: '/quick-quote/' }, { label: 'Prices per shirt', href: '/how-much-does-custom-shirt-printing-cost/' }, { label: 'We ship nationwide', href: '/shipping-nationwide/' }, { label: 'Turnaround options', href: '/learn-delivery-time/' }, { label: 'Design tips', href: '/helpful-design-tips/' }, { label: 'Guides & articles', href: '/blog/' }, { label: 'FAQ', href: '/faq/' }] },
     ],
   },
 ];

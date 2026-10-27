@@ -11,7 +11,7 @@ const pages = defineCollection({
     title: z.string(),
     description: z.string().default(''),
     h1: z.string(),
-    kind: z.enum(['core', 'service', 'product', 'audience', 'location', 'blog', 'legal', 'utility']).default('core'),
+    kind: z.enum(['core', 'service', 'product', 'audience', 'location', 'blog', 'legal', 'utility', 'answer']).default('core'),
     // Imported verbatim from WordPress and not yet rewritten.
     imported: z.boolean().default(false),
     noindex: z.boolean().default(false),

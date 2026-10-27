@@ -61,6 +61,8 @@
   .prose-tb strong { @apply text-zinc-900 dark:text-white; }
   .prose-tb h2, .prose-tb h3 { scroll-margin-top: 8rem; }
   .prose-tb table { @apply w-full text-left text-[14.5px] border-collapse rounded-xl overflow-hidden ring-1 ring-zinc-200 dark:ring-white/10; }
+  /* Wide tables scroll sideways on phones instead of pushing the page wider. */
+  @media (max-width: 767px) { .prose-tb table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; } .prose-tb th, .prose-tb td { min-width: 7.5rem; } }
   .prose-tb th { @apply bg-zinc-50 dark:bg-white/[0.04] px-4 py-2.5 font-semibold text-zinc-900 dark:text-white; }
   .prose-tb td { @apply px-4 py-2.5 border-t border-zinc-200 dark:border-white/10; }
   .prose-legal h2 { @apply pt-8 border-t border-zinc-200/80 dark:border-white/10; }

@@ -9,7 +9,7 @@ import RelatedProducts from '../components/home/RelatedProducts.astro';
 import { PAGE_VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
 import { heroImage, eyebrowFor, relatedFor } from '../lib/page-meta';
-import { ArrowRight, Palette, Phone, Clock, MapPin, ChevronRight, ListOrdered, Printer, CalendarCheck } from '@lucide/astro';
+import { ArrowRight, Palette, Phone, Clock, MapPin, ChevronRight, ListOrdered, Printer, CalendarCheck, MessageCircle } from '@lucide/astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
@@ -40,6 +40,11 @@ const crumbItems = crumbs.map((c, i) => ({
   label: i === crumbs.length - 1 ? h1 : c.replace(/-/g, ' ').replace(/^\w/, (x) => x.toUpperCase()),
   href: i === crumbs.length - 1 ? undefined : `/${crumbs.slice(0, i + 1).join('/')}/`,
 }));
+// LA neighborhood pages serve LA, Cleveland pages serve Cleveland; everything else ships nationwide.
+const isLa = kind === 'location' || /los-angeles|-ca\/$|-la-/.test(path);
+const serviceArea = path.includes('cleveland')
+  ? { '@type': 'City', name: 'Cleveland', containedInPlace: { '@type': 'State', name: 'Ohio' } }
+  : isLa ? { '@type': 'City', name: 'Los Angeles' } : { '@type': 'Country', name: 'United States' };
 const jsonLd: object[] = [
   {
     '@context': 'https://schema.org',
@@ -57,10 +62,21 @@ if (kind === 'service' || kind === 'product' || kind === 'location') {
     name: h1,
     description: summary || description,
     url,
-    areaServed: path.includes('cleveland')
-      ? { '@type': 'City', name: 'Cleveland', containedInPlace: { '@type': 'State', name: 'Ohio' } }
-      : { '@type': 'City', name: 'Los Angeles' },
+    areaServed: serviceArea,
     provider: { '@id': `${business.url}/#organization` },
+  });
+}
+if (kind === 'answer') {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: h1,
+    description: summary || description,
+    url,
+    ...(updated ? { dateModified: updated } : {}),
+    author: { '@id': `${business.url}/#organization` },
+    publisher: { '@id': `${business.url}/#organization` },
+    about: { '@type': 'Service', name: 'Custom apparel printing', areaServed: serviceArea, provider: { '@id': `${business.url}/#organization` } },
   });
 }
 const videos = PAGE_VIDEOS[path] ?? [];
@@ -85,6 +101,7 @@ if (faqs.length) {
       <p class="eyebrow">{eyebrow}</p>
       <h1 class="mt-2 md:mt-3 text-4xl sm:text-5xl font-extrabold leading-[1.05] text-zinc-900 dark:text-white">{h1}</h1>
       {(summary || (!narrow && description)) && <p class="mt-3 md:mt-5 text-lg leading-8 muted">{summary || description}</p>}
+      {kind === 'answer' && updatedLabel && <p class="mt-3 text-[13.5px] muted">Prices and times checked <time datetime={updated}>{updatedLabel}</time></p>}
       {kind === 'legal' && (updatedLabel || hasToc) && (
         <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13.5px] muted print:hidden">
           {updatedLabel && <p class="flex items-center gap-1.5"><CalendarCheck class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Last updated <time datetime={updated}>{updatedLabel}</time></p>}
@@ -101,6 +118,7 @@ if (faqs.length) {
       {!narrow && (
         <div class="mt-7 max-md:mt-5 flex flex-wrap gap-3 max-md:grid max-md:grid-cols-2 max-md:gap-2">
           <a class="btn-primary max-md:px-3" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+          {kind === 'answer' && business.maxLive && <button type="button" data-max-open data-max-only class="btn-quiet max-md:px-3"><MessageCircle class="w-4 h-4" aria-hidden="true" />Ask Max for a price</button>}
           {business.studioLive
             ? <a class="btn-quiet max-md:px-3" href={`${business.studioUrl}/studio`} rel="nofollow"><Palette class="w-4 h-4" aria-hidden="true" />Design it online</a>
             : <a class="btn-quiet max-md:px-3" href={`tel:${business.phone}`}><Phone class="w-4 h-4" aria-hidden="true" />{business.phoneDisplay}</a>}
@@ -135,7 +153,7 @@ if (faqs.length) {
         </details>
       </>
     )}
-    <article class:list={['prose-tb', { 'prose-legal': kind === 'legal' }]}>
+    <article class:list={['prose-tb min-w-0', { 'prose-legal': kind === 'legal' }]}>
       <Content />
       {hasToc && <p class="!mt-12 print:hidden"><a href="#top" data-top class="!no-underline font-semibold text-[14px]">↑ Back to top</a></p>}
     </article>

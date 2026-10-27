@@ -47,6 +47,8 @@ export const business = {
   superRushNote: 'Not available for all products, styles or PO Box addresses.',
   /** Areas we serve without a shop address there (service-area business). */
   serviceAreas: ['Los Angeles, CA', 'Cleveland, OH'],
+  /** Flat shipping per order to any address in the lower 48 (same as online checkout). */
+  shippingFlat: 35,
 } as const;
 
 export const localBusinessJsonLd = {
@@ -62,7 +64,9 @@ export const localBusinessJsonLd = {
   logo: `${business.url}/icon-512.png`,
   image: `${business.url}/icon-512.png`,
   sameAs: business.sameAs,
+  // Made in Los Angeles and Cleveland, shipped to every US state.
   areaServed: [
+    { '@type': 'Country', name: 'United States' },
     { '@type': 'City', name: 'Los Angeles', containedInPlace: { '@type': 'State', name: 'California' } },
     { '@type': 'City', name: 'Cleveland', containedInPlace: { '@type': 'State', name: 'Ohio' } },
   ],

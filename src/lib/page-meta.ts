@@ -41,7 +41,7 @@ export function heroImage(path: string): string | null {
 
 const KIND_LABEL: Record<string, string> = {
   service: 'Service', product: 'Products', audience: 'Who we print for', location: 'Los Angeles',
-  blog: 'Guide', legal: 'Legal', utility: 'TBSP', core: 'TBSP',
+  blog: 'Guide', answer: 'Straight answer', legal: 'Legal', utility: 'TBSP', core: 'TBSP',
 };
 
 /** "/custom-embroidery-koreatown-la-ca/" → "Koreatown LA" */
