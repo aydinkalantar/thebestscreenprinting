@@ -88,7 +88,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         </p>
         <form class="mt-5 sm:mt-8 panel-raised p-2 flex items-center gap-2 max-w-xl" action="/quick-quote/" data-hero-ai>
           <span class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-600 text-white"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
-          <input name="details" required placeholder={business.studioLive ? "Tell Max what you need…" : "Tell us what you need…"} aria-label="Tell us what you need" class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] max-md:text-base text-zinc-900 dark:text-white placeholder:text-zinc-500" />
+          <input name="details" required placeholder="Tell Max what you need…" aria-label="Tell Max what you need" class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] max-md:text-base text-zinc-900 dark:text-white placeholder:text-zinc-500" />
           <button class="btn-primary btn-sm" type="submit">Start<ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
         </form>
         <div class="mt-3 flex flex-wrap gap-2 m-rail m-rail-auto">
@@ -292,9 +292,8 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     const input = heroForm.querySelector('input')!;
     document.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach((b) => b.addEventListener('click', () => { input.value = b.dataset.prompt!; input.focus(); }));
     heroForm.addEventListener('submit', (e) => {
-      // With the assistant on the page, hand the request to it; otherwise it becomes a quote request.
-      const open = document.querySelector<HTMLButtonElement>('#tb-assistant [data-open]');
-      if (open) { e.preventDefault(); open.click(); }
+      // Max takes it from here (he falls back to the quote form if the shop can't be reached).
+      if (document.querySelector('[data-max-sheet]')) { e.preventDefault(); window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: input.value })); input.value = ''; }
     });
   }
 </script>

@@ -1,0 +1,261 @@
+// Max's conversation in MaxSheet.astro. Messages stream from the studio (/api/public/max) as
+// NDJSON events: text, products, cart, choices, handoff, done. Product and cart events render as
+// cards; a cart can go straight to checkout (order-sheet.ts) or into the site cart.
+// If the studio can't be reached, the visitor's message goes to the quote form instead.
+import { STUDIO_API, fetchPrices, money, type PriceItemInput, type PriceResponse } from './online';
+import { openOrder, type OrderArtwork } from './order-sheet';
+import { addToCart, cartItems } from './cart';
+import { countInks, type InkCount } from '../components/design/colors';
+import { business } from '../data/business';
+import { openMax } from './max';
+
+type Msg = { role: 'user' | 'assistant'; content: string };
+interface CartLine extends PriceItemInput { productId?: string; slug?: string; image?: string; why?: string }
+type MaxEvent =
+  | { type: 'text'; delta: string }
+  | { type: 'products'; items: { id: string; slug: string; name: string; brand?: string; style?: string; image?: string; why?: string }[] }
+  | { type: 'cart'; items: CartLine[]; price?: PriceResponse; notes?: string[] }
+  | { type: 'choices'; question?: string; options: { label: string; value: string }[] }
+  | { type: 'handoff'; text?: string }
+  | { type: 'done' };
+
+const KEY = 'tbsp-max-v1';
+const sheet = document.querySelector<HTMLElement>('[data-max-sheet]');
+
+if (sheet) {
+  const log = sheet.querySelector<HTMLElement>('[data-max-log]')!;
+  const intro = sheet.querySelector<HTMLElement>('[data-max-intro]')!;
+  const form = sheet.querySelector<HTMLFormElement>('[data-max-form]')!;
+  const input = sheet.querySelector<HTMLTextAreaElement>('#max-input')!;
+  const send = sheet.querySelector<HTMLButtonElement>('[data-max-send]')!;
+  const fileIn = sheet.querySelector<HTMLInputElement>('[data-max-file]')!;
+  const filesBox = sheet.querySelector<HTMLElement>('[data-max-files]')!;
+  const reset = sheet.querySelector<HTMLButtonElement>('[data-max-reset]')!;
+
+  let messages: Msg[] = [];
+  let sessionId = '';
+  let busy = false;
+  /** The visitor's logo(s), checked in the browser; sent to Max as a summary, kept for checkout. */
+  const art: { file: File; ink: InkCount }[] = [];
+
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+    if (saved?.messages?.length) { messages = saved.messages; sessionId = saved.sessionId; }
+  } catch { /* ignore */ }
+  if (!sessionId) sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
+  const save = () => { try { sessionStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30) })); } catch { /* ignore */ } };
+
+  const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls = '', text = '') => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  };
+  const scroll = () => requestAnimationFrame(() => { log.scrollTop = log.scrollHeight; });
+  const bubble = (role: Msg['role'], text: string) => { const b = el('div', `max-bubble ${role === 'user' ? 'max-me' : 'max-bot'}`, text); log.append(b); scroll(); return b; };
+
+  /** What Max should know about where the visitor is. */
+  function context() {
+    const path = location.pathname;
+    const page = path === '/' ? 'home' : path.startsWith('/catalog/') && document.getElementById('add-to-quote') ? 'product' : path.startsWith('/quote-cart') ? 'cart' : path.startsWith('/catalog') ? 'catalog' : 'page';
+    const f = document.getElementById('add-to-quote')?.dataset;
+    const color = document.querySelector<HTMLElement>('.swatch[aria-checked="true"]')?.dataset.name;
+    return {
+      page, path,
+      ...(f?.id ? { product: { id: f.id, name: f.name, brand: f.brand, style: f.style, color } } : {}),
+      cart: cartItems().map((it) => ({ brand: it.brand, style: it.style, color: it.color, sizes: it.sizes, productName: it.name })),
+      artwork: art.map(({ file, ink }) => ({ name: file.name, kind: ink.kind, ...(ink.kind === 'spot' ? { colors: ink.count } : {}), ...(ink.kind !== 'unknown' && !ink.vector ? { widthPx: ink.widthPx } : {}) })),
+    };
+  }
+
+  // ── cards ──
+  function productsCard(e: Extract<MaxEvent, { type: 'products' }>) {
+    const rail = el('div', 'flex gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 pb-1');
+    for (const p of e.items.slice(0, 8)) {
+      const a = el('a', 'press shrink-0 w-36 rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2 grid gap-1.5');
+      a.href = `/catalog/${p.slug}/`;
+      if (p.image) { const img = el('img', 'w-full aspect-square object-contain rounded-xl bg-zinc-50 dark:bg-white/[0.04]'); img.src = p.image; img.alt = ''; img.loading = 'lazy'; a.append(img); }
+      a.append(el('span', 'text-[12.5px] font-semibold leading-snug text-zinc-900 dark:text-white line-clamp-2', p.name));
+      if (p.why) a.append(el('span', 'text-[11.5px] muted leading-snug line-clamp-2', p.why));
+      rail.append(a);
+    }
+    log.append(rail); scroll();
+  }
+
+  function cartCard(e: Extract<MaxEvent, { type: 'cart' }>) {
+    const card = el('div', 'rounded-2xl border border-violet-300/60 dark:border-violet-400/25 bg-violet-500/[0.05] p-3.5 grid gap-3');
+    card.append(el('p', 'text-[12px] font-bold uppercase tracking-[0.1em] text-violet-700 dark:text-violet-300', 'Your order, ready to go'));
+    const pr = e.price && e.price.enabled ? e.price : null;
+    e.items.forEach((it, i) => {
+      const row = el('div', 'flex gap-3');
+      if (it.image) { const img = el('img', 'w-14 h-14 shrink-0 rounded-xl object-contain bg-white dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10'); img.src = it.image; img.alt = ''; row.append(img); }
+      const info = el('div', 'min-w-0 flex-1 text-[13px] leading-snug');
+      const name = el(it.slug ? 'a' : 'p', 'block font-semibold text-zinc-900 dark:text-white hover:underline', it.productName || `${it.brand} ${it.style}`);
+      if (it.slug) (name as HTMLAnchorElement).href = `/catalog/${it.slug}/`;
+      info.append(name);
+      const qty = Object.values(it.sizes).reduce((a, b) => a + b, 0);
+      info.append(el('p', 'muted', `${it.color} · ${qty} pcs (${Object.entries(it.sizes).map(([s, n]) => `${s} ${n}`).join(', ')})`));
+      info.append(el('p', 'muted', it.locations.map((l) => `${l.placement}: ${l.method}${l.colors ? `, ${l.colors} color${l.colors === 1 ? '' : 's'}` : ''}`).join(' · ')));
+      if (it.why) info.append(el('p', 'mt-0.5 text-violet-700 dark:text-violet-300', it.why));
+      row.append(info);
+      const p = pr?.items[i];
+      if (p) row.append(el('p', 'shrink-0 text-right text-[13px] font-semibold text-zinc-900 dark:text-white', p.ok ? money(p.subtotal + p.setup) : 'Quote'));
+      card.append(row);
+    });
+    if (pr?.totals) {
+      const t = pr.totals;
+      const tot = el('div', 'flex items-baseline justify-between border-t border-violet-300/40 pt-2 text-[14px]');
+      tot.append(el('span', 'font-bold text-zinc-900 dark:text-white', 'Total before tax'), el('span', 'font-bold text-zinc-900 dark:text-white', money(t.subtotal + t.setup + (t.art || 0) + (t.rush || 0))));
+      card.append(tot);
+      if (t.readyBy) card.append(el('p', 'text-[12.5px] muted -mt-2', `Ready around ${new Date(t.readyBy).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} after proof approval.`));
+    }
+    for (const n of e.notes ?? []) card.append(el('p', 'text-[12.5px] text-emerald-700 dark:text-emerald-400', n));
+    const actions = el('div', 'grid grid-cols-2 gap-2');
+    const pay = el('button', 'btn-primary h-11 text-[14px]', 'Order & pay');
+    const add = el('button', 'btn-quiet h-11 text-[14px]', 'Add to cart');
+    pay.type = add.type = 'button';
+    const ok = !!pr?.totals && pr.items.every((x) => x.ok);
+    pay.disabled = !ok;
+    pay.addEventListener('click', async () => {
+      const res = await fetchPrices(e.items);
+      if (!res?.enabled || !res.totals || res.items.some((x) => !x.ok)) { bubble('assistant', 'Prices just changed, let me check again.'); return; }
+      // The visitor's logo goes on each product's first location.
+      const artwork: OrderArtwork[] = art.length ? e.items.map((it, i) => ({ itemIndex: i, placement: it.locations[0]?.placement || 'Front', file: art[0].file })) : [];
+      const pieces = e.items.reduce((n, it) => n + Object.values(it.sizes).reduce((a, b) => a + b, 0), 0);
+      openOrder({ items: e.items.map(({ productId: _a, slug: _b, image: _c, why: _d, ...x }) => x), artwork, price: res, summary: `${e.items.length} product${e.items.length === 1 ? '' : 's'} · ${pieces} pieces` });
+    });
+    add.addEventListener('click', async () => {
+      add.disabled = true;
+      try {
+        for (const it of e.items) {
+          await addToCart({
+            productId: it.productId || '', slug: it.slug || '', name: it.productName || `${it.brand} ${it.style}`, brand: it.brand, style: it.style, cat: '', sub: '',
+            image: it.image || '', url: it.slug ? `${location.origin}/catalog/${it.slug}/` : location.origin, color: it.color,
+            sizeOrder: Object.keys(it.sizes), sizes: it.sizes,
+            decorations: [...new Set(it.locations.map((l) => l.method))], locations: it.locations.map((l) => l.placement),
+            placements: [], mockups: [],
+            inks: Object.fromEntries(it.locations.filter((l) => l.colors).map((l) => [l.placement, l.colors!])),
+          });
+        }
+        add.textContent = 'Added ✓';
+        bubble('assistant', `Added to your cart. ${art.length ? 'Add your logo on each product page, or send it with your order.' : ''}`.trim());
+      } catch (err) {
+        add.disabled = false;
+        bubble('assistant', err instanceof Error ? err.message : 'Could not add to the cart.');
+      }
+    });
+    actions.append(pay, add);
+    card.append(actions);
+    log.append(card); scroll();
+  }
+
+  function choicesCard(e: Extract<MaxEvent, { type: 'choices' }>) {
+    if (e.question) bubble('assistant', e.question);
+    const row = el('div', 'flex flex-wrap gap-2');
+    for (const o of e.options.slice(0, 6)) {
+      const b = el('button', 'chip !h-auto py-2 text-[13.5px]', o.label);
+      b.type = 'button';
+      b.addEventListener('click', () => { row.remove(); ask(o.value || o.label); });
+      row.append(b);
+    }
+    log.append(row); scroll();
+  }
+
+  function handoffCard(e: Extract<MaxEvent, { type: 'handoff' }>) {
+    if (e.text) bubble('assistant', e.text);
+    const row = el('div', 'flex flex-wrap gap-2');
+    for (const [label, href] of [['Call', `tel:${business.phone}`], ['Text', `sms:${business.phone}`], ['Email', `mailto:${business.email}`]]) {
+      const a = el('a', 'chip !h-9 text-[13.5px] font-semibold', label); a.href = href; row.append(a);
+    }
+    log.append(row); scroll();
+  }
+
+  // ── talking to the studio ──
+  function typing() { const t = el('div', 'max-bubble max-bot max-typing'); t.innerHTML = '<span></span><span></span><span></span>'; t.setAttribute('aria-label', 'Max is typing'); log.append(t); scroll(); return t; }
+
+  async function ask(text: string) {
+    text = text.trim();
+    if (!text || busy) return;
+    busy = true; send.disabled = true;
+    intro.hidden = true; reset.hidden = false;
+    bubble('user', text);
+    messages.push({ role: 'user', content: text });
+    save();
+    const dots = typing();
+    let reply = '';
+    let out: HTMLElement | null = null;
+    try {
+      const res = await fetch(`${STUDIO_API}/api/public/max`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ sessionId, messages, context: context() }) });
+      if (!res.ok || !res.body) throw new Error(String(res.status));
+      const reader = res.body.getReader();
+      const dec = new TextDecoder();
+      let buf = '';
+      for (;;) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        let nl;
+        while ((nl = buf.indexOf('\n')) >= 0) {
+          const line = buf.slice(0, nl).trim(); buf = buf.slice(nl + 1);
+          if (!line) continue;
+          let ev: MaxEvent;
+          try { ev = JSON.parse(line); } catch { continue; }
+          dots.remove();
+          if (ev.type === 'text') { if (!out) out = bubble('assistant', ''); reply += ev.delta; out.textContent = reply; scroll(); }
+          else { out = null; if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); }
+        }
+      }
+      dots.remove();
+      if (reply) { messages.push({ role: 'assistant', content: reply }); save(); }
+    } catch {
+      dots.remove();
+      // Max isn't reachable: the message still reaches the team through the quote form.
+      const b = bubble('assistant', "I can't reach the shop right now. Send this to our team and we'll reply within one business day, or call us.");
+      const row = el('div', 'flex flex-wrap gap-2');
+      const q = el('a', 'btn-primary h-10 text-[13.5px]', 'Send as a quote request'); q.href = `/quick-quote/?details=${encodeURIComponent(text)}`;
+      const c = el('a', 'btn-quiet h-10 text-[13.5px]', `Call ${business.phoneDisplay}`); c.href = `tel:${business.phone}`;
+      row.append(q, c); b.after(row); scroll();
+    } finally {
+      busy = false; send.disabled = false;
+    }
+  }
+
+  // Other parts of the page (the home page's "Tell Max what you need") start a conversation.
+  window.addEventListener('tbsp-max-ask', (e) => {
+    const text = (e as CustomEvent<string>).detail || '';
+    openMax('');
+    input.value = '';
+    if (text.trim()) ask(text);
+  });
+
+  // Restore an earlier conversation in this tab (text only).
+  if (messages.length) { intro.hidden = true; reset.hidden = false; for (const m of messages) bubble(m.role, m.content); }
+
+  form.addEventListener('submit', (e) => { e.preventDefault(); const t = input.value; input.value = ''; input.style.height = ''; ask(t); });
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); form.requestSubmit(); } });
+  input.addEventListener('input', () => { input.style.height = 'auto'; input.style.height = `${Math.min(input.scrollHeight, 144)}px`; });
+  sheet.querySelectorAll<HTMLButtonElement>('[data-max-starter]').forEach((b) => b.addEventListener('click', () => {
+    if (/logo/i.test(b.textContent || '')) { fileIn.click(); return; }
+    ask(b.textContent || '');
+  }));
+  reset.addEventListener('click', () => {
+    messages = []; art.length = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
+    [...log.children].forEach((c) => { if (c !== intro) c.remove(); });
+    filesBox.replaceChildren(); filesBox.hidden = true;
+    intro.hidden = false; reset.hidden = true;
+  });
+
+  // Logo: checked here (colors, full color, size) and summarized to Max.
+  sheet.querySelector('[data-max-attach]')!.addEventListener('click', () => fileIn.click());
+  fileIn.addEventListener('change', async () => {
+    const f = fileIn.files?.[0]; fileIn.value = '';
+    if (!f) return;
+    if (f.size > 10 * 1024 * 1024) { bubble('assistant', 'That file is over 10 MB. Please send a smaller one, or email it to us.'); return; }
+    const ink = await countInks(f).catch(() => ({ kind: 'unknown' }) as InkCount);
+    art.splice(0, art.length, { file: f, ink });
+    filesBox.hidden = false;
+    filesBox.replaceChildren(el('span', 'chip !h-8 text-[12.5px]', `📎 ${f.name.slice(0, 40)}`));
+    const summary = ink.kind === 'spot' ? `${ink.count} color${ink.count === 1 ? '' : 's'}` : ink.kind === 'full' ? 'full color' : 'file type I can’t preview';
+    ask(`Here's my logo (${f.name}, ${summary}).`);
+  });
+}

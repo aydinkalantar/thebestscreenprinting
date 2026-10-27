@@ -9,7 +9,6 @@ import DesignRequestSheet from '../components/design/DesignRequestSheet.astro';
 import { business } from '../data/business';
 import { COLLECTIONS, collectionHref } from '../lib/catalog';
 import { ClipboardList, Plus, ArrowRight, CircleCheck, Phone, Info, CreditCard, Lock } from '@lucide/astro';
-import OrderSheet from '../components/design/OrderSheet.astro';
 
 const min = business.shopMinimum;
 const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
@@ -90,7 +89,6 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
 
   <p id="cart-announce" class="sr-only" aria-live="polite"></p>
 
-  <OrderSheet />
   <DesignRequestSheet id="cart-request" title="Send your quote request" notes
     footer="Your artwork files and mockups are attached for each product. We reply within one business day."
     doneText="We've got your products, sizes and artwork files." />
