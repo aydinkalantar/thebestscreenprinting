@@ -247,6 +247,7 @@ if (sheet) {
   const micBtn = sheet.querySelector<HTMLButtonElement>('[data-max-mic]')!;
   let liveOn = false;
   let calling = false;
+  const queued: string[] = [];
   let call: Awaited<ReturnType<typeof startLiveCall>> | null = null;
   const live: Partial<Record<Msg['role'], HTMLElement>> = {};
   const paintCall = (on: boolean) => {
@@ -293,8 +294,9 @@ if (sheet) {
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
       }, messages.slice());
       calling = false;
+      for (const t of queued.splice(0)) call?.sendText(t);
     } catch (err) {
-      calling = false; call = null; paintCall(false);
+      calling = false; call = null; paintCall(false); queued.length = 0;
       const name = (err as Error)?.name;
       if (name === 'NotAllowedError') bubble('assistant', 'I can’t hear you because the microphone is blocked. Allow it in your browser’s site settings, or just type.');
       else if (name === 'NotFoundError') bubble('assistant', 'I can’t find a microphone on this device. You can type instead.');
@@ -326,7 +328,12 @@ if (sheet) {
   async function ask(text: string) {
     text = text.trim();
     // On a call, typed text and tapped choices go to Max live.
-    if (text && call) { bubble('user', text); messages.push({ role: 'user', content: text }); save(); call.sendText(text); return; }
+    if (text && (call || calling)) {
+      bubble('user', text); messages.push({ role: 'user', content: text }); save();
+      // Still connecting: it goes over as soon as the call is up.
+      if (call) call.sendText(text); else queued.push(text);
+      return;
+    }
     if (!text || busy) return;
     busy = true; send.disabled = true;
     intro.hidden = true; reset.hidden = false;

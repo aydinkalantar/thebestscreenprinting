@@ -48,6 +48,8 @@ export function setupVoice(sheet: HTMLElement, input: HTMLTextAreaElement, opts:
   let heard = '';
   /** The visitor's last message was spoken. */
   let byVoice = false;
+  /** Live calls are on: Max has his real voice, so the browser's robotic one never speaks. */
+  let live = false;
 
   const pref = (): 'on' | 'off' | null => { try { const v = localStorage.getItem(PREF); return v === 'on' || v === 'off' ? v : null; } catch { return null; } };
   const speaking = () => (pref() ?? (cfg.autoSpeak && byVoice ? 'on' : 'off')) === 'on';
@@ -76,7 +78,7 @@ export function setupVoice(sheet: HTMLElement, input: HTMLTextAreaElement, opts:
 
   /** Read a finished reply aloud, if the visitor wants that. */
   function speak(text: string) {
-    if (!synth || !cfg.speak || !speaking()) return;
+    if (!synth || live || !cfg.speak || !speaking()) return;
     // Spoken, not read: no markdown, links, emoji or long numbers spelled out oddly.
     const clean = text
       .replace(/https?:\/\/\S+/g, '')
@@ -154,7 +156,9 @@ export function setupVoice(sheet: HTMLElement, input: HTMLTextAreaElement, opts:
       lang: c?.lang || 'en-US', voiceName: c?.voiceName || '', rate: c?.rate || 1,
     };
     mic.hidden = !((Rec || c?.live) && cfg.listen);
-    speakBtn.hidden = !(synth && cfg.speak);
+    live = !!c?.live;
+    if (live) synth?.cancel();
+    speakBtn.hidden = !(synth && cfg.speak && !live);
     if (!mic.hidden || !speakBtn.hidden) paintSpeak();
   }
   configure(null);
