@@ -63,6 +63,11 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
   let nextAt = 0;
   const playing = new Set<AudioBufferSourceNode>();
   let heard = '', said = '';
+  // Hang up once a goodbye has been said and Max finished talking.
+  let lastHeard = '', byeAt = 0;
+  const BYE_USER = /\b(bye|goodbye|that'?s (it|all)|no,? thanks?|i'?m (good|done)|have a good)\b/i;
+  const BYE_MAX = /\b(bye|goodbye|have a (great|good|nice)|take care|talk (to you )?soon)\b/i;
+  const hangUpWhenQuiet = () => { if (!playing.size && byeAt && !ended) end('bye'); };
   let timer = 0;
   let ready = false;
   let lastActive = Date.now();
@@ -146,19 +151,23 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
       if (sc) {
         if (sc.interrupted) { flush(); on.status('listening'); }
         lastActive = Date.now();
-        if (sc.inputTranscription?.text) { heard += sc.inputTranscription.text; on.caption('user', heard.trim(), false); }
+        if (sc.inputTranscription?.text) { byeAt = 0; heard += sc.inputTranscription.text; on.caption('user', heard.trim(), false); }
         if (sc.outputTranscription?.text) {
-          if (heard) { on.caption('user', heard.trim(), true); heard = ''; }
+          if (heard) { lastHeard = heard; on.caption('user', heard.trim(), true); heard = ''; }
           said += sc.outputTranscription.text; on.caption('assistant', said.trim(), false);
         }
         for (const p of sc.modelTurn?.parts || []) if (p.inlineData?.data) play(p.inlineData.data);
         if (sc.turnComplete || sc.interrupted) {
-          if (heard) { on.caption('user', heard.trim(), true); heard = ''; }
+          const reply = said;
+          if (heard) { lastHeard = heard; on.caption('user', heard.trim(), true); heard = ''; }
           if (said) { on.caption('assistant', said.trim(), true); said = ''; }
+          if (sc.turnComplete && BYE_MAX.test(reply) && BYE_USER.test(lastHeard)) { byeAt = Date.now(); setTimeout(hangUpWhenQuiet, 400); }
         }
       }
       if (m.toolCall?.functionCalls?.length) {
         const responses = await Promise.all(m.toolCall.functionCalls.map(async (c: { id: string; name: string; args?: unknown }) => {
+          // Max ends the call himself once the visitor is done (after his goodbye plays).
+          if (/^(end_call|hang_up)$/.test(c.name)) { byeAt = Date.now(); setTimeout(hangUpWhenQuiet, 400); return { id: c.id, name: c.name, response: { result: { ok: true } } }; }
           try {
             const r = await fetch(`${STUDIO_API}/api/public/max/tool`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name: c.name, args: c.args || {}, context: context() }) }).then((x) => x.json());
             if (Array.isArray(r.events) && r.events.length) on.events(r.events);
@@ -177,7 +186,9 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
     // The call can last 30 minutes.
     timer = window.setTimeout(() => end('time'), 29.5 * 60_000);
     // Hang up when nobody has spoken for a while, or the visitor leaves the tab (saves the line).
-    idle = window.setInterval(() => { if (!playing.size && Date.now() - lastActive > 75_000) end('idle'); }, 5000);
+    idle = window.setInterval(() => {
+      if (byeAt && Date.now() - byeAt > 8000) end('bye');
+      if (!playing.size && Date.now() - lastActive > 45_000) end('idle'); }, 5000);
     document.addEventListener('visibilitychange', onHide);
   } catch (err) {
     end();
@@ -197,13 +208,13 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
     const now = out.currentTime; if (nextAt < now) nextAt = now + 0.12;
     src.start(nextAt); nextAt += buf.duration;
     playing.add(src); on.status('talking');
-    src.onended = () => { playing.delete(src); if (!playing.size && !ended) on.status('listening'); };
+    src.onended = () => { playing.delete(src); if (!playing.size && !ended) { on.status('listening'); setTimeout(hangUpWhenQuiet, 600); } };
   }
 
   return {
     end: () => end(),
     /** Typed text during the call. */
-    sendText(text: string) { lastActive = Date.now(); send({ realtimeInput: { text } }); },
+    sendText(text: string) { lastActive = Date.now(); lastHeard = text; byeAt = 0; send({ realtimeInput: { text } }); },
     /** Mute the mic (Max still talks). */
     setMuted(m: boolean) { muted = m; if (m) send({ realtimeInput: { audioStreamEnd: true } }); },
     get muted() { return muted; },

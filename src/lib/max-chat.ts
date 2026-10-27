@@ -218,6 +218,7 @@ if (sheet) {
           if (st === 'ended') {
             call = null; calling = false; paintCall(false);
             if (why === 'time') bubble('assistant', 'Our call timed out. Tap the mic to talk again, or keep typing.');
+            else if (why === 'bye') bubble('assistant', 'Call ended. I’m here anytime: tap the mic to talk, or just type.');
             else if (why === 'idle') bubble('assistant', 'I hung up since it got quiet. Tap the mic anytime to talk again, or keep typing.');
             else if (why === 'dropped') bubble('assistant', 'The call dropped. Tap the mic to talk again, or keep typing.');
             return;
