@@ -88,20 +88,20 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         </p>
         <form class="mt-5 sm:mt-8 panel-raised p-2 flex items-center gap-2 max-w-xl" action="/quick-quote/" data-hero-ai>
           <span class="w-10 h-10 shrink-0 rounded-xl grid place-items-center bg-violet-600 text-white"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
-          <input name="details" required placeholder="Tell Max what you need…" aria-label="Tell Max what you need" class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] max-md:text-base text-zinc-900 dark:text-white placeholder:text-zinc-500" />
+          <input name="details" required placeholder="Describe your order: what, how many, by when" aria-label="Describe your order" data-hero-input class="flex-1 min-w-0 h-10 bg-transparent outline-none text-[15px] max-md:text-base text-zinc-900 dark:text-white placeholder:text-zinc-500" />
           <button class="btn-primary btn-sm" type="submit">Start<ArrowRight class="w-4 h-4" aria-hidden="true" /></button>
         </form>
         <div class="mt-3 flex flex-wrap gap-2 m-rail m-rail-auto">
           {aiPrompts.map((p) => <button type="button" class="chip !h-8 max-md:!h-9 !text-[12.5px] max-md:whitespace-nowrap" data-prompt={p}>{p}</button>)}
         </div>
         <div class="mt-4 sm:mt-6 flex flex-wrap gap-3 max-md:grid max-md:grid-cols-2 max-md:gap-2">
-          <a class="btn-quiet btn-sm max-md:h-11" href="/catalog/"><Package class="w-4 h-4" aria-hidden="true" />Browse products</a>
+          <a class="btn-quiet btn-sm max-md:h-11" href="/catalog/"><Package class="w-4 h-4" aria-hidden="true" />Shop products</a>
           <a class="btn-quiet btn-sm max-md:h-11" href="/quick-quote/">Request a quote</a>
         </div>
         <ul class="mt-5 sm:mt-8 flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1.5 sm:gap-y-2 text-[12.5px] sm:text-[13px] font-medium muted">
-          <li class="flex items-center gap-1.5"><BadgeCheck class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Quote within one business day</li>
+          <li class="flex items-center gap-1.5"><BadgeCheck class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Instant prices, or a quote within 1 business day</li>
           <li class="flex items-center gap-1.5"><Zap class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Rush &amp; Super Rush</li>
-          <li class="flex items-center gap-1.5"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Mon–Fri, 9am–5pm</li>
+          <li class="flex items-center gap-1.5"><Clock class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Free art proof on every order</li>
         </ul>
       </div>
 
@@ -290,10 +290,18 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   const heroForm = document.querySelector<HTMLFormElement>('[data-hero-ai]');
   if (heroForm) {
     const input = heroForm.querySelector('input')!;
-    document.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach((b) => b.addEventListener('click', () => { input.value = b.dataset.prompt!; input.focus(); }));
+    // With Max on, a suggestion starts the conversation right away; otherwise it fills the box.
+    const maxOn = () => document.documentElement.dataset.max === 'on' && !!document.querySelector('[data-max-sheet]');
+    document.querySelectorAll<HTMLButtonElement>('[data-prompt]').forEach((b) => b.addEventListener('click', () => {
+      if (maxOn()) { window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: b.dataset.prompt })); return; }
+      input.value = b.dataset.prompt!; input.focus();
+    }));
+    // The box speaks for Max once he's on.
+    const setPlaceholder = () => { if (maxOn()) input.placeholder = 'Tell Max what you need…'; };
+    setPlaceholder(); new MutationObserver(setPlaceholder).observe(document.documentElement, { attributes: true, attributeFilter: ['data-max'] });
     heroForm.addEventListener('submit', (e) => {
       // Max takes it from here (he falls back to the quote form if the shop can't be reached).
-      if (document.documentElement.dataset.max === 'on' && document.querySelector('[data-max-sheet]')) { e.preventDefault(); window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: input.value })); input.value = ''; }
+      if (maxOn()) { e.preventDefault(); window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: input.value })); input.value = ''; }
     });
   }
 </script>
