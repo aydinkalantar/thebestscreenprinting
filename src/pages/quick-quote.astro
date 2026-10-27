@@ -131,6 +131,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
 <script>
   import { garmentFor } from '../lib/quote';
+  import { prefillContact } from '../lib/contact';
   import { cartCount, cartPieces, onCartChange } from '../lib/cart';
   const cartBanner = document.getElementById('cart-banner') as HTMLAnchorElement;
   const showCartBanner = () => {
@@ -141,6 +142,8 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   showCartBanner();
   onCartChange(showCartBanner);
   const form = document.getElementById('quote-form') as HTMLFormElement;
+  // Details confirmed with Max (or a past order) are filled in.
+  if (form) prefillContact(form);
   const query = new URLSearchParams(location.search);
   const clean = (v: string | null, max = 120) => (v || '').replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max);
   const listParam = (k: string) => clean(query.get(k), 400).split(',').map((x) => x.trim()).filter(Boolean);

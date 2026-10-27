@@ -10,6 +10,7 @@ import { business } from '../data/business';
 import { openMax } from './max';
 import { setupVoice, type VoiceConfig } from './max-voice';
 import { startLiveCall, LiveUnavailable } from './max-live';
+import { getContact, saveContact, forgetContact, isEmail, type Contact } from './contact';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 interface CartLine extends PriceItemInput { productId?: string; slug?: string; image?: string; why?: string; name?: string }
@@ -19,6 +20,8 @@ type MaxEvent =
   | { type: 'cart'; items: CartLine[]; price?: PriceResponse; notes?: string[] }
   | { type: 'choices'; question?: string; options: { label: string; value: string }[] }
   | { type: 'handoff'; text?: string }
+  | ({ type: 'contact' } & Contact)
+  | { type: 'forget' }
   | { type: 'error'; text: string }
   | { type: 'done' };
 
@@ -67,6 +70,8 @@ if (sheet) {
     return {
       page, path,
       ...(f?.id ? { product: { id: f.id, name: f.name, brand: f.brand, style: f.style, color } } : {}),
+      // Confirmed details, so Max can greet by name and fill the order.
+      ...(getContact() ? { contact: getContact() } : {}),
       cart: cartItems().map((it) => ({ brand: it.brand, style: it.style, color: it.color, sizes: it.sizes, productName: it.name })),
       artwork: art.map(({ file, ink }) => ({ name: file.name, kind: ink.kind, ...(ink.kind === 'spot' ? { colors: ink.count } : {}), ...(ink.kind !== 'unknown' && !ink.vector ? { widthPx: ink.widthPx } : {}) })),
     };
@@ -168,6 +173,53 @@ if (sheet) {
     log.append(row); scroll();
   }
 
+  // Name, email and phone as Max heard them: the visitor checks (voice often mishears emails),
+  // confirms once, and they fill checkout and the quote form from then on.
+  function contactCard(heard: Contact) {
+    const prev = getContact() || {};
+    const box = el('div', 'rounded-2xl border border-violet-200 dark:border-violet-400/30 bg-violet-50/60 dark:bg-violet-500/10 p-3 grid gap-2');
+    box.append(el('p', 'text-[11px] font-bold uppercase tracking-[0.12em] text-violet-700 dark:text-violet-300', 'Your details · please check'));
+    const inputs: Record<string, HTMLInputElement> = {};
+    for (const [k, label, type, ac] of [['name', 'Name', 'text', 'name'], ['email', 'Email', 'email', 'email'], ['phone', 'Phone', 'tel', 'tel']] as const) {
+      const l = el('label', 'grid gap-1 text-[12px] font-semibold text-zinc-600 dark:text-zinc-300', label);
+      const i = el('input', 'field !h-10 !text-[15px]'); i.type = type; i.name = k; i.autocomplete = ac;
+      i.value = (heard[k] || prev[k] || '').trim();
+      // Spoken emails arrive as words: "ayden at tbsp dot la" → ayden@tbsp.la.
+      if (k === 'email' && !i.value.includes('@')) i.value = i.value.replace(/\s+at\s+/i, '@').replace(/\s+dot\s+/gi, '.').replace(/\s+/g, '').toLowerCase();
+      if (k === 'email') { i.inputMode = 'email'; i.autocapitalize = 'off'; i.spellcheck = false; }
+      inputs[k] = i; l.append(i); box.append(l);
+    }
+    const err = el('p', 'text-[12.5px] font-medium text-red-600 dark:text-red-400'); err.hidden = true;
+    const ok = el('button', 'btn-primary h-10 text-[14px]', 'Looks right'); ok.type = 'button';
+    box.append(err, ok);
+    ok.addEventListener('click', () => {
+      const c = { name: inputs.name.value, email: inputs.email.value, phone: inputs.phone.value, company: prev.company };
+      if (!c.name.trim()) { err.hidden = false; err.textContent = 'Please add your name.'; inputs.name.focus(); return; }
+      if (!isEmail(c.email)) { err.hidden = false; err.textContent = 'That email doesn’t look right. Please fix it.'; inputs.email.focus(); return; }
+      const saved = saveContact(c);
+      box.replaceWith(contactLine(saved));
+      void fetch(`${STUDIO_API}/api/public/max/contact`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ sessionId, contact: saved }) }).catch(() => {});
+      const note = `[details confirmed: name ${saved.name}, email ${saved.email}${saved.phone ? `, phone ${saved.phone}` : ''}]`;
+      if (call) call.sendText(note); else ask('My details are confirmed.');
+    });
+    log.append(box); scroll();
+    (inputs.email.value ? ok : inputs.name).focus({ preventScroll: true });
+  }
+  function contactLine(c: Contact) {
+    const row = el('div', 'flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px] muted');
+    row.append(el('span', 'font-semibold text-emerald-600 dark:text-emerald-400', '✓ Details saved'), el('span', '', [c.name, c.email, c.phone].filter(Boolean).join(' · ')));
+    const edit = el('button', 'font-semibold text-violet-700 dark:text-violet-300 hover:underline', 'Edit'); edit.type = 'button';
+    edit.addEventListener('click', () => { row.remove(); contactCard(c); });
+    const gone = el('button', 'font-semibold hover:underline', 'Forget me'); gone.type = 'button';
+    gone.addEventListener('click', () => { row.remove(); forget(); });
+    row.append(edit, gone);
+    return row;
+  }
+  function forget() {
+    forgetContact();
+    bubble('assistant', 'Done, I’ve removed your details from this device.');
+  }
+
   function handoffCard(e: Extract<MaxEvent, { type: 'handoff' }>) {
     if (e.text) bubble('assistant', e.text);
     const row = el('div', 'flex flex-wrap gap-2');
@@ -267,7 +319,8 @@ if (sheet) {
   function typing() { const t = el('div', 'max-bubble max-bot max-typing'); t.innerHTML = '<span></span><span></span><span></span>'; t.setAttribute('aria-label', 'Max is typing'); log.append(t); scroll(); return t; }
 
   function render(ev: MaxEvent) {
-    if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); else if (ev.type === 'error') bubble('assistant', ev.text);
+    if (ev.type === 'contact') contactCard(ev); else if (ev.type === 'forget') forget();
+    else if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); else if (ev.type === 'error') bubble('assistant', ev.text);
   }
 
   async function ask(text: string) {

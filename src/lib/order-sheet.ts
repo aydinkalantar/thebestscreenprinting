@@ -1,6 +1,7 @@
 // Behaviour for <OrderSheet />: fills it from a price answer, re-prices when delivery changes,
 // and sends the order (with artwork) to the studio, then goes to the card payment page.
 import { fetchPrices, money, placeOrder, type PriceItemInput, type PriceResponse, type Totals, type Turnaround } from './online';
+import { prefillContact, saveContact } from './contact';
 import { openSheet, wireSheet } from './sheet';
 import { attachAddressAutocomplete } from './address-autocomplete';
 
@@ -153,6 +154,7 @@ function wire(el: HTMLElement) {
     const res = await placeOrder(fd);
     if (res.ok) {
       label.textContent = 'Opening secure payment…';
+      saveContact({ name, email, phone: val('phone'), company: val('company') });
       try { localStorage.setItem(CHECKOUT_KEY, JSON.stringify({ orderNumber: res.orderNumber, email, cartIds: current.cartIds || [], at: Date.now() })); } catch { /* ignore */ }
       location.href = res.checkoutUrl;
       return;
@@ -178,6 +180,8 @@ export function openOrder(req: OrderRequest) {
   const el = sheet();
   if (!el) return;
   wire(el);
+  // Details the visitor already confirmed (with Max or a past order) are filled in.
+  prefillContact(el.querySelector<HTMLFormElement>('[data-os-form]')!);
   current = req;
   totals = req.price.totals;
   const { delivery, payment } = req.price;
