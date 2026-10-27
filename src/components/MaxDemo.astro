@@ -1,0 +1,167 @@
+---
+// Home page: how Max works, acted out. A scripted loop in a phone-style chat: tap "Talk to Max",
+// say what you need (live caption), Max answers out loud and lays out the product and a priced
+// order, a change updates the price, then Order & pay. The steps on the right light up in sync.
+// Plays only while on screen; prefers-reduced-motion shows the finished conversation.
+import { AudioLines, Sparkles, PhoneOff, Check, Mic } from '@lucide/astro';
+
+const steps = [
+  { n: 1, title: 'Tap Talk to Max', line: 'Or type, if you prefer. He listens on any phone or computer.' },
+  { n: 2, title: 'Say what you need', line: 'What, how many and by when. He picks the product, checks your logo and splits the sizes.' },
+  { n: 3, title: 'Get a real price', line: 'Change anything out loud, like a back print, and the price updates right away.' },
+  { n: 4, title: 'Pay or send as a quote', line: 'Order in one tap, or let our team take it from there. You approve a proof first.' },
+];
+---
+<div class="grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10" id="max-demo">
+  <!-- The phone -->
+  <div class="relative bg-zinc-100 dark:bg-white/[0.04] px-4 py-8 sm:p-10 grid place-items-center overflow-hidden">
+    <div class="absolute inset-x-10 top-10 bottom-10 rounded-full bg-violet-500/20 blur-3xl" aria-hidden="true"></div>
+    <div class="relative w-full max-w-[360px] h-[540px] rounded-[2rem] bg-white dark:bg-[#0d0d14] border border-zinc-200 dark:border-white/10 shadow-2xl flex flex-col overflow-hidden" aria-hidden="true">
+      <div class="shrink-0 flex items-center gap-2.5 px-4 py-3 border-b border-zinc-200/80 dark:border-white/10">
+        <span class="max-orb relative w-8 h-8 shrink-0" data-d-orb><Sparkles class="w-3.5 h-3.5" /></span>
+        <div class="leading-tight min-w-0"><p class="text-[14px] font-bold text-zinc-900 dark:text-white">Max</p><p class="text-[11px] muted truncate">Your merch agent</p></div>
+        <span class="ml-auto text-[10px] font-bold uppercase tracking-wider text-zinc-400">Example</span>
+      </div>
+
+      <div class="relative flex-1 overflow-hidden">
+        <div data-d-log class="absolute inset-x-0 bottom-0 px-3 pb-3 grid gap-2 content-end transition-transform duration-500"></div>
+        <!-- Start screen -->
+        <div data-d-start class="absolute inset-0 grid content-center gap-3 px-4 transition-opacity duration-300">
+          <p class="d-bot">Hey, I'm Max. Tell me what you're making and I'll help you pick, price and order it.</p>
+          <span data-d-cta class="relative flex items-center gap-3 rounded-2xl bg-violet-600 text-white px-4 py-3 shadow-lg shadow-violet-600/20 transition-transform duration-150">
+            <span class="relative grid place-items-center w-10 h-10 rounded-full bg-white/15 shrink-0"><span class="absolute inset-0 rounded-full bg-white/25 animate-ping"></span><AudioLines class="relative w-5 h-5" /></span>
+            <span class="leading-tight"><span class="block text-[15px] font-bold">Talk to Max</span><span class="block text-[12px] text-white/80">Tap and just say what you need</span></span>
+            <span data-d-tap class="absolute left-8 top-1/2 w-10 h-10 -mt-5 -ml-5 rounded-full bg-white/60 opacity-0"></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Call bar -->
+      <div data-d-call class="shrink-0 mx-3 mb-3 flex items-center gap-2.5 rounded-2xl bg-violet-50 dark:bg-violet-500/10 border border-violet-200/70 dark:border-violet-400/20 px-3 py-2 translate-y-3 opacity-0 transition-all duration-300">
+        <span class="d-wave" data-d-wave><i></i><i></i><i></i><i></i><i></i></span>
+        <p data-d-status class="flex-1 text-[13px] font-semibold text-zinc-900 dark:text-white">Listening…</p>
+        <span class="grid place-items-center w-8 h-8 rounded-full border border-zinc-200 dark:border-white/10 text-zinc-500"><Mic class="w-3.5 h-3.5" /></span>
+        <span class="inline-flex items-center gap-1 h-8 px-2.5 rounded-full bg-rose-600 text-white text-[12px] font-semibold"><PhoneOff class="w-3.5 h-3.5" />End</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div class="bg-violet-600 text-white p-8 sm:p-12 grid content-center">
+    <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-violet-200">What makes TBSP different</p>
+    <h2 class="mt-3 text-3xl sm:text-4xl font-bold">Talk to Max. He does the work.</h2>
+    <ol class="mt-6 grid gap-2">
+      {steps.map((s) => (
+        <li data-d-step={s.n} class="d-step flex gap-3 rounded-2xl px-3 py-2.5 transition-colors duration-300">
+          <span class="d-num grid place-items-center w-7 h-7 shrink-0 rounded-full border border-white/40 text-[13px] font-bold transition-colors duration-300">{s.n}</span>
+          <span><strong class="block text-[15.5px]">{s.title}</strong><span class="block text-[13.5px] text-violet-100 leading-6">{s.line}</span></span>
+        </li>
+      ))}
+    </ol>
+    <div class="mt-7 flex flex-wrap gap-3">
+      <a href="/quick-quote/" data-ask-ai class="btn bg-white text-violet-700 hover:bg-violet-50"><AudioLines class="w-4 h-4" aria-hidden="true" />Talk to Max</a>
+      <a href="/custom-projects/" class="btn border border-white/30 text-white hover:bg-white/10">See custom projects</a>
+    </div>
+  </div>
+</div>
+
+<template id="max-demo-product">
+  <div class="d-card flex gap-3 items-center rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2 pr-3">
+    <img src="https://cdn.ssactivewear.com/Images/Color/30067_f_fl.jpg" alt="" class="w-14 h-16 object-contain rounded-lg bg-zinc-50" loading="lazy" />
+    <div class="min-w-0 leading-tight"><p class="text-[13px] font-bold text-zinc-900 dark:text-white">Gildan 18500 Hoodie</p><p class="text-[11.5px] muted">Maroon · Logo on the chest</p><p class="mt-1 text-[11px] font-semibold text-emerald-600">Most popular for crews</p></div>
+  </div>
+</template>
+<template id="max-demo-cart">
+  <div class="d-card rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-3">
+    <div class="flex items-center justify-between text-[12.5px]"><span class="font-semibold text-zinc-900 dark:text-white">36 × Maroon hoodie</span><span data-d-price class="font-bold text-zinc-900 dark:text-white tabular-nums">$1,152.00</span></div>
+    <p data-d-lines class="mt-1 text-[11.5px] muted">Front print · S–2XL size split · Ready by the 12th</p>
+    <span data-d-pay class="relative mt-2.5 flex items-center justify-center gap-1.5 h-9 rounded-xl bg-violet-600 text-white text-[13px] font-semibold transition-transform duration-150"><svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Order &amp; pay<span data-d-tap class="absolute w-9 h-9 rounded-full bg-white/60 opacity-0"></span></span>
+  </div>
+</template>
+
+<style is:global>
+  #max-demo .d-bot, #max-demo .d-me { max-width: 86%; padding: 0.5rem 0.75rem; border-radius: 1rem; font-size: 13px; line-height: 1.45; }
+  #max-demo .d-bot { justify-self: start; background: rgb(244 244 245); color: rgb(24 24 27); border-bottom-left-radius: 0.3rem; }
+  #max-demo .d-me { justify-self: end; background: rgb(124 58 237); color: #fff; border-bottom-right-radius: 0.3rem; }
+  .dark #max-demo .d-bot { background: rgba(255,255,255,0.07); color: rgb(244 244 245); }
+  #max-demo .d-in { animation: d-in 0.35s ease-out both; }
+  @keyframes d-in { from { opacity: 0; transform: translateY(10px) scale(0.98); } }
+  #max-demo .d-wave { display: inline-flex; align-items: center; gap: 2px; width: 26px; height: 22px; }
+  #max-demo .d-wave i { flex: 1; height: 5px; border-radius: 9px; background: rgb(124 58 237); transition: height 0.2s; }
+  #max-demo .d-wave.is-on i { animation: d-wave 0.8s ease-in-out infinite; }
+  #max-demo .d-wave.is-on i:nth-child(2) { animation-delay: 0.1s; } #max-demo .d-wave.is-on i:nth-child(3) { animation-delay: 0.2s; }
+  #max-demo .d-wave.is-on i:nth-child(4) { animation-delay: 0.3s; } #max-demo .d-wave.is-on i:nth-child(5) { animation-delay: 0.15s; }
+  @keyframes d-wave { 50% { height: 20px; } }
+  #max-demo [data-d-orb].is-talking { animation: max-talk 0.9s ease-in-out infinite; }
+  @keyframes max-talk { 50% { transform: scale(1.12); } }
+  #max-demo .d-tapping { animation: d-tap 0.6s ease-out; }
+  @keyframes d-tap { 0% { opacity: 0.7; transform: scale(0.3); } 100% { opacity: 0; transform: scale(2.4); } }
+  #max-demo .d-step.is-on { background: rgba(255,255,255,0.12); }
+  #max-demo .d-step.is-on .d-num { background: #fff; color: rgb(109 40 217); border-color: #fff; }
+  #max-demo .d-flash { animation: d-flash 0.9s ease-out; }
+  @keyframes d-flash { 30% { color: rgb(16 185 129); transform: scale(1.08); } }
+</style>
+
+<script>
+  const root = document.getElementById('max-demo');
+  if (root && !root.dataset.ready) {
+    root.dataset.ready = '1';
+    const q = <T extends HTMLElement>(s: string, r: ParentNode = root) => r.querySelector<T>(s)!;
+    const log = q('[data-d-log]'), start = q('[data-d-start]'), cta = q('[data-d-cta]'), call = q('[data-d-call]');
+    const wave = q('[data-d-wave]'), status = q('[data-d-status]'), orb = q('[data-d-orb]');
+    const steps = [...root.querySelectorAll<HTMLElement>('[data-d-step]')];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let visible = false;
+    let run = 0;
+    const wait = (ms: number, id: number) => new Promise<void>((res, rej) => setTimeout(() => (id === run ? res() : rej(new Error('stop'))), reduce ? 0 : ms));
+    const step = (n: number) => steps.forEach((s) => s.classList.toggle('is-on', Number(s.dataset.dStep) === n));
+    const add = (node: HTMLElement) => { node.classList.add('d-in'); log.append(node); return node; };
+    const msg = (cls: string, text = '') => { const p = document.createElement('p'); p.className = cls; p.textContent = text; return add(p); };
+    const card = (id: string) => add((document.getElementById(id) as HTMLTemplateElement).content.firstElementChild!.cloneNode(true) as HTMLElement);
+    const tap = async (el: HTMLElement, id: number) => {
+      const r = q('[data-d-tap]', el); r.classList.remove('d-tapping'); void r.offsetWidth; r.classList.add('d-tapping');
+      el.style.transform = 'scale(0.97)'; await wait(160, id); el.style.transform = '';
+    };
+    async function type(p: HTMLElement, text: string, id: number, speed = 28) {
+      if (reduce) { p.textContent = text; return; }
+      for (const w of text.split(' ')) { p.textContent += (p.textContent ? ' ' : '') + w; await wait(speed * Math.max(3, w.length), id); }
+    }
+    const talking = (who: 'you' | 'max' | 'off') => {
+      wave.classList.toggle('is-on', who !== 'off');
+      orb.classList.toggle('is-talking', who === 'max');
+      status.textContent = who === 'max' ? 'Max is talking…' : 'Listening…';
+    };
+
+    async function scene(id: number) {
+      log.replaceChildren(); start.style.opacity = '1'; start.hidden = false;
+      call.classList.add('opacity-0', 'translate-y-3'); talking('off'); step(1);
+      await wait(1400, id);
+      await tap(cta, id); await wait(250, id);
+      start.style.opacity = '0'; await wait(250, id); start.hidden = true;
+      call.classList.remove('opacity-0', 'translate-y-3');
+      step(2); talking('you'); await wait(500, id);
+      await type(msg('d-me'), 'I need 36 hoodies for our crew, logo on the chest, by the 15th.', id);
+      await wait(500, id); talking('max');
+      await type(msg('d-bot'), 'Got it. The Gildan 18500 is our most popular for crews. Here’s your order with the real price, ready by the 12th.', id, 24);
+      card('max-demo-product'); await wait(700, id);
+      step(3); const cart = card('max-demo-cart'); talking('you'); await wait(1300, id);
+      await type(msg('d-me'), 'Add our name on the back.', id);
+      await wait(400, id); talking('max');
+      const price = q('[data-d-price]', cart), lines = q('[data-d-lines]', cart);
+      price.textContent = '$1,368.00'; price.classList.add('d-flash'); lines.textContent = 'Front + back print · S–2XL size split · Ready by the 12th';
+      await type(msg('d-bot'), 'Done. Back print added, the price is updated.', id, 24);
+      step(4); talking('off'); await wait(900, id);
+      await tap(q('[data-d-pay]', cart), id);
+      await wait(3200, id);
+    }
+    async function loop() {
+      const id = ++run;
+      try { for (;;) { await scene(id); if (reduce) return; } } catch { /* stopped */ }
+    }
+    if (reduce) loop();
+    else new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !visible) { visible = true; loop(); }
+      else if (!e.isIntersecting && visible) { visible = false; run++; }
+    }, { threshold: 0.25 }).observe(root);
+  }
+</script>
