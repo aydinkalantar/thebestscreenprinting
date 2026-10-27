@@ -39,7 +39,7 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
       </div>
     </div>
 
-    <div data-max-log class="flex-1 overflow-y-auto overscroll-contain px-4 py-4 grid gap-3 content-start" aria-live="polite">
+    <div data-max-log class="flex-1 overflow-y-auto overscroll-contain px-4 py-4 flex flex-col gap-3" aria-live="polite">
       <!-- Shown until the first message. -->
       <div data-max-intro class="grid gap-4">
         <div data-max-greeting class="max-bubble max-bot">Hi, I'm Max. Tell me what you need, like the product, how many and when, and I'll put together your order with real prices. You can also send me your logo and I'll check it.</div>
@@ -88,11 +88,11 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
 
 <style is:global>
   [data-max-sheet] [hidden] { display: none !important; }
-  /* Cards in the conversation never get squeezed (a scrolling row can collapse to 0 height in a grid). */
-  [data-max-log] > * { min-height: min-content; flex-shrink: 0; }
+  /* A plain column: messages and card rows keep their full height however long the chat gets. */
+  [data-max-log] > * { flex-shrink: 0; }
   .max-bubble { max-width: 88%; padding: 0.6rem 0.85rem; border-radius: 1.1rem; font-size: 14.5px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .max-bot { justify-self: start; background: rgb(244 244 245); color: rgb(24 24 27); border-bottom-left-radius: 0.35rem; }
-  .max-me { justify-self: end; background: rgb(124 58 237); color: #fff; border-bottom-right-radius: 0.35rem; }
+  .max-bot { align-self: flex-start; background: rgb(244 244 245); color: rgb(24 24 27); border-bottom-left-radius: 0.35rem; }
+  .max-me { align-self: flex-end; background: rgb(124 58 237); color: #fff; border-bottom-right-radius: 0.35rem; }
   .dark .max-bot { background: rgba(255,255,255,0.07); color: rgb(244 244 245); }
   [data-max-mic].is-on { background: rgb(225 29 72); color: #fff; border-color: transparent; box-shadow: 0 0 0 4px rgba(225,29,72,0.2); }
   [data-max-call-orb].is-talking { animation: max-talk 0.9s ease-in-out infinite; }

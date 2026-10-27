@@ -227,7 +227,12 @@ if (sheet) {
         },
         caption: (who, text, done) => {
           if (!text) return;
-          const b = live[who] || (live[who] = bubble(who, ''));
+          let b = live[who];
+          if (!b) {
+            b = live[who] = bubble(who, '');
+            // The visitor's words can finish transcribing after Max starts answering: keep them above his reply.
+            if (who === 'user' && live.assistant) live.assistant.before(b);
+          }
           b.textContent = text; scroll();
           if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); }
         },

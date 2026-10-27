@@ -172,6 +172,8 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents) {
       if (m.goAway) end('time');
     };
     on.status('listening');
+    // Newer studios hand a cue that makes Max say the admin greeting first, in the right language.
+    if (typeof t.start === 'string' && t.start) send({ realtimeInput: { text: t.start } });
     // The call can last 30 minutes.
     timer = window.setTimeout(() => end('time'), 29.5 * 60_000);
     // Hang up when nobody has spoken for a while, or the visitor leaves the tab (saves the line).
