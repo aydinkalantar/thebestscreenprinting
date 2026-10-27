@@ -32,6 +32,8 @@ export const business = {
   /** Minimum order for every decoration method. Everything is made in-house; we don't decorate fewer. */
   shopMinimum: 6,
   assistantName: 'Max',
+  /** Google Analytics 4 measurement ID (public). Only loads on the production host. */
+  gaId: 'G-MHYSRCDHB1',
   /**
    * Turnaround options shown across the site and offered on the quote form.
    * `time` is filled in once confirmed; until then pages say it's confirmed with the quote.

@@ -71,6 +71,18 @@ const schema = [localBusinessJsonLd, ...jsonLd];
         if (t) document.querySelectorAll('meta[name="theme-color"]').forEach((m) => { m.content = dark ? '#0a0a0f' : '#ffffff'; });
       } catch {}
     </script>
+    <!-- Google Analytics 4, production host only (staging and local previews don't count). -->
+    <script is:inline define:vars={{ gaId: business.gaId }}>
+      if (/(^|\.)thebestscreenprinting\.com$/.test(location.hostname)) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', gaId);
+        const s = document.createElement('script'); s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+        document.head.appendChild(s);
+      }
+    </script>
     {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body class="min-h-screen flex flex-col" data-home={Astro.url.pathname === '/' ? '' : undefined}>
