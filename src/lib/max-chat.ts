@@ -10,13 +10,14 @@ import { business } from '../data/business';
 import { openMax } from './max';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
-interface CartLine extends PriceItemInput { productId?: string; slug?: string; image?: string; why?: string }
+interface CartLine extends PriceItemInput { productId?: string; slug?: string; image?: string; why?: string; name?: string }
 type MaxEvent =
   | { type: 'text'; delta: string }
   | { type: 'products'; items: { id: string; slug: string; name: string; brand?: string; style?: string; image?: string; why?: string }[] }
   | { type: 'cart'; items: CartLine[]; price?: PriceResponse; notes?: string[] }
   | { type: 'choices'; question?: string; options: { label: string; value: string }[] }
   | { type: 'handoff'; text?: string }
+  | { type: 'error'; text: string }
   | { type: 'done' };
 
 const KEY = 'tbsp-max-v1';
@@ -82,6 +83,9 @@ if (sheet) {
     log.append(rail); scroll();
   }
 
+  /** A cart line as the price/order APIs take it. */
+  const forPrice = ({ productId: _a, slug: _b, image: _c, why: _d, name, ...x }: CartLine): PriceItemInput => ({ ...x, productName: x.productName || name });
+
   function cartCard(e: Extract<MaxEvent, { type: 'cart' }>) {
     const card = el('div', 'rounded-2xl border border-violet-300/60 dark:border-violet-400/25 bg-violet-500/[0.05] p-3.5 grid gap-3');
     card.append(el('p', 'text-[12px] font-bold uppercase tracking-[0.1em] text-violet-700 dark:text-violet-300', 'Your order, ready to go'));
@@ -90,7 +94,7 @@ if (sheet) {
       const row = el('div', 'flex gap-3');
       if (it.image) { const img = el('img', 'w-14 h-14 shrink-0 rounded-xl object-contain bg-white dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10'); img.src = it.image; img.alt = ''; row.append(img); }
       const info = el('div', 'min-w-0 flex-1 text-[13px] leading-snug');
-      const name = el(it.slug ? 'a' : 'p', 'block font-semibold text-zinc-900 dark:text-white hover:underline', it.productName || `${it.brand} ${it.style}`);
+      const name = el(it.slug ? 'a' : 'p', 'block font-semibold text-zinc-900 dark:text-white hover:underline', it.name || it.productName || `${it.brand} ${it.style}`);
       if (it.slug) (name as HTMLAnchorElement).href = `/catalog/${it.slug}/`;
       info.append(name);
       const qty = Object.values(it.sizes).reduce((a, b) => a + b, 0);
@@ -117,19 +121,19 @@ if (sheet) {
     const ok = !!pr?.totals && pr.items.every((x) => x.ok);
     pay.disabled = !ok;
     pay.addEventListener('click', async () => {
-      const res = await fetchPrices(e.items);
+      const res = await fetchPrices(e.items.map(forPrice));
       if (!res?.enabled || !res.totals || res.items.some((x) => !x.ok)) { bubble('assistant', 'Prices just changed, let me check again.'); return; }
       // The visitor's logo goes on each product's first location.
       const artwork: OrderArtwork[] = art.length ? e.items.map((it, i) => ({ itemIndex: i, placement: it.locations[0]?.placement || 'Front', file: art[0].file })) : [];
       const pieces = e.items.reduce((n, it) => n + Object.values(it.sizes).reduce((a, b) => a + b, 0), 0);
-      openOrder({ items: e.items.map(({ productId: _a, slug: _b, image: _c, why: _d, ...x }) => x), artwork, price: res, summary: `${e.items.length} product${e.items.length === 1 ? '' : 's'} · ${pieces} pieces` });
+      openOrder({ items: e.items.map(forPrice), artwork, price: res, summary: `${e.items.length} product${e.items.length === 1 ? '' : 's'} · ${pieces} pieces` });
     });
     add.addEventListener('click', async () => {
       add.disabled = true;
       try {
         for (const it of e.items) {
           await addToCart({
-            productId: it.productId || '', slug: it.slug || '', name: it.productName || `${it.brand} ${it.style}`, brand: it.brand, style: it.style, cat: '', sub: '',
+            productId: it.productId || '', slug: it.slug || '', name: it.name || it.productName || `${it.brand} ${it.style}`, brand: it.brand, style: it.style, cat: '', sub: '',
             image: it.image || '', url: it.slug ? `${location.origin}/catalog/${it.slug}/` : location.origin, color: it.color,
             sizeOrder: Object.keys(it.sizes), sizes: it.sizes,
             decorations: [...new Set(it.locations.map((l) => l.method))], locations: it.locations.map((l) => l.placement),
@@ -186,7 +190,9 @@ if (sheet) {
     let out: HTMLElement | null = null;
     try {
       const res = await fetch(`${STUDIO_API}/api/public/max`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ sessionId, messages, context: context() }) });
-      if (!res.ok || !res.body) throw new Error(String(res.status));
+      // Max switched off: the studio answers plain JSON instead of a stream.
+      if ((res.headers.get('content-type') || '').includes('application/json')) throw new Error('off');
+      if (!res.body || (!res.ok && res.status !== 429)) throw new Error(String(res.status));
       const reader = res.body.getReader();
       const dec = new TextDecoder();
       let buf = '';
@@ -202,7 +208,7 @@ if (sheet) {
           try { ev = JSON.parse(line); } catch { continue; }
           dots.remove();
           if (ev.type === 'text') { if (!out) out = bubble('assistant', ''); reply += ev.delta; out.textContent = reply; scroll(); }
-          else { out = null; if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); }
+          else { out = null; if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); else if (ev.type === 'error') bubble('assistant', ev.text); }
         }
       }
       dots.remove();
@@ -227,6 +233,18 @@ if (sheet) {
     input.value = '';
     if (text.trim()) ask(text);
   });
+
+  // Is Max on? (cached a minute) The desktop button only shows when he is.
+  (async () => {
+    const fab = document.querySelector<HTMLElement>('[data-max-fab]');
+    let on: boolean | null = null;
+    try { const c = JSON.parse(sessionStorage.getItem('tbsp-max-on') || 'null'); if (c && Date.now() - c.at < 60_000) on = c.on; } catch { /* ignore */ }
+    if (on === null) {
+      on = await fetch(`${STUDIO_API}/api/public/max`).then((r) => (r.ok ? r.json() : { enabled: false })).then((d) => !!d.enabled).catch(() => false);
+      try { sessionStorage.setItem('tbsp-max-on', JSON.stringify({ on, at: Date.now() })); } catch { /* ignore */ }
+    }
+    if (fab && !on) fab.style.display = 'none';
+  })();
 
   // Restore an earlier conversation in this tab (text only).
   if (messages.length) { intro.hidden = true; reset.hidden = false; for (const m of messages) bubble(m.role, m.content); }

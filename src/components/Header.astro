@@ -9,9 +9,9 @@ import { collectionTiles, brandTiles, styles } from './home/collections';
 import { Search, Phone, Sparkles, Moon, Sun, Menu, ChevronDown, ArrowRight, Wand2, Upload, Type, MessageSquareText, User, ShoppingBag, X, ClipboardList } from '@lucide/astro';
 const here = Astro.url.pathname;
 const aiHref = '/quick-quote/';
-// Max lives in the studio, so it is only offered while the studio is live.
-const max = business.studioLive;
-const nav = NAV.filter((m) => max || m.feature !== 'ai');
+// Max is on every page; the design studio menu only while the studio is live.
+const max = business.maxLive;
+const nav = NAV.filter((m) => business.studioLive || m.feature !== 'ai');
 const menuBrands = brandTiles(8);
 // Announcement bar: short selling points that take turns (static for reduced motion).
 const promos = [
@@ -240,10 +240,17 @@ const promos = [
     }));
   }
 
-  // "Ask Max": opens the assistant panel when it's on the page, otherwise follows the link.
-  document.querySelectorAll<HTMLAnchorElement>('[data-ask-ai]').forEach((a) => a.addEventListener('click', (e) => {
+  // "Ask Max": opens Max's panel (or the studio assistant when that's on the page), otherwise follows the link.
+  const askMax = (text = '') => {
     const open = document.querySelector<HTMLButtonElement>('#tb-assistant [data-open]');
-    if (open) { e.preventDefault(); if (drawer) closeSheet(drawer); open.click(); }
+    if (open) { open.click(); return true; }
+    if (!document.querySelector('[data-max-sheet]')) return false;
+    window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: text }));
+    return true;
+  };
+  document.querySelectorAll<HTMLAnchorElement>('[data-ask-ai]').forEach((a) => a.addEventListener('click', (e) => {
+    if (drawer) closeSheet(drawer);
+    if (askMax()) e.preventDefault();
   }));
 
   // Search + AI box. Each word must appear in the title or hidden keywords; products rank first,
@@ -287,8 +294,8 @@ const promos = [
       box.innerHTML = list ? list + `<div class="mt-2 pt-2 border-t border-zinc-200/80 dark:border-white/10">${ai}</div>` : ai;
       box.classList.remove('hidden');
       box.querySelector<HTMLAnchorElement>('[data-ai-row]')?.addEventListener('click', (e) => {
-        const open = document.querySelector<HTMLButtonElement>('#tb-assistant [data-open]');
-        if (open) { e.preventDefault(); box.classList.add('hidden'); open.click(); }
+        if (form.closest('[data-search-sheet]')) closeSheet(form.closest<HTMLElement>('[data-search-sheet]')!);
+        if (askMax(q)) { e.preventDefault(); box.classList.add('hidden'); input.value = ''; }
       });
     };
     input.addEventListener('input', render);
@@ -299,7 +306,9 @@ const promos = [
       e.preventDefault();
       const q = input.value.trim(); if (!q) return;
       const best = rank(await load(), q)[0];
-      location.href = best ? best.u : aiLink(q);
+      if (best) { location.href = best.u; return; }
+      if (form.closest('[data-search-sheet]')) closeSheet(form.closest<HTMLElement>('[data-search-sheet]')!);
+      if (!askMax(q)) location.href = aiLink(q);
     });
   });
 

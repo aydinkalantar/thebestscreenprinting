@@ -148,23 +148,23 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     </ul>
   </section>
 
-  <!-- AI full-service banner (only while the studio, where Max lives, is live) -->
-  {business.studioLive && <section class="wrap mt-20 scroll-mt-40" id="max">
+  <!-- Max, the merch agent: what makes TBSP different -->
+  {business.maxLive && <section class="wrap mt-20 scroll-mt-40" id="max">
     <div class="grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10">
       <div class="relative bg-zinc-100 dark:bg-white/[0.04] p-8 sm:p-10 grid gap-3 content-center">
         {[
           { who: 'you', t: 'I need 36 hoodies for our crew, logo on the chest, by the 15th.' },
-          { who: 'ai', t: 'Got it. Heavy Blend hoodie in black, logo screen printed on the chest. 36 pieces qualifies for in-shop pricing. Want me to send it to the team for a quote?' },
-          { who: 'you', t: 'Yes, and add our name on the back.' },
-          { who: 'ai', t: 'Done. Back print added, quote request sent. A real person will confirm within one business day.' },
+          { who: 'ai', t: 'Got it. Black heavyweight hoodie, your logo on the chest, with a size split for 36 people. Here is your order with the real price, ready by the 12th.' },
+          { who: 'you', t: 'Add our name on the back.' },
+          { who: 'ai', t: 'Done, back print added and the price updated. Tap Order & pay, or I can send it to our team as a quote.' },
         ].map((m) => (
           <p class:list={['max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] leading-6', m.who === 'you' ? 'justify-self-end bg-violet-600 text-white rounded-br-md' : 'bg-white dark:bg-[#0d0d14] text-zinc-800 dark:text-zinc-200 border border-zinc-200/80 dark:border-white/10 rounded-bl-md']}>{m.t}</p>
         ))}
       </div>
       <div class="bg-violet-600 text-white p-8 sm:p-12 grid content-center">
         <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-violet-200">What makes TBSP different</p>
-        <h2 class="mt-3 text-3xl sm:text-4xl font-bold">A full-service agent that works for you</h2>
-        <p class="mt-4 text-violet-100 leading-7">Max doesn't just hand you a design tool. It asks the right questions, recommends the garment and print method, places your logo, sketches ideas when you don't have one yet, and builds your quote. Then our team takes it from there.</p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold">Max, your merch agent, does the work for you</h2>
+        <p class="mt-4 text-violet-100 leading-7">Tell Max what you need. He picks the product and print method, checks your logo, splits the sizes, plans your deadline and builds a priced order you can pay for in one tap. Real people print it, and you approve a proof first.</p>
         <div class="mt-7 flex flex-wrap gap-3">
           <a href="/quick-quote/" data-ask-ai class="btn bg-white text-violet-700 hover:bg-violet-50"><Sparkles class="w-4 h-4" aria-hidden="true" />Ask Max</a>
           <a href="/custom-projects/" class="btn border border-white/30 text-white hover:bg-white/10">See custom projects</a>

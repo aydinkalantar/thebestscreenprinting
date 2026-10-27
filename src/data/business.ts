@@ -27,6 +27,8 @@ export const business = {
   studioUrl: 'https://design.thebestscreenprinting.com',
   // Off until the studio is ready for production: hides every link to it, and Max.
   studioLive: false,
+  // Max, the merch agent, on this site (chat panel; his brain runs in the studio admin).
+  maxLive: true,
   /** Minimum order for every decoration method. Everything is made in-house; we don't decorate fewer. */
   shopMinimum: 6,
   assistantName: 'Max',

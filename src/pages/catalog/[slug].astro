@@ -201,8 +201,8 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
       )}
 
       <div class="mt-8 grid gap-3 sm:grid-cols-2">
-        {!business.studioLive && (
-          <div class="panel p-4 flex gap-3"><Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><p class="text-[13px] muted">Online design is coming soon. Until then, send your artwork with a quote request.</p></div>
+        {business.maxLive && (
+          <button type="button" data-max-open class="panel p-4 flex gap-3 text-left hover:border-violet-300 dark:hover:border-violet-400/40"><Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><span class="text-[13px] muted"><b class="text-zinc-900 dark:text-white">Not sure about sizes, colors or print?</b> Ask Max, your merch agent. He'll set it up with real prices.</span></button>
         )}
         <div class="panel p-4 flex gap-3"><Users class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><p class="text-[13px] muted">Orders start at {min} pieces. Bigger runs bring the price per piece down.</p></div>
       </div>
