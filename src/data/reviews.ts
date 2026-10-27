@@ -14,4 +14,4 @@ export const reviews: Review[] = [
   { name: 'Lena D.', tag: 'Rush order', text: 'Asked them to rush my order and wow they delivered! Shirts were good quality, print was clear, and everyone absolutely loved how the shirts turned out!' },
 ];
 
-export const reviewsUrl = 'https://www.google.com/search?q=The+Best+Screen+Printing+%26+Embroidery+Los+Angeles+reviews';
+export const reviewsUrl = 'https://share.google/py2WLPijsVy5dXKU9';
