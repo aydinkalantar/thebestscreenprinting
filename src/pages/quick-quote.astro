@@ -192,6 +192,11 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       locations.length ? `Print: ${locations.join(', ')}.` : '',
     ].filter(Boolean).join(' ');
     (form.elements.namedItem('details') as HTMLTextAreaElement).value = `${summary}\n`;
+    // The product itself, for the order the request creates in the admin.
+    const meta = document.createElement('input');
+    meta.type = 'hidden'; meta.name = 'product';
+    meta.value = JSON.stringify({ productName: product, brand: clean(query.get('brand'), 60) || undefined, style: style || undefined, color: color || undefined, sizes: Object.fromEntries(sizes.map((x) => [x.size, x.n])) });
+    form.append(meta);
 
     const card = document.getElementById('product-summary')!;
     const set = (k: string, v: string) => { card.querySelector<HTMLElement>(`[data-s="${k}"]`)!.textContent = v; };

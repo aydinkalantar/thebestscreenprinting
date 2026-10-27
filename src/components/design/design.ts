@@ -800,6 +800,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       const fd = new FormData(form);
       fd.set('garment', garmentFor(o.cat, o.sub, o.name));
       fd.set('quantity', String(o.total));
+      // The product itself, for the order this request creates in the admin.
+      fd.set('product', JSON.stringify({ productName: o.name, brand: o.brand || undefined, style: o.style || undefined, color: o.color || undefined, sizes: Object.fromEntries(o.sizes.map((s) => [s.size, s.n])), url: o.url }));
       for (const d of new Set(list.map((a) => a.decoration))) fd.append('decorations', d);
       fd.set('details', details(o, list));
       let bytes = 0;

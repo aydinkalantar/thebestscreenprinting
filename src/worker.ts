@@ -26,6 +26,28 @@ interface Env {
 /** Minimal Workers execution context: work that may finish after the response. */
 interface Ctx { waitUntil(p: Promise<unknown>): void }
 
+/** The `product` field a product page sends with a single-product request (sizes as { size: count }). */
+function parseProduct(raw: FormDataEntryValue | null) {
+  if (typeof raw !== 'string' || raw.length > 4000) return null;
+  try {
+    const p = JSON.parse(raw) as Record<string, unknown>;
+    const str = (v: unknown, n: number) => (typeof v === 'string' && v.trim() ? v.trim().slice(0, n) : undefined);
+    const productName = str(p.productName, 200);
+    if (!productName) return null;
+    const sizes: Record<string, number> = {};
+    if (p.sizes && typeof p.sizes === 'object') {
+      for (const [k, v] of Object.entries(p.sizes as Record<string, unknown>).slice(0, 30)) {
+        const n = Math.floor(Number(v));
+        if (k.length <= 16 && n > 0 && n <= 100000) sizes[k] = n;
+      }
+    }
+    const url = str(p.url, 300);
+    return { productName, brand: str(p.brand, 60), style: str(p.style, 40), color: str(p.color, 60), ...(Object.keys(sizes).length ? { sizes } : {}), ...(url && url.startsWith('https://') ? { url } : {}) };
+  } catch {
+    return null;
+  }
+}
+
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
 
@@ -160,6 +182,8 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
     intakeArt.push({ name, file: base, type: value.type || 'application/octet-stream', data, ...(itemKey ? { itemIndex } : {}) });
   }
   const placements = items.length ? [] : parsePlacements(form.get('placements'));
+  /** Single-product requests: which product, color and sizes (the cart sends this per item). */
+  const product = items.length ? null : parseProduct(form.get('product'));
 
   if (!env.RESEND_API_KEY) {
     return json({ error: `Online quotes are not switched on yet. Please call ${business.phoneDisplay} or email ${business.email}.`, fallback: true }, 503);
@@ -205,7 +229,7 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
         method: 'POST',
         headers: { 'content-type': 'application/json', authorization: `Bearer ${env.STUDIO_INTAKE_SECRET}` },
         body: JSON.stringify({
-          ref, quote: q, artwork: artworkNames, placements,
+          ref, quote: q, artwork: artworkNames, placements, ...(product ? { product } : {}),
           mockupFiles: intakeMockups,
           // The files themselves, so the admin can make mockups without opening the email.
           artworkFiles: intakeArt.map(({ file, itemIndex, ...a }) => {
