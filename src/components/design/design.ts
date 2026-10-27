@@ -164,7 +164,40 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   /** A location's print area on a photo (fractions of the photo) and its size in inches. */
   const placed = (sp: DesignSpot, url = photoFor(sp.side)): Placed =>
     layout(sp.side, url)?.get(sp.id) ?? templateRect(sp, DEFAULT_BOX, aspects.get(url) ?? 0.8);
-  const areaRect = (sp: DesignSpot, url: string): Box => placed(sp, url);
+  /**
+   * Where the visitor dragged a print area to on a photo (when our estimate sat wrong, e.g. over a
+   * pocket). Only the spot on the photo moves: the area keeps its maximum print size and stays on
+   * the garment, so artwork can never end up somewhere we can't print.
+   */
+  const shifts = new Map<string, { dx: number; dy: number }>();
+  const garmentBox = (url: string): Box => cfg.place?.overrides?.['*']?.box ?? boxes.get(url) ?? DEFAULT_BOX;
+  const areaRect = (sp: DesignSpot, url: string): Box => {
+    const p = placed(sp, url);
+    const s = shifts.get(`${sp.id}|${url}`);
+    if (!s) return p;
+    const g = garmentBox(url);
+    return {
+      ...p,
+      // Sideways only a little, so it stays on the body and off the sleeves.
+      x: clamp(p.x + s.dx, Math.max(Math.min(p.x, g.x), p.x - p.w * 0.25), Math.min(Math.max(p.x, g.x + g.w - p.w), p.x + p.w * 0.25)),
+      // Up to 4" higher or 6" lower than our estimate, and never off the garment.
+      y: clamp(p.y + s.dy, Math.max(Math.min(p.y, g.y), p.y - (4 * p.h) / p.hIn), Math.min(Math.max(p.y, g.y + g.h - p.h), p.y + (6 * p.h) / p.hIn)),
+    };
+  };
+  /** How far the visitor moved a location's area on the photo, in inches (for the order notes). */
+  const movedIn = (sp: DesignSpot, url = photoFor(sp.side)) => {
+    const s = shifts.get(`${sp.id}|${url}`);
+    if (!s) return null;
+    const p = placed(sp, url), r = areaRect(sp, url);
+    const dx = ((r.x - p.x) / p.w) * p.wIn, dy = ((r.y - p.y) / p.h) * p.hIn;
+    return Math.abs(dx) < 0.25 && Math.abs(dy) < 0.25 ? null : { dx, dy };
+  };
+  const movedText = (sp: DesignSpot) => {
+    const m = movedIn(sp);
+    if (!m) return '';
+    const parts = [Math.abs(m.dy) >= 0.25 && `${inch(Math.abs(m.dy))} ${m.dy < 0 ? 'up' : 'down'}`, Math.abs(m.dx) >= 0.25 && `${inch(Math.abs(m.dx))} ${m.dx < 0 ? 'left' : 'right'}`].filter(Boolean);
+    return `customer moved the print area ${parts.join(' and ')} on the photo (check the mockup)`;
+  };
   /** Print-area size in inches on the photo being shown (smaller than the maximum on small garments). */
   const dims = (sp: DesignSpot) => { const p = placed(sp); return { wIn: p.wIn, hIn: p.hIn }; };
   const ratio = (a: Art, sp: DesignSpot) => { const d = dims(sp); return (a.aspect * d.wIn) / d.hIn; }; // art height / width, in print-area fractions
@@ -336,6 +369,15 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   stage.addEventListener('pointerdown', (e) => { if (!(e.target as HTMLElement).closest('[data-clean]')) setClean(false); });
   root.querySelector('[data-chips]')?.addEventListener('click', () => setClean(false));
 
+  const moved = q('[data-moved]');
+  q('[data-reset-area]').addEventListener('click', () => {
+    const sp = spotById.get(active);
+    if (!sp) return;
+    shifts.delete(`${sp.id}|${photoFor(sp.side)}`);
+    render();
+    announce(`${sp.label} print area back to the standard spot.`);
+  });
+
   function renderPanel() {
     const sp = spotById.get(active);
     if (!sp) return;
@@ -349,6 +391,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (a) {
       panel.file.textContent = a.kind === 'file' ? `${a.file.name} (preview not available, we'll use the file)` : a.file.name;
       panel.readout.textContent = describe(a);
+      moved.hidden = !movedIn(sp);
       // Only the decorations allowed on this location.
       const allowed = allowedFor(sp.id);
       [...panel.decoration.options].forEach((o) => { o.hidden = o.disabled = !allowed.includes(o.value); });
@@ -464,7 +507,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   chips.forEach((c) => c.addEventListener('click', () => select(c.dataset.loc!)));
 
   // ── drag, resize, keyboard ─────────────────────────────────────────────────
-  let drag: null | { a: Art; mode: 'move' | 'resize'; id: number; px: number; py: number; x: number; y: number; r: DOMRect } = null;
+  let drag: null | { a: Art; mode: 'move' | 'resize'; id: number; px: number; py: number; x: number; y: number; r: DOMRect; L: DOMRect; A0: Box } = null;
   layer.addEventListener('pointerdown', (e) => {
     const target = e.target as HTMLElement;
     const el = target.closest<HTMLElement>('.d-art');
@@ -475,7 +518,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (active !== a.loc) { active = a.loc; render(); }
     el.focus({ preventScroll: true });
     const r = el.parentElement!.getBoundingClientRect();
-    drag = { a, mode: target.closest('[data-handle]') ? 'resize' : 'move', id: e.pointerId, px: e.clientX, py: e.clientY, x: a.x, y: a.y, r };
+    drag = { a, mode: target.closest('[data-handle]') ? 'resize' : 'move', id: e.pointerId, px: e.clientX, py: e.clientY, x: a.x, y: a.y, r, L: layer.getBoundingClientRect(), A0: areaRect(spotById.get(a.loc)!, photoFor(side)) };
     el.setPointerCapture(e.pointerId);
   });
   layer.addEventListener('pointermove', (e) => {
@@ -483,8 +526,23 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     const { a, r } = drag;
     const sp = spotById.get(a.loc)!;
     if (drag.mode === 'move') {
-      a.x = clamp(drag.x + (e.clientX - drag.px) / r.width, 0, 1 - a.w);
-      a.y = clamp(drag.y + (e.clientY - drag.py) / r.height, 0, Math.max(0, 1 - artH(a)));
+      // Inside the area the artwork moves; pushed past an edge, the whole area follows (on the garment).
+      const { L, A0 } = drag;
+      const url = photoFor(side), key = `${sp.id}|${url}`;
+      const ax = A0.x + drag.x * A0.w + (e.clientX - drag.px) / L.width;
+      const ay = A0.y + drag.y * A0.h + (e.clientY - drag.py) / L.height;
+      const maxX = Math.max(0, 1 - a.w), maxY = Math.max(0, 1 - artH(a));
+      const nx = (ax - A0.x) / A0.w, ny = (ay - A0.y) / A0.h;
+      const over = { x: nx < 0 ? nx : nx > maxX ? nx - maxX : 0, y: ny < 0 ? ny : ny > maxY ? ny - maxY : 0 };
+      if (over.x || over.y) {
+        const base = placed(sp, url);
+        shifts.set(key, { dx: A0.x - base.x + over.x * A0.w, dy: A0.y - base.y + over.y * A0.h });
+      }
+      const R = areaRect(sp, url);
+      a.x = clamp((ax - R.x) / R.w, 0, maxX);
+      a.y = clamp((ay - R.y) / R.h, 0, maxY);
+      const areaEl = a.el?.parentElement;
+      if (areaEl) Object.assign(areaEl.style, { left: `${R.x * 100}%`, top: `${R.y * 100}%` });
     } else {
       const fromX = (e.clientX - r.left) / r.width - a.x;
       const fromY = ((e.clientY - r.top) / r.height - a.y) / ratio(a, sp);
@@ -767,7 +825,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       `Sizes: ${sizes} (${o.total} pieces)`,
       '',
       'Artwork placed in the design preview:',
-      ...list.map((a, i) => `${i + 1}. ${spotById.get(a.loc)!.label} · ${a.decoration} · ${a.file.name} · ${sizeText(a)}${a.notes ? ` · ${a.notes}` : ''}`),
+      ...list.map((a, i) => { const sp = spotById.get(a.loc)!; const mv = movedText(sp); return `${i + 1}. ${sp.label} · ${a.decoration} · ${a.file.name} · ${sizeText(a)}${mv ? ` · ${mv}` : ''}${a.notes ? ` · ${a.notes}` : ''}`; }),
       '',
       `Page: ${o.url}`,
     ].filter((l) => l !== false && l !== undefined).join('\n');
@@ -816,7 +874,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
         return {
           location: spotById.get(a.loc)!.label, decoration: a.decoration, file: a.file.name,
           widthIn: r1(m.widthIn), heightIn: r1(m.heightIn), fromTopIn: r1(m.fromTopIn), fromCenterIn: r1(m.fromCenterIn),
-          notes: a.notes || undefined,
+          notes: [a.notes, movedText(spotById.get(a.loc)!)].filter(Boolean).join(' · ') || undefined,
         };
       })));
       for (const m of await mockups(MAX_TOTAL_BYTES - bytes - 150_000)) fd.append(`mockup_${m.side}`, m.blob, `mockup-${m.side}.png`);
@@ -872,7 +930,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     snapshot: () => ordered().map((a) => {
       const m = measure(a);
       return {
-        locId: a.loc, location: spotById.get(a.loc)!.label, decoration: a.decoration, notes: a.notes || undefined,
+        locId: a.loc, location: spotById.get(a.loc)!.label, decoration: a.decoration, notes: [a.notes, movedText(spotById.get(a.loc)!)].filter(Boolean).join(' · ') || undefined,
         file: a.file.name, blob: new File([a.file], a.file.name, { type: TYPES[a.ext] || a.file.type || '' }) as Blob,
         widthIn: r1(m.widthIn), heightIn: r1(m.heightIn), fromTopIn: r1(m.fromTopIn), fromCenterIn: r1(m.fromCenterIn),
         x: a.x, y: a.y, w: a.w,

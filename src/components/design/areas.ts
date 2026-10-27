@@ -89,7 +89,7 @@ export const PLACEMENT: Record<string, Record<string, Offset>> = {
   // Polos: the full front sits below the placket, the chest prints beside it.
   polo: { ...FRONT_TEE, front: { dy: 8 }, 'left-chest': { dy: 5, dx: 4 }, 'right-chest': { dy: 5, dx: -4 }, back: { dy: 5 }, 'back-neck': { dy: 2.5 }, 'left-sleeve': { dy: 0, sleeve: 'short' }, 'right-sleeve': { dy: 0, sleeve: 'short' } },
   // Hoodies: the front print sits below the drawstrings.
-  hoodie: { ...FRONT_TEE, front: { dy: 4.5 }, back: { dy: 4 }, 'left-sleeve': { dy: 0, sleeve: 'long' }, 'right-sleeve': { dy: 0, sleeve: 'long' } },
+  hoodie: { ...FRONT_TEE, front: { dy: 2 }, back: { dy: 4 }, 'left-sleeve': { dy: 0, sleeve: 'long' }, 'right-sleeve': { dy: 0, sleeve: 'long' } },
   zip: { ...FRONT_TEE, back: { dy: 4 }, 'left-sleeve': { dy: 0, sleeve: 'long' }, 'right-sleeve': { dy: 0, sleeve: 'long' } },
   tank: { ...FRONT_TEE, front: { dy: 2 }, 'left-chest': { dy: 2.5, dx: 3.5 }, 'right-chest': { dy: 2.5, dx: -3.5 }, back: { dy: 2.5 } },
 };
