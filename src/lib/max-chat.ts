@@ -10,7 +10,7 @@ import { business } from '../data/business';
 import { openMax } from './max';
 import { setupVoice, type VoiceConfig } from './max-voice';
 import { renderOnProduct, type RenderResult } from './max-render';
-import { startLiveCall, LiveUnavailable } from './max-live';
+import { startLiveCall, prefetchToken, LiveUnavailable } from './max-live';
 import { getContact, saveContact, forgetContact, isEmail, type Contact } from './contact';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
@@ -387,9 +387,16 @@ if (sheet) {
     const x = (await index)[pid];
     return x ? { slug: x[0], name: x[1], image: x[2] } : undefined;
   }
+  const placementCards = new Map<string, { sig: string; el: HTMLElement }>();
   function placementCard(e: Extract<MaxEvent, { type: 'placement' }>) {
     const a = artById(e.artId) ?? (art.length === 1 ? art[0] : undefined);
     if (!a) return;
+    // One card per design, product and spot: a repeat is skipped, a change replaces the old card.
+    const key = `${a.id}|${e.productId || ''}|${e.placement.toLowerCase()}`;
+    const sig = `${e.method}|${e.colors ?? ''}|${e.widthIn ?? ''}`;
+    const prev = placementCards.get(key);
+    if (prev?.sig === sig && prev.el.isConnected) return;
+    prev?.el.remove();
     const here = document.getElementById('add-to-quote')?.dataset;
     const pid = e.productId || here?.id || '';
     if (!placedOn.has(pid)) placedOn.set(pid, new Map());
@@ -404,6 +411,7 @@ if (sheet) {
     info.append(el('p', 'font-semibold text-zinc-900 dark:text-white truncate', a.file.name), el('p', 'muted', what));
     card.append(pic, info);
     log.append(card); scroll();
+    placementCards.set(key, { sig, el: card });
     if (here?.id && here.id === pid) {
       // On this product's page: place it on the preview right away.
       window.dispatchEvent(new CustomEvent('tbsp-max-place', { detail: { file: a.file, location: e.placement, method: e.method, widthIn: e.widthIn } }));
@@ -506,6 +514,10 @@ if (sheet) {
     if (liveOn) { if (!call && !calling) void beginCall(); }
     else if (voice.canListen) voice.listen();
   });
+  // Get the call token ready while the visitor reaches for a Max button (saves a second or two).
+  const warm = (e: Event) => { if (liveOn && !call && !calling && (e.target as Element)?.closest?.('[data-max-open],[data-hero-talk],[data-max-call-cta],[data-max-mic],[data-search-max],[data-ask-ai]')) prefetchToken(context); };
+  document.addEventListener('pointerover', warm, { passive: true });
+  document.addEventListener('focusin', warm);
   window.addEventListener('tbsp-max-open', () => { if (liveOn && talkFirst && !prefersChat() && !call && !calling) void beginCall(true); });
   sheet.querySelector('[data-max-to-chat]')?.addEventListener('click', () => {
     setMode('chat'); endCall();
