@@ -25,6 +25,8 @@ type MaxEvent =
   | { type: 'handoff'; text?: string }
   | ({ type: 'contact' } & Contact)
   | { type: 'forget' }
+  /** Max's own view of what's settled (products, colors, design, sizes, price, pay). */
+  | { type: 'progress'; done: string[] }
   | { type: 'placement'; artId: string; productId?: string; placement: string; method: string; colors?: number; widthIn?: number }
   | { type: 'error'; text: string }
   | { type: 'done' };
@@ -564,7 +566,7 @@ if (sheet) {
             if (who === 'user' && live.assistant) live.assistant.before(b);
           }
           b.textContent = text; scroll();
-          if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); }
+          if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); trackText(text, who); }
         },
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
       }, Date.now() - lastAt < 3 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'), Date.now() - lastCallEnd > 15 * 60_000);
@@ -612,7 +614,18 @@ if (sheet) {
     },
     reset() { this.done.clear(); if (stepRow) { stepRow.hidden = true; stepRow.querySelectorAll('.is-done').forEach((li) => li.classList.remove('is-done')); } },
   };
+  // The conversation settles steps before any card shows (colors said out loud, a size split agreed),
+  // so Max's replies are read for them too. Steps only ever move forward.
+  const COLOR = /\b(black|white|navy|red|royal|blue|grey|gray|heather|maroon|green|forest|kelly|yellow|gold|orange|pink|purple|brown|tan|sand|natural|cream|charcoal|olive|teal|aqua|burgundy|cardinal|silver)\b/i;
+  function trackText(text: string, who: 'user' | 'assistant') {
+    const t = text.toLowerCase();
+    if (!steps.done.has('products')) return;
+    if (COLOR.test(t)) steps.mark('colors');
+    if (who === 'assistant' && /\b(small|medium|large|xl)\b.*\b(medium|large|xl|2xl)\b/.test(t)) steps.mark('sizes');
+    if (who === 'assistant' && /(\$\d|\bdollars?\b)/.test(t) && /(total|subtotal|each|per)/.test(t)) steps.mark('price');
+  }
   function trackSteps(ev: MaxEvent) {
+    if (ev.type === 'progress') { steps.mark(...ev.done.map((d) => d.toLowerCase()).filter((d) => ['products', 'colors', 'design', 'sizes', 'price', 'pay'].includes(d))); return; }
     if (ev.type === 'products') steps.mark('products');
     else if (ev.type === 'placement') steps.mark('products', 'design');
     else if (ev.type === 'cart') {
@@ -635,7 +648,7 @@ if (sheet) {
     text = text.trim();
     // On a call, typed text and tapped choices go to Max live.
     if (text && (call || calling)) {
-      bubble('user', text); messages.push({ role: 'user', content: text }); save();
+      bubble('user', text); messages.push({ role: 'user', content: text }); save(); trackText(text, 'user');
       // Still connecting: it goes over as soon as the call is up.
       if (call) call.sendText(text); else queued.push(text);
       return;
@@ -643,7 +656,7 @@ if (sheet) {
     if (!text || busy) return;
     busy = true; send.disabled = true;
     intro.hidden = true; reset.hidden = false;
-    if (!shown) { bubble('user', text); messages.push({ role: 'user', content: text }); save(); }
+    if (!shown) { bubble('user', text); messages.push({ role: 'user', content: text }); save(); trackText(text, 'user'); }
     const dots = typing();
     let reply = '';
     let out: HTMLElement | null = null;
@@ -671,7 +684,7 @@ if (sheet) {
         }
       }
       dots.remove();
-      if (reply) { messages.push({ role: 'assistant', content: reply }); save(); voice.speak(reply); }
+      if (reply) { messages.push({ role: 'assistant', content: reply }); save(); voice.speak(reply); trackText(reply, 'assistant'); }
     } catch {
       dots.remove();
       // Max isn't reachable: the message still reaches the team through the quote form.
