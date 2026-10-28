@@ -20,7 +20,7 @@ interface CartLine extends Omit<PriceItemInput, 'locations'> {
 type MaxEvent =
   | { type: 'text'; delta: string }
   | { type: 'products'; items: { id: string; slug: string; name: string; brand?: string; style?: string; image?: string; why?: string }[] }
-  | { type: 'cart'; items: CartLine[]; price?: PriceResponse; notes?: string[] }
+  | { type: 'cart'; items: CartLine[]; price?: PriceResponse; notes?: string[] | string }
   | { type: 'choices'; question?: string; options: { label: string; value: string }[] }
   | { type: 'handoff'; text?: string }
   | ({ type: 'contact' } & Contact)
@@ -114,6 +114,11 @@ if (sheet) {
   /** A cart line as the price/order APIs take it. */
   const forPrice = ({ productId: _a, slug: _b, image: _c, why: _d, name, ...x }: CartLine): PriceItemInput => ({ ...x, productName: x.productName || name });
 
+  /** A short name for a product, for buttons: "tee", "hoodie", "hat"… */
+  const kind = (name: string) => {
+    const n = name.toLowerCase();
+    return /hood/.test(n) ? 'hoodie' : /crew|sweatshirt/.test(n) ? 'sweatshirt' : /polo/.test(n) ? 'polo' : /tank/.test(n) ? 'tank' : /long sleeve/.test(n) ? 'long sleeve' : /t-shirt|tee/.test(n) ? 'tee' : /beanie/.test(n) ? 'beanie' : /cap|hat|snapback|trucker/.test(n) ? 'hat' : /tote|bag/.test(n) ? 'bag' : /jacket/.test(n) ? 'jacket' : 'product';
+  };
   function cartCard(e: Extract<MaxEvent, { type: 'cart' }>) {
     const card = el('div', 'rounded-2xl border border-violet-300/60 dark:border-violet-400/25 bg-violet-500/[0.05] p-3.5 grid gap-3');
     card.append(el('p', 'text-[12px] font-bold uppercase tracking-[0.1em] text-violet-700 dark:text-violet-300', 'Your order, ready to go'));
@@ -172,7 +177,8 @@ if (sheet) {
       card.append(tot);
       if (t.readyBy) card.append(el('p', 'text-[12.5px] muted -mt-2', `Ready around ${new Date(t.readyBy).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} after proof approval.`));
     }
-    for (const n of e.notes ?? []) card.append(el('p', 'text-[12.5px] text-emerald-700 dark:text-emerald-400', n));
+    // Notes come as a list or a single line (a string must not be split into letters).
+    for (const n of ([] as string[]).concat(e.notes ?? []).filter(Boolean)) card.append(el('p', 'text-[12.5px] text-emerald-700 dark:text-emerald-400', n));
     const actions = el('div', 'grid grid-cols-2 gap-2');
     const pay = el('button', 'btn-primary h-11 text-[14px]', 'Order & pay');
     const add = el('button', 'btn-quiet h-11 text-[14px]', 'Add to cart');
@@ -222,7 +228,7 @@ if (sheet) {
     card.append(actions);
     // See and adjust the designs on the real product preview (moves within the printable area).
     if (art.length) for (const it of e.items.filter((x) => x.slug && x.locations.some((l, li) => artFor(l, li)))) {
-      const see = el('button', 'btn-quiet h-10 text-[13.5px] w-full', e.items.length > 1 ? `See it on the ${(it.name || it.productName || it.style).slice(0, 30)}` : 'See it on the product & adjust');
+      const see = el('button', 'btn-quiet h-10 text-[13.5px] w-full', e.items.length > 1 ? `See the ${kind(it.name || it.productName || it.style)} & adjust` : 'See it on the product & adjust');
       see.type = 'button';
       see.addEventListener('click', async () => {
         see.disabled = true;
@@ -334,11 +340,8 @@ if (sheet) {
       if (!prod) return;
       info.firstElementChild!.textContent = `${prod.name.slice(0, 40)} · ${a.file.name}`;
       // Product photos are fronts: the design sits on it only for front locations.
-      if (prod.image && !/back|sleeve|neck|hood/i.test(e.placement)) {
-        const g = el('img', 'absolute inset-0 w-full h-full object-contain bg-white'); g.src = prod.image; g.alt = '';
-        pic.prepend(g);
-        if (artImg) artImg.className = 'absolute left-1/2 top-[30%] w-[38%] -translate-x-1/2 object-contain drop-shadow';
-      }
+      // No catalog photo here: it's one stock color, which can contradict the color the visitor
+      // chose. The design shows on its own; the order card's mockups show the chosen color.
       if (!prod.slug) return;
       const see = el('button', 'btn-quiet btn-sm shrink-0', 'See it'); see.type = 'button';
       see.addEventListener('click', async () => {
