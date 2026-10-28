@@ -1,29 +1,34 @@
 ---
-// Animated slice of TBSP Studio for the homepage hero: a request types into the
-// assistant bar, the garment changes color, the logo drops onto the print area
-// and a quote chip slides in. Loops through three scenes. Respects
-// prefers-reduced-motion (shows the first finished scene, no animation).
-import { business } from '../data/business';
+// Animated slice of TBSP's ordering flow for the homepage hero: a request types into Max's bar,
+// the garment turns the color the moment it's named, a real-looking design drops onto the front,
+// then the garment turns to show its back print, and a quote chip slides in. Three products, each
+// with its own artwork. Respects prefers-reduced-motion (shows the first finished scene).
 import { Mic, Sparkles, Check } from '@lucide/astro';
 
+// Designs are inline SVG in the garment's ink (currentColor), sized by the print box.
+const tour = `<svg viewBox="0 0 200 150" fill="currentColor"><path id="arc1" d="M22 92 A78 78 0 0 1 178 92" fill="none"/><text font-family="Outfit,sans-serif" font-weight="800" font-size="22" letter-spacing="3"><textPath href="#arc1" startOffset="50%" text-anchor="middle">NIGHT DRIVE</textPath></text><path d="M100 54l7 15 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2z" fill="#f5b301"/><text x="100" y="128" text-anchor="middle" font-family="Outfit,sans-serif" font-weight="800" font-size="30" letter-spacing="1">TOUR '26</text></svg>`;
+const tourBack = `<svg viewBox="0 0 200 230" fill="currentColor" font-family="Outfit,sans-serif" font-weight="800" text-anchor="middle"><text x="100" y="40" font-size="30" letter-spacing="2">NIGHT DRIVE</text><rect x="40" y="52" width="120" height="3" fill="#f5b301"/>${['LOS ANGELES · NOV 7', 'SAN DIEGO · NOV 9', 'PHOENIX · NOV 12', 'DENVER · NOV 15', 'CHICAGO · NOV 19', 'CLEVELAND · NOV 22'].map((c, i) => `<text x="100" y="${84 + i * 24}" font-size="14" font-weight="600" letter-spacing="1.5">${c}</text>`).join('')}</svg>`;
+const crew = `<svg viewBox="0 0 220 120" fill="currentColor" font-family="Outfit,sans-serif" text-anchor="middle"><text x="110" y="52" font-weight="800" font-size="50" letter-spacing="-1">NIGHT</text><text x="110" y="100" font-weight="800" font-size="50" letter-spacing="-1">SHIFT</text><rect x="20" y="108" width="180" height="5" fill="#ffd7a8"/></svg>`;
+const crewBack = `<svg viewBox="0 0 200 200" fill="currentColor" font-family="Outfit,sans-serif" text-anchor="middle"><text x="100" y="34" font-weight="700" font-size="20" letter-spacing="6">CREW</text><text x="100" y="150" font-weight="800" font-size="130" letter-spacing="-6">36</text><text x="100" y="186" font-weight="700" font-size="15" letter-spacing="4">LOS ANGELES</text></svg>`;
+const patch = `<svg viewBox="0 0 160 90"><rect x="4" y="4" width="152" height="82" rx="16" fill="#f4f1ea" stroke="#c9a227" stroke-width="5" stroke-dasharray="2 4"/><text x="80" y="58" text-anchor="middle" font-family="Outfit,sans-serif" font-weight="800" font-size="40" fill="#14213d" letter-spacing="2">TBSP</text></svg>`;
+const patchBack = `<svg viewBox="0 0 160 40" fill="currentColor"><text x="80" y="28" text-anchor="middle" font-family="Outfit,sans-serif" font-weight="800" font-size="24" letter-spacing="5">EST. 2016</text></svg>`;
+
+const C = (id: string, side: 'f' | 'b') => `https://cdn.ssactivewear.com/Images/Color/${id}_${side}_fl.jpg`;
 const scenes = [
   {
-    product: 'Gildan 5000 Heavy Cotton Tee', prompt: '50 black tees, logo on the chest, by Friday',
-    from: 'https://cdn.ssactivewear.com/Images/Color/16813_f_fl.jpg',
-    to: 'https://cdn.ssactivewear.com/Images/Color/16787_f_fl.jpg',
-    color: 'Black', logo: { x: 50, y: 37, w: 24 }, ink: '#ffffff', chip: '50 × Black tee · Screen print',
+    product: 'Gildan 5000 Heavy Cotton Tee', prompt: '50 black tees for our tour, front and back print, by Friday', word: 'black',
+    white: C('16813', 'f'), front: C('16787', 'f'), back: C('16787', 'b'), color: 'Black', ink: '#ffffff',
+    art: { x: 50, y: 36, w: 34, svg: tour }, artBack: { x: 50, y: 40, w: 40, svg: tourBack }, chip: '50 × Black tee · Screen print, front + back',
   },
   {
-    product: 'Gildan 18500 Heavy Blend Hoodie', prompt: 'Maroon hoodies for the crew, big chest print',
-    from: 'https://cdn.ssactivewear.com/Images/Color/19750_f_fl.jpg',
-    to: 'https://cdn.ssactivewear.com/Images/Color/30067_f_fl.jpg',
-    color: 'Maroon', logo: { x: 50, y: 40, w: 22 }, ink: '#ffffff', chip: '36 × Maroon hoodie · Rush',
+    product: 'Gildan 18500 Heavy Blend Hoodie', prompt: 'Maroon hoodies for the crew, big chest print', word: 'maroon',
+    white: C('19750', 'f'), front: C('30067', 'f'), back: C('30067', 'b'), color: 'Maroon', ink: '#ffffff',
+    art: { x: 50, y: 39, w: 34, svg: crew }, artBack: { x: 50, y: 40, w: 34, svg: crewBack }, chip: '36 × Maroon hoodie · Rush',
   },
   {
-    product: 'YP Classics 6245CM Dad Hat', prompt: 'Navy dad hats with our logo stitched on front',
-    from: 'https://cdn.ssactivewear.com/Images/Color/51238_f_fl.jpg',
-    to: 'https://cdn.ssactivewear.com/Images/Color/51235_f_fl.jpg',
-    color: 'Navy', logo: { x: 50, y: 43, w: 14 }, ink: '#f4f4f5', chip: '24 × Navy cap · Embroidery',
+    product: 'YP Classics 6245CM Dad Hat', prompt: 'Navy dad hats with our patch stitched on front', word: 'navy',
+    white: C('51238', 'f'), front: C('51235', 'f'), back: C('51235', 'b'), color: 'Navy', ink: '#f4f1ea',
+    art: { x: 50, y: 41, w: 22, svg: patch }, artBack: { x: 50, y: 40, w: 26, svg: patchBack }, chip: '24 × Navy cap · Embroidery',
   },
 ];
 ---
@@ -36,18 +41,18 @@ const scenes = [
         <span class="truncate" data-product>{scenes[0].product}</span>
         <span class="muted font-medium shrink-0" data-color>· White</span>
       </span>
-      <span class="inline-flex shrink-0 rounded-lg bg-zinc-100 dark:bg-white/[0.06] p-0.5 text-[11px] font-semibold"><span class="px-2.5 py-1 rounded-md bg-violet-600 text-white">Front</span><span class="px-2.5 py-1 muted">Back</span></span>
+      <span class="inline-flex shrink-0 rounded-lg bg-zinc-100 dark:bg-white/[0.06] p-0.5 text-[11px] font-semibold" aria-hidden="true">
+        <span data-tab="front" class="px-2.5 py-1 rounded-md transition-colors bg-violet-600 text-white">Front</span><span data-tab="back" class="px-2.5 py-1 rounded-md transition-colors muted">Back</span>
+      </span>
     </div>
 
-    <div class="relative aspect-[4/3.6] max-md:aspect-auto max-md:h-[min(44vh,300px)] rounded-xl bg-white overflow-hidden grid place-items-center">
-      <div class="relative h-full aspect-[7/10]" data-stage>
-        <img data-img-from src={scenes[0].from} alt="" class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700" />
-        <img data-img-to src={scenes[0].to} alt="" class="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-700" />
-        <div data-logo class="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-[6%] opacity-0 scale-50 transition-all duration-500 ease-[cubic-bezier(.34,1.56,.64,1)]" style="left:50%;top:33%;width:26%">
-          <img src="/images/brand/tbsp-mark-negative.svg" alt="" class="block w-[46%] aspect-square" />
-          <span data-logo-text class="font-black tracking-tight leading-none whitespace-nowrap" style="font-size:clamp(7px,1.15vw,13px)">YOUR BRAND</span>
-        </div>
-        <div data-box class="absolute -translate-x-1/2 -translate-y-1/2 rounded-md border-2 border-dashed border-violet-500/80 opacity-0 transition-opacity duration-300" style="left:50%;top:33%;width:34%;height:16%"></div>
+    <!-- The garment fills the frame; the photo's white studio background melts into the soft panel. -->
+    <div class="relative aspect-[4/4.3] max-md:aspect-[4/4.4] rounded-xl overflow-hidden bg-gradient-to-b from-zinc-100 to-zinc-200">
+      <div class="absolute inset-x-[4%] -top-[3%] bottom-[-6%]" data-stage>
+        <img data-img-a src={scenes[0].white} alt="" class="absolute inset-0 w-full h-full object-contain mix-blend-multiply transition-opacity duration-500" />
+        <img data-img-b src={scenes[0].front} alt="" class="absolute inset-0 w-full h-full object-contain mix-blend-multiply opacity-0 transition-opacity duration-500" />
+        <div data-art class="absolute -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50 transition-all duration-500 ease-[cubic-bezier(.34,1.56,.64,1)] [&>svg]:w-full [&>svg]:h-auto drop-shadow-[0_1px_1px_rgba(0,0,0,.25)]" style="left:50%;top:36%;width:34%"></div>
+        <div data-box class="absolute -translate-x-1/2 -translate-y-1/2 rounded-md border-2 border-dashed border-violet-500/80 opacity-0 transition-opacity duration-300" style="left:50%;top:36%;width:40%;height:24%"></div>
       </div>
       <div data-chip class="absolute bottom-3 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-500 flex items-center gap-2 rounded-full bg-white/95 dark:bg-[#0d0d14]/95 border border-zinc-200 dark:border-white/10 px-3.5 py-1.5 text-[12px] font-semibold text-zinc-800 dark:text-zinc-100 shadow-lg whitespace-nowrap">
         <Check class="w-3.5 h-3.5 text-emerald-500" aria-hidden="true" /><span data-chip-text>Quote ready</span>
@@ -68,29 +73,42 @@ const scenes = [
   </div>
 </div>
 
-
-
 <script>
-  type Scene = { product: string; prompt: string; from: string; to: string; color: string; logo: { x: number; y: number; w: number }; ink: string; chip: string };
+  type Art = { x: number; y: number; w: number; svg: string };
+  type Scene = { product: string; prompt: string; word: string; white: string; front: string; back: string; color: string; ink: string; art: Art; artBack: Art; chip: string };
   const root = document.getElementById('hero-studio');
   if (root && !root.dataset.ready) {
     root.dataset.ready = '1';
     const scenes: Scene[] = JSON.parse(root.dataset.scenes!);
     const q = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
-    const imgFrom = q<HTMLImageElement>('[data-img-from]'), imgTo = q<HTMLImageElement>('[data-img-to]');
-    const logo = q('[data-logo]'), box = q('[data-box]'), chip = q('[data-chip]'), chipText = q('[data-chip-text]');
+    const imgA = q<HTMLImageElement>('[data-img-a]'), imgB = q<HTMLImageElement>('[data-img-b]');
+    const art = q('[data-art]'), box = q('[data-box]'), chip = q('[data-chip]'), chipText = q('[data-chip-text]');
     const typed = q('[data-typed]'), product = q('[data-product]'), color = q('[data-color]'), ping = q('[data-ping]');
+    const tabs = { front: q('[data-tab="front"]'), back: q('[data-tab="back"]') };
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
-    // Warm the cache so color swaps are instant.
-    scenes.forEach((s) => { new Image().src = s.from; new Image().src = s.to; });
+    // Warm the cache so swaps are instant.
+    scenes.forEach((s) => [s.white, s.front, s.back].forEach((u) => { new Image().src = u; }));
 
-    const place = (s: Scene) => {
-      for (const el of [logo, box]) { el.style.left = `${s.logo.x}%`; el.style.top = `${s.logo.y}%`; }
-      logo.style.width = `${s.logo.w}%`;
-      box.style.width = `${s.logo.w + 8}%`;
-      box.style.height = `${s.logo.w * 0.62}%`;
-      logo.style.color = s.ink;
+    // Two stacked photos crossfade, so a swap never flashes.
+    let shown = imgA;
+    const photo = (src: string) => {
+      if (shown.getAttribute('src') === src) return;
+      const next = shown === imgA ? imgB : imgA;
+      next.src = src;
+      next.classList.remove('opacity-0'); shown.classList.add('opacity-0');
+      shown = next;
+    };
+    const tab = (side: 'front' | 'back') => {
+      for (const [k, el] of Object.entries(tabs)) {
+        el.classList.toggle('bg-violet-600', k === side); el.classList.toggle('text-white', k === side); el.classList.toggle('muted', k !== side);
+      }
+    };
+    const place = (a: Art, ink: string) => {
+      for (const el of [art, box]) { el.style.left = `${a.x}%`; el.style.top = `${a.y}%`; }
+      art.style.width = `${a.w}%`; art.style.color = ink;
+      art.innerHTML = a.svg;
+      box.style.width = `${a.w + 8}%`; box.style.height = `${a.w * 0.85}%`;
     };
     const show = (el: HTMLElement, on: boolean, ...cls: string[]) => {
       el.classList.toggle('opacity-0', !on);
@@ -98,34 +116,42 @@ const scenes = [
     };
 
     const finish = (s: Scene) => {
-      place(s); imgTo.src = s.to; imgTo.classList.remove('opacity-0'); imgFrom.classList.add('opacity-0');
+      photo(s.front); tab('front'); place(s.art, s.ink);
       product.textContent = s.product; color.textContent = `· ${s.color}`; typed.textContent = s.prompt;
-      show(logo, true, 'scale-50'); chipText.textContent = s.chip; show(chip, true, 'translate-y-4');
+      show(art, true, 'scale-50'); chipText.textContent = s.chip; show(chip, true, 'translate-y-4');
     };
 
     async function play() {
       for (let i = 0; ; i = (i + 1) % scenes.length) {
         const s = scenes[i];
-        // Reset to the plain white garment.
-        show(logo, false, 'scale-50'); show(chip, false, 'translate-y-4'); show(box, false);
-        imgFrom.src = s.from; imgFrom.classList.remove('opacity-0'); imgTo.classList.add('opacity-0');
+        // Start on the plain white garment.
+        show(art, false, 'scale-50'); show(chip, false, 'translate-y-4'); show(box, false);
+        photo(s.white); tab('front');
         product.textContent = s.product; color.textContent = '· White'; typed.textContent = '';
-        place(s);
+        place(s.art, s.ink);
         await wait(700);
-        // The request types itself into the assistant bar.
+        // The request types itself; the garment turns the color the moment it's said.
         ping.classList.remove('opacity-0'); ping.classList.add('opacity-60');
-        for (const ch of s.prompt) { typed.textContent += ch; await wait(32 + Math.random() * 40); }
+        let colored = false;
+        for (const ch of s.prompt) {
+          typed.textContent += ch;
+          if (!colored && typed.textContent.toLowerCase().includes(s.word)) { colored = true; photo(s.front); color.textContent = `· ${s.color}`; }
+          await wait(30 + Math.random() * 36);
+        }
         ping.classList.add('opacity-0'); ping.classList.remove('opacity-60');
-        await wait(350);
-        // Color swap, then the print area appears and the logo drops in.
-        imgTo.src = s.to; imgTo.classList.remove('opacity-0'); imgFrom.classList.add('opacity-0');
-        color.textContent = `· ${s.color}`;
-        await wait(650);
+        await wait(400);
+        // The print area appears and the design drops in.
         show(box, true); await wait(350);
-        show(logo, true, 'scale-50'); await wait(450);
+        show(art, true, 'scale-50'); await wait(450);
         show(box, false);
+        await wait(1500);
+        // Turn it around: the back print.
+        show(art, false, 'scale-50'); await wait(250);
+        photo(s.back); tab('back'); place(s.artBack, s.ink);
+        await wait(350);
+        show(art, true, 'scale-50');
         chipText.textContent = s.chip; show(chip, true, 'translate-y-4');
-        await wait(2600);
+        await wait(2400);
       }
     }
     if (reduce) finish(scenes[0]); else play();

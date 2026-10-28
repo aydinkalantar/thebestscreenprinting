@@ -49,7 +49,10 @@ function renderTotals(el: HTMLElement) {
   if (totals.setup) row(dl, 'Setup / screens', money(totals.setup));
   if (totals.art) row(dl, 'Artwork help', money(totals.art));
   if (totals.rush) row(dl, `${totals.turnaround === 'superrush' ? 'Super Rush' : 'Rush'} fee${totals.rushPercent ? ` (+${totals.rushPercent}%)` : ''}`, money(totals.rush));
-  row(dl, 'Shipping', totals.shipping ? money(totals.shipping) : 'Free');
+  const shipping = deliveryOf(el.querySelector<HTMLFormElement>('[data-os-form]')!) === 'ship';
+  row(dl, shipping ? 'Shipping' : 'Pickup', totals.shipping ? money(totals.shipping) : 'Free');
+  // The studio waives shipping over its free-shipping amount: the option says so once this order qualifies.
+  if (shipping) el.querySelector('[data-os-ship-price]')!.textContent = `· ${totals.shipping ? money(totals.shipping) : 'free for this order'}`;
   if (totals.tax) row(dl, `Tax (${totals.taxRate}%)`, money(totals.tax));
   row(dl, 'Total', money(totals.total), true);
   const pct = current.price.payment.depositPercent;
