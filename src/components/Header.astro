@@ -46,7 +46,8 @@ const promos = [
     <form class="relative flex-1 max-w-2xl hidden md:block" role="search" action="/search/" data-search data-max={max ? "1" : undefined}>
       <Search class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" aria-hidden="true" />
       <input name="q" type="search" autocomplete="off" placeholder="Search products, or describe what you need…" aria-label="Search or describe what you need"
-        class="w-full h-11 rounded-full bg-zinc-100 dark:bg-white/[0.06] border border-transparent focus:border-violet-500 focus:bg-white dark:focus:bg-[#0d0d14] pl-11 pr-4 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 outline-none transition-colors" />
+        class="w-full h-11 rounded-full bg-zinc-100 dark:bg-white/[0.06] border border-transparent focus:border-violet-500 focus:bg-white dark:focus:bg-[#0d0d14] pl-11 pr-28 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 outline-none transition-colors" />
+      {max && <button type="button" data-search-max data-max-only class="absolute right-1.5 top-1/2 -translate-y-1/2 inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-[13px] font-semibold" title="Describe what you need and Max takes it from there"><Sparkles class="w-3.5 h-3.5" aria-hidden="true" />Ask Max</button>}
       <div data-results class="hidden absolute left-0 right-0 top-[calc(100%+8px)] panel-raised p-2 max-h-[70vh] overflow-auto"></div>
     </form>
     <div class="ml-auto flex items-center gap-1.5 max-md:gap-0.5 max-md:-mr-1.5 sm:gap-3">
@@ -66,7 +67,7 @@ const promos = [
       {nav.map((m) => (
         <div class="group static">
           <a href={m.href} aria-current={here.startsWith(m.href) && m.href !== '/' ? 'page' : undefined}
-            class:list={['inline-flex items-center gap-1 h-9 px-3 rounded-full text-[14px] font-bold transition-colors group-hover:bg-zinc-100 dark:group-hover:bg-white/[0.06] group-focus-within:bg-zinc-100 dark:group-focus-within:bg-white/[0.06]',
+            class:list={['inline-flex items-center gap-1 h-9 px-3 text-[14px] font-bold transition-colors underline-offset-[6px] decoration-2 group-hover:text-violet-700 dark:group-hover:text-violet-300 aria-[current=page]:text-violet-700 dark:aria-[current=page]:text-violet-300 aria-[current=page]:underline',
               m.feature === 'ai' ? 'text-violet-700 dark:text-violet-300' : 'text-zinc-900 dark:text-white']}>
             {m.feature === 'ai' && <Sparkles class="w-4 h-4" aria-hidden="true" />}{m.label}
           </a>
@@ -141,9 +142,10 @@ const promos = [
             <a href={`${business.studioUrl}/studio?panel=order`} rel="nofollow" class="icon-btn" aria-label="Cart"><ShoppingBag class="w-4 h-4" aria-hidden="true" /></a>
           </>
         )}
-        <a href="/quote-cart/" data-cart-link class="icon-btn relative" aria-label="Cart" title="Cart"><ShoppingBag class="w-4 h-4" aria-hidden="true" /><span data-cart-count hidden class="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-violet-600 text-white text-[10.5px] font-bold leading-[18px] text-center ring-2 ring-white dark:ring-[#0a0a0f]" aria-hidden="true">0</span></a>
-        <a href="/quick-quote/" class="hidden xl:inline-flex items-center h-9 px-3 rounded-full text-[14px] font-bold text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-white/[0.06]">Get a quote</a>
-        <a href="/catalog/" class="btn-primary btn-sm">Shop products<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+        <!-- Like Custom Ink: plain links, then the cart at the end of the row. -->
+        <a href="/track/" class="inline-flex items-center h-9 px-3 text-[14px] font-semibold text-zinc-700 dark:text-zinc-300 hover:text-violet-700 dark:hover:text-violet-300">Track order</a>
+        <a href="/quick-quote/" class="inline-flex items-center h-9 px-3 text-[14px] font-bold text-zinc-900 dark:text-white hover:text-violet-700 dark:hover:text-violet-300">Get a quote</a>
+        <a href="/quote-cart/" data-cart-link class="relative inline-flex items-center gap-1.5 h-9 pl-2 pr-3 text-[14px] font-bold text-zinc-900 dark:text-white hover:text-violet-700 dark:hover:text-violet-300" aria-label="Cart" title="Cart"><ShoppingBag class="w-5 h-5" aria-hidden="true" />Cart<span data-cart-count hidden class="absolute -top-0.5 left-5 min-w-[18px] h-[18px] px-1 rounded-full bg-violet-600 text-white text-[10.5px] font-bold leading-[18px] text-center ring-2 ring-white dark:ring-[#0a0a0f]" aria-hidden="true">0</span></a>
       </div>
     </div>
   </nav>
@@ -241,6 +243,12 @@ const promos = [
     window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: text }));
     return true;
   };
+  // "Ask Max" inside the search bar: what's typed goes to Max (or he opens, ready to talk).
+  document.querySelector('[data-search-max]')?.addEventListener('click', () => {
+    const box = document.querySelector<HTMLInputElement>('[data-search] input[name="q"]');
+    const text = box?.value.trim() || '';
+    if (askMax(text) && box) box.value = '';
+  });
   document.querySelectorAll<HTMLAnchorElement>('[data-ask-ai]').forEach((a) => a.addEventListener('click', (e) => {
     if (drawer) closeSheet(drawer);
     if (askMax()) e.preventDefault();

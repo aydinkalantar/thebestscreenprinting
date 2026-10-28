@@ -1,4 +1,4 @@
-// Main navigation: Custom Ink-style mega menus, with TBSP's AI studio as its own menu.
+// Main navigation: five clear menus (no overlapping links). Custom projects sit under Business & groups.
 // `feature: 'products'` renders the catalog menu (collection photos + brands) from src/lib/catalog.
 
 export interface NavLink { label: string; href: string }
@@ -8,7 +8,7 @@ export interface NavMenu { label: string; href: string; columns?: NavColumn[]; f
 export const NAV: NavMenu[] = [
   { label: 'Products', href: '/catalog/', feature: 'products' },
   {
-    label: 'Custom T-shirts', href: '/products/t-shirts/',
+    label: 'T-shirts', href: '/products/t-shirts/',
     columns: [
       { links: [{ label: 'Short sleeve t-shirts', href: '/catalog/?sub=t-shirts' }, { label: 'Long sleeve t-shirts', href: '/catalog/?sub=long-sleeves' }, { label: 'Tank tops', href: '/catalog/?sub=tank-tops' }] },
       { links: [{ label: 'All-over print tees', href: '/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/' }, { label: 'Screen printed t-shirts', href: '/products/t-shirts/t-shirt-screen-printing-near-me/' }] },
@@ -26,7 +26,7 @@ export const NAV: NavMenu[] = [
     ],
   },
   {
-    label: 'Promotional Products', href: '/for/promotional-products/',
+    label: 'Promo products', href: '/for/promotional-products/',
     columns: [
       { links: [{ label: 'Beanies', href: '/catalog/?sub=beanies' }, { label: 'Totes', href: '/catalog/?sub=totes' }] },
       { links: [{ label: 'Bags & totes', href: '/products/bags/' }, { label: 'Custom bags', href: '/products/bags/customize-bag/' }] },
@@ -36,20 +36,11 @@ export const NAV: NavMenu[] = [
   },
   { label: 'Design Studio', href: '/custom-projects/', feature: 'ai' },
   {
-    label: 'Business & Groups', href: '/solutions/',
+    label: 'Business & groups', href: '/solutions/',
     columns: [
-      { title: 'For business', links: [{ label: 'Small businesses', href: '/small-business/' }, { label: 'Clothing brands', href: '/for/retail-brands/' }, { label: 'Restaurants', href: '/for/restaurants/' }, { label: 'Staff uniforms', href: '/services/embroidery/custom-embroidery/' }, { label: 'Fulfillment', href: '/fulfillment/' }] },
+      { title: 'For business', links: [{ label: 'Small businesses', href: '/small-business/' }, { label: 'Clothing brands', href: '/for/retail-brands/' }, { label: 'Restaurants', href: '/for/restaurants/' }, { label: 'Staff uniforms', href: '/services/embroidery/custom-embroidery/' }, { label: 'Fulfillment', href: '/fulfillment/' }, { label: 'Custom projects', href: '/custom-projects/' }] },
       { title: 'For groups & events', links: [{ label: 'Events & tours', href: '/event-apparel/' }, { label: 'Teams & leagues', href: '/products/team-uniforms-jerseys/' }, { label: 'Schools', href: '/for/schools/' }, { label: 'Non-profits', href: '/for/non-profits/' }, { label: 'Clubs & groups', href: '/clubs-groups/' }] },
       { title: 'Tools & resources', links: [{ label: 'Get a quote', href: '/quick-quote/' }, { label: 'Turnaround options', href: '/learn-delivery-time/' }, { label: 'Design tips', href: '/helpful-design-tips/' }, { label: 'Guides & articles', href: '/blog/' }, { label: 'FAQ', href: '/faq/' }] },
-    ],
-  },
-  {
-    label: 'Custom Projects', href: '/custom-projects/',
-    columns: [
-      { links: [{ label: 'Custom cut & sew', href: '/custom-projects/' }, { label: 'Sublimation & all-over', href: '/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/' }] },
-      { links: [{ label: 'Embossing', href: '/services/embossing/' }, { label: 'Oversize prints', href: '/services/large-format-screen-printing/' }] },
-      { links: [{ label: 'Screen printing', href: '/screen-printing/' }, { label: 'Embroidery', href: '/services/embroidery/' }] },
-      { links: [{ label: 'DTF transfers', href: '/services/direct-to-film/' }, { label: 'DTG printing', href: '/services/direct-to-garment/' }] },
     ],
   },
 ];
