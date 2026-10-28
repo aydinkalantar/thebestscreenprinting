@@ -114,11 +114,12 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     </ul>
   </section>
 
-  <!-- Max demo video (staging preview): silent loop, wide on desktop, tall on phones; loads when it scrolls in. -->
-  <section class="wrap mt-10 md:mt-14" aria-labelledby="max-video-title" data-max-only>
-    <p id="max-video-title" class="eyebrow">See how Max works</p>
-    <div class="relative mt-3 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04] shadow-xl max-md:max-w-[420px] max-md:mx-auto">
-      <video data-max-video muted loop playsinline preload="none" poster="/media/max-demo-poster.jpg" class="block w-full aspect-video max-md:aspect-[9/16]" aria-label="Max picks products, places a logo and prices an order"
+  <!-- Max, the merch agent: what makes TBSP different -->
+  {business.maxLive && <section class="wrap mt-14 md:mt-20 scroll-mt-40" id="max" data-max-only>
+    <MaxDemo>
+      <!-- Max demo video: silent loop, wide on desktop, tall on phones; "Tap for sound" plays the voiced cut. -->
+      <div slot="media" class="relative w-full max-md:max-w-[420px] max-md:mx-auto">
+      <video data-max-video muted loop playsinline preload="none" poster="/media/max-demo-poster.jpg" class="block w-full aspect-video max-md:aspect-[9/16] bg-zinc-900" aria-label="Max picks products, places a logo and prices an order"
         data-wide="/media/max-demo-1280.mp4" data-tall="/media/max-demo-720x1280.mp4"
         data-wide-voice="/media/max-demo-voice-1280.mp4" data-tall-voice="/media/max-demo-voice-720x1280.mp4"></video>
       <!-- Silent loop by default; "Tap for sound" plays the voiced version from the start. -->
@@ -128,12 +129,8 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         <button type="button" data-video-replay class="w-10 h-10 rounded-full grid place-items-center bg-zinc-900/80 text-white backdrop-blur" aria-label="Replay from the start"><RotateCcw class="w-4 h-4" aria-hidden="true" /></button>
         <button type="button" data-video-mute class="w-10 h-10 rounded-full grid place-items-center bg-zinc-900/80 text-white backdrop-blur" aria-label="Mute"><VolumeX class="w-4 h-4" aria-hidden="true" /></button>
       </div>
-    </div>
-  </section>
-
-  <!-- Max, the merch agent: what makes TBSP different -->
-  {business.maxLive && <section class="wrap mt-14 md:mt-20 scroll-mt-40" id="max" data-max-only>
-    <MaxDemo />
+      </div>
+    </MaxDemo>
   </section>}
 
   <!-- Real customer reviews -->

@@ -12,7 +12,9 @@ const steps = [
   { n: 4, title: 'Get your price and order', line: 'Change anything out loud and the price updates. Pay in one tap or send it as a quote. You approve a proof first.' },
 ];
 ---
-<div class="grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10" id="max-demo">
+<!-- With a video in the "media" slot, it takes the left side (wider) instead of the scripted phone. -->
+<div class:list={['grid rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10', Astro.slots.has('media') ? 'lg:grid-cols-[1.35fr_1fr]' : 'lg:grid-cols-2']} id="max-demo">
+  {Astro.slots.has('media') ? <div class="relative bg-zinc-900 grid place-items-center"><slot name="media" /></div> : <Fragment>
   <!-- The phone -->
   <div class="relative bg-zinc-100 dark:bg-white/[0.04] px-4 py-8 sm:p-10 grid place-items-center overflow-hidden">
     <div class="absolute inset-x-10 top-10 bottom-10 rounded-full bg-violet-500/20 blur-3xl" aria-hidden="true"></div>
@@ -45,6 +47,7 @@ const steps = [
       </div>
     </div>
   </div>
+  </Fragment>}
 
   <!-- How it works -->
   <div class="bg-violet-600 text-white p-8 sm:p-12 grid content-center">
@@ -125,6 +128,8 @@ const steps = [
   if (root && !root.dataset.ready) {
     root.dataset.ready = '1';
     const q = <T extends HTMLElement>(s: string, r: ParentNode = root) => r.querySelector<T>(s)!;
+    if (!root.querySelector('[data-d-log]')) { /* a video is shown instead of the scripted phone */ }
+    else {
     const log = q('[data-d-log]'), start = q('[data-d-start]'), cta = q('[data-d-cta]'), call = q('[data-d-call]');
     const wave = q('[data-d-wave]'), status = q('[data-d-status]'), orb = q('[data-d-orb]');
     const steps = [...root.querySelectorAll<HTMLElement>('[data-d-step]')];
@@ -186,5 +191,6 @@ const steps = [
       if (e.isIntersecting && !visible) { visible = true; loop(); }
       else if (!e.isIntersecting && visible) { visible = false; run++; }
     }, { threshold: 0.25 }).observe(root);
+    }
   }
 </script>
