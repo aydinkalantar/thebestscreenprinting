@@ -164,6 +164,7 @@ if (sheet) {
         line.append(el('span', '', `${l.placement}: ${l.method}${l.colors ? `, ${l.colors} color${l.colors === 1 ? '' : 's'}` : ''}${a ? ` · ${a.file.name.slice(0, 28)}` : ''}`));
         info.append(line);
       }
+      if (it.artHelp) info.append(el('p', 'muted', `Design help: ${{ cleanup: 'art cleanup', layout: 'text or simple layout', custom: 'custom design' }[it.artHelp.type] ?? it.artHelp.type}`));
       if (it.why) info.append(el('p', 'mt-0.5 text-violet-700 dark:text-violet-300', it.why));
       row.append(info);
       const p = pr?.items[i];
@@ -177,6 +178,7 @@ if (sheet) {
       card.append(tot);
       if (t.readyBy) card.append(el('p', 'text-[12.5px] muted -mt-2', `Ready around ${new Date(t.readyBy).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} after proof approval.`));
     }
+    card.append(el('p', 'text-[12.5px] muted', 'We send you a free proof first. Nothing prints until you approve it.'));
     // Notes come as a list or a single line (a string must not be split into letters).
     for (const n of ([] as string[]).concat(e.notes ?? []).filter(Boolean)) card.append(el('p', 'text-[12.5px] text-emerald-700 dark:text-emerald-400', n));
     const actions = el('div', 'grid grid-cols-2 gap-2');
@@ -185,17 +187,22 @@ if (sheet) {
     pay.type = add.type = 'button';
     const ok = !!pr?.totals && pr.items.every((x) => x.ok);
     pay.disabled = !ok;
-    pay.addEventListener('click', async () => {
-      const res = await fetchPrices(e.items.map(forPrice));
-      if (!res?.enabled || !res.totals || res.items.some((x) => !x.ok)) { bubble('assistant', 'Prices just changed, let me check again.'); return; }
-      pay.disabled = true; const label = pay.textContent; pay.textContent = 'Preparing your designs…';
+    /** The order as it goes out (checkout or an emailed quote): items with each design's size and spot, the art files and the mockups. */
+    async function prepare() {
       const done = await Promise.all(renders.map((r) => r ?? Promise.resolve(null)));
-      pay.disabled = false; pay.textContent = label;
-      // Each location's design, as Max placed them, with its size and spot from the mockup.
       const artwork: OrderArtwork[] = e.items.flatMap((it, i) => it.locations.flatMap((l, li) => { const a = artFor(l, li); return a ? [{ itemIndex: i, placement: l.placement, file: a.file }] : []; }));
       const mockups = done.flatMap((r, i) => (r?.mockups ?? []).map((m) => ({ itemIndex: i, side: m.side, blob: m.blob })));
       const placed = (i: number, place: string) => done[i]?.placements.find((p) => p.location.toLowerCase() === place.toLowerCase());
       const items = e.items.map((it, i) => ({ ...forPrice(it), locations: it.locations.map(({ artId: _a, ...l }) => { const p = placed(i, l.placement); return p ? { ...l, widthIn: p.widthIn, heightIn: p.heightIn, fromTopIn: p.fromTopIn, fromCenterIn: p.fromCenterIn, ...(p.notes ? { notes: p.notes } : {}) } : l; }) }));
+      return { items, artwork, mockups };
+    }
+    pay.addEventListener('click', async () => {
+      const res = await fetchPrices(e.items.map(forPrice));
+      if (!res?.enabled || !res.totals || res.items.some((x) => !x.ok)) { bubble('assistant', 'Prices just changed, let me check again.'); return; }
+      pay.disabled = true; const label = pay.textContent; pay.textContent = 'Preparing your designs…';
+      const { items, artwork, mockups } = await prepare();
+      pay.disabled = false; pay.textContent = label;
+      steps.mark('pay');
       const pieces = e.items.reduce((n, it) => n + Object.values(it.sizes).reduce((a, b) => a + b, 0), 0);
       openOrder({ items, artwork, mockups, price: res, summary: `${e.items.length} product${e.items.length === 1 ? '' : 's'} · ${pieces} pieces` });
     });
@@ -211,6 +218,7 @@ if (sheet) {
             }),
             mockups: r?.mockups ?? [],
             inks: Object.fromEntries(it.locations.filter((l) => l.colors).map((l) => [l.placement, l.colors!])),
+            ...(it.artHelp ? { artHelp: it.artHelp } : {}),
           });
     add.addEventListener('click', async () => {
       add.disabled = true;
@@ -226,6 +234,7 @@ if (sheet) {
     });
     actions.append(pay, add);
     card.append(actions);
+    card.append(emailQuote(e, prepare));
     // See and adjust the designs on the real product preview (moves within the printable area).
     if (art.length) for (const it of e.items.filter((x) => x.slug && x.locations.some((l, li) => artFor(l, li)))) {
       const see = el('button', 'btn-quiet h-10 text-[13.5px] w-full', e.items.length > 1 ? `See the ${kind(it.name || it.productName || it.style)} & adjust` : 'See it on the product & adjust');
@@ -238,6 +247,48 @@ if (sheet) {
       card.append(see);
     }
     log.append(card); scroll();
+  }
+
+  /**
+   * "Email me this quote": for buyers who need someone's OK first. Saved as a quote in the shop's admin
+   * (Invoices & quotes) and emailed as a link. Asks for name and email here if Max doesn't have them yet.
+   */
+  function emailQuote(e: Extract<MaxEvent, { type: 'cart' }>, prepare: () => Promise<{ items: PriceItemInput[]; artwork: OrderArtwork[]; mockups: { itemIndex: number; side: string; blob: Blob }[] }>) {
+    const box = el('div', 'grid gap-2');
+    const open = el('button', 'text-[13.5px] font-semibold text-violet-700 dark:text-violet-300 hover:underline justify-self-center', 'Email me this quote');
+    open.type = 'button';
+    const form = el('form', 'grid gap-2 rounded-xl border border-zinc-200 dark:border-white/10 p-3'); form.hidden = true;
+    const known = getContact();
+    const name = el('input', 'field !h-10 !text-[15px]'); name.placeholder = 'Your name'; name.autocomplete = 'name'; name.value = known?.name || '';
+    const email = el('input', 'field !h-10 !text-[15px]'); email.type = 'email'; email.placeholder = 'Email'; email.autocomplete = 'email'; email.value = known?.email || '';
+    const send = el('button', 'btn-primary h-10 text-[14px]', 'Send me the quote'); send.type = 'submit';
+    const msg = el('p', 'text-[12.5px]');
+    form.append(el('p', 'text-[12.5px] muted', 'We save it and email you a link. Share it, or pay from it when you’re ready.'), name, email, send, msg);
+    open.addEventListener('click', () => { open.hidden = true; form.hidden = false; (name.value ? email : name).focus(); });
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      if (!name.value.trim()) { msg.className = 'text-[12.5px] text-red-600'; msg.textContent = 'Please add your name.'; name.focus(); return; }
+      if (!isEmail(email.value)) { msg.className = 'text-[12.5px] text-red-600'; msg.textContent = 'Please check your email.'; email.focus(); return; }
+      send.disabled = true; send.textContent = 'Saving your quote…'; msg.textContent = '';
+      try {
+        const contact = saveContact({ ...(known ?? {}), name: name.value, email: email.value });
+        const { items, artwork, mockups } = await prepare();
+        const fd = new FormData();
+        fd.set('data', JSON.stringify({ sessionId, contact, items, note: ([] as string[]).concat(e.notes ?? []).join(' ') || undefined }));
+        for (const a of artwork) fd.append(`art_${a.itemIndex}_${a.placement.slice(0, 40)}`, a.file, a.file.name);
+        for (const m of mockups) fd.append(`mockup_${m.itemIndex}_${m.side}`, m.blob, `mockup-${m.itemIndex + 1}-${m.side}.png`);
+        const r = await fetch(`${STUDIO_API}/api/public/max/quote`, { method: 'POST', body: fd }).then((x) => (x.ok ? x.json() : null)).catch(() => null);
+        if (!r?.ok) throw new Error(r?.error || '');
+        form.replaceChildren(el('p', 'text-[13px] font-semibold text-emerald-700 dark:text-emerald-400', `✓ Quote ${r.number ?? ''} sent to ${contact.email}.`.replace('  ', ' ')));
+        if (r.url) { const a = el('a', 'text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline', 'Open the quote'); (a as HTMLAnchorElement).href = r.url; (a as HTMLAnchorElement).target = '_blank'; form.append(a); }
+        if (call) call.sendText(`[quote ${r.number ?? ''} emailed to ${contact.email}]`);
+      } catch {
+        send.disabled = false; send.textContent = 'Send me the quote';
+        msg.className = 'text-[12.5px] text-red-600'; msg.textContent = `Couldn't send it right now. Please try again, or call ${business.phoneDisplay}.`;
+      }
+    });
+    box.append(open, form);
+    return box;
   }
 
   function choicesCard(e: Extract<MaxEvent, { type: 'choices' }>) {
@@ -514,7 +565,32 @@ if (sheet) {
   // ── talking to the studio ──
   function typing() { const t = el('div', 'max-bubble max-bot max-typing'); t.innerHTML = '<span></span><span></span><span></span>'; t.setAttribute('aria-label', 'Max is typing'); log.append(t); scroll(); return t; }
 
+  // ── progress row: Products › Colors › Design › Sizes › Price › Pay ──
+  const stepRow = sheet.querySelector<HTMLElement>('[data-max-steps]');
+  const steps = {
+    done: new Set<string>(),
+    mark(...names: string[]) {
+      for (const n of names) this.done.add(n);
+      if (!stepRow) return;
+      stepRow.hidden = false;
+      stepRow.querySelectorAll<HTMLElement>('[data-step]').forEach((li) => li.classList.toggle('is-done', this.done.has(li.dataset.step!)));
+    },
+    reset() { this.done.clear(); if (stepRow) { stepRow.hidden = true; stepRow.querySelectorAll('.is-done').forEach((li) => li.classList.remove('is-done')); } },
+  };
+  function trackSteps(ev: MaxEvent) {
+    if (ev.type === 'products') steps.mark('products');
+    else if (ev.type === 'placement') steps.mark('products', 'design');
+    else if (ev.type === 'cart') {
+      steps.mark('products');
+      if (ev.items.every((it) => it.color)) steps.mark('colors');
+      if (ev.items.some((it) => it.locations.some((l, li) => artFor(l, li)))) steps.mark('design');
+      if (ev.items.every((it) => Object.values(it.sizes).some((n) => n > 0))) steps.mark('sizes');
+      if (ev.price && ev.price.enabled && ev.price.totals) steps.mark('price');
+    }
+  }
+
   function render(ev: MaxEvent) {
+    trackSteps(ev);
     if (ev.type === 'contact') contactCard(ev); else if (ev.type === 'forget') forget(); else if (ev.type === 'placement') placementCard(ev);
     else if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); else if (ev.type === 'error') bubble('assistant', ev.text);
   }
@@ -608,7 +684,8 @@ if (sheet) {
       const box = sheet.querySelector<HTMLElement>('[data-max-starters]')!;
       // Keep the send-your-logo chip unless the admin already offers logo help.
       const logo = suggestions.some((t) => /logo/i.test(t)) ? null : box.querySelector('[data-max-logo]');
-      box.replaceChildren(...suggestions.map((t) => { const b = el('button', 'chip !h-auto py-2 text-left text-[13.5px]', t); b.type = 'button'; b.dataset.maxStarter = ''; return b; }), ...(logo ? [logo] : []));
+      const noLogo = [...box.querySelectorAll<HTMLElement>('[data-max-starter]')].find((b) => /^no logo/i.test(b.textContent || ''));
+      box.replaceChildren(...suggestions.map((t) => { const b = el('button', 'chip !h-auto py-2 text-left text-[13.5px]', t); b.type = 'button'; b.dataset.maxStarter = ''; return b; }), ...(logo ? [logo] : []), ...(noLogo ? [noLogo] : []));
     }
     // Max-only buttons and sections show once he's confirmed on (see [data-max-only] in global.css).
     document.documentElement.dataset.max = on ? 'on' : 'off';
@@ -630,7 +707,7 @@ if (sheet) {
   reset.addEventListener('click', () => {
     try { localStorage.setItem('tbsp-max-reset-at', String(Date.now())); } catch { /* ignore */ }
     lastCallEnd = 0;
-    voice.stop(); endCall(); messages = []; art.length = 0; artSeq = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
+    voice.stop(); endCall(); steps.reset(); messages = []; art.length = 0; artSeq = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
     [...log.children].forEach((c) => { if (c !== intro) c.remove(); });
     filesBox.replaceChildren(); filesBox.hidden = true;
     intro.hidden = false; reset.hidden = true;

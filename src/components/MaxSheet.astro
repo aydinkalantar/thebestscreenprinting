@@ -5,13 +5,23 @@
 import { business } from '../data/business';
 // Checkout lives here so Max (and every page) can open it.
 import OrderSheet from './design/OrderSheet.astro';
-import { X, ArrowUp, Phone, MessageSquareText, Mail, Sparkles, Paperclip, RotateCcw, Mic, MicOff, Square, Volume2, VolumeX, PhoneOff, AudioLines } from '@lucide/astro';
+import { X, ArrowUp, Phone, MessageSquareText, Mail, Sparkles, Paperclip, RotateCcw, Mic, MicOff, Square, Volume2, VolumeX, PhoneOff, AudioLines, Shirt, Palette, Tag, CreditCard } from '@lucide/astro';
 const starters = [
   '50 black tees with our logo',
   'Hoodies for my team of 20',
   'I need shirts by next Friday',
   'Check my logo for printing',
+  'No logo yet? Help me design one',
 ];
+// What Max does, shown before the first message so people know how far he can take them.
+const can = [
+  { icon: Shirt, t: 'Pick products & colors' },
+  { icon: Palette, t: 'Place your logo' },
+  { icon: Tag, t: 'Real prices' },
+  { icon: CreditCard, t: 'Order & pay here' },
+];
+// The order, step by step (filled in as the conversation goes).
+const steps = ['Products', 'Colors', 'Design', 'Sizes', 'Price', 'Pay'];
 const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full border border-zinc-200 dark:border-white/10 text-[13px] font-semibold text-zinc-800 dark:text-zinc-100 hover:border-violet-300';
 ---
 <!-- Desktop: Max is one click away on every page (phones use the tab bar's orb). -->
@@ -39,10 +49,18 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
       </div>
     </div>
 
+    <!-- Progress through the order; shows once the conversation starts. -->
+    <ol data-max-steps hidden class="shrink-0 flex items-center gap-1 overflow-x-auto no-scrollbar px-4 py-2 border-b border-zinc-200/80 dark:border-white/10 text-[11.5px] font-semibold" aria-label="Your order so far">
+      {steps.map((s, i) => <li data-step={s.toLowerCase()} class="flex items-center gap-1 shrink-0 muted"><span class="grid place-items-center w-4 h-4 rounded-full border border-current text-[9px]" data-dot>{i + 1}</span>{s}{i < steps.length - 1 && <span class="mx-0.5 text-zinc-300 dark:text-white/20" aria-hidden="true">›</span>}</li>)}
+    </ol>
+
     <div data-max-log class="flex-1 overflow-y-auto overscroll-contain px-4 py-4 flex flex-col gap-3" aria-live="polite">
       <!-- Shown until the first message. -->
       <div data-max-intro class="grid gap-4">
-        <div data-max-greeting class="max-bubble max-bot">Hi, I'm Max. Tell me what you need, like the product, how many and when, and I'll put together your order with real prices. You can also send me your logo and I'll check it.</div>
+        <div data-max-greeting class="max-bubble max-bot">Hi, I'm Max. I can help you pick products and colors, place your logo, get a real price, and order and pay right here. What's the occasion, and when do you need it?</div>
+        <ul class="grid grid-cols-2 gap-2">
+          {can.map((c) => <li class="flex items-center gap-2 rounded-xl bg-violet-500/[0.07] px-3 py-2 text-[12.5px] font-semibold text-zinc-800 dark:text-zinc-100"><c.icon class="w-4 h-4 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" />{c.t}</li>)}
+        </ul>
         <button type="button" data-max-call-cta hidden class="press flex items-center gap-3 w-full rounded-2xl bg-violet-600 hover:bg-violet-700 text-white px-4 py-3.5 text-left shadow-lg shadow-violet-600/20">
           <span class="relative grid place-items-center w-11 h-11 rounded-full bg-white/15 shrink-0"><span class="absolute inset-0 rounded-full bg-white/25 animate-ping" aria-hidden="true"></span><AudioLines class="relative w-5 h-5" aria-hidden="true" /></span>
           <span class="leading-tight"><span class="block text-[16px] font-bold">Talk to Max</span><span class="block text-[12.5px] text-white/80">Tap and just say what you need</span></span>
@@ -88,6 +106,9 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
 
 <style is:global>
   [data-max-sheet] [hidden] { display: none !important; }
+  [data-max-steps] li.is-done { color: rgb(5 150 105); }
+  [data-max-steps] li.is-done [data-dot] { background: rgb(5 150 105); border-color: rgb(5 150 105); color: #fff; }
+  .dark [data-max-steps] li.is-done { color: rgb(52 211 153); }
   /* A plain column: messages and card rows keep their full height however long the chat gets. */
   [data-max-log] > * { flex-shrink: 0; }
   .max-bubble { max-width: 88%; padding: 0.6rem 0.85rem; border-radius: 1.1rem; font-size: 14.5px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
