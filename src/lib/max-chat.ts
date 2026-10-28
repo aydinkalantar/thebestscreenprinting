@@ -117,7 +117,8 @@ if (sheet) {
   /** A short name for a product, for buttons: "tee", "hoodie", "hat"… */
   const kind = (name: string) => {
     const n = name.toLowerCase();
-    return /hood/.test(n) ? 'hoodie' : /crew|sweatshirt/.test(n) ? 'sweatshirt' : /polo/.test(n) ? 'polo' : /tank/.test(n) ? 'tank' : /long sleeve/.test(n) ? 'long sleeve' : /t-shirt|tee/.test(n) ? 'tee' : /beanie/.test(n) ? 'beanie' : /cap|hat|snapback|trucker/.test(n) ? 'hat' : /tote|bag/.test(n) ? 'bag' : /jacket/.test(n) ? 'jacket' : 'product';
+    // Bags first: brand names can contain "tee" (Q-Tees totes).
+    return /tote/.test(n) ? 'tote' : /bag|backpack/.test(n) ? 'bag' : /hood/.test(n) ? 'hoodie' : /crew|sweatshirt/.test(n) ? 'sweatshirt' : /polo/.test(n) ? 'polo' : /tank/.test(n) ? 'tank' : /long sleeve/.test(n) ? 'long sleeve' : /beanie/.test(n) ? 'beanie' : /cap|hat|snapback|trucker/.test(n) ? 'hat' : /jacket/.test(n) ? 'jacket' : /t-shirt|\btee\b/.test(n) ? 'tee' : 'product';
   };
   function cartCard(e: Extract<MaxEvent, { type: 'cart' }>) {
     const card = el('div', 'rounded-2xl border border-violet-300/60 dark:border-violet-400/25 bg-violet-500/[0.05] p-3.5 grid gap-3');
@@ -173,6 +174,10 @@ if (sheet) {
     });
     if (pr?.totals) {
       const t = pr.totals;
+      // The lines above are products + setup; anything added on top (rush, design help) is listed so it adds up.
+      const extra = (label: string, v?: number) => { if (!v) return; const r = el('div', 'flex items-baseline justify-between text-[13px] muted'); r.append(el('span', '', label), el('span', '', `+${money(v)}`)); card.append(r); };
+      extra(`${t.turnaround === 'superrush' ? 'Super Rush' : 'Rush'}${t.rushPercent ? ` (+${t.rushPercent}%)` : ''}`, t.rush);
+      extra('Design help', t.art);
       const tot = el('div', 'flex items-baseline justify-between border-t border-violet-300/40 pt-2 text-[14px]');
       tot.append(el('span', 'font-bold text-zinc-900 dark:text-white', 'Total before tax'), el('span', 'font-bold text-zinc-900 dark:text-white', money(t.subtotal + t.setup + (t.art || 0) + (t.rush || 0))));
       card.append(tot);
