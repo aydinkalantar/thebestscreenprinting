@@ -2,11 +2,12 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ProductCard from '../../components/ProductCard.astro';
-import { products, CATEGORY_LABELS, COLLECTIONS, collectionHref, brandHref, techniqueNames, customizeHref, type CatalogProduct } from '../../lib/catalog';
+import { products, CATEGORY_LABELS, COLLECTIONS, collectionHref, brandHref, techniqueNames, customizeHref, recommendedMethod, type CatalogProduct } from '../../lib/catalog';
+import { spotsFor } from '../../components/design/areas';
 import { business } from '../../data/business';
 import DesignPreview from '../../components/design/DesignPreview.astro';
 import DesignRequestSheet from '../../components/design/DesignRequestSheet.astro';
-import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X, Upload, CreditCard, ShoppingBag } from '@lucide/astro';
+import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X, Upload, CreditCard, ShoppingBag, Minus, Plus, ChevronDown, Star } from '@lucide/astro';
 
 export function getStaticPaths() {
   return products.map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -18,7 +19,12 @@ const category = collection?.label ?? (CATEGORY_LABELS[p.category] || p.category
 const categoryHref = collection ? collectionHref(collection.slug) : '/catalog/';
 const sameGroup = (x: CatalogProduct) => (collection ? collection.match(x) : x.category === p.category);
 const related = products.filter((x) => x.id !== p.id && sameGroup(x)).slice(0, 4);
-const locations = p.category === 'hats' ? ['Front', 'Back', 'Side'] : p.category === 'accessories' ? ['Front', 'Back'] : ['Front', 'Back', 'Left chest', 'Sleeve'];
+// The print spots are the design preview's (one picker, under the photo); this hidden list mirrors it for pricing.
+const locations = [...new Set(spotsFor(p).map((sp) => sp.label))];
+const recommended = recommendedMethod(p, methods);
+// Everyday sizes show first; the rest open with "More sizes" (or when they already have a quantity).
+const COMMON = ['S', 'M', 'L', 'XL', '2XL'];
+const rare = (s: string) => p.sizes.some((x) => COMMON.includes(x)) && !COMMON.includes(s);
 const min = business.shopMinimum;
 const SWATCH_LIMIT = 24;
 const description = `Custom ${p.name} printed with your logo or design. ${methods.join(', ')}. Orders from ${min} pieces, made in our own shops in Los Angeles and Cleveland.`;
@@ -49,29 +55,32 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 ---
 <Base title={`Custom ${p.name} | TBSP Los Angeles`} description={description} jsonLd={jsonLd}>
   <Breadcrumbs items={[{ label: 'Catalog', href: '/catalog/' }, { label: category, href: categoryHref }, { label: p.name }]} />
-  <div class="grid gap-4 md:gap-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-    <div class="min-w-0 lg:order-none">
-      <DesignPreview p={p} />
-    </div>
-    <div class="min-w-0">
+  <!-- Phones: name and price, then the preview, then everything to order. Desktop: the preview stays
+       on the left while the right column scrolls. -->
+  <div class="grid gap-x-10 gap-y-4 grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+    <div class="min-w-0 lg:col-start-2 lg:row-start-1">
       <p class="eyebrow"><a href={categoryHref} class="hover:underline">{category}</a></p>
-      <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white">{p.name}</h1>
+      <h1 class="mt-2 lg:mt-3 text-[1.7rem] leading-tight sm:text-4xl font-extrabold text-zinc-900 dark:text-white">{p.name}</h1>
       {p.brand && (
-        <p class="mt-2 text-[14px] muted">
+        <p class="mt-1.5 text-[14px] muted">
           <a href={brandHref(p.brand)} class="font-semibold text-zinc-700 dark:text-zinc-300 hover:text-violet-700 dark:hover:text-violet-300 underline-offset-2 hover:underline">{p.brand}</a>{p.style && <> · Style {p.style}</>}
         </p>
       )}
-      <p class="mt-4 text-[15px] muted">Priced per order with your decoration included. Pick a color and sizes, and we'll send a quote within one business day. Orders start at {min} pieces.</p>
+      <p class="mt-2 lg:mt-3 text-[15px] muted" data-from-line>Live prices with your print included. Orders start at {min} pieces, and bigger runs cost less per piece.</p>
+    </div>
+    <div class="min-w-0 lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:sticky lg:top-28 lg:self-start">
+      <DesignPreview p={p} />
+    </div>
+    <div class="min-w-0 lg:col-start-2 lg:row-start-2">
 
-      <form id="add-to-quote" class="mt-7 panel-raised p-5 sm:p-6 grid grid-cols-[minmax(0,1fr)] gap-6 min-w-0" novalidate
+      <form id="add-to-quote" class="mt-2 lg:mt-3 panel-raised p-5 sm:p-6 grid grid-cols-[minmax(0,1fr)] gap-6 min-w-0" novalidate
         data-id={p.id} data-slug={p.slug} data-name={p.name} data-style={p.style ?? ''} data-brand={p.brand ?? ''} data-cat={p.category} data-sub={p.subcategory ?? ''} data-img={p.image} data-min={min}>
-        <p class="text-lg font-bold text-zinc-900 dark:text-white -mb-2">Customize &amp; order</p>
-        {p.colors.length > 0 && (
-          <fieldset>
+                {p.colors.length > 0 && (
+          <fieldset class="min-w-0">
             <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>1</span>Color · <span id="color-name" class="normal-case tracking-normal text-zinc-900 dark:text-white text-[13px]">{p.colors[0].name}</span></legend>
-            <div class="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label="Color">
+            <div class="mt-3 flex flex-wrap gap-2 max-md:flex-nowrap max-md:overflow-x-auto max-md:no-scrollbar max-md:-mx-5 max-md:px-5 max-md:py-1" role="radiogroup" aria-label="Color">
               {p.colors.map((c, i) => (
-                <button type="button" role="radio" hidden={i >= SWATCH_LIMIT} aria-checked={i === 0 ? 'true' : 'false'} class:list={['swatch w-8 h-8 max-md:w-10 max-md:h-10 rounded-full border border-zinc-300 dark:border-white/20 transition-shadow', { 'is-on ring-2 ring-violet-500 ring-offset-2 ring-offset-white dark:ring-offset-[#0d0d14]': i === 0 }]} style={`background:${c.hex}`} title={c.name} aria-label={c.name} data-name={c.name} data-img={c.image || ''} data-back={c.back || ''}></button>
+                <button type="button" role="radio" hidden={i >= SWATCH_LIMIT} aria-checked={i === 0 ? 'true' : 'false'} class:list={['swatch shrink-0 w-8 h-8 max-md:w-10 max-md:h-10 rounded-full border border-zinc-300 dark:border-white/20 transition-shadow', { 'is-on ring-2 ring-violet-500 ring-offset-2 ring-offset-white dark:ring-offset-[#0d0d14]': i === 0 }]} style={`background:${c.hex}`} title={c.name} aria-label={c.name} data-name={c.name} data-img={c.image || ''} data-back={c.back || ''}></button>
               ))}
             </div>
             {p.colors.length > SWATCH_LIMIT && (
@@ -80,16 +89,19 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           </fieldset>
         )}
 
-        <fieldset>
+        <fieldset class="min-w-0">
           <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>{p.colors.length > 0 ? 2 : 1}</span>Quantity by size</legend>
-          <div class="mt-3 grid grid-cols-3 sm:grid-cols-4 gap-2.5">
+          <div class="mt-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-2">
             {p.sizes.map((s) => (
-              <label class="grid gap-1 text-center">
-                <span class="text-[12px] font-semibold text-zinc-600 dark:text-zinc-300">{s}</span>
-                <input type="number" inputmode="numeric" pattern="[0-9]*" enterkeyhint="next" min="0" max="99999" step="1" placeholder="0" class="field !h-10 !px-2 text-center max-md:!h-12" data-size={s} aria-label={`Quantity, size ${s}`} />
-              </label>
+              <div class="min-w-0 flex items-center gap-0.5 rounded-xl border border-zinc-200 dark:border-white/10 pl-2.5 pr-1 h-12" data-size-row data-rare={rare(s) ? '' : undefined} hidden={rare(s)}>
+                <span class="min-w-[2.25rem] flex-1 text-[14px] font-bold text-zinc-900 dark:text-white whitespace-nowrap">{s}</span>
+                <button type="button" data-step="-1" class="w-8 h-8 shrink-0 rounded-full grid place-items-center bg-zinc-100 dark:bg-white/[0.08] text-zinc-700 dark:text-zinc-200" aria-label={`One less ${s}`}><Minus class="w-4 h-4" aria-hidden="true" /></button>
+                <input type="number" inputmode="numeric" pattern="[0-9]*" enterkeyhint="next" min="0" max="99999" step="1" placeholder="0" class="w-9 h-9 shrink-0 bg-transparent text-center text-[15px] font-semibold text-zinc-900 dark:text-white outline-none rounded-lg focus:ring-2 focus:ring-violet-500" data-size={s} aria-label={`Quantity, size ${s}`} />
+                <button type="button" data-step="1" class="w-8 h-8 shrink-0 rounded-full grid place-items-center bg-zinc-100 dark:bg-white/[0.08] text-zinc-700 dark:text-zinc-200" aria-label={`One more ${s}`}><Plus class="w-4 h-4" aria-hidden="true" /></button>
+              </div>
             ))}
           </div>
+          {p.sizes.some(rare) && <button type="button" data-more-sizes class="mt-2 text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">+ More sizes ({p.sizes.filter(rare).join(', ')})</button>}
           <p class="mt-3 flex flex-wrap items-baseline justify-between gap-2 text-[13px]">
             <span class="font-semibold text-zinc-900 dark:text-white">Total: <span id="qty-total">0</span> pieces</span>
             <span class="muted">Minimum {min} pieces per product</span>
@@ -98,28 +110,27 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 
         <!-- Step 3: artwork. The list is filled by the design preview. -->
         <div data-design-summary class="grid grid-cols-[minmax(0,1fr)] gap-2 min-w-0">
-          <div class="flex items-baseline justify-between gap-3">
-            <p class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>3</span>Your artwork <span class="normal-case tracking-normal font-medium">(optional)</span></p>
-            <a href="#design" data-art-some hidden class="text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add more</a>
+          <div class="flex items-baseline justify-between gap-3" data-art-some hidden>
+            <p class="eyebrow !text-zinc-500 dark:!text-zinc-400">Your design</p>
+            <a href="#design" class="text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add another spot</a>
           </div>
-          <div data-art-none class="flex flex-wrap items-center gap-3 rounded-xl border border-dashed border-zinc-300 dark:border-white/15 px-4 py-3">
-            <p class="min-w-0 flex-1 text-[13px] muted">Upload your logo to see it on the product. No file yet? Skip this, you can send it later.</p>
-            <button type="button" data-art-upload class="btn-quiet btn-sm max-md:h-11 max-sm:w-full"><Upload class="w-4 h-4" aria-hidden="true" />Upload artwork</button>
-          </div>
+          <!-- No design yet: one line pointing to the preview (the one place to upload). -->
+          <p data-art-none class="text-[13px] muted">No logo yet? <a href="#design" data-art-upload class="font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add it on the preview</a>, or skip it and send it later.</p>
           <ul data-list data-art-some hidden class="divide-y divide-zinc-200/80 dark:divide-white/10"></ul>
           <p data-bytes data-art-some hidden class="text-[12px] muted"></p>
         </div>
 
         {methods.length > 0 && (
-          <fieldset data-plain-only>
-            <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400">Decoration</legend>
+          <fieldset data-method data-plain-only class="min-w-0">
+            <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400">Print method</legend>
             <div class="mt-3 flex flex-wrap gap-2">
-              {methods.map((m) => <label class={chipOn}><input type="checkbox" name="decoration" value={m} checked={methods.length === 1} class="accent-violet-600" />{m}</label>)}
+              {methods.map((m) => <label class={chipOn}><input type="radio" name="decoration" value={m} checked={m === (recommended?.method ?? methods[0])} class="sr-only" />{m === recommended?.method && <Star class="w-3.5 h-3.5 fill-current" aria-hidden="true" />}{m}</label>)}
             </div>
+            {recommended?.why && <p class="mt-2 text-[12.5px] muted"><Star class="inline w-3 h-3 -mt-0.5 fill-current text-violet-600 dark:text-violet-300" aria-hidden="true" /> Recommended: {recommended.why}</p>}
           </fieldset>
         )}
 
-        <fieldset data-plain-only>
+        <fieldset hidden data-locations class="min-w-0">
           <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400">Print location</legend>
           <div class="mt-3 flex flex-wrap gap-2">
             {locations.map((l, i) => <label class={chipOn}><input type="checkbox" name="location" value={l} checked={i === 0} class="accent-violet-600" />{l}</label>)}
@@ -129,7 +140,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         <!-- Step 4: instant price + "Order & pay". Hidden unless online orders are on in the studio admin. -->
         <section data-instant hidden class="grid gap-3 rounded-2xl border border-violet-300/60 dark:border-violet-400/25 bg-violet-500/[0.05] p-4" aria-labelledby="ip-title">
           <div class="flex items-baseline justify-between gap-3">
-            <p id="ip-title" class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>4</span>Your price</p>
+            <p id="ip-title" class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>3</span>Your price</p>
             <span data-ip-status class="text-[12px] muted" aria-live="polite"></span>
           </div>
           <div data-ip-inks class="grid gap-2"></div>
@@ -177,7 +188,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           </div>
           <p id="qty-hint" class="text-[13px] muted" aria-live="polite">Enter at least {min} pieces to add this product to your cart.</p>
           <p id="cart-error" class="err" role="alert"></p>
-          <p class="text-[12.5px] muted">Ordering several products? Add each one to your cart, then check out or request one quote for all of them. Minimum {min} pieces per product.</p>
+          <p class="text-[12.5px] muted">Ordering several products? Add each one to your cart, then pay or request one quote for all of them.</p>
         </div>
       </form>
 
@@ -188,17 +199,18 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         <a class="btn-quiet" href={`tel:${business.phone}`}><Phone class="w-4 h-4" aria-hidden="true" />{business.phoneDisplay}</a>
       </div>
 
-      <section class="mt-8">
-        <p class="eyebrow !text-zinc-500 dark:!text-zinc-400">Available decoration</p>
-        <ul class="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">{methods.map((m) => <li class="flex items-center gap-1.5"><Check class="w-4 h-4 text-emerald-500" aria-hidden="true" />{m}</li>)}</ul>
-      </section>
-
-      {p.features?.length > 0 && (
-        <section class="mt-8">
-          <p class="eyebrow !text-zinc-500 dark:!text-zinc-400">Details</p>
-          <ul class="mt-3 grid gap-1.5 text-sm muted list-disc pl-5">{p.features.map((f) => <li>{f}</li>)}</ul>
-        </section>
-      )}
+      <div class="mt-6 grid gap-2">
+        {p.features?.length > 0 && (
+          <details class="group panel px-4">
+            <summary class="flex items-center justify-between gap-3 min-h-[52px] cursor-pointer list-none font-semibold text-zinc-900 dark:text-white">Product details<ChevronDown class="w-4 h-4 muted transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
+            <ul class="pb-4 grid gap-1.5 text-sm muted list-disc pl-5">{p.features.map((f) => <li>{f}</li>)}</ul>
+          </details>
+        )}
+        <details class="group panel px-4">
+          <summary class="flex items-center justify-between gap-3 min-h-[52px] cursor-pointer list-none font-semibold text-zinc-900 dark:text-white">Print methods for this product<ChevronDown class="w-4 h-4 muted transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
+          <ul class="pb-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">{methods.map((m) => <li class="flex items-center gap-1.5"><Check class="w-4 h-4 text-emerald-500" aria-hidden="true" />{m}</li>)}</ul>
+        </details>
+      </div>
 
       <div class="mt-8 grid gap-3 sm:grid-cols-2">
         {business.maxLive && (
@@ -218,15 +230,17 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         {p.colors.length > 0 && <span data-bar-swatch class="w-8 h-8 max-[399px]:hidden rounded-full shrink-0 border border-zinc-300 dark:border-white/20" style={`background:${p.colors[0].hex}`} aria-hidden="true"></span>}
         <span class="min-w-0 leading-tight">
           <span data-bar-color class="block truncate text-[14px] font-semibold text-zinc-900 dark:text-white">{p.colors[0]?.name ?? p.name}</span>
-          <span class="block mt-0.5 text-[12.5px] muted truncate"><b data-bar-total class="text-zinc-900 dark:text-white">0</b> pieces · min {min}</span>
+          <span class="block mt-0.5 text-[12.5px] muted truncate" data-bar-line><b data-bar-total class="text-zinc-900 dark:text-white">0</b> pieces · min {min}</span>
         </span>
       </button>
       <button type="submit" form="add-to-quote" data-bar-submit class="btn-primary h-12 px-3.5 text-[14px] shrink-0 disabled:opacity-50 disabled:shadow-none aria-busy:cursor-wait" disabled>
-        <ShoppingBag class="w-4 h-4" aria-hidden="true" /><span>Add to cart</span>
+        <ShoppingBag class="w-4 h-4" aria-hidden="true" /><span data-bar-submit-label>Add to cart</span>
       </button>
+      <button type="button" data-bar-order hidden class="btn-primary h-12 px-3.5 text-[14px] shrink-0">Order &amp; pay</button>
     </div>
   </div>
 
+  <div class="md:hidden h-24" aria-hidden="true"></div>
   <DesignRequestSheet />
 
   <!-- Shown after "Add to cart". -->
@@ -333,7 +347,8 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     button.disabled = n < min;
     if (single) single.disabled = n < min;
     if (n >= min && cartError) cartError.textContent = '';
-    if (barTotal) barTotal.textContent = String(n);
+    const bt = document.querySelector<HTMLElement>('[data-bar-total]') ?? barTotal;
+    if (bt) bt.textContent = String(n);
     if (barSubmit) barSubmit.disabled = n < min;
     plainOnly.forEach((f) => { f.hidden = placed > 0; });
     hint.textContent = n === 0 ? `Enter at least ${min} pieces to add this product to your cart.`
@@ -343,6 +358,28 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     window.dispatchEvent(new Event('tbsp-pdp-change'));
   }
   inputs.forEach((i) => i.addEventListener('input', refresh));
+  // − / + next to each size.
+  form.addEventListener('click', (e) => {
+    const b = (e.target as Element).closest<HTMLButtonElement>('[data-step]');
+    if (!b) return;
+    const i = b.parentElement!.querySelector<HTMLInputElement>('input[data-size]')!;
+    i.value = String(Math.max(0, qty(i) + Number(b.dataset.step)) || '');
+    i.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  form.querySelector('[data-more-sizes]')?.addEventListener('click', (e) => {
+    form.querySelectorAll<HTMLElement>('[data-size-row][data-rare]').forEach((r) => { r.hidden = false; });
+    (e.currentTarget as HTMLElement).remove();
+  });
+  // The print spot picked on the preview is the one this item is priced for (until a design is placed).
+  document.querySelector('[data-design]')?.addEventListener('design-spot', (e) => {
+    const lbl = (e as CustomEvent<{ label: string }>).detail.label;
+    const boxes = [...form.querySelectorAll<HTMLInputElement>('input[name="location"]')];
+    if (!boxes.some((c) => c.value === lbl)) return;
+    boxes.forEach((c) => { c.checked = c.value === lbl; });
+    refresh();
+  });
+  // The method chosen here is the one a new design starts with.
+  form.querySelectorAll<HTMLInputElement>('input[name="decoration"]').forEach((r) => r.addEventListener('change', () => { if (r.checked) design.setMethod(r.value); refresh(); }));
   document.querySelector('[data-bar-sizes]')?.addEventListener('click', () => {
     const first = inputs.find((i) => !qty(i)) ?? inputs[0];
     first?.scrollIntoView({ block: 'center', behavior: 'smooth' });
@@ -350,6 +387,25 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   });
   if (swatches[0]) design.init({ name: color, front: colorImg, back: swatches[0].dataset.back || '' });
   refresh();
+
+  // "From $X each": a real price for a typical order (24 pieces, the suggested method, 1-color print,
+  // first print spot), so visitors see the price before choosing anything.
+  (async () => {
+    const line = document.querySelector<HTMLElement>('[data-from-line]');
+    const method = form.querySelector<HTMLInputElement>('input[name="decoration"]:checked')?.value;
+    const spot = form.querySelector<HTMLInputElement>('input[name="location"]:checked')?.value;
+    if (!line || !method || !spot) return;
+    const pick = ['M', 'L'].filter((s) => inputs.some((i) => i.dataset.size === s));
+    const sizes = Object.fromEntries((pick.length ? pick : inputs.slice(0, 2).map((i) => i.dataset.size || '')).map((s, _, a) => [s, Math.round(24 / a.length)]));
+    const res = await fetchPrices([{ brand: d.brand || '', style: d.style || '', productName: d.name || '', color, sizes, locations: [{ placement: spot, method, ...(/screen/i.test(method) ? { colors: 1 } : {}) }] }]).catch(() => null);
+    const it = res?.enabled ? res.items[0] : null;
+    if (!it?.ok) return;
+    const each = Math.min(...Object.values(it.sizePrices));
+    const how = /embroider/i.test(method) ? 'embroidered' : /screen/i.test(method) ? 'in a 1-color print' : `with ${method}`;
+    line.innerHTML = '';
+    const b = document.createElement('b'); b.className = 'text-zinc-900 dark:text-white'; b.textContent = `From ${money(each)} each`;
+    line.append(b, ` with your logo ${how} (24 pieces). Live price below, from ${min} pieces.`);
+  })();
 
   // ── quote cart ──────────────────────────────────────────────────────────────
   const toast = document.getElementById('cart-toast')!;
@@ -732,6 +788,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     ip('quote').hidden = ok;
     ip('status').textContent = '';
     if (!ok) {
+      barPrice('');
       ip('quote').textContent = it?.quoteOnly ? `${it.quoteOnly}. Add it to your cart and request a quote, and we'll price it for you.` : '';
       lastPrice = null;
       return;
@@ -739,6 +796,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     lastPrice = res; lastInput = input;
     const prices = Object.values(it.sizePrices);
     const lo = Math.min(...prices), hi = Math.max(...prices);
+    barPrice(`${money(lo)} each`, `Total ${money(res.totals!.subtotal + res.totals!.setup + (res.totals!.art || 0))}`);
     ip('each').textContent = lo === hi ? money(lo) : `${money(lo)}–${money(hi)}`;
     const extra = Object.entries(it.sizePrices).filter(([, p]) => p > lo);
     ip('sizes').textContent = extra.length ? `${extra.map(([s]) => s).join(', ')}: ${money(Math.max(...extra.map(([, p]) => p)))} each (larger sizes cost more)` : '';
@@ -759,10 +817,26 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     if (it.stockShort.length) ip('stock').textContent = `Low stock: ${it.stockShort.map((s) => `${s.size} (${s.stock} left)`).join(', ')}. We'll confirm a replacement before printing.`;
   }
 
+  // Phone bar: the price and "Order & pay" once there is one; otherwise pieces and "Add to cart".
+  const barLine = document.querySelector<HTMLElement>('[data-bar-line]');
+  const barOrder = document.querySelector<HTMLButtonElement>('[data-bar-order]');
+  const barAddLabel = document.querySelector<HTMLElement>('[data-bar-submit-label]');
+  const barPiecesHtml = barLine?.innerHTML ?? '';
+  function barPrice(text: string, sub = '') {
+    if (!barLine) return;
+    if (text) { if (barColor) barColor.textContent = text; barLine.textContent = sub; }
+    else { if (barColor) barColor.textContent = color; barLine.innerHTML = barPiecesHtml; const t = barLine.querySelector('[data-bar-total]'); if (t) t.textContent = String(sum()); }
+    if (barOrder) barOrder.hidden = !text;
+    // With "Order & pay" next to it, the cart button shrinks to its icon.
+    barAddLabel?.classList.toggle('sr-only', !!text);
+  }
+  barOrder?.addEventListener('click', () => orderBtn.click());
+
   async function runPrice() {
     const input = priceInput();
     priceCtl?.abort();
     if (typeof input === 'string') {
+      barPrice('');
       inkRows = []; renderInks();
       if (!instant.hidden || lastPrice) { ip('body').hidden = true; orderBtn.hidden = true; ip('foot').hidden = true; ip('quote').hidden = false; ip('quote').textContent = input; }
       lastPrice = null;

@@ -54,3 +54,20 @@ export const brandHref = (brand: string) => `/catalog/brand/${slugify(brand)}/`;
 
 /** Featured styles, in catalog order: the "best sellers" rows. */
 export const featuredProducts = products.filter((p) => p.featured);
+
+/**
+ * The print method we suggest first for a product, with a one-line reason shown under it.
+ * Thread for hats, polos, jackets and beanies (premium, no heat on technical fabrics); ink for the rest.
+ */
+export function recommendedMethod(p: Pick<CatalogProduct, 'category' | 'subcategory'>, methods: string[]): { method: string; why: string } | null {
+  if (!methods.length) return null;
+  const has = (m: string) => methods.find((x) => x.toLowerCase().startsWith(m));
+  const sub = p.subcategory ?? '';
+  const thread = p.category === 'hats' || ['polos', 'beanies', 'jackets'].includes(sub) || p.category === 'outerwear';
+  if (thread && has('embroider')) {
+    const why = p.category === 'hats' || sub === 'beanies' ? 'Stitched logos look sharp and last on hats.' : sub === 'polos' ? 'Clean thread and no heat on performance fabric.' : 'A premium stitched look that lasts.';
+    return { method: has('embroider')!, why };
+  }
+  if (has('screen')) return { method: has('screen')!, why: 'Bold, long-lasting ink and the best price per piece.' };
+  return { method: methods[0], why: '' };
+}

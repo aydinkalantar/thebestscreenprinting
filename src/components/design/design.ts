@@ -22,6 +22,8 @@ export interface Order {
 interface Options { summary: HTMLElement | null; sheet: HTMLElement | null; getOrder: () => Order; onChange: () => void }
 type Config = {
   spots: DesignSpot[]; decorations: string[]; name: string;
+  /** The print method suggested first (catalog.ts recommendedMethod). */
+  recommended?: string;
   /** Measured placement on collar garments (null: template only). */
   place: PlaceConfig | null;
   /** The product's style photo (used when a color has no photo of its own). */
@@ -484,6 +486,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (!sp) return;
     active = id;
     side = sp.side;
+    // The order form follows the spot picked here (it's the page's one location picker).
+    root.dispatchEvent(new CustomEvent('design-spot', { bubbles: true, detail: { id, label: sp.label } }));
     if (zoom) { const r = areaRect(sp, photoFor(side)); zoomed = r.w < 0.2; }
     setError();
     render();
@@ -625,7 +629,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     const prev = arts.get(loc);
     const a: Art = {
       loc, file, ext, kind: 'file', aspect: 1, x: 0, y: 0, w: 1,
-      decoration: prev?.decoration ?? allowedFor(loc)[0], notes: prev?.notes ?? '',
+      decoration: prev?.decoration ?? (cfg.recommended && allowedFor(loc).includes(cfg.recommended) ? cfg.recommended : allowedFor(loc)[0]), notes: prev?.notes ?? '',
     };
     if (DRAWABLE.has(ext)) {
       const url = URL.createObjectURL(file);
@@ -974,6 +978,10 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       announce(carriedNote);
       return { placed, pending: pending.length };
     },
+    /** The method new artwork starts with (the order form's method choice). */
+    setMethod(m: string) { cfg.recommended = m; },
+    /** Label of the selected print spot. */
+    activeLabel: () => spotById.get(active)?.label ?? '',
     clearCarried() { pending = []; carriedNote = ''; renderPending(); },
     decorations: () => [...new Set(ordered().map((a) => a.decoration))],
     locations: () => ordered().map((a) => spotById.get(a.loc)!.label),
