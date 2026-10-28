@@ -128,7 +128,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     <div class="mt-5 md:mt-10 grid gap-2 sm:gap-4 grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
       {categories.map((c) => (
         <a href={c.href} class="group press panel p-3 max-md:p-1.5 max-md:rounded-xl hover:shadow-[0_18px_44px_-24px_rgba(52,33,110,0.45)] hover:border-violet-400/60 transition-all">
-          <span class="block aspect-[5/4] max-md:aspect-square rounded-xl max-md:rounded-lg bg-zinc-100 overflow-hidden"><img src={c.img} alt="" loading="lazy" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" /></span>
+          <span class="block aspect-[5/4] max-md:aspect-square rounded-xl max-md:rounded-lg bg-[#f3f3f3] overflow-hidden"><img src={c.img} alt="" loading="lazy" class="w-full h-full object-cover object-[50%_18%] group-hover:scale-105 transition-transform duration-300" /></span>
           <span class="block pt-3 pb-2 max-md:pt-1.5 max-md:pb-1 text-center leading-snug"><span class="block font-semibold max-md:text-[13px] max-md:leading-tight text-zinc-900 dark:text-white">{c.label}</span><span class="block text-[13px] max-md:text-[11.5px] muted">{styles(c.count)}</span></span>
         </a>
       ))}
