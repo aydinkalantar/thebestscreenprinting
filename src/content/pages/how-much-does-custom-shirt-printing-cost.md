@@ -1,46 +1,47 @@
 ---
 path: "/how-much-does-custom-shirt-printing-cost/"
 title: "How Much Does Custom Shirt Printing Cost? 2026 Prices | TBSP"
-description: "Custom t-shirt printing costs about $13 per shirt at 24 pieces and $7.50 at 144 for a one-color print, shirt and setup included. Full price table by method and quantity."
+description: "Custom t-shirt printing costs about $11.50 per shirt at 24 pieces and $7.25 at 144 for a one-color print, shirt included. Full price table by method and quantity, free shipping from $300."
 h1: "How much does custom shirt printing cost?"
 kind: answer
 imported: false
-summary: "A one-color screen printed tee costs about $13 each for 24 shirts and $7.50 each for 144, with the shirt and setup included. Full-color DTF runs about $16 each at 24. The price per shirt drops as the quantity goes up, and every order ships anywhere in the US for $35."
+summary: "A one-color screen printed tee costs about $11.50 each for 24 shirts and $7.25 each for 144, shirt included, plus a one-time $25 screen. Full-color DTF runs about $13 each at 24. The price per shirt drops as the quantity goes up, and shipping is free on orders of $300 or more anywhere in the lower 48 states."
 facts:
-  - { label: "24 tees, 1 color", value: "About $13 each" }
-  - { label: "144 tees, 1 color", value: "About $7.50 each" }
-  - { label: "Minimum", value: "6 pieces" }
+  - { label: "24 tees, 1 color", value: "About $11.50 each" }
+  - { label: "144 tees, 1 color", value: "About $7.25 each" }
+  - { label: "Shipping", value: "Free from $300" }
 faqs:
   - q: "How much does it cost to print 24 custom t-shirts?"
-    a: "About $13 per shirt for a one-color screen print on the front, or about $16 per shirt for a full-color DTF print, shirt and setup included. That is roughly $310 to $385 plus $35 shipping."
+    a: "About $11.50 per shirt for a one-color screen print on the front plus a $25 screen, or about $13 per shirt for a full-color DTF print with no setup fee. That is roughly $300 to $315, and shipping is free from $300."
   - q: "How much does it cost to print 100 shirts?"
-    a: "For a one-color front print, about $9 per shirt at 72 to 143 pieces, so around $900 for 100. Two colors add about $1.25 per shirt at that quantity."
+    a: "For a one-color front print, about $8.50 per shirt at 72 to 143 pieces, so around $875 for 100 including the screen. Two colors add about $1.25 per shirt at that quantity."
   - q: "What is a setup fee?"
-    a: "Screen printing needs one screen per ink color per print spot, at $25 per screen. The white base layer on dark shirts is free. DTF and DTG have no setup fee. Embroidery has a one-time $75 digitizing fee per design."
+    a: "Screen printing needs one screen per ink color per print spot, at $25 per screen. The white base layer on dark shirts is free. DTF and DTG have no setup fee. Embroidery digitizing is free from 24 pieces and $45 per logo below that."
   - q: "Why are small orders more per shirt?"
-    a: "Setup and press time cost the same for 12 shirts as for 500, so they are spread over fewer pieces. For under 24 pieces, DTF or DTG is often cheaper than screen printing."
+    a: "Setup and press time cost the same for 12 shirts as for 500, so they are spread over fewer pieces. For full-color art under 24 pieces, DTF is often the best value."
   - q: "Is shipping included?"
-    a: "Shipping is a flat $35 per order to any address in the lower 48 states, whatever the quantity. Pickup in Los Angeles is free."
-updated: "2026-10-27"
+    a: "Shipping is free on orders of $300 or more and a flat $35 below that, to any address in the lower 48 states. Pickup in Los Angeles is free."
+updated: "2026-10-28"
 ---
 ## Price per shirt, by method and quantity
 
-Example: a black Gildan 5000 tee with one print on the front. Prices include the shirt and any setup. They are estimates from our current price list; your quote is the final price.
+Example: a black Gildan 5000 tee with one print on the front, shirt included. They are estimates from our current price list; your quote is the final price.
 
 | Quantity | Screen print, 1 color | Screen print, 2 colors | DTF, full color | DTG, full color | Embroidery, left chest |
 | --- | --- | --- | --- | --- | --- |
-| 6 | $20.00 | $26.75 | $22.00 | $26.00 | $20.00 |
-| 12 | $18.00 | $22.55 | $19.00 | $23.00 | $17.00 |
-| 24 | $13.00 | $15.80 | $16.00 | $20.00 | $14.00 |
-| 48 | $10.50 | $12.30 | $14.00 | $17.00 | $12.00 |
-| 72 | $9.00 | $10.35 | $13.00 | $16.00 | $11.00 |
-| 144 | $7.50 | $8.45 | $12.00 | $14.00 | $9.50 |
+| 6 | $18.00 | $20.50 | $17.00 | $21.00 | $19.50 |
+| 12 | $16.00 | $18.25 | $15.00 | $19.00 | $16.50 |
+| 24 | $11.50 | $13.25 | $13.00 | $16.25 | $13.50 |
+| 36 | $10.50 | $12.00 | $13.00 | $16.25 | $13.50 |
+| 48 | $9.50 | $10.75 | $11.50 | $14.00 | $11.50 |
+| 72 | $8.50 | $9.50 | $10.50 | $13.50 | $11.00 |
+| 144 | $7.25 | $8.00 | $9.00 | $12.25 | $9.50 |
 
-Embroidery is shown for a logo of about 7,000 to 8,000 stitches and adds a one-time $75 digitizing fee. On a white shirt, DTG costs about $2.50 less per piece.
+Screen printing adds a one-time $25 screen per ink color per print spot; the white base on dark shirts is free. DTF and DTG have no setup fee. Embroidery is shown for a logo of about 7,000 to 8,000 stitches; digitizing is free from 24 pieces and $45 per logo below that. On a white shirt, DTG costs about $1.50 to $2.50 less per piece.
 
 ## What changes the price
 
-- **Quantity.** The biggest factor. Going from 24 to 72 shirts cuts the screen print price by about 30%.
+- **Quantity.** The biggest factor. Going from 24 to 72 shirts cuts the screen print price by about 25%.
 - **Number of ink colors.** Screen printing adds a screen and a pass per color. Full-color art is often cheaper as DTF or DTG.
 - **Number of print spots.** A back print or sleeve print is priced as its own spot. See [front, back and sleeve printing](/front-back-sleeve-printing/).
 - **The garment.** Heavyweight, oversized, organic and name-brand blanks cost more than a basic tee. Max prices any shirt in our [catalog](/catalog/) with its real blank price.

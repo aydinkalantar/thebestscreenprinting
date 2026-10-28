@@ -39,7 +39,7 @@ Some orders have a higher minimum:
 | Screen printing, 7–10 ink colors | 100 pieces |
 | Any order with finishings (printed tags, hem tags, etc.) | 50 pieces |
 | CMYK process printing | 50 or 100 pieces, depending on complexity |
-| Embossing | 50 pieces |
+| Embossing | 24 pieces |
 
 ## 3. Turnaround time
 

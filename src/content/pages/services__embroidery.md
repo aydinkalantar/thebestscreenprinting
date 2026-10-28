@@ -1,11 +1,11 @@
 ---
 path: "/services/embroidery/"
 title: "Embroidery Services in Los Angeles"
-description: "Custom embroidery in Los Angeles on caps, polos, jackets and uniforms. 6-piece minimum per design, $75 one-time digitizing, 3D puff available."
+description: "Custom embroidery in Los Angeles on caps, polos, jackets and uniforms. 6-piece minimum per design, digitizing free from 24 pieces, 3D puff available."
 h1: "Embroidery services in Los Angeles"
 kind: service
 imported: false
-summary: "Thread-built logos with real texture, stitched on caps, polos, jackets and uniforms at our Los Angeles shop. 6-piece minimum per design, with a one-time $75 digitizing fee per logo and no hidden fees."
+summary: "Thread-built logos with real texture, stitched on caps, polos, jackets and uniforms at our Los Angeles shop. 6-piece minimum per design, with digitizing free from 24 pieces ($45 per logo below that) and no hidden fees."
 facts:
   - { label: "Minimum", value: "6 pieces per design" }
   - { label: "Setup", value: "Digitizing and setup included" }
@@ -14,7 +14,7 @@ faqs:
   - q: "What is the minimum order for custom embroidery?"
     a: "Our embroidery minimum is 6 pieces per design. Send the quantity and garments with your quote request and we will confirm the details."
   - q: "Do you charge a digitizing fee?"
-    a: "Yes, a one-time $75 per logo. It turns your art into a stitch file, and we keep that file on record for your reorders. It is shown on your quote, with no other setup fees."
+    a: "Only on small orders. Digitizing is free on 24 or more embroidered pieces and on reorders of the same logo. Under 24 pieces it is a one-time $45 per logo, shown on your quote, with no other setup fees."
   - q: "What is 3D puff embroidery?"
     a: "3D puff embroidery is stitched over a foam base, which raises the design off the fabric like the logos on major league caps. It works best on bold designs without thin lines or small lettering."
   - q: "What do I need to send for an embroidery quote?"

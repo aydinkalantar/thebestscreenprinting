@@ -19,7 +19,7 @@ faqs:
     a: "Screen printing gives the boldest, most durable result on thick cotton and is the cheapest from 24 pieces. DTF works well for full-color art on small runs."
   - q: "Can you add neck labels or hang tags for my brand?"
     a: "Yes, as finishings on orders of 50 pieces or more. Tell us what you need with your quote request."
-updated: "2026-10-27"
+updated: "2026-10-28"
 ---
 ## Popular oversized and heavyweight blanks
 
@@ -34,7 +34,7 @@ See every option in the [catalog](/catalog/category/t-shirts/), or ask Max to pr
 
 ## What it costs
 
-The print costs the same on a heavyweight tee as on a standard one. Only the blank changes. As a guide, a one-color front print on a basic black tee is about $13 each at 24 pieces and $7.50 each at 144, shirt included. A heavyweight blank adds a few dollars per shirt. See the [price table](/how-much-does-custom-shirt-printing-cost/).
+The print costs the same on a heavyweight tee as on a standard one. Only the blank changes. As a guide, a one-color front print on a basic black tee is about $11.50 each at 24 pieces and $7.25 each at 144, shirt included, plus a $25 screen. A heavyweight blank adds a few dollars per shirt. See the [price table](/how-much-does-custom-shirt-printing-cost/).
 
 ## Brand drops, done right
 
@@ -43,4 +43,4 @@ The print costs the same on a heavyweight tee as on a standard one. Only the bla
 - **Finishings.** Printed neck labels and hang tags from 50 pieces.
 - **Reorders.** We keep your art, placements and sizes on file, so the next drop is one email.
 
-Orders ship to any US state for $35. Read how [nationwide shipping](/shipping-nationwide/) works.
+Shipping is free from $300 and $35 below that, to any address in the lower 48 states. Read how [nationwide shipping](/shipping-nationwide/) works.

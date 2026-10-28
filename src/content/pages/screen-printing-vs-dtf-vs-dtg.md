@@ -14,12 +14,12 @@ faqs:
   - q: "Which lasts longest?"
     a: "Screen printing. Its thick ink layer holds up for years of washes. DTF is close behind. DTG lasts well on cotton if washed inside out in cold water."
   - q: "Which is cheapest for 12 shirts?"
-    a: "For a one-color design, screen printing at about $18 per shirt with the screen included. For two or more colors, DTF wins at about $19 per shirt for full color with no setup fee."
+    a: "Usually DTF, at about $15 per shirt for full color with no setup fee. A one-color screen print is about $16 per shirt plus a $25 screen, so about $18 each at 12 pieces."
   - q: "Can you print on polyester and performance shirts?"
     a: "Yes. DTF is the safest choice for polyester and performance fabrics. Screen printing works on many polyester blends; send us the garment and we will confirm. DTG is made for cotton and is not a good fit for polyester."
   - q: "Can I mix methods on one shirt?"
     a: "Yes. For example, a one-color screen print on the front and a full-color DTF print on the back. Each spot is priced with its own method."
-updated: "2026-10-27"
+updated: "2026-10-28"
 ---
 ## Quick chooser
 
@@ -39,12 +39,12 @@ updated: "2026-10-27"
 | Feel | Smooth, bold layer | Smooth, slightly flexible film | Softest, part of the fabric |
 | Colors | Up to 12 spot colors | Unlimited | Unlimited |
 | Setup | $25 per color per spot; white base on dark shirts free | None | None |
-| 24 black tees, front print | About $13 each (1 color) | About $16 each | About $20 each |
-| 144 black tees, front print | About $7.50 each (1 color) | About $12 each | About $14 each |
+| 24 black tees, front print | About $11.50 each (1 color) + $25 screen | About $13 each | About $16.25 each |
+| 144 black tees, front print | About $7.25 each (1 color) + $25 screen | About $9 each | About $12.25 each |
 | Fabrics | Cotton and most blends | Almost any | Cotton and high-cotton blends |
 | Minimum | 6 pieces (1–3 colors) | 6 pieces | 6 pieces |
 
-Prices include the shirt and setup and come from our current price list. See the [full price table](/how-much-does-custom-shirt-printing-cost/).
+Prices include the shirt and come from our current price list. See the [full price table](/how-much-does-custom-shirt-printing-cost/).
 
 ## Not sure? Send the art
 

@@ -1,13 +1,13 @@
 ---
 path: "/shipping-nationwide/"
-title: "Custom Shirts Shipped Anywhere in the US, $35 Flat | TBSP"
-description: "TBSP prints custom t-shirts, hoodies, hats and polos in Los Angeles and Cleveland and ships to all 50 states for a flat $35 per order. 6-piece minimum, rush in 3 days."
+title: "Custom Shirts Shipped Anywhere in the US, Free From $300 | TBSP"
+description: "TBSP prints custom t-shirts, hoodies, hats and polos in Los Angeles and Cleveland and ships anywhere in the US, free on orders of $300 or more. 6-piece minimum, rush in 3 days."
 h1: "Custom apparel, shipped to any US state"
 kind: core
 imported: false
-summary: "Yes, we ship nationwide. Every order is made in our own facilities in Los Angeles and Cleveland and shipped to any address in the lower 48 states for a flat $35 per order. Orders start at 6 pieces, and Super Rush gets them to you in 3 business days."
+summary: "Yes, we ship nationwide. Every order is made in our own facilities in Los Angeles and Cleveland and shipped to any address in the lower 48 states: free on orders of $300 or more, $35 below that. Orders start at 6 pieces, and Super Rush gets them to you in 3 business days."
 facts:
-  - { label: "Shipping", value: "$35 flat per order" }
+  - { label: "Shipping", value: "Free from $300" }
   - { label: "Minimum", value: "6 pieces" }
   - { label: "Normal", value: "About 2 weeks" }
   - { label: "Rush", value: "1 week, +15%" }
@@ -15,23 +15,23 @@ facts:
   - { label: "Made in", value: "Los Angeles & Cleveland" }
 faqs:
   - q: "Do you ship custom shirts to every state?"
-    a: "Yes. We ship to every address in the lower 48 states for a flat $35 per order, whatever the quantity. For Alaska, Hawaii and US territories, call (323) 433-0033 and we will quote shipping with your order."
-  - q: "Is the $35 shipping per box or per order?"
-    a: "Per order, delivered to one address. If you need the order split between several addresses, tell us with your quote request and we will price each extra drop."
+    a: "Yes. We ship to every address in the lower 48 states, free on orders of $300 or more and a flat $35 below that. For Alaska, Hawaii and US territories, call (323) 433-0033 and we will quote shipping with your order."
+  - q: "Is shipping charged per box or per order?"
+    a: "Per order, delivered to one address, however many boxes it takes. If you need the order split between several addresses, tell us with your quote request and we will price each extra drop."
   - q: "Do I need to be near Los Angeles or Cleveland to order?"
     a: "No. Most of our customers never visit. You send the idea and artwork online, approve a mockup by email, pay online and get tracking when it ships."
   - q: "How long does shipping take?"
     a: "The delivery options include shipping time: Normal arrives in about 2 weeks, Rush in 1 week and Super Rush in 3 business days. Order Super Rush by 2:00 PM ET on Tuesday to have it by Friday."
   - q: "Will I see the design before it is printed?"
     a: "Yes. Every order gets a free art check and a digital mockup with placement and sizes. Nothing is printed until you approve it."
-updated: "2026-10-27"
+updated: "2026-10-28"
 ---
 ## How ordering from another state works
 
 You never need to visit. Here is the whole process, start to finish:
 
 1. **Send your idea.** Use the [quote form](/quick-quote/) or ask Max: garment, quantity, deadline and artwork. A phone photo of a sketch is fine.
-2. **Get a price within one business day.** Your quote lists every print spot, the garment, the delivery option and the $35 shipping.
+2. **Get a price within one business day.** Your quote lists every print spot, the garment, the delivery option and the shipping.
 3. **Approve the mockup.** We check your art for free and send a mockup with placement and sizes. Nothing is printed until you approve it.
 4. **We make it in-house.** Screen printing, embroidery, DTF or DTG in our own facilities, never sent out to another shop.
 5. **It ships with tracking.** You get an email when it is approved, in production and shipped.
@@ -40,12 +40,13 @@ You never need to visit. Here is the whole process, start to finish:
 
 | Order | Shipping |
 | --- | --- |
-| Any quantity, one address in the lower 48 states | $35 flat |
+| $300 or more, one address in the lower 48 states | Free |
+| Under $300, one address in the lower 48 states | $35 flat |
 | Pickup at our Los Angeles shop | Free |
 | Alaska, Hawaii, US territories | Quoted with your order |
 | Split between several addresses | Quoted with your order |
 
-A 24-piece order and a 500-piece order ship for the same $35. See [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/) for example prices per piece.
+Most orders of 24 or more shirts pass $300 and ship free. See [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/) for example prices per piece.
 
 ## When will it arrive?
 

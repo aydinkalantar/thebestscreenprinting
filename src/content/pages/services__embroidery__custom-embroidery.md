@@ -5,7 +5,7 @@ description: "Custom embroidered uniforms and workwear in Los Angeles: logos on 
 h1: "Custom embroidery for uniforms and workwear in Los Angeles"
 kind: service
 imported: false
-summary: "Your logo, stitched sharp on every polo, cap and jacket your team wears. Custom embroidery at our Los Angeles shop starts at 6 pieces per design, with a one-time $75 digitizing fee per logo."
+summary: "Your logo, stitched sharp on every polo, cap and jacket your team wears. Custom embroidery at our Los Angeles shop starts at 6 pieces per design, with digitizing free from 24 pieces ($45 per logo below that)."
 facts:
   - { label: "Minimum", value: "6 pieces per design" }
   - { label: "Setup", value: "Digitizing included, no hidden setup fees" }
@@ -44,7 +44,7 @@ Small logos are embroidery's sweet spot. Clean shapes, short text and a limited 
 1. **Count heads and sizes.** Know how many people and how many pieces each.
 2. **Pick garments.** Mix polos for front of house, aprons for the kitchen and caps for everyone. Browse the [catalog](/catalog/) or our [business and polo picks](/products/business-and-polos-landings/).
 3. **Choose placement.** Left chest is standard. Add a sleeve or back mark for extra reach.
-4. **Send your logo.** We digitize it into a stitch file for a one-time $75 fee per logo, shown on your quote. No hidden fees.
+4. **Send your logo.** We digitize it into a stitch file Digitizing is free on 24 or more pieces and on reorders, and $45 per logo on smaller orders, shown on your quote. No hidden fees.
 5. **Approve and stitch.** Every order gets a free art check before production.
 
 ## Mixing methods

@@ -47,8 +47,9 @@ export const business = {
   superRushNote: 'Not available for all products, styles or PO Box addresses.',
   /** Areas we serve without a shop address there (service-area business). */
   serviceAreas: ['Los Angeles, CA', 'Cleveland, OH'],
-  /** Flat shipping per order to any address in the lower 48 (same as online checkout). */
+  /** Shipping per order to any address in the lower 48 (same as online checkout): flat under the threshold, free from it. */
   shippingFlat: 35,
+  shippingFreeFrom: 300,
 } as const;
 
 export const localBusinessJsonLd = {

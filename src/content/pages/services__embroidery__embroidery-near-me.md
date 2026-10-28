@@ -5,7 +5,7 @@ description: "Local embroidery in Los Angeles. Drop off garments, pick up finish
 h1: "Embroidery near me in Los Angeles"
 kind: service
 imported: false
-summary: "Machine embroidery stitched in Los Angeles. Drop off your garments or pick from our catalog, then collect at the shop. 6 pieces per design, with a one-time $75 digitizing fee per logo."
+summary: "Machine embroidery stitched in Los Angeles. Drop off your garments or pick from our catalog, then collect at the shop. 6 pieces per design, with digitizing free from 24 pieces ($45 per logo below that)."
 facts:
   - { label: "Location", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Minimum", value: "6 pieces per design" }
