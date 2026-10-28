@@ -4,7 +4,7 @@
 // If the studio can't be reached, the visitor's message goes to the quote form instead.
 import { STUDIO_API, fetchPrices, money, type PriceItemInput, type PriceResponse } from './online';
 import { openOrder, type OrderArtwork } from './order-sheet';
-import { addToCart, cartItems, putFile } from './cart';
+import { addToCart, cartItems, putFile, getFile } from './cart';
 import { countInks, type InkCount } from '../components/design/colors';
 import { business } from '../data/business';
 import { openMax } from './max';
@@ -45,6 +45,9 @@ if (sheet) {
   const reset = sheet.querySelector<HTMLButtonElement>('[data-max-reset]')!;
 
   let messages: Msg[] = [];
+  let savedArt: { id: string; name: string; type: string; ink: InkCount }[] = [];
+  /** The order Max last proposed (products, colors, sizes, placements): kept and sent back so he never forgets it. */
+  let order: CartLine[] = [];
   /** When the conversation was last active (a call only picks it up if it's recent). */
   let lastAt = 0;
   /** Language of Max's voice (admin setting), to tell real words from transcribed room noise. */
@@ -61,10 +64,11 @@ if (sheet) {
   try {
     // Kept on this device for a week, so Max remembers a visitor who closes the chat or comes back later.
     const saved = JSON.parse(localStorage.getItem(KEY) || sessionStorage.getItem(KEY) || 'null');
-    if (saved?.messages?.length && (!saved.at || Date.now() - saved.at < 7 * 864e5)) { messages = saved.messages; sessionId = saved.sessionId; lastAt = saved.at || 0; }
+    if (saved?.messages?.length && (!saved.at || Date.now() - saved.at < 7 * 864e5)) { messages = saved.messages; sessionId = saved.sessionId; lastAt = saved.at || 0; savedArt = Array.isArray(saved.art) ? saved.art : []; order = Array.isArray(saved.order) ? saved.order : []; }
   } catch { /* ignore */ }
   if (!sessionId) sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
-  const save = () => { lastAt = Date.now(); try { localStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30), at: lastAt })); } catch { /* ignore */ } };
+  // Designs are kept too (files in the browser's file store), so reopening Max brings them back.
+  const save = () => { lastAt = Date.now(); try { localStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30), at: lastAt, order, art: art.map((a) => ({ id: a.id, name: a.file.name, type: a.file.type, ink: a.ink })) })); } catch { /* ignore */ } };
 
   const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls = '', text = '') => {
     const n = document.createElement(tag);
@@ -78,6 +82,8 @@ if (sheet) {
   const resetAt = () => { try { return Number(localStorage.getItem('tbsp-max-reset-at')) || 0; } catch { return 0; } };
   /** When the last call ended: a call within a few minutes of it skips the welcome back. */
   let lastCallEnd = 0;
+  /** When a call last dropped (a new call soon after is a reconnect). */
+  let lastDropAt = 0;
 
   /** What Max should know about where the visitor is. */
   function context() {
@@ -88,6 +94,8 @@ if (sheet) {
     return {
       page, path,
       ...(f?.id ? { product: { id: f.id, name: f.name, brand: f.brand, style: f.style, color } } : {}),
+      // The order so far, so a reopened chat or a new call picks up exactly where it was.
+      ...(order.length ? { order: order.map(({ image: _i, why: _w, ...x }) => x) } : {}),
       // Confirmed details, so Max can greet by name and fill the order.
       ...(getContact() ? { contact: getContact() } : {}),
       // The site cart, minus what was there before the visitor started over (an old order shouldn't steer Max).
@@ -123,6 +131,7 @@ if (sheet) {
     return /tote/.test(n) ? 'tote' : /bag|backpack/.test(n) ? 'bag' : /hood/.test(n) ? 'hoodie' : /crew|sweatshirt/.test(n) ? 'sweatshirt' : /polo/.test(n) ? 'polo' : /tank/.test(n) ? 'tank' : /long sleeve/.test(n) ? 'long sleeve' : /beanie/.test(n) ? 'beanie' : /cap|hat|snapback|trucker/.test(n) ? 'hat' : /jacket/.test(n) ? 'jacket' : /t-shirt|\btee\b/.test(n) ? 'tee' : 'product';
   };
   function cartCard(e: Extract<MaxEvent, { type: 'cart' }>) {
+    order = e.items; save();
     // Only the newest order card stays open: earlier versions fold to one line, so the chat isn't a stack of carts.
     log.querySelectorAll<HTMLElement>('[data-max-cart]:not([data-old])').forEach((old) => {
       old.dataset.old = '';
@@ -541,7 +550,8 @@ if (sheet) {
             if (why === 'time') bubble('assistant', 'Our call timed out. Tap the mic to talk again, or keep typing.');
             else if (why === 'bye') bubble('assistant', 'Call ended. I’m here anytime: tap the mic to talk, or just type.');
             else if (why === 'idle') bubble('assistant', 'I hung up since it got quiet. Tap the mic anytime to talk again, or keep typing.');
-            else if (why === 'dropped') bubble('assistant', 'The call dropped. Tap the mic to talk again, or keep typing.');
+            else if (why === 'dropped') { lastDropAt = Date.now(); }
+            if (why === 'dropped') bubble('assistant', 'The call dropped. Tap the mic to talk again, or keep typing.');
             return;
           }
           callStatus.textContent = st === 'connecting' ? 'Connecting…' : st === 'talking' ? 'Max is talking…' : (call?.muted ? 'Muted' : 'Listening…');
@@ -569,7 +579,7 @@ if (sheet) {
           if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); trackText(text, who); }
         },
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
-      }, Date.now() - lastAt < 3 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'), Date.now() - lastCallEnd > 15 * 60_000);
+      }, Date.now() - lastAt < 2 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'), Date.now() - lastDropAt < 2 * 60_000 ? 'reconnected' : Date.now() - lastCallEnd > 15 * 60_000 ? 'welcome' : 'quiet');
       calling = false;
       for (const t of queued.splice(0)) call?.sendText(t);
     } catch (err) {
@@ -742,7 +752,31 @@ if (sheet) {
   })();
 
   // Restore an earlier conversation in this tab (text only).
-  if (messages.length) { intro.hidden = true; reset.hidden = false; for (const m of messages) bubble(m.role, m.content); }
+  // A recent one continues; an older one (2+ hours) folds into one line and Max starts fresh.
+  if (messages.length && Date.now() - lastAt < 2 * 3600_000) {
+    intro.hidden = true; reset.hidden = false; for (const m of messages) bubble(m.role, m.content);
+    // The designs come back from the file store; cards don't, so Max can show the order again.
+    void Promise.all(savedArt.map(async (x) => {
+      const blob = await getFile(`maxart/${sessionId}/${x.id}`).catch(() => null);
+      if (!blob) return;
+      const file = new File([blob], x.name, { type: x.type || blob.type });
+      art.push({ id: x.id, file, ink: x.ink, url: file.type.startsWith('image/') ? URL.createObjectURL(file) : undefined });
+      artSeq = Math.max(artSeq, Number(x.id.replace(/\D/g, '')) || 0);
+    })).then(() => { art.sort((a, b) => a.id.localeCompare(b.id)); renderFiles(); });
+    const again = el('button', 'chip !h-auto py-2 self-start text-[13.5px]', '↻ Show my order again'); again.type = 'button';
+    again.addEventListener('click', () => { again.remove(); void ask('Please show my order again.'); });
+    log.append(again);
+  }
+  else if (messages.length) {
+    const old = el('details', 'rounded-xl border border-zinc-200/80 dark:border-white/10 px-3 py-2 text-[13px]');
+    const when = lastAt ? new Date(lastAt).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : '';
+    old.append(el('summary', 'cursor-pointer muted', `Earlier conversation${when ? ` · ${when}` : ''}`));
+    const inner = el('div', 'mt-2 flex flex-col gap-2');
+    for (const m of messages) inner.append(el('div', `max-bubble ${m.role === 'user' ? 'max-me' : 'max-bot'}`, m.content));
+    old.append(inner);
+    log.prepend(old);
+    messages = []; order = []; savedArt = []; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
+  }
 
   form.addEventListener('submit', (e) => { e.preventDefault(); voice.typed(); const t = input.value; input.value = ''; input.style.height = ''; ask(t); });
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); form.requestSubmit(); } });
@@ -756,7 +790,10 @@ if (sheet) {
   reset.addEventListener('click', () => {
     try { localStorage.setItem('tbsp-max-reset-at', String(Date.now())); } catch { /* ignore */ }
     lastCallEnd = 0;
-    voice.stop(); endCall(); steps.reset(); messages = []; art.length = 0; artSeq = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
+    // Start over means a clean slate: no messages, designs, placements or pending text, and a new session for Max.
+    voice.stop(); endCall(); steps.reset(); messages = []; art.length = 0; artSeq = 0; queued.length = 0; lastDropAt = 0;
+    placedOn.clear(); placementCards.clear(); seen.clear(); order = [];
+    sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
     [...log.children].forEach((c) => { if (c !== intro) c.remove(); });
     filesBox.replaceChildren(); filesBox.hidden = true;
     intro.hidden = false; reset.hidden = true;
@@ -770,7 +807,7 @@ if (sheet) {
       if (a.url) { const t = el('img', 'w-7 h-7 rounded-md object-contain bg-zinc-400/70 dark:bg-zinc-600'); t.src = a.url; t.alt = ''; chip.append(t); } else chip.append(el('span', 'px-1', '📎'));
       chip.append(el('span', 'max-w-[9rem] truncate', a.file.name));
       const x = el('button', 'grid place-items-center w-6 h-6 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10', '×'); x.type = 'button'; x.setAttribute('aria-label', `Remove ${a.file.name}`);
-      x.addEventListener('click', () => { art.splice(art.indexOf(a), 1); if (a.url) URL.revokeObjectURL(a.url); renderFiles(); });
+      x.addEventListener('click', () => { art.splice(art.indexOf(a), 1); if (a.url) URL.revokeObjectURL(a.url); renderFiles(); save(); });
       chip.append(x);
       return chip;
     }));
@@ -786,6 +823,7 @@ if (sheet) {
     const ink = await countInks(f).catch(() => ({ kind: 'unknown' }) as InkCount);
     const id = `a${++artSeq}`;
     art.push({ id, file: f, ink, url: f.type.startsWith('image/') ? URL.createObjectURL(f) : undefined });
+    void putFile(`maxart/${sessionId}/${id}`, f).then(save).catch(() => {});
     renderFiles();
     const summary = ink.kind === 'spot' ? `${ink.count} color${ink.count === 1 ? '' : 's'}` : ink.kind === 'full' ? 'full color' : 'file type I can’t preview';
     const low = ink.kind !== 'unknown' && !ink.vector && ink.widthPx && ink.widthPx < 1000 ? ', low resolution' : '';
