@@ -62,6 +62,19 @@ More detail on [delivery times](/learn-delivery-time/) and [rush orders](/rush-c
 
 Teams, schools and college clubs, companies ordering staff shirts and polos, bands and touring artists, event organizers, churches and non-profits, and clothing brands launching a drop. If you order shirts more than once a year, we save your artwork and sizes so a reorder takes one email.
 
+## Regions we ship to most
+
+These are the areas outside California that send us the most quote requests. Each page has local delivery times, prices and what people there usually order.
+
+- [New York and New Jersey](/shipping-nationwide/new-york-new-jersey/)
+- [Texas](/shipping-nationwide/texas/)
+- [Chicago and the Midwest](/shipping-nationwide/chicago-midwest/)
+- [Atlanta, Florida and the Southeast](/shipping-nationwide/atlanta-florida-southeast/)
+- [Washington DC, Maryland and Virginia](/shipping-nationwide/dc-maryland-virginia/)
+- [Boston, Philadelphia and the Northeast](/shipping-nationwide/boston-philadelphia-northeast/)
+- [Arizona, Nevada, Colorado and the Southwest](/shipping-nationwide/arizona-nevada-colorado/)
+- [Seattle, Portland and the Pacific Northwest](/shipping-nationwide/seattle-portland-northwest/)
+
 ## Two facilities, one standard
 
 Our [Los Angeles](/los-angeles-ca/) shop and our [Cleveland](/cleveland-oh/) facility use the same inks, threads and art check. Whichever one makes your order, you get the same mockup approval and the same reprint promise in our [shipping and returns policy](/shipping-and-delivery/).

@@ -23,6 +23,8 @@ const pages = defineCollection({
     // Legal pages: date shown as "Last updated" (YYYY-MM-DD).
     updated: z.string().optional(),
     sourceUrl: z.string().optional(),
+    // Regional pages: the states this page serves (schema areaServed).
+    states: z.array(z.string()).default([]),
   }),
 });
 

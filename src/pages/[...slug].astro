@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props;
 const { Content, headings } = await render(page);
-const { title, description, h1, noindex, imported, summary, facts, faqs, kind, path, updated } = page.data;
+const { title, description, h1, noindex, imported, summary, facts, faqs, kind, path, updated, states } = page.data;
 // Legal pages get a table of contents (sticky on desktop, collapsible on phones).
 const toc = kind === 'legal' ? headings.filter((h) => h.depth === 2) : [];
 const hasToc = toc.length >= 4;
@@ -42,7 +42,9 @@ const crumbItems = crumbs.map((c, i) => ({
 }));
 // LA neighborhood pages serve LA, Cleveland pages serve Cleveland; everything else ships nationwide.
 const isLa = kind === 'location' || /los-angeles|-ca\/$|-la-/.test(path);
-const serviceArea = path.includes('cleveland')
+const serviceArea = states.length
+  ? states.map((name) => ({ '@type': 'State', name }))
+  : path.includes('cleveland')
   ? { '@type': 'City', name: 'Cleveland', containedInPlace: { '@type': 'State', name: 'Ohio' } }
   : isLa ? { '@type': 'City', name: 'Los Angeles' } : { '@type': 'Country', name: 'United States' };
 const jsonLd: object[] = [
