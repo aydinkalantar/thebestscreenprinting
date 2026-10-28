@@ -326,6 +326,16 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
       if (vid.requestFullscreen) void vid.requestFullscreen().catch(() => v.webkitEnterFullscreen?.());
       else v.webkitEnterFullscreen?.();
     });
+    // Leaving full screen: back to the square cut in the box, at the same moment, still with sound.
+    const leaveFull = () => {
+      if (document.fullscreenElement || tall() || !vid.currentSrc.endsWith(vid.dataset.wideVoice!)) return;
+      const at = vid.currentTime, playing = !vid.paused;
+      vid.src = vid.dataset.sqVoice!;
+      vid.addEventListener('loadedmetadata', () => { vid.currentTime = Math.min(at, vid.duration || at); if (playing) void vid.play().catch(() => {}); }, { once: true });
+      vid.load(); // preload is off, so ask for it
+    };
+    document.addEventListener('fullscreenchange', leaveFull);
+    vid.addEventListener('webkitendfullscreen', leaveFull);
   }
   // "Talk to Max" starts a voice call with him (max-chat.ts).
   document.querySelector('[data-hero-talk]')?.addEventListener('click', () => window.dispatchEvent(new Event('tbsp-max-talk')));
