@@ -625,7 +625,8 @@ if (sheet) {
     if (who === 'assistant' && /(\$\d|\bdollars?\b)/.test(t) && /(total|subtotal|each|per)/.test(t)) steps.mark('price');
   }
   function trackSteps(ev: MaxEvent) {
-    if (ev.type === 'progress') { steps.mark(...ev.done.map((d) => d.toLowerCase()).filter((d) => ['products', 'colors', 'design', 'sizes', 'price', 'pay'].includes(d))); return; }
+    // Max's list adds to what's done; Pay only turns green when the visitor taps Order & pay.
+    if (ev.type === 'progress') { steps.mark(...ev.done.map((d) => d.toLowerCase()).filter((d) => ['products', 'colors', 'design', 'sizes', 'price'].includes(d))); return; }
     if (ev.type === 'products') steps.mark('products');
     else if (ev.type === 'placement') steps.mark('products', 'design');
     else if (ev.type === 'cart') {
