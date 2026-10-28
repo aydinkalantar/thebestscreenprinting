@@ -1,7 +1,7 @@
 ---
 path: "/how-much-does-custom-shirt-printing-cost/"
 title: "How Much Does Custom Shirt Printing Cost? 2026 Prices | TBSP"
-description: "Custom t-shirt printing costs about $11.50 per shirt at 24 pieces and $7.25 at 144 for a one-color print, shirt included. Full price table by method and quantity, free shipping from $300."
+description: "Custom t-shirt printing costs about $11.50 per shirt at 24 pieces and $7.25 at 144 for a one-color print, shirt included. Full price table by method and quantity, free shipping from $300 in the lower 48."
 h1: "How much does custom shirt printing cost?"
 kind: answer
 imported: false

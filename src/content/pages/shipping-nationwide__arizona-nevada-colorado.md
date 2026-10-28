@@ -1,7 +1,7 @@
 ---
 path: "/shipping-nationwide/arizona-nevada-colorado/"
 title: "Custom Shirts Shipped to Arizona, Nevada, Colorado and the Southwest | TBSP"
-description: "Custom t-shirts, hoodies and hats for Arizona, Nevada, Colorado and the Southwest, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300."
+description: "Custom t-shirts, hoodies and hats for Arizona, Nevada, Colorado and the Southwest, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300 in the lower 48."
 h1: "Custom shirts shipped to Arizona, Nevada, Colorado and the Southwest"
 kind: service
 imported: false

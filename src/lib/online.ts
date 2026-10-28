@@ -31,10 +31,11 @@ export const printSize = (w?: number, h?: number) => (w && h && w > 0 && h > 0 ?
 export const money = (n: number) => `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 /** Prices a set of items. Returns null when the studio can't be reached (the site then just shows the quote flow). */
-export async function fetchPrices(items: PriceItemInput[], delivery: 'pickup' | 'ship' = 'pickup', signal?: AbortSignal, turnaround?: Turnaround): Promise<PriceResponse | null> {
+/** `state`: the ship-to state (free shipping is for the lower 48 only). */
+export async function fetchPrices(items: PriceItemInput[], delivery: 'pickup' | 'ship' = 'pickup', signal?: AbortSignal, turnaround?: Turnaround, state?: string): Promise<PriceResponse | null> {
   try {
     const res = await fetch(`${STUDIO_API}/api/public/price`, {
-      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ items, delivery, ...(turnaround ? { turnaround } : {}) }), signal,
+      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ items, delivery, ...(turnaround ? { turnaround } : {}), ...(delivery === 'ship' && state ? { state } : {}) }), signal,
     });
     if (!res.ok) return null;
     return (await res.json()) as PriceResponse;

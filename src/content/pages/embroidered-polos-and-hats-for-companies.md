@@ -48,6 +48,6 @@ Smaller logos with fewer stitches cost less; bigger ones cost more. Send your lo
 - **Your logo on file.** The stitch file, thread colors and placement are saved, so new hires get matching gear.
 - **Mockup first.** You approve the exact placement and size before anything is stitched.
 - **Mix items on one order.** Polos, caps and jackets together, each priced on its own.
-- **Ships anywhere.** Free shipping from $300, $35 below that.
+- **Ships anywhere.** Free shipping from $300 in the lower 48, $35 below that.
 
 Read more about our [embroidery](/services/embroidery/) and [polos](/products/business-and-polos-landings/).

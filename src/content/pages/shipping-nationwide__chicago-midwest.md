@@ -1,7 +1,7 @@
 ---
 path: "/shipping-nationwide/chicago-midwest/"
 title: "Custom Shirts Shipped to Chicago and the Midwest | TBSP"
-description: "Custom t-shirts, hoodies and hats for Chicago and the Midwest, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300."
+description: "Custom t-shirts, hoodies and hats for Chicago and the Midwest, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300 in the lower 48."
 h1: "Custom shirts shipped to Chicago and the Midwest"
 kind: service
 imported: false

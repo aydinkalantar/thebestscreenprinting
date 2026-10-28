@@ -1,7 +1,7 @@
 ---
 path: "/for/college-clubs-greek-life/"
 title: "Custom Shirts for College Clubs, Fraternities & Sororities | TBSP"
-description: "Custom shirts, hoodies and crewnecks for college clubs, fraternities, sororities and student orgs, from 6 pieces. Comfort Colors and heavyweight blanks, free shipping from $300 to any campus."
+description: "Custom shirts, hoodies and crewnecks for college clubs, fraternities, sororities and student orgs, from 6 pieces. Comfort Colors and heavyweight blanks, free shipping from $300 to any campus in the lower 48."
 h1: "Custom shirts for college clubs and Greek life"
 kind: audience
 imported: false

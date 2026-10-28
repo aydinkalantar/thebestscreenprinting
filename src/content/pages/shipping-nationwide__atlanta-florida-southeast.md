@@ -1,7 +1,7 @@
 ---
 path: "/shipping-nationwide/atlanta-florida-southeast/"
 title: "Custom Shirts Shipped to Atlanta, Florida and the Southeast | TBSP"
-description: "Custom t-shirts, hoodies and hats for Atlanta, Florida and the Southeast, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300."
+description: "Custom t-shirts, hoodies and hats for Atlanta, Florida and the Southeast, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300 in the lower 48."
 h1: "Custom shirts shipped to Atlanta, Florida and the Southeast"
 kind: service
 imported: false

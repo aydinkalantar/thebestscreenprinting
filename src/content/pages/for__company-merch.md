@@ -1,7 +1,7 @@
 ---
 path: "/for/company-merch/"
 title: "Company Merch & Employee Apparel, Shipped Nationwide | TBSP"
-description: "Branded company shirts, embroidered polos, hoodies and hats for employees, clients and events, from 6 pieces. Free digitizing from 24 pieces, free shipping from $300, anywhere in the US."
+description: "Branded company shirts, embroidered polos, hoodies and hats for employees, clients and events, from 6 pieces. Free digitizing from 24 pieces, free shipping from $300 in the lower 48, shipping anywhere in the US."
 h1: "Company merch and employee apparel"
 kind: audience
 imported: false

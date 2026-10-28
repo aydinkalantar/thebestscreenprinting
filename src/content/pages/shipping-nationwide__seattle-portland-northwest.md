@@ -1,7 +1,7 @@
 ---
 path: "/shipping-nationwide/seattle-portland-northwest/"
 title: "Custom Shirts Shipped to Seattle, Portland and the Pacific Northwest | TBSP"
-description: "Custom t-shirts, hoodies and hats for Seattle, Portland and the Pacific Northwest, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300."
+description: "Custom t-shirts, hoodies and hats for Seattle, Portland and the Pacific Northwest, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300 in the lower 48."
 h1: "Custom shirts shipped to Seattle, Portland and the Pacific Northwest"
 kind: service
 imported: false

@@ -1,7 +1,7 @@
 ---
 path: "/online-screen-printing/"
 title: "Online Screen Printing: Order Custom Shirts From 6 Pieces | TBSP"
-description: "Order screen printed shirts online from anywhere in the US: send your art, approve a free mockup, pay online. 6-piece minimum, about $11.50 a shirt at 24, free shipping from $300."
+description: "Order screen printed shirts online from anywhere in the US: send your art, approve a free mockup, pay online. 6-piece minimum, about $11.50 a shirt at 24, free shipping from $300 in the lower 48."
 h1: "Order screen printing online"
 kind: service
 imported: false

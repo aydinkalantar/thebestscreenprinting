@@ -1,7 +1,7 @@
 ---
 path: "/for/bands-and-tours/"
 title: "Band & Tour Merch Printing, Shipped Anywhere in the US | TBSP"
-description: "Band merch and tour shirts from 6 pieces: screen printed tees, hoodies, embroidered hats and totes, shipped to your venue or next tour stop. Rush in 3 business days, free shipping from $300."
+description: "Band merch and tour shirts from 6 pieces: screen printed tees, hoodies, embroidered hats and totes, shipped to your venue or next tour stop. Rush in 3 business days, free shipping from $300 in the lower 48."
 h1: "Band and tour merch"
 kind: audience
 imported: false

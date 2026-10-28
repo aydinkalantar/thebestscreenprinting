@@ -1,7 +1,7 @@
 ---
 path: "/shipping-nationwide/dc-maryland-virginia/"
 title: "Custom Shirts Shipped to Washington DC, Maryland and Virginia | TBSP"
-description: "Custom t-shirts, hoodies and hats for Washington DC, Maryland and Virginia, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300."
+description: "Custom t-shirts, hoodies and hats for Washington DC, Maryland and Virginia, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300 in the lower 48."
 h1: "Custom shirts shipped to Washington DC, Maryland and Virginia"
 kind: service
 imported: false

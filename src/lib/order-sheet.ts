@@ -60,6 +60,8 @@ function renderTotals(el: HTMLElement) {
   el.querySelector('[data-os-deposit-amount]')!.textContent = `· ${pct}% now, ${money(Math.round(totals.total * pct) / 100)}`;
 }
 
+/** The ship-to state, once chosen (Alaska, Hawaii and territories don't get free shipping). */
+const stateOf = (form: HTMLFormElement) => ((form.elements.namedItem('state') as HTMLSelectElement | null)?.value || '').trim() || undefined;
 const deliveryOf = (form: HTMLFormElement) => (form.querySelector<HTMLInputElement>('input[name="delivery"]:checked')?.value || 'pickup') as 'pickup' | 'ship';
 const turnOf = (form: HTMLFormElement) => (form.querySelector<HTMLInputElement>('input[name="turnaround"]:checked')?.value || 'normal') as Turnaround;
 
@@ -113,7 +115,8 @@ function wire(el: HTMLElement) {
   attachAddressAutocomplete(field('street') as HTMLInputElement, (a) => {
     if (a.street) field('street').value = a.street;
     if (a.city) field('city').value = a.city;
-    if (a.state) field('state').value = a.state;
+    // Re-priced for the state (free shipping is for the lower 48 only).
+    if (a.state) { field('state').value = a.state; field('state').dispatchEvent(new Event('change', { bubbles: true })); }
     if (a.zip) field('zip').value = a.zip;
     (field('street2') as HTMLInputElement).focus();
   });
@@ -122,9 +125,9 @@ function wire(el: HTMLElement) {
 
   form.addEventListener('change', async (e) => {
     const t = e.target as HTMLInputElement;
-    if ((t.name !== 'delivery' && t.name !== 'turnaround') || !current) return;
+    if ((t.name !== 'delivery' && t.name !== 'turnaround' && t.name !== 'state') || !current) return;
     if (t.name === 'delivery') address.hidden = t.value !== 'ship';
-    const res = await fetchPrices(current.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined);
+    const res = await fetchPrices(current.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined, stateOf(form));
     if (res?.enabled && res.totals) { totals = res.totals; renderTotals(el); renderReady(el); }
   });
 
@@ -218,7 +221,7 @@ export function openOrder(req: OrderRequest) {
   // Turnaround choices come from the studio (only the ones that are on, with their % and days).
   setupTurnaround(el, req.price.turnaround, req.items);
   const form = el.querySelector<HTMLFormElement>('[data-os-form]')!;
-  if (deliveryOf(form) === 'ship' || turnPriced) fetchPrices(req.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined).then((r) => { if (r?.enabled && r.totals) { totals = r.totals; renderTotals(el); renderReady(el); } });
+  if (deliveryOf(form) === 'ship' || turnPriced) fetchPrices(req.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined, stateOf(form)).then((r) => { if (r?.enabled && r.totals) { totals = r.totals; renderTotals(el); renderReady(el); } });
   renderReady(el);
   openSheet(el);
 }

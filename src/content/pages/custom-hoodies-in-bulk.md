@@ -1,7 +1,7 @@
 ---
 path: "/custom-hoodies-in-bulk/"
 title: "Custom Hoodies in Bulk: Prices, Blanks & Minimums | TBSP"
-description: "Bulk custom hoodies from 6 pieces: screen printed, embroidered or DTF on Gildan 18500, Independent Trading Co. and Bella+Canvas hoodies. Same decoration price as tees, free shipping from $300."
+description: "Bulk custom hoodies from 6 pieces: screen printed, embroidered or DTF on Gildan 18500, Independent Trading Co. and Bella+Canvas hoodies. Same decoration price as tees, free shipping from $300 in the lower 48."
 h1: "Custom hoodies in bulk"
 kind: answer
 imported: false
