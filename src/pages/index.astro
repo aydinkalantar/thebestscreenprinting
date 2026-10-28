@@ -16,7 +16,7 @@ import { products, featuredProducts } from '../lib/catalog';
 import { collectionTiles, brandTiles, styles } from '../components/home/collections';
 import {
   ArrowRight, Phone, MapPin, Clock, Shirt, Scissors, Layers, Flame, Stamp, Printer, Maximize, Zap,
-  Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck, Star,
+  Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck, Star, Volume2, VolumeX, Pause, Play, RotateCcw,
 } from '@lucide/astro';
 
 // Title and description stay as the live homepage has them (they rank). The H1 is short and bold;
@@ -117,9 +117,17 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   <!-- Max demo video (staging preview): silent loop, wide on desktop, tall on phones; loads when it scrolls in. -->
   <section class="wrap mt-10 md:mt-14" aria-labelledby="max-video-title" data-max-only>
     <p id="max-video-title" class="eyebrow">See how Max works</p>
-    <div class="mt-3 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04] shadow-xl max-md:max-w-[420px] max-md:mx-auto">
+    <div class="relative mt-3 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04] shadow-xl max-md:max-w-[420px] max-md:mx-auto">
       <video data-max-video muted loop playsinline preload="none" poster="/media/max-demo-poster.jpg" class="block w-full aspect-video max-md:aspect-[9/16]" aria-label="Max picks products, places a logo and prices an order"
-        data-wide="/media/max-demo-1280.mp4" data-tall="/media/max-demo-720x1280.mp4"></video>
+        data-wide="/media/max-demo-1280.mp4" data-tall="/media/max-demo-720x1280.mp4"
+        data-wide-voice="/media/max-demo-voice-1280.mp4" data-tall-voice="/media/max-demo-voice-720x1280.mp4"></video>
+      <!-- Silent loop by default; "Tap for sound" plays the voiced version from the start. -->
+      <button type="button" data-video-sound class="absolute left-1/2 -translate-x-1/2 bottom-4 inline-flex items-center gap-2 h-11 px-4 rounded-full bg-zinc-900/85 hover:bg-zinc-900 text-white text-[14px] font-semibold shadow-lg backdrop-blur"><Volume2 class="w-4 h-4" aria-hidden="true" />Tap for sound</button>
+      <div data-video-controls hidden class="absolute right-3 bottom-3 flex gap-2">
+        <button type="button" data-video-toggle class="w-10 h-10 rounded-full grid place-items-center bg-zinc-900/80 text-white backdrop-blur" aria-label="Pause"><Pause class="w-4 h-4" data-i-pause aria-hidden="true" /><Play class="w-4 h-4 hidden" data-i-play aria-hidden="true" /></button>
+        <button type="button" data-video-replay class="w-10 h-10 rounded-full grid place-items-center bg-zinc-900/80 text-white backdrop-blur" aria-label="Replay from the start"><RotateCcw class="w-4 h-4" aria-hidden="true" /></button>
+        <button type="button" data-video-mute class="w-10 h-10 rounded-full grid place-items-center bg-zinc-900/80 text-white backdrop-blur" aria-label="Mute"><VolumeX class="w-4 h-4" aria-hidden="true" /></button>
+      </div>
     </div>
   </section>
 
@@ -279,9 +287,36 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     new IntersectionObserver(([e]) => {
       if (e.isIntersecting) {
         if (!vid.src) { vid.src = matchMedia('(max-width: 767px)').matches ? vid.dataset.tall! : vid.dataset.wide!; vid.load(); }
-        if (!still) void vid.play().catch(() => {});
+        if (!still && !vid.dataset.userPaused) void vid.play().catch(() => {});
       } else vid.pause();
     }, { threshold: 0.3 }).observe(vid);
+    const tall = () => matchMedia('(max-width: 767px)').matches;
+    const sound = document.querySelector<HTMLButtonElement>('[data-video-sound]')!;
+    const controls = document.querySelector<HTMLElement>('[data-video-controls]')!;
+    const toggle = document.querySelector<HTMLButtonElement>('[data-video-toggle]')!;
+    const paint = () => {
+      toggle.querySelector('[data-i-pause]')!.classList.toggle('hidden', vid.paused);
+      toggle.querySelector('[data-i-play]')!.classList.toggle('hidden', !vid.paused);
+      toggle.setAttribute('aria-label', vid.paused ? 'Play' : 'Pause');
+    };
+    vid.addEventListener('play', paint); vid.addEventListener('pause', paint);
+    // Sound on: the voiced cut (both voices and music), from the beginning, playing once with controls.
+    sound.addEventListener('click', () => {
+      vid.src = tall() ? vid.dataset.tallVoice! : vid.dataset.wideVoice!;
+      vid.muted = false; vid.loop = false; vid.currentTime = 0;
+      delete vid.dataset.userPaused;
+      void vid.play().catch(() => {});
+      sound.hidden = true; controls.hidden = false;
+    });
+    toggle.addEventListener('click', () => { if (vid.paused) { delete vid.dataset.userPaused; void vid.play(); } else { vid.dataset.userPaused = '1'; vid.pause(); } });
+    document.querySelector('[data-video-replay]')!.addEventListener('click', () => { vid.currentTime = 0; delete vid.dataset.userPaused; void vid.play(); });
+    // Mute: back to the silent loop.
+    document.querySelector('[data-video-mute]')!.addEventListener('click', () => {
+      vid.src = tall() ? vid.dataset.tall! : vid.dataset.wide!;
+      vid.muted = true; vid.loop = true; void vid.play().catch(() => {});
+      controls.hidden = true; sound.hidden = false;
+    });
+    vid.addEventListener('ended', () => { controls.hidden = false; paint(); });
   }
   // "Talk to Max" starts a voice call with him (max-chat.ts).
   document.querySelector('[data-hero-talk]')?.addEventListener('click', () => window.dispatchEvent(new Event('tbsp-max-talk')));
