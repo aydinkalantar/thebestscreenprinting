@@ -279,7 +279,10 @@ if (sheet) {
         const contact = saveContact({ ...(known ?? {}), name: name.value, email: email.value });
         const { items, artwork, mockups } = await prepare();
         const fd = new FormData();
-        fd.set('data', JSON.stringify({ sessionId, contact, items, note: ([] as string[]).concat(e.notes ?? []).join(' ') || undefined }));
+        // Same turnaround as the card (Rush / Super Rush), so the emailed quote matches it.
+        const turn = e.price && e.price.enabled ? e.price.totals?.turnaround : undefined;
+        const turnaround = turn === 'superrush' ? 'super' : turn === 'rush' ? 'rush' : turn ? 'normal' : undefined;
+        fd.set('data', JSON.stringify({ sessionId, contact, items, ...(turnaround ? { turnaround } : {}), note: ([] as string[]).concat(e.notes ?? []).join(' ') || undefined }));
         for (const a of artwork) fd.append(`art_${a.itemIndex}_${a.placement.slice(0, 40)}`, a.file, a.file.name);
         for (const m of mockups) fd.append(`mockup_${m.itemIndex}_${m.side}`, m.blob, `mockup-${m.itemIndex + 1}-${m.side}.png`);
         const r = await fetch(`${STUDIO_API}/api/public/max/quote`, { method: 'POST', body: fd }).then((x) => x.json().catch(() => null)).catch(() => null);
