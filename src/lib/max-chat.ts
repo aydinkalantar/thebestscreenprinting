@@ -80,7 +80,8 @@ if (sheet) {
   const bubble = (role: Msg['role'], text: string) => { const b = el('div', `max-bubble ${role === 'user' ? 'max-me' : 'max-bot'}`, text); log.append(b); scroll(); return b; };
 
   const resetAt = () => { try { return Number(localStorage.getItem('tbsp-max-reset-at')) || 0; } catch { return 0; } };
-  /** When the last call ended: a call within a few minutes of it skips the welcome back. */
+  /** When the last call ended. A welcome back needs 15 quiet minutes since the last message or call
+   *  (lastAt is saved, so moving to another page mid-order doesn't count as a break). */
   let lastCallEnd = 0;
   /** When a call last dropped (a new call soon after is a reconnect). */
   let lastDropAt = 0;
@@ -579,7 +580,7 @@ if (sheet) {
           if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); trackText(text, who); }
         },
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
-      }, Date.now() - lastAt < 2 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'), Date.now() - lastDropAt < 2 * 60_000 ? 'reconnected' : Date.now() - lastCallEnd > 15 * 60_000 ? 'welcome' : 'quiet');
+      }, Date.now() - lastAt < 2 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'), Date.now() - lastDropAt < 2 * 60_000 ? 'reconnected' : Date.now() - Math.max(lastAt, lastCallEnd) > 15 * 60_000 ? 'welcome' : 'quiet');
       calling = false;
       for (const t of queued.splice(0)) call?.sendText(t);
     } catch (err) {
