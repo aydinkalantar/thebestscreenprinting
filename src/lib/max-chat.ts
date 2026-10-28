@@ -255,7 +255,7 @@ if (sheet) {
    */
   function emailQuote(e: Extract<MaxEvent, { type: 'cart' }>, prepare: () => Promise<{ items: PriceItemInput[]; artwork: OrderArtwork[]; mockups: { itemIndex: number; side: string; blob: Blob }[] }>) {
     const box = el('div', 'grid gap-2');
-    const open = el('button', 'text-[13.5px] font-semibold text-violet-700 dark:text-violet-300 hover:underline justify-self-center', 'Email me this quote');
+    const open = el('button', 'btn-quiet h-11 text-[14px] w-full', '✉ Email me this quote');
     open.type = 'button';
     const form = el('form', 'grid gap-2 rounded-xl border border-zinc-200 dark:border-white/10 p-3'); form.hidden = true;
     const known = getContact();
@@ -277,9 +277,16 @@ if (sheet) {
         fd.set('data', JSON.stringify({ sessionId, contact, items, note: ([] as string[]).concat(e.notes ?? []).join(' ') || undefined }));
         for (const a of artwork) fd.append(`art_${a.itemIndex}_${a.placement.slice(0, 40)}`, a.file, a.file.name);
         for (const m of mockups) fd.append(`mockup_${m.itemIndex}_${m.side}`, m.blob, `mockup-${m.itemIndex + 1}-${m.side}.png`);
-        const r = await fetch(`${STUDIO_API}/api/public/max/quote`, { method: 'POST', body: fd }).then((x) => (x.ok ? x.json() : null)).catch(() => null);
-        if (!r?.ok) throw new Error(r?.error || '');
-        form.replaceChildren(el('p', 'text-[13px] font-semibold text-emerald-700 dark:text-emerald-400', `✓ Quote ${r.number ?? ''} sent to ${contact.email}.`.replace('  ', ' ')));
+        const r = await fetch(`${STUDIO_API}/api/public/max/quote`, { method: 'POST', body: fd }).then((x) => x.json().catch(() => null)).catch(() => null);
+        if (!r?.ok) {
+          // A product that needs a custom quote, or a field to fix: say so plainly.
+          send.disabled = false; send.textContent = 'Send me the quote';
+          msg.className = 'text-[12.5px] text-red-600';
+          msg.textContent = r?.quoteOnly ? 'One of these products needs a custom quote. Our team will price it for you: tap the quote button or call us.' : r?.error || `Couldn't send it right now. Please try again, or call ${business.phoneDisplay}.`;
+          if (r?.field === 'email') email.focus(); else if (r?.field === 'name') name.focus();
+          return;
+        }
+        form.replaceChildren(el('p', 'text-[13px] font-semibold text-emerald-700 dark:text-emerald-400', r.emailed === false ? `✓ Quote ${r.number ?? ''} saved. We'll email it to ${contact.email} shortly.` : `✓ Quote ${r.number ?? ''} sent to ${contact.email}. It's good for 14 days, and you can pay from it.`));
         if (r.url) { const a = el('a', 'text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline', 'Open the quote'); (a as HTMLAnchorElement).href = r.url; (a as HTMLAnchorElement).target = '_blank'; form.append(a); }
         if (call) call.sendText(`[quote ${r.number ?? ''} emailed to ${contact.email}]`);
       } catch {
