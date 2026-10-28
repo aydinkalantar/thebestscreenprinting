@@ -8,9 +8,10 @@ const swatches = p.colors.slice(0, 6);
 const more = p.colors.length - swatches.length;
 ---
 <a href={`/catalog/${p.slug}/`} class="press group flex flex-col gap-2">
-  <span class="relative block aspect-square overflow-hidden rounded-2xl border border-zinc-200/80 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04]">
-    <img src={p.image} alt={p.name} loading="lazy" width="400" height="400" class:list={['w-full h-full object-contain transition-all duration-300 group-hover:scale-105', { 'group-hover:opacity-0': alt }]} />
-    {alt && <img src={alt} alt="" aria-hidden="true" loading="lazy" width="400" height="400" class="absolute inset-0 w-full h-full object-contain opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-105" />}
+  <!-- Same 4:5 shape as the product photos, so they fill the frame (no side bars) in light and dark mode. -->
+  <span class="relative block aspect-[4/5] overflow-hidden rounded-2xl border border-zinc-200/80 dark:border-white/10 bg-[#f3f3f3]">
+    <img src={p.image} alt={p.name} loading="lazy" width="400" height="400" class:list={['w-full h-full object-cover transition-all duration-300 group-hover:scale-105', { 'group-hover:opacity-0': alt }]} />
+    {alt && <img src={alt} alt="" aria-hidden="true" loading="lazy" width="400" height="400" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-105" />}
   </span>
   {p.brand && <span class="text-[12px] font-medium muted">{p.brand}{p.style ? ` · ${p.style}` : ''}</span>}
   <span class="-mt-1 text-[14px] font-semibold leading-snug text-zinc-900 dark:text-white group-hover:text-violet-700 dark:group-hover:text-violet-300">{p.name}</span>

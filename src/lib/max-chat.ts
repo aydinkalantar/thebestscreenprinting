@@ -103,7 +103,7 @@ if (sheet) {
     for (const p of e.items.slice(0, 8)) {
       const a = el('a', 'press shrink-0 w-36 rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2 grid gap-1.5');
       a.href = `/catalog/${p.slug}/`;
-      if (p.image) { const img = el('img', 'w-full aspect-square object-contain rounded-xl bg-zinc-50 dark:bg-white/[0.04]'); img.src = p.image; img.alt = ''; img.loading = 'lazy'; a.append(img); }
+      if (p.image) { const img = el('img', 'w-full aspect-[4/5] object-cover rounded-xl bg-[#f3f3f3]'); img.src = p.image; img.alt = ''; img.loading = 'lazy'; a.append(img); }
       a.append(el('span', 'text-[12.5px] font-semibold leading-snug text-zinc-900 dark:text-white line-clamp-2', p.name));
       if (p.why) a.append(el('span', 'text-[11.5px] muted leading-snug line-clamp-2', p.why));
       rail.append(a);
