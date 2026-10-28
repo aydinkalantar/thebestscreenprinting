@@ -5,7 +5,7 @@ description: "Custom restaurant uniforms in LA: embroidered polos and hats, prin
 h1: "Custom clothing for restaurants"
 kind: audience
 imported: false
-summary: "Uniforms that work a double shift as branding. Embroidered polos and hats, printed staff tees and aprons for LA restaurants, cafes, bars and food trucks, made in Los Angeles."
+summary: "Uniforms that work a double shift as branding. Embroidered polos and hats, printed staff tees and aprons for LA restaurants, cafes, bars and food trucks, made in Los Angeles. We ship anywhere in the lower 48, free from $300."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Best for", value: "Front of house, kitchen crews, merch for regulars" }
@@ -60,3 +60,7 @@ A great restaurant tee or hat becomes free advertising every time a regular wear
 New hire next month? We save your artwork and mockups from every order, so a reorder starts with one email to sales@tbsp.la or a call to (323) 433-0033.
 
 Outfitting your team? [Get a free quote](/quick-quote/).
+
+## Ordering from outside California?
+
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of $300 or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).

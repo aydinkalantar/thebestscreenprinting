@@ -5,7 +5,7 @@ description: "Custom shirts and hoodies for clubs, school groups, families, char
 h1: "Specialty t-shirts for clubs and groups"
 kind: audience
 imported: false
-summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Los Angeles shop. Orders start at 6 pieces, for every decoration method."
+summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Los Angeles shop. Orders start at 6 pieces, for every decoration method. We ship anywhere in the lower 48, free from $300."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -57,3 +57,7 @@ Tees are the classic, but groups also go for [hoodies and sweatshirts](/products
 5. **Pick up or ship.** Grab it at 5738 Holmes Ave. in Los Angeles, or have it shipped.
 
 Rounding up the crew? [Get a free quote](/quick-quote/).
+
+## Ordering from outside California?
+
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of $300 or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).

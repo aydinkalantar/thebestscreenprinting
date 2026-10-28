@@ -5,7 +5,7 @@ description: "Branded promo apparel and merch printed in Los Angeles: giveaway t
 h1: "Promotional product printing"
 kind: audience
 imported: false
-summary: "Swag people keep. Branded tees, embroidered hats, totes and towels for campaigns, launches and giveaways, printed at our Los Angeles shop for brands that have included Netflix, Google and Amazon Alexa."
+summary: "Swag people keep. Branded tees, embroidered hats, totes and towels for campaigns, launches and giveaways, printed at our Los Angeles shop for brands that have included Netflix, Google and Amazon Alexa. We ship anywhere in the lower 48, free from $300."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -56,3 +56,7 @@ Browse blanks in the [catalog](/catalog/).
 Heading to a show? See [trade show swag](/event-apparel/trade-show-swag-anaheim/) and [event apparel](/event-apparel/).
 
 Building a campaign? [Get a free quote](/quick-quote/).
+
+## Ordering from outside California?
+
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of $300 or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).

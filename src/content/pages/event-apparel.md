@@ -5,7 +5,7 @@ description: "Custom event apparel in Los Angeles: staff shirts, tour merch, giv
 h1: "Event apparel"
 kind: audience
 imported: false
-summary: "Shirts people actually keep wearing after the event. Printed in-house in Los Angeles from 6 pieces, with Rush and Super Rush turnaround for tight deadlines."
+summary: "Shirts people actually keep wearing after the event. Printed in-house in Los Angeles from 6 pieces, with Rush and Super Rush turnaround for tight deadlines. We ship anywhere in the lower 48, free from $300."
 facts:
   - label: "Minimum 6 pieces"
     value: "Screen printed in-house in Los Angeles"
@@ -68,3 +68,7 @@ Brands run launch and pop-up shirts alongside their [retail collections](/for/re
 ## Make it the shirt they keep
 
 Send your art, quantities and event date through the [quick quote form](/quick-quote/). We answer within one business day and check your art for free before anything gets printed.
+
+## Ordering from outside California?
+
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of $300 or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
