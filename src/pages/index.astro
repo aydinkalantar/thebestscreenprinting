@@ -114,6 +114,15 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     </ul>
   </section>
 
+  <!-- Max demo video (staging preview): silent loop, wide on desktop, tall on phones; loads when it scrolls in. -->
+  <section class="wrap mt-10 md:mt-14" aria-labelledby="max-video-title" data-max-only>
+    <p id="max-video-title" class="eyebrow">See how Max works</p>
+    <div class="mt-3 rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10 bg-zinc-100 dark:bg-white/[0.04] shadow-xl max-md:max-w-[420px] max-md:mx-auto">
+      <video data-max-video muted loop playsinline preload="none" poster="/media/max-demo-poster.jpg" class="block w-full aspect-video max-md:aspect-[9/16]" aria-label="Max picks products, places a logo and prices an order"
+        data-wide="/media/max-demo-1280.mp4" data-tall="/media/max-demo-720x1280.mp4"></video>
+    </div>
+  </section>
+
   <!-- Max, the merch agent: what makes TBSP different -->
   {business.maxLive && <section class="wrap mt-14 md:mt-20 scroll-mt-40" id="max" data-max-only>
     <MaxDemo />
@@ -263,6 +272,17 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
 </Base>
 
 <script>
+  // Max video: the right size for the screen, loaded and played only while it's on screen.
+  const vid = document.querySelector<HTMLVideoElement>('[data-max-video]');
+  if (vid) {
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        if (!vid.src) { vid.src = matchMedia('(max-width: 767px)').matches ? vid.dataset.tall! : vid.dataset.wide!; vid.load(); }
+        if (!still) void vid.play().catch(() => {});
+      } else vid.pause();
+    }, { threshold: 0.3 }).observe(vid);
+  }
   // "Talk to Max" starts a voice call with him (max-chat.ts).
   document.querySelector('[data-hero-talk]')?.addEventListener('click', () => window.dispatchEvent(new Event('tbsp-max-talk')));
 </script>
