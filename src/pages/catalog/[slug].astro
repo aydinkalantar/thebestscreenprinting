@@ -498,17 +498,43 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   document.querySelector('[data-pending-dismiss]')?.addEventListener('click', () => setCarry(null));
 
   // Designs Max placed: live from the chat on this page, or carried over from the chat on another page.
-  const maxPlace = (list: { file: File; location: string; method: string }[]) =>
-    design.loadArtwork(list.map((x) => ({ locId: '', location: x.location, decoration: x.method, x: 0, y: 0, w: 0, file: x.file })), 'Max', 'Max placed your design. Move or resize it, then pick your sizes.');
-  window.addEventListener('tbsp-max-place', (e) => { const x = (e as CustomEvent<{ file: File; location: string; method: string }>).detail; if (x?.file) void maxPlace([x]); });
+  type MaxPlaced = { file: File; location: string; method: string; widthIn?: number };
+  const maxPlace = (list: MaxPlaced[]) =>
+    design.loadArtwork(list.map((x) => ({ locId: '', location: x.location, decoration: x.method, x: 0, y: 0, w: 0, file: x.file, widthIn: x.widthIn })), 'Max', 'Max placed your design. Move or resize it, then pick your sizes.');
+  window.addEventListener('tbsp-max-place', (e) => { const x = (e as CustomEvent<MaxPlaced>).detail; if (x?.file) void maxPlace([x]); });
+  const loadCarried = (list: { key: string; name: string; type: string; location: string; method: string; widthIn?: number }[]) =>
+    Promise.all(list.map(async (x) => {
+      const blob = await getFile(x.key);
+      return blob ? { file: new File([blob], x.name, { type: x.type || blob.type }), location: x.location, method: x.method, widthIn: x.widthIn } : null;
+    })).then((l) => l.filter(Boolean) as MaxPlaced[]);
+
+  // ?render=<job>: this page runs hidden inside Max's chat to draw his order as mockups (same placement
+  // as the preview here), and hands back the images and the placed artwork. See src/lib/max-render.ts.
+  const renderJob = new URLSearchParams(location.search).get('render');
+  if (renderJob && window.parent !== window) {
+    (async () => {
+      const reply = (data: object) => window.parent.postMessage({ type: 'tbsp-render', job: renderJob, ...data }, location.origin);
+      try {
+        const job = JSON.parse(sessionStorage.getItem(`tbsp-render-${renderJob}`) || 'null');
+        if (!job) return reply({ error: 'no job' });
+        const sw = swatches.find((b) => b.dataset.name?.toLowerCase() === String(job.color || '').toLowerCase());
+        if (sw) { sw.hidden = false; sw.click(); }
+        const list = await loadCarried(job.list);
+        await maxPlace(list);
+        // Let the color photo load before drawing.
+        await new Promise((r) => setTimeout(r, 400));
+        const photo = document.querySelector<HTMLImageElement>('[data-photo]');
+        if (photo && !photo.complete) await new Promise((r) => { photo.addEventListener('load', r, { once: true }); setTimeout(r, 6000); });
+        const mockups = await design.mockups(2_500_000);
+        reply({ mockups, placements: design.snapshot(), color, image: colorImg });
+      } catch (e) { reply({ error: e instanceof Error ? e.message : 'failed' }); }
+    })();
+  }
   try {
     const carried = JSON.parse(sessionStorage.getItem('tbsp-max-place') || 'null');
     if (carried?.productId && carried.productId === d.id && !editItem) {
       sessionStorage.removeItem('tbsp-max-place');
-      Promise.all(carried.list.map(async (x: { key: string; name: string; type: string; location: string; method: string }) => {
-        const blob = await getFile(x.key);
-        return blob ? { file: new File([blob], x.name, { type: x.type || blob.type }), location: x.location, method: x.method } : null;
-      })).then((l) => { const ok = l.filter(Boolean) as { file: File; location: string; method: string }[]; if (ok.length) void maxPlace(ok); }).catch(() => {});
+      loadCarried(carried.list).then((ok) => { if (ok.length) void maxPlace(ok); }).catch(() => {});
     }
   } catch { /* ignore */ }
 
@@ -765,9 +791,9 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     const input = priceInput();
     if (typeof input === 'string' || !lastPrice) return;
     orderBtn.disabled = true;
-    const res = await fetchPrices([input.item]);
+    const [res, shots] = await Promise.all([fetchPrices([input.item]), design.snapshot().length ? design.mockups(3_000_000).catch(() => []) : Promise.resolve([])]);
     orderBtn.disabled = false;
     if (!res?.enabled || !res.items[0]?.ok || !res.totals) { showPrice(res, input); return; }
-    openOrder({ items: [input.item], artwork: input.artwork, price: res, summary: `${d.name}${color ? ` · ${color}` : ''} · ${sum()} pieces` });
+    openOrder({ items: [input.item], artwork: input.artwork, mockups: shots.map((m) => ({ itemIndex: 0, side: m.side, blob: m.blob })), price: res, summary: `${d.name}${color ? ` · ${color}` : ''} · ${sum()} pieces` });
   });
 </script>

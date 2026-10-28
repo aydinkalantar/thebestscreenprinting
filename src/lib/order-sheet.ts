@@ -6,7 +6,8 @@ import { openSheet, wireSheet } from './sheet';
 import { attachAddressAutocomplete } from './address-autocomplete';
 
 export interface OrderArtwork { itemIndex: number; placement: string; file: File }
-export interface OrderRequest { items: PriceItemInput[]; artwork: OrderArtwork[]; price: Extract<PriceResponse, { enabled: true }>; summary: string; /** Cart items being bought: removed on the thank-you page. */ cartIds?: string[] }
+export interface OrderMockup { itemIndex: number; side: string; blob: Blob }
+export interface OrderRequest { items: PriceItemInput[]; artwork: OrderArtwork[]; /** Product photos with the designs on them, per item and side. */ mockups?: OrderMockup[]; price: Extract<PriceResponse, { enabled: true }>; summary: string; /** Cart items being bought: removed on the thank-you page. */ cartIds?: string[] }
 
 /** Remembered while the customer is at Stripe, so the thank-you page can tidy the cart. */
 export const CHECKOUT_KEY = 'tbsp-checkout';
@@ -147,6 +148,7 @@ function wire(el: HTMLElement) {
       returnUrl: location.href,
     }));
     for (const a of current.artwork) fd.append(`art_${a.itemIndex}_${a.placement.slice(0, 40)}`, a.file, a.file.name);
+    for (const m of current.mockups ?? []) fd.append(`mockup_${m.itemIndex}_${m.side}`, m.blob, `mockup-${m.itemIndex + 1}-${m.side}.png`);
     sending = true;
     const label = send.querySelector('span')!;
     send.setAttribute('aria-busy', 'true'); send.setAttribute('aria-disabled', 'true');
@@ -186,6 +188,13 @@ export function openOrder(req: OrderRequest) {
   totals = req.price.totals;
   const { delivery, payment } = req.price;
   el.querySelector('[data-os-summary]')!.textContent = req.summary;
+  // What's being ordered, as pictures: each product with the designs on it.
+  const pics = el.querySelector<HTMLElement>('[data-os-mockups]');
+  if (pics) {
+    pics.querySelectorAll('img').forEach((i) => URL.revokeObjectURL(i.src));
+    pics.replaceChildren(...(req.mockups ?? []).map((m) => { const i = document.createElement('img'); i.src = URL.createObjectURL(m.blob); i.alt = `${m.side} mockup`; i.className = 'w-16 h-20 rounded-lg object-contain bg-white border border-zinc-200/80 dark:border-white/10'; return i; }));
+    pics.style.display = req.mockups?.length ? 'flex' : 'none';
+  }
   const pickup = el.querySelector<HTMLElement>('[data-os-pickup]')!;
   const ship = el.querySelector<HTMLElement>('[data-os-ship]')!;
   pickup.hidden = delivery.pickup == null;

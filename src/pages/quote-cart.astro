@@ -107,7 +107,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   import { garmentFor, MAX_TOTAL_BYTES, MAX_ARTWORK_BYTES, MULTIPLE_PRODUCTS } from '../lib/quote';
   import { openSheet, wireSheet } from '../lib/sheet';
   import { fetchPrices, money, printSize, ART_HELP_LABELS, type PriceItemInput, type PriceResponse } from '../lib/online';
-  import { openOrder, type OrderArtwork } from '../lib/order-sheet';
+  import { openOrder, type OrderArtwork, type OrderMockup } from '../lib/order-sheet';
   import { business } from '../data/business';
 
   const list = document.getElementById('cart-list')!;
@@ -545,7 +545,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   const priceItems = (): PriceItemInput[] => cartItems().map((it) => ({
     brand: it.brand, style: it.style, color: it.color, sizes: sizesOf(it), productName: it.name, ...(it.artHelp ? { artHelp: it.artHelp } : {}),
     locations: it.placements.length
-      ? it.placements.map((p) => ({ placement: p.location, method: p.decoration, ...(isScreen(p.decoration) ? { colors: it.inks?.[p.location] || 1 } : {}), ...printSize(p.widthIn, p.heightIn) }))
+      ? it.placements.map((p) => ({ placement: p.location, method: p.decoration, ...(isScreen(p.decoration) ? { colors: it.inks?.[p.location] || 1 } : {}), ...printSize(p.widthIn, p.heightIn), ...(p.widthIn > 0 ? { fromTopIn: p.fromTopIn, fromCenterIn: p.fromCenterIn } : {}) }))
       : (it.locations.length ? it.locations : ['Front']).map((l) => ({ placement: l, method: it.decorations[0] || '', ...(isScreen(it.decorations[0] || '') ? { colors: it.inks?.[l] || 1 } : {}) })),
   }));
 
@@ -655,8 +655,13 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
         if (blob) artwork.push({ itemIndex: i, placement: p.location, file: new File([blob], p.file, { type: p.fileType || blob.type }) });
       }
     }
+    // The mockups made on each product page go along, so the shop sees exactly what was designed.
+    const mockups: OrderMockup[] = [];
+    for (const [i, it] of items.entries()) {
+      for (const m of it.mockups) { const blob = await getFile(m.key); if (blob) mockups.push({ itemIndex: i, side: m.side, blob }); }
+    }
     payBtns.forEach((x) => { x.disabled = false; });
     const pieces = items.reduce((n, it) => n + it.total, 0);
-    openOrder({ items: input, artwork, price: res, cartIds: items.map((it) => it.id), summary: `${items.length} product${items.length === 1 ? '' : 's'} · ${pieces} pieces · ${artwork.length} artwork file${artwork.length === 1 ? '' : 's'}` });
+    openOrder({ items: input, artwork, mockups, price: res, cartIds: items.map((it) => it.id), summary: `${items.length} product${items.length === 1 ? '' : 's'} · ${pieces} pieces · ${artwork.length} artwork file${artwork.length === 1 ? '' : 's'}` });
   }));
 </script>

@@ -944,7 +944,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
      * Starts this product with artwork from another cart item: same location when this product
      * has it (same id, else same name), otherwise offered as "pending artwork" to place by hand.
      */
-    async loadArtwork(list: { locId: string; location: string; decoration: string; notes?: string; x: number; y: number; w: number; file: File }[], from = '', note = '') {
+    async loadArtwork(list: { locId: string; location: string; decoration: string; notes?: string; x: number; y: number; w: number; file: File; widthIn?: number }[], from = '', note = '') {
       const placed: string[] = [];
       for (const src of list) {
         const sp = spotById.get(src.locId) ?? spots.find((x) => x.label.toLowerCase() === src.location.toLowerCase());
@@ -952,12 +952,19 @@ export function mountDesign(root: HTMLElement, opts: Options) {
         await addFile(sp.id, src.file);
         const a = arts.get(sp.id);
         if (!a) continue;
-        if (cfg.decorations.includes(src.decoration)) a.decoration = src.decoration;
+        // Names can differ a little ("DTF" vs "DTF transfer", "Screen print" vs "Screen printing").
+        const want = src.decoration.toLowerCase(), first = want.split(/\s+/)[0];
+        const dec = cfg.decorations.find((x) => x.toLowerCase() === want) ?? cfg.decorations.find((x) => x.toLowerCase().split(/\s+/)[0] === first);
+        if (dec) a.decoration = dec;
         a.notes = src.notes ?? '';
         if (sp.id === src.locId && src.w > 0) {
           a.w = clamp(src.w, Math.min(minW(sp), maxW(a, 0, 0)), maxW(a, 0, 0));
           a.x = clamp(src.x, 0, 1 - a.w);
           a.y = clamp(src.y, 0, Math.max(0, 1 - artH(a)));
+        } else if (src.widthIn && src.widthIn > 0) {
+          // A size in inches (Max's placements): that width, centered, from the top of the area.
+          a.w = clamp(src.widthIn / dims(sp).wIn, Math.min(minW(sp), maxW(a, 0, 0)), maxW(a, 0, 0));
+          a.x = (1 - a.w) / 2;
         }
         placed.push(sp.label);
       }

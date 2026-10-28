@@ -9,6 +9,7 @@ import { countInks, type InkCount } from '../components/design/colors';
 import { business } from '../data/business';
 import { openMax } from './max';
 import { setupVoice, type VoiceConfig } from './max-voice';
+import { renderOnProduct, type RenderResult } from './max-render';
 import { startLiveCall, LiveUnavailable } from './max-live';
 import { getContact, saveContact, forgetContact, isEmail, type Contact } from './contact';
 
@@ -117,9 +118,34 @@ if (sheet) {
     const card = el('div', 'rounded-2xl border border-violet-300/60 dark:border-violet-400/25 bg-violet-500/[0.05] p-3.5 grid gap-3');
     card.append(el('p', 'text-[12px] font-bold uppercase tracking-[0.1em] text-violet-700 dark:text-violet-300', 'Your order, ready to go'));
     const pr = e.price && e.price.enabled ? e.price : null;
+    // Each product with designs is drawn on its own page (hidden), like the preview there: the
+    // card shows those mockups, and the cart and checkout carry them with the placed artwork.
+    const renders: (Promise<RenderResult | null> | null)[] = e.items.map((it) => {
+      // Size: the cart's, else what Max said when he placed it.
+      const list = it.locations.flatMap((l, li) => { const a = artFor(l, li); return a ? [{ file: a.file, location: l.placement, method: l.method, widthIn: l.widthIn ?? placedOn.get(it.productId || '')?.get(l.placement)?.widthIn }] : []; });
+      return it.slug && list.length ? renderOnProduct(it.slug, it.productId || '', it.color, list) : null;
+    });
     e.items.forEach((it, i) => {
       const row = el('div', 'flex gap-3');
-      if (it.image) { const img = el('img', 'w-14 h-14 shrink-0 rounded-xl object-contain bg-white dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10'); img.src = it.image; img.alt = ''; row.append(img); }
+      const pics = el('div', 'shrink-0 flex gap-1');
+      if (it.image) { const img = el('img', 'w-14 h-14 rounded-xl object-contain bg-white dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10'); img.src = it.image; img.alt = ''; pics.append(img); }
+      if (renders[i]) {
+        pics.classList.add('animate-pulse');
+        void renders[i]!.then((r) => {
+          pics.classList.remove('animate-pulse');
+          if (!r?.mockups.length) return;
+          pics.replaceChildren(...r.mockups.map((m) => {
+            const url = URL.createObjectURL(m.blob);
+            // Tap to see it big.
+            const link = el('a', 'block'); (link as HTMLAnchorElement).href = url; (link as HTMLAnchorElement).target = '_blank';
+            const img = el('img', 'w-[72px] h-[84px] rounded-xl object-contain bg-white dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10 hover:border-violet-400');
+            img.src = url; img.alt = `${it.name || it.productName || ''} ${m.side} with your design`; img.title = `${m.side === 'back' ? 'Back' : 'Front'} · tap to enlarge`;
+            link.append(img);
+            return link;
+          }));
+        });
+      }
+      row.append(pics);
       const info = el('div', 'min-w-0 flex-1 text-[13px] leading-snug');
       const name = el(it.slug ? 'a' : 'p', 'block font-semibold text-zinc-900 dark:text-white hover:underline', it.name || it.productName || `${it.brand} ${it.style}`);
       if (it.slug) (name as HTMLAnchorElement).href = `/catalog/${it.slug}/`;
@@ -156,28 +182,35 @@ if (sheet) {
     pay.addEventListener('click', async () => {
       const res = await fetchPrices(e.items.map(forPrice));
       if (!res?.enabled || !res.totals || res.items.some((x) => !x.ok)) { bubble('assistant', 'Prices just changed, let me check again.'); return; }
-      // Each location's design, as Max placed them.
+      pay.disabled = true; const label = pay.textContent; pay.textContent = 'Preparing your designs…';
+      const done = await Promise.all(renders.map((r) => r ?? Promise.resolve(null)));
+      pay.disabled = false; pay.textContent = label;
+      // Each location's design, as Max placed them, with its size and spot from the mockup.
       const artwork: OrderArtwork[] = e.items.flatMap((it, i) => it.locations.flatMap((l, li) => { const a = artFor(l, li); return a ? [{ itemIndex: i, placement: l.placement, file: a.file }] : []; }));
+      const mockups = done.flatMap((r, i) => (r?.mockups ?? []).map((m) => ({ itemIndex: i, side: m.side, blob: m.blob })));
+      const placed = (i: number, place: string) => done[i]?.placements.find((p) => p.location.toLowerCase() === place.toLowerCase());
+      const items = e.items.map((it, i) => ({ ...forPrice(it), locations: it.locations.map(({ artId: _a, ...l }) => { const p = placed(i, l.placement); return p ? { ...l, widthIn: p.widthIn, heightIn: p.heightIn, fromTopIn: p.fromTopIn, fromCenterIn: p.fromCenterIn, ...(p.notes ? { notes: p.notes } : {}) } : l; }) }));
       const pieces = e.items.reduce((n, it) => n + Object.values(it.sizes).reduce((a, b) => a + b, 0), 0);
-      openOrder({ items: e.items.map(forPrice), artwork, price: res, summary: `${e.items.length} product${e.items.length === 1 ? '' : 's'} · ${pieces} pieces` });
+      openOrder({ items, artwork, mockups, price: res, summary: `${e.items.length} product${e.items.length === 1 ? '' : 's'} · ${pieces} pieces` });
     });
     /** One of Max's products as a cart item, with each location's design attached (placed on the product page). */
-    const toCart = (it: CartLine) => addToCart({
+    const toCart = async (it: CartLine, r: RenderResult | null = null) => addToCart({
             productId: it.productId || '', slug: it.slug || '', name: it.name || it.productName || `${it.brand} ${it.style}`, brand: it.brand, style: it.style, cat: '', sub: '',
             image: it.image || '', url: it.slug ? `${location.origin}/catalog/${it.slug}/` : location.origin, color: it.color,
             sizeOrder: Object.keys(it.sizes), sizes: it.sizes,
             decorations: [...new Set(it.locations.map((l) => l.method))], locations: it.locations.map((l) => l.placement),
-            placements: it.locations.flatMap((l, li) => {
+            placements: r?.placements.length ? r.placements : it.locations.flatMap((l, li) => {
               const a = artFor(l, li);
               return a ? [{ locId: '', location: l.placement, decoration: l.method, file: a.file.name, blob: a.file as Blob, widthIn: l.widthIn || 0, heightIn: l.heightIn || 0, fromTopIn: 0, fromCenterIn: 0, x: 0, y: 0, w: 0 }] : [];
             }),
-            mockups: [],
+            mockups: r?.mockups ?? [],
             inks: Object.fromEntries(it.locations.filter((l) => l.colors).map((l) => [l.placement, l.colors!])),
           });
     add.addEventListener('click', async () => {
       add.disabled = true;
       try {
-        for (const it of e.items) await toCart(it);
+        add.textContent = 'Adding…';
+        for (const [i, it] of e.items.entries()) await toCart(it, renders[i] ? await renders[i] : null);
         add.textContent = 'Added ✓';
         bubble('assistant', 'Added to your cart.');
       } catch (err) {
@@ -193,7 +226,7 @@ if (sheet) {
       see.type = 'button';
       see.addEventListener('click', async () => {
         see.disabled = true;
-        try { const c = await toCart(it); location.href = `/catalog/${it.slug}/?edit=${encodeURIComponent(c.id)}`; }
+        try { const c = await toCart(it, renders[e.items.indexOf(it)] ? await renders[e.items.indexOf(it)] : null); location.href = `/catalog/${it.slug}/?edit=${encodeURIComponent(c.id)}`; }
         catch (err) { see.disabled = false; bubble('assistant', err instanceof Error ? err.message : 'Could not open the preview.'); }
       });
       card.append(see);
@@ -264,7 +297,7 @@ if (sheet) {
   // Max put a design on a location. On that product's page it goes straight onto the live preview;
   // elsewhere a card shows it, and "See it on the product" opens the preview with it in place.
   /** Every design Max placed per product (location -> design), so "See it" brings them all. */
-  const placedOn = new Map<string, Map<string, { a: (typeof art)[number]; method: string }>>();
+  const placedOn = new Map<string, Map<string, { a: (typeof art)[number]; method: string; widthIn?: number }>>();
   /** Product page, name and photo for an id: from products Max showed, else the site's index. */
   let index: Promise<Record<string, [string, string, string]>> | null = null;
   async function productInfo(pid: string) {
@@ -280,7 +313,7 @@ if (sheet) {
     const here = document.getElementById('add-to-quote')?.dataset;
     const pid = e.productId || here?.id || '';
     if (!placedOn.has(pid)) placedOn.set(pid, new Map());
-    placedOn.get(pid)!.set(e.placement, { a, method: e.method });
+    placedOn.get(pid)!.set(e.placement, { a, method: e.method, widthIn: e.widthIn });
     const what = `${e.placement} · ${e.method}${e.colors ? ` · ${e.colors} color${e.colors === 1 ? '' : 's'}` : ''}${e.widthIn ? ` · about ${Math.round(e.widthIn * 10) / 10}" wide` : ''}`;
     const card = el('div', 'flex items-center gap-3 rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2.5');
     // A mid-gray backdrop keeps white and black designs visible until the product photo loads.
@@ -293,7 +326,7 @@ if (sheet) {
     log.append(card); scroll();
     if (here?.id && here.id === pid) {
       // On this product's page: place it on the preview right away.
-      window.dispatchEvent(new CustomEvent('tbsp-max-place', { detail: { file: a.file, location: e.placement, method: e.method } }));
+      window.dispatchEvent(new CustomEvent('tbsp-max-place', { detail: { file: a.file, location: e.placement, method: e.method, widthIn: e.widthIn } }));
       info.append(el('p', 'text-emerald-700 dark:text-emerald-400 font-semibold', 'Placed on the preview. Close this chat to see it and adjust.'));
       return;
     }
@@ -311,11 +344,11 @@ if (sheet) {
       see.addEventListener('click', async () => {
         see.disabled = true;
         // Every design Max placed on this product goes along (front and back, say).
-        const list: { key: string; name: string; type: string; location: string; method: string }[] = [];
+        const list: { key: string; name: string; type: string; location: string; method: string; widthIn?: number }[] = [];
         for (const [loc, x] of placedOn.get(pid)!) {
           const key = `max/${sessionId}/${x.a.id}`;
           await putFile(key, x.a.file);
-          list.push({ key, name: x.a.file.name, type: x.a.file.type, location: loc, method: x.method });
+          list.push({ key, name: x.a.file.name, type: x.a.file.type, location: loc, method: x.method, widthIn: x.widthIn });
         }
         try { sessionStorage.setItem('tbsp-max-place', JSON.stringify({ productId: pid, list })); } catch { /* ignore */ }
         location.href = `/catalog/${prod.slug}/`;
