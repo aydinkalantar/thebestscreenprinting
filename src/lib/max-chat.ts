@@ -121,7 +121,15 @@ if (sheet) {
     return /tote/.test(n) ? 'tote' : /bag|backpack/.test(n) ? 'bag' : /hood/.test(n) ? 'hoodie' : /crew|sweatshirt/.test(n) ? 'sweatshirt' : /polo/.test(n) ? 'polo' : /tank/.test(n) ? 'tank' : /long sleeve/.test(n) ? 'long sleeve' : /beanie/.test(n) ? 'beanie' : /cap|hat|snapback|trucker/.test(n) ? 'hat' : /jacket/.test(n) ? 'jacket' : /t-shirt|\btee\b/.test(n) ? 'tee' : 'product';
   };
   function cartCard(e: Extract<MaxEvent, { type: 'cart' }>) {
+    // Only the newest order card stays open: earlier versions fold to one line, so the chat isn't a stack of carts.
+    log.querySelectorAll<HTMLElement>('[data-max-cart]:not([data-old])').forEach((old) => {
+      old.dataset.old = '';
+      const line = el('button', 'text-left text-[12.5px] muted hover:underline', 'Earlier version of your order (tap to show)'); line.type = 'button';
+      old.before(line); old.hidden = true;
+      line.addEventListener('click', () => { old.hidden = !old.hidden; line.textContent = old.hidden ? 'Earlier version of your order (tap to show)' : 'Earlier version of your order (tap to hide)'; });
+    });
     const card = el('div', 'rounded-2xl border border-violet-300/60 dark:border-violet-400/25 bg-violet-500/[0.05] p-3.5 grid gap-3');
+    card.dataset.maxCart = '';
     card.append(el('p', 'text-[12px] font-bold uppercase tracking-[0.1em] text-violet-700 dark:text-violet-300', 'Your order, ready to go'));
     const pr = e.price && e.price.enabled ? e.price : null;
     // Each product with designs is drawn on its own page (hidden), like the preview there: the
@@ -162,7 +170,7 @@ if (sheet) {
         const a = artFor(l, li);
         const line = el('p', 'muted flex items-center gap-1.5');
         if (a?.url) { const t = el('img', 'w-5 h-5 rounded object-contain bg-zinc-400/70 dark:bg-zinc-600'); t.src = a.url; t.alt = ''; line.append(t); }
-        line.append(el('span', '', `${l.placement}: ${l.method}${l.colors ? `, ${l.colors} color${l.colors === 1 ? '' : 's'}` : ''}${a ? ` · ${a.file.name.slice(0, 28)}` : ''}`));
+        line.append(el('span', '', `${l.placement}: ${l.method}${l.colors ? `, ${l.colors} color${l.colors === 1 ? '' : 's'}` : ''}${a && art.length > 1 ? ` · ${a.file.name.slice(0, 20)}` : ''}`));
         info.append(line);
       }
       if (it.artHelp) info.append(el('p', 'muted', `Design help: ${{ cleanup: 'art cleanup', layout: 'text or simple layout', custom: 'custom design' }[it.artHelp.type] ?? it.artHelp.type}`));

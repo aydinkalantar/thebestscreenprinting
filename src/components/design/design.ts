@@ -510,6 +510,19 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   });
   chips.forEach((c) => c.addEventListener('click', () => select(c.dataset.loc!)));
 
+  const spotFor = (name: string) => {
+    const n = name.toLowerCase().trim();
+    const by = (f: (x: DesignSpot) => boolean) => spots.find(f);
+    return by((x) => x.label.toLowerCase() === n)
+      ?? spotById.get(n.replace(/\s+/g, '-'))
+      ?? (/neck|yoke/.test(n) ? spotById.get('back-neck') ?? spotById.get('back') : undefined)
+      ?? (/left/.test(n) && /chest/.test(n) ? spotById.get('left-chest') : undefined)
+      ?? (/right/.test(n) && /chest/.test(n) ? spotById.get('right-chest') : undefined)
+      ?? (/sleeve/.test(n) ? (/right/.test(n) ? spotById.get('right-sleeve') : spotById.get('left-sleeve')) : undefined)
+      ?? (/back/.test(n) ? spotById.get('back') : undefined)
+      ?? (/front|chest|center/.test(n) ? spotById.get('front') : undefined);
+  };
+
   // ── drag, resize, keyboard ─────────────────────────────────────────────────
   let drag: null | { a: Art; mode: 'move' | 'resize'; id: number; px: number; py: number; x: number; y: number; r: DOMRect; L: DOMRect; A0: Box } = null;
   layer.addEventListener('pointerdown', (e) => {
@@ -948,10 +961,15 @@ export function mountDesign(root: HTMLElement, opts: Options) {
      * Starts this product with artwork from another cart item: same location when this product
      * has it (same id, else same name), otherwise offered as "pending artwork" to place by hand.
      */
+    /**
+     * The spot for a location name from elsewhere (Max, another product): same name, else the same
+     * kind of spot this product has ("Back neck" ↔ "Back yoke", a hoodie with no back neck → Back,
+     * "chest" → Front unless it says left/right).
+     */
     async loadArtwork(list: { locId: string; location: string; decoration: string; notes?: string; x: number; y: number; w: number; file: File; widthIn?: number }[], from = '', note = '') {
       const placed: string[] = [];
       for (const src of list) {
-        const sp = spotById.get(src.locId) ?? spots.find((x) => x.label.toLowerCase() === src.location.toLowerCase());
+        const sp = spotById.get(src.locId) ?? spotFor(src.location);
         if (!sp || arts.has(sp.id)) { pending.push({ file: src.file, decoration: src.decoration, notes: src.notes, location: src.location }); continue; }
         await addFile(sp.id, src.file);
         const a = arts.get(sp.id);
