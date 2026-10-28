@@ -118,13 +118,13 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
   {business.maxLive && <section class="wrap mt-14 md:mt-20 scroll-mt-40" id="max" data-max-only>
     <MaxDemo>
       <!-- Max demo video: silent loop, wide on desktop, tall on phones; "Tap for sound" plays the voiced cut. -->
-      <div slot="media" class="relative w-full max-md:max-w-[420px] max-md:mx-auto">
+      <div slot="media" class="relative w-full max-md:max-w-[420px] max-md:mx-auto rounded-2xl overflow-hidden shadow-2xl border border-zinc-200/80 dark:border-white/10">
       <video data-max-video muted loop playsinline preload="none" poster="/media/max-demo-poster.jpg" class="block w-full aspect-video max-md:aspect-[9/16] bg-zinc-900" aria-label="Max picks products, places a logo and prices an order"
         data-wide="/media/max-demo-1280.mp4" data-tall="/media/max-demo-720x1280.mp4"
         data-wide-voice="/media/max-demo-voice-1280.mp4" data-tall-voice="/media/max-demo-voice-720x1280.mp4"></video>
       <!-- Silent loop by default; "Tap for sound" plays the voiced version from the start. -->
       <button type="button" data-video-sound class="absolute left-1/2 -translate-x-1/2 bottom-4 inline-flex items-center gap-2 h-11 px-4 rounded-full bg-zinc-900/85 hover:bg-zinc-900 text-white text-[14px] font-semibold shadow-lg backdrop-blur"><Volume2 class="w-4 h-4" aria-hidden="true" />Tap for sound</button>
-      <div data-video-controls hidden class="absolute right-3 bottom-3 flex gap-2">
+      <div data-video-controls hidden class="absolute right-3 bottom-3 gap-2 [&:not([hidden])]:flex">
         <button type="button" data-video-toggle class="w-10 h-10 rounded-full grid place-items-center bg-zinc-900/80 text-white backdrop-blur" aria-label="Pause"><Pause class="w-4 h-4" data-i-pause aria-hidden="true" /><Play class="w-4 h-4 hidden" data-i-play aria-hidden="true" /></button>
         <button type="button" data-video-replay class="w-10 h-10 rounded-full grid place-items-center bg-zinc-900/80 text-white backdrop-blur" aria-label="Replay from the start"><RotateCcw class="w-4 h-4" aria-hidden="true" /></button>
         <button type="button" data-video-mute class="w-10 h-10 rounded-full grid place-items-center bg-zinc-900/80 text-white backdrop-blur" aria-label="Mute"><VolumeX class="w-4 h-4" aria-hidden="true" /></button>

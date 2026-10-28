@@ -14,7 +14,7 @@ const steps = [
 ---
 <!-- With a video in the "media" slot, it takes the left side (wider) instead of the scripted phone. -->
 <div class:list={['grid rounded-3xl overflow-hidden border border-zinc-200/80 dark:border-white/10', Astro.slots.has('media') ? 'lg:grid-cols-[1.35fr_1fr]' : 'lg:grid-cols-2']} id="max-demo">
-  {Astro.slots.has('media') ? <div class="relative bg-zinc-900 grid place-items-center"><slot name="media" /></div> : <Fragment>
+  {Astro.slots.has('media') ? <div class="relative bg-zinc-100 dark:bg-white/[0.04] grid place-items-center p-4 sm:p-8"><slot name="media" /></div> : <Fragment>
   <!-- The phone -->
   <div class="relative bg-zinc-100 dark:bg-white/[0.04] px-4 py-8 sm:p-10 grid place-items-center overflow-hidden">
     <div class="absolute inset-x-10 top-10 bottom-10 rounded-full bg-violet-500/20 blur-3xl" aria-hidden="true"></div>
