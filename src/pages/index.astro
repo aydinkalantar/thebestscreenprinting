@@ -16,7 +16,7 @@ import { products, featuredProducts } from '../lib/catalog';
 import { collectionTiles, brandTiles, styles } from '../components/home/collections';
 import {
   ArrowRight, Phone, MapPin, Clock, Shirt, Scissors, Layers, Flame, Stamp, Printer, Maximize, Zap,
-  Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck, Star, Volume2, VolumeX, Pause, Play, RotateCcw,
+  Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck, Star, Volume2, VolumeX, Pause, Play, RotateCcw, Maximize,
 } from '@lucide/astro';
 
 // Title and description stay as the live homepage has them (they rank). The H1 is short and bold;
@@ -122,6 +122,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
       <video data-max-video muted loop playsinline preload="none" poster="/media/max-demo-poster.jpg" class="block w-full aspect-video max-md:aspect-[9/16] bg-zinc-900" aria-label="Max picks products, places a logo and prices an order"
         data-wide="/media/max-demo-1280.mp4" data-tall="/media/max-demo-720x1280.mp4"
         data-wide-voice="/media/max-demo-voice-1280.mp4" data-tall-voice="/media/max-demo-voice-720x1280.mp4"></video>
+      <button type="button" data-video-full class="absolute right-3 top-3 w-10 h-10 rounded-full grid place-items-center bg-zinc-900/80 hover:bg-zinc-900 text-white backdrop-blur" aria-label="Watch full screen with sound" title="Full screen"><Maximize class="w-4 h-4" aria-hidden="true" /></button>
       <!-- Silent loop by default; "Tap for sound" plays the voiced version from the start. -->
       <button type="button" data-video-sound class="absolute left-1/2 -translate-x-1/2 bottom-4 inline-flex items-center gap-2 h-11 px-4 rounded-full bg-zinc-900/85 hover:bg-zinc-900 text-white text-[14px] font-semibold shadow-lg backdrop-blur"><Volume2 class="w-4 h-4" aria-hidden="true" />Tap for sound</button>
       <div data-video-controls hidden class="absolute right-3 bottom-3 gap-2 [&:not([hidden])]:flex">
@@ -314,6 +315,13 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
       controls.hidden = true; sound.hidden = false;
     });
     vid.addEventListener('ended', () => { controls.hidden = false; paint(); });
+    // Full screen: the voiced cut from the start, as big as the screen allows (iPhone uses its own player).
+    document.querySelector('[data-video-full]')!.addEventListener('click', () => {
+      sound.click();
+      const v = vid as HTMLVideoElement & { webkitEnterFullscreen?: () => void };
+      if (vid.requestFullscreen) void vid.requestFullscreen().catch(() => v.webkitEnterFullscreen?.());
+      else v.webkitEnterFullscreen?.();
+    });
   }
   // "Talk to Max" starts a voice call with him (max-chat.ts).
   document.querySelector('[data-hero-talk]')?.addEventListener('click', () => window.dispatchEvent(new Event('tbsp-max-talk')));
