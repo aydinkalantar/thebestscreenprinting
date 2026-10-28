@@ -20,6 +20,22 @@ export interface LiveEvents {
 
 export class LiveUnavailable extends Error {}
 
+// The call token takes a second or two to make, so it's fetched ahead (when a "Talk to Max" button
+// is hovered or focused, or Max opens) and used if still fresh. Tokens must start a call within 2 minutes.
+type Token = { token?: string; wsUrl?: string; model?: string; start?: string; enabled?: boolean } | null;
+let early: { at: number; p: Promise<Token> } | null = null;
+const mint = (context: () => unknown): Promise<Token> =>
+  fetch(`${STUDIO_API}/api/public/max/voice`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ context: context() }) })
+    .then((r) => (r.ok ? r.json() : null)).catch(() => null);
+export function prefetchToken(context: () => unknown) {
+  if (early && Date.now() - early.at < 90_000) return;
+  early = { at: Date.now(), p: mint(context) };
+}
+function takeToken(context: () => unknown): Promise<Token> {
+  const e = early; early = null;
+  return e && Date.now() - e.at < 90_000 ? e.p.then((t) => t ?? mint(context)) : mint(context);
+}
+
 // Captures mic audio at the device rate and posts 100 ms chunks resampled to 16 kHz.
 const WORKLET = `
 class MaxPcm extends AudioWorkletProcessor {
@@ -92,13 +108,12 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents, hist
   try {
     on.status('connecting');
     // Mic permission and the token in parallel.
-    const [s, res] = await Promise.all([
+    const [s, t] = await Promise.all([
       navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } }),
-      fetch(`${STUDIO_API}/api/public/max/voice`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ context: context() }) }),
+      takeToken(context),
     ]);
     stream = s;
-    const t = res.ok ? await res.json().catch(() => null) : null;
-    if (!t?.token || !t.wsUrl || t.enabled === false) throw new LiveUnavailable(String(res.status));
+    if (!t?.token || !t.wsUrl || t.enabled === false) throw new LiveUnavailable('token');
 
     // Mic → worklet → socket.
     const url = URL.createObjectURL(new Blob([WORKLET], { type: 'application/javascript' }));
