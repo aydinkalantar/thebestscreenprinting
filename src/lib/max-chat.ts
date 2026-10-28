@@ -72,6 +72,10 @@ if (sheet) {
   const scroll = () => requestAnimationFrame(() => { log.scrollTop = log.scrollHeight; });
   const bubble = (role: Msg['role'], text: string) => { const b = el('div', `max-bubble ${role === 'user' ? 'max-me' : 'max-bot'}`, text); log.append(b); scroll(); return b; };
 
+  const resetAt = () => { try { return Number(localStorage.getItem('tbsp-max-reset-at')) || 0; } catch { return 0; } };
+  /** When the last call ended: a call within a few minutes of it skips the welcome back. */
+  let lastCallEnd = 0;
+
   /** What Max should know about where the visitor is. */
   function context() {
     const path = location.pathname;
@@ -83,7 +87,8 @@ if (sheet) {
       ...(f?.id ? { product: { id: f.id, name: f.name, brand: f.brand, style: f.style, color } } : {}),
       // Confirmed details, so Max can greet by name and fill the order.
       ...(getContact() ? { contact: getContact() } : {}),
-      cart: cartItems().map((it) => ({ brand: it.brand, style: it.style, color: it.color, sizes: it.sizes, productName: it.name })),
+      // The site cart, minus what was there before the visitor started over (an old order shouldn't steer Max).
+      cart: cartItems().filter((it) => it.addedAt > resetAt()).map((it) => ({ brand: it.brand, style: it.style, color: it.color, sizes: it.sizes, productName: it.name })),
       artwork: art.map(({ id, file, ink }) => ({ id, name: file.name, kind: ink.kind, ...(ink.kind === 'spot' ? { colors: ink.count } : {}), ...(ink.kind !== 'unknown' && !ink.vector ? { widthPx: ink.widthPx } : {}) })),
     };
   }
@@ -218,7 +223,8 @@ if (sheet) {
     for (const [k, label, type, ac] of [['name', 'Name', 'text', 'name'], ['email', 'Email', 'email', 'email'], ['phone', 'Phone', 'tel', 'tel']] as const) {
       const l = el('label', 'grid gap-1 text-[12px] font-semibold text-zinc-600 dark:text-zinc-300', label);
       const i = el('input', 'field !h-10 !text-[15px]'); i.type = type; i.name = k; i.autocomplete = ac;
-      i.value = (heard[k] || prev[k] || '').trim();
+      // Name and email can come from earlier visits; a phone number only if it was said now.
+      i.value = (heard[k] || (k === 'phone' ? '' : prev[k]) || '').trim();
       // Spoken emails arrive as words: "ayden at tbsp dot la" → ayden@tbsp.la.
       if (k === 'email' && !i.value.includes('@')) i.value = i.value.replace(/\s+at\s+/i, '@').replace(/\s+dot\s+/gi, '.').replace(/\s+/g, '').toLowerCase();
       if (k === 'email') { i.inputMode = 'email'; i.autocapitalize = 'off'; i.spellcheck = false; }
@@ -346,6 +352,14 @@ if (sheet) {
     const re = COMMON[voiceLang.slice(0, 2)];
     return !re || re.test(t) || /\d/.test(t) || t.trim().split(/\s+/).length >= 8;
   };
+  /** A caption without the stretches that don't sound like speech (noise often comes as a few odd words before a real question). */
+  const cleanCaption = (t: string) => {
+    const re = COMMON[voiceLang.slice(0, 2)];
+    if (!re) return t;
+    const parts = t.split(/(?<=[,.!?])\s+/);
+    const kept = parts.filter((p) => re.test(p) || /\d/.test(p));
+    return kept.length ? kept.join(' ') : t;
+  };
 
   // ── live call ──
   const callBar = sheet.querySelector<HTMLElement>('[data-max-call]')!;
@@ -398,6 +412,7 @@ if (sheet) {
       call = await startLiveCall(context, {
         status: (st, why) => {
           if (st === 'ended') {
+            lastCallEnd = Date.now();
             call = null; calling = false; paintCall(false);
             if (why === 'time') bubble('assistant', 'Our call timed out. Tap the mic to talk again, or keep typing.');
             else if (why === 'bye') bubble('assistant', 'Call ended. I’m here anytime: tap the mic to talk, or just type.');
@@ -411,6 +426,7 @@ if (sheet) {
         caption: (who, text, done) => {
           if (!text) return;
           // Room noise sometimes transcribes as words in another language: don't show it as the visitor's message.
+          if (who === 'user') text = cleanCaption(text);
           if (who === 'user' && !soundsLikeSpeech(text)) {
             if (done) { live.user?.remove(); delete live.user; }
             return;
@@ -429,7 +445,7 @@ if (sheet) {
           if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); }
         },
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
-      }, Date.now() - lastAt < 3 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'));
+      }, Date.now() - lastAt < 3 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'), Date.now() - lastCallEnd > 15 * 60_000);
       calling = false;
       for (const t of queued.splice(0)) call?.sendText(t);
     } catch (err) {
@@ -576,6 +592,8 @@ if (sheet) {
     voice.typed(); ask(b.textContent || '');
   });
   reset.addEventListener('click', () => {
+    try { localStorage.setItem('tbsp-max-reset-at', String(Date.now())); } catch { /* ignore */ }
+    lastCallEnd = 0;
     voice.stop(); endCall(); messages = []; art.length = 0; artSeq = 0; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
     [...log.children].forEach((c) => { if (c !== intro) c.remove(); });
     filesBox.replaceChildren(); filesBox.hidden = true;

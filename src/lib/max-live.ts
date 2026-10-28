@@ -49,7 +49,7 @@ const toB64 = (buf: ArrayBuffer) => {
   return btoa(s);
 };
 
-export async function startLiveCall(context: () => unknown, on: LiveEvents, history: { role: 'user' | 'assistant'; content: string }[] = [], firstWords: () => string = () => '') {
+export async function startLiveCall(context: () => unknown, on: LiveEvents, history: { role: 'user' | 'assistant'; content: string }[] = [], firstWords: () => string = () => '', welcomeBack = true) {
   // Audio must start inside the tap that began the call (iOS), so create both contexts first.
   const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
   let out = new AC({ sampleRate: 24000 });
@@ -187,7 +187,8 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents, hist
     // A message the visitor sent while connecting (a home page prompt, say) opens the call instead of the greeting.
     const first = firstWords();
     if (past.length) send({ clientContent: { turns: past.map((h) => ({ role: h.role === 'user' ? 'user' : 'model', parts: [{ text: h.content.slice(0, 1500) }] })), turnComplete: false } });
-    if (past.length && !first) {
+    // Back after a short break (a dropped or quiet call): no welcome, Max just listens.
+    if (past.length && !first && welcomeBack) {
       send({ realtimeInput: { text: '[call resumed: the visitor is back. Welcome them back in one short sentence and ask what they need now. Only bring up the earlier conversation if they do. Do not repeat the greeting]' } });
     }
     if (first) send({ realtimeInput: { text: first } });
