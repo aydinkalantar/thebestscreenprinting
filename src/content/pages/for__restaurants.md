@@ -7,7 +7,7 @@ kind: audience
 imported: false
 summary: "Uniforms that work a double shift as branding. Embroidered polos and hats, printed staff tees and aprons for LA restaurants, cafes, bars and food trucks, made in Los Angeles. We ship anywhere in the lower 48, free from $300."
 facts:
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Best for", value: "Front of house, kitchen crews, merch for regulars" }
   - { label: "Reorders", value: "Art and mockups saved for easy reorders" }
 faqs:
@@ -38,7 +38,7 @@ We make restaurant apparel for kitchens, cafes, bars, bakeries and food trucks a
 
 **[Embroidery](/services/embroidery/)** stitches your logo into the fabric. It looks clean, reads as premium and handles frequent washing well. Best for polos, hats, aprons and jackets.
 
-**[Screen printing](/screen-printing/)** lays down bold ink, from 6 pieces. Best for staff tees and merch with big graphics.
+**[Screen printing](/screen-printing/)** lays down bold ink, from 12 pieces. Best for staff tees and merch with big graphics.
 
 **[DTG](/services/direct-to-garment/)** suits full-color and photo art, from 6 pieces.
 

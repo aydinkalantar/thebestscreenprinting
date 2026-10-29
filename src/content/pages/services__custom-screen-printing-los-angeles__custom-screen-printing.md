@@ -1,13 +1,13 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/custom-screen-printing/"
 title: "Custom Screen Printing In Los Angeles"
-description: "How a custom screen printing order works at TBSP in Los Angeles: what to send, the free art check, your proof, printing and pickup or shipping. From 6 pieces."
+description: "How a custom screen printing order works at TBSP in Los Angeles: what to send, the free art check, your proof, printing and pickup or shipping. From 12 pieces."
 h1: "Custom screen printing, step by step"
 kind: service
 imported: false
-summary: "From file to finished shirts in five clear steps, with no guesswork. Orders from 6 pieces, a free art check on every job, and quotes answered within one business day."
+summary: "From file to finished shirts in five clear steps, with no guesswork. Orders from 12 pieces, a free art check on every job, and quotes answered within one business day."
 facts:
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Quote reply", value: "Within one business day" }
   - { label: "Art check", value: "Free on every order" }
 faqs:
@@ -18,7 +18,7 @@ faqs:
   - q: "Do I approve a proof before printing?"
     a: "Yes. You see a proof showing placement, size and ink colors before we go to press."
   - q: "What if I only need 10 shirts?"
-    a: "That works. Our minimum is 6 pieces per order, for every decoration method. For full-color art at small quantities, DTF is often the better value."
+    a: "Screen printing starts at 12 pieces, so for 10 shirts we would print them with DTF or DTG, which start at 6. For full-color art at small quantities, DTF is often the better value anyway."
 sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-los-angeles/custom-screen-printing/"
 ---
 ## Five steps from idea to ink

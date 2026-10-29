@@ -7,7 +7,7 @@ kind: product
 imported: false
 summary: "The crewneck is the hoodie's sharper sibling: clean neckline, wide canvas, no hood in the way. Screen printed, embroidered or DTG printed out of our Los Angeles shop."
 facts:
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Methods", value: "Screen printing, embroidery, DTG, heat transfer" }
   - { label: "Best for", value: "Varsity looks, company gear, retail crewnecks" }
 faqs:
@@ -16,7 +16,7 @@ faqs:
   - q: "Does embroidery work on sweatshirts?"
     a: "Yes. Fleece holds stitches well, and an embroidered chest logo or arched wordmark is one of the most popular crewneck looks."
   - q: "Can I order a few sweatshirts, not dozens?"
-    a: "Yes, from 6 pieces, our minimum for every order. For bigger runs of one design, screen printing is usually the better value."
+    a: "Yes, from 6 pieces (12 for screen printing and embroidery). For bigger runs of one design, screen printing is usually the better value."
 sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/custom-sweatshirts/"
 ---
 ## The crewneck has range

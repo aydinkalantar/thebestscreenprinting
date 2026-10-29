@@ -16,7 +16,7 @@ faqs:
   - q: "Does rush printing cost more?"
     a: "Yes. One-Week Rush Delivery adds 15% to the order cost, and 3-Day Super Rush Delivery adds 30%. Normal Standard Delivery, estimated at about 2 weeks, adds nothing."
   - q: "Can I get a small rush order?"
-    a: "Yes, as long as the order meets our 6-piece minimum. Direct-to-garment skips screen setup, which makes it a good fit for small rush orders."
+    a: "Yes, as long as the order meets our 6-piece minimum (12 for screen printing and embroidery). Direct-to-garment skips screen setup, which makes it a good fit for small rush orders."
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/same-day-t-shirt-printing-near-me/"
 ---
 ## Deadline this week? Let's get you on press.
@@ -49,7 +49,7 @@ None of these are deal breakers on a normal schedule. On a rush, each one eats i
 
 ## Which method is fastest for my order?
 
-It depends on the artwork. Every order starts at 6 pieces. For bold designs with a few solid colors, [screen printing](/screen-printing/) is printed in-house and moves fast once screens are set. For full-color or photo art, [DTG](/services/direct-to-garment/) skips screens entirely, and [DTF](/services/direct-to-film/) is another quick option. Need names on the back? [Heat transfer vinyl](/services/heat-transfer-vinyl/) adds them without a new screen.
+It depends on the artwork. Every order starts at 6 pieces (12 for screen printing and embroidery). For bold designs with a few solid colors, [screen printing](/screen-printing/) is printed in-house and moves fast once screens are set. For full-color or photo art, [DTG](/services/direct-to-garment/) skips screens entirely, and [DTF](/services/direct-to-film/) is another quick option. Need names on the back? [Heat transfer vinyl](/services/heat-transfer-vinyl/) adds them without a new screen.
 
 ## Pickup in Los Angeles
 

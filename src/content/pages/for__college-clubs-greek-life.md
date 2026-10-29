@@ -1,13 +1,13 @@
 ---
 path: "/for/college-clubs-greek-life/"
 title: "Custom Shirts for College Clubs, Fraternities & Sororities | TBSP"
-description: "Custom shirts, hoodies and crewnecks for college clubs, fraternities, sororities and student orgs, from 6 pieces. Comfort Colors and heavyweight blanks, free shipping from $300 to any campus in the lower 48."
+description: "Custom shirts, hoodies and crewnecks for college clubs, fraternities, sororities and student orgs, from 6 pieces (12 for screen printing and embroidery). Comfort Colors and heavyweight blanks, free shipping from $300 to any campus in the lower 48."
 h1: "Custom shirts for college clubs and Greek life"
 kind: audience
 imported: false
-summary: "Rush shirts, philanthropy tees, chapter hoodies and club merch for fraternities, sororities and student orgs on any campus in the lower 48. Orders start at 6 pieces, Comfort Colors and heavyweight blanks are in our catalog, and shipping is free from $300."
+summary: "Rush shirts, philanthropy tees, chapter hoodies and club merch for fraternities, sororities and student orgs on any campus in the lower 48. Orders start at 6 pieces (12 for screen printing and embroidery), Comfort Colors and heavyweight blanks are in our catalog, and shipping is free from $300."
 facts:
-  - { label: "Minimum", value: "6 pieces" }
+  - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Popular blank", value: "Comfort Colors 1717" }
   - { label: "Shipping", value: "Free from $300" }
 faqs:

@@ -5,17 +5,17 @@ description: "Screen printing and embroidery for clothing and retail brands in L
 h1: "Branded apparel for retail"
 kind: audience
 imported: false
-summary: "Your drop, printed in Los Angeles by a shop that has printed for Netflix, Adidas and Nike. Orders start at 6 pieces and are printed in-house; full-color test runs go DTG or DTF. We ship anywhere in the lower 48, free from $300."
+summary: "Your drop, printed in Los Angeles by a shop that has printed for Netflix, Adidas and Nike. Screen printed runs start at 12 pieces and are printed in-house; full-color test runs go DTG or DTF from 6. We ship anywhere in the lower 48, free from $300."
 facts:
   - label: "Production runs"
-    value: "Screen printed in-house, from 6 pieces"
+    value: "Screen printed in-house, from 12 pieces"
   - label: "Test runs"
     value: "DTG or DTF, from 6 pieces"
   - label: "Brands we have printed for"
     value: "Netflix, Adidas, Nike, YouTube, Google and others"
 faqs:
   - q: "Can I order a small test run before a full drop?"
-    a: "Yes. Test runs start at our 6-piece minimum, like every order. Full-color art usually runs as DTG or DTF; bold, few-color designs can be screen printed."
+    a: "Yes. Test runs start at our 6-piece minimum (12 for screen printing and embroidery). Full-color art usually runs as DTG or DTF; bold, few-color designs can be screen printed."
   - q: "Do you print in-house?"
     a: "Yes. Every order is produced in-house at our own production facilities in Los Angeles and Cleveland."
   - q: "Will you review my artwork before printing?"
@@ -24,7 +24,7 @@ faqs:
     a: "We answer quotes within one business day."
 ---
 
-Clothing labels, streetwear brands, artists, creators, companies with merch to move. We print for all of them out of our shop at 5738 Holmes Ave. in Los Angeles, where every order, from 6 pieces up, is printed in-house. The list of brands we have printed for includes Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures.
+Clothing labels, streetwear brands, artists, creators, companies with merch to move. We print for all of them out of our shop at 5738 Holmes Ave. in Los Angeles, where every order, from 6 pieces (12 for screen printing and embroidery) up, is printed in-house. The list of brands we have printed for includes Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures.
 
 ## What do brands print with us?
 
@@ -48,7 +48,7 @@ The best collections mix them. Think a screen-printed front graphic with a match
 
 ## How should I plan a drop?
 
-Test first, then scale. Start with a short run of 6 pieces to check fit, color and print placement. Once the design is locked, scale up to the full production run, with screen printing for bold, few-color designs and the best price on bigger runs.
+Test first, then scale. Start with a short run of 6 pieces (12 for screen printing and embroidery) to check fit, color and print placement. Once the design is locked, scale up to the full production run, with screen printing for bold, few-color designs and the best price on bigger runs.
 
 Get us your art early. Every file gets a free art check, and you approve a mockup before production. That is where you dial in size, placement and ink colors. Fewer colors usually means a lower cost per piece.
 

@@ -1,14 +1,14 @@
 ---
 path: "/shipping-nationwide/"
 title: "Custom Shirts Shipped Anywhere in the US, Free From $300 | TBSP"
-description: "TBSP prints custom t-shirts, hoodies, hats and polos in Los Angeles and Cleveland and ships anywhere in the US, free on orders of $300 or more. 6-piece minimum, rush in 3 days."
+description: "TBSP prints custom t-shirts, hoodies, hats and polos in Los Angeles and Cleveland and ships anywhere in the US, free on orders of $300 or more. 6-piece minimum (12 for screen printing and embroidery), rush in 3 days."
 h1: "Custom apparel, shipped to any US state"
 kind: core
 imported: false
-summary: "Yes, we ship nationwide. Every order is made in our own facilities in Los Angeles and Cleveland and shipped to any address in the lower 48 states: free on orders of $300 or more, $35 below that. Orders start at 6 pieces, and Super Rush gets them to you in 3 business days."
+summary: "Yes, we ship nationwide. Every order is made in our own facilities in Los Angeles and Cleveland and shipped to any address in the lower 48 states: free on orders of $300 or more, $35 below that. Orders start at 6 pieces (12 for screen printing and embroidery), and Super Rush gets them to you in 3 business days."
 facts:
   - { label: "Shipping", value: "Free from $300" }
-  - { label: "Minimum", value: "6 pieces" }
+  - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Normal", value: "About 2 weeks" }
   - { label: "Rush", value: "1 week, +15%" }
   - { label: "Super Rush", value: "3 business days, +30%" }

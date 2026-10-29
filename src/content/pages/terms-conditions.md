@@ -8,7 +8,7 @@ updated: "2026-10-25"
 summary: "The rules for every TBSP order: minimums, turnaround, artwork and proofs, payment, changes, cancellations, claims and reprints. Please read them before you place an order."
 facts:
   - label: "Minimum order"
-    value: "6 pieces"
+    value: "6 pieces (12 for screen printing and embroidery)"
   - label: "Turnaround starts"
     value: "After payment + proof approval"
   - label: "Report problems within"
@@ -28,13 +28,15 @@ These Terms & Conditions apply to every order placed with The Best Screen Printi
 
 ## 2. Minimums
 
-The minimum for every TBSP order is **6 pieces**. This applies to every decoration method, including screen printing, DTG, DTF, heat transfer vinyl and embroidery. We do not decorate orders of fewer than 6 pieces.
+The minimum for screen printing and embroidery is **12 pieces**. The minimum for DTG, DTF and heat transfer vinyl is **6 pieces**. We do not decorate orders of fewer than 6 pieces, and screen printing or embroidery requests under 12 pieces are quoted as DTG or DTF instead.
 
 Some orders have a higher minimum:
 
 | Order type | Minimum |
 | --- | --- |
-| Screen printing, 1–3 ink colors | 6 pieces |
+| Screen printing, 1–3 ink colors | 12 pieces |
+| Embroidery | 12 pieces |
+| DTG, DTF, heat transfer vinyl | 6 pieces |
 | Screen printing, 4–6 ink colors | 50 pieces |
 | Screen printing, 7–10 ink colors | 100 pieces |
 | Any order with finishings (printed tags, hem tags, etc.) | 50 pieces |

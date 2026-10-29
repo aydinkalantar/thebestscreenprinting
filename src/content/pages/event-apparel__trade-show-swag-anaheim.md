@@ -7,7 +7,7 @@ kind: audience
 imported: false
 summary: "Look like the booth everyone stops at. Staff shirts, embroidered polos, hats and branded totes for Anaheim trade shows and conventions, printed in Los Angeles."
 facts:
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Booth staff, giveaways, conference teams" }
 faqs:

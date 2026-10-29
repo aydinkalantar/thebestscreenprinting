@@ -8,7 +8,7 @@ imported: false
 summary: "A great print starts with the right shirt. These are the tees and hoodies our Los Angeles shop reaches for most, for screen printing, embroidery, DTG and DTF."
 facts:
   - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF" }
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Full-color art", value: "DTG and DTF" }
 faqs:
   - q: "What is the best T-shirt for screen printing?"
@@ -58,7 +58,7 @@ Size ranges and colors vary by style and stock, so check the [catalog](/catalog/
 
 ## Pick the method, too
 
-Bold, few-color designs and bulk orders go on press with [screen printing](/screen-printing/). Full-color and photo art goes to [DTG](/services/direct-to-garment/). Every order starts at 6 pieces. Stitched logos go to [embroidery](/services/embroidery/). Browse more on [custom T-shirts](/products/t-shirts/).
+Bold, few-color designs and bulk orders go on press with [screen printing](/screen-printing/). Full-color and photo art goes to [DTG](/services/direct-to-garment/). Every order starts at 6 pieces (12 for screen printing and embroidery). Stitched logos go to [embroidery](/services/embroidery/). Browse more on [custom T-shirts](/products/t-shirts/).
 
 ## Put your design on one
 

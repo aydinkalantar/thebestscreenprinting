@@ -1,14 +1,14 @@
 ---
 path: "/services/large-format-screen-printing/"
 title: "Oversize & Large Format Screen Printing in Los Angeles | TBSP"
-description: "Jumbo and oversize screen prints for brands, artists and events, pulled in-house at our Los Angeles shop. 6-piece minimum, free art check, quotes in a day."
+description: "Jumbo and oversize screen prints for brands, artists and events, pulled in-house at our Los Angeles shop. 12-piece minimum, free art check, quotes in a day."
 h1: "Oversize and large format screen printing"
 kind: service
 imported: false
-summary: "Big art deserves a big canvas: we screen print oversize and jumbo graphics that run past a standard chest or back print. Printed in-house in Los Angeles, 6-piece minimum, free art check, quotes within one business day."
+summary: "Big art deserves a big canvas: we screen print oversize and jumbo graphics that run past a standard chest or back print. Printed in-house in Los Angeles, 12-piece minimum, free art check, quotes within one business day."
 facts:
   - label: "Minimum"
-    value: "6 pieces per order"
+    value: "12 pieces per order"
   - label: "Where"
     value: "Printed in-house at 5738 Holmes Ave., Los Angeles"
   - label: "Art"
@@ -17,7 +17,7 @@ faqs:
   - q: "What is oversize or jumbo screen printing?"
     a: "It is a screen print that covers more of the garment than a standard chest or back print, such as a large front or back graphic. It uses the same screen printing process as a regular print, with a larger screen and print area."
   - q: "Is there a minimum order for oversize prints?"
-    a: "Yes. Oversize prints start at 6 pieces, the same minimum as every order."
+    a: "Yes. Oversize prints start at 12 pieces."
   - q: "How big can you print on a t-shirt?"
     a: "It depends on the garment style and size. Send your design and garment choice with a quote request and we will confirm the print size we can run on it."
   - q: "Can I get an oversize print on a rush deadline?"
@@ -56,7 +56,7 @@ Every order gets a free art check. If something will break down at large size, w
 
 ## Full-color art? You still have options
 
-Screen printing is built for bold designs with a set number of ink colors. For photo-real or full-color art, look at [direct-to-garment (DTG)](/services/direct-to-garment/) or [direct-to-film (DTF)](/services/direct-to-film/). Both start at 6 pieces. Ask which one suits your print size and fabric.
+Screen printing is built for bold designs with a set number of ink colors. For photo-real or full-color art, look at [direct-to-garment (DTG)](/services/direct-to-garment/) or [direct-to-film (DTF)](/services/direct-to-film/). Both start at 12 pieces. Ask which one suits your print size and fabric.
 
 ## Stack it with other decoration
 

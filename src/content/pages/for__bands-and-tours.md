@@ -1,13 +1,13 @@
 ---
 path: "/for/bands-and-tours/"
 title: "Band & Tour Merch Printing, Shipped Anywhere in the US | TBSP"
-description: "Band merch and tour shirts from 6 pieces: screen printed tees, hoodies, embroidered hats and totes, shipped to your venue or next tour stop. Rush in 3 business days, free shipping from $300 in the lower 48."
+description: "Band merch and tour shirts from 6 pieces (12 for screen printing and embroidery): screen printed tees, hoodies, embroidered hats and totes, shipped to your venue or next tour stop. Rush in 3 business days, free shipping from $300 in the lower 48."
 h1: "Band and tour merch"
 kind: audience
 imported: false
-summary: "Tees, hoodies, hats and totes for bands, artists and venues, printed in our own shops in Los Angeles and Cleveland and shipped to your house, your venue or your next tour stop anywhere in the lower 48. Orders start at 6 pieces, Super Rush gets them to you in 3 business days, and shipping is free from $300."
+summary: "Tees, hoodies, hats and totes for bands, artists and venues, printed in our own shops in Los Angeles and Cleveland and shipped to your house, your venue or your next tour stop anywhere in the lower 48. Orders start at 6 pieces (12 for screen printing and embroidery), Super Rush gets them to you in 3 business days, and shipping is free from $300."
 facts:
-  - { label: "Minimum", value: "6 pieces" }
+  - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "50 one-color tees", value: "About $10 each" }
   - { label: "Fastest", value: "3 business days" }
 faqs:

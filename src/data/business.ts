@@ -29,8 +29,10 @@ export const business = {
   studioLive: false,
   // Max, the merch agent, on this site (chat panel; his brain runs in the studio admin).
   maxLive: true,
-  /** Minimum order for every decoration method. Everything is made in-house; we don't decorate fewer. */
+  /** Lowest minimum (DTG, DTF, heat transfer). Everything is made in-house; we don't decorate fewer. */
   shopMinimum: 6,
+  /** Screen printing and embroidery minimum; smaller requests get offered DTG or DTF. */
+  screenMinimum: 12,
   assistantName: 'Max',
   /** Google Analytics 4 measurement ID (public). Only loads on the production host. */
   gaId: 'G-MHYSRCDHB1',

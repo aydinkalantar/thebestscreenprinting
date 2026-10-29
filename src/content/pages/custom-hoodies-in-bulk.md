@@ -1,13 +1,13 @@
 ---
 path: "/custom-hoodies-in-bulk/"
 title: "Custom Hoodies in Bulk: Prices, Blanks & Minimums | TBSP"
-description: "Bulk custom hoodies from 6 pieces: screen printed, embroidered or DTF on Gildan 18500, Independent Trading Co. and Bella+Canvas hoodies. Same decoration price as tees, free shipping from $300 in the lower 48."
+description: "Bulk custom hoodies from 6 pieces (12 for screen printing and embroidery): screen printed, embroidered or DTF on Gildan 18500, Independent Trading Co. and Bella+Canvas hoodies. Same decoration price as tees, free shipping from $300 in the lower 48."
 h1: "Custom hoodies in bulk"
 kind: answer
 imported: false
-summary: "We print and embroider custom hoodies from 6 pieces for teams, schools, companies and brands, and ship them anywhere in the lower 48 states, free from $300. The print costs the same as on a t-shirt; the hoodie blank is what adds to the price. The Gildan 18500 is the best value, and Independent Trading Co. and Bella+Canvas are the premium picks."
+summary: "We print and embroider custom hoodies from 12 pieces for teams, schools, companies and brands, and ship them anywhere in the lower 48 states, free from $300. The print costs the same as on a t-shirt; the hoodie blank is what adds to the price. The Gildan 18500 is the best value, and Independent Trading Co. and Bella+Canvas are the premium picks."
 facts:
-  - { label: "Minimum", value: "6 pieces" }
+  - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Methods", value: "Screen, embroidery, DTF, DTG" }
   - { label: "Shipping", value: "Free from $300" }
 faqs:

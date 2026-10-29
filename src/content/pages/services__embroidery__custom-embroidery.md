@@ -1,20 +1,20 @@
 ---
 path: "/services/embroidery/custom-embroidery/"
 title: "Custom Embroidery On Clothes In Los Angeles"
-description: "Custom embroidered uniforms and workwear in Los Angeles: logos on polos, caps, jackets and aprons for restaurants, hotels and crews. 6-piece minimum."
+description: "Custom embroidered uniforms and workwear in Los Angeles: logos on polos, caps, jackets and aprons for restaurants, hotels and crews. 12-piece minimum."
 h1: "Custom embroidery for uniforms and workwear in Los Angeles"
 kind: service
 imported: false
-summary: "Your logo, stitched sharp on every polo, cap and jacket your team wears. Custom embroidery at our Los Angeles shop starts at 6 pieces per design, with digitizing free from 24 pieces ($45 per logo below that)."
+summary: "Your logo, stitched sharp on every polo, cap and jacket your team wears. Custom embroidery at our Los Angeles shop starts at 12 pieces per design, with digitizing free from 24 pieces ($45 per logo below that)."
 facts:
-  - { label: "Minimum", value: "6 pieces per design" }
+  - { label: "Minimum", value: "12 pieces per design" }
   - { label: "Setup", value: "Digitizing included, no hidden setup fees" }
   - { label: "Best for", value: "Staff polos, caps, jackets, aprons and work shirts" }
 faqs:
   - q: "Can I add employee names to embroidered uniforms?"
     a: "Yes. Ask about names when you request a quote. Names and numbers can also be added with heat transfer vinyl if that suits the garment better."
   - q: "Can the same logo go on different garments?"
-    a: "Yes. One design can run across polos, caps and jackets. The 6-piece minimum applies to the design."
+    a: "Yes. One design can run across polos, caps and jackets. The 12-piece minimum applies to the design."
   - q: "Where should a logo go on a polo?"
     a: "The left chest is the classic spot. Sleeves and the back yoke work well for a secondary mark or website."
   - q: "How long does embroidery last on workwear?"

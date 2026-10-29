@@ -1,14 +1,14 @@
 ---
 path: "/custom-embroidery-services-los-angeles/"
 title: "The Best Custom Embroidery Services In Los Angeles"
-description: "Flat, 3D puff, appliqué, patches, chenille and monogram embroidery in Los Angeles. Compare styles and pick the right stitch for your logo. 6-piece minimum."
+description: "Flat, 3D puff, appliqué, patches, chenille and monogram embroidery in Los Angeles. Compare styles and pick the right stitch for your logo. 12-piece minimum."
 h1: "Custom embroidery styles in Los Angeles"
 kind: service
 imported: false
-summary: "Six ways to stitch a logo, from clean flat embroidery to raised 3D puff and fuzzy chenille. Embroidered in Los Angeles with a 6-piece minimum per design, digitizing free from 24 pieces and shipping anywhere."
+summary: "Six ways to stitch a logo, from clean flat embroidery to raised 3D puff and fuzzy chenille. Embroidered in Los Angeles with a 12-piece minimum per design, digitizing free from 24 pieces and shipping anywhere."
 facts:
   - { label: "Styles", value: "Flat, 3D puff, appliqué, patches, chenille, monogram" }
-  - { label: "Minimum", value: "6 pieces per design" }
+  - { label: "Minimum", value: "12 pieces per design" }
   - { label: "Setup", value: "Digitizing included" }
 faqs:
   - q: "What is the difference between flat and 3D puff embroidery?"

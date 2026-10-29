@@ -5,10 +5,10 @@ description: "Custom apparel printed and embroidered in Los Angeles: athletic we
 h1: "Custom apparel for every kind of wear"
 kind: product
 imported: false
-summary: "Tees to track jackets, aprons to jerseys: if it is made of fabric, we can probably put your design on it. Printed and stitched in Los Angeles, with orders starting at 6 pieces."
+summary: "Tees to track jackets, aprons to jerseys: if it is made of fabric, we can probably put your design on it. Printed and stitched in Los Angeles, with orders starting at 6 pieces (12 for screen printing and embroidery)."
 facts:
   - { label: "Categories", value: "Athletics, workwear, tees, tanks, sweatshirts, outerwear" }
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Full-color art", value: "DTG and DTF" }
 faqs:
   - q: "Can you print on performance and moisture-wicking fabrics?"

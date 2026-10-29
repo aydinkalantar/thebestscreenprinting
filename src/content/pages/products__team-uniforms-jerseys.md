@@ -17,7 +17,7 @@ faqs:
   - q: "Can every jersey have a different name and number?"
     a: "Yes. Names and numbers are applied with heat transfer, which lets us change them piece by piece from your roster."
   - q: "What is the minimum for team jerseys?"
-    a: "Team orders start at 6 pieces. Bold, few-color crests are usually screen printed; full-color logos are usually printed with DTG or DTF."
+    a: "Team orders start at 6 pieces (12 for screen printing and embroidery). Bold, few-color crests are usually screen printed; full-color logos are usually printed with DTG or DTF."
   - q: "Can you embroider team polos, jackets and hats?"
     a: "Yes. We embroider polos, hats, jackets and uniforms for coaches, staff and players."
   - q: "Do you check my logo before printing?"
@@ -45,7 +45,7 @@ Send a roster with sizes, names and numbers. We build the whole order from that 
 
 One jersey, several techniques, each doing what it does best:
 
-- **[Screen printing](/screen-printing/)** lays down the team crest in thick, saturated ink, from 6 pieces. Printed in-house, built to survive the wash after every game.
+- **[Screen printing](/screen-printing/)** lays down the team crest in thick, saturated ink, from 12 pieces. Printed in-house, built to survive the wash after every game.
 - **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** handles names and numbers, crisp edges, different on every piece.
 - **[Direct to film](/services/direct-to-film/)** and DTG cover full-color logos, gradients and photo detail.
 - **[Embroidery](/services/embroidery/)** stitches the logo onto coach polos, team jackets and hats for a sharp sideline look.

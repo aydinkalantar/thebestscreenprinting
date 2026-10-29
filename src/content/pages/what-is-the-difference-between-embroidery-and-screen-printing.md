@@ -57,7 +57,7 @@ Both are built to last when done right. Embroidery does not fade or crack, which
 
 ## How do quantities affect the choice?
 
-At TBSP, [screen printing](/screen-printing/) is for bold designs with a few solid colors, printed in-house. For full-color or photo art we usually recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), which need no screens. [Embroidery](/services/embroidery/) is our pick for polos, hats, jackets and uniforms. Every order starts at 6 pieces.
+At TBSP, [screen printing](/screen-printing/) is for bold designs with a few solid colors, printed in-house. For full-color or photo art we usually recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), which need no screens. [Embroidery](/services/embroidery/) is our pick for polos, hats, jackets and uniforms. Every order starts at 12 pieces.
 
 ## A quick way to decide
 

@@ -33,7 +33,7 @@ You have two routes.
 
 ## Step 2: Choose print or stitch
 
-**[Screen printing](/screen-printing/)** lays down bold, solid ink on canvas and cotton. It handles big graphics and starts at 6 pieces.
+**[Screen printing](/screen-printing/)** lays down bold, solid ink on canvas and cotton. It handles big graphics and starts at 12 pieces.
 
 **[Embroidery](/services/embroidery/)** stitches your logo into the bag for a raised, premium finish. It suits smaller marks and sturdier fabrics.
 

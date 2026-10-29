@@ -5,14 +5,14 @@ description: "Screen printing, embroidery, DTG, DTF, heat transfer and embossing
 h1: "Our services"
 kind: service
 imported: false
-summary: "Ink, thread, film and texture, all decorated at our Los Angeles shop. Orders from 6 pieces, screen printing and DTG, embroidery for hats, polos and uniforms, and quotes answered within one business day."
+summary: "Ink, thread, film and texture, all decorated at our Los Angeles shop. Orders from 6 pieces (12 for screen printing and embroidery), screen printing and DTG, embroidery for hats, polos and uniforms, and quotes answered within one business day."
 facts:
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Full-color art", value: "DTG and DTF" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Which printing method is cheapest for my order?"
-    a: "It depends on quantity and colors. For bold designs with a few solid colors, screen printing is usually the most cost-effective, and the price per piece drops as the run grows. For full-color or photo art, DTG or DTF usually wins because there are no screens to set up. Every order starts at 6 pieces."
+    a: "It depends on quantity and colors. For bold designs with a few solid colors, screen printing is usually the most cost-effective, and the price per piece drops as the run grows. For full-color or photo art, DTG or DTF usually wins because there are no screens to set up. Every order starts at 6 pieces (12 for screen printing and embroidery)."
   - q: "Can I combine methods on one order?"
     a: "Yes. A common combo is screen printed tees for an event plus embroidered polos or hats for staff. We quote each item with the method that suits it."
   - q: "Do you check my artwork before printing?"
@@ -53,7 +53,7 @@ No ink, just texture. Raised logos and patterns pressed into the fabric for a qu
 
 Start with three questions:
 
-- **How many pieces?** Every order starts at 12. The bigger the run of one design, the more screen printing pays off.
+- **How many pieces?** Screen printing and embroidery start at 12, DTG and DTF at 6. The bigger the run of one design, the more screen printing pays off.
 - **What does the art look like?** A few solid colors print beautifully on screen. Photos and gradients belong on DTG or DTF.
 - **What is the garment?** Hats, polos and jackets usually look best embroidered. Jerseys with individual names want heat transfer.
 

@@ -93,7 +93,7 @@ const glyph: Record<string, string> = {
         <BrandMark />
         <span class="leading-tight"><span class="block text-lg font-bold text-zinc-900 dark:text-white">TBSP</span><span class="block text-[13px] muted">{business.name}</span></span>
       </div>
-      <p class="mt-4 text-[14.5px] leading-6 muted max-w-sm">Screen printing, embroidery, DTG and more for brands, businesses, teams and events. Everything is made in our own shops in Los Angeles and Cleveland. Orders start at {business.shopMinimum} pieces.</p>
+      <p class="mt-4 text-[14.5px] leading-6 muted max-w-sm">Screen printing, embroidery, DTG and more for brands, businesses, teams and events. Everything is made in our own shops in Los Angeles and Cleveland. Orders start at {business.shopMinimum} pieces ({business.screenMinimum} for screen printing and embroidery).</p>
       <div class="mt-5 flex items-center gap-2" aria-label="Follow us">
         {social.map(([l, h]) => (
           <a href={h} rel="noopener" target="_blank" aria-label={`${l} (opens in a new tab)`} title={l} class="press w-10 h-10 grid place-items-center rounded-full border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.04] text-zinc-700 dark:text-zinc-200 hover:text-violet-700 dark:hover:text-violet-300 hover:border-violet-300 dark:hover:border-violet-400/40">

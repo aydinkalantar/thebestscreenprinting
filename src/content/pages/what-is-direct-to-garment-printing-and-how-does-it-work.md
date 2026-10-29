@@ -8,7 +8,7 @@ imported: false
 summary: "Full color, straight from the file, no screens. How DTG printing works step by step, what it does best and when another method is the better call."
 faqs:
   - q: "Is there a minimum for DTG printing?"
-    a: "Yes. At TBSP, DTG orders start at 6 pieces, the same minimum as every order."
+    a: "Yes. At TBSP, DTG orders start at 6 pieces."
   - q: "How do I care for a DTG print?"
     a: "Wash inside out in cold water, skip bleach and tumble dry low or hang dry. Avoid ironing directly on the print."
   - q: "Can DTG print white ink on dark shirts?"

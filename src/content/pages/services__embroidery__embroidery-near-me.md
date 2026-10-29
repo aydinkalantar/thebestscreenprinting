@@ -1,20 +1,20 @@
 ---
 path: "/services/embroidery/embroidery-near-me/"
 title: "Embroidery Near Me In Los Angeles"
-description: "Local embroidery in Los Angeles. Drop off garments, pick up finished hats and polos, and ask about Rush and Super Rush. 6-piece minimum per design."
+description: "Local embroidery in Los Angeles. Drop off garments, pick up finished hats and polos, and ask about Rush and Super Rush. 12-piece minimum per design."
 h1: "Embroidery near me in Los Angeles"
 kind: service
 imported: false
-summary: "Machine embroidery stitched in Los Angeles. Drop off your garments or pick from our catalog, then collect at the shop. 6 pieces per design, with digitizing free from 24 pieces ($45 per logo below that)."
+summary: "Machine embroidery stitched in Los Angeles. Drop off your garments or pick from our catalog, then collect at the shop. 12 pieces per design, with digitizing free from 24 pieces ($45 per logo below that)."
 facts:
   - { label: "Location", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
-  - { label: "Minimum", value: "6 pieces per design" }
+  - { label: "Minimum", value: "12 pieces per design" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Can I drop off my own hats or jackets for embroidery?"
     a: "Yes. We embroider customer-supplied garments. Tell us the brand and fabric when you request a quote so we can plan hooping and thread."
   - q: "Do you do single-piece embroidery?"
-    a: "No. Our embroidery minimum is 6 pieces per design, and every order we produce, whatever the method, starts at 6 pieces."
+    a: "No. Our embroidery minimum is 12 pieces per design. For fewer pieces, DTF or DTG prints start at 6."
   - q: "Can I pick up my embroidery order?"
     a: "Yes. Pick up at 5738 Holmes Ave., Monday to Friday, 9am to 5pm."
 sourceUrl: "https://thebestscreenprinting.com/services/embroidery/embroidery-near-me/"

@@ -12,7 +12,7 @@ facts:
   - { label: "Best for", value: "Full-color and photo designs" }
 faqs:
   - q: "Is there a minimum order for DTG printing?"
-    a: "Yes. DTG orders start at 6 pieces, the same minimum as every order we produce."
+    a: "Yes. DTG orders start at 6 pieces we produce."
   - q: "What file should I send for DTG?"
     a: "Send the highest resolution image you have. The more pixels in the file, the more detail ends up on the shirt. For business logos, ask your web or marketing team for the original files."
   - q: "When is screen printing better than DTG?"

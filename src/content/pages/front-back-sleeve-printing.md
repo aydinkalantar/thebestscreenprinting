@@ -14,7 +14,7 @@ faqs:
   - q: "Can I use a different method on each spot?"
     a: "Yes. For example, embroidery on the left chest, screen printing on the back and DTF on a sleeve. Each spot is priced with its own method."
   - q: "How much does a back print add?"
-    a: "For a one-color screen print, about $5 per shirt at 6 to 11 pieces, $4.50 at 12, $3.50 at 24, $2.75 at 48, $2.25 at 72 and $1.75 at 144, plus a $25 screen per color."
+    a: "For a one-color screen print, about $4.50 per shirt at 12 pieces, $3.50 at 24, $2.75 at 48, $2.25 at 72 and $1.75 at 144, plus a $25 screen per color."
   - q: "What sizes can each spot be?"
     a: "Full front or back up to about 12 by 14 inches, left or right chest up to 4 by 4, sleeves up to 3.5 by 3.5, back neck up to 3.5 by 2, and hat fronts up to 4.5 by 2.25 inches."
   - q: "How do I tell you where each design goes?"

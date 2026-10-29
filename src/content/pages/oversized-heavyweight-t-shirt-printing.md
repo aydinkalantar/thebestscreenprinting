@@ -5,9 +5,9 @@ description: "Custom printing on oversized, boxy and heavyweight tees (6.1 to 7.
 h1: "Custom printing on oversized and heavyweight tees"
 kind: answer
 imported: false
-summary: "Yes, we print oversized and heavyweight tees for streetwear brands, bands and merch drops, from 6 pieces. Popular blanks are the Shaka Wear Max Heavyweight, Comfort Colors 1717 and Bella+Canvas 4610. The decoration costs the same as on a regular tee; only the blank costs more."
+summary: "Yes, we print oversized and heavyweight tees for streetwear brands, bands and merch drops, from 6 pieces (12 for screen printing and embroidery). Popular blanks are the Shaka Wear Max Heavyweight, Comfort Colors 1717 and Bella+Canvas 4610. The decoration costs the same as on a regular tee; only the blank costs more."
 facts:
-  - { label: "Minimum", value: "6 pieces" }
+  - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Fabric weight", value: "6.1 to 7.5 oz" }
   - { label: "Largest front print", value: "About 12\" × 14\"" }
 faqs:

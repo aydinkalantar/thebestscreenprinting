@@ -35,7 +35,8 @@ Quotes come back within one business day, with no obligation. [Request one here]
 
 It depends on the method:
 
-- **Every method:** 6 pieces per order. We do not decorate orders of fewer than 6 pieces.
+- **Screen printing and embroidery:** 12 pieces per order.
+- **DTG, DTF and heat transfer:** 6 pieces per order. We do not decorate orders of fewer than 6 pieces.
 - **Screen printing:** bold designs with a few solid colors, printed in-house. See [screen printing](/screen-printing/).
 - **Full-color or photo art:** usually [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 - **Embroidery:** for polos, hats, jackets and uniforms. See [embroidery](/services/embroidery/).

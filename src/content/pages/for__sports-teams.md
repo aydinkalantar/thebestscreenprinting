@@ -1,13 +1,13 @@
 ---
 path: "/for/sports-teams/"
 title: "Custom Team Shirts, Jerseys & Hoodies for Any League | TBSP"
-description: "Custom team shirts, jerseys, hoodies and hats with names and numbers for rec leagues, club teams, schools and coaches, from 6 pieces. Shipped anywhere in the US, free from $300."
+description: "Custom team shirts, jerseys, hoodies and hats with names and numbers for rec leagues, club teams, schools and coaches, from 12 pieces. Shipped anywhere in the US, free from $300."
 h1: "Custom apparel for sports teams"
 kind: audience
 imported: false
-summary: "Team shirts, jerseys, warm-up hoodies and hats for rec leagues, club teams, school teams and coaches anywhere in the US. Orders start at 6 pieces, names and numbers can go on the back, and shipping is free from $300."
+summary: "Team shirts, jerseys, warm-up hoodies and hats for rec leagues, club teams, school teams and coaches anywhere in the US. Orders start at 6 pieces (12 for screen printing and embroidery), names and numbers can go on the back, and shipping is free from $300."
 facts:
-  - { label: "Minimum", value: "6 pieces" }
+  - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Names & numbers", value: "Yes, on the back" }
   - { label: "Shipping", value: "Free from $300" }
 faqs:

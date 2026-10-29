@@ -1,13 +1,13 @@
 ---
 path: "/for/non-profits/"
 title: "Custom Shirts for Non-Profits in Los Angeles"
-description: "Volunteer, event and fundraiser shirts for Los Angeles non-profits, printed in Los Angeles. Orders from 6 pieces and a free art check."
+description: "Volunteer, event and fundraiser shirts for Los Angeles non-profits, printed in Los Angeles. Orders from 6 pieces (12 for screen printing and embroidery) and a free art check."
 h1: "Custom shirts for non-profits"
 kind: audience
 imported: false
-summary: "Shirts that rally people around your cause. Volunteer tees, walk and run shirts, and fundraiser merch printed in Los Angeles, with orders starting at 6 pieces. We ship anywhere in the lower 48, free from $300."
+summary: "Shirts that rally people around your cause. Volunteer tees, walk and run shirts, and fundraiser merch printed in Los Angeles, with orders starting at 6 pieces (12 for screen printing and embroidery). We ship anywhere in the lower 48, free from $300."
 facts:
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Volunteers, charity walks, galas, fundraiser merch" }
 faqs:
@@ -46,7 +46,7 @@ We print for Los Angeles non-profits, community groups and charity events from o
 - **Full-color or photo art:** [direct-to-garment (DTG)](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 - **Bold logos with a few colors:** screen printing, printed in-house, with the best price on bigger runs.
 
-Every order starts at 6 pieces.
+Every order starts at 6 pieces (12 for screen printing and embroidery).
 - **Names on staff shirts:** [heat transfer](/services/heat-transfer-vinyl/).
 
 Organizing a club or community group too? See [specialty shirts for clubs and groups](/clubs-groups/).

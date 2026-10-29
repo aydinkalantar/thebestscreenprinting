@@ -1,7 +1,7 @@
 ---
 path: "/rush-order-screen-printing-chinatown-la-ca/"
 title: "Rush & Super Rush Screen Printing In Chinatown LA, CA"
-description: "Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA: Rush arrives in 1 week (+15%), Super Rush in 3 business days (+30%). 6-piece minimum, made in-house."
+description: "Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA: Rush arrives in 1 week (+15%), Super Rush in 3 business days (+30%). 12-piece minimum, made in-house."
 h1: "Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA"
 kind: location
 imported: true
@@ -11,7 +11,7 @@ sourceUrl: "https://thebestscreenprinting.com/rush-order-screen-printing-chinato
 
 Welcome to The Best Screen Printing, your trusted local partner for high-quality Rush & Super Rush Screen Printing in Chinatown LA, Los Angeles, CA! We’re more than just a print shop—we’re passionate about helping our community look great and stand out. From eye-catching business uniforms to fun and functional branded gear for schools, clubs, and organizations, we bring creativity and care to every project. We know how important it is to find affordable, top-quality Rush & Super Rush Screen Printing that not only meet but exceed your expectations on speed and value. At The Best Screen Printing Company, we specialize in making your designs come to life on everything from customized T-shirts and hoodies to team sports gear and promotional products. Whether you need a unique look for an event, matching gear for a team, or branded swag that truly reflects your brand, our Rush & Super Rush Screen Printing offer the best in quality, durability, and turnaround times to fit your schedule and budget.
 
-How fast is rush? Every order is made in-house in Los Angeles and Cleveland, with a 6-piece minimum. Normal (Standard Delivery) is estimated to arrive in about 2 weeks. Rush (One-Week Rush Delivery) arrives at your doorstep in 1 week and adds 15% to the order cost. Super Rush (3-Day Super Rush Delivery) arrives in 3 business days and adds 30% to the order cost; order by 2:00 PM ET on Tuesday to have items in hand by Friday. Super Rush is not available for all products, styles or PO Box addresses. See [delivery times](/learn-delivery-time/) for details.
+How fast is rush? Every order is made in-house in Los Angeles and Cleveland. Screen printing and embroidery start at 12 pieces, DTG and DTF at 6. Normal (Standard Delivery) is estimated to arrive in about 2 weeks. Rush (One-Week Rush Delivery) arrives at your doorstep in 1 week and adds 15% to the order cost. Super Rush (3-Day Super Rush Delivery) arrives in 3 business days and adds 30% to the order cost; order by 2:00 PM ET on Tuesday to have items in hand by Friday. Super Rush is not available for all products, styles or PO Box addresses. See [delivery times](/learn-delivery-time/) for details.
 
 ## GET A FREE QUOTE TODAY
 
@@ -29,7 +29,7 @@ We know that every project has its own story, whether it’s a new clothing line
 
 ## Custom Screen Printing Services
 
-Our screen printing services are perfect for businesses, sports teams, schools, and events. We specialize in direct-to-garment printing (DTG), direct-to-film printing (DTF), and heat transfer printing, with eco-friendly ink options for a soft-touch, durable finish. We offer full-color printing and bulk order discounts, with a 6-piece minimum per order. Popular Products: Custom T-shirts, hoodies, sweatshirts, and tank tops Specialty Printing: Water-based inks, vintage wash prints, metallic inks
+Our screen printing services are perfect for businesses, sports teams, schools, and events. We specialize in direct-to-garment printing (DTG), direct-to-film printing (DTF), and heat transfer printing, with eco-friendly ink options for a soft-touch, durable finish. We offer full-color printing and bulk order discounts, with a 12-piece minimum for screen printing and embroidery (6 for DTG, DTF and heat transfer). Popular Products: Custom T-shirts, hoodies, sweatshirts, and tank tops Specialty Printing: Water-based inks, vintage wash prints, metallic inks
 
 ## Professional Embroidery Services
 
@@ -132,7 +132,7 @@ Our Mobile App puts creativity at your fingertips, allowing you to design custom
 
 We offer custom printing for a wide range of products, including T-shirts, hoodies, hats, tote bags, and team uniforms. If you don’t see your product listed, please reach out – we can likely accommodate!
 
-Our minimum is 6 pieces per order for every decoration method, and you can order as many as you need beyond that.
+Our minimum is 12 pieces for screen printing and embroidery and 6 for DTG, DTF and heat transfer, and you can order as many as you need beyond that.
 
 Absolutely. We provide eco-friendly, water-based inks for screen printing that are durable and environmentally conscious.
 

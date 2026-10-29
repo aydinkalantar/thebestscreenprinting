@@ -7,7 +7,7 @@ kind: audience
 imported: false
 summary: "Swag people keep. Branded tees, embroidered hats, totes and towels for campaigns, launches and giveaways, printed at our Los Angeles shop for brands that have included Netflix, Google and Amazon Alexa. We ship anywhere in the lower 48, free from $300."
 facts:
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Giveaways, launches, activations, client gifts" }
 faqs:

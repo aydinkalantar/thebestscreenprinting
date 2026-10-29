@@ -42,7 +42,7 @@ updated: "2026-10-28"
 | 24 black tees, front print | About $11.50 each (1 color) + $25 screen | About $13 each | About $16.25 each |
 | 144 black tees, front print | About $7.25 each (1 color) + $25 screen | About $9 each | About $12.25 each |
 | Fabrics | Cotton and most blends | Almost any | Cotton and high-cotton blends |
-| Minimum | 6 pieces (1–3 colors) | 6 pieces | 6 pieces |
+| Minimum | 12 pieces (1–3 colors) | 6 pieces | 6 pieces |
 
 Prices include the shirt and come from our current price list. See the [full price table](/how-much-does-custom-shirt-printing-cost/).
 

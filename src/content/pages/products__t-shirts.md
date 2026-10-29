@@ -1,22 +1,22 @@
 ---
 path: "/products/t-shirts/"
 title: "Custom T-Shirt Printing in Los Angeles | TBSP"
-description: "Custom t-shirt printing in Los Angeles for brands, artists, events and teams. Orders from 6 pieces, and Rush and Super Rush available."
+description: "Custom t-shirt printing in Los Angeles for brands, artists, events and teams. Orders from 6 pieces (12 for screen printing and embroidery), and Rush and Super Rush available."
 h1: "Custom t-shirt printing"
 kind: product
 imported: false
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/"
-summary: "From 6-piece test runs to full brand drops, we put your art on tees that people actually want to wear. Orders start at 6 pieces, with Rush and Super Rush turnaround for tight deadlines."
+summary: "From 6-piece test runs to full brand drops, we put your art on tees that people actually want to wear. Orders start at 6 pieces (12 for screen printing and embroidery), with Rush and Super Rush turnaround for tight deadlines."
 facts:
   - label: "Minimum"
-    value: "6 pieces per order"
+    value: "6 pieces per order (12 for screen printing and embroidery)"
   - label: "Decoration"
     value: "Screen printing, DTG, DTF and embroidery"
   - label: "Turnaround"
     value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
 faqs:
   - q: "What is the minimum order for custom t-shirts?"
-    a: "6 pieces per order, for every decoration method."
+    a: "12 pieces for screen printing and embroidery, and 6 for DTG, DTF and heat transfer. Mixed sizes count toward the minimum."
   - q: "When is screen printing the better choice for t-shirts?"
     a: "Screen printing is our core service for bold designs with a few solid colors and bigger runs, printed in-house at our shop."
   - q: "How fast can I get custom t-shirts?"
@@ -31,7 +31,7 @@ The t-shirt is the most-worn piece of merch there is, so it should look and feel
 
 Quantity and artwork decide it.
 
-- **[Screen printing](/screen-printing/)** is our core service, printed in-house from 6 pieces. Thick, saturated ink and crisp edges make it the go-to for brand drops, event shirts and team orders.
+- **[Screen printing](/screen-printing/)** is our core service, printed in-house from 12 pieces. Thick, saturated ink and crisp edges make it the go-to for brand drops, event shirts and team orders.
 - **[Direct-to-garment (DTG)](/services/direct-to-garment/)** prints full-color art straight into the shirt. Made for photos, gradients and detailed, full-color designs.
 - **[Direct-to-film (DTF)](/services/direct-to-film/)** presses a printed film onto the garment, another strong option for full-color art.
 - **[Embroidery](/services/embroidery/)** adds a stitched chest logo on heavier tees, though it really shines on polos, hats and jackets.

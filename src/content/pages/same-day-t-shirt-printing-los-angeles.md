@@ -11,7 +11,7 @@ facts:
   - label: "Turnaround"
     value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
   - label: "Minimum"
-    value: "6 pieces per order"
+    value: "6 pieces per order (12 for screen printing and embroidery)"
   - label: "Hours"
     value: "Mon to Fri, 9am to 5pm, 5738 Holmes Ave."
 faqs:
@@ -20,7 +20,7 @@ faqs:
   - q: "How much does rush cost?"
     a: "One-Week Rush Delivery adds 15% to the order cost and arrives in 1 week. 3-Day Super Rush Delivery adds 30% and arrives in 3 business days. Normal Standard Delivery arrives in about 2 weeks at no extra cost."
   - q: "Is there a minimum for rush shirts?"
-    a: "Rush and Super Rush orders follow our 6-piece minimum, like every order."
+    a: "Rush and Super Rush orders follow our 6-piece minimum (12 for screen printing and embroidery)."
   - q: "Is Super Rush available for every order?"
     a: "No. Super Rush is not available for all products, styles or PO Box addresses. Call (323) 433-0033 or request a quote and we will tell you which options fit your order."
   - q: "Can I pick up my rush order at the shop?"
@@ -41,7 +41,7 @@ Not sure which one fits your date? Call (323) 433-0033 or send your deadline wit
 
 The right method comes down to how many shirts you need and what your art looks like.
 
-- **[Screen printing](/screen-printing/)** is our core service, from 6 pieces. Printed in-house, with bold, solid ink.
+- **[Screen printing](/screen-printing/)** is our core service, from 12 pieces. Printed in-house, with bold, solid ink.
 - **[Direct-to-garment (DTG)](/services/direct-to-garment/)** handles full-color and photo art, with no screens.
 - **[Direct-to-film (DTF)](/services/direct-to-film/)** is another fast option for full-color art and fabrics where DTG is not the fit.
 

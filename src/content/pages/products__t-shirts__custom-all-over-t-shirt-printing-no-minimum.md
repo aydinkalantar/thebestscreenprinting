@@ -12,7 +12,7 @@ facts:
   - { label: "Best for", value: "Test runs, personalized and small-batch runs" }
 faqs:
   - q: "What is the minimum for all-over print shirts?"
-    a: "6 pieces, the same minimum as every order. Sublimation has no screens to set up, so a 6-piece run is a smart way to check colors and placement before committing to a larger run."
+    a: "6 pieces. Sublimation has no screens to set up, so a 6-piece run is a smart way to check colors and placement before committing to a larger run."
   - q: "Can every shirt in my order have a different design?"
     a: "Yes. Each piece is printed from its own artwork, so you can change names, photos, colors or the whole design from shirt to shirt."
   - q: "Is all-over printing more expensive than a regular print?"

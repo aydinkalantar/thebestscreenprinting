@@ -5,9 +5,9 @@ description: "Custom event apparel in Los Angeles: staff shirts, tour merch, giv
 h1: "Event apparel"
 kind: audience
 imported: false
-summary: "Shirts people actually keep wearing after the event. Printed in-house in Los Angeles from 6 pieces, with Rush and Super Rush turnaround for tight deadlines. We ship anywhere in the lower 48, free from $300."
+summary: "Shirts people actually keep wearing after the event. Printed in-house in Los Angeles from 6 pieces (12 for screen printing and embroidery), with Rush and Super Rush turnaround for tight deadlines. We ship anywhere in the lower 48, free from $300."
 facts:
-  - label: "Minimum 6 pieces"
+  - label: "Minimum 6 pieces (12 for screen printing and embroidery)"
     value: "Screen printed in-house in Los Angeles"
   - label: "Turnaround"
     value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
@@ -19,7 +19,7 @@ faqs:
   - q: "Can I pick up my order in Los Angeles?"
     a: "Yes. Our shop is at 5738 Holmes Ave., Los Angeles, CA 90058, open Monday through Friday, 9am to 5pm."
   - q: "What if I only need a few shirts for event staff?"
-    a: "Orders start at 6 pieces. Staff shirts with full-color art are usually printed with DTG or DTF."
+    a: "Orders start at 6 pieces (12 for screen printing and embroidery). Staff shirts with full-color art are usually printed with DTG or DTF."
   - q: "Can different staff roles have different shirts?"
     a: "Yes. Each design is quoted separately, and names or titles can be added with heat transfer."
 sourceUrl: "https://thebestscreenprinting.com/event-apparel/"
@@ -47,7 +47,7 @@ Quantity and look decide it:
 - **Bold logos with a few colors:** [screen printing](/screen-printing/), in-house. Bold, opaque ink that pops under stage lights and holds up for years.
 - **Full-color or photo art:** usually DTG or [direct to film](/services/direct-to-film/), with no screens.
 
-Every order starts at 6 pieces.
+Every order starts at 6 pieces (12 for screen printing and embroidery).
 - **Polos, hats and jackets:** [embroidery](/services/embroidery/), clean stitched logos for the people in charge.
 - **Names, titles or numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/), different on every piece.
 

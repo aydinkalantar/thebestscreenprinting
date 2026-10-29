@@ -12,7 +12,7 @@ facts:
   - { label: "Best for", value: "Short runs, multi-design orders and photo art" }
 faqs:
   - q: "Can I order just one DTG shirt?"
-    a: "No. DTG orders start at 6 pieces, the same minimum as every order we produce."
+    a: "No. DTG orders start at 6 pieces we produce."
   - q: "Can every shirt in my order have a different design?"
     a: "Yes. Because there are no screens, DTG is the fastest way to print many different designs in small quantities."
   - q: "What is the difference between DTG and DTF?"

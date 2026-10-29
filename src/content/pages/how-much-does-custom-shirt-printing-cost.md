@@ -29,7 +29,7 @@ Example: a black Gildan 5000 tee with one print on the front, shirt included. Th
 
 | Quantity | Screen print, 1 color | Screen print, 2 colors | DTF, full color | DTG, full color | Embroidery, left chest |
 | --- | --- | --- | --- | --- | --- |
-| 6 | $18.00 | $20.50 | $17.00 | $21.00 | $19.50 |
+| 6 | – | – | $17.00 | $21.00 | – |
 | 12 | $16.00 | $18.25 | $15.00 | $19.00 | $16.50 |
 | 24 | $11.50 | $13.25 | $13.00 | $16.25 | $13.50 |
 | 36 | $10.50 | $12.00 | $13.00 | $16.25 | $13.50 |
@@ -37,7 +37,7 @@ Example: a black Gildan 5000 tee with one print on the front, shirt included. Th
 | 72 | $8.50 | $9.50 | $10.50 | $13.50 | $11.00 |
 | 144 | $7.25 | $8.00 | $9.00 | $12.25 | $9.50 |
 
-Screen printing adds a one-time $25 screen per ink color per print spot; the white base on dark shirts is free. DTF and DTG have no setup fee. Embroidery is shown for a logo of about 7,000 to 8,000 stitches; digitizing is free from 24 pieces and $45 per logo below that. On a white shirt, DTG costs about $1.50 to $2.50 less per piece.
+Screen printing and embroidery start at 12 pieces; DTF and DTG start at 6. Screen printing adds a one-time $25 screen per ink color per print spot; the white base on dark shirts is free. DTF and DTG have no setup fee. Embroidery is shown for a logo of about 7,000 to 8,000 stitches; digitizing is free from 24 pieces and $45 per logo below that. On a white shirt, DTG costs about $1.50 to $2.50 less per piece.
 
 ## What changes the price
 

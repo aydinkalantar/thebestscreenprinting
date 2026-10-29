@@ -5,10 +5,10 @@ description: "Looking for screen printing near you in Los Angeles? Seven questio
 h1: "Screen printing near me in Los Angeles"
 kind: service
 imported: false
-summary: "Not every shop down the street prints in-house. Here is how to vet a local screen printer, and how our Los Angeles shop stacks up: 6-piece minimum, free art checks and quotes within one business day."
+summary: "Not every shop down the street prints in-house. Here is how to vet a local screen printer, and how our Los Angeles shop stacks up: 12-piece minimum, free art checks and quotes within one business day."
 facts:
   - { label: "Location", value: "5738 Holmes Ave., Downtown LA" }
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Do you screen print in-house?"
@@ -29,7 +29,7 @@ Searching "screen printing near me" in LA turns up dozens of names. Some print o
 Ours: yes. Screen printing runs on our presses at 5738 Holmes Ave. in Los Angeles.
 
 **2. What is your minimum?**
-Ours: 6 pieces per order, for every decoration method. For full-color or photo art we recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
+Ours: 12 pieces per order for screen printing, and 6 for DTG and DTF. For full-color or photo art we recommend [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 
 **3. Will you check my art?**
 Ours: every order gets a free art check before printing, plus a proof to approve.

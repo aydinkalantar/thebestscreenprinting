@@ -7,12 +7,12 @@ kind: audience
 imported: false
 summary: "Your audience, wearing your brand. Test a design with a 6-piece DTG run, then scale the drop with screen printing and embroidery, all from our Los Angeles shop."
 facts:
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
   - { label: "Best for", value: "Merch drops, test runs, giveaways, content shoots" }
 faqs:
   - q: "Can I order a test run before my drop?"
-    a: "Yes. A test run starts at 6 pieces, our minimum for every order, so you have enough to shoot and wear-test."
+    a: "Yes. A DTG or DTF test run starts at 6 pieces, so you have enough to shoot and wear-test."
   - q: "When does screen printing make sense for merch?"
     a: "Once your design is locked and you are ordering a bigger run. The per-piece price usually drops as quantity grows, and the ink is bold and durable."
   - q: "Can you print my design on hats?"

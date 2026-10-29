@@ -1,15 +1,15 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/"
 title: "Custom Screen Printing In Downtown Los Angeles"
-description: "Custom screen printing for Downtown Los Angeles, made at our shop on Holmes Ave., minutes from DTLA. Local pickup, Rush and Super Rush options and a free art check. 6-piece minimum."
+description: "Custom screen printing for Downtown Los Angeles, made at our shop on Holmes Ave., minutes from DTLA. Local pickup, Rush and Super Rush options and a free art check. 12-piece minimum."
 h1: "Custom screen printing in Downtown Los Angeles"
 kind: service
 imported: false
-summary: "Printed minutes from Downtown LA and ready for pickup. Our Los Angeles shop screen prints orders from 6 pieces in-house, with local pickup and Rush and Super Rush turnaround for tight deadlines."
+summary: "Printed minutes from Downtown LA and ready for pickup. Our Los Angeles shop screen prints orders from 12 pieces in-house, with local pickup and Rush and Super Rush turnaround for tight deadlines."
 facts:
   - { label: "Location", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Hours", value: "Mon–Fri, 9am–5pm" }
-  - { label: "Minimum", value: "6 pieces per order" }
+  - { label: "Minimum", value: "12 pieces per order" }
 faqs:
   - q: "Can I pick up my order in Downtown LA?"
     a: "Yes. Orders can be picked up at our shop at 5738 Holmes Ave., Los Angeles, CA 90058, a short drive from DTLA, Monday to Friday, 9am to 5pm."
@@ -36,7 +36,7 @@ We have put ink on garments for Netflix, Adidas, Nike, YouTube, Google, Amazon A
 
 Fashion District labels dropping a new run. Arts District galleries and artists making merch. Restaurants and bars outfitting staff. Event teams who need a stack of tees before the weekend. Production crews, gyms, churches, schools and clubs from across the city.
 
-Whatever the project, the rule is the same: every order starts at 6 pieces. Bold, few-color designs run on screen, full-color and photo art moves to [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), and logos for polos and hats go to [embroidery](/services/embroidery/).
+Whatever the project, the rule is the same: screen printing starts at 12 pieces, DTG and DTF at 6. Bold, few-color designs run on screen, full-color and photo art moves to [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/), and logos for polos and hats go to [embroidery](/services/embroidery/).
 
 ## What can we print for you?
 

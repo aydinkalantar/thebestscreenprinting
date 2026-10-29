@@ -31,7 +31,7 @@ Want the hands-on version with a materials list? See [how to do t-shirt screen p
 4. **Printing.** The garment is loaded on a platen and positioned. Ink is pulled through each screen with a squeegee, by hand or by an automatic press.
 5. **Curing.** The printed garment travels through a dryer, which sets the ink so it survives washing.
 
-Setup is the slow part. Once screens are ready, each additional piece prints quickly. That is why screen printing gets more cost-effective as quantity rises. At TBSP, [screen printing](/screen-printing/) starts at 6 pieces and is printed in-house.
+Setup is the slow part. Once screens are ready, each additional piece prints quickly. That is why screen printing gets more cost-effective as quantity rises. At TBSP, [screen printing](/screen-printing/) starts at 12 pieces and is printed in-house.
 
 ## Screen printing vs digital printing
 

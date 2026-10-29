@@ -1,25 +1,25 @@
 ---
 path: "/shipping-nationwide/seattle-portland-northwest/"
 title: "Custom Shirts Shipped to Seattle, Portland and the Pacific Northwest | TBSP"
-description: "Custom t-shirts, hoodies and hats for Seattle, Portland and the Pacific Northwest, printed in our own shops and shipped to your door. From 6 pieces, about $11.50 a tee at 24, free shipping from $300 in the lower 48."
+description: "Custom t-shirts, hoodies and hats for Seattle, Portland and the Pacific Northwest, printed in our own shops and shipped to your door. From 6 pieces (12 for screen printing and embroidery), about $11.50 a tee at 24, free shipping from $300 in the lower 48."
 h1: "Custom shirts shipped to Seattle, Portland and the Pacific Northwest"
 kind: service
 imported: false
-summary: "We don't have a shop in the Northwest, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in Washington, Oregon and Idaho. Orders start at 6 pieces, and shipping is free from $300."
+summary: "We don't have a shop in the Northwest, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in Washington, Oregon and Idaho. Orders start at 6 pieces (12 for screen printing and embroidery), and shipping is free from $300."
 states: ["Washington", "Oregon", "Idaho"]
 facts:
-  - { label: "Minimum", value: "6 pieces" }
+  - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "24 tees, 1 color", value: "About $11.50 each" }
   - { label: "Shipping", value: "Free from $300" }
 faqs:
   - q: "Do you ship to Seattle and Portland?"
     a: "Yes, to any address in Washington, Oregon and Idaho. Shipping is free on orders of $300 or more and $35 below that."
   - q: "Can you embroider beanies and hats?"
-    a: "Yes, from 6 pieces. Logo digitizing is free from 24 pieces and $45 below that."
+    a: "Yes, from 6 pieces (12 for screen printing and embroidery). Logo digitizing is free from 24 pieces and $45 below that."
   - q: "How much do custom shirts cost if I am in the Northwest?"
     a: "The same as everywhere: a one-color screen printed black tee is about $11.50 each at 24 pieces and $7.25 at 144, shirt included, plus a one-time $25 screen. Shipping is free from $300."
   - q: "What is the minimum order?"
-    a: "6 pieces for screen printing (1 to 3 colors), embroidery, DTF and DTG. You can mix sizes."
+    a: "12 pieces for screen printing (1 to 3 colors) and embroidery, 6 for DTF and DTG. You can mix sizes."
 updated: "2026-10-28"
 ---
 ## What buyers in the Northwest ask us for
