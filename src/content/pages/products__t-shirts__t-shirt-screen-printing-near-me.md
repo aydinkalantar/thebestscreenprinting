@@ -1,11 +1,11 @@
 ---
 path: "/products/t-shirts/t-shirt-screen-printing-near-me/"
 title: "T-shirt Screen Printing Near Los Angeles | TBSP"
-description: "T-shirt screen printing near you in Los Angeles. Runs from 12 shirts printed in-house, with a free art check and quotes within one business day."
+description: "T-shirt screen printing near you in Los Angeles. Runs from 6 shirts printed in-house, with a free art check and quotes within one business day."
 h1: "T-shirt screen printing near me"
 kind: product
 imported: false
-summary: "Real screens, real ink, printed under our own roof in Los Angeles. Screen printing starts at 12 shirts, and every order gets a free art check before it hits the press."
+summary: "Real screens, real ink, printed under our own roof in Los Angeles. Screen printing starts at 6 shirts, and every order gets a free art check before it hits the press."
 facts:
   - { label: "Minimum", value: "6 pieces per order" }
   - { label: "Where", value: "In-house at 5738 Holmes Ave., Los Angeles" }
@@ -31,7 +31,7 @@ Screen printing lays down a thick, opaque layer of ink for each color in your de
 - **A print that lasts** through repeated washing and wearing
 - **Better value per shirt** as your quantity climbs, because the screens are set up once
 
-It is the go-to for brands, artists, events, teams and staff uniforms, starting at 12 shirts.
+It is the go-to for brands, artists, events, teams and staff uniforms, starting at 6 shirts.
 
 ## What affects the price of screen printed shirts?
 

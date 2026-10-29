@@ -16,7 +16,7 @@ facts:
     value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
 faqs:
   - q: "What is the minimum order for custom t-shirts?"
-    a: "6 pieces per order, for every decoration method. We do not print orders of fewer than 12 shirts."
+    a: "6 pieces per order, for every decoration method."
   - q: "When is screen printing the better choice for t-shirts?"
     a: "Screen printing is our core service for bold designs with a few solid colors and bigger runs, printed in-house at our shop."
   - q: "How fast can I get custom t-shirts?"

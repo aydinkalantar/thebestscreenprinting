@@ -27,7 +27,7 @@ A tee gets worn for a season. A good hoodie gets worn for years. That is why bra
 
 ## Four ways to make it yours
 
-**Screen printing.** Thick, opaque ink that sits bold on heavy fleece and survives wash after wash. Our go-to for bold designs and bigger runs, from 12 hoodies. [See screen printing](/screen-printing/).
+**Screen printing.** Thick, opaque ink that sits bold on heavy fleece and survives wash after wash. Our go-to for bold designs and bigger runs, from 6 hoodies. [See screen printing](/screen-printing/).
 
 **Embroidery.** Thread instead of ink, for a raised, premium finish. A stitched chest logo turns a basic hoodie into something that feels retail. [See embroidery](/services/embroidery/).
 

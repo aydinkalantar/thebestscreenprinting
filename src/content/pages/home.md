@@ -33,7 +33,7 @@ A touch of distinction
 
 ## Direct To Garment (DTG)
 
-Full Color / From 12 Pieces
+Full Color / From 6 Pieces
 
 #### Our Products
 

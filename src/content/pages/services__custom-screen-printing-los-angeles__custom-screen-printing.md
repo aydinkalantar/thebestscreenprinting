@@ -18,7 +18,7 @@ faqs:
   - q: "Do I approve a proof before printing?"
     a: "Yes. You see a proof showing placement, size and ink colors before we go to press."
   - q: "What if I only need 10 shirts?"
-    a: "Our minimum is 6 pieces per order, for every decoration method, so we would need at least 12 shirts."
+    a: "That works. Our minimum is 6 pieces per order, for every decoration method. For full-color art at small quantities, DTF is often the better value."
 sourceUrl: "https://thebestscreenprinting.com/services/custom-screen-printing-los-angeles/custom-screen-printing/"
 ---
 ## Five steps from idea to ink
