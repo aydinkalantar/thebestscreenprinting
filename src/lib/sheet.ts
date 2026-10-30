@@ -6,7 +6,8 @@
 // until opened; it gets `data-open` one frame after it is shown so CSS can
 // animate it in. Elements with [data-sheet-close] inside it close it.
 
-type Opts = { onClose?: () => void; focus?: HTMLElement | null };
+/** `modal: false`: the page stays scrollable and usable behind it (Max's panel on desktop). */
+type Opts = { onClose?: () => void; focus?: HTMLElement | null; modal?: boolean };
 type State = { prev: Element | null; opts: Opts };
 const open = new Map<HTMLElement, State>();
 let lockY = 0;
@@ -21,7 +22,7 @@ const lock = () => {
   document.body.style.top = `-${lockY}px`;
 };
 const unlock = () => {
-  if (open.size) return;
+  if ([...open.values()].some((s) => s.opts.modal !== false)) return;
   document.documentElement.classList.remove('sheet-lock');
   document.body.style.top = '';
   // `scroll-behavior: smooth` on <html> would animate this jump.
@@ -35,7 +36,7 @@ export function openSheet(el: HTMLElement, opts: Opts = {}) {
   open.set(el, { prev: document.activeElement, opts });
   el.hidden = false;
   el.classList.remove('hidden');
-  lock();
+  if (opts.modal !== false) lock();
   requestAnimationFrame(() => requestAnimationFrame(() => el.setAttribute('data-open', '')));
   const target = opts.focus ?? el.querySelector<HTMLElement>('[autofocus],[data-sheet-focus]') ?? el.querySelector<HTMLElement>(FOCUSABLE);
   // Focus synchronously so iOS raises the keyboard inside the tap gesture.
@@ -65,7 +66,7 @@ export function wireSheet(el: HTMLElement) {
   el.addEventListener('keydown', (e) => {
     if (!open.has(el)) return;
     if (e.key === 'Escape') { e.preventDefault(); closeSheet(el); return; }
-    if (e.key !== 'Tab') return;
+    if (e.key !== 'Tab' || open.get(el)!.opts.modal === false) return;
     const items = [...el.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((n) => n.offsetParent !== null);
     if (!items.length) return;
     const first = items[0], last = items[items.length - 1];

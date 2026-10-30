@@ -8,7 +8,7 @@
 //   MODE = 'auto'       the live assistant when it is on the page, else the sheet
 //
 // When the real assistant ships, either flip MODE or replace openMaxSheet()'s body.
-import { openSheet, wireSheet } from './sheet';
+import { openSheet, wireSheet, isSheetOpen } from './sheet';
 import { track } from './analytics';
 
 type Mode = 'sheet' | 'assistant' | 'auto';
@@ -27,6 +27,16 @@ function openAssistant(): boolean {
   return true;
 }
 
+/** Desktop shows Max as a side panel next to the page (no dimming, page still scrolls); phones as a full sheet. */
+const desktop = () => matchMedia('(min-width: 768px)').matches;
+/** On very wide screens the page moves over to make room for the panel (global.css: html.max-side), so nothing is hidden behind it. */
+const side = (el: HTMLElement) => {
+  const on = desktop();
+  el.setAttribute('aria-modal', String(!on));
+  document.documentElement.classList.toggle('max-side', on);
+  return { modal: !on, onClose: () => document.documentElement.classList.remove('max-side') };
+};
+
 function openMaxSheet(prefill: string) {
   const el = document.querySelector<HTMLElement>('[data-max-sheet]');
   if (!el) { location.href = prefill ? `/quick-quote/?details=${encodeURIComponent(prefill)}` : '/quick-quote/'; return; }
@@ -34,7 +44,15 @@ function openMaxSheet(prefill: string) {
   const box = el.querySelector<HTMLTextAreaElement>('textarea[name="details"]');
   // Prefill without clobbering what the visitor already typed.
   if (box && (!box.value.trim() || box.value === lastPrefill)) { box.value = prefill; lastPrefill = prefill; }
-  openSheet(el, { focus: el.querySelector<HTMLElement>('[data-sheet-close]:not([data-sheet-backdrop])') });
+  openSheet(el, { ...side(el), focus: el.querySelector<HTMLElement>('[data-sheet-close]:not([data-sheet-backdrop])') });
+}
+
+/** Reopens Max on a new page because he was open on the last one (max-chat.ts): no prefill, no call, not counted as an open. */
+export function reopenMax() {
+  const el = document.querySelector<HTMLElement>('[data-max-sheet]');
+  if (!el || isSheetOpen(el)) return;
+  wireSheet(el);
+  openSheet(el, { ...side(el), focus: el.querySelector<HTMLElement>(desktop() ? '#max-input' : '[data-sheet-close]:not([data-sheet-backdrop])') });
 }
 
 export function openMax(prefill: string = context) {

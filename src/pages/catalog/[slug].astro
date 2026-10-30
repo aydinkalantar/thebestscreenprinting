@@ -570,7 +570,34 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   type MaxPlaced = { file: File; location: string; method: string; widthIn?: number };
   const maxPlace = (list: MaxPlaced[]) =>
     design.loadArtwork(list.map((x) => ({ locId: '', location: x.location, decoration: x.method, x: 0, y: 0, w: 0, file: x.file, widthIn: x.widthIn })), 'Max', 'Max placed your design. Move or resize it, then pick your sizes.');
-  window.addEventListener('tbsp-max-place', (e) => { const x = (e as CustomEvent<MaxPlaced>).detail; if (x?.file) void maxPlace([x]); });
+  /** Max's chat shows what's on the page now (a phone's chat covers the page). */
+  const showMax = async (carried: boolean) => {
+    if (renderJob) return;
+    await new Promise((r) => setTimeout(r, 300));
+    const photo = document.querySelector<HTMLImageElement>('[data-photo]');
+    if (photo && !photo.complete) await new Promise((r) => { photo.addEventListener('load', r, { once: true }); setTimeout(r, 4000); });
+    const mockups = await design.mockups(1_500_000).catch(() => []);
+    window.dispatchEvent(new CustomEvent('tbsp-max-shown', { detail: { mockups, name: d.name || '', color, locations: design.locations(), carried } }));
+  };
+  window.addEventListener('tbsp-max-place', (e) => { const x = (e as CustomEvent<MaxPlaced>).detail; if (x?.file) void maxPlace([x]).then(() => showMax(false)); });
+  /** Max's order says this product is another color or other sizes: the page follows, so it matches what he says. */
+  const maxSync = (x: { color?: string; sizes?: Record<string, number> }) => {
+    const want = String(x.color || '').toLowerCase();
+    const sw = want ? swatches.find((b) => b.dataset.name?.toLowerCase() === want) ?? swatches.find((b) => (b.dataset.name || '').toLowerCase().includes(want)) : undefined;
+    const recolor = !!sw && sw.getAttribute('aria-checked') !== 'true';
+    if (sw && recolor) { sw.hidden = false; sw.click(); }
+    const sizes = Object.fromEntries(Object.entries(x.sizes || {}).map(([k, v]) => [k.toUpperCase(), v]));
+    if (Object.values(sizes).some((n) => n > 0)) {
+      for (const i of inputs) {
+        const v = sizes[(i.dataset.size || '').toUpperCase()];
+        if (v) i.closest<HTMLElement>('[data-size-row]')?.removeAttribute('hidden');
+        i.value = v ? String(v) : '';
+        i.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }
+    if (recolor && design.count()) void showMax(false);
+  };
+  window.addEventListener('tbsp-max-sync', (e) => maxSync((e as CustomEvent<{ color?: string; sizes?: Record<string, number> }>).detail || {}));
   const loadCarried = (list: { key: string; name: string; type: string; location: string; method: string; widthIn?: number }[]) =>
     Promise.all(list.map(async (x) => {
       const blob = await getFile(x.key);
@@ -603,7 +630,9 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     const carried = JSON.parse(sessionStorage.getItem('tbsp-max-place') || 'null');
     if (carried?.productId && carried.productId === d.id && !editItem) {
       sessionStorage.removeItem('tbsp-max-place');
-      loadCarried(carried.list).then((ok) => { if (ok.length) void maxPlace(ok); }).catch(() => {});
+      // Max's color and sizes first, so the design lands on the right shirt.
+      maxSync({ color: carried.color, sizes: carried.sizes });
+      loadCarried(carried.list).then(async (ok) => { if (ok.length) { await maxPlace(ok); await showMax(true); } }).catch(() => {});
     }
   } catch { /* ignore */ }
 
