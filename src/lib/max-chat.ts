@@ -2,6 +2,7 @@
 // NDJSON events: text, products, cart, choices, handoff, done. Product and cart events render as
 // cards; a cart can go straight to checkout (order-sheet.ts) or into the site cart.
 // If the studio can't be reached, the visitor's message goes to the quote form instead.
+import { track } from './analytics';
 import { STUDIO_API, fetchPrices, money, type PriceItemInput, type PriceResponse } from './online';
 import { openOrder, type OrderArtwork } from './order-sheet';
 import { addToCart, cartItems, putFile, getFile } from './cart';
@@ -68,6 +69,21 @@ if (sheet) {
   } catch { /* ignore */ }
   if (!sessionId) sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
   // Designs are kept too (files in the browser's file store), so reopening Max brings them back.
+  // Voice calls: the studio only sees tool calls, so the transcript is sent along a few seconds
+  // after each turn (and when the tab is left) to be saved with the chat (Admin › Max chats).
+  let logTimer = 0, logPending = false;
+  const sendLog = (beacon = false) => {
+    window.clearTimeout(logTimer); logPending = false;
+    const body = JSON.stringify({ sessionId, messages: messages.slice(-80), context: context() });
+    const url = `${STUDIO_API}/api/public/max/log`;
+    if (beacon && navigator.sendBeacon) { navigator.sendBeacon(url, body); return; }
+    void fetch(url, { method: 'POST', body, keepalive: true }).catch(() => {});
+  };
+  const logSoon = () => {
+    if (messages.filter((m) => m.role === 'user').length === 1 && !logPending && messages.at(-1)?.role === 'user') track('max_first_message', { mode: 'voice' });
+    logPending = true; window.clearTimeout(logTimer); logTimer = window.setTimeout(() => sendLog(), 3000);
+  };
+  window.addEventListener('pagehide', () => { if (logPending) sendLog(true); });
   const save = () => { lastAt = Date.now(); try { localStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30), at: lastAt, order, art: art.map((a) => ({ id: a.id, name: a.file.name, type: a.file.type, ink: a.ink })) })); } catch { /* ignore */ } };
 
   const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls = '', text = '') => {
@@ -93,7 +109,7 @@ if (sheet) {
     const f = document.getElementById('add-to-quote')?.dataset;
     const color = document.querySelector<HTMLElement>('.swatch[aria-checked="true"]')?.dataset.name;
     return {
-      page, path,
+      page, path, sessionId,
       ...(f?.id ? { product: { id: f.id, name: f.name, brand: f.brand, style: f.style, color } } : {}),
       // The order so far, so a reopened chat or a new call picks up exactly where it was.
       ...(order.length ? { order: order.map(({ image: _i, why: _w, ...x }) => x) } : {}),
@@ -228,6 +244,7 @@ if (sheet) {
       const { items, artwork, mockups } = await prepare();
       pay.disabled = false; pay.textContent = label;
       steps.mark('pay');
+      track('max_checkout_open', { value: res.totals.total, currency: 'USD' });
       const pieces = e.items.reduce((n, it) => n + Object.values(it.sizes).reduce((a, b) => a + b, 0), 0);
       openOrder({ items, artwork, mockups, price: res, summary: `${e.items.length} product${e.items.length === 1 ? '' : 's'} · ${pieces} pieces` });
     });
@@ -314,6 +331,7 @@ if (sheet) {
           if (r?.field === 'email') email.focus(); else if (r?.field === 'name') name.focus();
           return;
         }
+        track('max_quote_emailed', { value: r.total, currency: 'USD' });
         form.replaceChildren(el('p', 'text-[13px] font-semibold text-emerald-700 dark:text-emerald-400', r.emailed === false ? `✓ Quote ${r.number ?? ''} saved. We'll email it to ${contact.email} shortly.` : `✓ Quote ${r.number ?? ''} sent to ${contact.email}. It's good for 14 days, and you can pay from it.`));
         if (r.url) { const a = el('a', 'text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline', 'Open the quote'); (a as HTMLAnchorElement).href = r.url; (a as HTMLAnchorElement).target = '_blank'; form.append(a); }
         if (call) call.sendText(`[quote ${r.number ?? ''} emailed to ${contact.email}]`);
@@ -363,6 +381,7 @@ if (sheet) {
       if (!c.name.trim()) { err.hidden = false; err.textContent = 'Please add your name.'; inputs.name.focus(); return; }
       if (!isEmail(c.email)) { err.hidden = false; err.textContent = 'That email doesn’t look right. Please fix it.'; inputs.email.focus(); return; }
       const saved = saveContact(c);
+      track('max_contact_saved');
       box.replaceWith(contactLine(saved));
       void fetch(`${STUDIO_API}/api/public/max/contact`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ sessionId, contact: saved }) }).catch(() => {});
       const note = `[details confirmed: name ${saved.name}, email ${saved.email}${saved.phone ? `, phone ${saved.phone}` : ''}]`;
@@ -543,6 +562,7 @@ if (sheet) {
     paintCall(true); callStatus.textContent = 'Connecting…';
     callMute.setAttribute('aria-pressed', 'false');
     try {
+      track('max_call_start');
       call = await startLiveCall(context, {
         status: (st, why) => {
           if (st === 'ended') {
@@ -577,7 +597,7 @@ if (sheet) {
             if (who === 'user' && live.assistant) live.assistant.before(b);
           }
           b.textContent = text; scroll();
-          if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); trackText(text, who); }
+          if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); trackText(text, who); logSoon(); }
         },
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
       }, Date.now() - lastAt < 2 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'), Date.now() - lastDropAt < 2 * 60_000 ? 'reconnected' : Date.now() - Math.max(lastAt, lastCallEnd) > 15 * 60_000 ? 'welcome' : 'quiet');
@@ -645,7 +665,7 @@ if (sheet) {
       if (ev.items.every((it) => it.color)) steps.mark('colors');
       if (ev.items.some((it) => it.locations.some((l, li) => artFor(l, li)))) steps.mark('design');
       if (ev.items.every((it) => Object.values(it.sizes).some((n) => n > 0))) steps.mark('sizes');
-      if (ev.price && ev.price.enabled && ev.price.totals) steps.mark('price');
+      if (ev.price && ev.price.enabled && ev.price.totals) { steps.mark('price'); track('max_price_shown', { value: ev.price.totals.total, currency: 'USD' }); }
     }
   }
 
@@ -669,6 +689,7 @@ if (sheet) {
     busy = true; send.disabled = true;
     intro.hidden = true; reset.hidden = false;
     if (!shown) { bubble('user', text); messages.push({ role: 'user', content: text }); save(); trackText(text, 'user'); }
+    if (messages.filter((m) => m.role === 'user').length === 1) track('max_first_message', { mode: 'chat' });
     const dots = typing();
     let reply = '';
     let out: HTMLElement | null = null;

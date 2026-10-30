@@ -2,6 +2,7 @@
 // whole request (files, rendered mockups, placements) to /api/quote. Markup: DesignPreview.astro
 // and DesignRequestSheet.astro. Print areas and inch sizes: areas.ts.
 import { openSheet, wireSheet } from '../../lib/sheet';
+import { track } from '../../lib/analytics';
 import { garmentFor, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, MAX_PLACEMENTS } from '../../lib/quote';
 import { business } from '../../data/business';
 import type { DesignSpot, PlaceConfig, PrintAreas, Side } from './areas';
@@ -922,6 +923,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       const res = await fetch('/api/quote', { method: 'POST', body: fd });
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; ref?: string; error?: string; fields?: Record<string, string>; fallback?: boolean };
       if (res.ok && data.ok) {
+        track('quote_form_submit', { source: 'product' });
         const refEl = done!.querySelector<HTMLElement>('[data-dr-ref]');
         if (refEl) { refEl.hidden = !data.ref; refEl.querySelector('span')!.textContent = data.ref ?? ''; }
         form.hidden = true;

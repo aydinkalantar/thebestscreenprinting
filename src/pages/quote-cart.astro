@@ -100,6 +100,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
 </style>
 
 <script>
+  import { track } from '../lib/analytics';
   import {
     CART_MIN, minFor, cartItems, updateCartItem, removeCartItem, duplicateCartItem, clearCart, getFile, setCarry,
     onCartChange, cartPersistsFiles, sumSizes, CART_MAX_ITEMS, type CartItem,
@@ -503,6 +504,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
       const res = await fetch('/api/quote', { method: 'POST', body: fd });
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; ref?: string; error?: string; fields?: Record<string, string>; fallback?: boolean };
       if (res.ok && data.ok) {
+        track('quote_form_submit', { source: 'cart' });
         const refEl = done.querySelector<HTMLElement>('[data-dr-ref]');
         if (refEl) { refEl.hidden = !data.ref; refEl.querySelector('span')!.textContent = data.ref ?? ''; }
         form.hidden = true;

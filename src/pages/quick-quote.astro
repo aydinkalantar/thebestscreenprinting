@@ -130,6 +130,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 <style>#cart-banner[hidden] { display: none; }</style>
 
 <script>
+  import { track } from '../lib/analytics';
   import { garmentFor } from '../lib/quote';
   import { prefillContact } from '../lib/contact';
   import { cartCount, cartPieces, onCartChange } from '../lib/cart';
@@ -232,6 +233,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       const res = await fetch('/api/quote', { method: 'POST', body: new FormData(form) });
       const data = await res.json().catch(() => ({}));
       if (res.ok) {
+        track('quote_form_submit', { source: 'form' });
         form.reset();
         msg.className = 'form-msg rounded-xl px-4 py-3 text-sm font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-300';
         msg.textContent = `Thanks! We've got your request and will reply within one business day.${data.ref ? ` Your request number is ${data.ref}.` : ''}`;
