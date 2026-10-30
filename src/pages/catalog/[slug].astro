@@ -802,7 +802,8 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     ip('status').textContent = '';
     if (!ok) {
       barPrice('');
-      ip('quote').textContent = it?.quoteOnly ? `${it.quoteOnly}. Add it to your cart and request a quote, and we'll price it for you.` : '';
+      const priced = it?.quoteSizes?.length ? Object.values(it.sizePrices || {}) : [];
+      ip('quote').textContent = it?.quoteOnly ? `${it.quoteOnly}${priced.length ? ` (other sizes from ${money(Math.min(...priced))} each)` : ''}. Add it to your cart and request a quote, and we'll price it for you.` : '';
       lastPrice = null;
       return;
     }

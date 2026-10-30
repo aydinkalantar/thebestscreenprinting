@@ -13,7 +13,7 @@ export interface PriceItemInput { brand: string; style: string; color: string; s
 export interface ArtHelpOptions { cleanup?: { price: number }; layout?: { price: number }; custom?: { price: number; from?: boolean }; revisionPrice?: number; extraDays?: number; revisionsIncluded?: number }
 export const ART_HELP_LABELS: Record<ArtHelpType, string> = { cleanup: 'Art cleanup / vectorize', layout: 'Text or simple layout', custom: 'Custom design' };
 export interface PricedItem {
-  ok: boolean; quoteOnly?: string; title: string; color: string; quantity: number;
+  ok: boolean; quoteOnly?: string; /** Sizes without a blank price; the rest are in sizePrices. */ quoteSizes?: string[]; title: string; color: string; quantity: number;
   sizePrices: Record<string, number>; basePrice: number; subtotal: number; setup: number;
   next: { qty: number; perPiece: number } | null; stockShort: { size: string; stock: number }[];
   /** Artwork help fee for this item, when asked for. */ artFee?: number;

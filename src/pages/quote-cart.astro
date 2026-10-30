@@ -621,7 +621,9 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
       box.classList.toggle('hidden', !r);
       box.classList.toggle('grid', !!r);
       if (!r) return;
-      if (!r.ok) {
+      // Some sizes priced, others by quote (no blank price for them yet): show what we have.
+      const partial = !r.ok && !!r.quoteSizes?.length && Object.keys(r.sizePrices || {}).length > 0;
+      if (!r.ok && !partial) {
         box.append(el('p', 'muted', `${r.quoteOnly || 'Priced by quote'}. We'll price this one personally.`));
         return;
       }
@@ -635,6 +637,11 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
       const tot = el('span', 'font-semibold text-zinc-900 dark:text-white', `${money(r.subtotal)}${r.setup ? ` + ${money(r.setup)} setup` : ''}${r.artFee ? ` + ${money(r.artFee)} art` : ''}`);
       top.append(each, tot);
       box.append(top);
+      if (partial) {
+        top.lastElementChild!.textContent = `${money(r.subtotal)} so far`;
+        box.append(el('p', 'muted text-[13px]', `Size ${r.quoteSizes!.join(', ')} is priced by quote. We'll add it when we send your quote.`));
+        return;
+      }
       // Only a nudge when the next price break is within reach (at most double the current quantity).
       if (r.next && r.next.qty - r.quantity <= r.quantity) box.append(el('p', 'text-[13px] font-medium text-emerald-700 dark:text-emerald-400', `Add ${r.next.qty - r.quantity} more (${r.next.qty} total) and pay ${money(r.next.perPiece)} each.`));
       if (r.stockShort.length) box.append(el('p', 'text-[13px] font-medium text-amber-700 dark:text-amber-300', `Low stock: ${r.stockShort.map((x) => `${x.size} (${x.stock} left)`).join(', ')}.`));
