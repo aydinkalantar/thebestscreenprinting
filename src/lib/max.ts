@@ -9,6 +9,7 @@
 //
 // When the real assistant ships, either flip MODE or replace openMaxSheet()'s body.
 import { openSheet, wireSheet } from './sheet';
+import { track } from './analytics';
 
 type Mode = 'sheet' | 'assistant' | 'auto';
 const MODE: Mode = 'auto';
@@ -39,6 +40,7 @@ function openMaxSheet(prefill: string) {
 export function openMax(prefill: string = context) {
   if (MODE !== 'sheet' && openAssistant()) return;
   if (MODE === 'assistant') return;
+  track('max_open');
   openMaxSheet(prefill);
   // Still inside the visitor's tap: Max can start a voice call from here (max-chat.ts).
   window.dispatchEvent(new Event('tbsp-max-open'));
