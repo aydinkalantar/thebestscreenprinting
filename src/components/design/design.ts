@@ -6,6 +6,7 @@ import { track } from '../../lib/analytics';
 import { garmentFor, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, MAX_PLACEMENTS } from '../../lib/quote';
 import { business } from '../../data/business';
 import type { DesignSpot, PlaceConfig, PrintAreas, Side } from './areas';
+import { checkBackground, removeBackground, canClean } from '../../lib/bg-remove';
 import { analyzeImage, boxOf, placeSpots, templateRect, type Analysis, type Box, type Placed } from './placement';
 
 interface Art {
@@ -15,6 +16,9 @@ interface Art {
   /** Position and width as fractions of the print area. */
   x: number; y: number; w: number;
   decoration: string; notes: string; el?: HTMLElement;
+  /** Background on the uploaded file (src/lib/bg-remove.ts): removed (undo-able), kept, a solid color box
+   *  we only offer to remove, or a photo/busy one we never cut. `original` and `cleaned` swap on undo/redo. */
+  bg?: 'removed' | 'kept' | 'offer' | 'busy'; bgRgb?: [number, number, number]; original?: File; cleaned?: File;
 }
 export interface Order {
   name: string; style: string; brand: string; color: string; cat: string; sub: string; url: string;
@@ -392,6 +396,24 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   root.querySelector('[data-chips]')?.addEventListener('click', () => setClean(false));
 
   const moved = q('[data-moved]');
+  const bgLine = q('[data-bg]');
+  const bgBtn = q<HTMLButtonElement>('[data-bg-btn]');
+  bgBtn.addEventListener('click', async () => {
+    const a = arts.get(active);
+    if (!a?.bg || a.bg === 'busy') return;
+    bgBtn.disabled = true;
+    try {
+      if (a.bg === 'removed' && a.original && await setImage(a, a.original)) { a.bg = 'kept'; announce('Background back on your design.'); }
+      else if (a.bg === 'kept' || a.bg === 'offer') {
+        a.original ??= a.file;
+        // Clean from the original (the image on screen may be the cleaned one).
+        if (a.file !== a.original) await setImage(a, a.original);
+        const clean = a.bgRgb ? await cleanArt(a, a.bgRgb) : null;
+        if (clean && await setImage(a, clean)) { a.bg = 'removed'; announce('Background removed.'); }
+        else setError('We couldn\u2019t remove that background here. Add a note and our designer will do it for your proof.');
+      }
+    } finally { bgBtn.disabled = false; render(); }
+  });
   q('[data-reset-area]').addEventListener('click', () => {
     const sp = spotById.get(active);
     if (!sp) return;
@@ -421,6 +443,16 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       panel.decoration.value = a.decoration;
       if (document.activeElement !== panel.notes) panel.notes.value = a.notes;
     }
+    // The background line: what happened to it, and the one button that changes it.
+    const bgText: Record<NonNullable<Art['bg']>, [string, string]> = {
+      removed: ['We removed the white background so only your design prints.', 'Undo'],
+      kept: ['Background kept: it prints as part of your design.', 'Remove background'],
+      offer: ['Your design sits on a solid color box. Remove it so only the design prints?', 'Remove background'],
+      busy: ['This has a photo or busy background, which prints as a full rectangle. Want just the design? Add a note and our designer will cut it out for your proof.', ''],
+    };
+    const t = a?.bg ? bgText[a.bg] : null;
+    bgLine.hidden = !t;
+    if (t) { bgLine.querySelector('[data-bg-text]')!.textContent = t[0]; bgBtn.textContent = t[1]; bgBtn.hidden = !t[1]; }
   }
 
   // ── artwork carried over from another product in the quote cart ────────────
@@ -456,7 +488,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       btn.addEventListener('click', async () => {
         const target = active;
         pending.splice(i, 1);
-        await addFile(target, p.file);
+        await addFile(target, p.file, false);
         const a = arts.get(target);
         if (a) { if (cfg.decorations.includes(p.decoration)) a.decoration = p.decoration; a.notes = p.notes ?? a.notes; }
         render();
@@ -650,7 +682,26 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (file) await addFile(active, file);
   });
 
-  async function addFile(loc: string, file: File) {
+  /** Swaps an artwork's file for another version of it (background removed or the original). */
+  async function setImage(a: Art, file: File) {
+    const url = URL.createObjectURL(file);
+    const img = await loadImage(url, false).catch(() => null);
+    if (!img) { URL.revokeObjectURL(url); return false; }
+    if (a.url) URL.revokeObjectURL(a.url);
+    Object.assign(a, { file, ext: extOf(file.name), url, img, aspect: clamp((img.naturalHeight || 1) / (img.naturalWidth || 1), 0.05, 20) });
+    return true;
+  }
+  /** Makes a cleaned version (background removed) of the artwork, within the size limits. */
+  async function cleanArt(a: Art, rgb: [number, number, number]) {
+    if (a.cleaned) return a.cleaned;
+    if (!a.img) return null;
+    const out = await removeBackground(a.img, a.file.name, rgb).catch(() => null);
+    if (!out || out.size > MAX_ARTWORK_BYTES || totalBytes(a.loc) + out.size > MAX_TOTAL_BYTES) return null;
+    return (a.cleaned = out);
+  }
+
+  /** `check`: look for a background to remove (files the visitor picks here; carried artwork was already checked). */
+  async function addFile(loc: string, file: File, check = true) {
     setError();
     const sp = spotById.get(loc);
     if (!sp) return;
@@ -677,13 +728,24 @@ export function mountDesign(root: HTMLElement, opts: Options) {
         URL.revokeObjectURL(url); // unreadable image: keep it as a file placeholder
       }
     }
+    // A logo on a white box: the box would print, so it comes off right away (one tap brings it back).
+    if (check && a.img && canClean(file)) {
+      const bg = checkBackground(a.img);
+      if (bg.kind === 'white') {
+        a.original = file; a.bgRgb = bg.rgb;
+        const clean = await cleanArt(a, bg.rgb);
+        if (clean && await setImage(a, clean)) a.bg = 'removed';
+        else { a.original = undefined; a.cleaned = undefined; }
+      } else if (bg.kind === 'plain') { a.bg = 'offer'; a.bgRgb = bg.rgb; }
+      else if (bg.kind === 'busy') a.bg = 'busy';
+    }
     if (prev?.url) URL.revokeObjectURL(prev.url);
     fit(a);
     arts.set(loc, a);
     active = loc;
     side = sp.side;
     render();
-    announce(`Added ${file.name} to ${sp.label}. ${sizeText(a)}.`);
+    announce(`Added ${file.name} to ${sp.label}. ${sizeText(a)}.${a.bg === 'removed' ? ' We removed the white background.' : ''}`);
   }
 
   function remove(loc: string) {
@@ -995,7 +1057,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       for (const src of list) {
         const sp = spotById.get(src.locId) ?? spotFor(src.location);
         if (!sp || arts.has(sp.id)) { pending.push({ file: src.file, decoration: src.decoration, notes: src.notes, location: src.location }); continue; }
-        await addFile(sp.id, src.file);
+        await addFile(sp.id, src.file, false);
         const a = arts.get(sp.id);
         if (!a) continue;
         // Names can differ a little ("DTF" vs "DTF transfer", "Screen print" vs "Screen printing").
