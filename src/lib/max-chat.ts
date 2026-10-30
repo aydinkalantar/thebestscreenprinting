@@ -7,6 +7,7 @@ import { STUDIO_API, fetchPrices, money, type PriceItemInput, type PriceResponse
 import { openOrder, type OrderArtwork } from './order-sheet';
 import { addToCart, cartItems, putFile, getFile } from './cart';
 import { countInks, type InkCount } from '../components/design/colors';
+import { canClean, checkBackground, removeBackground, imageOf } from './bg-remove';
 import { business } from '../data/business';
 import { openMax, reopenMax } from './max';
 import { setupVoice, type VoiceConfig } from './max-voice';
@@ -986,6 +987,45 @@ if (sheet && window.parent === window) {
     }));
   }
 
+  /**
+   * What happened to the design's background, under the visitor's message: removed (with Undo), a solid
+   * color box we can remove on request, or a photo/busy background our designer handles on the proof.
+   */
+  function backgroundNote(a: (typeof art)[number], original: File, check: ReturnType<typeof checkBackground>, img: HTMLImageElement, clean: File | null) {
+    if (check.kind === 'none') return;
+    const box = el('div', 'max-bubble max-bot');
+    const swap = async (file: File) => {
+      if (a.url) URL.revokeObjectURL(a.url);
+      a.file = file; a.url = URL.createObjectURL(file);
+      a.ink = await countInks(file).catch(() => ({ kind: 'unknown' }) as InkCount);
+      await putFile(`maxart/${sessionId}/${a.id}`, file).catch(() => {});
+      save(); renderFiles();
+    };
+    const button = (label: string, run: () => Promise<void>) => {
+      const b = el('button', 'ml-1 font-semibold text-violet-700 dark:text-violet-300 underline underline-offset-2', label); b.type = 'button';
+      b.addEventListener('click', async () => { b.disabled = true; await run(); });
+      return b;
+    };
+    let removed = clean;
+    const paint = (state: 'removed' | 'kept' | 'offer' | 'busy') => {
+      const text = {
+        removed: 'I removed the white background so only your design prints.',
+        kept: 'Okay, the background stays and prints as part of the design.',
+        offer: 'Your design sits on a solid color box. Should I remove it so only the design prints?',
+        busy: 'This one has a photo or busy background, which prints as a full rectangle. Want just the design? Tell me and our designer will cut it out for your proof.',
+      }[state];
+      box.replaceChildren(text);
+      if (state === 'removed') box.append(button('Undo', async () => { await swap(original); paint('kept'); }));
+      if (state === 'kept' || state === 'offer') box.append(button('Remove background', async () => {
+        removed ??= check.kind === 'white' || check.kind === 'plain' ? await removeBackground(img, original.name, check.rgb).catch(() => null) : null;
+        if (removed) { await swap(removed); paint('removed'); } else box.replaceChildren('I couldn’t remove that background here. Our designer will do it for your proof.');
+      }));
+      scroll();
+    };
+    paint(check.kind === 'white' ? (clean ? 'removed' : 'busy') : check.kind === 'plain' ? 'offer' : 'busy');
+    log.append(box); scroll();
+  }
+
   // Logo: checked here (colors, full color, size) and summarized to Max.
   sheet.querySelector('[data-max-attach]')!.addEventListener('click', () => fileIn.click());
   fileIn.addEventListener('change', async () => {
@@ -993,13 +1033,22 @@ if (sheet && window.parent === window) {
     if (!f) return;
     if (f.size > 10 * 1024 * 1024) { bubble('assistant', 'That file is over 10 MB. Please send a smaller one, or email it to us.'); return; }
     if (art.length >= 6) { bubble('assistant', 'That’s 6 designs already. Remove one, or send the rest with your order.'); return; }
-    const ink = await countInks(f).catch(() => ({ kind: 'unknown' }) as InkCount);
+    // A logo on a white box: the box would print, so it comes off here (with a one-tap undo below).
+    const bg = canClean(f) ? await imageOf(f).then(async (img) => {
+      const check = checkBackground(img);
+      const clean = check.kind === 'white' ? await removeBackground(img, f.name, check.rgb).catch(() => null) : null;
+      return { check, img, clean: clean && clean.size <= 10 * 1024 * 1024 ? clean : null };
+    }).catch(() => null) : null;
+    const file = bg?.clean ?? f;
+    const ink = await countInks(file).catch(() => ({ kind: 'unknown' }) as InkCount);
     const id = `a${++artSeq}`;
-    art.push({ id, file: f, ink, url: f.type.startsWith('image/') ? URL.createObjectURL(f) : undefined });
-    void putFile(`maxart/${sessionId}/${id}`, f).then(save).catch(() => {});
+    const entry = { id, file, ink, url: file.type.startsWith('image/') ? URL.createObjectURL(file) : undefined };
+    art.push(entry);
+    void putFile(`maxart/${sessionId}/${id}`, file).then(save).catch(() => {});
     renderFiles();
     const summary = ink.kind === 'spot' ? `${ink.count} color${ink.count === 1 ? '' : 's'}` : ink.kind === 'full' ? 'full color' : 'file type I can’t preview';
-    const low = ink.kind !== 'unknown' && !ink.vector && ink.widthPx && ink.widthPx < 1000 ? ', low resolution' : '';
+    const low = (ink.kind !== 'unknown' && !ink.vector && ink.widthPx && ink.widthPx < 1000 ? ', low resolution' : '') + (bg?.clean ? ', white background removed' : '');
+    if (bg) window.setTimeout(() => backgroundNote(entry, f, bg.check, bg.img, bg.clean), 0);
     // On a call it's a note to Max; in the chat it reads as the visitor's message.
     if (call) { bubble('user', `📎 ${f.name}`); call.sendText(`[visitor uploaded design ${id}: ${f.name}, ${summary}${low}. Ask where it goes and how it should be decorated if that isn't clear yet.]`); }
     else ask(`Here's ${art.length > 1 ? 'another design' : 'my design'}: ${f.name} (${summary}${low}).`);
