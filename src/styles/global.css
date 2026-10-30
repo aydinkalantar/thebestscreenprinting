@@ -117,6 +117,8 @@ a, button, label, summary, input, select, textarea, [role="button"] { touch-acti
 /* Sheets lock the page behind them (iOS ignores overflow:hidden on body alone). */
 html.sheet-lock { overflow: hidden; }
 html.sheet-lock body { position: fixed; left: 0; right: 0; overflow: hidden; }
+/* Max's panel on very wide screens sits beside the page instead of over it (src/lib/max.ts); narrower, the page would squeeze. */
+@media (min-width: 1720px) { html.max-side body { margin-right: 452px; transition: margin-right .25s var(--tb-ease); } }
 
 /* Generic sheet animation: [data-sheet-panel] slides in when the root has data-open. */
 [data-sheet] { overscroll-behavior: contain; }

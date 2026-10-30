@@ -30,9 +30,11 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
   <span class="text-[14px] font-semibold text-zinc-900 dark:text-white">Talk to Max</span>
 </button>
 
-<div data-max-sheet data-sheet="modal" hidden role="dialog" aria-modal="true" aria-labelledby="max-title" class="fixed inset-0 z-[96]">
-  <div class="absolute inset-0 bg-black/40 md:bg-black/20" data-sheet-backdrop data-sheet-close></div>
-  <div data-sheet-panel class="absolute inset-x-0 bottom-0 top-[calc(env(safe-area-inset-top)+12px)] flex flex-col rounded-t-3xl bg-white dark:bg-[#0d0d14] shadow-2xl md:inset-y-3 md:right-3 md:left-auto md:top-3 md:w-[440px] md:rounded-3xl">
+<!-- Phones: a full-height sheet over the page. Desktop: a side panel that leaves the page usable, so
+     the visitor can look at the product while Max keeps talking. It reopens on the next page if it was open. -->
+<div data-max-sheet data-sheet="modal" hidden role="dialog" aria-modal="true" aria-labelledby="max-title" class="fixed inset-0 z-[96] md:pointer-events-none">
+  <div class="absolute inset-0 bg-black/40 md:hidden" data-sheet-backdrop data-sheet-close></div>
+  <div data-sheet-panel class="md:pointer-events-auto absolute inset-x-0 bottom-0 top-[calc(env(safe-area-inset-top)+12px)] flex flex-col rounded-t-3xl bg-white dark:bg-[#0d0d14] shadow-2xl md:inset-y-3 md:right-3 md:left-auto md:top-3 md:w-[440px] md:rounded-3xl">
     <div data-sheet-grip class="shrink-0 px-4 pt-2 pb-3 border-b border-zinc-200/80 dark:border-white/10">
       <span class="block mx-auto w-10 h-1.5 rounded-full bg-zinc-300 dark:bg-white/20 md:hidden" aria-hidden="true"></span>
       <div class="mt-2 flex items-center gap-3">

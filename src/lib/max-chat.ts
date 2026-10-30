@@ -8,7 +8,7 @@ import { openOrder, type OrderArtwork } from './order-sheet';
 import { addToCart, cartItems, putFile, getFile } from './cart';
 import { countInks, type InkCount } from '../components/design/colors';
 import { business } from '../data/business';
-import { openMax } from './max';
+import { openMax, reopenMax } from './max';
 import { setupVoice, type VoiceConfig } from './max-voice';
 import { renderOnProduct, type RenderResult } from './max-render';
 import { startLiveCall, prefetchToken, LiveUnavailable } from './max-live';
@@ -29,13 +29,18 @@ type MaxEvent =
   /** Max's own view of what's settled (products, colors, design, sizes, price, pay). */
   | { type: 'progress'; done: string[] }
   | { type: 'placement'; artId: string; productId?: string; placement: string; method: string; colors?: number; widthIn?: number }
+  /** What Max just priced (product, color, sizes): the product page on screen follows it. */
+  | { type: 'selection'; items: { productId: string; slug: string; color: string; sizes: Record<string, number> }[] }
   | { type: 'error'; text: string }
   | { type: 'done' };
 
 const KEY = 'tbsp-max-v1';
 const sheet = document.querySelector<HTMLElement>('[data-max-sheet]');
+/** Set while the chat is open as the visitor leaves a page: the next page opens it again (this tab only). */
+const OPEN_KEY = 'tbsp-max-open';
 
-if (sheet) {
+// Not inside the hidden product page that draws Max's mockups (max-render.ts): that copy must not touch the chat.
+if (sheet && window.parent === window) {
   const log = sheet.querySelector<HTMLElement>('[data-max-log]')!;
   const intro = sheet.querySelector<HTMLElement>('[data-max-intro]')!;
   const form = sheet.querySelector<HTMLFormElement>('[data-max-form]')!;
@@ -49,6 +54,12 @@ if (sheet) {
   let savedArt: { id: string; name: string; type: string; ink: InkCount }[] = [];
   /** The order Max last proposed (products, colors, sizes, placements): kept and sent back so he never forgets it. */
   let order: CartLine[] = [];
+  /** Cards Max showed (products, order, placements…) and how many messages came before each, so the next page shows them again. */
+  let cards: { n: number; ev: MaxEvent }[] = [];
+  /** Re-drawing saved cards: no page changes, analytics or saving. */
+  let replaying = false;
+  /** Max's typed reply is still streaming (a card shown now sits after it). */
+  let replyOpen = false;
   /** When the conversation was last active (a call only picks it up if it's recent). */
   let lastAt = 0;
   /** Language of Max's voice (admin setting), to tell real words from transcribed room noise. */
@@ -65,9 +76,15 @@ if (sheet) {
   try {
     // Kept on this device for a week, so Max remembers a visitor who closes the chat or comes back later.
     const saved = JSON.parse(localStorage.getItem(KEY) || sessionStorage.getItem(KEY) || 'null');
-    if (saved?.messages?.length && (!saved.at || Date.now() - saved.at < 7 * 864e5)) { messages = saved.messages; sessionId = saved.sessionId; lastAt = saved.at || 0; savedArt = Array.isArray(saved.art) ? saved.art : []; order = Array.isArray(saved.order) ? saved.order : []; }
+    if (saved?.messages?.length && (!saved.at || Date.now() - saved.at < 7 * 864e5)) { messages = saved.messages; sessionId = saved.sessionId; lastAt = saved.at || 0; savedArt = Array.isArray(saved.art) ? saved.art : []; order = Array.isArray(saved.order) ? saved.order : []; cards = Array.isArray(saved.cards) ? saved.cards : []; }
   } catch { /* ignore */ }
   if (!sessionId) sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
+  /** Max was open when the visitor left the last page (a minute ago at most): open him again here. */
+  let carryOver: { at: number; call?: boolean } | null = null;
+  try { carryOver = JSON.parse(sessionStorage.getItem(OPEN_KEY) || 'null'); sessionStorage.removeItem(OPEN_KEY); } catch { /* ignore */ }
+  if (carryOver && !(Date.now() - carryOver.at < 60_000)) carryOver = null;
+  /** Settles once a restored conversation is back on screen (anything added after it goes below). */
+  let restored: Promise<unknown> = Promise.resolve();
   // Designs are kept too (files in the browser's file store), so reopening Max brings them back.
   // Voice calls: the studio only sees tool calls, so the transcript is sent along a few seconds
   // after each turn (and when the tab is left) to be saved with the chat (Admin › Max chats).
@@ -84,7 +101,13 @@ if (sheet) {
     logPending = true; window.clearTimeout(logTimer); logTimer = window.setTimeout(() => sendLog(), 3000);
   };
   window.addEventListener('pagehide', () => { if (logPending) sendLog(true); });
-  const save = () => { lastAt = Date.now(); try { localStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30), at: lastAt, order, art: art.map((a) => ({ id: a.id, name: a.file.name, type: a.file.type, ink: a.ink })) })); } catch { /* ignore */ } };
+  const save = () => {
+    lastAt = Date.now();
+    // Only the last 30 messages are kept: cards move with them.
+    const drop = Math.max(0, messages.length - 30);
+    const keptCards = cards.filter((c) => c.n >= drop).map((c) => ({ ...c, n: c.n - drop }));
+    try { localStorage.setItem(KEY, JSON.stringify({ sessionId, messages: messages.slice(-30), at: lastAt, order, cards: keptCards, art: art.map((a) => ({ id: a.id, name: a.file.name, type: a.file.type, ink: a.ink })) })); } catch { /* ignore */ }
+  };
 
   const el = <K extends keyof HTMLElementTagNameMap>(tag: K, cls = '', text = '') => {
     const n = document.createElement(tag);
@@ -149,6 +172,7 @@ if (sheet) {
   };
   function cartCard(e: Extract<MaxEvent, { type: 'cart' }>) {
     order = e.items; save();
+    if (!replaying) followOnPage(e.items);
     // Only the newest order card stays open: earlier versions fold to one line, so the chat isn't a stack of carts.
     log.querySelectorAll<HTMLElement>('[data-max-cart]:not([data-old])').forEach((old) => {
       old.dataset.old = '';
@@ -444,9 +468,9 @@ if (sheet) {
     log.append(card); scroll();
     placementCards.set(key, { sig, el: card });
     if (here?.id && here.id === pid) {
-      // On this product's page: place it on the preview right away.
-      window.dispatchEvent(new CustomEvent('tbsp-max-place', { detail: { file: a.file, location: e.placement, method: e.method, widthIn: e.widthIn } }));
-      info.append(el('p', 'text-emerald-700 dark:text-emerald-400 font-semibold', 'Placed on the preview. Close this chat to see it and adjust.'));
+      // On this product's page: place it on the preview right away (a saved card shown again is already there).
+      if (!replaying) window.dispatchEvent(new CustomEvent('tbsp-max-place', { detail: { file: a.file, location: e.placement, method: e.method, widthIn: e.widthIn } }));
+      info.append(el('p', 'text-emerald-700 dark:text-emerald-400 font-semibold', 'Placed on the product on this page.'));
       return;
     }
     void productInfo(pid).then((prod) => {
@@ -457,22 +481,67 @@ if (sheet) {
       // chose. The design shows on its own; the order card's mockups show the chosen color.
       if (!prod.slug) return;
       const see = el('button', 'btn-quiet btn-sm shrink-0', 'See it'); see.type = 'button';
-      see.addEventListener('click', async () => {
-        see.disabled = true;
-        // Every design Max placed on this product goes along (front and back, say).
-        const list: { key: string; name: string; type: string; location: string; method: string; widthIn?: number }[] = [];
-        for (const [loc, x] of placedOn.get(pid)!) {
-          const key = `max/${sessionId}/${x.a.id}`;
-          await putFile(key, x.a.file);
-          list.push({ key, name: x.a.file.name, type: x.a.file.type, location: loc, method: x.method, widthIn: x.widthIn });
-        }
-        try { sessionStorage.setItem('tbsp-max-place', JSON.stringify({ productId: pid, list })); } catch { /* ignore */ }
-        location.href = `/catalog/${prod.slug}/`;
-      });
+      see.addEventListener('click', () => { see.disabled = true; void showOnProduct(pid, prod.slug); });
       card.append(see);
     });
   }
 
+
+  /**
+   * Opens a product's page with every design Max placed on it (front and back, say), in the color and
+   * sizes of Max's order, and the chat open again there with the whole conversation.
+   */
+  async function showOnProduct(pid: string, slug: string, pick?: { color?: string; sizes?: Record<string, number> }) {
+    const list: { key: string; name: string; type: string; location: string; method: string; widthIn?: number }[] = [];
+    for (const [loc, x] of placedOn.get(pid) ?? []) {
+      const key = `max/${sessionId}/${x.a.id}`;
+      await putFile(key, x.a.file);
+      list.push({ key, name: x.a.file.name, type: x.a.file.type, location: loc, method: x.method, widthIn: x.widthIn });
+    }
+    // Designs on the order that weren't placed through a card yet (one design, Max's spots).
+    const it = order.find((o) => o.productId === pid);
+    if (it) for (const [li, l] of it.locations.entries()) {
+      const a = artFor(l, li);
+      if (!a || list.some((x) => x.location.toLowerCase() === l.placement.toLowerCase())) continue;
+      const key = `max/${sessionId}/${a.id}`;
+      await putFile(key, a.file);
+      list.push({ key, name: a.file.name, type: a.file.type, location: l.placement, method: l.method, widthIn: l.widthIn });
+    }
+    const color = pick?.color || it?.color, sizes = pick?.sizes || it?.sizes;
+    try { sessionStorage.setItem('tbsp-max-place', JSON.stringify({ productId: pid, list, color, sizes })); } catch { /* ignore */ }
+    keepOpen();
+    location.href = `/catalog/${slug}/`;
+  }
+
+  /**
+   * What Max says matches the screen: on a product page, his order's color and sizes for that product
+   * go onto the page. When he swaps the product the visitor is looking at for another one, that product's
+   * page opens (after his reply, so it isn't cut off; on a call he offers a button so the call isn't dropped).
+   */
+  let switchTo: { pid: string; slug: string; name: string; color?: string; sizes?: Record<string, number> } | null = null;
+  function followOnPage(items: { productId?: string; slug?: string; name?: string; productName?: string; color?: string; sizes?: Record<string, number> }[]) {
+    const here = document.getElementById('add-to-quote')?.dataset;
+    if (!here?.id || !items.length) return;
+    const mine = items.find((it) => it.productId === here.id);
+    if (mine) { window.dispatchEvent(new CustomEvent('tbsp-max-sync', { detail: { color: mine.color, sizes: mine.sizes } })); return; }
+    // Only a clear swap (one product, not this one) moves the page.
+    const next = items.length === 1 ? items[0] : null;
+    if (!next?.productId || !next.slug) return;
+    switchTo = { pid: next.productId, slug: next.slug, name: next.name || next.productName || 'product', color: next.color, sizes: next.sizes };
+    if (call || calling) { const s = switchTo; switchTo = null; switchButton(s); }
+  }
+  function switchButton(s: NonNullable<typeof switchTo>) {
+    const b = el('button', 'btn-quiet h-10 text-[13.5px] self-start', `Show the ${kind(s.name)} on the page`); b.type = 'button';
+    b.addEventListener('click', () => { b.disabled = true; void showOnProduct(s.pid, s.slug, s); });
+    log.append(b); scroll();
+  }
+  /** After a reply: open the product Max switched to. */
+  function runSwitch() {
+    const s = switchTo; switchTo = null;
+    if (!s) return;
+    bubble('assistant', `Opening the ${kind(s.name)} for you…`);
+    window.setTimeout(() => void showOnProduct(s.pid, s.slug, s), 900);
+  }
 
   function handoffCard(e: Extract<MaxEvent, { type: 'handoff' }>) {
     if (e.text) bubble('assistant', e.text);
@@ -598,6 +667,7 @@ if (sheet) {
           }
           b.textContent = text; scroll();
           if (done) { delete live[who]; messages.push({ role: who, content: text }); save(); trackText(text, who); logSoon(); }
+          if (done && who === 'assistant' && switchTo) { const s = switchTo; switchTo = null; switchButton(s); }
         },
         events: (evs) => { for (const ev of evs as MaxEvent[]) render(ev); },
       }, Date.now() - lastAt < 2 * 3600_000 ? messages.filter((m) => !queued.includes(m.content)) : [], () => queued.splice(0).join('\n'), Date.now() - lastDropAt < 2 * 60_000 ? 'reconnected' : Date.now() - Math.max(lastAt, lastCallEnd) > 15 * 60_000 ? 'welcome' : 'quiet');
@@ -665,11 +735,15 @@ if (sheet) {
       if (ev.items.every((it) => it.color)) steps.mark('colors');
       if (ev.items.some((it) => it.locations.some((l, li) => artFor(l, li)))) steps.mark('design');
       if (ev.items.every((it) => Object.values(it.sizes).some((n) => n > 0))) steps.mark('sizes');
-      if (ev.price && ev.price.enabled && ev.price.totals) { steps.mark('price'); track('max_price_shown', { value: ev.price.totals.total, currency: 'USD' }); }
+      if (ev.price && ev.price.enabled && ev.price.totals) { steps.mark('price'); if (!replaying) track('max_price_shown', { value: ev.price.totals.total, currency: 'USD' }); }
     }
   }
 
+  /** Cards worth showing again on the next page (in place in the conversation). */
+  const KEEP = new Set<MaxEvent['type']>(['products', 'cart', 'placement', 'choices', 'handoff', 'contact']);
   function render(ev: MaxEvent) {
+    if (!replaying && KEEP.has(ev.type)) { cards.push({ n: messages.length + (replyOpen || live.assistant ? 1 : 0), ev }); cards = cards.slice(-40); save(); }
+    if (ev.type === 'selection') { if (!replaying) followOnPage(ev.items); return; }
     trackSteps(ev);
     if (ev.type === 'contact') contactCard(ev); else if (ev.type === 'forget') forget(); else if (ev.type === 'placement') placementCard(ev);
     else if (ev.type === 'products') productsCard(ev); else if (ev.type === 'cart') cartCard(ev); else if (ev.type === 'choices') choicesCard(ev); else if (ev.type === 'handoff') handoffCard(ev); else if (ev.type === 'error') bubble('assistant', ev.text);
@@ -712,7 +786,7 @@ if (sheet) {
           let ev: MaxEvent;
           try { ev = JSON.parse(line); } catch { continue; }
           dots.remove();
-          if (ev.type === 'text') { if (!out) out = bubble('assistant', ''); reply += ev.delta; out.textContent = reply; scroll(); }
+          if (ev.type === 'text') { if (!out) out = bubble('assistant', ''); reply += ev.delta; replyOpen = true; out.textContent = reply; scroll(); }
           else { out = null; render(ev); }
         }
       }
@@ -727,7 +801,8 @@ if (sheet) {
       const c = el('a', 'btn-quiet h-10 text-[13.5px]', `Call ${business.phoneDisplay}`); c.href = `tel:${business.phone}`;
       row.append(q, c); b.after(row); scroll();
     } finally {
-      busy = false; send.disabled = false;
+      busy = false; send.disabled = false; replyOpen = false;
+      runSwitch();
     }
   }
 
@@ -759,6 +834,13 @@ if (sheet) {
     // Talk by default: the chat opens on a big "Talk to Max" (one tap still starts it).
     talkFirst = !!voiceCfg?.talkByDefault;
     callCta.hidden = !(liveOn && talkFirst);
+    // A call was on when the visitor changed pages: one tap picks it up where it was.
+    if (carryOver?.call && liveOn) void restored.then(() => {
+      if (call || calling) return;
+      const b = el('button', 'press self-start inline-flex items-center gap-2 h-10 px-4 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-[13.5px] font-semibold', '🎙 Keep talking'); b.type = 'button';
+      b.addEventListener('click', () => { b.remove(); setMode('voice'); void beginCall(); });
+      log.append(b); scroll();
+    });
     // The admin's opening line and tap-to-ask suggestions (Settings › Online orders › Max).
     if (greeting) sheet.querySelector('[data-max-greeting]')!.textContent = greeting;
     if (suggestions.length) {
@@ -773,21 +855,60 @@ if (sheet) {
     void fab;
   })();
 
-  // Restore an earlier conversation in this tab (text only).
+  // ── moving between pages ──
+  // The chat follows the visitor: open when they leave a page means open on the next one, with the
+  // conversation, the cards and the designs as they were. A voice call can't survive the page load,
+  // so a "Keep talking" button picks it up with one tap (browsers need a tap for sound and mic).
+  function keepOpen() { try { sessionStorage.setItem(OPEN_KEY, JSON.stringify({ at: Date.now(), call: !!(call || calling) })); } catch { /* ignore */ } }
+  window.addEventListener('pagehide', () => {
+    try { if (!sheet.hidden && sheet.hasAttribute('data-open')) keepOpen(); else sessionStorage.removeItem(OPEN_KEY); } catch { /* ignore */ }
+  });
+
+  /** Saved cards, back in their place in the conversation. Only the newest order card (older ones were folded away). */
+  function replayChat() {
+    const lastCart = cards.map((c) => c.ev.type).lastIndexOf('cart');
+    let ci = 0;
+    const cardsUpTo = (n: number) => {
+      for (; ci < cards.length && cards[ci].n <= n; ci++) {
+        const { ev, n: at } = cards[ci];
+        if (ev.type === 'cart' && ci !== lastCart) continue;
+        try {
+          if (ev.type === 'contact') { const c = getContact(); if (c) log.append(contactLine(c)); }
+          // A question already answered shows as text; the last one keeps its buttons.
+          else if (ev.type === 'choices' && at < messages.length) { if (ev.question) bubble('assistant', ev.question); }
+          else render(ev);
+        } catch { /* a card that can't be drawn again is skipped */ }
+      }
+    };
+    replaying = true;
+    messages.forEach((m, i) => { cardsUpTo(i); bubble(m.role, m.content); });
+    cardsUpTo(Infinity);
+    replaying = false;
+    return lastCart >= 0;
+  }
+
+  // Restore an earlier conversation in this tab.
   // A recent one continues; an older one (2+ hours) folds into one line and Max starts fresh.
   if (messages.length && Date.now() - lastAt < 2 * 3600_000) {
-    intro.hidden = true; reset.hidden = false; for (const m of messages) bubble(m.role, m.content);
-    // The designs come back from the file store; cards don't, so Max can show the order again.
-    void Promise.all(savedArt.map(async (x) => {
+    intro.hidden = true; reset.hidden = false;
+    if (carryOver) reopenMax();
+    // The designs come back from the file store first, so the cards can show them.
+    restored = Promise.all(savedArt.map(async (x) => {
       const blob = await getFile(`maxart/${sessionId}/${x.id}`).catch(() => null);
       if (!blob) return;
       const file = new File([blob], x.name, { type: x.type || blob.type });
       art.push({ id: x.id, file, ink: x.ink, url: file.type.startsWith('image/') ? URL.createObjectURL(file) : undefined });
       artSeq = Math.max(artSeq, Number(x.id.replace(/\D/g, '')) || 0);
-    })).then(() => { art.sort((a, b) => a.id.localeCompare(b.id)); renderFiles(); });
-    const again = el('button', 'chip !h-auto py-2 self-start text-[13.5px]', '↻ Show my order again'); again.type = 'button';
-    again.addEventListener('click', () => { again.remove(); void ask('Please show my order again.'); });
-    log.append(again);
+    })).then(() => {
+      art.sort((a, b) => a.id.localeCompare(b.id)); renderFiles();
+      const hadCart = replayChat();
+      if (order.length && !hadCart) {
+        const again = el('button', 'chip !h-auto py-2 self-start text-[13.5px]', '↻ Show my order again'); again.type = 'button';
+        again.addEventListener('click', () => { again.remove(); void ask('Please show my order again.'); });
+        log.append(again);
+      }
+      scroll();
+    });
   }
   else if (messages.length) {
     const old = el('details', 'rounded-xl border border-zinc-200/80 dark:border-white/10 px-3 py-2 text-[13px]');
@@ -797,8 +918,38 @@ if (sheet) {
     for (const m of messages) inner.append(el('div', `max-bubble ${m.role === 'user' ? 'max-me' : 'max-bot'}`, m.content));
     old.append(inner);
     log.prepend(old);
-    messages = []; order = []; savedArt = []; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
+    messages = []; order = []; cards = []; savedArt = []; sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
   }
+
+  // The product page placed Max's design (here, or carried over from another page): its mockup shows in
+  // the chat, so on a phone the visitor sees it without closing Max.
+  let shownCard: HTMLElement | null = null;
+  window.addEventListener('tbsp-max-shown', (e) => {
+    const x = (e as CustomEvent<{ mockups: { side: string; blob: Blob }[]; name: string; color: string; locations: string[]; carried: boolean }>).detail;
+    void restored.then(() => {
+      if (!x) return;
+      if (x.carried) {
+        // Arrived from the chat: Max says where things stand, and he knows it on the next turn.
+        const text = `Here it is on the ${x.name}${x.color ? ` in ${x.color}` : ''}${x.locations.length ? `, ${x.locations.join(' and ').toLowerCase()}` : ''}. You can move or resize it on the page, or keep telling me what to change.`;
+        bubble('assistant', text); messages.push({ role: 'assistant', content: text }); save();
+      }
+      if (!x.mockups?.length) { scroll(); return; }
+      shownCard?.remove();
+      const card = shownCard = el('div', 'rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2.5 grid gap-2');
+      const pics = el('div', 'flex gap-2');
+      for (const m of x.mockups) {
+        const img = el('img', 'w-28 h-32 rounded-xl object-contain bg-white dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10');
+        img.src = URL.createObjectURL(m.blob); img.alt = `${x.name} ${m.side} with your design`;
+        pics.append(img);
+      }
+      card.append(el('p', 'text-[12px] font-bold uppercase tracking-[0.1em] text-violet-700 dark:text-violet-300', 'On the page now'), pics);
+      // Phones: the chat covers the page, so one tap shows it (the orb brings Max back).
+      const look = el('button', 'btn-quiet h-10 text-[13.5px] md:hidden', 'Adjust it on the page'); look.type = 'button';
+      look.addEventListener('click', () => sheet.querySelector<HTMLElement>('[data-sheet-close]:not([data-sheet-backdrop])')?.click());
+      card.append(look);
+      log.append(card); scroll();
+    });
+  });
 
   form.addEventListener('submit', (e) => { e.preventDefault(); voice.typed(); const t = input.value; input.value = ''; input.style.height = ''; ask(t); });
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); form.requestSubmit(); } });
@@ -814,7 +965,7 @@ if (sheet) {
     lastCallEnd = 0;
     // Start over means a clean slate: no messages, designs, placements or pending text, and a new session for Max.
     voice.stop(); endCall(); steps.reset(); messages = []; art.length = 0; artSeq = 0; queued.length = 0; lastDropAt = 0;
-    placedOn.clear(); placementCards.clear(); seen.clear(); order = [];
+    placedOn.clear(); placementCards.clear(); seen.clear(); order = []; cards = []; switchTo = null; shownCard = null;
     sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()); save();
     [...log.children].forEach((c) => { if (c !== intro) c.remove(); });
     filesBox.replaceChildren(); filesBox.hidden = true;
