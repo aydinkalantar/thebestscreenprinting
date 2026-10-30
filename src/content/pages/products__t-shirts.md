@@ -16,7 +16,7 @@ facts:
     value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days"
 faqs:
   - q: "What is the minimum order for custom t-shirts?"
-    a: "12 pieces for screen printing and embroidery, and 6 for DTG, DTF and heat transfer. Mixed sizes count toward the minimum."
+    a: "12 pieces for screen printing and embroidery, and 6 for DTG and DTF. Mixed sizes count toward the minimum."
   - q: "When is screen printing the better choice for t-shirts?"
     a: "Screen printing is our core service for bold designs with a few solid colors and bigger runs, printed in-house at our shop."
   - q: "How fast can I get custom t-shirts?"

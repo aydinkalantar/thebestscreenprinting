@@ -14,7 +14,7 @@ faqs:
   - q: "Can everyone in the group get a different size?"
     a: "Yes. Quantity is counted per design, not per size, so you can mix sizes across the order."
   - q: "Can we add individual names to each shirt?"
-    a: "Yes. Names and numbers are usually added with heat transfer, on top of a screen printed or DTG design."
+    a: "Yes. Names and numbers are usually added with DTF, on top of a screen printed or DTG design."
   - q: "Our group is small. Do we still qualify?"
     a: "Yes, as long as the order is 6 pieces (12 for screen printing and embroidery) or more. Screen printing usually gets cheaper per piece as quantity grows."
   - q: "Can you help us with the design?"
@@ -41,7 +41,7 @@ It comes down to how many shirts and how many colors.
 - **Full-color or photo art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 
 Every order starts at 6 pieces (12 for screen printing and embroidery).
-- **Names and numbers:** [heat transfer](/services/heat-transfer-vinyl/) to personalize each piece.
+- **Names and numbers:** [DTF](/services/direct-to-film/) to personalize each piece.
 - **Hats, polos and jackets:** [embroidery](/services/embroidery/) for a stitched logo.
 
 ## More than t-shirts

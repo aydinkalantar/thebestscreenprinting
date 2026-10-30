@@ -49,7 +49,7 @@ Quantity and garment call the shot:
 
 Every order starts at 6 pieces (12 for screen printing and embroidery).
 - **Polos, hats and jackets:** [embroidery](/services/embroidery/), dense thread that makes a uniform look sharp.
-- **Employee names:** [heat transfer vinyl](/services/heat-transfer-vinyl/), a different name on every shirt.
+- **Employee names:** [DTF](/services/direct-to-film/), a different name on every shirt.
 
 Not sure? Send the logo and the quantity. We will recommend a method in your quote.
 

@@ -48,7 +48,7 @@ Los Angeles runs on hoodies. Early call times on set, cold nights at outdoor sho
 
 ## How we decorate them
 
-In-house [screen printing](/screen-printing/) handles bold designs and bigger runs. [Embroidery](/services/embroidery/) gives a stitched logo with a premium finish. [DTG](/services/direct-to-garment/) covers full-color art, and [heat transfer](/services/heat-transfer-vinyl/) adds names and numbers. For print locations, fits and sizing, see [custom hoodies in Los Angeles](/products/sweatshirts-hoodies/custom-hoodies/). Rushing? Read our [rush printing checklist](/products/t-shirts/same-day-t-shirt-printing-near-me/) first.
+In-house [screen printing](/screen-printing/) handles bold designs and bigger runs. [Embroidery](/services/embroidery/) gives a stitched logo with a premium finish. [DTG](/services/direct-to-garment/) covers full-color art, and [DTF](/services/direct-to-film/) adds names and numbers. For print locations, fits and sizing, see [custom hoodies in Los Angeles](/products/sweatshirts-hoodies/custom-hoodies/). Rushing? Read our [rush printing checklist](/products/t-shirts/same-day-t-shirt-printing-near-me/) first.
 
 ## Come by or send it over
 

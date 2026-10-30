@@ -12,11 +12,14 @@ export const CATEGORY_LABELS: Record<string, string> = {
 
 /** Decoration codes → the names customers know. */
 export const TECHNIQUE_LABELS: Record<string, string> = {
-  SCREEN: 'Screen printing', DTG: 'DTG printing', DTF: 'DTF transfer', HTV: 'Heat transfer', DTFILM: 'DTF transfer', EMBROIDERY: 'Embroidery', 'CUT-SEW': 'All-over print',
+  SCREEN: 'Screen printing', DTG: 'DTG printing', DTF: 'DTF transfer', DTFILM: 'DTF transfer', EMBROIDERY: 'Embroidery', 'CUT-SEW': 'All-over print',
   'DIRECT-TO-FABRIC': 'All-over print', SUBLIMATION: 'Sublimation', UV: 'UV print', DIGITAL: 'Digital print',
 };
 
-export const techniqueNames = (codes: string[]) => [...new Set(codes.map((c) => TECHNIQUE_LABELS[c] || c))];
+/** Methods we no longer offer (heat transfer vinyl, stopped Oct 2026); hidden even when the catalog lists them. */
+const RETIRED = new Set(['HTV']);
+
+export const techniqueNames = (codes: string[]) => [...new Set(codes.filter((c) => !RETIRED.has(c)).map((c) => TECHNIQUE_LABELS[c] || c))];
 
 /** Where "Customize" goes: the studio when it is live, otherwise a quote request. */
 export function customizeHref(p: CatalogProduct) {

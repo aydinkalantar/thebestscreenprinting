@@ -19,10 +19,6 @@ Creativity with superior quality
 
 The artistry and perfection
 
-## Heat Transfer
-
-Experience brilliance and durability
-
 ## Direct to Film (DTF)
 
 Where innovation meets quality
@@ -69,7 +65,6 @@ THE BEST SCREEN PRINTING in LA! They really do live up to their name! I went in 
 - Direct to Garment (DTG)
 - Embroidery
 - Embossing
-- Heat Transfer Vinyl
 - Products
 - Solutions
 - About Blog

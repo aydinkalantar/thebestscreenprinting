@@ -29,7 +29,7 @@ export const business = {
   studioLive: false,
   // Max, the merch agent, on this site (chat panel; his brain runs in the studio admin).
   maxLive: true,
-  /** Lowest minimum (DTG, DTF, heat transfer). Everything is made in-house; we don't decorate fewer. */
+  /** Lowest minimum (DTG, DTF). Everything is made in-house; we don't decorate fewer. */
   shopMinimum: 6,
   /** Screen printing and embroidery minimum; smaller requests get offered DTG or DTF. */
   screenMinimum: 12,

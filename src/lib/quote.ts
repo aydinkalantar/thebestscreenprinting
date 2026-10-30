@@ -16,7 +16,7 @@ export const LEAD_SOURCES = [
 ] as const;
 
 export const DECORATIONS = [
-  'Screen printing', 'Embroidery', 'DTF transfer', 'DTG printing', 'Heat transfer', 'Embossing',
+  'Screen printing', 'Embroidery', 'DTF transfer', 'DTG printing', 'Embossing',
   'Sublimation', 'All-over print', 'Custom cut & sew', 'Not sure yet',
 ] as const;
 
@@ -97,7 +97,7 @@ export const sizesText = (sizes: Record<string, number>) => Object.entries(sizes
  * Reads the quote cart's `items` JSON. Each item must reach its minimum on its own: 12 pieces
  * with screen printing or embroidery, 6 otherwise (see itemMinimum). Unknown fields are dropped.
  */
-/** Screen printing and embroidery start at 12 pieces; DTG, DTF and heat transfer at 6. */
+/** Screen printing and embroidery start at 12 pieces; DTG and DTF at 6. */
 export const itemMinimum = (methods: string[]) =>
   methods.some((m) => /screen|embroider/i.test(m)) ? business.screenMinimum : business.shopMinimum;
 

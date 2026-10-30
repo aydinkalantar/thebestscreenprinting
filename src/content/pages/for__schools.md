@@ -10,14 +10,14 @@ facts:
   - label: "Minimum 6 pieces (12 for screen printing and embroidery)"
     value: "Screen printed in-house"
   - label: "Names and numbers"
-    value: "Heat transfer for each student or player"
+    value: "DTF names for each student or player"
   - label: "Quotes"
     value: "Answered within one business day"
 faqs:
   - q: "Can a small club order just a few shirts?"
     a: "Yes, from 6 pieces (12 for screen printing and embroidery). That is our minimum for every order, so small clubs and staff groups can order too."
   - q: "Can you add student names or numbers?"
-    a: "Yes. Names and numbers are added with heat transfer, so each piece can be different."
+    a: "Yes. Names and numbers are added with DTF, so each piece can be different."
   - q: "Can you embroider staff polos and jackets?"
     a: "Yes. We embroider polos, hats, jackets and uniforms."
   - q: "Can we pick up the order at your shop?"
@@ -45,7 +45,7 @@ Browse styles and colors in our [catalog](/catalog/).
 
 Every order starts at 6 pieces (12 for screen printing and embroidery).
 - **Staff polos, jackets and hats:** [embroidery](/services/embroidery/), clean stitched crests.
-- **Student names and numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/).
+- **Student names and numbers:** [DTF](/services/direct-to-film/).
 
 Ordering for a sports program? See [team uniforms and jerseys](/products/team-uniforms-jerseys/) for how we run rosters.
 

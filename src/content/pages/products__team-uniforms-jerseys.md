@@ -1,21 +1,21 @@
 ---
 path: "/products/team-uniforms-jerseys/"
 title: "Team Uniforms & Jerseys | Los Angeles"
-description: "Custom team uniforms and jerseys in Los Angeles: screen-printed crests, heat-transfer names and numbers, embroidered coach gear. Made in Los Angeles."
+description: "Custom team uniforms and jerseys in Los Angeles: screen-printed crests, DTF names and numbers, embroidered coach gear. Made in Los Angeles."
 h1: "Team uniforms and jerseys"
 kind: product
 imported: false
 summary: "Jerseys that look like a team before the first whistle. Logos screen printed or embroidered in our Los Angeles shop, names and numbers pressed from your roster, quotes back within one business day."
 facts:
   - label: "Names and numbers"
-    value: "Heat transfer, so every jersey can be different"
+    value: "DTF, so every jersey can be different"
   - label: "Team crest"
     value: "Screen printed in-house; DTG or DTF for full-color crests"
   - label: "Quotes"
     value: "Answered within one business day"
 faqs:
   - q: "Can every jersey have a different name and number?"
-    a: "Yes. Names and numbers are applied with heat transfer, which lets us change them piece by piece from your roster."
+    a: "Yes. Names and numbers are printed with DTF, which lets us change them piece by piece from your roster."
   - q: "What is the minimum for team jerseys?"
     a: "Team orders start at 6 pieces (12 for screen printing and embroidery). Bold, few-color crests are usually screen printed; full-color logos are usually printed with DTG or DTF."
   - q: "Can you embroider team polos, jackets and hats?"
@@ -46,8 +46,7 @@ Send a roster with sizes, names and numbers. We build the whole order from that 
 One jersey, several techniques, each doing what it does best:
 
 - **[Screen printing](/screen-printing/)** lays down the team crest in thick, saturated ink, from 12 pieces. Printed in-house, built to survive the wash after every game.
-- **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** handles names and numbers, crisp edges, different on every piece.
-- **[Direct to film](/services/direct-to-film/)** and DTG cover full-color logos, gradients and photo detail.
+- **[Direct to film (DTF)](/services/direct-to-film/)** handles names and numbers, crisp edges, different on every piece. DTF and DTG also cover full-color logos, gradients and photo detail.
 - **[Embroidery](/services/embroidery/)** stitches the logo onto coach polos, team jackets and hats for a sharp sideline look.
 
 Not sure which mix fits? Send your art and headcount. We will call it in the quote.

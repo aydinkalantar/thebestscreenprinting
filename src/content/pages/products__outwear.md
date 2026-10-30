@@ -7,16 +7,16 @@ kind: product
 imported: false
 summary: "The jacket is the top layer, so it is the one everybody sees. Embroidered logos, printed backs and personalized names on outerwear for crews, staff, teams and brands, out of our Los Angeles shop."
 facts:
-  - { label: "Methods", value: "Embroidery, screen printing, heat transfer" }
+  - { label: "Methods", value: "Embroidery, screen printing, DTF" }
   - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Best for", value: "Crew jackets, staff uniforms, teams, brand outerwear" }
 faqs:
   - q: "What is the best way to brand a jacket?"
-    a: "Embroidery is the most popular choice for a chest logo on jackets, since thread holds up well and looks premium. Larger back graphics are often screen printed, and names are added with heat transfer."
+    a: "Embroidery is the most popular choice for a chest logo on jackets, since thread holds up well and looks premium. Larger back graphics are often screen printed, and names are added with DTF."
   - q: "Can you embroider on the back of a jacket?"
     a: "Embroidery works best for smaller to mid-size logos. For a large back design, screen printing is usually the better fit. We will recommend the right approach for your artwork and jacket."
   - q: "Can I add individual names to each jacket?"
-    a: "Yes. Names and numbers can be added with heat transfer vinyl or embroidery on top of a shared logo."
+    a: "Yes. Names and numbers can be added with DTF or embroidery on top of a shared logo."
 sourceUrl: "https://thebestscreenprinting.com/products/outwear/"
 ---
 ## The layer everybody sees
@@ -40,7 +40,7 @@ Looking for a specific style or color? Check the [catalog](/catalog/) or ask us 
 
 **[Screen printing](/screen-printing/)** owns the big back graphic. Bold, opaque ink across the back panel for crew jackets, tour gear and merch. In-house, from 12 pieces.
 
-**[Heat transfer vinyl](/services/heat-transfer-vinyl/)** adds names, titles and numbers so each jacket belongs to one person.
+**[DTF](/services/direct-to-film/)** adds names, titles and numbers so each jacket belongs to one person.
 
 The strongest outerwear often combines all three: an embroidered chest, a printed back and a name on the sleeve.
 

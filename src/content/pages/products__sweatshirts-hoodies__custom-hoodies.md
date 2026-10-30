@@ -1,11 +1,11 @@
 ---
 path: "/products/sweatshirts-hoodies/custom-hoodies/"
 title: "Custom Hoodies Los Angeles | TBSP"
-description: "Custom hoodies in Los Angeles: screen printed, embroidered, DTG or heat transfer. Classic and oversized fits in sizes XS to 5XL, printed in Los Angeles."
+description: "Custom hoodies in Los Angeles: screen printed, embroidered, DTG or DTF. Classic and oversized fits in sizes XS to 5XL, printed in Los Angeles."
 h1: "Custom hoodies in Los Angeles"
 kind: product
 imported: false
-summary: "The hoodie is the piece people actually keep, so it should look the part. Classic and oversized fits from XS to 5XL, decorated with screen printing, embroidery, DTG or heat transfer, all run out of our Los Angeles shop."
+summary: "The hoodie is the piece people actually keep, so it should look the part. Classic and oversized fits from XS to 5XL, decorated with screen printing, embroidery, DTG or DTF, all run out of our Los Angeles shop."
 facts:
   - { label: "Sizes", value: "XS to 5XL, classic and oversized fits" }
   - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
@@ -33,7 +33,7 @@ A tee gets worn for a season. A good hoodie gets worn for years. That is why bra
 
 **Direct-to-garment.** Full-color artwork printed straight into the fabric, from 6 pieces. Ideal for photo-heavy and full-color designs. [See DTG](/services/direct-to-garment/).
 
-**Heat transfer.** Crisp names, numbers and small text, often layered on top of a screen printed design. [See heat transfer vinyl](/services/heat-transfer-vinyl/).
+**DTF.** Full-color art on cotton, fleece and blends, plus individual names and numbers layered on top of a screen printed design. [See DTF](/services/direct-to-film/).
 
 Mixing methods is normal. A screen printed back with an embroidered chest logo is one of the best-looking hoodies you can make.
 

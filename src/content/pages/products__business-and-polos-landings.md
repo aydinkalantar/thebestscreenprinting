@@ -7,7 +7,7 @@ kind: product
 imported: false
 summary: "A polo with a stitched logo says your team means business without saying a word. Embroidered and printed polos for staff, sales teams, hospitality and events, out of our Los Angeles shop."
 facts:
-  - { label: "Method", value: "Embroidery for logos; heat transfer for names" }
+  - { label: "Method", value: "Embroidery for logos; DTF for names" }
   - { label: "Quotes", value: "Answered within one business day" }
   - { label: "Best for", value: "Staff uniforms, sales teams, hospitality, events" }
 faqs:
@@ -16,7 +16,7 @@ faqs:
   - q: "Where does the logo usually go on a polo?"
     a: "The left chest is the classic spot. Many businesses add a second logo on the sleeve or a design across the upper back."
   - q: "Can each polo have the employee's name?"
-    a: "Yes. Names can be embroidered or added with heat transfer vinyl alongside your logo."
+    a: "Yes. Names can be embroidered or added with DTF alongside your logo."
 sourceUrl: "https://thebestscreenprinting.com/products/business-and-polos-landings/"
 ---
 ## Look like a team. Instantly.
@@ -37,7 +37,7 @@ Customers decide in seconds whether your business looks put together. A matching
 - **Left chest:** the classic. Clean, balanced, instantly recognizable.
 - **Sleeve:** a second mark, a tagline or a department name.
 - **Upper back:** your website or brand name for teams working events.
-- **Right chest:** the employee's name or title, embroidered or added with [heat transfer](/services/heat-transfer-vinyl/).
+- **Right chest:** the employee's name or title, embroidered or added with [DTF](/services/direct-to-film/).
 
 ## Getting your logo stitch-ready
 

@@ -12,7 +12,7 @@ facts:
   - { label: "Full-color art", value: "DTG and DTF" }
 faqs:
   - q: "Can you print on performance and moisture-wicking fabrics?"
-    a: "Yes. Polyester and performance fabrics are often best decorated with DTF or heat transfer. Tell us the garment and we will recommend the method."
+    a: "Yes. Polyester and performance fabrics are often best decorated with DTF. Tell us the garment and we will recommend the method."
   - q: "Can I mix garment types in one order?"
     a: "Yes. Tees, hoodies and hats can share one design and one order. Each item is decorated with the method that suits it."
   - q: "Do you carry youth, plus and tall sizes?"
@@ -25,7 +25,7 @@ T-shirts are where most people start. They are rarely where they stop. Here is t
 
 ## Athletics and performance
 
-Jerseys for baseball, basketball, football, soccer, softball and lacrosse. Pinnies, warmups, shorts and team sweatshirts. Wicking tees, performance polos, gym and running tanks, plus visors and snapbacks. Names and numbers go on with [heat transfer vinyl](/services/heat-transfer-vinyl/). Outfitting a league? See [team uniforms and jerseys](/products/team-uniforms-jerseys/).
+Jerseys for baseball, basketball, football, soccer, softball and lacrosse. Pinnies, warmups, shorts and team sweatshirts. Wicking tees, performance polos, gym and running tanks, plus visors and snapbacks. Names and numbers go on with [DTF](/services/direct-to-film/). Outfitting a league? See [team uniforms and jerseys](/products/team-uniforms-jerseys/).
 
 ## Workwear and business
 
@@ -56,7 +56,7 @@ Hats, tote bags and towels round out a merch table or a welcome kit. See [hats](
 - **Bold, few-color designs on tees or hoodies:** [screen printing](/screen-printing/).
 - **Full-color or photo art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 - **Logos on caps, polos and jackets:** [embroidery](/services/embroidery/).
-- **Names and numbers:** heat transfer vinyl.
+- **Names and numbers:** DTF.
 
 Every order gets a free art check before production, and Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available.
 

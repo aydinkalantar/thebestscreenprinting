@@ -23,11 +23,11 @@ Welcome to The Best Screen Printing, your trusted local partner for high-quality
 
 We’re thrilled you’ve stopped by to learn more about us and our services. At The Best Screen Printing, we don’t just print designs on t-shirts—we help bring your unique vision to life. Our passion lies in creating high-quality, customized products that reflect your style, brand, or message, and we’re proud to be a part of the vibrant Downtown LA, Los Angeles, CA community that we serve.
 
-We know that every project has its own story, whether it’s a new clothing line, a team uniform, a company event, or a special celebration. With that in mind, we’ve built a diverse range of custom decoration services designed to meet your needs, including traditional screen printing, precision embroidery, state-of-the-art Direct-to-Garment (DTG) and Direct-to-Film (DTF) printing, as well as Heat Transfer Vinyl (HTV). By offering multiple methods, we can ensure that each product comes out exactly as you imagined, with crisp colors, durable designs, and a quality finish that stands the test of time.
+We know that every project has its own story, whether it’s a new clothing line, a team uniform, a company event, or a special celebration. With that in mind, we’ve built a diverse range of custom decoration services designed to meet your needs, including traditional screen printing, precision embroidery, state-of-the-art Direct-to-Garment (DTG) and Direct-to-Film (DTF) printing. By offering multiple methods, we can ensure that each product comes out exactly as you imagined, with crisp colors, durable designs, and a quality finish that stands the test of time.
 
 ## Custom Screen Printing Services
 
-Our screen printing services are perfect for businesses, sports teams, schools, and events. We specialize in direct-to-garment printing (DTG), direct-to-film printing (DTF), and heat transfer printing, with eco-friendly ink options for a soft-touch, durable finish. We offer full-color printing and bulk order discounts, with a 12-piece minimum for screen printing and embroidery (6 for DTG, DTF and heat transfer). Popular Products: Custom T-shirts, hoodies, sweatshirts, and tank tops Specialty Printing: Water-based inks, vintage wash prints, metallic inks
+Our screen printing services are perfect for businesses, sports teams, schools, and events. We specialize in direct-to-garment printing (DTG) and direct-to-film printing (DTF), with eco-friendly ink options for a soft-touch, durable finish. We offer full-color printing and bulk order discounts, with a 12-piece minimum for screen printing and embroidery (6 for DTG and DTF). Popular Products: Custom T-shirts, hoodies, sweatshirts, and tank tops Specialty Printing: Water-based inks, vintage wash prints, metallic inks
 
 ## Professional Embroidery Services
 
@@ -130,7 +130,7 @@ Our Mobile App puts creativity at your fingertips, allowing you to design custom
 
 We offer custom printing for a wide range of products, including T-shirts, hoodies, hats, tote bags, and team uniforms. If you don’t see your product listed, please reach out – we can likely accommodate!
 
-Our minimum is 12 pieces for screen printing and embroidery and 6 for DTG, DTF and heat transfer, and you can order as many as you need beyond that.
+Our minimum is 12 pieces for screen printing and embroidery and 6 for DTG and DTF, and you can order as many as you need beyond that.
 
 Absolutely. We provide eco-friendly, water-based inks for screen printing that are durable and environmentally conscious.
 
@@ -155,7 +155,6 @@ Address: 5738 Holmes Ave., Los Angeles, California 90058 Customer Service: +1-32
 - Direct to Garment (DTG)
 - Embroidery
 - Embossing
-- Heat Transfer Vinyl
 - Products
 - Solutions
 - About Blog

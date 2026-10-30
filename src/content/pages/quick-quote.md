@@ -14,7 +14,6 @@ Refer a friend, family member, or colleague and get 15% off for your next order.
 - Direct to Garment (DTG)
 - Embroidery
 - Embossing
-- Heat Transfer Vinyl
 - Products
 - Solutions
 - About Blog

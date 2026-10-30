@@ -21,7 +21,7 @@ export async function GET() {
     `> Custom screen printing, embroidery, DTF and DTG on t-shirts, hoodies, hats, polos and bags. Made in our own production facilities in Los Angeles, California and Cleveland, Ohio, and shipped to every US state, free on orders of $${business.shippingFreeFrom} or more.`,
     '',
     '## Key facts',
-    `- Minimum order: ${business.screenMinimum} pieces for screen printing (1 to 3 colors) and embroidery; ${business.shopMinimum} pieces for DTG, DTF and heat transfer. Screen printing with 4 or more colors starts at 50, embossing at 24.`,
+    `- Minimum order: ${business.screenMinimum} pieces for screen printing (1 to 3 colors) and embroidery; ${business.shopMinimum} pieces for DTG and DTF. Screen printing with 4 or more colors starts at 50, embossing at 24.`,
     `- Turnaround: ${normal.name} ${normal.time.toLowerCase()}; ${rush.name} ${rush.time} (${rush.fee}); ${superRush.name} ${superRush.time} (${superRush.fee}).`,
     `- Shipping: free on orders of $${business.shippingFreeFrom} or more, $${business.shippingFlat} flat below that, anywhere in the lower 48 states; local pickup in Los Angeles.`,
     '- Example price: one-color screen print on a black tee, shirt included, about $11.50 each at 24 pieces and $7.25 each at 144, plus a $25 screen. Full-color DTF about $13 each at 24.',

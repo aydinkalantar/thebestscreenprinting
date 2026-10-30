@@ -8,7 +8,7 @@ imported: false
 summary: "A Los Angeles print shop that has put ink on shirts for Netflix, Adidas, Nike and Google, and for the brand you are launching next month. Screen printing, embroidery, DTG and DTF, with Rush and Super Rush turnaround for tight deadlines."
 facts:
   - { label: "Location", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
-  - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF, heat transfer, embossing" }
+  - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF, embossing" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "Can you help me start a clothing brand?"
@@ -38,7 +38,7 @@ T-shirts, hoodies, crewnecks, tanks, polos, hats, bags and team uniforms. Bring 
 
 ## Six methods, one shop
 
-[Screen printing](/screen-printing/) for bulk. [Embroidery](/services/embroidery/) for logos with texture. [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) for full-color and photo art. [Heat transfer](/services/heat-transfer-vinyl/) for names and numbers. [Embossing](/services/embossing/) for a tactile, ink-free finish. Not sure which? Our [services overview](/services/) breaks it down.
+[Screen printing](/screen-printing/) for bulk. [Embroidery](/services/embroidery/) for logos with texture. [DTG](/services/direct-to-garment/) and [DTF](/services/direct-to-film/) for full-color and photo art, and DTF for names and numbers. [Embossing](/services/embossing/) for a tactile, ink-free finish. Not sure which? Our [services overview](/services/) breaks it down.
 
 ## How fast can you get shirts?
 

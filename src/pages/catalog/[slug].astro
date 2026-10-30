@@ -295,7 +295,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   const cartError = document.getElementById('cart-error')!;
   const baseMin = Number(form.dataset.min) || 6;
   const screenMin = Number(form.dataset.screenMin) || 12;
-  /** Screen printing and embroidery start at 12; DTG, DTF and heat transfer at 6. Follows the placed design, else the chosen method. */
+  /** Screen printing and embroidery start at 12; DTG and DTF at 6. Follows the placed design, else the chosen method. */
   const methodsNow = () => {
     const placed = design?.snapshot().map((p) => p.decoration) ?? [];
     return placed.length ? placed : [...form.querySelectorAll<HTMLInputElement>('input[name="decoration"]:checked')].map((c) => c.value);

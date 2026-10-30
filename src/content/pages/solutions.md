@@ -34,7 +34,7 @@ Crew shirts, attendee giveaways and merch tables. Normal (about 2 weeks), Rush (
 
 ## Sports teams and leagues
 
-Jerseys, warmups and fan gear, with heat transfer names and numbers. See [team uniforms and jerseys](/products/team-uniforms-jerseys/).
+Jerseys, warmups and fan gear, with DTF names and numbers. See [team uniforms and jerseys](/products/team-uniforms-jerseys/).
 
 ## Small businesses
 

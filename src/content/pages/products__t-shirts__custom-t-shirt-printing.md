@@ -44,7 +44,7 @@ The artwork decides it, and every order starts at 6 pieces (12 for screen printi
 
 - **Bold designs with a few solid colors:** [screen printing](/screen-printing/), done in-house, for bold, durable color and the best price on bigger runs
 - **Full-color or photo art:** usually [direct-to-garment](/services/direct-to-garment/) or [direct-to-film](/services/direct-to-film/), with no screens to set up
-- **Names and numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/)
+- **Names and numbers:** [DTF](/services/direct-to-film/)
 - **Edge-to-edge artwork:** [all-over sublimation](/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/)
 
 Not sure which suits your design? Our guide to [custom printed t-shirts](/products/t-shirts/custom-printed-t-shirts/) breaks down each method.

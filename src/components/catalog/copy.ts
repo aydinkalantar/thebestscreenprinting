@@ -15,7 +15,7 @@ export const collectionHeading = (slug: string, label: string) => HEADINGS[slug]
 
 /** "screen printing, embroidery and DTF transfer" from the products' techniques. */
 export function methodsSentence(list: CatalogProduct[]) {
-  const order = ['Screen printing', 'Embroidery', 'DTG printing', 'DTF transfer', 'Heat transfer'];
+  const order = ['Screen printing', 'Embroidery', 'DTG printing', 'DTF transfer'];
   const names = techniqueNames(list.flatMap((p) => p.techniques))
     .sort((a, b) => (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99))
     .map((n) => n.replace(/^[A-Z][a-z]/, (m) => m.toLowerCase()));

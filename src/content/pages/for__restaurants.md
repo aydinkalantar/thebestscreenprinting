@@ -42,7 +42,7 @@ We make restaurant apparel for kitchens, cafes, bars, bakeries and food trucks a
 
 **[DTG](/services/direct-to-garment/)** suits full-color and photo art, from 6 pieces.
 
-Need names on uniforms? We add them with [heat transfer](/services/heat-transfer-vinyl/).
+Need names on uniforms? We add them with [DTF](/services/direct-to-film/).
 
 ## What makes a uniform last in a restaurant?
 

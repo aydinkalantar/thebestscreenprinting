@@ -46,7 +46,7 @@ Want to keep the price tight? Fewer colors and fewer locations go a long way. Ou
 
 ## Built for the bigger run
 
-Screen printing shines when one design goes on a lot of shirts. Mixed sizes are normal, and you can run the same artwork across tees, long sleeves and tanks in one order. Add [heat transfer](/services/heat-transfer-vinyl/) names and numbers to personalize a team run, or pair printed tees with [embroidered hats](/products/hats/) for a full set.
+Screen printing shines when one design goes on a lot of shirts. Mixed sizes are normal, and you can run the same artwork across tees, long sleeves and tanks in one order. Add [DTF](/services/direct-to-film/) names and numbers to personalize a team run, or pair printed tees with [embroidered hats](/products/hats/) for a full set.
 
 For the technical side of the process, read our guide to [screen printing in Los Angeles](/screen-printing/). For bigger artwork, see [large-format screen printing](/services/large-format-screen-printing/). Comparing every method side by side? Start with [custom printed t-shirts](/products/t-shirts/custom-printed-t-shirts/).
 

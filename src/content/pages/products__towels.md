@@ -39,7 +39,7 @@ Not sure which blank fits your budget? Browse the [catalog](/catalog/) or ask us
 
 **[Embroidery](/services/embroidery/)** is the go-to for towels. Stitches sit well on thick terry, survive frequent washing and give a hotel-grade finish. Best for logos, monograms and short text.
 
-**Printing** covers larger artwork and fine detail on smoother surfaces. Depending on the towel and quantity, that may be [screen printing](/screen-printing/) or a [heat transfer](/services/heat-transfer-vinyl/) method.
+**Printing** covers larger artwork and fine detail on smoother surfaces. Depending on the towel and quantity, that may be [screen printing](/screen-printing/) or a [DTF](/services/direct-to-film/) method.
 
 Fabric decides a lot. Very plush, deep-pile terry can swallow fine detail, so bold, simple designs perform best. Our free art check sizes and simplifies your logo before anything is produced.
 

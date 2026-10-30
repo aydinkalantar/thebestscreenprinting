@@ -1,7 +1,7 @@
 ---
 path: "/services/"
 title: "Services | Screen Printing, Embroidery, DTG & DTF in Los Angeles"
-description: "Screen printing, embroidery, DTG, DTF, heat transfer and embossing under one roof in Los Angeles. Pick the right method for your run and get a quote fast."
+description: "Screen printing, embroidery, DTG, DTF and embossing under one roof in Los Angeles. Pick the right method for your run and get a quote fast."
 h1: "Our services"
 kind: service
 imported: false
@@ -41,10 +41,6 @@ A digital printer lays ink straight into the fabric. Full color, fine detail and
 
 Your design is printed onto film and heat-pressed onto the garment. Vivid color on cotton, blends and polyester, which makes it a strong pick for full-color art on mixed fabrics. See [DTF printing](/services/direct-to-film/).
 
-### Heat transfer vinyl
-
-Cut vinyl pressed onto the garment. The go-to for names and numbers on jerseys, with matte, gloss and metallic finishes. See [heat transfer vinyl](/services/heat-transfer-vinyl/).
-
 ### Embossing
 
 No ink, just texture. Raised logos and patterns pressed into the fabric for a quiet, high-end look. See [garment embossing](/services/embossing/).
@@ -55,7 +51,7 @@ Start with three questions:
 
 - **How many pieces?** Screen printing and embroidery start at 12, DTG and DTF at 6. The bigger the run of one design, the more screen printing pays off.
 - **What does the art look like?** A few solid colors print beautifully on screen. Photos and gradients belong on DTG or DTF.
-- **What is the garment?** Hats, polos and jackets usually look best embroidered. Jerseys with individual names want heat transfer.
+- **What is the garment?** Hats, polos and jackets usually look best embroidered. Jerseys with individual names and numbers are usually DTF.
 
 Not sure? Send the design and we will recommend a method, then run it through a free art check before anything is printed. For oversized prints, see [large format screen printing](/services/large-format-screen-printing/).
 

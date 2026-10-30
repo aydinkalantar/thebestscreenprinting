@@ -5,7 +5,7 @@ description: "Meet TBSP, a family-started screen printing and embroidery shop in
 h1: "About The Best Screen Printing"
 kind: core
 imported: false
-summary: "A Los Angeles print shop built on one idea: custom apparel should be easy to design, easy to order and made to bring people together. Screen printing, embroidery, DTG, DTF and heat transfer at 5738 Holmes Ave., Los Angeles."
+summary: "A Los Angeles print shop built on one idea: custom apparel should be easy to design, easy to order and made to bring people together. Screen printing, embroidery, DTG and DTF at 5738 Holmes Ave., Los Angeles."
 sourceUrl: "https://thebestscreenprinting.com/about-us/"
 ---
 ## Started by brothers in Los Angeles
@@ -26,7 +26,6 @@ Everything is produced out of our shop at 5738 Holmes Ave. in Los Angeles.
 - **Embroidery** for polos, hats, jackets and uniforms. See [embroidery](/services/embroidery/).
 - **Direct-to-garment (DTG)** for full-color and photo art. See [DTG printing](/services/direct-to-garment/).
 - **Direct-to-film (DTF)** for bright, full-color detail on many fabrics. See [DTF printing](/services/direct-to-film/).
-- **Heat transfer** for names and numbers. See [heat transfer vinyl](/services/heat-transfer-vinyl/).
 
 We print on [t-shirts](/products/t-shirts/), [hoodies and sweatshirts](/products/sweatshirts-hoodies/), [hats](/products/hats/), [team uniforms](/products/team-uniforms-jerseys/), bags, towels and more. Browse the [catalog](/catalog/) to see blanks.
 

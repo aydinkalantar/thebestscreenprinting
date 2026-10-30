@@ -49,7 +49,7 @@ None of these are deal breakers on a normal schedule. On a rush, each one eats i
 
 ## Which method is fastest for my order?
 
-It depends on the artwork. Every order starts at 6 pieces (12 for screen printing and embroidery). For bold designs with a few solid colors, [screen printing](/screen-printing/) is printed in-house and moves fast once screens are set. For full-color or photo art, [DTG](/services/direct-to-garment/) skips screens entirely, and [DTF](/services/direct-to-film/) is another quick option. Need names on the back? [Heat transfer vinyl](/services/heat-transfer-vinyl/) adds them without a new screen.
+It depends on the artwork. Every order starts at 6 pieces (12 for screen printing and embroidery). For bold designs with a few solid colors, [screen printing](/screen-printing/) is printed in-house and moves fast once screens are set. For full-color or photo art, [DTG](/services/direct-to-garment/) skips screens entirely, and [DTF](/services/direct-to-film/) is another quick option. Need names on the back? DTF adds them without a new screen.
 
 ## Pickup in Los Angeles
 

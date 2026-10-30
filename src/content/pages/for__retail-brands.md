@@ -42,7 +42,7 @@ Pick your blanks by style and color in our [catalog](/catalog/).
 - **[Screen printing](/screen-printing/)** for production runs and bold, few-color designs. Heavy, opaque ink with a hand-pulled feel, printed in-house.
 - **[Embroidery](/services/embroidery/)** for hats, polos, jackets and small chest logos with raised, textured thread.
 - **[Direct to film](/services/direct-to-film/)** and DTG for full-color art, gradients and photo detail.
-- **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** for names, numbers and piece-by-piece personalization.
+- **DTF** also handles names, numbers and piece-by-piece personalization.
 
 The best collections mix them. Think a screen-printed front graphic with a matching embroidered cap.
 

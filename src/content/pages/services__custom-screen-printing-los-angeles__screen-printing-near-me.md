@@ -41,7 +41,7 @@ Ours: within one business day.
 Ours: Normal (about 2 weeks), Rush (1 week, +15%) and Super Rush (3 business days, +30%) turnaround options are available. We confirm by phone or with your quote. See [Rush and Super Rush printing](/same-day-t-shirt-printing-los-angeles/).
 
 **6. What else can you do?**
-Ours: [embroidery](/services/embroidery/), [heat transfer](/services/heat-transfer-vinyl/) for names and numbers, [embossing](/services/embossing/) and [large format](/services/large-format-screen-printing/) prints. One shop, one invoice.
+Ours: [embroidery](/services/embroidery/), [DTF](/services/direct-to-film/) for names and numbers, [embossing](/services/embossing/) and [large format](/services/large-format-screen-printing/) prints. One shop, one invoice.
 
 **7. Who have you printed for?**
 Ours: Netflix, Adidas, Nike, YouTube, Google, Amazon Alexa, Optimum Nutrition, 99 Cents Only and BCG Digital Ventures, plus local brands, schools and teams.

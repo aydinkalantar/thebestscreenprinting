@@ -5,7 +5,6 @@ export const SERVICE_LINKS = [
   { href: '/services/embroidery/', label: 'Embroidery' },
   { href: '/services/direct-to-film/', label: 'DTF transfers' },
   { href: '/services/direct-to-garment/', label: 'DTG printing' },
-  { href: '/services/heat-transfer-vinyl/', label: 'Heat transfer' },
   { href: '/services/embossing/', label: 'Embossing' },
   { href: '/services/large-format-screen-printing/', label: 'Oversize prints' },
   { href: '/same-day-t-shirt-printing-los-angeles/', label: 'Rush & Super Rush' },

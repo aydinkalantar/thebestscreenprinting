@@ -58,7 +58,6 @@ export const DECORATION_FILTERS = [
   { id: 'embroidery', label: 'Embroidery', codes: ['EMBROIDERY'] },
   { id: 'dtg', label: 'DTG', codes: ['DTG'] },
   { id: 'dtf', label: 'DTF', codes: ['DTF', 'DTFILM'] },
-  { id: 'heat', label: 'Heat transfer', codes: ['HTV'] },
 ] as const;
 
 export const productDecorations = (p: CatalogProduct) =>

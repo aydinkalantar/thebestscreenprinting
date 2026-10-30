@@ -45,7 +45,7 @@ At a trade show, your team is the billboard. Matching shirts make your staff eas
 - **[Screen printing](/screen-printing/)** for bold, few-color designs. The best value for giveaway quantities.
 - **[Embroidery](/services/embroidery/)** for staff polos, hats and jackets.
 - **[DTG](/services/direct-to-garment/)** for staff runs with full-color art, from 6 pieces.
-- **[Heat transfer](/services/heat-transfer-vinyl/)** to add individual names to staff shirts.
+- **[DTF](/services/direct-to-film/)** to add individual names to staff shirts.
 
 ## How do we hit the show date?
 

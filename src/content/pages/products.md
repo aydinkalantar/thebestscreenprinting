@@ -5,7 +5,7 @@ description: "Custom T-shirts, hoodies, polos, hats, tank tops, tote bags, outer
 h1: "Custom apparel and products"
 kind: product
 imported: false
-summary: "Tees, fleece, polos, hats, bags and more, decorated with screen printing, embroidery, DTG, DTF or heat transfer. Everything runs out of our Los Angeles shop, with quotes answered within one business day."
+summary: "Tees, fleece, polos, hats, bags and more, decorated with screen printing, embroidery, DTG or DTF. Everything runs out of our Los Angeles shop, with quotes answered within one business day."
 facts:
   - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -47,8 +47,7 @@ The garment and your quantity decide it:
 - **[Screen printing](/screen-printing/)** for bold designs and bigger runs, printed in-house
 - **[Embroidery](/services/embroidery/)** for polos, hats, jackets and uniforms
 - **[Direct-to-garment](/services/direct-to-garment/)** for full-color and photo art
-- **[Direct-to-film](/services/direct-to-film/)** for full-color art on a wide range of fabrics
-- **[Heat transfer vinyl](/services/heat-transfer-vinyl/)** for names and numbers
+- **[Direct-to-film](/services/direct-to-film/)** for full-color art on a wide range of fabrics, plus names and numbers
 - **[Embossing](/services/embossing/)** for a raised, textured effect
 
 Mix and match freely. A single order can combine screen printed tees, embroidered hats and personalized jerseys.

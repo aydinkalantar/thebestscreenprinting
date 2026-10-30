@@ -47,8 +47,7 @@ Totes, towels and bags work well as giveaways and bundle extras.
 
 - **Screen printing** with solid spot colors and specialty inks
 - **Embroidery** for logos on hats, polos and jackets
-- **[Direct-to-film](/services/direct-to-film/)** for crisp full-color detail on many fabrics
-- **[Heat transfer](/services/heat-transfer-vinyl/)** for names and numbers
+- **[Direct-to-film](/services/direct-to-film/)** for crisp full-color detail on many fabrics, plus names and numbers
 
 ## Your art, checked first
 

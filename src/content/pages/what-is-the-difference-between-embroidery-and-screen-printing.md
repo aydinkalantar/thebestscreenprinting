@@ -52,7 +52,7 @@ Both are built to last when done right. Embroidery does not fade or crack, which
 | Polos | Embroidery |
 | Hats | Embroidery |
 | Jackets and outerwear | Embroidery |
-| Team jerseys | Screen printing, with heat transfer for names and numbers |
+| Team jerseys | Screen printing, with DTF for names and numbers |
 | Totes | Screen printing |
 
 ## How do quantities affect the choice?

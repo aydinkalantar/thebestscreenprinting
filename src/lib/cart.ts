@@ -11,7 +11,7 @@
 import { business } from '../data/business';
 
 export const CART_MIN = business.shopMinimum;
-/** Screen printing and embroidery start at 12 pieces; DTG, DTF and heat transfer at CART_MIN. */
+/** Screen printing and embroidery start at 12 pieces; DTG and DTF at CART_MIN. */
 export const SCREEN_MIN = business.screenMinimum;
 /** The minimum for one product, from its placed artwork (or its plain decoration when none is placed). */
 export function minFor(it: { decorations: string[]; placements: { decoration: string }[] }): number {

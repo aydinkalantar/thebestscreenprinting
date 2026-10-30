@@ -13,7 +13,6 @@ sourceUrl: "https://thebestscreenprinting.com/thank-you/"
 - Direct to Garment (DTG)
 - Embroidery
 - Embossing
-- Heat Transfer Vinyl
 - Products
 - Solutions
 - About Blog

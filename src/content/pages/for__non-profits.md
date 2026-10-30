@@ -47,7 +47,7 @@ We print for Los Angeles non-profits, community groups and charity events from o
 - **Bold logos with a few colors:** screen printing, printed in-house, with the best price on bigger runs.
 
 Every order starts at 6 pieces (12 for screen printing and embroidery).
-- **Names on staff shirts:** [heat transfer](/services/heat-transfer-vinyl/).
+- **Names on staff shirts:** [DTF](/services/direct-to-film/).
 
 Organizing a club or community group too? See [specialty shirts for clubs and groups](/clubs-groups/).
 

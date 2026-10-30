@@ -77,7 +77,7 @@ Your art can steer the method:
 - **Few solid colors, bigger runs:** [screen printing](/screen-printing/).
 - **Photos, gradients or lots of colors:** [direct-to-garment](/services/direct-to-garment/) or [direct-to-film](/services/direct-to-film/).
 - **Logos on polos, hats and jackets:** [embroidery](/services/embroidery/).
-- **Names and numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/).
+- **Names and numbers:** [DTF](/services/direct-to-film/).
 
 Every order gets a free art check before printing, so if something in your file will not print well, we will flag it first.
 

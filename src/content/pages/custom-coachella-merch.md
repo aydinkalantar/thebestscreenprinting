@@ -47,7 +47,7 @@ Coachella is a music festival, a runway and a brand stage all at once. The merch
 - **Bold, few-color designs:** [screen printing](/screen-printing/). Solid, saturated ink, printed in-house.
 - **Full-color or photo art:** [DTG](/services/direct-to-garment/) or [DTF](/services/direct-to-film/).
 - **Logos on hats and jackets:** [embroidery](/services/embroidery/).
-- **Names on crew shirts:** [heat transfer](/services/heat-transfer-vinyl/).
+- **Names on crew shirts:** [DTF](/services/direct-to-film/).
 
 Choose lighter colors and breathable fabrics for daytime pieces. Light-colored garments stay cooler in the sun, and large, heavy-ink prints breathe less than a soft print.
 

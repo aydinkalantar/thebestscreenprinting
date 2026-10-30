@@ -1,13 +1,13 @@
 ---
 path: "/products/t-shirts/custom-printed-t-shirts/"
 title: "Custom Printed T-shirts in Los Angeles | TBSP"
-description: "Custom printed t-shirts in Los Angeles: screen printing, DTG, DTF, heat transfer or all-over sublimation. Here is how to pick the right print for your shirt."
+description: "Custom printed t-shirts in Los Angeles: screen printing, DTG, DTF or all-over sublimation. Here is how to pick the right print for your shirt."
 h1: "Custom printed t-shirts in Los Angeles"
 kind: product
 imported: false
 summary: "Five ways to put your design on a shirt, and the one that fits depends on your quantity, colors and fabric. We run all of them at our Los Angeles shop and recommend the right one with every quote."
 facts:
-  - { label: "Methods", value: "Screen print, DTG, DTF, heat transfer, sublimation" }
+  - { label: "Methods", value: "Screen print, DTG, DTF, sublimation" }
   - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Best for", value: "Matching the print to your quantity and artwork" }
 faqs:
@@ -16,7 +16,7 @@ faqs:
   - q: "What is the best method for a full-color photo on a cotton shirt?"
     a: "Direct-to-garment (DTG) prints full color straight into cotton, with no screens to set up. Direct-to-film (DTF) is another option that works on a wider range of fabrics."
   - q: "Can I use more than one method on the same shirt?"
-    a: "Yes. A common combination is a screen printed design with heat transfer names and numbers added on the back."
+    a: "Yes. A common combination is a screen printed design with DTF names and numbers added on the back."
 sourceUrl: "https://thebestscreenprinting.com/products/t-shirts/custom-printed-t-shirts/"
 ---
 ## Same shirt. Five different prints.
@@ -41,11 +41,11 @@ Your design is printed onto a film, coated with adhesive powder and heat pressed
 
 **Choose it for:** short runs, mixed fabrics, bright color on dark shirts. [More on DTF](/services/direct-to-film/).
 
-## Heat transfer vinyl: names and numbers
+## Names and numbers
 
-Cut vinyl is pressed onto the shirt for clean, sharp lettering. It is how one design becomes a full roster of personalized shirts.
+We print each name and number with DTF and press it on, so one design becomes a full roster of personalized shirts.
 
-**Choose it for:** jerseys, staff names, individual numbers. [More on heat transfer](/services/heat-transfer-vinyl/).
+**Choose it for:** jerseys, staff names, individual numbers. [More on DTF](/services/direct-to-film/).
 
 ## Sublimation: the whole shirt
 

@@ -21,7 +21,7 @@ faqs:
   - q: "What if I only need a few shirts for event staff?"
     a: "Orders start at 6 pieces (12 for screen printing and embroidery). Staff shirts with full-color art are usually printed with DTG or DTF."
   - q: "Can different staff roles have different shirts?"
-    a: "Yes. Each design is quoted separately, and names or titles can be added with heat transfer."
+    a: "Yes. Each design is quoted separately, and names or titles can be added with DTF."
 sourceUrl: "https://thebestscreenprinting.com/event-apparel/"
 ---
 
@@ -49,7 +49,7 @@ Quantity and look decide it:
 
 Every order starts at 6 pieces (12 for screen printing and embroidery).
 - **Polos, hats and jackets:** [embroidery](/services/embroidery/), clean stitched logos for the people in charge.
-- **Names, titles or numbers:** [heat transfer vinyl](/services/heat-transfer-vinyl/), different on every piece.
+- **Names, titles or numbers:** [DTF](/services/direct-to-film/), different on every piece.
 
 Mixing is normal. Screen-printed volunteer tees plus embroidered polos for event leads is a classic.
 

@@ -51,7 +51,6 @@ All of Los Angeles, from the Valley to the South Bay. Some of the neighborhoods 
 - [Custom T-Shirt Printing in Winnetka](/custom-t-shirt-printing-winnetka-ca/)
 - [Direct-to-Garment Printing in Eagle Rock](/direct-to-garment-printing-eagle-rock-ca/)
 - [Direct-to-Garment Printing in North Hollywood](/direct-to-garment-printing-north-hollywood-ca/)
-- [Heat Transfer Vinyl in Los Angeles](/heat-transfer-vinyl-downtown-la-ca/)
 - [Rush & Super Rush Screen Printing in Chinatown LA](/rush-order-screen-printing-chinatown-la-ca/)
 - [Rush & Super Rush Screen Printing in Encino](/same-day-screen-printing-encino-ca/)
 - [Rush & Super Rush Screen Printing in Koreatown LA](/same-day-screen-printing-koreatown-la-ca/)

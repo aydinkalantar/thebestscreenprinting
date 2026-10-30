@@ -8,7 +8,7 @@ imported: false
 summary: "The crewneck is the hoodie's sharper sibling: clean neckline, wide canvas, no hood in the way. Screen printed, embroidered or DTG printed out of our Los Angeles shop."
 facts:
   - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
-  - { label: "Methods", value: "Screen printing, embroidery, DTG, heat transfer" }
+  - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF" }
   - { label: "Best for", value: "Varsity looks, company gear, retail crewnecks" }
 faqs:
   - q: "Should I choose a sweatshirt or a hoodie?"
@@ -40,7 +40,7 @@ Throw it over a T-shirt for a weekend run. Wear it over a collared shirt to the 
 
 **The full-color piece.** Photo or painted artwork printed with [DTG](/services/direct-to-garment/), so a short run of an art print is easy.
 
-**The personalized set.** One shared design plus individual names or years added with [heat transfer](/services/heat-transfer-vinyl/).
+**The personalized set.** One shared design plus individual names or years added with [DTF](/services/direct-to-film/).
 
 ## Who orders custom sweatshirts?
 

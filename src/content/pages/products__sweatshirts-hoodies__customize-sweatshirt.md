@@ -8,7 +8,7 @@ imported: false
 summary: "Great sweatshirts are designed, not just printed. Here is how to choose garment color, ink or thread, and placement so your design lands, with a free art check on every order at our Los Angeles shop."
 facts:
   - { label: "Art check", value: "Free on every order" }
-  - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF, heat transfer" }
+  - { label: "Methods", value: "Screen printing, embroidery, DTG, DTF" }
   - { label: "Best for", value: "Getting the design right before it prints" }
 faqs:
   - q: "What file should I send for a sweatshirt design?"
@@ -16,7 +16,7 @@ faqs:
   - q: "Can you match my brand colors?"
     a: "Tell us your brand colors, ideally with Pantone references, when you request a quote. We will confirm how closely they can be matched with the method you choose."
   - q: "Can I add a different name to each sweatshirt?"
-    a: "Yes. Names and numbers are usually added with heat transfer vinyl, on top of a shared screen printed or embroidered design."
+    a: "Yes. Names and numbers are usually added with DTF, on top of a shared screen printed or embroidered design."
 sourceUrl: "https://thebestscreenprinting.com/products/sweatshirts-hoodies/customize-sweatshirt/"
 ---
 ## Design it like you mean it
@@ -51,7 +51,7 @@ Scale matters as much as placement. A design that looks right on screen can feel
 
 ## Make every piece personal
 
-One design, many owners. Add first names, numbers or graduation years with [heat transfer vinyl](/services/heat-transfer-vinyl/) on top of a shared print. Clubs, teams and staff love it.
+One design, many owners. Add first names, numbers or graduation years with [DTF](/services/direct-to-film/) on top of a shared print. Clubs, teams and staff love it.
 
 ## Prep your artwork
 

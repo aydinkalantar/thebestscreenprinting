@@ -12,7 +12,7 @@ facts:
   - { label: "Best for", value: "Staff polos, caps, jackets, aprons and work shirts" }
 faqs:
   - q: "Can I add employee names to embroidered uniforms?"
-    a: "Yes. Ask about names when you request a quote. Names and numbers can also be added with heat transfer vinyl if that suits the garment better."
+    a: "Yes. Ask about names when you request a quote. Names and numbers can also be added with DTF if that suits the garment better."
   - q: "Can the same logo go on different garments?"
     a: "Yes. One design can run across polos, caps and jackets. The 12-piece minimum applies to the design."
   - q: "Where should a logo go on a polo?"
@@ -49,7 +49,7 @@ Small logos are embroidery's sweet spot. Clean shapes, short text and a limited 
 
 ## Mixing methods
 
-Plenty of teams pair embroidered polos with [screen printed](/screen-printing/) event tees, or add names and numbers with [heat transfer vinyl](/services/heat-transfer-vinyl/). We quote each piece with the method that fits it. Want a raised look or patches? See our [embroidery styles](/custom-embroidery-services-los-angeles/).
+Plenty of teams pair embroidered polos with [screen printed](/screen-printing/) event tees, or add names and numbers with [DTF](/services/direct-to-film/). We quote each piece with the method that fits it. Want a raised look or patches? See our [embroidery styles](/custom-embroidery-services-los-angeles/).
 
 ## Restocking later?
 
