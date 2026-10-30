@@ -11,6 +11,16 @@
 import { business } from '../data/business';
 
 export const CART_MIN = business.shopMinimum;
+/** Screen printing and embroidery start at 12 pieces; DTG, DTF and heat transfer at CART_MIN. */
+export const SCREEN_MIN = business.screenMinimum;
+/** The minimum for one product, from its placed artwork (or its plain decoration when none is placed). */
+export function minFor(it: { decorations: string[]; placements: { decoration: string }[] }): number {
+  const methods = it.placements.length ? it.placements.map((p) => p.decoration) : it.decorations;
+  return methods.some((m) => /screen|embroider/i.test(m)) ? SCREEN_MIN : CART_MIN;
+}
+const minMessage = (min: number) => min > CART_MIN
+  ? `Add at least ${min} pieces of this product. Screen printing and embroidery start at ${min}; for fewer, choose DTF or DTG.`
+  : `Add at least ${min} pieces of this product (${min}-piece minimum per product).`;
 export const CART_MAX_ITEMS = 10;
 const INDEX_KEY = 'tbsp-quote-cart-v1';
 const CARRY_KEY = 'tbsp-quote-cart-carry';
@@ -178,7 +188,8 @@ export async function addToCart(input: NewCartItem): Promise<CartItem> {
   const items = readIndex();
   if (items.length >= CART_MAX_ITEMS) throw new Error(`Your quote already has ${CART_MAX_ITEMS} products, the most we take in one request. Send it first, then start another.`);
   const total = sumSizes(input.sizes);
-  if (total < CART_MIN) throw new Error(`Add at least ${CART_MIN} pieces of this product (${CART_MIN}-piece minimum per product).`);
+  const min = minFor(input);
+  if (total < min) throw new Error(minMessage(min));
   const id = uid();
   const placements: CartPlacement[] = [];
   for (const [n, p] of input.placements.entries()) {
@@ -207,7 +218,8 @@ export async function replaceCartItem(id: string, input: NewCartItem): Promise<C
   const old = cartItem(id);
   if (!old) throw new Error('This product is no longer in your quote. Add it again.');
   const total = sumSizes(input.sizes);
-  if (total < CART_MIN) throw new Error(`Add at least ${CART_MIN} pieces of this product (${CART_MIN}-piece minimum per product).`);
+  const min = minFor(input);
+  if (total < min) throw new Error(minMessage(min));
   const prefix = `${id}-${uid()}`;
   const placements: CartPlacement[] = [];
   for (const [n, p] of input.placements.entries()) {

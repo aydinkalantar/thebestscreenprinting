@@ -22,7 +22,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     <div class="min-w-0">
       <p class="eyebrow">Cart</p>
       <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white">Your cart</h1>
-      <p class="mt-3 text-[15px] muted max-w-3xl">Check out and pay online, or send everything as one quote request and we reply within one business day. Minimum {min} pieces per product.</p>
+      <p class="mt-3 text-[15px] muted max-w-3xl">Check out and pay online, or send everything as one quote request and we reply within one business day. Minimum {min} pieces per product, {business.screenMinimum} with screen printing or embroidery.</p>
 
       <div id="cart-sent" hidden tabindex="-1" class="mt-6 panel p-5 sm:p-6 border-emerald-500/40 bg-emerald-500/[0.06] grid gap-2" role="status">
         <p class="flex items-center gap-2 text-lg font-bold text-zinc-900 dark:text-white"><CircleCheck class="w-6 h-6 text-emerald-500 shrink-0" aria-hidden="true" />Request sent. Thank you!</p>
@@ -37,7 +37,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
       <div id="cart-empty" hidden class="mt-6 panel p-6 sm:p-10 text-center grid justify-items-center gap-3">
         <span class="w-14 h-14 rounded-2xl grid place-items-center bg-violet-500/10 text-violet-600 dark:text-violet-300"><ClipboardList class="w-7 h-7" aria-hidden="true" /></span>
         <p class="text-xl font-bold text-zinc-900 dark:text-white">Your cart is empty</p>
-        <p class="text-[14.5px] muted max-w-md">Pick a product, choose a color and sizes ({min}+ pieces per product), add your artwork if you have it, then tap <b>Add to cart</b>. Add as many products as you like, then check out or request one quote.</p>
+        <p class="text-[14.5px] muted max-w-md">Pick a product, choose a color and sizes ({min}+ pieces per product, {business.screenMinimum}+ with screen printing or embroidery), add your artwork if you have it, then tap <b>Add to cart</b>. Add as many products as you like, then check out or request one quote.</p>
         <div class="mt-2 flex flex-wrap justify-center gap-2">
           <a href="/catalog/" class="btn-primary">Browse the catalog<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
           {shortcuts.map((c) => <a href={collectionHref(c.slug)} class="btn-quiet">{c.label}</a>)}
@@ -101,7 +101,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
 
 <script>
   import {
-    CART_MIN, cartItems, updateCartItem, removeCartItem, duplicateCartItem, clearCart, getFile, setCarry,
+    CART_MIN, minFor, cartItems, updateCartItem, removeCartItem, duplicateCartItem, clearCart, getFile, setCarry,
     onCartChange, cartPersistsFiles, sumSizes, CART_MAX_ITEMS, type CartItem,
   } from '../lib/cart';
   import { garmentFor, MAX_TOTAL_BYTES, MAX_ARTWORK_BYTES, MULTIPLE_PRODUCTS } from '../lib/quote';
@@ -157,11 +157,11 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     const pieces = items.reduce((n, it) => n + totalOf(it), 0);
     const files = items.reduce((n, it) => n + it.placements.length, 0);
     const bytes = items.reduce((n, it) => n + it.placements.reduce((a, p) => a + p.size, 0), 0);
-    const bad = items.filter((it) => totalOf(it) < CART_MIN);
+    const bad = items.filter((it) => totalOf(it) < minFor(it));
     document.querySelectorAll('[data-sum-items]').forEach((n) => { n.textContent = String(items.length); });
     document.querySelectorAll('[data-sum-pieces]').forEach((n) => { n.textContent = String(pieces); });
     document.querySelectorAll('[data-sum-files]').forEach((n) => { n.textContent = String(files); });
-    const error = bad.length ? `${bad.length === 1 ? 'One product needs' : `${bad.length} products need`} at least ${CART_MIN} pieces.`
+    const error = bad.length ? `${bad.length === 1 ? 'One product needs' : `${bad.length} products need`} at least ${bad.length === 1 ? minFor(bad[0]) : CART_MIN} pieces.`
       : bytes > MAX_TOTAL_BYTES ? `Artwork is ${MB(bytes)}, over the 25 MB limit. Remove a product or use smaller files.` : '';
     document.querySelectorAll('[data-sum-error]').forEach((n) => { n.textContent = error; });
     continueBtns.forEach((b) => { b.disabled = !!error || !items.length; });
@@ -266,13 +266,14 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     err.id = `ce-${it.id}`;
     err.setAttribute('aria-live', 'polite');
     const inputs: HTMLInputElement[] = [];
+    const itMin = minFor(it);
     const sync = () => {
       const sizes: Record<string, number> = {};
       inputs.forEach((i) => { const n = Math.max(0, Math.min(99999, Math.floor(Number(i.value) || 0))); if (n) sizes[i.dataset.size!] = n; });
       const n = sumSizes(sizes);
       totalEl.textContent = `Total: ${n} pieces`;
-      const bad = n < CART_MIN;
-      err.textContent = bad ? `Minimum ${CART_MIN} pieces per product. Add ${CART_MIN - n} more, or remove this product.` : '';
+      const bad = n < itMin;
+      err.textContent = bad ? `Minimum ${itMin} pieces for this product. Add ${itMin - n} more, or remove this product.` : '';
       inputs.forEach((i) => i.setAttribute('aria-invalid', String(bad)));
       li.classList.toggle('ring-2', bad);
       li.classList.toggle('ring-red-500/60', bad);
@@ -302,7 +303,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
       gridEl.append(lab);
     }
     const totalRow = el('p', 'flex flex-wrap items-baseline justify-between gap-2 text-[13px]');
-    totalRow.append(totalEl, el('span', 'muted', `Minimum ${CART_MIN} per product`));
+    totalRow.append(totalEl, el('span', 'muted', `Minimum ${itMin} for this product`));
     // Filled by the instant price (online orders): price per piece, product total, next price break.
     const priceBox = el('div', 'hidden rounded-xl bg-zinc-50 dark:bg-white/[0.04] px-3.5 py-2.5 text-[13.5px] grid gap-0.5');
     priceBox.dataset.priceFor = it.id;
@@ -310,7 +311,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     // Show the current state without saving it again.
     const n0 = totalOf(it);
     totalEl.textContent = `Total: ${n0} pieces`;
-    if (n0 < CART_MIN) { err.textContent = `Minimum ${CART_MIN} pieces per product. Add ${CART_MIN - n0} more, or remove this product.`; li.classList.add('ring-2', 'ring-red-500/60'); }
+    if (n0 < itMin) { err.textContent = `Minimum ${itMin} pieces for this product. Add ${itMin - n0} more, or remove this product.`; li.classList.add('ring-2', 'ring-red-500/60'); }
 
     // Actions.
     const actions = el('div', 'flex flex-wrap gap-2 pt-1 border-t border-zinc-200/80 dark:border-white/10 pt-3');
@@ -388,7 +389,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   continueBtns.forEach((b) => b.addEventListener('click', () => {
     const items = cartItems();
     if (!items.length) return;
-    const bad = items.find((it) => totalOf(it) < CART_MIN);
+    const bad = items.find((it) => totalOf(it) < minFor(it));
     if (bad) { list.querySelector<HTMLElement>(`[data-id="${bad.id}"] input`)?.focus(); return; }
     const pieces = items.reduce((n, it) => n + it.total, 0);
     sheet.querySelector('[data-dr-summary]')!.textContent = `${items.length} product${items.length === 1 ? '' : 's'} · ${pieces} pieces · ${items.reduce((n, it) => n + it.placements.length, 0)} artwork files`;
@@ -430,8 +431,8 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     }
     const items = cartItems();
     if (!items.length) return;
-    const bad = items.find((it) => it.total < CART_MIN);
-    if (bad) { showMsg(`${bad.name} needs at least ${CART_MIN} pieces (${CART_MIN}-piece minimum per product).`, 'error'); return; }
+    const bad = items.find((it) => it.total < minFor(it));
+    if (bad) { showMsg(`${bad.name} needs at least ${minFor(bad)} pieces (${minFor(bad)}-piece minimum for this product).`, 'error'); return; }
 
     const label = send.querySelector('span')!;
     sending = true;
@@ -570,7 +571,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   async function priceCart() {
     const items = cartItems();
     cpCtl?.abort();
-    if (!items.length || items.some((it) => totalOf(it) < CART_MIN)) { setPayMode(false); cpNote.hidden = true; fillItemPrices(null, items); return; }
+    if (!items.length || items.some((it) => totalOf(it) < minFor(it))) { setPayMode(false); cpNote.hidden = true; fillItemPrices(null, items); return; }
     cpCtl = new AbortController();
     payBtns.forEach((b) => { b.disabled = true; });
     const res = await fetchPrices(priceItems(), 'pickup', cpCtl.signal);

@@ -26,8 +26,11 @@ const recommended = recommendedMethod(p, methods);
 const COMMON = ['S', 'M', 'L', 'XL', '2XL'];
 const rare = (s: string) => p.sizes.some((x) => COMMON.includes(x)) && !COMMON.includes(s);
 const min = business.shopMinimum;
+// Screen printing and embroidery start higher; the form follows the method chosen.
+const screenMin = business.screenMinimum;
+const startMin = /screen|embroider/i.test(recommended?.method ?? methods[0] ?? '') ? screenMin : min;
 const SWATCH_LIMIT = 24;
-const description = `Custom ${p.name} printed with your logo or design. ${methods.join(', ')}. Orders from ${min} pieces, made in our own shops in Los Angeles and Cleveland.`;
+const description = `Custom ${p.name} printed with your logo or design. ${methods.join(', ')}. Orders from ${min} pieces (${screenMin} for screen printing and embroidery), made in our own shops in Los Angeles and Cleveland.`;
 const url = `${business.url}/catalog/${p.slug}/`;
 const jsonLd = [
   {
@@ -66,7 +69,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           <a href={brandHref(p.brand)} class="font-semibold text-zinc-700 dark:text-zinc-300 hover:text-violet-700 dark:hover:text-violet-300 underline-offset-2 hover:underline">{p.brand}</a>{p.style && <> · Style {p.style}</>}
         </p>
       )}
-      <p class="mt-2 lg:mt-3 text-[15px] muted" data-from-line>Live prices with your print included. Orders start at {min} pieces, and bigger runs cost less per piece.</p>
+      <p class="mt-2 lg:mt-3 text-[15px] muted" data-from-line>Live prices with your print included. Orders start at {min} pieces ({screenMin} for screen printing and embroidery), and bigger runs cost less per piece.</p>
     </div>
     <div class="min-w-0 lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:sticky lg:top-28 lg:self-start">
       <DesignPreview p={p} />
@@ -74,7 +77,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     <div class="min-w-0 lg:col-start-2 lg:row-start-2">
 
       <form id="add-to-quote" class="mt-2 lg:mt-3 panel-raised p-5 sm:p-6 grid grid-cols-[minmax(0,1fr)] gap-6 min-w-0" novalidate
-        data-id={p.id} data-slug={p.slug} data-name={p.name} data-style={p.style ?? ''} data-brand={p.brand ?? ''} data-cat={p.category} data-sub={p.subcategory ?? ''} data-img={p.image} data-min={min}>
+        data-id={p.id} data-slug={p.slug} data-name={p.name} data-style={p.style ?? ''} data-brand={p.brand ?? ''} data-cat={p.category} data-sub={p.subcategory ?? ''} data-img={p.image} data-min={min} data-screen-min={screenMin}>
                 {p.colors.length > 0 && (
           <fieldset class="min-w-0">
             <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>1</span>Color · <span id="color-name" class="normal-case tracking-normal text-zinc-900 dark:text-white text-[13px]">{p.colors[0].name}</span></legend>
@@ -104,7 +107,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           {p.sizes.some(rare) && <button type="button" data-more-sizes class="mt-2 text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">+ More sizes ({p.sizes.filter(rare).join(', ')})</button>}
           <p class="mt-3 flex flex-wrap items-baseline justify-between gap-2 text-[13px]">
             <span class="font-semibold text-zinc-900 dark:text-white">Total: <span id="qty-total">0</span> pieces</span>
-            <span class="muted">Minimum {min} pieces per product</span>
+            <span class="muted" data-min-line>Minimum {startMin} pieces per product</span>
           </p>
         </fieldset>
 
@@ -186,7 +189,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
               Request a quote for just this item
             </button>
           </div>
-          <p id="qty-hint" class="text-[13px] muted" aria-live="polite">Enter at least {min} pieces to add this product to your cart.</p>
+          <p id="qty-hint" class="text-[13px] muted" aria-live="polite">Enter at least {startMin} pieces to add this product to your cart.</p>
           <p id="cart-error" class="err" role="alert"></p>
           <p class="text-[12.5px] muted">Ordering several products? Add each one to your cart, then pay or request one quote for all of them.</p>
         </div>
@@ -216,7 +219,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         {business.maxLive && (
           <button type="button" data-max-open data-max-only class="panel p-4 flex gap-3 text-left hover:border-violet-300 dark:hover:border-violet-400/40"><Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><span class="text-[13px] muted"><b class="text-zinc-900 dark:text-white">Not sure about sizes, colors or print?</b> Ask Max, your merch agent. He'll set it up with real prices.</span></button>
         )}
-        <div class="panel p-4 flex gap-3"><Users class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><p class="text-[13px] muted">Orders start at {min} pieces. Bigger runs bring the price per piece down.</p></div>
+        <div class="panel p-4 flex gap-3"><Users class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><p class="text-[13px] muted">Orders start at {min} pieces ({screenMin} for screen printing and embroidery). Bigger runs bring the price per piece down.</p></div>
       </div>
     </div>
   </div>
@@ -230,7 +233,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
         {p.colors.length > 0 && <span data-bar-swatch class="w-8 h-8 max-[399px]:hidden rounded-full shrink-0 border border-zinc-300 dark:border-white/20" style={`background:${p.colors[0].hex}`} aria-hidden="true"></span>}
         <span class="min-w-0 leading-tight">
           <span data-bar-color class="block truncate text-[14px] font-semibold text-zinc-900 dark:text-white">{p.colors[0]?.name ?? p.name}</span>
-          <span class="block mt-0.5 text-[12.5px] muted truncate" data-bar-line><b data-bar-total class="text-zinc-900 dark:text-white">0</b> pieces · min {min}</span>
+          <span class="block mt-0.5 text-[12.5px] muted truncate" data-bar-line><b data-bar-total class="text-zinc-900 dark:text-white">0</b> pieces · min <span data-bar-min>{startMin}</span></span>
         </span>
       </button>
       <button type="submit" form="add-to-quote" data-bar-submit class="btn-primary h-12 px-3.5 text-[14px] shrink-0 disabled:opacity-50 disabled:shadow-none aria-busy:cursor-wait" disabled>
@@ -290,7 +293,14 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   const button = document.getElementById('request-quote') as HTMLButtonElement;
   const single = document.getElementById('request-single') as HTMLButtonElement;
   const cartError = document.getElementById('cart-error')!;
-  const min = Number(form.dataset.min) || 12;
+  const baseMin = Number(form.dataset.min) || 6;
+  const screenMin = Number(form.dataset.screenMin) || 12;
+  /** Screen printing and embroidery start at 12; DTG, DTF and heat transfer at 6. Follows the placed design, else the chosen method. */
+  const methodsNow = () => {
+    const placed = design?.snapshot().map((p) => p.decoration) ?? [];
+    return placed.length ? placed : [...form.querySelectorAll<HTMLInputElement>('input[name="decoration"]:checked')].map((c) => c.value);
+  };
+  let min = baseMin;
   const on = ['is-on', 'ring-2', 'ring-violet-500', 'ring-offset-2'];
   const swatches = [...document.querySelectorAll<HTMLButtonElement>('.swatch')];
   // Phone action bar mirrors this form's state.
@@ -341,6 +351,9 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   });
 
   function refresh() {
+    min = methodsNow().some((m) => /screen|embroider/i.test(m)) ? screenMin : baseMin;
+    form.querySelectorAll<HTMLElement>('[data-min-line]').forEach((el) => { el.textContent = `Minimum ${min} pieces per product`; });
+    document.querySelectorAll<HTMLElement>('[data-bar-min]').forEach((el) => { el.textContent = String(min); });
     const n = sum();
     const placed = design?.count() ?? 0;
     total.textContent = String(n);
@@ -352,7 +365,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     if (barSubmit) barSubmit.disabled = n < min;
     plainOnly.forEach((f) => { f.hidden = placed > 0; });
     hint.textContent = n === 0 ? `Enter at least ${min} pieces to add this product to your cart.`
-      : n < min ? `Add ${min - n} more piece${min - n === 1 ? '' : 's'} to reach the ${min}-piece minimum for this product.`
+      : n < min ? `Add ${min - n} more piece${min - n === 1 ? '' : 's'} to reach the ${min}-piece minimum${min > baseMin ? ` for screen printing and embroidery (DTF and DTG start at ${baseMin})` : ' for this product'}.`
       : placed ? `${n} pieces with your artwork. Order it now, or add it to your cart.`
       : `${n} pieces. Order it now, or add it to your cart.`;
     window.dispatchEvent(new Event('tbsp-pdp-change'));
@@ -468,7 +481,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     if (adding) return;
     cartError.textContent = '';
     const n = sum();
-    if (n < min) { cartError.textContent = `Add at least ${min} pieces of this product (${min}-piece minimum per product).`; inputs.find((i) => !qty(i))?.focus(); return; }
+    if (n < min) { cartError.textContent = `Add at least ${min} pieces of this product (${min}-piece minimum${min > baseMin ? ' for screen printing and embroidery' : ' per product'}).`; inputs.find((i) => !qty(i))?.focus(); return; }
     // All artwork in the quote travels in one request: keep it under the 25 MB limit.
     const cartBytes = cartItems().filter((it) => it.id !== editItem?.id).reduce((n, it) => n + it.placements.reduce((a, p) => a + p.size, 0), 0);
     const mine = design.bytes();
@@ -825,7 +838,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   function barPrice(text: string, sub = '') {
     if (!barLine) return;
     if (text) { if (barColor) barColor.textContent = text; barLine.textContent = sub; }
-    else { if (barColor) barColor.textContent = color; barLine.innerHTML = barPiecesHtml; const t = barLine.querySelector('[data-bar-total]'); if (t) t.textContent = String(sum()); }
+    else { if (barColor) barColor.textContent = color; barLine.innerHTML = barPiecesHtml; const t = barLine.querySelector('[data-bar-total]'); if (t) t.textContent = String(sum()); const m = barLine.querySelector('[data-bar-min]'); if (m) m.textContent = String(min); }
     if (barOrder) barOrder.hidden = !text;
     // With "Order & pay" next to it, the cart button shrinks to its icon.
     barAddLabel?.classList.toggle('sr-only', !!text);

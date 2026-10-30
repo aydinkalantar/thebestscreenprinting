@@ -94,9 +94,13 @@ export const itemTitle = (it: QuoteItem) => it.productName;
 export const sizesText = (sizes: Record<string, number>) => Object.entries(sizes).map(([k, n]) => `${k} ${n}`).join(', ');
 
 /**
- * Reads the quote cart's `items` JSON. Each item must reach the shop minimum on its own
- * ("6-piece minimum per product"). Unknown fields are dropped.
+ * Reads the quote cart's `items` JSON. Each item must reach its minimum on its own: 12 pieces
+ * with screen printing or embroidery, 6 otherwise (see itemMinimum). Unknown fields are dropped.
  */
+/** Screen printing and embroidery start at 12 pieces; DTG, DTF and heat transfer at 6. */
+export const itemMinimum = (methods: string[]) =>
+  methods.some((m) => /screen|embroider/i.test(m)) ? business.screenMinimum : business.shopMinimum;
+
 export function parseItems(raw: FormDataEntryValue | null): { items: QuoteItem[] } | { error: string } | null {
   if (typeof raw !== 'string' || !raw.trim()) return null;
   let list: unknown;
@@ -122,12 +126,17 @@ export function parseItems(raw: FormDataEntryValue | null): { items: QuoteItem[]
     }
     if (quantity > 100000) return { error: `${productName}: please call us for orders this large.` };
     const strList = (v: unknown, max: number) => (Array.isArray(v) ? [...new Set(v.map((x) => str(x, 40)).filter(Boolean))].slice(0, max) : []);
-    items.push({
+    const item: QuoteItem = {
       productName, style: str(it?.style, 40) || undefined, brand: str(it?.brand, 60) || undefined, color: str(it?.color, 60) || undefined,
       sizes, quantity, decorations: strList(it?.decorations, 10), locations: strList(it?.locations, MAX_PLACEMENTS),
       placements: Array.isArray(it?.placements) ? parsePlacements(JSON.stringify(it.placements)) : [],
       url: /^https:\/\/[\w.-]+\/catalog\/[\w-]+\/$/.test(str(it?.url, 300)) ? str(it?.url, 300) : undefined,
-    });
+    };
+    const itemMin = itemMinimum(item.placements.length ? item.placements.map((p) => p.decoration) : item.decorations);
+    if (quantity < itemMin) {
+      return { error: `${productName} needs at least ${itemMin} pieces: screen printing and embroidery start at ${itemMin}. For fewer, choose DTF or DTG (from ${business.shopMinimum}).` };
+    }
+    items.push(item);
   }
   return { items };
 }
@@ -160,6 +169,8 @@ export function parseQuote(form: FormData): { errors: Record<string, string> } |
   if (cart) { /* per-item checks done in parseItems */ }
   else if (!Number.isFinite(quantity) || quantity < 1 || quantity > 100000) errors.quantity = 'How many pieces do you need?';
   else if (quantity < business.shopMinimum) errors.quantity = `Orders start at ${business.shopMinimum} pieces.`;
+  else if (decorations.length && decorations.every((d) => /screen|embroider/i.test(d)) && quantity < business.screenMinimum)
+    errors.quantity = `Screen printing and embroidery start at ${business.screenMinimum} pieces. For ${business.shopMinimum} to ${business.screenMinimum - 1}, choose DTF or DTG.`;
   if (Object.keys(errors).length) return { errors };
   return {
     quote: {

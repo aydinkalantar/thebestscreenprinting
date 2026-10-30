@@ -143,6 +143,11 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     const b = (colorName && pa?.colors?.[colorName]?.[sp.id]?.box) || pa?.locations?.[sp.id]?.box;
     return b && b.side === s && b.w > 0 && b.h > 0 ? b : null;
   };
+  /**
+   * The first photo measured on each side. Other colors' photos of the same product are shot the
+   * same way, so they reuse its print areas: artwork stays in the same spot when the color changes.
+   */
+  const anchors = new Map<Side, { aspect: number; spots: Map<string, Placed> }>();
   /** All print areas on one side of one photo: measured where possible, else the template. */
   const layout = (s: Side, url: string): Map<string, Placed> | null => {
     const key = `${s}|${url}`;
@@ -150,6 +155,18 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (hit) return hit;
     if (!analyses.has(url)) return null;
     const aspect = aspects.get(url) ?? 0.8;
+    const anchor = anchors.get(s);
+    if (anchor && Math.abs(anchor.aspect - aspect) / aspect < 0.03) {
+      const out = new Map<string, Placed>();
+      for (const sp of spots) {
+        if (sp.side !== s) continue;
+        const manual = manualBox(sp, s);
+        const base = anchor.spots.get(sp.id);
+        if (manual) out.set(sp.id, { x: manual.x, y: manual.y, w: manual.w, h: manual.h, wIn: sp.wIn, hIn: sp.hIn, how: 'manual' });
+        else if (base) out.set(sp.id, base);
+      }
+      if (spots.every((sp) => sp.side !== s || out.has(sp.id))) { layouts.set(key, out); return out; }
+    }
     const g = cfg.place?.overrides?.['*'];
     const fixed = g?.box ?? (url === cfg.style ? g?.styleBox : undefined);
     const measured = cfg.place && !fixed ? placeSpots(analyses.get(url) ?? null, s, spots, cfg.place) : new Map<string, Placed>();
@@ -161,6 +178,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       out.set(sp.id, manual ? { x: manual.x, y: manual.y, w: manual.w, h: manual.h, wIn: sp.wIn, hIn: sp.hIn, how: 'manual' } : measured.get(sp.id) ?? templateRect(sp, box, aspect));
     }
     layouts.set(key, out);
+    if (!anchor) anchors.set(s, { aspect, spots: new Map([...out].filter(([, p]) => p.how !== 'manual')) });
     return out;
   };
   /** A location's print area on a photo (fractions of the photo) and its size in inches. */
@@ -169,14 +187,16 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   /**
    * Where the visitor dragged a print area to on a photo (when our estimate sat wrong, e.g. over a
    * pocket). Only the spot on the photo moves: the area keeps its maximum print size and stays on
-   * the garment, so artwork can never end up somewhere we can't print.
+   * the garment, so artwork can never end up somewhere we can't print. Kept per location in inches,
+   * so the same placement carries over to every color's photo.
    */
-  const shifts = new Map<string, { dx: number; dy: number }>();
+  const shifts = new Map<string, { dxIn: number; dyIn: number }>();
   const garmentBox = (url: string): Box => cfg.place?.overrides?.['*']?.box ?? boxes.get(url) ?? DEFAULT_BOX;
   const areaRect = (sp: DesignSpot, url: string): Box => {
     const p = placed(sp, url);
-    const s = shifts.get(`${sp.id}|${url}`);
-    if (!s) return p;
+    const shift = shifts.get(sp.id);
+    if (!shift) return p;
+    const s = { dx: (shift.dxIn * p.w) / p.wIn, dy: (shift.dyIn * p.h) / p.hIn };
     const g = garmentBox(url);
     return {
       ...p,
@@ -188,8 +208,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   };
   /** How far the visitor moved a location's area on the photo, in inches (for the order notes). */
   const movedIn = (sp: DesignSpot, url = photoFor(sp.side)) => {
-    const s = shifts.get(`${sp.id}|${url}`);
-    if (!s) return null;
+    if (!shifts.has(sp.id)) return null;
     const p = placed(sp, url), r = areaRect(sp, url);
     const dx = ((r.x - p.x) / p.w) * p.wIn, dy = ((r.y - p.y) / p.h) * p.hIn;
     return Math.abs(dx) < 0.25 && Math.abs(dy) < 0.25 ? null : { dx, dy };
@@ -375,7 +394,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   q('[data-reset-area]').addEventListener('click', () => {
     const sp = spotById.get(active);
     if (!sp) return;
-    shifts.delete(`${sp.id}|${photoFor(sp.side)}`);
+    shifts.delete(sp.id);
     render();
     announce(`${sp.label} print area back to the standard spot.`);
   });
@@ -545,7 +564,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (drag.mode === 'move') {
       // Inside the area the artwork moves; pushed past an edge, the whole area follows (on the garment).
       const { L, A0 } = drag;
-      const url = photoFor(side), key = `${sp.id}|${url}`;
+      const url = photoFor(side);
       const ax = A0.x + drag.x * A0.w + (e.clientX - drag.px) / L.width;
       const ay = A0.y + drag.y * A0.h + (e.clientY - drag.py) / L.height;
       const maxX = Math.max(0, 1 - a.w), maxY = Math.max(0, 1 - artH(a));
@@ -553,11 +572,14 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       const over = { x: nx < 0 ? nx : nx > maxX ? nx - maxX : 0, y: ny < 0 ? ny : ny > maxY ? ny - maxY : 0 };
       if (over.x || over.y) {
         const base = placed(sp, url);
-        shifts.set(key, { dx: A0.x - base.x + over.x * A0.w, dy: A0.y - base.y + over.y * A0.h });
+        const dx = A0.x - base.x + over.x * A0.w, dy = A0.y - base.y + over.y * A0.h;
+        shifts.set(sp.id, { dxIn: (dx * base.wIn) / base.w, dyIn: (dy * base.hIn) / base.h });
       }
       const R = areaRect(sp, url);
       a.x = clamp((ax - R.x) / R.w, 0, maxX);
       a.y = clamp((ay - R.y) / R.h, 0, maxY);
+      // Within a quarter inch of the middle, it snaps to centered (where most logos go).
+      if (Math.abs((a.x + a.w / 2 - 0.5) * dims(sp).wIn) < 0.25) a.x = clamp((1 - a.w) / 2, 0, maxX);
       const areaEl = a.el?.parentElement;
       if (areaEl) Object.assign(areaEl.style, { left: `${R.x * 100}%`, top: `${R.y * 100}%` });
     } else {
