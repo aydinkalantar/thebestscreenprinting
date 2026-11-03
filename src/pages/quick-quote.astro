@@ -8,6 +8,7 @@ import { Upload, Phone, Mail, Clock, Send, BadgeCheck, ClipboardList, ArrowRight
 
 const page = await getEntry('pages', 'quick-quote');
 const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const PRINT_SPOTS = ['Front', 'Back', 'Left chest', 'Sleeve', 'Other'];
 ---
 <Base title={page?.data.title ?? 'Get a Quote | TBSP'} description="Request a custom apparel printing quote from our Los Angeles shop. Screen printing, embroidery, DTF and more. We reply within one business day.">
   <Breadcrumbs items={[{ label: 'Get a quote' }]} />
@@ -54,6 +55,21 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
               <span class="err" data-for="quantity"></span>
             </label>
           </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="label"><span>Brand or style <small>(if you know it)</small></span>
+              <input name="style" class="field" autocomplete="off" enterkeyhint="next" placeholder="e.g. Gildan 5000, Comfort Colors 1717" list="style-ideas" />
+              <datalist id="style-ideas"><option value="Not sure, suggest one for me"></option></datalist>
+            </label>
+            <label class="label"><span>Garment color <small>(optional)</small></span>
+              <input name="color" class="field" autocomplete="off" enterkeyhint="next" placeholder="e.g. Black, or Navy and Grey" />
+            </label>
+          </div>
+          <div class="grid gap-2" role="group" aria-label="Print where">
+            <span class="label"><span>Where does the print go? <small>(pick any)</small></span></span>
+            <div class="flex flex-wrap gap-2">
+              {PRINT_SPOTS.map((d) => <label class="chip max-md:h-auto max-md:min-h-[44px] max-md:py-2 max-md:px-4 max-md:text-[14px] cursor-pointer has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-200"><input type="checkbox" name="spots" value={d} class="sr-only" />{d}</label>)}
+            </div>
+          </div>
           <div class="grid gap-2" role="group" aria-label="Decoration">
             <span class="label"><span>Decoration <small>(pick any)</small></span></span>
             <div class="flex flex-wrap gap-2">
@@ -76,7 +92,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
             </label>
           </div>
           <label class="label"><span>Details <small>(optional)</small></span>
-            <textarea name="details" class="field" rows="4" placeholder="Colors, sizes, print locations, anything else"></textarea>
+            <textarea name="details" class="field" rows="4" placeholder="Sizes, ink colors, anything else. More than one item? List each one, e.g. 24 tees + 12 hoodies."></textarea>
           </label>
         </fieldset>
 
@@ -230,7 +246,20 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     button.disabled = true;
     button.querySelector('span')!.textContent = 'Sending…';
     try {
-      const res = await fetch('/api/quote', { method: 'POST', body: new FormData(form) });
+      // Brand / style, color and print spots go on top of the details, so the quote starts from
+      // the product they actually want instead of a house blank.
+      const fd = new FormData(form);
+      const style = String(fd.get('style') || '').trim().slice(0, 120);
+      const color = String(fd.get('color') || '').trim().slice(0, 80);
+      const spots = fd.getAll('spots').map(String);
+      const head = [
+        style && `Product: ${style}`,
+        color && `Color: ${color}`,
+        spots.length ? `Print: ${spots.join(', ')}` : '',
+      ].filter(Boolean).join('\n');
+      if (head) fd.set('details', `${head}\n${String(fd.get('details') || '')}`.trim().slice(0, 4000));
+      fd.delete('style'); fd.delete('color'); fd.delete('spots');
+      const res = await fetch('/api/quote', { method: 'POST', body: fd });
       const data = await res.json().catch(() => ({}));
       if (res.ok) {
         track('quote_form_submit', { source: 'form' });
