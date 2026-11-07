@@ -1,18 +1,18 @@
 ---
 path: "/products/t-shirts/custom-printed-t-shirts/"
 title: "Custom Printed T-shirts in Los Angeles | TBSP"
-description: "Custom printed t-shirts in Los Angeles: screen printing, DTG, DTF or all-over sublimation. Here is how to pick the right print for your shirt."
+description: "Custom printed t-shirts in Los Angeles: screen printing, DTG or DTF. Here is how to pick the right print for your shirt."
 h1: "Custom printed t-shirts in Los Angeles"
 kind: product
 imported: false
 summary: "Five ways to put your design on a shirt, and the one that fits depends on your quantity, colors and fabric. We run all of them at our Los Angeles shop and recommend the right one with every quote."
 facts:
-  - { label: "Methods", value: "Screen print, DTG, DTF, sublimation" }
+  - { label: "Methods", value: "Screen print, DTG, DTF" }
   - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Best for", value: "Matching the print to your quantity and artwork" }
 faqs:
   - q: "Which print method lasts the longest?"
-    a: "Screen printing and sublimation are both very durable. Screen printed ink is thick and holds up to repeated washing, and sublimation dye becomes part of polyester fabric, so it cannot crack or peel."
+    a: "Screen printing is the most durable: the ink is thick and holds up to repeated washing. DTF and DTG last a long time too when washed inside out in cold water."
   - q: "What is the best method for a full-color photo on a cotton shirt?"
     a: "Direct-to-garment (DTG) prints full color straight into cotton, with no screens to set up. Direct-to-film (DTF) is another option that works on a wider range of fabrics."
   - q: "Can I use more than one method on the same shirt?"
@@ -47,19 +47,13 @@ We print each name and number with DTF and press it on, so one design becomes a 
 
 **Choose it for:** jerseys, staff names, individual numbers. [More on DTF](/services/direct-to-film/).
 
-## Sublimation: the whole shirt
-
-Dye is turned to gas by heat and bonded into polyester fibers, covering the shirt edge to edge with no ink feel.
-
-**Choose it for:** all-over patterns and photo prints. [More on all-over printing](/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/).
-
 ## How do I choose the right one?
 
 Start with three questions:
 
 1. **How many of one design?** Every order starts at 6 pieces (12 for screen printing and embroidery). The bigger the run, the more screen printing pays off.
-2. **How many colors?** A few solid spot colors suit screens. Photos and gradients suit DTG, DTF or sublimation.
-3. **What fabric?** Cotton opens every option except sublimation. Polyester is where sublimation and DTF shine.
+2. **How many colors?** A few solid spot colors suit screens. Photos and gradients suit DTG or DTF.
+3. **What fabric?** Cotton opens every option. On polyester and blends, DTF and screen printing are the safest picks.
 
 You do not have to get it right on your own. Every quote comes with our recommendation and a free art check. To see how an order moves from art to pickup, read [custom t-shirt printing step by step](/products/t-shirts/custom-t-shirt-printing/), or browse blanks in the [catalog](/catalog/).
 

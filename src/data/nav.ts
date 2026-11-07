@@ -11,7 +11,7 @@ export const NAV: NavMenu[] = [
     label: 'T-shirts', href: '/products/t-shirts/',
     columns: [
       { links: [{ label: 'Short sleeve t-shirts', href: '/catalog/?sub=t-shirts' }, { label: 'Long sleeve t-shirts', href: '/catalog/?sub=long-sleeves' }, { label: 'Tank tops', href: '/catalog/?sub=tank-tops' }] },
-      { links: [{ label: 'All-over print tees', href: '/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/' }, { label: 'Screen printed t-shirts', href: '/products/t-shirts/t-shirt-screen-printing-near-me/' }] },
+      { links: [{ label: 'Oversize print tees', href: '/services/large-format-screen-printing/' }, { label: 'Screen printed t-shirts', href: '/products/t-shirts/t-shirt-screen-printing-near-me/' }] },
       { links: [{ label: 'Rush & Super Rush tees', href: '/same-day-t-shirt-printing-los-angeles/' }, { label: 'Choosing a print method', href: '/screen-printing-vs-dtf-vs-dtg/' }, { label: 'Which blank to pick', href: '/the-best-custom-t-shirt-shop-in-la/' }] },
       { links: [{ label: 'View all custom t-shirts', href: '/products/t-shirts/' }] },
     ],
@@ -22,7 +22,7 @@ export const NAV: NavMenu[] = [
       { links: [{ label: 'Hoodies', href: '/products/sweatshirts-hoodies/custom-hoodies/' }, { label: 'Crewneck sweatshirts', href: '/products/sweatshirts-hoodies/custom-sweatshirts/' }, { label: 'Zip hoodies', href: '/catalog/?sub=zip-hoodies' }, { label: 'View all sweatshirts', href: '/products/sweatshirts-hoodies/' }] },
       { links: [{ label: 'Hats & caps', href: '/products/hats/' }, { label: 'Dad hats', href: '/catalog/?sub=dad-hats' }, { label: 'Embroidered hats', href: '/services/embroidery/' }] },
       { links: [{ label: 'Polo shirts', href: '/products/business-and-polos-landings/' }, { label: 'Jackets & outerwear', href: '/products/outwear/' }, { label: 'Workwear & uniforms', href: '/services/embroidery/custom-embroidery/' }] },
-      { links: [{ label: 'Team jerseys', href: '/products/team-uniforms-jerseys/' }, { label: 'All-over print apparel', href: '/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/' }, { label: 'View all products', href: '/catalog/' }] },
+      { links: [{ label: 'Team jerseys', href: '/products/team-uniforms-jerseys/' }, { label: 'Custom projects', href: '/custom-projects/' }, { label: 'View all products', href: '/catalog/' }] },
     ],
   },
   {

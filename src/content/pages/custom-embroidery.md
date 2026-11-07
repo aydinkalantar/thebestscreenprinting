@@ -1,11 +1,11 @@
 ---
 path: "/custom-embroidery/"
 title: "Custom Embroidery | The Best Screen Printing"
-description: "Custom embroidery in Los Angeles for events, promotions and merch: stitched hats, polos, hoodies, jackets and bags. 12-piece minimum, free digitizing from 24 pieces."
+description: "Custom embroidery in Los Angeles for events, promotions and merch: stitched hats, polos, hoodies, jackets and bags. 12-piece minimum, free digitizing from {{digitizingFreeFrom}} pieces."
 h1: "Custom embroidery in Los Angeles"
 kind: service
 imported: false
-summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Los Angeles shop with a 12-piece minimum per design, free digitizing from 24 pieces and Rush and Super Rush options."
+summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Los Angeles shop with a 12-piece minimum per design, free digitizing from {{digitizingFreeFrom}} pieces and Rush and Super Rush options."
 facts:
   - { label: "Minimum", value: "12 pieces per design" }
   - { label: "Setup", value: "Digitizing included" }
@@ -44,7 +44,7 @@ Printing wins on big graphics, photos and fine detail. Embroidery wins on small 
 
 ## Want a specific stitch style?
 
-Flat embroidery, 3D puff, appliqué, patches, chenille and monograms each create a different look. Compare them on [embroidery styles](/custom-embroidery-services-los-angeles/). Outfitting a team instead of making merch? See [embroidery for uniforms](/services/embroidery/custom-embroidery/).
+Flat embroidery, 3D puff, appliqué, chenille and monograms each create a different look. Compare them on [embroidery styles](/custom-embroidery-services-los-angeles/). Outfitting a team instead of making merch? See [embroidery for uniforms](/services/embroidery/custom-embroidery/).
 
 ## Visit or call
 

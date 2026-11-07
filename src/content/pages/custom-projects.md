@@ -1,33 +1,35 @@
 ---
 path: "/custom-projects/"
-title: "Custom Cut & Sew, Sublimation & All-Over Print Apparel | TBSP"
-description: "Custom projects beyond the catalog: cut and sew apparel, sublimation, all-over printing and embossing on tees, hoodies, hats and more. Request a quote."
+title: "Custom Cut & Sew, Embossing & Oversize Print Apparel | TBSP"
+description: "Custom projects beyond the catalog: cut and sew apparel from 250 pieces, embossing and oversize prints on tees, hoodies, hats and more. Request a quote."
 h1: "Custom projects, made from scratch"
 kind: service
 imported: false
-summary: "When the catalog isn't enough: custom cut and sew garments, sublimation, all-over prints and embossing, built around your idea. Every project is quoted personally."
+summary: "When the catalog isn't enough: custom cut and sew garments from 250 pieces, embossing, oversize prints and decoration on garments you supply, built around your idea. Every project is quoted personally."
 facts:
-  - { label: "Projects", value: "Cut & sew, sublimation, all-over, embossing" }
+  - { label: "Projects", value: "Cut & sew (250+), embossing, oversize prints, your own garments" }
   - { label: "Products", value: "Tees, hoodies, hats and more" }
   - { label: "How to start", value: "Quote form or call (323) 433-0033" }
 faqs:
   - q: "What counts as a custom project?"
-    a: "Anything that isn't a regular catalog item: garments cut and sewn from scratch, sublimation and all-over prints, embossing, and special finishes. If you can describe it, we'll tell you how we can make it."
+    a: "Anything that isn't a regular catalog item: garments cut and sewn from scratch (from 250 pieces), embossing, oversize prints, and decorating garments you supply. If you can describe it, we'll tell you how we can make it, or the closest thing we do."
   - q: "How do I request a custom project?"
     a: "Use the quote form and pick the project type, or call (323) 433-0033. Include the product, quantity, deadline and any references or sketches."
   - q: "How much does a custom project cost?"
     a: "Every custom project is quoted individually, because fabric, construction, decoration and quantity all change the price. We reply with a personal quote within one business day."
   - q: "Is there a minimum order?"
-    a: "It depends on the project. Embossing starts at 24 pieces; cut and sew and sublimation minimums are confirmed with your quote, and no order goes below 6 pieces."
+    a: "It depends on the project. Embossing starts at 24 pieces and fully custom cut and sew at 250. Under 250, we use a premium heavyweight blank, relabel it with your brand and print it, which gets you a very close result. No order goes below 6 pieces."
 ---
-Some ideas don't fit on a blank. A hoodie in your own fabric and fit. A jersey printed edge to edge. A logo pressed into the fleece instead of printed on it. That's what custom projects are for.
+Some ideas don't fit on a blank. A hoodie in your own fabric and fit. A print that runs past the usual chest size. A logo pressed into the fleece instead of printed on it. That's what custom projects are for.
 
 ## What can we make?
 
-- **Custom cut & sew.** T-shirts, hoodies, hats and other products built from scratch: your fabric, your fit, your trims and labels.
-- **Sublimation.** Dye printed into the fibers of light polyester, so the design is part of the garment. Full color, nothing to crack or peel.
-- **All-over printing.** Edge-to-edge designs that wrap seams and sleeves. See how it works on our [all-over t-shirt page](/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/).
-- **[Embossing](/services/embossing/).** Your design raised into the fabric with a custom die, blind or with foil.
+- **Custom cut & sew.** From 250 pieces: T-shirts, hoodies and other products built from scratch in your fabric and fit. For smaller runs we relabel a premium heavyweight blank with your brand and print it.
+- **[Oversize prints](/services/large-format-screen-printing/).** Big graphics that run past a standard chest or back print.
+- **[Embossing](/services/embossing/).** Your design raised into the fabric with a custom die.
+- **Your own garments.** Send us the pieces and we decorate them.
+
+We don't do sublimation, all-over prints, patches, rhinestones or woven labels. For full-color art we use DTF or DTG, and embroidery straight on the garment gives a patch-like look.
 
 ## How does a custom project work?
 

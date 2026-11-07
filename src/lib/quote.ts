@@ -17,7 +17,7 @@ export const LEAD_SOURCES = [
 
 export const DECORATIONS = [
   'Screen printing', 'Embroidery', 'DTF transfer', 'DTG printing', 'Embossing',
-  'Sublimation', 'All-over print', 'Custom cut & sew', 'Not sure yet',
+  'Custom cut & sew (250+)', 'Not sure yet',
 ] as const;
 
 export const GARMENTS = [

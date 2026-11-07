@@ -25,7 +25,7 @@ Every project starts with a blank. A heavyweight tee for a merch drop. A polo fo
 
 ## Tops and fleece
 
-- **[T-shirts](/products/t-shirts/)** — the workhorse. Short sleeve, long sleeve and V-neck in men's, women's and youth cuts, plus [all-over printing](/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/) for edge-to-edge designs.
+- **[T-shirts](/products/t-shirts/)** — the workhorse. Short sleeve, long sleeve and V-neck in men's, women's and youth cuts, plus [oversize prints](/services/large-format-screen-printing/) for big, bold designs.
 - **Tank tops** — for gyms, summer events and festival merch, printed with the same methods as tees.
 - **[Hoodies and sweatshirts](/products/sweatshirts-hoodies/)** — [custom hoodies](/products/sweatshirts-hoodies/custom-hoodies/) in classic and oversized fits, and [crewneck sweatshirts](/products/sweatshirts-hoodies/custom-sweatshirts/) for a cleaner look.
 - **[Polos](/products/business-and-polos-landings/)** — embroidered logos for staff, sales teams and hospitality.

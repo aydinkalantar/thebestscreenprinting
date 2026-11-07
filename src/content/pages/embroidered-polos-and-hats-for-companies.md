@@ -1,20 +1,20 @@
 ---
 path: "/embroidered-polos-and-hats-for-companies/"
 title: "Embroidered Company Polos & Hats, From 12 Pieces | TBSP"
-description: "Embroidered polos, hats and jackets with your company logo, from 12 pieces. Left-chest embroidery from about $4.75 per piece at 144 plus the garment, free digitizing from 24 pieces, shipped to any US state."
+description: "Embroidered polos, hats and jackets with your company logo, from 12 pieces. Left-chest embroidery from about $4.75 per piece at 144 plus the garment, free digitizing from {{digitizingFreeFrom}} pieces, shipped to any US state."
 h1: "Embroidered polos and hats for your company"
 kind: answer
 imported: false
-summary: "We embroider company logos on polos, caps, jackets and fleece from 12 pieces and ship them to any US state, free from $300. A left-chest logo costs about $11.75 per piece at 12 and $4.75 at 144 for the stitching, plus the garment. Digitizing is free from 24 pieces and $45 per logo below that."
+summary: "We embroider company logos on polos, caps, jackets and fleece from 12 pieces and ship them to any US state, free from {{shipFreeFrom}}. A left-chest logo costs about $11.75 per piece at 12 and $4.75 at 144 for the stitching, plus the garment. Digitizing is free from {{digitizingFreeFrom}} pieces and {{digitizing}} per logo below that."
 facts:
   - { label: "Minimum", value: "12 pieces" }
   - { label: "Digitizing", value: "Free from 24 pcs" }
   - { label: "Hat logo", value: "Up to 4.5\" × 2.25\"" }
 faqs:
   - q: "How much does it cost to embroider a logo on a polo?"
-    a: "For a typical left-chest logo of 7,000 to 8,000 stitches, the embroidery is about $11.75 per piece at 12, $8.75 at 24, $6.25 at 72 and $4.75 at 144, plus the polo. Digitizing is free from 24 pieces and $45 below that."
+    a: "For a typical left-chest logo of 7,000 to 8,000 stitches, the embroidery is about $11.75 per piece at 12, $8.75 at 24, $6.25 at 72 and $4.75 at 144, plus the polo. Digitizing is free from {{digitizingFreeFrom}} pieces and {{digitizing}} below that."
   - q: "What is digitizing?"
-    a: "Digitizing turns your logo into a stitch file the embroidery machine can sew. It is free on 24 or more pieces and on reorders, and $45 per logo on smaller orders. We keep the file on record."
+    a: "Digitizing turns your logo into a stitch file the embroidery machine can sew. It is free on 24 or more pieces and on reorders, and {{digitizing}} per logo on smaller orders. We keep the file on record."
   - q: "Which polos and hats do you recommend?"
     a: "For polos, the Gildan 64800 is a solid value and Harriton snag-protect polos hold up for work uniforms. For hats, the Richardson 112 trucker and the classic dad hat are the most popular."
 updated: "2026-10-28"
@@ -30,7 +30,7 @@ updated: "2026-10-28"
 
 ## Embroidery price per piece
 
-For the stitching only, on a logo of about 7,000 to 8,000 stitches. Add the garment. Digitizing is free from 24 pieces and $45 per logo below that.
+For the stitching only, on a logo of about 7,000 to 8,000 stitches. Add the garment. Digitizing is free from {{digitizingFreeFrom}} pieces and {{digitizing}} per logo below that.
 
 | Quantity | Price per piece |
 | --- | --- |
@@ -47,6 +47,6 @@ Smaller logos with fewer stitches cost less; bigger ones cost more. Send your lo
 - **Your logo on file.** The stitch file, thread colors and placement are saved, so new hires get matching gear.
 - **Mockup first.** You approve the exact placement and size before anything is stitched.
 - **Mix items on one order.** Polos, caps and jackets together, each priced on its own.
-- **Ships anywhere.** Free shipping from $300 in the lower 48, $35 below that.
+- **Ships anywhere.** Free shipping from {{shipFreeFrom}} in the lower 48, {{shipFlat}} below that.
 
 Read more about our [embroidery](/services/embroidery/) and [polos](/products/business-and-polos-landings/).

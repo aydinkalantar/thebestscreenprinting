@@ -31,7 +31,7 @@ Ink on a thin, boxy tee looks cheap. The same ink on a soft, well-cut shirt look
 2. **Comfort Colors 1717 Garment-Dyed Heavyweight Tee** (S to 4XL). Thick, relaxed and washed-in color. The vintage look without the thrift-store hunt.
 3. **Gildan 5000 Classic Tee** (S to 5XL). The heavy cotton workhorse for events, teams and giveaways.
 4. **Gildan 64000 Softstyle Tee** (S to 3XL). Lighter and softer than the 5000, still budget-friendly.
-5. **Bella + Canvas 3413 Tri-Blend Tee** (XS to 4XL). Drapey, ultra-soft, a heathered look that makes water-based and discharge prints sing.
+5. **Bella + Canvas 3413 Tri-Blend Tee** (XS to 4XL). Drapey, ultra-soft, a heathered look that makes soft-hand prints sing.
 6. **Bella + Canvas 3001ECO Staple Eco Tee** (XS to 3XL). The 3001 fit with an eco-minded fabric.
 7. **Bella + Canvas 3001U Staple Tee, made in the USA.** For brands that want domestic production.
 8. **AS Colour 5082 Oversized Faded Tee.** Boxy streetwear fit with a faded finish.

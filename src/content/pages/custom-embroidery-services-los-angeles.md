@@ -1,13 +1,13 @@
 ---
 path: "/custom-embroidery-services-los-angeles/"
 title: "The Best Custom Embroidery Services In Los Angeles"
-description: "Flat, 3D puff, appliqué, patches, chenille and monogram embroidery in Los Angeles. Compare styles and pick the right stitch for your logo. 12-piece minimum."
+description: "Flat, 3D puff, appliqué, chenille and monogram embroidery in Los Angeles. Compare styles and pick the right stitch for your logo. 12-piece minimum."
 h1: "Custom embroidery styles in Los Angeles"
 kind: service
 imported: false
-summary: "Six ways to stitch a logo, from clean flat embroidery to raised 3D puff and fuzzy chenille. Embroidered in Los Angeles with a 12-piece minimum per design, digitizing free from 24 pieces and shipping anywhere."
+summary: "Six ways to stitch a logo, from clean flat embroidery to raised 3D puff and fuzzy chenille. Embroidered in Los Angeles with a 12-piece minimum per design, digitizing free from {{digitizingFreeFrom}} pieces and shipping anywhere."
 facts:
-  - { label: "Styles", value: "Flat, 3D puff, appliqué, patches, chenille, monogram" }
+  - { label: "Styles", value: "Flat, 3D puff, appliqué, chenille, monogram" }
   - { label: "Minimum", value: "12 pieces per design" }
   - { label: "Setup", value: "Digitizing included" }
 faqs:
@@ -43,9 +43,9 @@ Fabric cutouts are layered onto the garment and stitched around the edges. You g
 
 **Best for:** varsity letters, large chest or back designs, playful texture.
 
-## Patches
+## What about patches?
 
-Your design stitched as a standalone patch, then attached to the garment. Patches give a clean, finished edge and work on items that are tricky to stitch directly.
+We don't make patches, but embroidery straight on the garment gives a similar look, with a clean edge and no patch to peel.
 
 **Best for:** jackets, bags, hats, workwear.
 
@@ -71,7 +71,7 @@ Initials or short names in a clean script or block letter. Small, personal and p
 
 ## Which style should you choose?
 
-Match the style to the garment and the art. Caps love 3D puff. Polos love flat. Jackets love patches and appliqué. Gifts love monograms. Still deciding? Send the logo and we will show you options.
+Match the style to the garment and the art. Caps love 3D puff. Polos love flat. Jackets love appliqué. Gifts love monograms. Still deciding? Send the logo and we will show you options.
 
 Learn the fundamentals at [embroidery services](/services/embroidery/), see [embroidery for uniforms](/services/embroidery/custom-embroidery/), or browse [hats](/products/hats/) and the [catalog](/catalog/).
 

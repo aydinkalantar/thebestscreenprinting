@@ -63,7 +63,7 @@ Want the step-by-step tee version? See [how to do t-shirt screen printing](/how-
 
 ## Specialty looks for hoodies
 
-Hoodies are made for texture. **Puff ink** gives a raised, 3D print. **Water-based** and **discharge** inks give a soft, vintage feel on cotton. For a stitched logo on the chest, [embroidery](/services/embroidery/) is a premium alternative.
+Hoodies take ink beautifully. **Soft-hand plastisol** gives a light, smooth feel, and **metallic** or **glitter** ink adds shine. For a stitched logo on the chest, [embroidery](/services/embroidery/) is a premium alternative.
 
 ## How to make a hoodie print last
 
