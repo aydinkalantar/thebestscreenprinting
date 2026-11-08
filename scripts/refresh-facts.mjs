@@ -75,8 +75,8 @@ async function main() {
   const emb = results.filter((r) => r.method === 'embroidery' && r.item?.ok).sort((a, b) => a.qty - b.qty);
   const paid = emb.find((r) => r.item.setup > 0);
   if (paid) facts.digitizing = round(paid.item.setup);
-  const free = emb.find((r) => r.item.setup === 0);
-  if (free) facts.digitizingFreeFrom = free.qty;
+  // Digitizing is charged on every embroidery order now (no free-from quantity).
+  delete facts.digitizingFreeFrom;
 
   // Art help, shipping and rush, from the last answer.
   const art = last?.artHelp;

@@ -16,7 +16,7 @@ faqs:
   - q: "How much does it cost to print 100 shirts?"
     a: "For a one-color front print, about {{tee.screen1.72}} per shirt at 72 to 143 pieces, so around {{$ tee.screen1.72 × 100 + screenSetup}} for 100 including the screen. Two colors add about {{$. tee.screen2.72 - tee.screen1.72}} per shirt at that quantity, plus a second screen."
   - q: "What is a setup fee?"
-    a: "Screen printing needs one screen per ink color per print spot, at {{screenSetup}} per screen. The white base layer on dark shirts is free. DTF and DTG have no setup fee. Embroidery digitizing is free from {{digitizingFreeFrom}} pieces and {{digitizing}} per logo below that."
+    a: "Screen printing needs one screen per ink color per print spot, at {{screenSetup}} per screen. The white base layer on dark shirts is free. DTF and DTG have no setup fee. Embroidery digitizing is a one-time {{digitizing}} per logo."
   - q: "Why are small orders more per shirt?"
     a: "Setup and press time cost the same for 12 shirts as for 500, so they are spread over fewer pieces. For full-color art under 24 pieces, DTF is often the best value."
   - q: "Is shipping included?"
@@ -37,7 +37,7 @@ Example: a black Gildan 5000 tee with one print on the front, shirt included. Th
 | 72 | {{tee.screen1.72}} | {{tee.screen2.72}} | {{tee.dtf.72}} | {{tee.dtg.72}} | {{tee.embroidery.72}} |
 | 144 | {{tee.screen1.144}} | {{tee.screen2.144}} | {{tee.dtf.144}} | {{tee.dtg.144}} | {{tee.embroidery.144}} |
 
-Screen printing and embroidery start at 12 pieces; DTF and DTG start at 6. Screen printing adds a one-time {{screenSetup}} screen per ink color per print spot; the white base on dark shirts is free. DTF and DTG have no setup fee. Embroidery is shown for a logo of about 7,000 to 8,000 stitches; digitizing is free from {{digitizingFreeFrom}} pieces and {{digitizing}} per logo below that. On a white shirt, DTG costs about $1.50 to $2.50 less per piece.
+Screen printing and embroidery start at 12 pieces; DTF and DTG start at 6. Screen printing adds a one-time {{screenSetup}} screen per ink color per print spot; the white base on dark shirts is free. DTF and DTG have no setup fee. Embroidery is shown for a logo of about 7,000 to 8,000 stitches; digitizing is a one-time {{digitizing}} per logo. On a white shirt, DTG costs about $1.50 to $2.50 less per piece.
 
 ## What changes the price
 

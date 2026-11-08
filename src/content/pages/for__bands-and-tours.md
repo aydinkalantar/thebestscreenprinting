@@ -28,7 +28,7 @@ updated: "2026-10-28"
 | Tour tee | Screen printed front, tour dates on the back | The best seller at the merch table |
 | Heavyweight or oversized tee | Big front and back prints | See [heavyweight tees](/oversized-heavyweight-t-shirt-printing/) |
 | Hoodie | Front print, sleeve hit | See [hoodies in bulk](/custom-hoodies-in-bulk/) |
-| Hat or beanie | Embroidered logo | Digitizing free from {{digitizingFreeFrom}} pieces |
+| Hat or beanie | Embroidered logo | Digitizing {{digitizing}} per design |
 | Tote bag | One-color print | Cheap to make, easy to sell |
 
 ## What a first merch run costs

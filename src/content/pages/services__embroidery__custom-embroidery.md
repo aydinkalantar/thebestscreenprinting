@@ -5,10 +5,10 @@ description: "Custom embroidered uniforms and workwear in Los Angeles: logos on 
 h1: "Custom embroidery for uniforms and workwear in Los Angeles"
 kind: service
 imported: false
-summary: "Your logo, stitched sharp on every polo, cap and jacket your team wears. Custom embroidery at our Los Angeles shop starts at 12 pieces per design, with digitizing free from {{digitizingFreeFrom}} pieces ({{digitizing}} per logo below that)."
+summary: "Your logo, stitched sharp on every polo, cap and jacket your team wears. Custom embroidery at our Los Angeles shop starts at 12 pieces per design, plus a one-time {{digitizing}} to digitize each logo."
 facts:
   - { label: "Minimum", value: "12 pieces per design" }
-  - { label: "Setup", value: "Digitizing included, no hidden setup fees" }
+  - { label: "Setup", value: "Digitizing {{digitizing}} per logo, no hidden fees" }
   - { label: "Best for", value: "Staff polos, caps, jackets, aprons and work shirts" }
 faqs:
   - q: "Can I add employee names to embroidered uniforms?"
@@ -44,7 +44,7 @@ Small logos are embroidery's sweet spot. Clean shapes, short text and a limited 
 1. **Count heads and sizes.** Know how many people and how many pieces each.
 2. **Pick garments.** Mix polos for front of house, aprons for the kitchen and caps for everyone. Browse the [catalog](/catalog/) or our [business and polo picks](/products/business-and-polos-landings/).
 3. **Choose placement.** Left chest is standard. Add a sleeve or back mark for extra reach.
-4. **Send your logo.** We digitize it into a stitch file Digitizing is free on 24 or more pieces and on reorders, and {{digitizing}} per logo on smaller orders, shown on your quote. No hidden fees.
+4. **Send your logo.** We digitize it into a stitch file for a one-time {{digitizing}} per logo, shown on your quote, and free on reorders. No hidden fees.
 5. **Approve and stitch.** Every order gets a free art check before production.
 
 ## Mixing methods

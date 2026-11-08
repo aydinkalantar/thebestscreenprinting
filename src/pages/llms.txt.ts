@@ -26,7 +26,7 @@ export async function GET() {
     `- Turnaround: ${normal.name} ${normal.time.toLowerCase()}; ${rush.name} ${rush.time} (${rush.fee}); ${superRush.name} ${superRush.time} (${superRush.fee}).`,
     `- Shipping: free on orders of $${business.shippingFreeFrom} or more, $${business.shippingFlat} flat below that, anywhere in the lower 48 states; local pickup in Los Angeles.`,
     fill('- Example price: one-color screen print on a black tee, shirt included, about {{tee.screen1.24}} each at 24 pieces and {{tee.screen1.144}} each at 144, plus a {{screenSetup}} screen. Full-color DTF about {{tee.dtf.24}} each at 24.'),
-    fill('- Embroidery digitizing free from {{digitizingFreeFrom}} pieces ({{digitizing}} per logo below that).'),
+    fill('- Embroidery digitizing: a one-time {{digitizing}} per design (free on reorders of the same logo).'),
     '- We print with plastisol ink (standard, soft-hand, metallic and glitter). We do not offer water-based or discharge ink, sublimation, all-over prints, patches, rhinestones or woven labels.',
     '- Free art check and a mockup to approve before anything is printed.',
     `- Quotes: ${business.url}/quick-quote/ or ${business.email} or ${business.phoneDisplay}. Reply within one business day.`,
