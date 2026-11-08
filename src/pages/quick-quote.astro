@@ -224,9 +224,10 @@ const PRINT_SPOTS = ['Front', 'Back', 'Left chest', 'Sleeve', 'Other'];
     set('meta', [style && `Style ${style}`, color, qty > 0 && `${qty} pieces`].filter(Boolean).join(' · '));
     set('sizes', [sizeText, locations.length ? `Print: ${locations.join(', ')}` : ''].filter(Boolean).join(' · '));
     const img = query.get('img') || '';
-    if (/^https:\/\/cdn\.ssactivewear\.com\/[\w\-./%]+$/.test(img)) {
+    const ssPath = /^(?:https:\/\/cdn\.ssactivewear\.com|https:\/\/[\w.-]+\/ss-img)\/(Images\/[\w\-./%]+)$/.exec(img);
+    if (ssPath) {
       const el = card.querySelector<HTMLImageElement>('[data-s="img"]')!;
-      el.src = img;
+      el.src = `${location.origin}/ss-img/${ssPath[1]}`;
       el.alt = product;
       el.hidden = false;
     }

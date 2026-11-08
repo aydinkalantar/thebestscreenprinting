@@ -5,7 +5,7 @@ description: "Volunteer, event and fundraiser shirts for Los Angeles non-profits
 h1: "Custom shirts for non-profits"
 kind: audience
 imported: false
-summary: "Shirts that rally people around your cause. Volunteer tees, walk and run shirts, and fundraiser merch printed in Los Angeles, with orders starting at 6 pieces (12 for screen printing and embroidery). We ship anywhere in the lower 48, free from $300."
+summary: "Shirts that rally people around your cause. Volunteer tees, walk and run shirts, and fundraiser merch printed in Los Angeles, with orders starting at 6 pieces (12 for screen printing and embroidery). We ship anywhere in the lower 48, free from {{shipFreeFrom}}."
 facts:
   - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -62,4 +62,4 @@ Planning your next event? [Get a free quote](/quick-quote/).
 
 ## Ordering from outside California?
 
-You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of $300 or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of {{shipFreeFrom}} or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).

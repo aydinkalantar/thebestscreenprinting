@@ -5,6 +5,7 @@ import { parseQuote, parsePlacements, quoteEmail, requestNumber, MAX_ARTWORK_BYT
 import { buildQuotePdf, type PdfMockup } from './lib/quote-pdf';
 import { confirmationEmail } from './lib/quote-confirm';
 import { business } from './data/business';
+import { SS_ORIGIN, SS_PREFIX } from './lib/ss-img';
 
 interface Env {
   ASSETS: { fetch(req: Request): Promise<Response> };
@@ -285,6 +286,72 @@ function resolveLegacy(path: string): { status: 301; to: string } | { status: 41
   return null;
 }
 
+/** How long a product photo is kept at the edge and in browsers. */
+const SS_IMG_TTL = 30 * 24 * 3600;
+const SS_IMG_PATH = /^Images\/[\w\-./%]+\.(?:jpe?g|png|webp|gif)$/i;
+
+/** Shown when S&S can't serve a photo: a soft grey tile with a shirt outline, never a broken-image icon. */
+const SS_PLACEHOLDER = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="#f3f3f3"/><path d="M150 110l-70 35-35 75 50 25 20-35v190h170V210l20 35 50-25-35-75-70-35c-5 25-27 40-50 40s-45-15-50-40z" fill="none" stroke="#d4d4d8" stroke-width="8" stroke-linejoin="round"/></svg>`;
+
+/**
+ * /ss-img/<path>: an S&S product photo (cdn.ssactivewear.com/<path>) through this site.
+ * Kept in the edge cache for 30 days, so photos keep showing even while S&S is slow or down.
+ */
+async function handleSsImage(url: URL, ctx?: Ctx): Promise<Response> {
+  const path = url.pathname.slice(SS_PREFIX.length);
+  if (!SS_IMG_PATH.test(path) || path.includes('..')) return new Response('Not found', { status: 404 });
+  const cache = (globalThis as unknown as { caches?: { default?: Cache } }).caches?.default;
+  const key = new Request(`${url.origin}${url.pathname}`);
+  const hit = await cache?.match(key).catch(() => undefined);
+  if (hit) return hit;
+
+  let upstream: Response | null = null;
+  try {
+    upstream = await fetch(`${SS_ORIGIN}${path}`, {
+      headers: { 'user-agent': 'Mozilla/5.0 (compatible; TBSP-site/1.0; +https://thebestscreenprinting.com)', accept: 'image/avif,image/webp,image/*,*/*;q=0.8' },
+      cf: { cacheEverything: true, cacheTtl: SS_IMG_TTL },
+    } as RequestInit);
+  } catch { upstream = null; }
+
+  const type = upstream?.headers.get('content-type') || '';
+  if (upstream?.ok && type.startsWith('image/')) {
+    const res = new Response(upstream.body, {
+      headers: {
+        'content-type': type,
+        'cache-control': `public, max-age=${SS_IMG_TTL}, immutable`,
+        'access-control-allow-origin': '*',
+      },
+    });
+    if (cache) {
+      const put = cache.put(key, res.clone()).catch(() => {});
+      if (ctx) ctx.waitUntil(put); else await put;
+    }
+    return res;
+  }
+  console.log(`ss-img: ${path} upstream ${upstream ? upstream.status : 'unreachable'} ${type}`);
+  return new Response(SS_PLACEHOLDER, {
+    headers: {
+      'content-type': 'image/svg+xml',
+      'cache-control': 'public, max-age=300',
+      'access-control-allow-origin': '*',
+      'x-ss-upstream': upstream ? String(upstream.status) : 'unreachable',
+    },
+  });
+}
+
+const REWRITE_TYPES = /^(?:text\/html|text\/javascript|application\/javascript|application\/json)/;
+
+/** Points S&S photo URLs in a served page, script or JSON file at /ss-img/ on this site. */
+async function rewriteSsUrls(res: Response, origin: string): Promise<Response> {
+  if (res.status !== 200 || !REWRITE_TYPES.test(res.headers.get('content-type') || '')) return res;
+  const text = await res.text();
+  if (!text.includes(SS_ORIGIN)) return new Response(text, res);
+  const out = new Response(text.replaceAll(SS_ORIGIN, `${origin}${SS_PREFIX}`), res);
+  out.headers.delete('content-length');
+  out.headers.delete('etag');
+  return out;
+}
+
 function withHeaders(res: Response, env: Env): Response {
   if (env.STAGING !== '1') return res;
   const out = new Response(res.body, res);
@@ -306,6 +373,11 @@ export default {
       return new Response('User-agent: *\nDisallow: /\n', { headers: { 'content-type': 'text/plain' } });
     }
 
+    if (url.pathname.startsWith(SS_PREFIX)) {
+      if (request.method !== 'GET' && request.method !== 'HEAD') return new Response('Method not allowed', { status: 405 });
+      return handleSsImage(url, ctx);
+    }
+
     if (url.pathname === '/api/quote') {
       if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
       return handleQuote(request, env, ctx);
@@ -321,6 +393,6 @@ export default {
       return withHeaders(new Response('Gone', { status: 410, headers: { 'content-type': 'text/plain' } }), env);
     }
 
-    return withHeaders(await env.ASSETS.fetch(request), env);
+    return withHeaders(await rewriteSsUrls(await env.ASSETS.fetch(request), url.origin), env);
   },
 };

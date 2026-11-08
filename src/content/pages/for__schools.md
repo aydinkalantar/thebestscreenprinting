@@ -5,7 +5,7 @@ description: "Custom shirts, hoodies and uniforms for Los Angeles schools, clubs
 h1: "Custom apparel for schools"
 kind: audience
 imported: false
-summary: "School colors, done loud. Shirts, hoodies and uniforms for LA schools, clubs, teams and boosters, printed in-house from 6 pieces (12 for screen printing and embroidery), with quotes back within one business day. We ship anywhere in the lower 48, free from $300."
+summary: "School colors, done loud. Shirts, hoodies and uniforms for LA schools, clubs, teams and boosters, printed in-house from 6 pieces (12 for screen printing and embroidery), with quotes back within one business day. We ship anywhere in the lower 48, free from {{shipFreeFrom}}."
 facts:
   - label: "Minimum 6 pieces (12 for screen printing and embroidery)"
     value: "Screen printed in-house"
@@ -71,4 +71,4 @@ Send your design, quantities and deadline through the [quick quote form](/quick-
 
 ## Ordering from outside California?
 
-You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of $300 or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of {{shipFreeFrom}} or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).

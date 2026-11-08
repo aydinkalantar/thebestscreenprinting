@@ -5,7 +5,7 @@ description: "Local embroidery in Los Angeles. Drop off garments, pick up finish
 h1: "Embroidery near me in Los Angeles"
 kind: service
 imported: false
-summary: "Machine embroidery stitched in Los Angeles. Drop off your garments or pick from our catalog, then collect at the shop. 12 pieces per design, with digitizing free from 24 pieces ($45 per logo below that)."
+summary: "Machine embroidery stitched in Los Angeles. Drop off your garments or pick from our catalog, then collect at the shop. 12 pieces per design, with digitizing free from {{digitizingFreeFrom}} pieces ({{digitizing}} per logo below that)."
 facts:
   - { label: "Location", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Minimum", value: "12 pieces per design" }
@@ -48,7 +48,7 @@ All of them. We work with customers across Los Angeles County, from Koreatown to
 
 ## Picking a style?
 
-Flat, 3D puff, appliqué and patches each have their place. Compare them on [custom embroidery styles](/custom-embroidery-services-los-angeles/). Outfitting staff? See [embroidery for uniforms](/services/embroidery/custom-embroidery/). New to embroidery? Start at [embroidery services](/services/embroidery/).
+Flat, 3D puff and appliqué each have their place. Compare them on [custom embroidery styles](/custom-embroidery-services-los-angeles/). Outfitting staff? See [embroidery for uniforms](/services/embroidery/custom-embroidery/). New to embroidery? Start at [embroidery services](/services/embroidery/).
 
 ## Come by or send it over
 

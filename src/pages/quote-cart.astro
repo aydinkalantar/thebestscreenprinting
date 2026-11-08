@@ -101,6 +101,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
 
 <script>
   import { track } from '../lib/analytics';
+  import { ssImg } from '../lib/ss-img';
   import {
     CART_MIN, minFor, cartItems, updateCartItem, removeCartItem, duplicateCartItem, clearCart, getFile, setCarry,
     onCartChange, cartPersistsFiles, sumSizes, CART_MAX_ITEMS, type CartItem,
@@ -196,7 +197,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     const img = el('img', 'w-full h-full object-contain');
     img.alt = it.mockups.length ? `Mockup of ${it.name}, front` : it.name;
     img.width = 112; img.height = 128;
-    img.src = it.image;
+    img.src = ssImg(it.image);
     main.append(img);
     thumbs.append(main);
     if (it.mockups.length) {

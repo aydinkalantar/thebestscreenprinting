@@ -1,11 +1,11 @@
 ---
 path: "/services/embroidery/"
 title: "Embroidery Services in Los Angeles"
-description: "Custom embroidery in Los Angeles on caps, polos, jackets and uniforms. 12-piece minimum per design, digitizing free from 24 pieces, 3D puff available."
+description: "Custom embroidery in Los Angeles on caps, polos, jackets and uniforms. 12-piece minimum per design, digitizing free from {{digitizingFreeFrom}} pieces, 3D puff available."
 h1: "Embroidery services in Los Angeles"
 kind: service
 imported: false
-summary: "Thread-built logos with real texture, stitched on caps, polos, jackets and uniforms at our Los Angeles shop. 12-piece minimum per design, with digitizing free from 24 pieces ($45 per logo below that) and no hidden fees."
+summary: "Thread-built logos with real texture, stitched on caps, polos, jackets and uniforms at our Los Angeles shop. 12-piece minimum per design, with digitizing free from {{digitizingFreeFrom}} pieces ({{digitizing}} per logo below that) and no hidden fees."
 facts:
   - { label: "Minimum", value: "12 pieces per design" }
   - { label: "Setup", value: "Digitizing and setup included" }
@@ -14,7 +14,7 @@ faqs:
   - q: "What is the minimum order for custom embroidery?"
     a: "Our embroidery minimum is 12 pieces per design. Send the quantity and garments with your quote request and we will confirm the details."
   - q: "Do you charge a digitizing fee?"
-    a: "Only on small orders. Digitizing is free on 24 or more embroidered pieces and on reorders of the same logo. Under 24 pieces it is a one-time $45 per logo, shown on your quote, with no other setup fees."
+    a: "Only on small orders. Digitizing is free on 24 or more embroidered pieces and on reorders of the same logo. Under 24 pieces it is a one-time {{digitizing}} per logo, shown on your quote, with no other setup fees."
   - q: "What is 3D puff embroidery?"
     a: "3D puff embroidery is stitched over a foam base, which raises the design off the fabric like the logos on major league caps. It works best on bold designs without thin lines or small lettering."
   - q: "What do I need to send for an embroidery quote?"
@@ -41,7 +41,6 @@ Thread loves logos, names and clean artwork. For big full-front graphics or phot
 
 - **Flat embroidery.** The classic. Handles detail well and works on most fabrics.
 - **3D puff.** Stitched over foam for a raised, sculpted logo. Made for caps.
-- **Patches.** Your design embroidered as a patch and applied to the garment.
 - **Custom fill patterns.** Your logo repeated as an embroidered background layer for a look nobody else has.
 
 ## How does the embroidery process work?

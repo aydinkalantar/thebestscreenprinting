@@ -8,6 +8,7 @@ import VideoGrid from '../components/VideoGrid.astro';
 import RelatedProducts from '../components/home/RelatedProducts.astro';
 import { PAGE_VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
+import { fill, facts as shopFacts } from '../lib/facts.mjs';
 import { heroImage, eyebrowFor, relatedFor } from '../lib/page-meta';
 import { ArrowRight, Palette, Phone, Clock, MapPin, ChevronRight, ListOrdered, Printer, CalendarCheck, MessageCircle } from '@lucide/astro';
 
@@ -24,7 +25,11 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props;
 const { Content, headings } = await render(page);
-const { title, description, h1, noindex, imported, summary, facts, faqs, kind, path, updated, states } = page.data;
+// Prices and terms in the copy are {{tokens}} filled from src/data/facts.json (see src/lib/facts.mjs).
+const body = page.rendered?.html != null ? fill(page.rendered.html) : null;
+const { title, description, h1, noindex, imported, summary, facts, faqs, kind, path, updated: written, states } = page.data;
+// Pages quoting live prices were last checked when the prices were last refreshed.
+const updated = /\{\{/.test(page.body ?? '') && shopFacts.updated > (written ?? '') ? shopFacts.updated : written;
 // Legal pages get a table of contents (sticky on desktop, collapsible on phones).
 const toc = kind === 'legal' ? headings.filter((h) => h.depth === 2) : [];
 const hasToc = toc.length >= 4;
@@ -156,7 +161,7 @@ if (faqs.length) {
       </>
     )}
     <article class:list={['prose-tb min-w-0', { 'prose-legal': kind === 'legal' }]}>
-      <Content />
+      {body != null ? <Fragment set:html={body} /> : <Content />}
       {hasToc && <p class="!mt-12 print:hidden"><a href="#top" data-top class="!no-underline font-semibold text-[14px]">↑ Back to top</a></p>}
     </article>
     {!narrow && (

@@ -12,10 +12,11 @@ import VideoGrid from '../components/VideoGrid.astro';
 import HeroStudio from '../components/HeroStudio.astro';
 import { VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
+import { fill } from '../lib/facts.mjs';
 import { products, featuredProducts } from '../lib/catalog';
 import { collectionTiles, brandTiles, styles } from '../components/home/collections';
 import {
-  ArrowRight, Phone, MapPin, Clock, Shirt, Scissors, Layers, Palette, Stamp, Printer, Maximize, Zap,
+  ArrowRight, Phone, MapPin, Clock, Shirt, Scissors, Layers, Stamp, Printer, Maximize, Zap,
   Package, CalendarDays, Store, Trophy, GraduationCap, HeartHandshake, MessageSquareText, Truck, Mic, Sparkles, BadgeCheck, Star, Volume2, VolumeX, Pause, Play, RotateCcw,
 } from '@lucide/astro';
 
@@ -31,7 +32,6 @@ const services = [
   { href: '/services/embroidery/', icon: Scissors, name: 'Embroidery', line: 'Your logo in thread on caps, polos, jackets and uniforms. Made to look premium for years.' },
   { href: '/services/direct-to-film/', icon: Layers, name: 'DTF transfers', line: 'Photo-level detail and full color on cotton, poly and blends.' },
   { href: '/services/direct-to-garment/', icon: Printer, name: 'DTG printing', line: 'Full-color, photo-real prints straight into the fabric.' },
-  { href: '/products/t-shirts/custom-all-over-t-shirt-printing-in-los-angeles/', icon: Palette, name: 'All-over print', line: 'Full color edge to edge: front, back and sleeves.' },
   { href: '/services/embossing/', icon: Stamp, name: 'Embossing', line: 'Raised, tonal branding for a quiet-luxury finish.' },
   { href: '/services/large-format-screen-printing/', icon: Maximize, name: 'Oversize prints', line: 'Go big: jumbo prints that cover way more than the chest.' },
   { href: '/same-day-t-shirt-printing-los-angeles/', icon: Zap, name: 'Rush & Super Rush', line: 'Tight deadline? Pick Rush or Super Rush when the date can’t move.' },
@@ -52,7 +52,7 @@ const categories = collectionTiles.length > 12
 const trust = [
   { icon: BadgeCheck, t: 'Free art proof before anything prints' },
   { icon: Package, t: `Orders start at ${business.shopMinimum} pieces` },
-  { icon: Truck, t: 'Free shipping on $300+ (lower 48)' },
+  { icon: Truck, t: `Free shipping on $${business.shippingFreeFrom}+ (lower 48)` },
   { icon: Star, t: 'Real Google reviews', href: '#reviews' },
 ]
 const brands = brandTiles(10);
@@ -64,7 +64,7 @@ const steps = [
 const faqs = [
   { q: 'Where are you located?', a: `We have two production facilities. Our Los Angeles shop is at ${business.address.streetAddress}, ${business.address.addressLocality}, ${business.address.addressRegion} ${business.address.postalCode}, open Monday to Friday, 9am to 5pm. Our Cleveland facility serves Greater Cleveland and Northeast Ohio with local delivery.` },
   { q: 'What is the minimum order?', a: `Screen printing and embroidery start at ${business.screenMinimum} pieces. DTG and DTF start at ${business.shopMinimum}. Everything is made in our own shops in Los Angeles and Cleveland.` },
-  { q: 'How fast can you print?', a: 'Normal delivery arrives in about 2 weeks. Rush arrives in 1 week for an extra 15% of the order cost, and Super Rush arrives in 3 business days for an extra 30%. For Super Rush, order by 2:00 PM ET on Tuesday to have it in hand by Friday. Super Rush is not available for all products, styles or PO Box addresses.' },
+  { q: 'How fast can you print?', a: `Normal delivery arrives in about 2 weeks. Rush arrives in 1 week for an extra ${business.turnaround[1].fee?.slice(1)} of the order cost, and Super Rush arrives in 3 business days for an extra ${business.turnaround[2].fee?.slice(1)}. For Super Rush, order by 2:00 PM ET on Tuesday to have it in hand by Friday. Super Rush is not available for all products, styles or PO Box addresses.` },
   { q: 'How do I get a price?', a: 'Request a quote with your garment, quantity, print locations and artwork. We reply with a personal quote within one business day.' },
 ];
 const bestSellers = featuredProducts.slice(0, 8);
@@ -85,7 +85,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         <h1 class="mt-3 sm:mt-4 text-[2.7rem] sm:text-[4.2rem] break-words leading-[0.98] text-zinc-900 dark:text-white">Custom merch, <span class="hl">done right.</span></h1>
         <!-- The tee price is from the live price engine (48 white Gildan 5000, 1-color front); recheck when prices change. -->
         <p class="mt-4 sm:mt-5 text-lg leading-8 muted max-w-xl" data-hero-intro>
-          Tees with your logo from <b class="text-zinc-900 dark:text-white">$9.25 each</b>, made in-house in Los Angeles and Cleveland. Orders from {business.shopMinimum} pieces.
+          Tees with your logo from <b class="text-zinc-900 dark:text-white">{fill('{{tee.screen1.144}}')} each</b>, made in-house in Los Angeles and Cleveland. Orders from {business.shopMinimum} pieces.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="/catalog/" class="btn-primary h-12 px-6 text-[15px]">Shop products<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
@@ -188,7 +188,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         <span class="tile-icon shrink-0"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
         <div>
           <p class="font-bold text-zinc-900 dark:text-white">Something the catalog can't do?</p>
-          <p class="mt-1 text-sm muted">Custom cut &amp; sew, sublimation, all-over prints and embossing on tees, hoodies, hats and more. Request it with a quote{business.studioLive ? ' or ask Max' : ''}.</p>
+          <p class="mt-1 text-sm muted">Cut &amp; sew from 250 pieces, embossing, oversize prints and decorating your own garments. Request it with a quote{business.studioLive ? ' or ask Max' : ''}.</p>
         </div>
       </div>
       <span class="btn-quiet btn-sm max-md:w-full max-md:h-11">Start a custom project<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>

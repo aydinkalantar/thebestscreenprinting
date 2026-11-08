@@ -14,7 +14,7 @@ facts:
   - { label: "Screen, 7–10 colors", value: "100 pieces" }
 faqs:
   - q: "Can I order just one custom shirt?"
-    a: "No. Every order is made in our own production. DTF and DTG start at 6 pieces (12 for screen printing and embroidery), and screen printing and embroidery at 12. For full-color art in small quantities, DTF from 6 pieces is the best value at about $17 per shirt, shirt included."
+    a: "No. Every order is made in our own production. DTF and DTG start at 6 pieces (12 for screen printing and embroidery), and screen printing and embroidery at 12. For full-color art in small quantities, DTF from 6 pieces is the best value at about {{tee.dtf.6}} per shirt, shirt included."
   - q: "Does the minimum apply per design or per order?"
     a: "The minimum is per order: 12 pieces for screen printing or embroidery, 6 for DTF or DTG. One design in mixed sizes always counts toward it. If you want several designs in one small order, tell us and we will confirm what works."
   - q: "Can I mix sizes to reach the minimum?"
@@ -43,11 +43,11 @@ The full rules are in our [terms and conditions](/terms-conditions/).
 
 Under 24 pieces, the price per shirt is higher because setup is spread over fewer shirts. Two good options:
 
-- **1-color design:** screen printing, from 12 pieces, about $16 per shirt at 12, shirt included, plus a $25 screen.
-- **Full-color design, or fewer than 12 shirts:** DTF, about $17 per shirt at 6 and $15 at 12, no setup fee.
+- **1-color design:** screen printing, from 12 pieces, about {{tee.screen1.12}} per shirt at 12, shirt included, plus a {{screenSetup}} screen.
+- **Full-color design, or fewer than 12 shirts:** DTF, about {{tee.dtf.6}} per shirt at 6 and {{tee.dtf.12}} at 12, no setup fee.
 
 From 24 pieces, prices drop quickly. See the [full price table](/how-much-does-custom-shirt-printing-cost/).
 
 ## Small orders still get the full treatment
 
-A free art check, a mockup to approve, production in our own facilities and shipping to any US state, free from $300. Read how [nationwide shipping](/shipping-nationwide/) works.
+A free art check, a mockup to approve, production in our own facilities and shipping to any US state, free from {{shipFreeFrom}}. Read how [nationwide shipping](/shipping-nationwide/) works.

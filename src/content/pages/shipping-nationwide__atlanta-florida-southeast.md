@@ -1,23 +1,23 @@
 ---
 path: "/shipping-nationwide/atlanta-florida-southeast/"
 title: "Custom Shirts Shipped to Atlanta, Florida and the Southeast | TBSP"
-description: "Custom t-shirts, hoodies and hats for Atlanta, Florida and the Southeast, printed in our own shops and shipped to your door. From 6 pieces (12 for screen printing and embroidery), about $11.50 a tee at 24, free shipping from $300 in the lower 48."
+description: "Custom t-shirts, hoodies and hats for Atlanta, Florida and the Southeast, printed in our own shops and shipped to your door. From 6 pieces (12 for screen printing and embroidery), about {{tee.screen1.24}} a tee at 24, free shipping from {{shipFreeFrom}} in the lower 48."
 h1: "Custom shirts shipped to Atlanta, Florida and the Southeast"
 kind: service
 imported: false
-summary: "We don't have a shop in the Southeast, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in Georgia, Florida, North Carolina, South Carolina, Tennessee, Alabama and Mississippi. Orders start at 6 pieces (12 for screen printing and embroidery), and shipping is free from $300."
+summary: "We don't have a shop in the Southeast, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in Georgia, Florida, North Carolina, South Carolina, Tennessee, Alabama and Mississippi. Orders start at 6 pieces (12 for screen printing and embroidery), and shipping is free from {{shipFreeFrom}}."
 states: ["Georgia", "Florida", "North Carolina", "South Carolina", "Tennessee", "Alabama", "Mississippi"]
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
-  - { label: "24 tees, 1 color", value: "About $11.50 each" }
-  - { label: "Shipping", value: "Free from $300" }
+  - { label: "24 tees, 1 color", value: "About {{tee.screen1.24}} each" }
+  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
 faqs:
   - q: "Do you have a shop in Atlanta or Florida?"
     a: "No. We print in our own facilities in Los Angeles and Cleveland and ship anywhere in Georgia, Florida, the Carolinas, Tennessee, Alabama and Mississippi."
   - q: "Can you print shirts for a family reunion?"
-    a: "Yes, from 6 pieces (12 for screen printing and embroidery), in adult and youth sizes. Most reunion orders of 24 or more shirts pass $300 and ship free."
+    a: "Yes, from 6 pieces (12 for screen printing and embroidery), in adult and youth sizes. Most reunion orders of 24 or more shirts pass {{shipFreeFrom}} and ship free."
   - q: "How much do custom shirts cost if I am in the Southeast?"
-    a: "The same as everywhere: a one-color screen printed black tee is about $11.50 each at 24 pieces and $7.25 at 144, shirt included, plus a one-time $25 screen. Shipping is free from $300."
+    a: "The same as everywhere: a one-color screen printed black tee is about {{tee.screen1.24}} each at 24 pieces and {{tee.screen1.144}} at 144, shirt included, plus a one-time {{screenSetup}} screen. Shipping is free from {{shipFreeFrom}}."
   - q: "What is the minimum order?"
     a: "12 pieces for screen printing (1 to 3 colors) and embroidery, 6 for DTF and DTG. You can mix sizes."
 updated: "2026-10-28"
@@ -35,17 +35,17 @@ Family reunions, church events and Greek life are a big part of what the Southea
 1. **Send your art and sizes** through the [quote form](/quick-quote/) or ask Max for an instant price.
 2. **Approve the mockup** by email. The art check is free.
 3. **We print it in-house** in Los Angeles or Cleveland.
-4. **It ships to your door** with tracking. Free on orders of $300 or more, $35 below that.
+4. **It ships to your door** with tracking. Free on orders of {{shipFreeFrom}} or more, {{shipFlat}} below that.
 
 ## Prices and delivery
 
 | Black tee, 1-color front print, shirt included | Per shirt |
 | --- | --- |
-| 24 pieces | About $11.50 |
-| 48 pieces | About $9.50 |
-| 144 pieces | About $7.25 |
+| 24 pieces | About {{tee.screen1.24}} |
+| 48 pieces | About {{tee.screen1.48}} |
+| 144 pieces | About {{tee.screen1.144}} |
 
-Plus a one-time $25 screen per ink color. Full tables for DTF, DTG and embroidery are in [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
+Plus a one-time {{screenSetup}} screen per ink color. Full tables for DTF, DTG and embroidery are in [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
 
 | Delivery | Arrives | Extra |
 | --- | --- | --- |

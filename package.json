@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/build-redirects.mjs && astro build",
+    "build": "node scripts/refresh-facts.mjs && node scripts/build-redirects.mjs && astro build",
+    "refresh:facts": "node scripts/refresh-facts.mjs",
     "preview": "wrangler dev",
     "import:wp": "python3 -I scripts/import-wp.py",
     "check:redirects": "node scripts/check-redirects.mjs",

@@ -3,6 +3,7 @@
 // cards; a cart can go straight to checkout (order-sheet.ts) or into the site cart.
 // If the studio can't be reached, the visitor's message goes to the quote form instead.
 import { track } from './analytics';
+import { ssImg } from './ss-img';
 import { STUDIO_API, fetchPrices, money, type PriceItemInput, type PriceResponse } from './online';
 import { openOrder, type OrderArtwork } from './order-sheet';
 import { addToCart, cartItems, putFile, getFile } from './cart';
@@ -154,7 +155,7 @@ if (sheet && window.parent === window) {
     for (const p of e.items.slice(0, 8)) {
       const a = el('a', 'press shrink-0 w-36 rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-2 grid gap-1.5');
       a.href = `/catalog/${p.slug}/`;
-      if (p.image) { const img = el('img', 'w-full aspect-[4/5] object-cover rounded-xl bg-[#f3f3f3]'); img.src = p.image; img.alt = ''; img.loading = 'lazy'; a.append(img); }
+      if (p.image) { const img = el('img', 'w-full aspect-[4/5] object-cover rounded-xl bg-[#f3f3f3]'); img.src = ssImg(p.image); img.alt = ''; img.loading = 'lazy'; a.append(img); }
       a.append(el('span', 'text-[12.5px] font-semibold leading-snug text-zinc-900 dark:text-white line-clamp-2', p.name));
       if (p.why) a.append(el('span', 'text-[11.5px] muted leading-snug line-clamp-2', p.why));
       rail.append(a);
@@ -195,7 +196,7 @@ if (sheet && window.parent === window) {
     e.items.forEach((it, i) => {
       const row = el('div', 'flex gap-3');
       const pics = el('div', 'shrink-0 flex gap-1');
-      if (it.image) { const img = el('img', 'w-14 h-14 rounded-xl object-contain bg-white dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10'); img.src = it.image; img.alt = ''; pics.append(img); }
+      if (it.image) { const img = el('img', 'w-14 h-14 rounded-xl object-contain bg-white dark:bg-white/[0.06] border border-zinc-200/80 dark:border-white/10'); img.src = ssImg(it.image); img.alt = ''; pics.append(img); }
       if (renders[i]) {
         pics.classList.add('animate-pulse');
         void renders[i]!.then((r) => {

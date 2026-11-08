@@ -5,7 +5,7 @@ description: "Custom event apparel in Los Angeles: staff shirts, tour merch, giv
 h1: "Event apparel"
 kind: audience
 imported: false
-summary: "Shirts people actually keep wearing after the event. Printed in-house in Los Angeles from 6 pieces (12 for screen printing and embroidery), with Rush and Super Rush turnaround for tight deadlines. We ship anywhere in the lower 48, free from $300."
+summary: "Shirts people actually keep wearing after the event. Printed in-house in Los Angeles from 6 pieces (12 for screen printing and embroidery), with Rush and Super Rush turnaround for tight deadlines. We ship anywhere in the lower 48, free from {{shipFreeFrom}}."
 facts:
   - label: "Minimum 6 pieces (12 for screen printing and embroidery)"
     value: "Screen printed in-house in Los Angeles"
@@ -71,4 +71,4 @@ Send your art, quantities and event date through the [quick quote form](/quick-q
 
 ## Ordering from outside California?
 
-You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of $300 or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of {{shipFreeFrom}} or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
