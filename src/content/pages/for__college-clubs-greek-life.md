@@ -16,7 +16,7 @@ faqs:
   - q: "How do we handle sizes for a whole chapter?"
     a: "Collect sizes from members first, then send us the totals by size in one order. Mixing sizes costs nothing extra up to XL."
   - q: "Can you print our letters or crest?"
-    a: "Yes. Send your crest, letters or design as a file or a sketch. The art check is free, and design help starts at {{digitizing}} for text or a simple layout."
+    a: "Yes. Send your crest, letters or design as a file or a sketch. The art check is free, and design help starts at {{artLayout}} for text or a simple layout."
   - q: "Do you ship to campus?"
     a: "Yes, to any address in the lower 48 states. Shipping is free on orders of {{shipFreeFrom}} or more and {{shipFlat}} below that."
 updated: "2026-10-28"

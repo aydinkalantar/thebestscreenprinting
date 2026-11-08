@@ -1,14 +1,14 @@
 ---
 path: "/custom-embroidery/"
 title: "Custom Embroidery | The Best Screen Printing"
-description: "Custom embroidery in Los Angeles for events, promotions and merch: stitched hats, polos, hoodies, jackets and bags. 12-piece minimum, free digitizing from {{digitizingFreeFrom}} pieces."
+description: "Custom embroidery in Los Angeles for events, promotions and merch: stitched hats, polos, hoodies, jackets and bags. 12-piece minimum, digitizing {{digitizing}} per design."
 h1: "Custom embroidery in Los Angeles"
 kind: service
 imported: false
-summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Los Angeles shop with a 12-piece minimum per design, free digitizing from {{digitizingFreeFrom}} pieces and Rush and Super Rush options."
+summary: "Stitched merch people keep: caps, hoodies, polos and totes with your logo in thread. Embroidered at our Los Angeles shop with a 12-piece minimum per design, a one-time {{digitizing}} digitizing per design and Rush and Super Rush options."
 facts:
   - { label: "Minimum", value: "12 pieces per design" }
-  - { label: "Setup", value: "Digitizing included" }
+  - { label: "Setup", value: "Digitizing {{digitizing}} per design" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
 faqs:
   - q: "What products can be embroidered?"

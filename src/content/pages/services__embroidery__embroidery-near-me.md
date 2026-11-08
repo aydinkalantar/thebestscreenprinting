@@ -5,7 +5,7 @@ description: "Local embroidery in Los Angeles. Drop off garments, pick up finish
 h1: "Embroidery near me in Los Angeles"
 kind: service
 imported: false
-summary: "Machine embroidery stitched in Los Angeles. Drop off your garments or pick from our catalog, then collect at the shop. 12 pieces per design, with digitizing free from {{digitizingFreeFrom}} pieces ({{digitizing}} per logo below that)."
+summary: "Machine embroidery stitched in Los Angeles. Drop off your garments or pick from our catalog, then collect at the shop. 12 pieces per design, plus a one-time {{digitizing}} to digitize each logo."
 facts:
   - { label: "Location", value: "5738 Holmes Ave., Los Angeles, CA 90058" }
   - { label: "Minimum", value: "12 pieces per design" }
@@ -37,7 +37,7 @@ Hats and caps, plus polos, jackets, hoodies, aprons, work shirts and bags. Bring
 ## What does a local embroidery order look like?
 
 1. **Quote.** Send your logo, the garment and quantity. We answer within one business day.
-2. **Digitize.** We turn your logo into a stitch file. Included in the price.
+2. **Digitize.** We turn your logo into a stitch file, a one-time {{digitizing}} per logo (free on reorders).
 3. **Art check and approval.** Free, before anything is stitched.
 4. **Drop off or we supply.** Bring garments Monday to Friday, 9am to 5pm, or let us source them.
 5. **Stitch and pick up.** Collect at the shop or have it shipped.

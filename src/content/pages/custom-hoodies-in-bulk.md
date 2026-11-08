@@ -38,7 +38,7 @@ Your hoodie price is three parts:
 
 1. **The blank.** Set by the brand and style, and a little more for 2XL and up.
 2. **The decoration.** The same price grid as tees. It drops fast with quantity.
-3. **Setup, if any.** {{screenSetup}} per screen for screen printing (white base on dark hoodies is free), embroidery digitizing free from {{digitizingFreeFrom}} pieces ({{digitizing}} per logo below that), none for DTF or DTG.
+3. **Setup, if any.** {{screenSetup}} per screen for screen printing (white base on dark hoodies is free), embroidery digitizing {{digitizing}} per logo, none for DTF or DTG.
 
 For a quick price, ask Max with your quantity and design. Max prices the exact hoodie with today's blank cost.
 

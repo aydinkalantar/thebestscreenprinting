@@ -5,7 +5,7 @@
 //
 //   {{screenSetup}}          → $25          (money: a key listed in MONEY)
 //   {{tee.screen1.24}}       → $11.50       (per-piece prices always show cents)
-//   {{digitizingFreeFrom}}   → 24           (plain numbers)
+//   {{superRushMaxPieces}}   → 144          (plain numbers)
 //   {{$ tee.screen1.48 × 50 + screenSetup}}       → $500    (a sum, whole dollars)
 //   {{$. (tee.screen1.48 × 50 + screenSetup) / 50}} → $10.00  (a sum, with cents)
 // Use × (not *) to multiply, so Markdown never reads it as emphasis.

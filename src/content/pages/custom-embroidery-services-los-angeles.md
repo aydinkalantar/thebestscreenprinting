@@ -5,11 +5,11 @@ description: "Flat, 3D puff and monogram embroidery in Los Angeles. Compare styl
 h1: "Custom embroidery styles in Los Angeles"
 kind: service
 imported: false
-summary: "Three ways to stitch a logo: clean flat embroidery, raised 3D puff, and monograms. Embroidered in Los Angeles with a 12-piece minimum per design, digitizing free from {{digitizingFreeFrom}} pieces and shipping anywhere."
+summary: "Three ways to stitch a logo: clean flat embroidery, raised 3D puff, and monograms. Embroidered in Los Angeles with a 12-piece minimum per design, a one-time {{digitizing}} digitizing per design and shipping anywhere."
 facts:
   - { label: "Styles", value: "Flat, 3D puff, monogram" }
   - { label: "Minimum", value: "12 pieces per design" }
-  - { label: "Setup", value: "Digitizing free from {{digitizingFreeFrom}} pieces" }
+  - { label: "Setup", value: "Digitizing {{digitizing}} per design" }
 faqs:
   - q: "What is the difference between flat and 3D puff embroidery?"
     a: "Flat embroidery is stitched directly on the fabric surface. 3D puff stitches over a foam base so the design stands up off the garment, a look common on caps."
@@ -52,7 +52,7 @@ Initials or short names in a clean script or block letter. Small, personal and p
 ## How does an embroidery order work?
 
 1. **Consult.** Tell us the garment, placement and style. We will recommend what fits your art.
-2. **Digitize.** Your logo becomes a stitch file, free from {{digitizingFreeFrom}} pieces ({{digitizing}} below that).
+2. **Digitize.** Your logo becomes a stitch file, a one-time {{digitizing}} per design (free on reorders).
 3. **Free art check.** We confirm it will stitch clean before production.
 4. **Stitch.** Our multi-head machines run your design across the order for consistent results.
 5. **Quality check and pickup.** Collect at 5738 Holmes Ave. or have it shipped.

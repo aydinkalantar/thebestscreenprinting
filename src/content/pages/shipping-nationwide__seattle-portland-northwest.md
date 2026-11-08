@@ -15,7 +15,7 @@ faqs:
   - q: "Do you ship to Seattle and Portland?"
     a: "Yes, to any address in Washington, Oregon and Idaho. Shipping is free on orders of {{shipFreeFrom}} or more and {{shipFlat}} below that."
   - q: "Can you embroider beanies and hats?"
-    a: "Yes, from 6 pieces (12 for screen printing and embroidery). Logo digitizing is free from {{digitizingFreeFrom}} pieces and {{digitizing}} below that."
+    a: "Yes, from 6 pieces (12 for screen printing and embroidery). Logo digitizing is a one-time {{digitizing}} per design."
   - q: "How much do custom shirts cost if I am in the Northwest?"
     a: "The same as everywhere: a one-color screen printed black tee is about {{tee.screen1.24}} each at 24 pieces and {{tee.screen1.144}} at 144, shirt included, plus a one-time {{screenSetup}} screen. Shipping is free from {{shipFreeFrom}}."
   - q: "What is the minimum order?"
