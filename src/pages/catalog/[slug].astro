@@ -30,6 +30,9 @@ const min = business.shopMinimum;
 const screenMin = business.screenMinimum;
 const startMin = /screen|embroider/i.test(recommended?.method ?? methods[0] ?? '') ? screenMin : min;
 const SWATCH_LIMIT = 24;
+// Measurements per size, from the studio catalog (nightly); absent for some styles.
+type SizeChart = { sizes: string[]; rows: { name: string; values: string[] }[] };
+const sizeChart = (p as CatalogProduct & { sizeChart?: SizeChart }).sizeChart;
 const description = `Custom ${p.name} printed with your logo or design. ${methods.join(', ')}. Orders from ${min} pieces (${screenMin} for screen printing and embroidery), made in our own shops in Los Angeles and Cleveland.`;
 const url = `${business.url}/catalog/${p.slug}/`;
 const jsonLd = [
@@ -207,6 +210,18 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
           <details class="group panel px-4">
             <summary class="flex items-center justify-between gap-3 min-h-[52px] cursor-pointer list-none font-semibold text-zinc-900 dark:text-white">Product details<ChevronDown class="w-4 h-4 muted transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
             <ul class="pb-4 grid gap-1.5 text-sm muted list-disc pl-5">{p.features.map((f) => <li>{f}</li>)}</ul>
+          </details>
+        )}
+        {sizeChart?.rows?.length > 0 && (
+          <details class="group panel px-4" data-size-chart>
+            <summary class="flex items-center justify-between gap-3 min-h-[52px] cursor-pointer list-none font-semibold text-zinc-900 dark:text-white">Size chart<ChevronDown class="w-4 h-4 muted transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
+            <div class="pb-4 overflow-x-auto">
+              <table class="w-full text-[13px] tabular-nums">
+                <thead><tr class="border-b border-zinc-200 dark:border-white/10"><th scope="col" class="text-left font-semibold py-2 pr-3">Inches</th>{sizeChart.sizes.map((z) => <th scope="col" class="font-semibold py-2 px-2 text-center">{z}</th>)}</tr></thead>
+                <tbody>{sizeChart.rows.map((r) => <tr class="border-b border-zinc-100 dark:border-white/5"><th scope="row" class="py-2 pr-3 text-left font-normal muted whitespace-nowrap">{r.name}</th>{r.values.map((v) => <td class="py-2 px-2 text-center whitespace-nowrap">{v || '–'}</td>)}</tr>)}</tbody>
+              </table>
+              <p class="mt-2 text-xs muted">Garment measurements laid flat. Allow about half an inch either way.</p>
+            </div>
           </details>
         )}
         <details class="group panel px-4">
