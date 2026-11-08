@@ -40,7 +40,7 @@ Whatever the project, the rule is the same: screen printing starts at 12 pieces,
 
 ## What can we print for you?
 
-T-shirts, hoodies, crewnecks, long sleeves, tanks, tote bags and work shirts, in standard or soft-hand plastisol, with metallic and glitter inks for extra shine. Browse styles in the [catalog](/catalog/), or see our [inks and effects](/services/custom-screen-printing-los-angeles/) guide.
+T-shirts, hoodies, crewnecks, long sleeves, tanks, tote bags and work shirts, in standard or soft-hand plastisol, with puff, foil, metallic and glitter effects. Browse styles in the [catalog](/catalog/), or see our [inks and effects](/services/custom-screen-printing-los-angeles/) guide.
 
 ## Planning a visit?
 

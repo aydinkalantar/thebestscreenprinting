@@ -48,7 +48,7 @@ All of them. We work with customers across Los Angeles County, from Koreatown to
 
 ## Picking a style?
 
-Flat, 3D puff and appliqué each have their place. Compare them on [custom embroidery styles](/custom-embroidery-services-los-angeles/). Outfitting staff? See [embroidery for uniforms](/services/embroidery/custom-embroidery/). New to embroidery? Start at [embroidery services](/services/embroidery/).
+Flat and 3D puff each have their place. Compare them on [custom embroidery styles](/custom-embroidery-services-los-angeles/). Outfitting staff? See [embroidery for uniforms](/services/embroidery/custom-embroidery/). New to embroidery? Start at [embroidery services](/services/embroidery/).
 
 ## Come by or send it over
 

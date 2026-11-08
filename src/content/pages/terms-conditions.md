@@ -12,7 +12,7 @@ facts:
   - label: "Turnaround starts"
     value: "After payment + proof approval"
   - label: "Report problems within"
-    value: "48 hours of delivery"
+    value: "24 hours of delivery"
 sourceUrl: "https://thebestscreenprinting.com/terms-conditions/"
 ---
 These Terms & Conditions apply to every order placed with The Best Screen Printing ("TBSP", "we", "us" or "our"). By approving a quote, an invoice or a proof, you ("the customer") agree to these terms. If anything here is unclear, please [contact us](#16-contact-us) before you place your order.
@@ -187,7 +187,7 @@ Small losses are normal in garment decoration. Please keep this in mind and cons
 
 We check garments as they come off the press, but mistakes can still happen, so **please check your order as soon as you receive or pick it up.**
 
-- Report any problem within **48 hours** of delivery or pick-up by emailing [sales@tbsp.la](mailto:sales@tbsp.la). We cannot accept claims after that.
+- Report any problem within **24 hours** of delivery or pick-up by emailing [sales@tbsp.la](mailto:sales@tbsp.la). We cannot accept claims after that.
 - If your order was printed differently from the proof you approved, we **reprint the defective pieces**. We do not offer refunds, but we gladly reprint production errors above the spoilage rates in section 12.
 - Send the misprinted pieces back to us. We provide a UPS label and cover the shipping.
 - We are not responsible for pieces sold or given away before they are returned. *Example:* if you received 100 shirts, sold 15, then found a print defect and returned 85, we reprint the 85 returned shirts.

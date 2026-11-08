@@ -1,15 +1,15 @@
 ---
 path: "/services/custom-screen-printing-los-angeles/"
 title: "Custom Screen Printing Los Angeles | Rush & Super Rush Delivery"
-description: "Plastisol screen printing in Los Angeles: standard, soft-hand, metallic and glitter inks. From 12 pieces, with Rush and Super Rush turnaround."
+description: "Plastisol screen printing in Los Angeles: standard, soft-hand, metallic and glitter inks, plus puff and foil. From 12 pieces, with Rush and Super Rush turnaround."
 h1: "Custom screen printing in Los Angeles: inks and effects"
 kind: service
 imported: false
-summary: "Same screen, very different results: punchy standard plastisol, a light soft-hand plastisol, or metallic and glitter inks that catch the light. Screen printing starts at 12 pieces, printed in-house in Los Angeles with Rush and Super Rush turnaround for tight deadlines."
+summary: "Same screen, very different results: punchy standard plastisol, a light soft-hand plastisol, metallic and glitter inks that catch the light, or raised puff and mirror-shine foil. Screen printing starts at 12 pieces, printed in-house in Los Angeles with Rush and Super Rush turnaround for tight deadlines."
 facts:
   - { label: "Minimum", value: "12 pieces per order" }
   - { label: "Standard ink", value: "Plastisol, included in standard pricing" }
-  - { label: "Effects", value: "Soft-hand plastisol, metallic, glitter" }
+  - { label: "Effects", value: "Soft-hand, metallic, glitter, puff, foil" }
 faqs:
   - q: "Do you print with water-based or discharge ink?"
     a: "No. We print with plastisol. For a lighter feel we use a soft-hand plastisol that feels light and smooth on the shirt, and for the softest print on dark cotton we can use DTG, which soaks into the fabric."
@@ -31,14 +31,18 @@ The screen sets the shape. The ink sets the feel. Pick the wrong one and a great
 
 We do not print with water-based or discharge inks. When you want a print you can barely feel on cotton, [DTG](/services/direct-to-garment/) soaks into the fabric instead of sitting on top.
 
-## Make it catch the light
+## Effects
 
+- **Puff.** An additive makes plastisol rise as it cures, for a soft, raised print people want to touch. Best on bold shapes and thick letters.
+- **Foil.** A printed adhesive plus heat-pressed foil for a mirror finish. One foil color per print location, bold shapes only. Wash inside out in cold water and hang dry.
 - **Metallic.** A subtle sheen in gold, silver and more, printed like any other color.
 - **Glitter.** Metallic flakes in a clear base, on the whole design or one area. Our go-to when someone asks for a rhinestone sparkle.
 
+We don't do high density, gel or glow-in-the-dark ink. Puff is the closest thing for a raised look.
+
 ## How do you choose?
 
-Start with the art. Bold shapes and type look great in any of these inks. Fine lines and small text read best in standard plastisol. Want soft? Soft-hand plastisol, or DTG on cotton. Want it to catch light on stage? Metallic or glitter.
+Start with the art. Bold shapes and type look great in any of these inks. Fine lines and small text read best in standard plastisol, so save puff and foil for logos and headlines. Want soft? Soft-hand plastisol, or DTG on cotton. Want it to catch light on stage? Foil, metallic or glitter. Want texture? Puff.
 
 Every order gets a free art check, so we will flag anything that will not hold up on your design.
 

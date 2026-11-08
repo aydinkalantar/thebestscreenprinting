@@ -44,7 +44,7 @@ Printing wins on big graphics, photos and fine detail. Embroidery wins on small 
 
 ## Want a specific stitch style?
 
-Flat embroidery, 3D puff, appliqué, chenille and monograms each create a different look. Compare them on [embroidery styles](/custom-embroidery-services-los-angeles/). Outfitting a team instead of making merch? See [embroidery for uniforms](/services/embroidery/custom-embroidery/).
+Flat embroidery, 3D puff and monograms each create a different look. Compare them on [embroidery styles](/custom-embroidery-services-los-angeles/). Outfitting a team instead of making merch? See [embroidery for uniforms](/services/embroidery/custom-embroidery/).
 
 ## Visit or call
 
