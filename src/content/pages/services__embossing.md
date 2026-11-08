@@ -1,20 +1,20 @@
 ---
 path: "/services/embossing/"
 title: "Garment Embossing in Los Angeles | TBSP"
-description: "Garment embossing in Los Angeles: raised or debossed designs pressed into fabric with a custom metal die, blind or with foil. From $36.50 to $47.50 per piece, 24-piece minimum."
+description: "Garment embossing in Los Angeles: raised or debossed designs pressed into fabric with a custom metal die, in the garment's own color. From $36.50 to $47.50 per piece, 24-piece minimum."
 h1: "Garment embossing in Los Angeles"
 kind: service
 imported: false
-summary: "Your design pressed into the fabric itself, raised or sunken, no ink required. Embossing uses a custom metal die, comes blind or with foil, starts at 24 pieces and costs $47.50 per piece at 24 down to $36.50 at 100, garment extra."
+summary: "Your design pressed into the fabric itself, raised or sunken, no ink required. Embossing uses a custom metal die, is blind (same color as the garment), starts at 24 pieces and costs $47.50 per piece at 24 down to $36.50 at 100, garment extra."
 facts:
   - { label: "Minimum", value: "24 pieces" }
-  - { label: "Styles", value: "Blind embossing and foil" }
+  - { label: "Styles", value: "Blind embossing, raised or debossed" }
   - { label: "Best for", value: "Tonal, premium brand pieces" }
 faqs:
   - q: "What is the minimum for embossing?"
     a: "Embossing starts at 24 pieces. Each job needs a custom metal die, which is why it works best on larger runs."
-  - q: "What is the difference between blind embossing and foil?"
-    a: "Blind embossing leaves a raised or sunken mark in the same color as the garment. Foil adds a metallic or colored foil layer to the embossed areas."
+  - q: "Can you add foil to embossing?"
+    a: "No. Our embossing is blind: the design is pressed into the fabric in the garment's own color. For a shiny finish, a foil screen print is the closest thing we do."
   - q: "How much does embossing cost?"
     a: "Per piece, with the garment added on top: $47.50 at 24 to 50 pieces, $42 at 51 to 99 and $36.50 at 100 to 250. Over 250 pieces is priced by quote."
   - q: "Does every design work for embossing?"
@@ -27,7 +27,6 @@ Embossing skips ink entirely. We press your design into the fabric with a custom
 ## What styles of embossing do you offer?
 
 - **Blind embossing.** A raised or debossed mark in the same color as the garment. Clean, quiet, all texture.
-- **Foil.** Adds a metallic or colored foil layer to the embossed areas for a finish that catches light.
 
 ## When should you choose embossing?
 

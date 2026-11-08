@@ -29,7 +29,6 @@ Embroidery is one of the most versatile ways to decorate a product. If a needle 
 - **Wool.** Beanies and varsity-style jackets.
 - **Leather.** Jackets, bags and accessories. It looks premium, but every needle hole is permanent, so the design must be right the first time.
 - **Nylon.** Windbreakers and athletic gear. Lightweight and slippery, so it needs careful setup.
-- **Felt and vinyl.** Often used for appliqués.
 - **Silk.** Possible for special pieces, but delicate.
 
 ## Which materials are tricky to embroider?

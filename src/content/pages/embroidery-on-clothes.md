@@ -68,11 +68,11 @@ Where you put the design matters as much as the design.
 - **Cap front:** centered, often in 3D puff for extra lift.
 - **Sleeve:** a secondary mark, flag or website.
 - **Back yoke:** just below the collar, subtle and smart.
-- **Full back:** big statements on jackets, usually with appliqué to keep stitch counts reasonable.
+- **Full back:** big statements on jackets; bold, simple art keeps the stitch count reasonable.
 
 ## Which embroidery style should you use?
 
-Flat embroidery covers most needs. 3D puff gives caps that raised, sculpted look. Appliqué and chenille handle large, textured designs. Monograms personalize gifts and staff pieces. See all six side by side on [custom embroidery styles](/custom-embroidery-services-los-angeles/).
+Flat embroidery covers most needs. 3D puff gives caps that raised, sculpted look. Monograms personalize gifts and staff pieces. See all six side by side on [custom embroidery styles](/custom-embroidery-services-los-angeles/).
 
 ## Embroidery vs. printing
 

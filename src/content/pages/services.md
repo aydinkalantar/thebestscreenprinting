@@ -27,11 +27,11 @@ Every method has a sweet spot. The trick is matching your quantity, artwork and 
 
 ### Screen printing
 
-Thick, opaque ink pushed through mesh, one screen per color. Solid color, serious durability and the best price per piece on bigger runs of one design. It also unlocks effects like puff, high density, foil and glow-in-the-dark. Start at [screen printing](/screen-printing/), or dig into [inks and effects](/services/custom-screen-printing-los-angeles/).
+Thick, opaque ink pushed through mesh, one screen per color. Solid color, serious durability and the best price per piece on bigger runs of one design. It also unlocks effects like puff, foil, metallic and glitter. Start at [screen printing](/screen-printing/), or dig into [inks and effects](/services/custom-screen-printing-los-angeles/).
 
 ### Embroidery
 
-Your logo stitched in thread, with real texture and a finish that reads premium. Built for hats, polos, jackets and uniforms, with flat, 3D puff and appliqué options. See [embroidery](/services/embroidery/).
+Your logo stitched in thread, with real texture and a finish that reads premium. Built for hats, polos, jackets and uniforms, with flat and 3D puff options. See [embroidery](/services/embroidery/).
 
 ### Direct-to-garment (DTG)
 
