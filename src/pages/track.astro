@@ -4,7 +4,7 @@
 import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { business } from '../data/business';
-import { Search, Phone } from '@lucide/astro';
+import { Search, Phone, Mail } from '@lucide/astro';
 ---
 <Base title="Track my order | TBSP" description="Check the status of your TBSP order with your order number and email." noindex>
   <Breadcrumbs items={[{ label: 'Track my order' }]} />
@@ -29,6 +29,16 @@ import { Search, Phone } from '@lucide/astro';
       <ul data-r-items class="grid gap-1 text-[14px] muted"></ul>
       <dl data-r-money class="grid grid-cols-[1fr_auto] gap-y-1 text-[14px]"></dl>
       <div data-r-actions class="flex flex-wrap gap-2"></div>
+    </section>
+
+    <section class="mt-8 panel-raised p-5 grid gap-3" aria-labelledby="links-h">
+      <h2 id="links-h" class="text-lg font-bold text-zinc-900 dark:text-white">No order number? We'll email your orders</h2>
+      <p class="text-[14px] muted">Type the email you used. We'll send you a link to each open order and quote, plus your recent orders with a one-click Reorder. No account or password needed.</p>
+      <form data-links-form class="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end" novalidate>
+        <label class="label"><span>Email</span><input name="email" type="email" inputmode="email" class="field" autocomplete="email" autocapitalize="off" spellcheck="false" required /></label>
+        <button type="submit" class="btn-quiet h-11 aria-busy:cursor-wait"><Mail class="w-4 h-4" aria-hidden="true" /><span>Email me my orders</span></button>
+        <p data-links-msg class="sm:col-span-2 text-[14px]" role="status"></p>
+      </form>
     </section>
 
     <p class="mt-6 flex items-start gap-2 text-[14px] muted"><Phone class="w-4 h-4 mt-0.5 shrink-0 text-violet-600 dark:text-violet-300" aria-hidden="true" /><span>Need help? Call <a class="font-semibold text-violet-700 dark:text-violet-300" href={`tel:${business.phone}`}>{business.phoneDisplay}</a>, Mon–Fri 9am–5pm PT.</span></p>
@@ -111,6 +121,35 @@ import { Search, Phone } from '@lucide/astro';
     if (s.invoiceUrl && !(s.balance > 0.005)) acts.append(link(s.invoiceUrl, 'View invoice'));
     out.hidden = false;
   }
+
+  // "Email me my orders": every order link goes to the email on the orders, never shown here.
+  const linksForm = document.querySelector<HTMLFormElement>('[data-links-form]')!;
+  const linksMsg = linksForm.querySelector<HTMLElement>('[data-links-msg]')!;
+  const linksIn = linksForm.elements.namedItem('email') as HTMLInputElement;
+  linksForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = linksIn.value.trim().toLowerCase();
+    linksMsg.className = 'sm:col-span-2 text-[14px] err';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { linksMsg.textContent = 'Enter the email you used for your order.'; linksIn.focus(); return; }
+    const btn = linksForm.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    btn.setAttribute('aria-busy', 'true');
+    try {
+      const res = await fetch(`${STUDIO_API}/api/public/order-links`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email }) });
+      const body = await res.json().catch(() => null) as { message?: string; error?: string } | null;
+      if (res.ok) {
+        linksMsg.className = 'sm:col-span-2 text-[14px] font-semibold text-emerald-700 dark:text-emerald-400';
+        linksMsg.textContent = body?.message || 'Check your inbox in a minute.';
+      } else if (res.status === 429) {
+        linksMsg.textContent = 'Too many tries. Wait a bit, then try again.';
+      } else {
+        linksMsg.textContent = body?.error || `That didn't work. Call ${business.phoneDisplay} or email ${business.email} and we'll send your order links.`;
+      }
+    } catch {
+      linksMsg.textContent = `That didn't work. Call ${business.phoneDisplay} or email ${business.email} and we'll send your order links.`;
+    } finally {
+      btn.removeAttribute('aria-busy');
+    }
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
