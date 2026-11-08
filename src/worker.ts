@@ -75,17 +75,19 @@ async function sendEmail(env: Env, mail: Record<string, unknown>): Promise<strin
 }
 
 const CONFIRMATIONS_PER_HOUR = 5;
+/** Quote requests one visitor can send per hour (each one emails the shop and lands in the admin). */
+const REQUESTS_PER_HOUR = 10;
 
 /**
- * Soft per-IP limit on customer confirmation emails, so the form can't be used to spam a third
- * party's inbox. Uses the colo-local Cache API: best effort, and it fails open.
+ * Soft per-IP hourly limit (`bucket` names what is counted). Uses the colo-local Cache API:
+ * best effort, and it fails open.
  */
-async function allowConfirmation(request: Request, origin: string): Promise<boolean> {
+async function allowPerHour(request: Request, origin: string, bucket: string, max: number): Promise<boolean> {
   const ip = request.headers.get('cf-connecting-ip');
   const cache = (globalThis as unknown as { caches?: { default?: Cache } }).caches?.default;
   if (!ip || !cache) return true;
   try {
-    const key = new Request(`${origin}/__rate/quote-confirm/${encodeURIComponent(ip)}`);
+    const key = new Request(`${origin}/__rate/${bucket}/${encodeURIComponent(ip)}`);
     const now = Date.now();
     let state = { count: 0, reset: now + 3600_000 };
     const hit = await cache.match(key);
@@ -93,7 +95,7 @@ async function allowConfirmation(request: Request, origin: string): Promise<bool
       const saved = (await hit.json()) as typeof state;
       if (saved.reset > now) state = saved;
     }
-    if (state.count >= CONFIRMATIONS_PER_HOUR) return false;
+    if (state.count >= max) return false;
     state.count += 1;
     await cache.put(key, new Response(JSON.stringify(state), {
       headers: { 'content-type': 'application/json', 'cache-control': `max-age=${Math.max(1, Math.ceil((state.reset - now) / 1000))}` },
@@ -104,6 +106,9 @@ async function allowConfirmation(request: Request, origin: string): Promise<bool
   }
 }
 
+/** Customer confirmation emails, so the form can't be used to spam a third party's inbox. */
+const allowConfirmation = (request: Request, origin: string) => allowPerHour(request, origin, 'quote-confirm', CONFIRMATIONS_PER_HOUR);
+
 async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Response> {
   const len = Number(request.headers.get('content-length') || 0);
   if (len > MAX_TOTAL_BYTES + 500_000) return json({ error: 'Your files are too large together. Please keep them under 25 MB in total.' }, 413);
@@ -113,6 +118,9 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
   // Bots fill the hidden field; pretend success so they move on.
   const honeypotEmpty = !form.get('website');
   if (!honeypotEmpty) return json({ ok: true });
+  if (!(await allowPerHour(request, new URL(request.url).origin, 'quote', REQUESTS_PER_HOUR))) {
+    return json({ error: `You've sent a lot of requests in the last hour. Please call ${business.phoneDisplay} or email ${business.email} and we'll help right away.` }, 429);
+  }
   let humanVerified = !env.TURNSTILE_SECRET;
 
   if (env.TURNSTILE_SECRET) {
@@ -352,10 +360,21 @@ async function rewriteSsUrls(res: Response, origin: string): Promise<Response> {
   return out;
 }
 
+/** Sent with every page: no type guessing, no framing by other sites, HTTPS only, and only our origin as referrer. */
+const SECURITY_HEADERS: Record<string, string> = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'SAMEORIGIN',
+  'Content-Security-Policy': "frame-ancestors 'self'",
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Strict-Transport-Security': 'max-age=31536000',
+  // Max's voice call asks for the microphone inside the studio frame, so that stays allowed for it.
+  'Permissions-Policy': 'camera=(), geolocation=(), payment=()',
+};
+
 function withHeaders(res: Response, env: Env): Response {
-  if (env.STAGING !== '1') return res;
   const out = new Response(res.body, res);
-  out.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) if (!out.headers.has(k)) out.headers.set(k, v);
+  if (env.STAGING === '1') out.headers.set('X-Robots-Tag', 'noindex, nofollow');
   return out;
 }
 
@@ -375,12 +394,12 @@ export default {
 
     if (url.pathname.startsWith(SS_PREFIX)) {
       if (request.method !== 'GET' && request.method !== 'HEAD') return new Response('Method not allowed', { status: 405 });
-      return handleSsImage(url, ctx);
+      return withHeaders(await handleSsImage(url, ctx), env);
     }
 
     if (url.pathname === '/api/quote') {
       if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
-      return handleQuote(request, env, ctx);
+      return withHeaders(await handleQuote(request, env, ctx), env);
     }
 
     const legacy = resolveLegacy(url.pathname);
