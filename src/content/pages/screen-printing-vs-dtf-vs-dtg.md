@@ -14,7 +14,7 @@ faqs:
   - q: "Which lasts longest?"
     a: "Screen printing. Its thick ink layer holds up for years of washes. DTF is close behind. DTG lasts well on cotton if washed inside out in cold water."
   - q: "Which is cheapest for 12 shirts?"
-    a: "Usually DTF, at about $15 per shirt for full color with no setup fee. A one-color screen print is about $16 per shirt plus a $25 screen, so about $18 each at 12 pieces."
+    a: "Usually DTF, at about {{tee.dtf.12}} per shirt for full color with no setup fee. A one-color screen print is about {{tee.screen1.12}} per shirt plus a {{screenSetup}} screen, so about {{$. tee.screen1.12 + screenSetup / 12}} each at 12 pieces."
   - q: "Can you print on polyester and performance shirts?"
     a: "Yes. DTF is the safest choice for polyester and performance fabrics. Screen printing works on many polyester blends; send us the garment and we will confirm. DTG is made for cotton and is not a good fit for polyester."
   - q: "Can I mix methods on one shirt?"
@@ -38,9 +38,9 @@ updated: "2026-10-28"
 | How it works | Ink pushed through a mesh screen, one per color | Full-color film transfer pressed with heat | Inkjet prints straight into the fabric |
 | Feel | Smooth, bold layer | Smooth, slightly flexible film | Softest, part of the fabric |
 | Colors | Up to 12 spot colors | Unlimited | Unlimited |
-| Setup | $25 per color per spot; white base on dark shirts free | None | None |
-| 24 black tees, front print | About $11.50 each (1 color) + $25 screen | About $13 each | About $16.25 each |
-| 144 black tees, front print | About $7.25 each (1 color) + $25 screen | About $9 each | About $12.25 each |
+| Setup | {{screenSetup}} per color per spot; white base on dark shirts free | None | None |
+| 24 black tees, front print | About {{tee.screen1.24}} each (1 color) + {{screenSetup}} screen | About {{tee.dtf.24}} each | About {{tee.dtg.24}} each |
+| 144 black tees, front print | About {{tee.screen1.144}} each (1 color) + {{screenSetup}} screen | About {{tee.dtf.144}} each | About {{tee.dtg.144}} each |
 | Fabrics | Cotton and most blends | Almost any | Cotton and high-cotton blends |
 | Minimum | 12 pieces (1–3 colors) | 6 pieces | 6 pieces |
 

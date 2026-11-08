@@ -29,7 +29,7 @@ From small local businesses to large-scale corporate orders, we’ve helped clie
 
 ## Custom Screen Printing Services
 
-Our screen printing services are perfect for businesses, sports teams, schools, and events. We specialize in direct-to-garment printing (DTG) and direct-to-film printing (DTF), with eco-friendly ink options for a soft-touch, durable finish. We offer full-color printing and bulk order discounts, with a 12-piece minimum for screen printing and embroidery (6 for DTG and DTF). Popular Products: Custom T-shirts, hoodies, sweatshirts, and tank tops Specialty Printing: Water-based inks, vintage wash prints, metallic inks
+Our screen printing services are perfect for businesses, sports teams, schools, and events. We specialize in direct-to-garment printing (DTG) and direct-to-film printing (DTF), with soft-hand ink options for a smooth, durable finish. We offer full-color printing and bulk order discounts, with a 12-piece minimum for screen printing and embroidery (6 for DTG and DTF). Popular Products: Custom T-shirts, hoodies, sweatshirts, and tank tops Specialty Printing: Soft-hand plastisol, metallic and glitter inks
 
 ## Professional Embroidery Services
 
@@ -128,7 +128,7 @@ We offer custom printing for a wide range of products, including T-shirts, hoodi
 
 Our minimum is 12 pieces for screen printing and embroidery and 6 for DTG and DTF, and you can order as many as you need beyond that.
 
-Absolutely. We provide eco-friendly, water-based inks for screen printing that are durable and environmentally conscious.
+Our screen prints use plastisol ink, including a soft-hand plastisol that feels light and smooth on the shirt. For a print you can barely feel on cotton, DTG soaks right into the fabric.
 
 While our primary service area is Los Angeles, we also ship custom orders to Winnetka, Los Angeles, CA and nationwide. Please contact us for more details.
 

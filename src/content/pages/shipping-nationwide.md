@@ -1,13 +1,13 @@
 ---
 path: "/shipping-nationwide/"
-title: "Custom Shirts Shipped Anywhere in the US, Free From $300 | TBSP"
-description: "TBSP prints custom t-shirts, hoodies, hats and polos in Los Angeles and Cleveland and ships anywhere in the US, free on orders of $300 or more. 6-piece minimum (12 for screen printing and embroidery), rush in 3 days."
+title: "Custom Shirts Shipped Anywhere in the US, Free From {{shipFreeFrom}} | TBSP"
+description: "TBSP prints custom t-shirts, hoodies, hats and polos in Los Angeles and Cleveland and ships anywhere in the US, free on orders of {{shipFreeFrom}} or more. 6-piece minimum (12 for screen printing and embroidery), rush in 3 days."
 h1: "Custom apparel, shipped to any US state"
 kind: core
 imported: false
-summary: "Yes, we ship nationwide. Every order is made in our own facilities in Los Angeles and Cleveland and shipped to any address in the lower 48 states: free on orders of $300 or more, $35 below that. Orders start at 6 pieces (12 for screen printing and embroidery), and Super Rush gets them to you in 3 business days."
+summary: "Yes, we ship nationwide. Every order is made in our own facilities in Los Angeles and Cleveland and shipped to any address in the lower 48 states: free on orders of {{shipFreeFrom}} or more, {{shipFlat}} below that. Orders start at 6 pieces (12 for screen printing and embroidery), and Super Rush gets them to you in 3 business days."
 facts:
-  - { label: "Shipping", value: "Free from $300" }
+  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Normal", value: "About 2 weeks" }
   - { label: "Rush", value: "1 week, +15%" }
@@ -15,7 +15,7 @@ facts:
   - { label: "Made in", value: "Los Angeles & Cleveland" }
 faqs:
   - q: "Do you ship custom shirts to every state?"
-    a: "Yes. We ship to every address in the lower 48 states, free on orders of $300 or more and a flat $35 below that. For Alaska, Hawaii and US territories, call (323) 433-0033 and we will quote shipping with your order."
+    a: "Yes. We ship to every address in the lower 48 states, free on orders of {{shipFreeFrom}} or more and a flat {{shipFlat}} below that. For Alaska, Hawaii and US territories, call (323) 433-0033 and we will quote shipping with your order."
   - q: "Is shipping charged per box or per order?"
     a: "Per order, delivered to one address, however many boxes it takes. If you need the order split between several addresses, tell us with your quote request and we will price each extra drop."
   - q: "Do I need to be near Los Angeles or Cleveland to order?"
@@ -40,13 +40,13 @@ You never need to visit. Here is the whole process, start to finish:
 
 | Order | Shipping |
 | --- | --- |
-| $300 or more, one address in the lower 48 states | Free |
-| Under $300, one address in the lower 48 states | $35 flat |
+| {{shipFreeFrom}} or more, one address in the lower 48 states | Free |
+| Under {{shipFreeFrom}}, one address in the lower 48 states | {{shipFlat}} flat |
 | Pickup at our Los Angeles shop | Free |
 | Alaska, Hawaii, US territories | Quoted with your order |
 | Split between several addresses | Quoted with your order |
 
-Most orders of 24 or more shirts pass $300 and ship free. See [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/) for example prices per piece.
+Most orders of 24 or more shirts pass {{shipFreeFrom}} and ship free. See [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/) for example prices per piece.
 
 ## When will it arrive?
 

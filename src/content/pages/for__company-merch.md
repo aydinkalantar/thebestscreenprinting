@@ -1,18 +1,18 @@
 ---
 path: "/for/company-merch/"
 title: "Company Merch & Employee Apparel, Shipped Nationwide | TBSP"
-description: "Branded company shirts, embroidered polos, hoodies and hats for employees, clients and events, from 12 pieces. Free digitizing from 24 pieces, free shipping from $300 in the lower 48, shipping anywhere in the US."
+description: "Branded company shirts, embroidered polos, hoodies and hats for employees, clients and events, from 12 pieces. Free digitizing from 24 pieces, free shipping from {{shipFreeFrom}} in the lower 48, shipping anywhere in the US."
 h1: "Company merch and employee apparel"
 kind: audience
 imported: false
-summary: "Branded tees, embroidered polos, hoodies, hats and totes for your team, new hires, clients and events, made in our own facilities and shipped to any office in the lower 48. Orders start at 6 pieces (12 for screen printing and embroidery), logo digitizing is free from 24, and shipping is free from $300."
+summary: "Branded tees, embroidered polos, hoodies, hats and totes for your team, new hires, clients and events, made in our own facilities and shipped to any office in the lower 48. Orders start at 6 pieces (12 for screen printing and embroidery), logo digitizing is free from {{digitizingFreeFrom}}, and shipping is free from {{shipFreeFrom}}."
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Digitizing", value: "Free from 24 pcs" }
   - { label: "Brands printed for", value: "Netflix, Google, Adidas and more" }
 faqs:
   - q: "How much do embroidered company polos cost?"
-    a: "The left-chest embroidery is about $8.75 per piece at 24 and $4.75 at 144 for a typical logo, plus the polo. Digitizing the logo is free from 24 pieces and $45 below that."
+    a: "The left-chest embroidery is about $8.75 per piece at 24 and $4.75 at 144 for a typical logo, plus the polo. Digitizing the logo is free from {{digitizingFreeFrom}} pieces and {{digitizing}} below that."
   - q: "Can you keep our logo on file for new hires?"
     a: "Yes. We save your logo, thread and ink colors, garments and placements, so reordering for new hires is one email with sizes and quantities."
   - q: "Can you ship to more than one office?"
@@ -33,9 +33,9 @@ updated: "2026-10-28"
 
 ## What it costs
 
-- **Logo tees:** about $11.50 each at 24 pieces and $7.25 at 144 for a one-color front print, shirt included, plus a $25 screen.
-- **Embroidered polos:** about $8.75 per piece at 24 for the stitching, plus the polo. Digitizing free from 24 pieces.
-- **Full-color logos:** DTF from about $13 each at 24 pieces, no setup fee.
+- **Logo tees:** about {{tee.screen1.24}} each at 24 pieces and {{tee.screen1.144}} at 144 for a one-color front print, shirt included, plus a {{screenSetup}} screen.
+- **Embroidered polos:** about $8.75 per piece at 24 for the stitching, plus the polo. Digitizing free from {{digitizingFreeFrom}} pieces.
+- **Full-color logos:** DTF from about {{tee.dtf.24}} each at 24 pieces, no setup fee.
 
 See the [full price table](/how-much-does-custom-shirt-printing-cost/).
 

@@ -1,18 +1,18 @@
 ---
 path: "/custom-hoodies-in-bulk/"
 title: "Custom Hoodies in Bulk: Prices, Blanks & Minimums | TBSP"
-description: "Bulk custom hoodies from 6 pieces (12 for screen printing and embroidery): screen printed, embroidered or DTF on Gildan 18500, Independent Trading Co. and Bella+Canvas hoodies. Same decoration price as tees, free shipping from $300 in the lower 48."
+description: "Bulk custom hoodies from 6 pieces (12 for screen printing and embroidery): screen printed, embroidered or DTF on Gildan 18500, Independent Trading Co. and Bella+Canvas hoodies. Same decoration price as tees, free shipping from {{shipFreeFrom}} in the lower 48."
 h1: "Custom hoodies in bulk"
 kind: answer
 imported: false
-summary: "We print and embroider custom hoodies from 12 pieces for teams, schools, companies and brands, and ship them anywhere in the lower 48 states, free from $300. The print costs the same as on a t-shirt; the hoodie blank is what adds to the price. The Gildan 18500 is the best value, and Independent Trading Co. and Bella+Canvas are the premium picks."
+summary: "We print and embroider custom hoodies from 12 pieces for teams, schools, companies and brands, and ship them anywhere in the lower 48 states, free from {{shipFreeFrom}}. The print costs the same as on a t-shirt; the hoodie blank is what adds to the price. The Gildan 18500 is the best value, and Independent Trading Co. and Bella+Canvas are the premium picks."
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Methods", value: "Screen, embroidery, DTF, DTG" }
-  - { label: "Shipping", value: "Free from $300" }
+  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
 faqs:
   - q: "How much do custom hoodies cost in bulk?"
-    a: "The decoration is priced like a tee: for example, a one-color screen print is about $6.75 per piece at 24 and $2.50 at 144 before the blank and the $25 screen. Add the hoodie itself, which depends on the brand. Max or the quote form gives you the full price with the real blank cost in a minute."
+    a: "The decoration is priced like a tee: for example, a one-color screen print is about $6.75 per piece at 24 and $2.50 at 144 before the blank and the {{screenSetup}} screen. Add the hoodie itself, which depends on the brand. Max or the quote form gives you the full price with the real blank cost in a minute."
   - q: "Should I screen print or embroider hoodies?"
     a: "Screen printing for big front or back designs and the lowest price. Embroidery for a left-chest logo with a premium look that lasts for years. Many orders combine the two."
   - q: "Can you print on the sleeves and back?"
@@ -38,7 +38,7 @@ Your hoodie price is three parts:
 
 1. **The blank.** Set by the brand and style, and a little more for 2XL and up.
 2. **The decoration.** The same price grid as tees. It drops fast with quantity.
-3. **Setup, if any.** $25 per screen for screen printing (white base on dark hoodies is free), embroidery digitizing free from 24 pieces ($45 per logo below that), none for DTF or DTG.
+3. **Setup, if any.** {{screenSetup}} per screen for screen printing (white base on dark hoodies is free), embroidery digitizing free from {{digitizingFreeFrom}} pieces ({{digitizing}} per logo below that), none for DTF or DTG.
 
 For a quick price, ask Max with your quantity and design. Max prices the exact hoodie with today's blank cost.
 

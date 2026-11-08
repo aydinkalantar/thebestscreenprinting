@@ -1,18 +1,18 @@
 ---
 path: "/online-screen-printing/"
 title: "Online Screen Printing: Order Custom Shirts From 12 Pieces | TBSP"
-description: "Order screen printed shirts online from anywhere in the US: send your art, approve a free mockup, pay online. 12-piece minimum, about $11.50 a shirt at 24, free shipping from $300 in the lower 48."
+description: "Order screen printed shirts online from anywhere in the US: send your art, approve a free mockup, pay online. 12-piece minimum, about {{tee.screen1.24}} a shirt at 24, free shipping from {{shipFreeFrom}} in the lower 48."
 h1: "Order screen printing online"
 kind: service
 imported: false
-summary: "Order custom screen printed shirts, hoodies and hats online from anywhere in the US. Send your art, approve a free mockup by email and pay online; we print in our own shops in Los Angeles and Cleveland and ship to your door. Orders start at 12 pieces, a one-color tee is about $11.50 at 24, and shipping is free from $300."
+summary: "Order custom screen printed shirts, hoodies and hats online from anywhere in the US. Send your art, approve a free mockup by email and pay online; we print in our own shops in Los Angeles and Cleveland and ship to your door. Orders start at 12 pieces, a one-color tee is about {{tee.screen1.24}} at 24, and shipping is free from {{shipFreeFrom}}."
 facts:
   - { label: "Minimum", value: "12 pieces" }
-  - { label: "24 tees, 1 color", value: "About $11.50 each" }
-  - { label: "Shipping", value: "Free from $300" }
+  - { label: "24 tees, 1 color", value: "About {{tee.screen1.24}} each" }
+  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
 faqs:
   - q: "Is there online screen printing with no minimum?"
-    a: "Screen printing starts at 12 pieces, which is lower than most screen printers. DTF and DTG start at 6. For 6 to 23 full-color shirts, DTF is usually the best value at about $15 to $17 per shirt, shirt included, with no setup fee."
+    a: "Screen printing starts at 12 pieces, which is lower than most screen printers. DTF and DTG start at 6. For 6 to 23 full-color shirts, DTF is usually the best value at about {{tee.dtf.12}} to {{tee.dtf.6}} per shirt, shirt included, with no setup fee."
   - q: "How do I order screen printing online?"
     a: "Send the garment, quantity, deadline and artwork through the quote form, or ask Max on the site for an instant price. We email a mockup, you approve it and pay online, and we ship with tracking."
   - q: "How do I know the print will look right if I never visit?"
@@ -29,19 +29,19 @@ updated: "2026-10-28"
 2. **Send your art.** Upload it in the [quote form](/quick-quote/) or to Max. A sketch or phone photo is fine; the art check is free.
 3. **Get a price.** Max prices it on the spot, or we reply within one business day.
 4. **Approve the mockup.** You see placement, sizes and ink colors before we print.
-5. **We print and ship.** Made in-house, shipped with tracking, free from $300.
+5. **We print and ship.** Made in-house, shipped with tracking, free from {{shipFreeFrom}}.
 
 ## What it costs
 
-Black Gildan 5000 tee, one-color front print, shirt included, plus a one-time $25 screen:
+Black Gildan 5000 tee, one-color front print, shirt included, plus a one-time {{screenSetup}} screen:
 
 | Quantity | Per shirt |
 | --- | --- |
-| 12 | About $16.00 |
-| 24 | About $11.50 |
-| 48 | About $9.50 |
-| 72 | About $8.50 |
-| 144 | About $7.25 |
+| 12 | About {{tee.screen1.12}} |
+| 24 | About {{tee.screen1.24}} |
+| 48 | About {{tee.screen1.48}} |
+| 72 | About {{tee.screen1.72}} |
+| 144 | About {{tee.screen1.144}} |
 
 Full-color DTF, embroidery and DTG prices are in [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
 

@@ -55,6 +55,8 @@ Screen printing lays down one solid color per screen. Digital methods like [DTG]
 - **Water-based.** Soaks into the fibers for a soft feel. Great on light, natural fabrics.
 - **Discharge.** Removes the dye from cotton and replaces it with color, for a nearly weightless print on dark shirts.
 
+At TBSP we print with plastisol, including a soft-hand plastisol that feels light and smooth on the shirt. We don't print with water-based or discharge ink; for the softest print on dark cotton we use [DTG](/services/direct-to-garment/).
+
 Specialty techniques add texture: **puff** ink rises as it cures, and **crackle** ink breaks into a distressed, vintage texture. These often need extra steps to cure properly.
 
 ## Is screen printing hard?

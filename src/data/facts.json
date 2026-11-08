@@ -1,0 +1,67 @@
+{
+  "source": "Seeded from the site copy on 2026-11-07. npm run build refreshes it from the live price engine (scripts/refresh-facts.mjs).",
+  "updated": "2026-11-07",
+  "screenSetup": 25,
+  "digitizing": 45,
+  "digitizingFreeFrom": 24,
+  "shipFlat": 35,
+  "shipFreeFrom": 300,
+  "rushPercent": 15,
+  "superRushPercent": 30,
+  "tee": {
+    "screen1": {
+      "12": 16,
+      "24": 11.5,
+      "36": 10.5,
+      "48": 9.5,
+      "72": 8.5,
+      "144": 7.25
+    },
+    "screen2": {
+      "12": 18.25,
+      "24": 13.25,
+      "36": 12,
+      "48": 10.75,
+      "72": 9.5,
+      "144": 8
+    },
+    "dtf": {
+      "6": 17,
+      "12": 15,
+      "24": 13,
+      "36": 13,
+      "48": 11.5,
+      "72": 10.5,
+      "144": 9
+    },
+    "dtg": {
+      "6": 21,
+      "12": 19,
+      "24": 16.25,
+      "36": 16.25,
+      "48": 14,
+      "72": 13.5,
+      "144": 12.25
+    },
+    "embroidery": {
+      "12": 16.5,
+      "24": 13.5,
+      "36": 13.5,
+      "48": 11.5,
+      "72": 11,
+      "144": 9.5
+    },
+    "back1": {
+      "12": 4.5,
+      "24": 3.5,
+      "48": 2.75,
+      "72": 2.25,
+      "144": 1.75
+    }
+  },
+  "artCleanup": 25,
+  "artLayout": 45,
+  "artCustom": 95,
+  "artRevision": 15,
+  "superRushMaxPieces": 144
+}

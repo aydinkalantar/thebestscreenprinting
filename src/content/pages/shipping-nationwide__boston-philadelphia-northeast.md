@@ -1,23 +1,23 @@
 ---
 path: "/shipping-nationwide/boston-philadelphia-northeast/"
 title: "Custom Shirts Shipped to Boston, Philadelphia and the Northeast | TBSP"
-description: "Custom t-shirts, hoodies and hats for Boston, Philadelphia and the Northeast, printed in our own shops and shipped to your door. From 6 pieces (12 for screen printing and embroidery), about $11.50 a tee at 24, free shipping from $300 in the lower 48."
+description: "Custom t-shirts, hoodies and hats for Boston, Philadelphia and the Northeast, printed in our own shops and shipped to your door. From 6 pieces (12 for screen printing and embroidery), about {{tee.screen1.24}} a tee at 24, free shipping from {{shipFreeFrom}} in the lower 48."
 h1: "Custom shirts shipped to Boston, Philadelphia and the Northeast"
 kind: service
 imported: false
-summary: "We don't have a shop in the Northeast, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in Massachusetts, Pennsylvania, Rhode Island, New Hampshire, Maine, Vermont and Delaware. Orders start at 6 pieces (12 for screen printing and embroidery), and shipping is free from $300."
+summary: "We don't have a shop in the Northeast, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in Massachusetts, Pennsylvania, Rhode Island, New Hampshire, Maine, Vermont and Delaware. Orders start at 6 pieces (12 for screen printing and embroidery), and shipping is free from {{shipFreeFrom}}."
 states: ["Massachusetts", "Pennsylvania", "Rhode Island", "New Hampshire", "Maine", "Vermont", "Delaware"]
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
-  - { label: "24 tees, 1 color", value: "About $11.50 each" }
-  - { label: "Shipping", value: "Free from $300" }
+  - { label: "24 tees, 1 color", value: "About {{tee.screen1.24}} each" }
+  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
 faqs:
   - q: "Do you ship to Boston and Philadelphia?"
-    a: "Yes, to any address in Massachusetts, Pennsylvania and the rest of the Northeast. Shipping is free on orders of $300 or more and $35 below that."
+    a: "Yes, to any address in Massachusetts, Pennsylvania and the rest of the Northeast. Shipping is free on orders of {{shipFreeFrom}} or more and {{shipFlat}} below that."
   - q: "Do you print college club and Greek life shirts?"
     a: "Yes, from 6 pieces (12 for screen printing and embroidery), including Comfort Colors and heavyweight blanks. See college clubs and Greek life for prices and tips."
   - q: "How much do custom shirts cost if I am in the Northeast?"
-    a: "The same as everywhere: a one-color screen printed black tee is about $11.50 each at 24 pieces and $7.25 at 144, shirt included, plus a one-time $25 screen. Shipping is free from $300."
+    a: "The same as everywhere: a one-color screen printed black tee is about {{tee.screen1.24}} each at 24 pieces and {{tee.screen1.144}} at 144, shirt included, plus a one-time {{screenSetup}} screen. Shipping is free from {{shipFreeFrom}}."
   - q: "What is the minimum order?"
     a: "12 pieces for screen printing (1 to 3 colors) and embroidery, 6 for DTF and DTG. You can mix sizes."
 updated: "2026-10-28"
@@ -35,17 +35,17 @@ With so many colleges in the Northeast, hoodies and crewnecks come up almost as 
 1. **Send your art and sizes** through the [quote form](/quick-quote/) or ask Max for an instant price.
 2. **Approve the mockup** by email. The art check is free.
 3. **We print it in-house** in Los Angeles or Cleveland.
-4. **It ships to your door** with tracking. Free on orders of $300 or more, $35 below that.
+4. **It ships to your door** with tracking. Free on orders of {{shipFreeFrom}} or more, {{shipFlat}} below that.
 
 ## Prices and delivery
 
 | Black tee, 1-color front print, shirt included | Per shirt |
 | --- | --- |
-| 24 pieces | About $11.50 |
-| 48 pieces | About $9.50 |
-| 144 pieces | About $7.25 |
+| 24 pieces | About {{tee.screen1.24}} |
+| 48 pieces | About {{tee.screen1.48}} |
+| 144 pieces | About {{tee.screen1.144}} |
 
-Plus a one-time $25 screen per ink color. Full tables for DTF, DTG and embroidery are in [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
+Plus a one-time {{screenSetup}} screen per ink color. Full tables for DTF, DTG and embroidery are in [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
 
 | Delivery | Arrives | Extra |
 | --- | --- | --- |

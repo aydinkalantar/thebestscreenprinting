@@ -1,4 +1,6 @@
 // Single source of truth for the business entity (name, address, phone, hours).
+// Prices, shipping and rush fees come from facts.json, refreshed from the live price engine on every build.
+import facts from './facts.json';
 // Keep this identical to the Google Business Profile, Yelp, Apple Maps and Bing Places.
 export const business = {
   name: 'The Best Screen Printing',
@@ -42,16 +44,16 @@ export const business = {
    */
   turnaround: [
     { id: 'normal', name: 'Normal', time: 'About 2 weeks', fee: null as string | null, note: 'Standard delivery, estimated to arrive in about two weeks.' },
-    { id: 'rush', name: 'Rush', time: '1 week', fee: '+15%' as string | null, note: 'One-week rush delivery, at your doorstep in a week.' },
-    { id: 'super-rush', name: 'Super Rush', time: '3 business days', fee: '+30%' as string | null, note: 'Order by 2:00 PM ET Tuesday to have it in hand by Friday.' },
+    { id: 'rush', name: 'Rush', time: '1 week', fee: `+${facts.rushPercent}%` as string | null, note: 'One-week rush delivery, at your doorstep in a week.' },
+    { id: 'super-rush', name: 'Super Rush', time: '3 business days', fee: `+${facts.superRushPercent}%` as string | null, note: 'Order by 2:00 PM ET Tuesday to have it in hand by Friday.' },
   ],
   /** Fine print for Super Rush. */
-  superRushNote: 'Not available for all products, styles or PO Box addresses.',
+  superRushNote: `Up to ${facts.superRushMaxPieces} pieces. Not available for all products, styles or PO Box addresses.`,
   /** Areas we serve without a shop address there (service-area business). */
   serviceAreas: ['Los Angeles, CA', 'Cleveland, OH'],
   /** Shipping per order to any address in the lower 48 (same as online checkout): flat under the threshold, free from it. */
-  shippingFlat: 35,
-  shippingFreeFrom: 300,
+  shippingFlat: facts.shipFlat,
+  shippingFreeFrom: facts.shipFreeFrom,
 } as const;
 
 export const localBusinessJsonLd = {
