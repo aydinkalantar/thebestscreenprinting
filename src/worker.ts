@@ -412,6 +412,12 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
+    // The team signs in on the studio admin; these short addresses are easy to remember.
+    // Not linked anywhere on the site (customers don't sign in).
+    if (url.pathname === '/admin' || url.pathname === '/admin/' || url.pathname === '/login' || url.pathname === '/login/') {
+      return Response.redirect('https://design.thebestscreenprinting.com/admin', 302);
+    }
+
     // Staging must never be indexed, whatever robots.txt in the build says.
     if (env.STAGING === '1' && url.pathname === '/robots.txt') {
       return new Response('User-agent: *\nDisallow: /\n', { headers: { 'content-type': 'text/plain' } });
