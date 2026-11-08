@@ -109,6 +109,39 @@ async function allowPerHour(request: Request, origin: string, bucket: string, ma
 /** Customer confirmation emails, so the form can't be used to spam a third party's inbox. */
 const allowConfirmation = (request: Request, origin: string) => allowPerHour(request, origin, 'quote-confirm', CONFIRMATIONS_PER_HOUR);
 
+/** How long the form waits for the admin to file a request before using its own number. */
+const INTAKE_WAIT_MS = 10_000;
+
+/**
+ * File a quote request in the studio admin and return the order number it got there
+ * ("TBSP-1071"), or null when the intake isn't set up, fails or is slow. `requestRef` makes
+ * a retry land on the same order. Never throws: the emails go out either way.
+ */
+async function fileInStudio(env: Env, requestRef: string, body: Record<string, unknown>): Promise<string | null> {
+  if (!env.STUDIO_INTAKE_URL || !env.STUDIO_INTAKE_SECRET) return null;
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), INTAKE_WAIT_MS);
+  try {
+    const r = await fetch(env.STUDIO_INTAKE_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', authorization: `Bearer ${env.STUDIO_INTAKE_SECRET}` },
+      body: JSON.stringify({ ref: requestRef, ...body }),
+      signal: ctl.signal,
+    });
+    if (!r.ok) {
+      console.error('studio intake failed', requestRef, r.status, (await r.text().catch(() => '')).slice(0, 300));
+      return null;
+    }
+    const d = (await r.json().catch(() => ({}))) as { orderNumber?: unknown };
+    return typeof d.orderNumber === 'string' && /^[A-Z]{1,8}-\d+$/.test(d.orderNumber) ? d.orderNumber : null;
+  } catch (e) {
+    console.error('studio intake failed', requestRef, e);
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Response> {
   const len = Number(request.headers.get('content-length') || 0);
   if (len > MAX_TOTAL_BYTES + 500_000) return json({ error: 'Your files are too large together. Please keep them under 25 MB in total.' }, 413);
@@ -197,8 +230,23 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
   if (!env.RESEND_API_KEY) {
     return json({ error: `Online quotes are not switched on yet. Please call ${business.phoneDisplay} or email ${business.email}.`, fallback: true }, 503);
   }
-  const ref = requestNumber();
+  // One number per job: the request is filed in the admin first, and the order number it
+  // gets there (TBSP-1071) is the number the customer, both emails and the PDF show. Our
+  // own request number is the retry key and the fallback when the admin doesn't answer in
+  // time (the admin keeps it on the job, so its search still finds it).
+  const requestRef = requestNumber();
+  const ref = (await fileInStudio(env, requestRef, {
+    quote: q, artwork: artworkNames, placements, ...(product ? { product } : {}),
+    mockupFiles: intakeMockups,
+    // The files themselves, so the admin can make mockups without opening the email.
+    artworkFiles: intakeArt.map(({ file, itemIndex, ...a }) => {
+      const list = itemIndex !== undefined ? items[itemIndex]?.placements ?? [] : placements;
+      const placement = list.find((pl) => pl.file === file)?.location;
+      return { ...a, ...(itemIndex !== undefined ? { itemIndex } : {}), ...(placement ? { placement } : {}) };
+    }),
+  })) || requestRef;
   const origin = new URL(request.url).origin;
+
 
   // Branded summary PDF for both emails. If it can't be built the emails still go out without it.
   let pdf: Attachment | null = null;
@@ -228,29 +276,6 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
   if (shopError) {
     console.error('quote email failed', ref, shopError);
     return json({ error: `We could not send your request. Please call ${business.phoneDisplay} or email ${business.email}.`, fallback: true }, 502);
-  }
-
-  // The request also goes into the studio admin as an order. It runs after the response
-  // and never changes what the customer sees; the email above stays the source of truth.
-  if (env.STUDIO_INTAKE_URL && env.STUDIO_INTAKE_SECRET && ctx) {
-    ctx.waitUntil(
-      fetch(env.STUDIO_INTAKE_URL, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json', authorization: `Bearer ${env.STUDIO_INTAKE_SECRET}` },
-        body: JSON.stringify({
-          ref, quote: q, artwork: artworkNames, placements, ...(product ? { product } : {}),
-          mockupFiles: intakeMockups,
-          // The files themselves, so the admin can make mockups without opening the email.
-          artworkFiles: intakeArt.map(({ file, itemIndex, ...a }) => {
-            const list = itemIndex !== undefined ? items[itemIndex]?.placements ?? [] : placements;
-            const placement = list.find((pl) => pl.file === file)?.location;
-            return { ...a, ...(itemIndex !== undefined ? { itemIndex } : {}), ...(placement ? { placement } : {}) };
-          }),
-        }),
-      })
-        .then(async (r) => { if (!r.ok) console.error('studio intake failed', ref, r.status, (await r.text().catch(() => '')).slice(0, 300)); })
-        .catch((e) => console.error('studio intake failed', ref, e)),
-    );
   }
 
   // 2. The customer: a confirmation with the mockups and the PDF (never their own artwork back).
