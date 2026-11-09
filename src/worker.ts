@@ -142,6 +142,16 @@ async function fileInStudio(env: Env, requestRef: string, body: Record<string, u
   }
 }
 
+/** Background retries for a request the admin didn't take the first time (fits the Worker's 30 s after-response window). */
+async function retryInStudio(env: Env, requestRef: string, body: Record<string, unknown>): Promise<void> {
+  for (const wait of [2_000, 8_000]) {
+    await new Promise((r) => setTimeout(r, wait));
+    const n = await fileInStudio(env, requestRef, body);
+    if (n) { console.log('studio intake retry ok', requestRef, n); return; }
+  }
+  console.error('studio intake gave up; the request is only in the quote@ email', requestRef);
+}
+
 async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Response> {
   const len = Number(request.headers.get('content-length') || 0);
   if (len > MAX_TOTAL_BYTES + 500_000) return json({ error: 'Your files are too large together. Please keep them under 25 MB in total.' }, 413);
@@ -235,7 +245,7 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
   // own request number is the retry key and the fallback when the admin doesn't answer in
   // time (the admin keeps it on the job, so its search still finds it).
   const requestRef = requestNumber();
-  const ref = (await fileInStudio(env, requestRef, {
+  const intakeBody = {
     quote: q, artwork: artworkNames, placements, ...(product ? { product } : {}),
     mockupFiles: intakeMockups,
     // The files themselves, so the admin can make mockups without opening the email.
@@ -244,7 +254,12 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
       const placement = list.find((pl) => pl.file === file)?.location;
       return { ...a, ...(itemIndex !== undefined ? { itemIndex } : {}), ...(placement ? { placement } : {}) };
     }),
-  })) || requestRef;
+  };
+  const filed = await fileInStudio(env, requestRef, intakeBody);
+  // The admin was slow or down (a deploy, a hiccup): keep trying after the customer has their
+  // answer, so the request still lands in Admin › Jobs. Same ref = same job, never a duplicate.
+  if (!filed && ctx && env.STUDIO_INTAKE_URL && env.STUDIO_INTAKE_SECRET) ctx.waitUntil(retryInStudio(env, requestRef, intakeBody));
+  const ref = filed || requestRef;
   const origin = new URL(request.url).origin;
 
 
