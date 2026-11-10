@@ -414,6 +414,10 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
     first?.focus({ preventScroll: true });
   });
   if (swatches[0]) design.init({ name: color, front: colorImg, back: swatches[0].dataset.back || '' });
+  // ?color=Neon%20Pink (from search results and color filters) starts on that color.
+  const wantColor = new URLSearchParams(location.search).get('color')?.toLowerCase();
+  const wantSwatch = wantColor ? swatches.find((b) => (b.dataset.name || '').toLowerCase() === wantColor) : undefined;
+  if (wantSwatch && wantSwatch !== swatches[0]) { wantSwatch.hidden = false; wantSwatch.click(); }
   refresh();
 
   // "From $X each": a real price for a typical order (24 pieces, the suggested method, 1-color print,

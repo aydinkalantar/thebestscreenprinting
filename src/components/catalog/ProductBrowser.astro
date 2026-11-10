@@ -1,10 +1,12 @@
 ---
-// Product grid with client-side filters (brand, color family, decoration) and sorting.
+// Product grid with client-side filters (brand, color, fabric, decoration) and sorting.
+// Picking a color shows each product's photo in that color. With `search`, the grid is the
+// /search/ results page: the query (?q=) is read by src/lib/search.ts and filters stack on it.
 // Used by /catalog/, the collection pages and the brand pages. Filter state lives in the URL.
 // Desktop: sticky filter sidebar + results toolbar. Phones: "Filter & sort" bottom sheet.
 import ProductCard from '../ProductCard.astro';
 import { type CatalogProduct, CATEGORY_LABELS, COLLECTIONS, collectionHref, collectionProducts, products as allProducts } from '../../lib/catalog';
-import { COLOR_FAMILIES, DECORATION_FILTERS, productFamilies, productDecorations } from './browse';
+import { COLOR_FAMILIES, DECORATION_FILTERS, FABRIC_FILTERS, productFamilies, productDecorations, productFabricId } from './browse';
 import { SlidersHorizontal, RotateCcw, X, Check } from '@lucide/astro';
 
 interface Props {
@@ -14,16 +16,19 @@ interface Props {
   /** Show the category list in the sidebar; `current` is the collection slug of this page. */
   categories?: boolean;
   current?: string;
+  /** Search results page: the grid follows ?q= and starts hidden until the search has run. */
+  search?: boolean;
 }
-const { products, hideBrand = false, categories = false, current } = Astro.props;
+const { products, hideBrand = false, categories = false, current, search = false } = Astro.props;
 
 const slug = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const rows = products.map((p, i) => ({ p, i, families: productFamilies(p), decos: productDecorations(p) }));
+const rows = products.map((p, i) => ({ p, i, families: productFamilies(p), decos: productDecorations(p), fabric: productFabricId(p) }));
 const brands = [...new Set(products.map((p) => p.brand).filter(Boolean) as string[])]
   .map((name) => ({ name, slug: slug(name), count: products.filter((p) => p.brand === name).length }))
   .sort((a, b) => a.name.localeCompare(b.name));
 const families = COLOR_FAMILIES.filter((f) => rows.some((r) => r.families.includes(f.id)));
 const decorations = DECORATION_FILTERS.filter((d) => rows.some((r) => r.decos.includes(d.id)));
+const fabrics = FABRIC_FILTERS.filter((f) => rows.some((r) => r.fabric === f.id));
 const showBrand = !hideBrand && brands.length > 1;
 const labels = { ...CATEGORY_LABELS };
 const cats = categories ? COLLECTIONS.map((c) => ({ ...c, count: collectionProducts(c.slug).length })).filter((c) => c.count > 0) : [];
@@ -31,14 +36,15 @@ const names = {
   brand: Object.fromEntries(brands.map((b) => [b.slug, b.name])),
   color: Object.fromEntries(families.map((f) => [f.id, f.label])),
   deco: Object.fromEntries(decorations.map((d) => [d.id, d.label])),
+  fabric: Object.fromEntries(fabrics.map((d) => [d.id, d.label])),
 };
 const head = 'text-[12px] font-bold uppercase tracking-[0.1em] text-zinc-900 dark:text-white';
 // Divider above every sidebar section except the first one shown.
 const first = cats.length ? 'cats' : showBrand ? 'brand' : families.length > 1 ? 'color' : 'deco';
 const sep = (id: string) => (id === first ? '' : 'md:pt-6 md:border-t md:border-zinc-200/80 dark:md:border-white/10');
-const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most colors']];
+const sortOptions = [['', search ? 'Best match' : 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most colors']];
 ---
-<div data-browser data-labels={JSON.stringify(labels)} data-names={JSON.stringify(names)} class="mt-6 max-md:mt-4 md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)] md:gap-8 lg:gap-10 md:items-start">
+<div data-browser data-search-mode={search ? "1" : undefined} data-labels={JSON.stringify(labels)} data-names={JSON.stringify(names)} class="mt-6 max-md:mt-4 md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)] md:gap-8 lg:gap-10 md:items-start">
   <!-- Phones: sticky "Filter & sort" row; the filter panel becomes a bottom sheet. -->
   <div class="md:hidden sticky z-30 -mx-4 px-4 py-2.5 flex items-center gap-3 bg-white/90 dark:bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-zinc-200/80 dark:border-white/10 transition-[top] duration-200" style="top: var(--hdr-offset)">
     <button type="button" data-filter-open aria-haspopup="dialog" class="press inline-flex items-center gap-2 h-10 pl-3.5 pr-4 rounded-full border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.04] text-[14px] font-semibold text-zinc-900 dark:text-white">
@@ -97,7 +103,7 @@ const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most 
               {families.map((f) => (
                 <button type="button" data-color={f.id} aria-pressed="false" title={f.label} class="group grid justify-items-center gap-1 text-[11px] leading-tight text-center muted aria-pressed:text-zinc-900 dark:aria-pressed:text-white aria-pressed:font-semibold md:flex md:items-center md:gap-2 md:px-1.5 md:py-1.5 md:rounded-lg md:text-left md:text-[13.5px] md:text-zinc-700 dark:md:text-zinc-300 md:hover:bg-zinc-100 dark:md:hover:bg-white/[0.06]">
                   <span class="relative shrink-0 w-5 h-5 max-md:w-10 max-md:h-10 rounded-full border border-zinc-300 dark:border-white/25 ring-offset-2 ring-offset-white dark:ring-offset-[#0d0d14] max-md:group-hover:ring-2 max-md:group-hover:ring-zinc-300 dark:max-md:group-hover:ring-white/20 group-aria-pressed:ring-2 md:ring-offset-1 group-aria-pressed:ring-violet-500 grid place-items-center" style={`background:${f.hex}`}>
-                    <Check class:list={['w-3 h-3 max-md:w-4 max-md:h-4 hidden group-aria-pressed:block', f.id === 'white' || f.id === 'yellow-orange' ? 'text-zinc-900' : 'text-white']} aria-hidden="true" />
+                    <Check class:list={['w-3 h-3 max-md:w-4 max-md:h-4 hidden group-aria-pressed:block', ['white', 'yellow', 'tan'].includes(f.id) ? 'text-zinc-900' : 'text-white']} aria-hidden="true" />
                   </span>
                   <span class="max-w-full break-words md:truncate">{f.label}</span>
                 </button>
@@ -112,6 +118,19 @@ const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most 
             <div class="grid gap-0.5 -mx-2" role="group" aria-label="Decoration">
               {decorations.map((d) => (
                 <button type="button" data-deco={d.id} aria-pressed="false" class="group flex items-center gap-2.5 px-2 py-1.5 max-md:py-2.5 rounded-lg text-left text-[14px] max-md:text-[15px] text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/[0.06]">
+                  <span class="w-[18px] h-[18px] shrink-0 rounded-[5px] border border-zinc-300 dark:border-white/25 grid place-items-center group-aria-pressed:bg-violet-600 group-aria-pressed:border-violet-600"><Check class="w-3 h-3 text-white hidden group-aria-pressed:block" aria-hidden="true" /></span>{d.label}
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {fabrics.length > 1 && (
+          <section class:list={['grid gap-2', sep('fabric')]}>
+            <p class={head}>Fabric</p>
+            <div class="grid gap-0.5 -mx-2" role="group" aria-label="Fabric">
+              {fabrics.map((d) => (
+                <button type="button" data-fabric={d.id} aria-pressed="false" class="group flex items-center gap-2.5 px-2 py-1.5 max-md:py-2.5 rounded-lg text-left text-[14px] max-md:text-[15px] text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/[0.06]">
                   <span class="w-[18px] h-[18px] shrink-0 rounded-[5px] border border-zinc-300 dark:border-white/25 grid place-items-center group-aria-pressed:bg-violet-600 group-aria-pressed:border-violet-600"><Check class="w-3 h-3 text-white hidden group-aria-pressed:block" aria-hidden="true" /></span>{d.label}
                 </button>
               ))}
@@ -143,9 +162,9 @@ const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most 
       <button type="button" data-reset class="text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline px-1">Clear all</button>
     </div>
 
-    <ul data-grid class="mt-6 max-md:mt-4 grid gap-x-3 gap-y-6 md:gap-x-5 md:gap-y-8 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {rows.map(({ p, i, families: fam, decos }) => (
-        <li data-i={i} data-featured={p.featured ? '1' : '0'} data-name={p.name.toLowerCase()} data-colors={p.colors.length}
+    <ul data-grid hidden={search} class="mt-6 max-md:mt-4 grid gap-x-3 gap-y-6 md:gap-x-5 md:gap-y-8 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {rows.map(({ p, i, families: fam, decos, fabric }) => (
+        <li data-i={i} data-id={p.id} data-fabric={fabric} data-featured={p.featured ? '1' : '0'} data-name={p.name.toLowerCase()} data-colors={p.colors.length}
           data-brand={p.brand ? slug(p.brand) : ''} data-families={fam.join(' ')} data-decos={decos.join(' ')}
           data-cat={p.category} data-sub={p.subcategory ?? ''}>
           <ProductCard p={p} />
@@ -153,12 +172,14 @@ const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most 
       ))}
     </ul>
 
+    {search && <p data-searching class="mt-8 text-sm muted">Searching…</p>}
     <div data-empty hidden class="mt-8 panel p-8 text-center">
-      <p class="text-lg font-bold text-zinc-900 dark:text-white">No products match those filters</p>
-      <p class="mt-2 text-sm muted">Try fewer filters, or tell us what you need. We print on almost anything.</p>
+      <p data-empty-title class="text-lg font-bold text-zinc-900 dark:text-white">No products match those filters</p>
+      <p class="mt-2 text-sm muted">{search ? 'Try another word, or describe what you need. We print on almost anything, including items you supply.' : 'Try fewer filters, or tell us what you need. We print on almost anything.'}</p>
       <div class="mt-5 flex flex-wrap justify-center gap-3">
-        <button type="button" data-reset class="btn-primary"><RotateCcw class="w-4 h-4" aria-hidden="true" />Reset filters</button>
-        <a href="/quick-quote/" class="btn-quiet">Ask for a quote</a>
+        {search && <button type="button" data-ask-max-q data-max-only class="btn-primary">Ask Max</button>}
+        <button type="button" data-reset class:list={[search ? 'btn-quiet' : 'btn-primary']}><RotateCcw class="w-4 h-4" aria-hidden="true" />Reset filters</button>
+        <a href="/quick-quote/" data-quote-q class="btn-quiet">Ask for a quote</a>
       </div>
     </div>
   </div>
@@ -171,6 +192,13 @@ const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most 
 
 <script>
   import { openSheet, closeSheet, wireSheet } from '../../lib/sheet';
+  import { readQuery, searchProducts, vocabulary, describe, without, colorPhoto, LEGACY_COLOR, type SearchProduct, type SearchColor, type Match, type Query } from '../../lib/search';
+
+  // The search index (with every color's photo) loads only when a color or a search needs it.
+  let indexP: Promise<SearchProduct[]> | null = null;
+  const loadIndex = () => (indexP ??= fetch('/search-index.json').then((r) => r.json())
+    .then((all: { k: string }[]) => all.filter((h) => h.k === 'product') as SearchProduct[]).catch(() => []));
+  const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
   document.querySelectorAll<HTMLElement>('[data-browser]').forEach((root) => {
     const grid = root.querySelector<HTMLElement>('[data-grid]')!;
@@ -180,6 +208,7 @@ const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most 
     const sortChips = [...root.querySelectorAll<HTMLButtonElement>('[data-sort]')];
     const colorChips = [...root.querySelectorAll<HTMLButtonElement>('[data-color]')];
     const decoChips = [...root.querySelectorAll<HTMLButtonElement>('[data-deco]')];
+    const fabricChips = [...root.querySelectorAll<HTMLButtonElement>('[data-fabric]')];
     const counts = [...root.querySelectorAll('[data-count]')];
     const countWords = [...root.querySelectorAll('[data-count-word]')];
     const badge = root.querySelector<HTMLElement>('[data-filter-count]');
@@ -187,30 +216,43 @@ const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most 
     const active = root.querySelector<HTMLElement>('[data-active]')!;
     const chipSlot = root.querySelector<HTMLElement>('[data-chips]')!;
     const resetSide = root.querySelector<HTMLElement>('[data-reset-side]');
+    const searching = root.querySelector<HTMLElement>('[data-searching]');
     const labels: Record<string, string> = JSON.parse(root.dataset.labels || '{}');
-    const names: Record<'brand' | 'color' | 'deco', Record<string, string>> = JSON.parse(root.dataset.names || '{}');
+    const names: Record<'brand' | 'color' | 'deco' | 'fabric', Record<string, string>> = JSON.parse(root.dataset.names || '{}');
     const sorts = ['', 'name', 'colors'];
+    const isSearch = root.dataset.searchMode === "1";
 
     const params = new URLSearchParams(location.search);
     const list = (k: string) => (params.get(k) || '').split(',').filter(Boolean);
     const state = {
       brand: params.get('brand') || '',
-      colors: new Set(list('color')),
+      // Old links used wider color families (?color=pink-purple).
+      colors: new Set(list('color').flatMap((c) => LEGACY_COLOR[c] ?? [c])),
       decos: new Set(list('deco')),
+      fabrics: new Set(list('fabric')),
       sort: params.get('sort') || '',
       // Old menu links: /catalog/?cat=kids or ?sub=dad-hats, when no collection page matches.
       cat: params.get('cat') || '',
       sub: params.get('sub') || '',
+      q: isSearch ? (params.get('q') || '').trim() : '',
     };
     if (brandSel) {
       if ([...brandSel.options].some((o) => o.value === state.brand)) brandSel.value = state.brand; else state.brand = '';
     } else state.brand = '';
     if (!sorts.includes(state.sort)) state.sort = '';
 
+    // Search results: product id → match (score + the colors that matched). Null = no search.
+    let index: Map<string, SearchProduct> | null = null;
+    let matches: Map<string, Match> | null = null;
+    let query: Query | null = null;
+    let vocab: ReturnType<typeof vocabulary> | null = null;
+
     const syncUrl = () => {
       const q = new URLSearchParams(location.search);
       const set = (k: string, v: string) => (v ? q.set(k, v) : q.delete(k));
+      if (isSearch) set('q', state.q);
       set('brand', state.brand); set('color', [...state.colors].join(',')); set('deco', [...state.decos].join(','));
+      set('fabric', [...state.fabrics].join(','));
       set('sort', state.sort); set('cat', state.cat); set('sub', state.sub);
       const s = q.toString().replace(/%2C/g, ',');
       history.replaceState(history.state, '', s ? `?${s}` : location.pathname);
@@ -225,33 +267,127 @@ const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most 
       return b;
     };
 
+    // Card photo + swatches follow the color being looked for; restored when it is cleared.
+    const original = new Map<HTMLElement, { src: string; sw: string; href: string }>();
+    const showColors = (li: HTMLElement, colors: SearchColor[] | null) => {
+      const a = li.querySelector<HTMLAnchorElement>('a')!;
+      const img = li.querySelector<HTMLImageElement>('[data-card-img]');
+      const alt = li.querySelector<HTMLElement>('[data-card-alt]');
+      const sw = li.querySelector<HTMLElement>('[data-card-swatches]');
+      if (!original.has(li)) original.set(li, { src: img?.getAttribute('src') || '', sw: sw?.innerHTML || '', href: a.getAttribute('href') || '' });
+      const o = original.get(li)!;
+      const first = colors?.find((c) => c[2]);
+      if (!colors?.length || !first) {
+        if (img && img.getAttribute('src') !== o.src) img.src = o.src;
+        if (sw && sw.innerHTML !== o.sw) sw.innerHTML = o.sw;
+        alt?.classList.remove('hidden');
+        a.setAttribute('href', o.href);
+        return;
+      }
+      if (img) { img.src = colorPhoto(first[2]); img.alt = `${img.alt.split(' in ')[0]} in ${first[0]}`; }
+      alt?.classList.add('hidden');
+      a.setAttribute('href', `${o.href}?color=${encodeURIComponent(first[0])}`);
+      if (sw) {
+        const shown = colors.slice(0, 6);
+        sw.innerHTML = shown.map((c) => `<span class="w-3.5 h-3.5 rounded-full border border-zinc-300 dark:border-white/20" style="background:#${esc(c[1])}" title="${esc(c[0])}"></span>`).join('')
+          + `<span class="ml-1 text-[12px] font-medium muted truncate">${esc(colors.length === 1 ? first[0] : `${first[0]} +${colors.length - 1}`)}</span>`;
+        sw.setAttribute('aria-label', colors.map((c) => c[0]).join(', '));
+      }
+    };
+
+    /** Colors of a product in the picked color groups (filter), or the search's matched colors. */
+    const colorsFor = (li: HTMLElement): SearchColor[] | null => {
+      const m = matches?.get(li.dataset.id!);
+      let colors: SearchColor[] | null = m && m.colors.length && (query?.colors.length || query?.shades.length || query?.words.length) ? m.colors : null;
+      if (state.colors.size && index) {
+        const pool = colors ?? index.get(li.dataset.id!)?.co ?? [];
+        const picked = pool.filter((c) => c[3].split(' ').some((g) => state.colors.has(g)));
+        colors = picked.length ? picked : colors;
+      }
+      return colors;
+    };
+
+    const runSearch = () => {
+      if (!isSearch || !index || !vocab) return;
+      query = readQuery(state.q, vocab);
+      matches = new Map(state.q ? searchProducts([...index.values()], query).map((m) => [m.p.id, m]) : []);
+      // Page heading: what was understood ("Pink hoodies"), or the words as typed.
+      const parts = describe(query);
+      const title = document.querySelector<HTMLElement>('[data-search-title]');
+      const sub = document.querySelector<HTMLElement>('[data-search-sub]');
+      const understood = document.querySelector<HTMLElement>('[data-search-understood]');
+      if (title) title.textContent = state.q ? (parts.length && parts.every((p) => p.kind !== 'word') ? parts.map((p) => p.label).join(' · ') : `Results for “${state.q}”`) : 'Search';
+      document.title = `${state.q ? `${state.q} | ` : ''}Search | TBSP`;
+      if (sub) sub.textContent = state.q ? '' : 'Type a color, brand, style number or product in the search box above.';
+      if (understood) {
+        understood.replaceChildren();
+        const known = parts.filter((p) => p.kind !== 'word');
+        if (known.length) {
+          const lead = document.createElement('span');
+          lead.className = 'text-[13px] muted mr-1';
+          lead.textContent = 'Searching for';
+          understood.append(lead);
+        }
+        // Each understood word is a chip; removing it searches again without it.
+        for (const p of parts) {
+          const b = chip(p.label, `Remove ${p.label} from the search`, () => {
+            state.q = without(query!, p.kind, p.id);
+            runSearch();
+          });
+          understood.append(b);
+        }
+        understood.hidden = !parts.length;
+      }
+      const ask = root.querySelector<HTMLElement>('[data-ask-max-q]');
+      if (ask) ask.textContent = state.q ? `Ask Max about “${state.q}”` : 'Ask Max';
+      const quote = root.querySelector<HTMLAnchorElement>('[data-quote-q]');
+      if (quote) quote.href = `/quick-quote/?details=${encodeURIComponent(state.q)}`;
+      const et = root.querySelector<HTMLElement>('[data-empty-title]');
+      if (et) et.textContent = state.q ? `Nothing matches “${state.q}” yet` : 'Search for a color, brand or product';
+    };
+
     const apply = () => {
       const has = (attr: string | undefined, set: Set<string>) => !set.size || (attr || '').split(' ').some((v) => set.has(v));
+      const inSearch = (li: HTMLElement) => !isSearch || !!matches?.has(li.dataset.id!);
       let shown = 0;
       for (const li of items) {
-        const ok = (!state.brand || li.dataset.brand === state.brand)
-          && has(li.dataset.families, state.colors) && has(li.dataset.decos, state.decos)
+        const ok = inSearch(li) && (!state.brand || li.dataset.brand === state.brand)
+          && has(li.dataset.families, state.colors) && has(li.dataset.decos, state.decos) && has(li.dataset.fabric, state.fabrics)
           && (!state.cat || li.dataset.cat === state.cat) && (!state.sub || li.dataset.sub === state.sub);
         li.hidden = !ok;
         if (ok) shown++;
+        if (ok || original.has(li)) showColors(li, ok ? colorsFor(li) : null);
       }
+      // Search: filters only offer what the results contain.
+      if (isSearch && matches) {
+        const pool = items.filter(inSearch);
+        colorChips.forEach((c) => { c.hidden = !state.colors.has(c.dataset.color!) && !pool.some((li) => (li.dataset.families || '').split(' ').includes(c.dataset.color!)); });
+        decoChips.forEach((c) => { c.hidden = !state.decos.has(c.dataset.deco!) && !pool.some((li) => (li.dataset.decos || '').split(' ').includes(c.dataset.deco!)); });
+        fabricChips.forEach((c) => { c.hidden = !state.fabrics.has(c.dataset.fabric!) && !pool.some((li) => li.dataset.fabric === c.dataset.fabric); });
+        brandSel?.querySelectorAll('option').forEach((o) => { if (o.value) o.hidden = o.value !== state.brand && !pool.some((li) => li.dataset.brand === o.value); });
+      }
+      const score = (li: HTMLElement) => matches?.get(li.dataset.id!)?.score ?? 0;
       const sorted = [...items].sort((a, b) => {
         if (state.sort === 'name') return a.dataset.name!.localeCompare(b.dataset.name!);
         if (state.sort === 'colors') return Number(b.dataset.colors) - Number(a.dataset.colors) || Number(a.dataset.i) - Number(b.dataset.i);
+        if (isSearch) return score(b) - score(a);
         return Number(b.dataset.featured) - Number(a.dataset.featured) || Number(a.dataset.i) - Number(b.dataset.i);
       });
       sorted.forEach((li) => grid.appendChild(li));
       counts.forEach((c) => { c.textContent = String(shown); });
       countWords.forEach((c) => { c.textContent = shown === 1 ? 'product' : 'products'; });
-      empty.hidden = shown > 0;
-      grid.hidden = shown === 0;
+      const ready = !isSearch || !!matches;
+      if (searching) searching.hidden = ready;
+      empty.hidden = !ready || shown > 0;
+      grid.hidden = !ready || shown === 0;
       sortSels.forEach((s) => { s.value = state.sort; });
       sortChips.forEach((c) => c.setAttribute('aria-checked', String(c.dataset.sort === state.sort)));
       sortChips.forEach((c) => c.classList.toggle('is-on', c.dataset.sort === state.sort));
       colorChips.forEach((c) => c.setAttribute('aria-pressed', String(state.colors.has(c.dataset.color!))));
       decoChips.forEach((c) => c.setAttribute('aria-pressed', String(state.decos.has(c.dataset.deco!))));
-      const filtered = !!(state.brand || state.colors.size || state.decos.size || state.cat || state.sub);
-      const n = (state.brand ? 1 : 0) + state.colors.size + state.decos.size + (state.cat || state.sub ? 1 : 0) + (state.sort ? 1 : 0);
+      fabricChips.forEach((c) => c.setAttribute('aria-pressed', String(state.fabrics.has(c.dataset.fabric!))));
+      const filtered = !!(state.brand || state.colors.size || state.decos.size || state.fabrics.size || state.cat || state.sub);
+      const n = (state.brand ? 1 : 0) + state.colors.size + state.decos.size + state.fabrics.size + (state.cat || state.sub ? 1 : 0) + (state.sort ? 1 : 0);
       if (badge) { badge.textContent = String(n); badge.classList.toggle('hidden', !n); badge.classList.toggle('grid', !!n); }
       active.classList.toggle('hidden', !filtered);
       active.classList.toggle('flex', filtered);
@@ -269,23 +405,50 @@ const sortOptions = [['', 'Featured'], ['name', 'Name A–Z'], ['colors', 'Most 
         chipSlot.append(chip(text, `Remove ${text} filter`, () => { state.brand = ''; if (brandSel) brandSel.value = ''; }));
       }
       state.colors.forEach((c) => { const text = names.color?.[c] || c; chipSlot.append(chip(text, `Remove ${text} filter`, () => state.colors.delete(c))); });
+      state.fabrics.forEach((d) => { const text = names.fabric?.[d] || d; chipSlot.append(chip(text, `Remove ${text} filter`, () => state.fabrics.delete(d))); });
       state.decos.forEach((d) => { const text = names.deco?.[d] || d; chipSlot.append(chip(text, `Remove ${text} filter`, () => state.decos.delete(d))); });
     };
     const update = () => { apply(); syncUrl(); };
+
+    const needIndex = () => {
+      if (index || !(isSearch || state.colors.size)) return;
+      loadIndex().then((all) => {
+        index = new Map(all.map((p) => [p.id, p]));
+        vocab = vocabulary(all);
+        runSearch();
+        apply();
+      });
+    };
+    const rerun = () => { runSearch(); update(); };
 
     brandSel?.addEventListener('change', () => { state.brand = brandSel.value; update(); });
     sortSels.forEach((s) => s.addEventListener('change', () => { state.sort = s.value; update(); }));
     sortChips.forEach((c) => c.addEventListener('click', () => { state.sort = c.dataset.sort || ''; update(); }));
     const toggle = (set: Set<string>, v: string) => (set.has(v) ? set.delete(v) : set.add(v));
-    colorChips.forEach((c) => c.addEventListener('click', () => { toggle(state.colors, c.dataset.color!); update(); }));
+    colorChips.forEach((c) => c.addEventListener('click', () => { toggle(state.colors, c.dataset.color!); needIndex(); update(); }));
     decoChips.forEach((c) => c.addEventListener('click', () => { toggle(state.decos, c.dataset.deco!); update(); }));
+    fabricChips.forEach((c) => c.addEventListener('click', () => { toggle(state.fabrics, c.dataset.fabric!); update(); }));
     root.querySelectorAll('[data-reset]').forEach((b) => b.addEventListener('click', () => {
       Object.assign(state, { brand: '', cat: '', sub: '' });
-      state.colors.clear(); state.decos.clear();
+      state.colors.clear(); state.decos.clear(); state.fabrics.clear();
       if (brandSel) brandSel.value = '';
       update();
     }));
+    root.querySelector('[data-ask-max-q]')?.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('tbsp-max-ask', { detail: state.q }));
+    });
+    // The header search box submits here without reloading when already on the results page.
+    window.addEventListener('tbsp-search', (e) => {
+      if (!isSearch) return;
+      state.q = String((e as CustomEvent<string>).detail || '').trim();
+      Object.assign(state, { brand: '', cat: '', sub: '' });
+      state.colors.clear(); state.decos.clear(); state.fabrics.clear();
+      if (brandSel) brandSel.value = '';
+      if (index) rerun(); else { syncUrl(); needIndex(); }
+      scrollTo({ top: 0 });
+    });
     apply();
+    needIndex();
 
     // Phones: the filter panel is a bottom sheet.
     const sheet = root.querySelector<HTMLElement>('[data-filter-sheet]');

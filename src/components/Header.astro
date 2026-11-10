@@ -13,6 +13,8 @@ const aiHref = '/quick-quote/';
 const max = business.maxLive;
 const nav = NAV.filter((m) => business.studioLive || m.feature !== 'ai');
 const menuBrands = brandTiles(8);
+// Only the most specific menu item is current: /products/t-shirts/ lights T-shirts, not Apparel (/products/) too.
+const currentNav = nav.map((m) => m.href).filter((h) => h !== '/' && here.startsWith(h)).sort((a, b) => b.length - a.length)[0];
 // Announcement bar: short selling points that take turns (static for reduced motion).
 const promos = [
   { text: `Instant prices and online checkout, from ${business.shopMinimum} pieces.`, cta: 'Shop now', href: '/catalog/' },
@@ -66,7 +68,7 @@ const promos = [
     <div class="wrap h-12 flex items-center gap-1">
       {nav.map((m) => (
         <div class="group static">
-          <a href={m.href} aria-current={here.startsWith(m.href) && m.href !== '/' ? 'page' : undefined}
+          <a href={m.href} aria-current={m.href === currentNav ? 'page' : undefined}
             class:list={['inline-flex items-center gap-1 h-9 px-3 text-[14px] font-bold transition-colors underline-offset-[6px] decoration-2 group-hover:text-violet-700 dark:group-hover:text-violet-300 aria-[current=page]:text-violet-700 dark:aria-[current=page]:text-violet-300 aria-[current=page]:underline',
               m.feature === 'ai' ? 'text-violet-700 dark:text-violet-300' : 'text-zinc-900 dark:text-white']}>
             {m.feature === 'ai' && <Sparkles class="w-4 h-4" aria-hidden="true" />}{m.label}
@@ -224,6 +226,7 @@ const promos = [
 <script>
   import { openSheet, closeSheet, wireSheet } from '../lib/sheet';
   import '../lib/cart-badge';
+  import { readQuery, searchProducts, vocabulary, describe, colorPhoto, type SearchProduct, type Vocab, type Match, type Query } from '../lib/search';
 
   // Mobile menu drawer
   const drawer = document.querySelector<HTMLElement>('[data-menu]');
@@ -254,14 +257,23 @@ const promos = [
     if (askMax()) e.preventDefault();
   }));
 
-  // Search + AI box. Each word must appear in the title or hidden keywords; products rank first,
-  // then collection/brand pages, then content pages. A word that is a whole token of the title
-  // (a style number like "5000", a brand) outranks a partial match.
+  // Search + AI box. Products are read by src/lib/search.ts (colors, brands, style numbers, types,
+  // fabrics); category, brand and content pages still match word by word. Enter opens /search/.
   type Hit = { t: string; u: string; k: 'page' | 'product' | 'collection' | 'brand'; i?: string; s?: string; w?: string; f?: 1 };
   let index: Hit[] | null = null;
-  const load = async () => (index ??= await fetch('/search-index.json').then((r) => r.json()).catch(() => []));
+  let catalog: SearchProduct[] = [];
+  let vocab: Vocab | null = null;
+  const load = async () => {
+    if (!index) {
+      index = await fetch('/search-index.json').then((r) => r.json()).catch(() => []) as Hit[];
+      catalog = index.filter((h) => h.k === 'product') as unknown as SearchProduct[];
+      vocab = vocabulary(catalog);
+    }
+    return index;
+  };
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
   const aiLink = (q: string) => `/quick-quote/?details=${encodeURIComponent(q)}`;
+  const searchLink = (q: string) => `/search/?q=${encodeURIComponent(q)}`;
   const TIER: Record<Hit['k'], number> = { product: 0, collection: 1, brand: 1, page: 2 };
   const has = (hay: string, w: string) => hay.includes(w) || (w.length > 3 && w.endsWith('s') && hay.includes(w.slice(0, -1)));
   const rank = (all: Hit[], q: string) => {
@@ -278,22 +290,66 @@ const promos = [
       .sort((a, b) => TIER[a.h.k] - TIER[b.h.k] || b.score - a.score || a.n - b.n)
       .map((x) => x.h);
   };
+  /** Products for the query, plus whether it was about color (so photos show that color). */
+  const findProducts = (q: string) => {
+    const query = readQuery(q, vocab!);
+    const found = searchProducts(catalog, query);
+    const colorful = query.colors.length + query.shades.length > 0;
+    return { query, found, colorful };
+  };
+  // A style number typed on its own ("5000", "1717") goes straight to that product.
+  const exactStyle = (query: Query, found: Match[]) => {
+    const one = found[0];
+    if (!one || query.colors.length || query.shades.length || query.typed.length || query.fabrics.length || query.words.length !== 1) return null;
+    const st = (one.p.st ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    return st && st === query.words[0].replace(/[^a-z0-9]/g, '') ? one.p : null;
+  };
+  const productRow = (m: Match, colorful: boolean) => {
+    const c = (colorful || m.colors.length < m.p.co.length) && m.colors.length ? m.colors : null;
+    const pic = c?.find((x) => x[2]);
+    const img = pic ? colorPhoto(pic[2]) : m.p.i;
+    const href = pic ? `${m.p.u}?color=${encodeURIComponent(pic[0])}` : m.p.u;
+    const sub = c
+      ? `<span class="flex items-center gap-1 mt-1">${c.slice(0, 6).map((x) => `<span class="w-3 h-3 rounded-full border border-zinc-300 dark:border-white/20 shrink-0" style="background:#${esc(x[1])}"></span>`).join('')}<span class="ml-1 text-[12px] muted truncate">${esc(c.length === 1 ? c[0][0] : `${c[0][0]} +${c.length - 1} more`)}</span></span>`
+      : m.p.s ? `<span class="block mt-0.5 text-[12px] muted truncate">${esc(m.p.s)}</span>` : '';
+    return `<a href="${href}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06]">${img ? `<img src="${img}" alt="" loading="lazy" class="w-10 h-10 shrink-0 rounded-lg object-contain bg-white border border-zinc-200/80 dark:border-white/10">` : ''}<span class="min-w-0 text-sm leading-tight"><span class="block truncate text-zinc-800 dark:text-zinc-200 font-medium">${esc(m.p.t)}</span>${sub}</span></a>`;
+  };
   const row = (h: Hit) => `<a href="${h.u}" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06]">${h.i ? `<img src="${h.i}" alt="" loading="lazy" class="w-10 h-10 shrink-0 rounded-lg object-contain bg-white border border-zinc-200/80 dark:border-white/10">` : '<span class="w-10 h-10 shrink-0 rounded-lg grid place-items-center bg-zinc-100 dark:bg-white/[0.06] text-zinc-400">↗</span>'}<span class="min-w-0 text-sm leading-tight"><span class="block truncate text-zinc-800 dark:text-zinc-200 font-medium">${esc(h.t)}</span>${h.s ? `<span class="block mt-0.5 text-[12px] muted truncate">${esc(h.s)}</span>` : ''}</span></a>`;
-  const group = (label: string, hits: Hit[]) => hits.length ? `<p class="px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-[0.1em] muted">${label}</p>${hits.map(row).join('')}` : '';
+  const label = (text: string) => `<p class="px-3 pt-3 pb-1 text-[11px] font-bold uppercase tracking-[0.1em] muted">${text}</p>`;
+  const group = (text: string, hits: Hit[]) => hits.length ? label(text) + hits.map(row).join('') : '';
+  // On the results page itself, a new search updates the grid without a reload.
+  const goSearch = (q: string) => {
+    if (location.pathname === '/search/') window.dispatchEvent(new CustomEvent('tbsp-search', { detail: q }));
+    else location.href = searchLink(q);
+  };
   document.querySelectorAll<HTMLFormElement>('[data-search]').forEach((form) => {
     const input = form.querySelector('input')!;
+    // The results page keeps what was searched in the box.
+    if (location.pathname === '/search/') input.value = new URLSearchParams(location.search).get('q') ?? '';
     const box = form.querySelector<HTMLElement>('[data-results]')!;
+    const close = () => { box.classList.add('hidden'); if (form.closest('[data-search-sheet]')) closeSheet(form.closest<HTMLElement>('[data-search-sheet]')!); };
     const render = async () => {
       const q = input.value.trim();
       if (!q) { box.classList.add('hidden'); return; }
-      const hits = rank(await load(), q);
+      const all = await load();
       if (input.value.trim() !== q) return; // a newer keystroke already rendered
+      const { query, found, colorful } = findProducts(q);
+      const others = rank(all.filter((h) => h.k !== 'product'), q);
+      const understood = describe(query).filter((p) => p.kind !== 'word').map((p) => p.label).join(' · ');
       const ai = `<a href="${aiLink(q)}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="min-w-0 text-sm"><b class="text-violet-700 dark:text-violet-300">${document.documentElement.dataset.max === 'on' ? 'Ask Max' : 'Request a quote for'}</b><span class="block muted truncate">“${esc(q)}”</span></span></a>`;
-      const list = group('Products', hits.filter((h) => h.k === 'product').slice(0, 6))
-        + group('Categories & brands', hits.filter((h) => h.k === 'collection' || h.k === 'brand').slice(0, 3))
-        + group('Pages', hits.filter((h) => h.k === 'page').slice(0, 3));
-      box.innerHTML = list ? list + `<div class="mt-2 pt-2 border-t border-zinc-200/80 dark:border-white/10">${ai}</div>` : ai;
+      const all1 = found.length
+        ? `<a href="${searchLink(q)}" data-see-all class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06]"><span class="min-w-0 text-sm"><b class="text-zinc-900 dark:text-white">See all ${found.length} ${found.length === 1 ? 'product' : 'products'}</b>${understood ? `<span class="block text-[12px] muted truncate">${esc(understood)}</span>` : ''}</span><span class="text-violet-700 dark:text-violet-300 text-sm font-semibold shrink-0">View →</span></a>`
+        : '';
+      const list = (found.length ? label('Products') + found.slice(0, 6).map((m) => productRow(m, colorful)).join('') : '')
+        + group('Categories & brands', others.filter((h) => h.k === 'collection' || h.k === 'brand').slice(0, 3))
+        + group('Pages', others.filter((h) => h.k === 'page').slice(0, 3));
+      box.innerHTML = (all1 ? all1 + '<div class="my-1 border-t border-zinc-200/80 dark:border-white/10"></div>' : '')
+        + (list ? list + `<div class="mt-2 pt-2 border-t border-zinc-200/80 dark:border-white/10">${ai}</div>` : ai);
       box.classList.remove('hidden');
+      box.querySelector<HTMLAnchorElement>('[data-see-all]')?.addEventListener('click', (e) => {
+        if (location.pathname !== '/search/') return;
+        e.preventDefault(); close(); goSearch(q);
+      });
       box.querySelector<HTMLAnchorElement>('[data-ai-row]')?.addEventListener('click', (e) => {
         if (form.closest('[data-search-sheet]')) closeSheet(form.closest<HTMLElement>('[data-search-sheet]')!);
         if (askMax(q)) { e.preventDefault(); box.classList.add('hidden'); input.value = ''; }
@@ -306,7 +362,12 @@ const promos = [
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const q = input.value.trim(); if (!q) return;
-      const best = rank(await load(), q)[0];
+      const all = await load();
+      const { query, found } = findProducts(q);
+      const style = exactStyle(query, found);
+      if (style) { location.href = style.u; return; }
+      if (found.length) { close(); goSearch(q); return; }
+      const best = rank(all.filter((h) => h.k !== 'product'), q)[0];
       if (best) { location.href = best.u; return; }
       if (form.closest('[data-search-sheet]')) closeSheet(form.closest<HTMLElement>('[data-search-sheet]')!);
       if (!askMax(q)) location.href = aiLink(q);
