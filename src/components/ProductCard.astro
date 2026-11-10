@@ -10,13 +10,13 @@ const more = p.colors.length - swatches.length;
 <a href={`/catalog/${p.slug}/`} class="press group flex flex-col gap-2">
   <!-- Same 4:5 shape as the product photos, so they fill the frame (no side bars) in light and dark mode. -->
   <span class="relative block aspect-[4/5] overflow-hidden rounded-2xl border border-zinc-200/80 dark:border-white/10 bg-[#f3f3f3]">
-    <img src={p.image} alt={p.name} loading="lazy" width="400" height="400" class:list={['w-full h-full object-cover transition-all duration-300 group-hover:scale-105', { 'group-hover:opacity-0': alt }]} />
-    {alt && <img src={alt} alt="" aria-hidden="true" loading="lazy" width="400" height="400" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-105" />}
+    <img data-card-img src={p.image} alt={p.name} loading="lazy" width="400" height="400" class:list={['w-full h-full object-cover transition-all duration-300 group-hover:scale-105', { 'group-hover:opacity-0': alt }]} />
+    {alt && <img data-card-alt src={alt} alt="" aria-hidden="true" loading="lazy" width="400" height="400" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-105" />}
   </span>
   {p.brand && <span class="text-[12px] font-medium muted">{p.brand}{p.style ? ` · ${p.style}` : ''}</span>}
   <span class="-mt-1 text-[14px] font-semibold leading-snug text-zinc-900 dark:text-white group-hover:text-violet-700 dark:group-hover:text-violet-300">{p.name}</span>
   {swatches.length > 0 && (
-    <span class="flex items-center gap-1" role="img" aria-label={`${p.colors.length} color${p.colors.length === 1 ? '' : 's'}`}>
+    <span data-card-swatches class="flex items-center gap-1" role="img" aria-label={`${p.colors.length} color${p.colors.length === 1 ? '' : 's'}`}>
       {swatches.map((c) => <span class="w-3.5 h-3.5 rounded-full border border-zinc-300 dark:border-white/20" style={`background:${c.hex}`} title={c.name}></span>)}
       {more > 0 && <span class="ml-0.5 text-[12px] font-medium muted">+{more}</span>}
     </span>
