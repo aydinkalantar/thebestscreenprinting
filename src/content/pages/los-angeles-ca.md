@@ -66,6 +66,10 @@ All of Los Angeles, from the Valley to the South Bay. Some of the neighborhoods 
 - [Team Uniform Printing in Eagle Rock](/team-uniform-printing-in-eagle-rock-ca/)
 - [Team Uniform Printing in West Hills](/team-uniform-printing-in-west-hills-ca/)
 
+## Comparing LA print shops?
+
+Use our [checklist for choosing a screen printer in Los Angeles](/how-to-choose-a-screen-printer-in-los-angeles/): seven questions to ask any shop, with our own prices and answers.
+
 ## Ready to print in LA?
 
 Send your garment, quantity, deadline and artwork. You'll have a personal quote within one business day. [Get a quote](/quick-quote/) or call (323) 433-0033.

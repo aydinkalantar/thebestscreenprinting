@@ -3,8 +3,15 @@
 import facts from './facts.json';
 // Keep this identical to the Google Business Profile, Yelp, Apple Maps and Bing Places.
 export const business = {
-  name: 'The Best Screen Printing',
+  // Same spelling as the Google Business Profile, Yelp and Bing Places, so answer engines
+  // see one business, not several.
+  name: 'The Best Screen Printing & Embroidery',
   shortName: 'TBSP',
+  legalName: 'TBSP LLC',
+  /** Other names people and listings use for us. */
+  alternateNames: ['TBSP', 'The Best Screen Printing', 'The Best Screen Printing and Embroidery'],
+  /** Google Business Profile (Maps listing). */
+  googleProfile: 'https://g.page/r/CawWCHWWD9DxEBM',
   url: 'https://thebestscreenprinting.com',
   phone: '+1-323-433-0033',
   phoneDisplay: '(323) 433-0033',
@@ -18,6 +25,7 @@ export const business = {
   },
   openingHours: ['Mo-Fr 09:00-17:00'],
   sameAs: [
+    'https://g.page/r/CawWCHWWD9DxEBM',
     'https://www.facebook.com/TheBestScreenPrinting/',
     'https://twitter.com/tbspla',
     'https://www.instagram.com/tbsp.la/',
@@ -61,7 +69,12 @@ export const localBusinessJsonLd = {
   '@type': 'LocalBusiness',
   '@id': `${business.url}/#organization`,
   name: business.name,
+  alternateName: business.alternateNames,
+  legalName: business.legalName,
   url: business.url,
+  hasMap: business.googleProfile,
+  priceRange: '$$',
+  knowsAbout: ['Screen printing', 'Embroidery', 'Direct-to-film (DTF) printing', 'Direct-to-garment (DTG) printing', 'Custom t-shirts', 'Custom hoodies', 'Custom hats', 'Merch for brands, bands and events'],
   telephone: business.phone,
   email: business.email,
   address: { '@type': 'PostalAddress', ...business.address },
