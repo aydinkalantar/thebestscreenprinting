@@ -10,7 +10,7 @@ sourceUrl: "https://thebestscreenprinting.com/about-us/"
 ---
 ## Started by brothers in Los Angeles
 
-The Best Screen Printing, known around town as TBSP, started with brothers in Los Angeles who wanted to make designing and buying custom t-shirts fun, easy and reliable. One of the first ideas was a simple website where people could upload a graphic, put it on a shirt and order it.
+The Best Screen Printing, known around town as TBSP, started in 2017 with brothers in Los Angeles who wanted to make designing and buying custom t-shirts fun, easy and reliable. One of the first ideas was a simple website where people could upload a graphic, put it on a shirt and order it.
 
 That idea still drives the shop. You bring the art, the logo or just the concept. We help you get it onto the right garment, in the right method, on time.
 
@@ -20,7 +20,7 @@ Custom apparel is how groups show up together. A matching shirt turns a crowd in
 
 ## What we make
 
-Everything is produced out of our shop at 5738 Holmes Ave. in Los Angeles.
+Everything is produced out of our shop at 5738 Holmes Ave. in Los Angeles. See [our shop and equipment](/our-shop-and-equipment/).
 
 - **Screen printing** for bold designs and bigger runs, printed in-house. See [screen printing](/screen-printing/).
 - **Embroidery** for polos, hats, jackets and uniforms. See [embroidery](/services/embroidery/).

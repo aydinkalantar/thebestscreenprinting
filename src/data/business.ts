@@ -8,6 +8,7 @@ export const business = {
   name: 'The Best Screen Printing & Embroidery',
   shortName: 'TBSP',
   legalName: 'TBSP LLC',
+  foundingDate: '2017',
   /** Other names people and listings use for us. */
   alternateNames: ['TBSP', 'The Best Screen Printing', 'The Best Screen Printing and Embroidery'],
   /** Google Business Profile (Maps listing). */
@@ -71,6 +72,7 @@ export const localBusinessJsonLd = {
   name: business.name,
   alternateName: business.alternateNames,
   legalName: business.legalName,
+  foundingDate: business.foundingDate,
   url: business.url,
   hasMap: business.googleProfile,
   priceRange: '$$',
