@@ -3,6 +3,7 @@
 // cards; a cart can go straight to checkout (order-sheet.ts) or into the site cart.
 // If the studio can't be reached, the visitor's message goes to the quote form instead.
 import { track } from './analytics';
+import { visitField } from './hit';
 import { ssImg } from './ss-img';
 import { STUDIO_API, fetchPrices, money, type PriceItemInput, type PriceResponse } from './online';
 import { openOrder, type OrderArtwork } from './order-sheet';
@@ -342,6 +343,7 @@ if (sheet && window.parent === window) {
         const contact = saveContact({ ...(known ?? {}), name: name.value, email: email.value });
         const { items, artwork, mockups } = await prepare();
         const fd = new FormData();
+        if (visitField()) fd.set('visit', visitField());
         // Same turnaround as the card (Rush / Super Rush), so the emailed quote matches it.
         const turn = e.price && e.price.enabled ? e.price.totals?.turnaround : undefined;
         const turnaround = turn === 'superrush' ? 'super' : turn === 'rush' ? 'rush' : turn ? 'normal' : undefined;

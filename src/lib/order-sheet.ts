@@ -1,5 +1,6 @@
 // Behaviour for <OrderSheet />: fills it from a price answer, re-prices when delivery changes,
 // and sends the order (with artwork) to the studio, then goes to the card payment page.
+import { visitField } from './hit';
 import { fetchPrices, money, placeOrder, type PriceItemInput, type PriceResponse, type Totals, type Turnaround } from './online';
 import { prefillContact, saveContact } from './contact';
 import { openSheet, wireSheet } from './sheet';
@@ -145,6 +146,7 @@ function wire(el: HTMLElement) {
     if (bad) { (form.elements.namedItem(bad) as HTMLInputElement | null)?.focus(); return; }
     const pay = (form.querySelector<HTMLInputElement>('input[name="pay"]:checked')?.value || current.price.payment.options[0]) as 'full' | 'deposit';
     const fd = new FormData();
+    if (visitField()) fd.set('visit', visitField());
     fd.set('data', JSON.stringify({
       contact: { name, email, phone: val('phone') || undefined, company: val('company') || undefined },
       items: current.items, delivery, pay,

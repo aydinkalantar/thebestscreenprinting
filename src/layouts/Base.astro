@@ -109,7 +109,10 @@ const schema = [localBusinessJsonLd, ...jsonLd];
     </script>
     <script>
       // Admin › Reports website funnel (anonymous, no cookies).
-      import { hit } from '../lib/hit';
+      import { attachVisitToForms, hit, rememberVisit } from '../lib/hit';
+      // Remember where they first came from and send it with their quote or order.
+      rememberVisit();
+      attachVisitToForms();
       hit('visit');
       if (/^\/catalog\/(?!category\/|brand\/)[^/]+\/?$/.test(location.pathname)) hit('product');
     </script>
