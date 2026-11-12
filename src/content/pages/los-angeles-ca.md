@@ -31,7 +31,7 @@ Downtown LA is where TBSP started and where most of our presses run every day. B
 
 ## Why work with an LA shop you can visit?
 
-Because you can talk to the people printing your job. Drop off garments, check a sample, pick up on your way across town. Read more about [visiting the shop](/local-shop/) and [printing in Los Angeles](/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/).
+Because you can talk to the people printing your job. Drop off garments, check a sample, pick up on your way across town. See [our shop and equipment](/our-shop-and-equipment/), read more about [visiting the shop](/local-shop/) and [printing in Los Angeles](/services/custom-screen-printing-los-angeles/custom-screen-printing/custom-screen-printing-in-downtown-los-angeles/).
 
 ## Which neighborhoods do you serve?
 

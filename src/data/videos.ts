@@ -29,6 +29,7 @@ export const VIDEOS: Record<string, Video> = {
 const v = VIDEOS;
 /** Page path → videos shown on it. */
 export const PAGE_VIDEOS: Record<string, Video[]> = {
+  '/our-shop-and-equipment/': [v.reel, v.screen, v.embroidery, v.dtg],
   '/screen-printing/': [v.netflix, v.sevenColor],
   '/services/custom-screen-printing-los-angeles/': [v.techniques, v.screen],
   '/services/custom-screen-printing-los-angeles/silk-screen-printing/': [v.sevenColor, v.fiveColor],
