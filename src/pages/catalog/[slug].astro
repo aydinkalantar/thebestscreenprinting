@@ -295,6 +295,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 
 <script>
   import { mountDesign } from '../../components/design/design';
+  import { hit } from '../../lib/hit';
   import { setMaxContext } from '../../lib/max';
   import { addToCart, replaceCartItem, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry, getFile } from '../../lib/cart';
   import { MAX_TOTAL_BYTES } from '../../lib/quote';
@@ -344,7 +345,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
       sizes: inputs.filter((i) => qty(i) > 0).map((i) => ({ size: i.dataset.size || '', n: qty(i) })),
       total: sum(),
     }),
-    onChange: () => refresh(),
+    onChange: () => { if (design.count()) hit('designer'); refresh(); },
   });
 
   form.querySelector('[data-art-upload]')?.addEventListener('click', () => design.pickFile());

@@ -107,5 +107,11 @@ const schema = [localBusinessJsonLd, ...jsonLd];
         try { localStorage.setItem('theme', next); } catch {}
       }));
     </script>
+    <script>
+      // Admin › Reports website funnel (anonymous, no cookies).
+      import { hit } from '../lib/hit';
+      hit('visit');
+      if (/^\/catalog\/(?!category\/|brand\/)[^/]+\/?$/.test(location.pathname)) hit('product');
+    </script>
   </body>
 </html>
