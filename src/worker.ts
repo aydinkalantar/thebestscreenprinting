@@ -342,6 +342,8 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
   const requestRef = requestNumber();
   const intakeBody = {
     quote: q, artwork: artworkNames, placements, ...(product ? { product } : {}),
+    // Where the visitor first came from (lib/hit.ts), so the studio shows it on the job.
+    ...(typeof form.get('visit') === 'string' ? { visit: String(form.get('visit')).slice(0, 2000) } : {}),
     mockupFiles: intakeMockups,
     // The files themselves, so the admin can make mockups without opening the email.
     artworkFiles: intakeArt.map(({ file, itemIndex, ...a }) => {
