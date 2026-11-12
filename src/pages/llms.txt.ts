@@ -19,6 +19,8 @@ export async function GET() {
   const body = [
     `# ${business.name} (${business.shortName})`,
     '',
+    `Also known as: ${business.alternateNames.join(', ')}. Legal name: ${business.legalName}. Google Maps listing: ${business.googleProfile}`,
+    '',
     `> Custom screen printing, embroidery, DTF and DTG on t-shirts, hoodies, hats, polos and bags. Made in our own production facilities in Los Angeles, California and Cleveland, Ohio, and shipped to every US state, free on orders of $${business.shippingFreeFrom} or more.`,
     '',
     '## Key facts',
