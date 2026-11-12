@@ -22,6 +22,20 @@ interface Env {
   STUDIO_INTAKE_URL?: string;
   /** Shared secret for the intake (secret; the studio's SITE_INTAKE_SECRET). */
   STUDIO_INTAKE_SECRET?: string;
+  /**
+   * Requests the admin hasn't taken yet (KV). A request is kept here until the admin files
+   * it, retried every few minutes by the cron trigger, so a deploy or an outage on the
+   * admin never loses one. Optional: without it only the short in-request retries run.
+   */
+  INTAKE_OUTBOX?: Kv;
+}
+
+/** The slice of the Workers KV API the outbox uses. */
+interface Kv {
+  get(key: string): Promise<string | null>;
+  put(key: string, value: string, opts?: { expirationTtl?: number }): Promise<void>;
+  delete(key: string): Promise<void>;
+  list(opts: { prefix: string; limit?: number; cursor?: string }): Promise<{ keys: { name: string }[]; list_complete: boolean; cursor?: string }>;
 }
 
 /** Minimal Workers execution context: work that may finish after the response. */
@@ -147,9 +161,90 @@ async function retryInStudio(env: Env, requestRef: string, body: Record<string, 
   for (const wait of [2_000, 8_000]) {
     await new Promise((r) => setTimeout(r, wait));
     const n = await fileInStudio(env, requestRef, body);
-    if (n) { console.log('studio intake retry ok', requestRef, n); return; }
+    if (n) {
+      console.log('studio intake retry ok', requestRef, n);
+      await env.INTAKE_OUTBOX?.delete(`${OUTBOX}${requestRef}`).catch(() => {});
+      return;
+    }
   }
-  console.error('studio intake gave up; the request is only in the quote@ email', requestRef);
+  console.error(env.INTAKE_OUTBOX ? 'studio intake still down; kept in the outbox for the cron to retry' : 'studio intake gave up; the request is only in the quote@ email', requestRef);
+}
+
+// ── Outbox: a request the admin missed is kept and retried until it lands ──────────────
+const OUTBOX = 'pending:';
+/** KV values are capped at 25 MiB; artwork that would go over stays in the quote@ email only. */
+const OUTBOX_MAX_BYTES = 20 * 1024 * 1024;
+/** Keep trying this long (the admin keeps the request number, so a late filing is never a duplicate). */
+const OUTBOX_KEEP_MS = 14 * 24 * 3600 * 1000;
+/** Tell the shop once a request has waited this long, so nobody waits on the cron in silence. */
+const OUTBOX_ALERT_MS = 60 * 60 * 1000;
+
+interface OutboxEntry { ref: string; body: Record<string, unknown>; at: string; tries: number; alerted?: boolean; trimmed?: boolean }
+
+async function keepInOutbox(env: Env, ref: string, body: Record<string, unknown>): Promise<void> {
+  if (!env.INTAKE_OUTBOX) return;
+  const entry: OutboxEntry = { ref, body, at: new Date().toISOString(), tries: 1 };
+  let raw = JSON.stringify(entry);
+  // Too big to keep with the files: keep the request itself (the files are in the quote@ email).
+  if (raw.length > OUTBOX_MAX_BYTES) raw = JSON.stringify({ ...entry, trimmed: true, body: { ...body, artworkFiles: [], mockupFiles: [] } });
+  try {
+    await env.INTAKE_OUTBOX.put(`${OUTBOX}${ref}`, raw, { expirationTtl: Math.ceil(OUTBOX_KEEP_MS / 1000) + 7 * 24 * 3600 });
+  } catch (e) {
+    console.error('outbox put failed; the request is only in the quote@ email', ref, e);
+  }
+}
+
+/** Cron: file every request still waiting in the outbox. */
+async function drainOutbox(env: Env): Promise<void> {
+  const box = env.INTAKE_OUTBOX;
+  if (!box || !env.STUDIO_INTAKE_URL || !env.STUDIO_INTAKE_SECRET) return;
+  let cursor: string | undefined;
+  let filed = 0, waiting = 0, failsInARow = 0;
+  do {
+    const page = await box.list({ prefix: OUTBOX, limit: 100, cursor });
+    for (const { name } of page.keys) {
+      const raw = await box.get(name);
+      if (!raw) continue;
+      let entry: OutboxEntry;
+      try { entry = JSON.parse(raw) as OutboxEntry; } catch { await box.delete(name); continue; }
+      const n = await fileInStudio(env, entry.ref, entry.body);
+      if (n) {
+        filed++;
+        failsInARow = 0;
+        console.log('outbox: filed', entry.ref, n);
+        await box.delete(name);
+        if (entry.alerted) await tellShop(env, `Filed now: ${entry.ref} is ${n} in Admin`, `The website request ${entry.ref} couldn't reach the admin when it was sent (${entry.at}). It's filed now as ${n}; search either number in the admin.`);
+        continue;
+      }
+      waiting++;
+      failsInARow++;
+      const age = Date.now() - Date.parse(entry.at);
+      if (age > OUTBOX_KEEP_MS) {
+        console.error('outbox: giving up after two weeks', entry.ref);
+        await tellShop(env, `Not in Admin: website request ${entry.ref}`, `The website request ${entry.ref} (sent ${entry.at}) still couldn't be filed in the admin after two weeks of tries, so it was dropped from the retry list. The full request is in the quote@ email with that number: use Draft from an email in Admin › Jobs.`);
+        await box.delete(name);
+        continue;
+      }
+      const next: OutboxEntry = { ...entry, tries: entry.tries + 1 };
+      if (!entry.alerted && age > OUTBOX_ALERT_MS) {
+        next.alerted = await tellShop(env, `Waiting to reach Admin: website request ${entry.ref}`, `A website quote request (${entry.ref}, sent ${entry.at}) hasn't reached the admin yet: the admin didn't answer when it was sent and hasn't since (${next.tries} tries). The website keeps trying every 5 minutes and will email again when it's filed. The full request is in the quote@ email with that number if the customer needs an answer sooner.${entry.trimmed ? ' Its artwork was too large to keep for the retry; the files are in that email.' : ''}`);
+      }
+      await box.put(name, JSON.stringify(next), { expirationTtl: Math.ceil(OUTBOX_KEEP_MS / 1000) + 7 * 24 * 3600 }).catch(() => {});
+      // The admin is down: stop for this run instead of waiting 10 s on every request in line.
+      if (failsInARow >= 3) { cursor = undefined; break; }
+    }
+    if (failsInARow >= 3) break;
+    cursor = page.list_complete ? undefined : page.cursor;
+  } while (cursor);
+  if (filed || waiting) console.log('outbox run', { filed, waiting });
+}
+
+/** A short note to the shop's quote inbox. True when it went out. */
+async function tellShop(env: Env, subject: string, text: string): Promise<boolean> {
+  if (!env.RESEND_API_KEY) return false;
+  const err = await sendEmail(env, { to: [env.QUOTE_TO || business.email], subject, text });
+  if (err) console.error('outbox note failed', subject, err);
+  return !err;
 }
 
 async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Response> {
@@ -258,7 +353,11 @@ async function handleQuote(request: Request, env: Env, ctx?: Ctx): Promise<Respo
   const filed = await fileInStudio(env, requestRef, intakeBody);
   // The admin was slow or down (a deploy, a hiccup): keep trying after the customer has their
   // answer, so the request still lands in Admin › Jobs. Same ref = same job, never a duplicate.
-  if (!filed && ctx && env.STUDIO_INTAKE_URL && env.STUDIO_INTAKE_SECRET) ctx.waitUntil(retryInStudio(env, requestRef, intakeBody));
+  // It's kept in the outbox first, so even if those retries fail too the cron files it later.
+  if (!filed && env.STUDIO_INTAKE_URL && env.STUDIO_INTAKE_SECRET) {
+    await keepInOutbox(env, requestRef, intakeBody);
+    if (ctx) ctx.waitUntil(retryInStudio(env, requestRef, intakeBody));
+  }
   const ref = filed || requestRef;
   const origin = new URL(request.url).origin;
 
@@ -419,6 +518,12 @@ function withHeaders(res: Response, env: Env): Response {
 }
 
 export default {
+  /** Cron trigger (wrangler.jsonc): file any request the admin missed. */
+  async scheduled(_event: unknown, env: Env, ctx?: Ctx): Promise<void> {
+    const run = drainOutbox(env).catch((e) => console.error('outbox run failed', e));
+    if (ctx) ctx.waitUntil(run); else await run;
+  },
+
   async fetch(request: Request, env: Env, ctx?: Ctx): Promise<Response> {
     const url = new URL(request.url);
 
