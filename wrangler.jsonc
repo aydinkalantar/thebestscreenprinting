@@ -14,10 +14,16 @@
     "not_found_handling": "404-page"
   },
   "vars": { "STAGING": "1" },
+  // Website quote requests the admin missed, kept until the cron below files them
+  // (src/worker.ts, outbox). No id: wrangler deploy creates the namespace the first time.
+  "kv_namespaces": [{ "binding": "INTAKE_OUTBOX" }],
+  "triggers": { "crons": ["*/5 * * * *"] },
   "env": {
     "production": {
       "name": "tbsp-site-production",
       "vars": { "STAGING": "0" },
+      "kv_namespaces": [{ "binding": "INTAKE_OUTBOX" }],
+      "triggers": { "crons": ["*/5 * * * *"] },
       "routes": [
         // Routes (not custom domains) so the existing proxied DNS records stay as
         // they are: rolling back is just removing these routes.
