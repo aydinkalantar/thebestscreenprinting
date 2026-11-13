@@ -28,6 +28,8 @@ const usd = (n, cents) => `$${n.toLocaleString('en-US', { minimumFractionDigits:
 export const AGENT_MARK = '\u2060';
 export const agentName = (typeof facts.agentName === 'string' && facts.agentName.trim()) || 'Max';
 export const agent = `${AGENT_MARK}${agentName}${AGENT_MARK}`;
+/** Words on the desktop chat button (Admin › Settings › Max › Chat button); "Talk to <name>" by default. */
+export const launcher = (typeof facts.agentLauncher === 'string' && facts.agentLauncher.trim()) || `Talk to ${agent}`;
 
 export function fact(token) {
   if (token === 'agent') return agent;

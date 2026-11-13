@@ -66,8 +66,8 @@ if (sheet && window.parent === window) {
   let replyOpen = false;
   /** When the conversation was last active (a call only picks it up if it's recent). */
   let lastAt = 0;
-  /** Language of Max's voice (admin setting), to tell real words from transcribed room noise. */
-  let voiceLang = 'en-US';
+  /** Every language Max answers in (Admin › Settings › Max; main first), to tell real words from transcribed room noise. */
+  let voiceLangs: string[] = ['en-US'];
   let sessionId = '';
   let busy = false;
   /** The visitor's logo(s), checked in the browser; sent to Max as a summary, kept for checkout. */
@@ -571,16 +571,21 @@ if (sheet && window.parent === window) {
     en: /\b(i|i'm|im|my|me|we|our|you|the|a|an|to|for|and|on|in|with|of|need|want|like|can|do|is|it|yes|no|yeah|ok|okay|hi|hello|hey|bye|thanks|please|what|how|much|many|shirt|shirts|tee|tees|hoodie|hoodies|hat|hats|logo|print|front|back|black|white|price|order)\b/i,
     es: /\b(yo|mi|me|quiero|necesito|para|con|el|la|los|las|un|una|de|en|y|que|sí|si|no|hola|gracias|camisetas?|playeras?|sudaderas?|gorras?|logo)\b/i,
   };
+  /** Common words of every language Max speaks, or null when one of them has no list (then nothing is filtered). */
+  const commonWords = (): RegExp[] | null => {
+    const res = voiceLangs.map((l) => COMMON[l.slice(0, 2)]);
+    return res.every(Boolean) ? res : null;
+  };
   const soundsLikeSpeech = (t: string) => {
-    const re = COMMON[voiceLang.slice(0, 2)];
-    return !re || re.test(t) || /\d/.test(t) || t.trim().split(/\s+/).length >= 8;
+    const res = commonWords();
+    return !res || res.some((re) => re.test(t)) || /\d/.test(t) || t.trim().split(/\s+/).length >= 8;
   };
   /** A caption without the stretches that don't sound like speech (noise often comes as a few odd words before a real question). */
   const cleanCaption = (t: string) => {
-    const re = COMMON[voiceLang.slice(0, 2)];
-    if (!re) return t;
+    const res = commonWords();
+    if (!res) return t;
     const parts = t.split(/(?<=[,.!?])\s+/);
-    const kept = parts.filter((p) => re.test(p) || /\d/.test(p));
+    const kept = parts.filter((p) => res.some((re) => re.test(p)) || /\d/.test(p));
     return kept.length ? kept.join(' ') : t;
   };
 
@@ -824,17 +829,21 @@ if (sheet && window.parent === window) {
     const fab = document.querySelector<HTMLElement>('[data-max-fab]');
     let on: boolean | null = null;
     let voiceCfg: VoiceConfig | null = null;
-    let greeting = '', suggestions: string[] = [];
-    try { const c = JSON.parse(sessionStorage.getItem('tbsp-max-on') || 'null'); if (c && Date.now() - c.at < 60_000) ({ on, voice: voiceCfg = null, greeting = '', suggestions = [] } = c); } catch { /* ignore */ }
+    let greeting = '', suggestions: string[] = [], launcher = '';
+    try { const c = JSON.parse(sessionStorage.getItem('tbsp-max-on') || 'null'); if (c && Date.now() - c.at < 60_000) ({ on, voice: voiceCfg = null, greeting = '', suggestions = [], launcher = '' } = c); } catch { /* ignore */ }
     if (on === null) {
       const d = await fetch(`${STUDIO_API}/api/public/max`).then((r) => (r.ok ? r.json() : { enabled: false })).catch(() => ({ enabled: false }));
       on = !!d.enabled; voiceCfg = d.voice || null;
       greeting = typeof d.greeting === 'string' ? d.greeting.trim() : '';
       suggestions = Array.isArray(d.suggestions) ? d.suggestions.filter((x: unknown) => typeof x === 'string' && x.trim()).slice(0, 4) : [];
-      try { sessionStorage.setItem('tbsp-max-on', JSON.stringify({ on, voice: voiceCfg, greeting, suggestions, at: Date.now() })); } catch { /* ignore */ }
+      launcher = typeof d.launcher === 'string' ? d.launcher.trim().slice(0, 28) : '';
+      try { sessionStorage.setItem('tbsp-max-on', JSON.stringify({ on, voice: voiceCfg, greeting, suggestions, launcher, at: Date.now() })); } catch { /* ignore */ }
     }
     voice.configure(voiceCfg);
-    voiceLang = voiceCfg?.lang || 'en-US';
+    voiceLangs = Array.isArray(voiceCfg?.langs) && voiceCfg.langs.length ? voiceCfg.langs : [voiceCfg?.lang || 'en-US'];
+    // The words on the desktop chat button (Admin › Settings › Max › Chat button).
+    const label = fab?.querySelector<HTMLElement>('[data-max-fab-label]');
+    if (label && launcher) label.textContent = launcher;
     liveOn = !!(on && voiceCfg?.live && navigator.mediaDevices?.getUserMedia && 'WebSocket' in window && 'AudioWorkletNode' in window);
     // Talk by default: the chat opens on a big "Talk to Max" (one tap still starts it).
     talkFirst = !!voiceCfg?.talkByDefault;
