@@ -104,7 +104,7 @@ Before anything is produced, we email you a digital proof with the final artwork
 
 Not all garments are sewn exactly the same. These sizes are a "safe zone" to avoid printing on seams or edges. Check the product page for the exact measurements of each product.
 
-| Garment size | {{agent}} print (W × H) |
+| Garment size | Max print (W × H) |
 | --- | --- |
 | Youth Small | 13" × 13" |
 | Youth Medium | 13" × 16" |
