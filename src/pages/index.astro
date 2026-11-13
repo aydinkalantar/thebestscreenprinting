@@ -12,7 +12,7 @@ import VideoGrid from '../components/VideoGrid.astro';
 import HeroStudio from '../components/HeroStudio.astro';
 import { VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
-import { fill } from '../lib/facts.mjs';
+import { fill, agent } from '../lib/facts.mjs';
 import { products, featuredProducts } from '../lib/catalog';
 import { collectionTiles, brandTiles, styles } from '../components/home/collections';
 import {
@@ -89,7 +89,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="/catalog/" class="btn-primary h-12 px-6 text-[15px]">Shop products<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
-          <button type="button" data-hero-talk data-max-only class="btn-quiet h-12 px-5 text-[15px]"><Mic class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Talk to Max</button>
+          <button type="button" data-hero-talk data-max-only class="btn-quiet h-12 px-5 text-[15px]"><Mic class="w-4 h-4 text-violet-600 dark:text-violet-300" aria-hidden="true" />Talk to {agent}</button>
           <a href="/quick-quote/" data-max-alt class="btn-quiet h-12 px-5 text-[15px]">Get a quote</a>
         </div>
         <a href="#reviews" class="mt-6 inline-flex items-start gap-3 max-w-xl group">
@@ -119,7 +119,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
     <MaxDemo>
       <!-- Max demo video: silent loop, wide on desktop, tall on phones; "Tap for sound" plays the voiced cut. -->
       <div slot="media" class="relative w-full max-md:max-w-[420px] max-md:mx-auto rounded-2xl overflow-hidden shadow-2xl border border-zinc-200/80 dark:border-white/10">
-      <video data-max-video muted loop playsinline preload="none" poster="/media/max-demo-poster-1080sq.jpg" class="block w-full aspect-square max-md:aspect-[9/16] object-cover bg-zinc-900" aria-label="Max picks products, places a logo and prices an order"
+      <video data-max-video muted loop playsinline preload="none" poster="/media/max-demo-poster-1080sq.jpg" class="block w-full aspect-square max-md:aspect-[9/16] object-cover bg-zinc-900" aria-label={`${agent} picks products, places a logo and prices an order`}
         data-sq="/media/max-demo-1080sq.mp4" data-tall="/media/max-demo-720x1280.mp4"
         data-sq-voice="/media/max-demo-voice-1080sq.mp4" data-tall-voice="/media/max-demo-voice-720x1280.mp4" data-wide-voice="/media/max-demo-voice-1280.mp4"></video>
       <!-- Controls sit in a slim bar under the video, so nothing covers it. -->
@@ -188,7 +188,7 @@ const jsonLd = [...homeVideos.map(videoJsonLd).filter(Boolean) as object[], {
         <span class="tile-icon shrink-0"><Sparkles class="w-5 h-5" aria-hidden="true" /></span>
         <div>
           <p class="font-bold text-zinc-900 dark:text-white">Something the catalog can't do?</p>
-          <p class="mt-1 text-sm muted">Cut &amp; sew from 250 pieces, embossing, oversize prints and decorating your own garments. Request it with a quote{business.studioLive ? ' or ask Max' : ''}.</p>
+          <p class="mt-1 text-sm muted">Cut &amp; sew from 250 pieces, embossing, oversize prints and decorating your own garments. Request it with a quote{business.studioLive ? ` or ask ${agent}` : ''}.</p>
         </div>
       </div>
       <span class="btn-quiet btn-sm max-md:w-full max-md:h-11">Start a custom project<ArrowRight class="w-4 h-4" aria-hidden="true" /></span>

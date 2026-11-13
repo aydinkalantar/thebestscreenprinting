@@ -44,7 +44,6 @@ export const business = {
   shopMinimum: 6,
   /** Screen printing and embroidery minimum; smaller requests get offered DTG or DTF. */
   screenMinimum: 12,
-  assistantName: 'Max',
   /** Google Analytics 4 measurement ID (public). Only loads on the production host. */
   gaId: 'G-MHYSRCDHB1',
   /**

@@ -43,6 +43,7 @@ const head = 'text-[12px] font-bold uppercase tracking-[0.1em] text-zinc-900 dar
 const first = cats.length ? 'cats' : showBrand ? 'brand' : families.length > 1 ? 'color' : 'deco';
 const sep = (id: string) => (id === first ? '' : 'md:pt-6 md:border-t md:border-zinc-200/80 dark:md:border-white/10');
 const sortOptions = [['', search ? 'Best match' : 'Featured'], ['name', 'Name A‚ÄìZ'], ['colors', 'Most colors']];
+import { agent } from '../../lib/facts.mjs';
 ---
 <div data-browser data-search-mode={search ? "1" : undefined} data-labels={JSON.stringify(labels)} data-names={JSON.stringify(names)} class="mt-6 max-md:mt-4 md:grid md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)] md:gap-8 lg:gap-10 md:items-start">
   <!-- Phones: sticky "Filter & sort" row; the filter panel becomes a bottom sheet. -->
@@ -177,7 +178,7 @@ const sortOptions = [['', search ? 'Best match' : 'Featured'], ['name', 'Name A‚
       <p data-empty-title class="text-lg font-bold text-zinc-900 dark:text-white">No products match those filters</p>
       <p class="mt-2 text-sm muted">{search ? 'Try another word, or describe what you need. We print on almost anything, including items you supply.' : 'Try fewer filters, or tell us what you need. We print on almost anything.'}</p>
       <div class="mt-5 flex flex-wrap justify-center gap-3">
-        {search && <button type="button" data-ask-max-q data-max-only class="btn-primary">Ask Max</button>}
+        {search && <button type="button" data-ask-max-q data-max-only class="btn-primary">Ask {agent}</button>}
         <button type="button" data-reset class:list={[search ? 'btn-quiet' : 'btn-primary']}><RotateCcw class="w-4 h-4" aria-hidden="true" />Reset filters</button>
         <a href="/quick-quote/" data-quote-q class="btn-quiet">Ask for a quote</a>
       </div>
@@ -191,6 +192,7 @@ const sortOptions = [['', search ? 'Best match' : 'Featured'], ['name', 'Name A‚
 </style>
 
 <script>
+  import { agentName } from '../../lib/agent';
   import { openSheet, closeSheet, wireSheet } from '../../lib/sheet';
   import { readQuery, searchProducts, vocabulary, describe, without, colorPhoto, LEGACY_COLOR, type SearchProduct, type SearchColor, type Match, type Query } from '../../lib/search';
 
@@ -339,7 +341,7 @@ const sortOptions = [['', search ? 'Best match' : 'Featured'], ['name', 'Name A‚
         understood.hidden = !parts.length;
       }
       const ask = root.querySelector<HTMLElement>('[data-ask-max-q]');
-      if (ask) ask.textContent = state.q ? `Ask Max about ‚Äú${state.q}‚Äù` : 'Ask Max';
+      if (ask) ask.textContent = state.q ? `Ask ${agentName()} about ‚Äú${state.q}‚Äù` : `Ask ${agentName()}`;
       const quote = root.querySelector<HTMLAnchorElement>('[data-quote-q]');
       if (quote) quote.href = `/quick-quote/?details=${encodeURIComponent(state.q)}`;
       const et = root.querySelector<HTMLElement>('[data-empty-title]');

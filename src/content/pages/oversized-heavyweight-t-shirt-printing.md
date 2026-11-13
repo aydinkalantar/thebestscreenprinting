@@ -30,7 +30,7 @@ updated: "2026-10-28"
 | [Bella+Canvas 4610](/catalog/bella-canvas-4610-unisex-7-5-oz-heavyweight-tee/) | 7.5 oz, modern fit | Clean brand merch |
 | [Gildan 5000](/catalog/gildan-5000-unisex-heavy-cotton-t-shirt/) | 5.3 oz, classic fit | The budget pick |
 
-See every option in the [catalog](/catalog/category/t-shirts/), or ask Max to price any of them for your quantity.
+See every option in the [catalog](/catalog/category/t-shirts/), or ask {{agent}} to price any of them for your quantity.
 
 ## What it costs
 

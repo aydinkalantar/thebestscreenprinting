@@ -9,6 +9,7 @@ import { Sparkles, X } from '@lucide/astro';
 const devStudio = import.meta.env.PUBLIC_STUDIO_URL as string | undefined;
 const src = `${(devStudio || business.studioUrl).replace(/\/$/, '')}/assistant`;
 const show = business.studioLive || !!devStudio;
+import { agent } from '../lib/facts.mjs';
 ---
 {show && (
   <div id="tb-assistant" data-src={src}>
@@ -22,13 +23,14 @@ const show = business.studioLive || !!devStudio;
     <button type="button" data-open aria-expanded="false" aria-controls="tb-assistant-panel"
       class="max-md:hidden fixed z-[81] right-4 md:right-5 bottom-[calc(var(--tabbar-h)+12px)] md:bottom-5 h-14 pl-4 pr-5 rounded-full bg-violet-600 text-white shadow-xl shadow-violet-600/30 flex items-center gap-2.5 hover:bg-violet-700 active:scale-[0.97] transition-all">
       <span class="w-8 h-8 rounded-full bg-white/15 grid place-items-center"><Sparkles class="w-[18px] h-[18px]" aria-hidden="true" /></span>
-      <span class="text-sm font-bold">Ask Max</span>
+      <span class="text-sm font-bold">Ask {agent}</span>
       <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-white" aria-hidden="true"></span>
     </button>
   </div>
 )}
 
 <script>
+  import { agentName } from '../lib/agent';
   const root = document.getElementById('tb-assistant');
   // Guard against the script running twice (dev reloads).
   if (root && !root.dataset.ready) {
@@ -41,7 +43,7 @@ const show = business.studioLive || !!devStudio;
       if (show && !slot.firstChild) {
         const f = document.createElement('iframe');
         f.src = `${root.dataset.src}?theme=${document.documentElement.classList.contains('dark') ? 'dark' : 'light'}`;
-        f.title = 'Max, TBSP merch agent';
+        f.title = `${agentName()}, TBSP merch agent`;
         f.allow = 'microphone; clipboard-write';
         f.className = 'w-full h-full border-0';
         slot.appendChild(f);

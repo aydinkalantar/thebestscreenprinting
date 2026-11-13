@@ -32,7 +32,7 @@ Rain and cold make hoodies, crewnecks and beanies popular here. Browse [hoodies]
 
 ## How it works from the Northwest
 
-1. **Send your art and sizes** through the [quote form](/quick-quote/) or ask Max for an instant price.
+1. **Send your art and sizes** through the [quote form](/quick-quote/) or ask {{agent}} for an instant price.
 2. **Approve the mockup** by email. The art check is free.
 3. **We print it in-house** in Los Angeles or Cleveland.
 4. **It ships to your door** with tracking. Free on orders of {{shipFreeFrom}} or more, {{shipFlat}} below that.

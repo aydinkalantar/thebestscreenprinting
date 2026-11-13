@@ -14,7 +14,7 @@ faqs:
   - q: "Is there online screen printing with no minimum?"
     a: "Screen printing starts at 12 pieces, which is lower than most screen printers. DTF and DTG start at 6. For 6 to 23 full-color shirts, DTF is usually the best value at about {{tee.dtf.12}} to {{tee.dtf.6}} per shirt, shirt included, with no setup fee."
   - q: "How do I order screen printing online?"
-    a: "Send the garment, quantity, deadline and artwork through the quote form, or ask Max on the site for an instant price. We email a mockup, you approve it and pay online, and we ship with tracking."
+    a: "Send the garment, quantity, deadline and artwork through the quote form, or ask {{agent}} on the site for an instant price. We email a mockup, you approve it and pay online, and we ship with tracking."
   - q: "How do I know the print will look right if I never visit?"
     a: "Every order gets a free art check and a mockup with placement, sizes and ink colors before anything is printed. If we get the size count, placement or art size wrong, we reprint it at no charge."
   - q: "Who prints my order?"
@@ -26,8 +26,8 @@ updated: "2026-10-28"
 ## How ordering online works
 
 1. **Pick the garment.** Browse the [catalog](/catalog/) or tell us what you want. Tees, hoodies, hats, polos, totes.
-2. **Send your art.** Upload it in the [quote form](/quick-quote/) or to Max. A sketch or phone photo is fine; the art check is free.
-3. **Get a price.** Max prices it on the spot, or we reply within one business day.
+2. **Send your art.** Upload it in the [quote form](/quick-quote/) or to {{agent}}. A sketch or phone photo is fine; the art check is free.
+3. **Get a price.** {{agent}} prices it on the spot, or we reply within one business day.
 4. **Approve the mockup.** You see placement, sizes and ink colors before we print.
 5. **We print and ship.** Made in-house, shipped with tracking, free from {{shipFreeFrom}}.
 

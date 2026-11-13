@@ -8,6 +8,7 @@
 //   {{superRushMaxPieces}}   → 144          (plain numbers)
 //   {{$ tee.screen1.48 × 50 + screenSetup}}       → $500    (a sum, whole dollars)
 //   {{$. (tee.screen1.48 × 50 + screenSetup) / 50}} → $10.00  (a sum, with cents)
+//   {{agent}}                → Max          (the merch agent's name, Admin › Settings › Max)
 // Use × (not *) to multiply, so Markdown never reads it as emphasis.
 import facts from '../data/facts.json' with { type: 'json' };
 
@@ -19,7 +20,17 @@ function lookup(path) {
 
 const usd = (n, cents) => `$${n.toLocaleString('en-US', { minimumFractionDigits: cents ? 2 : 0, maximumFractionDigits: cents ? 2 : 0 })}`;
 
+/**
+ * The merch agent's name as the build last read it from the studio (Admin › Settings › Max),
+ * wrapped in invisible word joiners. The edge (src/worker.ts) swaps every marked name for the
+ * current one, so a rename shows on every page right away, without a new build.
+ */
+export const AGENT_MARK = '\u2060';
+export const agentName = (typeof facts.agentName === 'string' && facts.agentName.trim()) || 'Max';
+export const agent = `${AGENT_MARK}${agentName}${AGENT_MARK}`;
+
 export function fact(token) {
+  if (token === 'agent') return agent;
   const v = lookup(token);
   if (typeof v !== 'number') throw new Error(`Unknown fact {{${token}}}: add it to src/data/facts.json`);
   if (token.startsWith('tee.')) return usd(v, true);

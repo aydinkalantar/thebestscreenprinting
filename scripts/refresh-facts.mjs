@@ -42,6 +42,12 @@ async function main() {
   const before = JSON.stringify(facts);
   const warn = [];
 
+  // The merch agent's name (Admin › Settings › Max), for {{agent}} in the copy.
+  try {
+    const m = await fetch(`${API}/api/public/max`, { headers: { origin: 'https://thebestscreenprinting.com' }, signal: AbortSignal.timeout(10_000) }).then((r) => r.json());
+    if (typeof m?.name === 'string' && m.name.trim()) facts.agentName = m.name.trim();
+  } catch (e) { warn.push(`agentName: ${e.message} (kept ${facts.agentName})`); }
+
   // Every method × quantity the site quotes, 10 items per request.
   const jobs = [];
   for (const [method, row] of Object.entries(facts.tee)) {

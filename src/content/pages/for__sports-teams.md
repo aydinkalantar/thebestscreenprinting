@@ -35,7 +35,7 @@ Browse jerseys and uniforms on [team uniforms](/products/team-uniforms-jerseys/)
 
 ## How a team order works
 
-1. **Send your logo and roster.** Names, numbers and sizes in one list, through the [quote form](/quick-quote/) or Max.
+1. **Send your logo and roster.** Names, numbers and sizes in one list, through the [quote form](/quick-quote/) or {{agent}}.
 2. **Approve the mockup.** We place the logo, names and numbers for you.
 3. **We make it in-house** and ship it to the coach or team manager.
 

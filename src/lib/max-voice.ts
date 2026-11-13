@@ -3,6 +3,8 @@
 // No extra service or cost. The admin controls it through GET /api/public/max → voice.
 // The mic only asks for permission when tapped; where the browser can't do it, the button stays hidden.
 
+import { agentName } from './agent';
+
 export interface VoiceConfig {
   /** Live calls with Max's natural voice (studio token + voice model). */
   live?: boolean;
@@ -100,8 +102,8 @@ export function setupVoice(sheet: HTMLElement, input: HTMLTextAreaElement, opts:
     mic.classList.toggle('is-on', on);
     mic.querySelector('[data-idle]')!.toggleAttribute('hidden', on);
     mic.querySelector('[data-stop]')!.toggleAttribute('hidden', !on);
-    mic.setAttribute('aria-label', on ? 'Stop listening' : 'Talk to Max');
-    mic.title = on ? 'Stop listening' : 'Talk to Max';
+    mic.setAttribute('aria-label', on ? 'Stop listening' : `Talk to ${agentName()}`);
+    mic.title = on ? 'Stop listening' : `Talk to ${agentName()}`;
     listening.hidden = !on;
     if (on) listeningText.textContent = 'Listening… speak now';
   };
