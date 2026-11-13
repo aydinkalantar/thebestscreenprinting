@@ -19,6 +19,8 @@ export interface VoiceConfig {
   autoSpeak?: boolean;
   /** BCP-47, e.g. en-US. */
   lang?: string;
+  /** Every language Max answers in, main first (Admin › Settings › Max). */
+  langs?: string[];
   /** Preferred browser voice, matched by substring. */
   voiceName?: string;
   /** 0.5–2. */

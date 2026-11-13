@@ -46,6 +46,8 @@ async function main() {
   try {
     const m = await fetch(`${API}/api/public/max`, { headers: { origin: 'https://thebestscreenprinting.com' }, signal: AbortSignal.timeout(10_000) }).then((r) => r.json());
     if (typeof m?.name === 'string' && m.name.trim()) facts.agentName = m.name.trim();
+    // Only the shop's own words; the default ("Talk to <name>") follows the name.
+    if (typeof m?.launcher === 'string') facts.agentLauncher = m.launcher.trim() === `Talk to ${facts.agentName}` ? '' : m.launcher.trim();
   } catch (e) { warn.push(`agentName: ${e.message} (kept ${facts.agentName})`); }
 
   // Every method × quantity the site quotes, 10 items per request.
