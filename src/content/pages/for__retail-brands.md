@@ -70,4 +70,4 @@ Send your art, blanks and quantities through the [quick quote form](/quick-quote
 
 ## Ordering from outside California?
 
-You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of {{shipFreeFrom}} or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask {{agent}}, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of {{shipFreeFrom}} or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).

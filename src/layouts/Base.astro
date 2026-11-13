@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import AssistantWidget from '../components/AssistantWidget.astro';
 import MobileTabBar from '../components/MobileTabBar.astro';
 import { business, localBusinessJsonLd } from '../data/business';
+import { agent } from '../lib/facts.mjs';
 
 interface Props {
   title: string;
@@ -21,7 +22,7 @@ const canonical = new URL(Astro.url.pathname, business.url).toString();
 const schema = [localBusinessJsonLd, ...jsonLd];
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-agent={agent}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />

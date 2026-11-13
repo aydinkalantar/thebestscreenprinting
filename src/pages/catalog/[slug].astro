@@ -58,6 +58,7 @@ const jsonLd = [
 ];
 const step = 'inline-grid place-items-center w-5 h-5 mr-2 rounded-full bg-violet-600 text-white text-[11px] font-bold tracking-normal align-[1px]';
 const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500 has-[:checked]:bg-violet-500/10 has-[:checked]:text-violet-700 dark:has-[:checked]:text-violet-300';
+import { agent } from '../../lib/facts.mjs';
 ---
 <Base title={`Custom ${p.name} | TBSP Los Angeles`} description={description} jsonLd={jsonLd}>
   <Breadcrumbs items={[{ label: 'Catalog', href: '/catalog/' }, { label: category, href: categoryHref }, { label: p.name }]} />
@@ -232,7 +233,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 
       <div class="mt-8 grid gap-3 sm:grid-cols-2">
         {business.maxLive && (
-          <button type="button" data-max-open data-max-only class="panel p-4 flex gap-3 text-left hover:border-violet-300 dark:hover:border-violet-400/40"><Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><span class="text-[13px] muted"><b class="text-zinc-900 dark:text-white">Not sure about sizes, colors or print?</b> Ask Max, your merch agent. He'll set it up with real prices.</span></button>
+          <button type="button" data-max-open data-max-only class="panel p-4 flex gap-3 text-left hover:border-violet-300 dark:hover:border-violet-400/40"><Sparkles class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><span class="text-[13px] muted"><b class="text-zinc-900 dark:text-white">Not sure about sizes, colors or print?</b> Ask {agent}, your merch agent, to set it up with real prices.</span></button>
         )}
         <div class="panel p-4 flex gap-3"><Users class="w-5 h-5 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" /><p class="text-[13px] muted">Orders start at {min} pieces ({screenMin} for screen printing and embroidery). Bigger runs bring the price per piece down.</p></div>
       </div>
@@ -243,7 +244,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
        "Add to cart" form above, so the minimum and the quote link stay in one place. -->
   <div data-pdp-bar class="md:hidden fixed inset-x-0 bottom-0 z-[60] border-t border-zinc-200/80 dark:border-white/10 bg-white/90 dark:bg-[#0a0a0f]/90 backdrop-blur-xl backdrop-saturate-150 pb-[env(safe-area-inset-bottom)]">
     <div class="px-4 h-[76px] flex items-center gap-2.5">
-      <button type="button" data-max-open aria-haspopup="dialog" aria-label="Ask Max about this product" class="press max-orb relative w-11 h-11 shrink-0"><Sparkles class="w-5 h-5" aria-hidden="true" /></button>
+      <button type="button" data-max-open aria-haspopup="dialog" aria-label={`Ask ${agent} about this product`} class="press max-orb relative w-11 h-11 shrink-0"><Sparkles class="w-5 h-5" aria-hidden="true" /></button>
       <button type="button" data-bar-sizes class="press min-w-0 flex-1 flex items-center gap-2.5 text-left" aria-label="Choose sizes and quantities">
         {p.colors.length > 0 && <span data-bar-swatch class="w-8 h-8 max-[399px]:hidden rounded-full shrink-0 border border-zinc-300 dark:border-white/20" style={`background:${p.colors[0].hex}`} aria-hidden="true"></span>}
         <span class="min-w-0 leading-tight">
@@ -294,6 +295,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
 </style>
 
 <script>
+  import { agentName } from '../../lib/agent';
   import { mountDesign } from '../../components/design/design';
   import { hit } from '../../lib/hit';
   import { setMaxContext } from '../../lib/max';
@@ -589,7 +591,7 @@ const chipOn = 'chip cursor-pointer select-none has-[:checked]:border-violet-500
   // Designs Max placed: live from the chat on this page, or carried over from the chat on another page.
   type MaxPlaced = { file: File; location: string; method: string; widthIn?: number };
   const maxPlace = (list: MaxPlaced[]) =>
-    design.loadArtwork(list.map((x) => ({ locId: '', location: x.location, decoration: x.method, x: 0, y: 0, w: 0, file: x.file, widthIn: x.widthIn })), 'Max', 'Max placed your design. Move or resize it, then pick your sizes.');
+    design.loadArtwork(list.map((x) => ({ locId: '', location: x.location, decoration: x.method, x: 0, y: 0, w: 0, file: x.file, widthIn: x.widthIn })), `${agentName()}`, `${agentName()} placed your design. Move or resize it, then pick your sizes.`);
   /** Max's chat shows what's on the page now (a phone's chat covers the page). */
   const showMax = async (carried: boolean) => {
     if (renderJob) return;

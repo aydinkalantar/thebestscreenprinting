@@ -5,6 +5,7 @@ import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ProductBrowser from '../../components/catalog/ProductBrowser.astro';
 import { products } from '../../lib/catalog';
+import { agent } from '../../lib/facts.mjs';
 ---
 <Base title="Search | TBSP" description="Search our products by color, brand, style number, product type or fabric." noindex>
   <Breadcrumbs items={[{ label: 'Search' }]} />
@@ -19,7 +20,7 @@ import { products } from '../../lib/catalog';
       <p class="text-lg font-bold text-zinc-900 dark:text-white">Not seeing what you need?</p>
       <p class="mt-1 text-sm muted">We print on almost anything, including brands we don't list and items you bring us.</p>
     </div>
-    <button type="button" data-max-open data-max-only class="btn-primary">Ask Max</button>
+    <button type="button" data-max-open data-max-only class="btn-primary">Ask {agent}</button>
     <a href="/quick-quote/" class="btn-quiet">Request a quote</a>
   </section>
 </Base>

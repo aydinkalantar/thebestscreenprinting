@@ -8,7 +8,7 @@ import VideoGrid from '../components/VideoGrid.astro';
 import RelatedProducts from '../components/home/RelatedProducts.astro';
 import { PAGE_VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
-import { fill, facts as shopFacts } from '../lib/facts.mjs';
+import { fill, agent, facts as shopFacts } from '../lib/facts.mjs';
 import { heroImage, eyebrowFor, relatedFor } from '../lib/page-meta';
 import { ArrowRight, Palette, Phone, Clock, MapPin, ChevronRight, ListOrdered, Printer, CalendarCheck, MessageCircle } from '@lucide/astro';
 
@@ -125,7 +125,7 @@ if (faqs.length) {
       {!narrow && (
         <div class="mt-7 max-md:mt-5 flex flex-wrap gap-3 max-md:grid max-md:grid-cols-2 max-md:gap-2">
           <a class="btn-primary max-md:px-3" href="/quick-quote/">Get a quote<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
-          {kind === 'answer' && business.maxLive && <button type="button" data-max-open data-max-only class="btn-quiet max-md:px-3"><MessageCircle class="w-4 h-4" aria-hidden="true" />Ask Max for a price</button>}
+          {kind === 'answer' && business.maxLive && <button type="button" data-max-open data-max-only class="btn-quiet max-md:px-3"><MessageCircle class="w-4 h-4" aria-hidden="true" />Ask {agent} for a price</button>}
           {business.studioLive
             ? <a class="btn-quiet max-md:px-3" href={`${business.studioUrl}/studio`} rel="nofollow"><Palette class="w-4 h-4" aria-hidden="true" />Design it online</a>
             : <a class="btn-quiet max-md:px-3" href={`tel:${business.phone}`}><Phone class="w-4 h-4" aria-hidden="true" />{business.phoneDisplay}</a>}

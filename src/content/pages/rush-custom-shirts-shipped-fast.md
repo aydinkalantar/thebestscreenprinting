@@ -33,7 +33,7 @@ The time counts from your approved mockup and includes shipping to any address i
 
 ## How to hit a tight deadline
 
-1. **Send the date first.** Tell us your in-hand date in the [quote form](/quick-quote/) or to Max.
+1. **Send the date first.** Tell us your in-hand date in the [quote form](/quick-quote/) or to {{agent}}.
 2. **Send print-ready art.** A vector file (AI, EPS, PDF or SVG) or a high-resolution PNG. See [artwork files](/artwork-file-types-for-printing/).
 3. **Pick a common blank.** Black, white and heather gray tees in standard styles are almost always in stock.
 4. **Approve the mockup the same day.** The clock starts when you approve.

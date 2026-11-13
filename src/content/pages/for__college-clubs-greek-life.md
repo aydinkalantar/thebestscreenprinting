@@ -12,7 +12,7 @@ facts:
   - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
 faqs:
   - q: "How much do custom shirts for a chapter cost?"
-    a: "On a basic black tee, a one-color front print is about {{tee.screen1.24}} each at 24 and {{tee.screen1.48}} at 48, plus a one-time {{screenSetup}} screen. Comfort Colors and other premium blanks cost a little more; Max prices any of them in a minute."
+    a: "On a basic black tee, a one-color front print is about {{tee.screen1.24}} each at 24 and {{tee.screen1.48}} at 48, plus a one-time {{screenSetup}} screen. Comfort Colors and other premium blanks cost a little more; {{agent}} prices any of them in a minute."
   - q: "How do we handle sizes for a whole chapter?"
     a: "Collect sizes from members first, then send us the totals by size in one order. Mixing sizes costs nothing extra up to XL."
   - q: "Can you print our letters or crest?"
@@ -37,4 +37,4 @@ updated: "2026-10-28"
 3. **Hit {{shipFreeFrom}}** and shipping is free. Most orders of 24 or more shirts do.
 4. **Order early.** Normal delivery takes about 2 weeks; [Rush and Super Rush](/rush-custom-shirts-shipped-fast/) cost 15% to 30% more.
 
-See the [price table](/how-much-does-custom-shirt-printing-cost/) or ask Max for an instant price. More for groups on [clubs and groups](/clubs-groups/).
+See the [price table](/how-much-does-custom-shirt-printing-cost/) or ask {{agent}} for an instant price. More for groups on [clubs and groups](/clubs-groups/).

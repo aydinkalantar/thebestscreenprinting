@@ -22,11 +22,12 @@ const promos = [
   { text: 'Free art proof on every order, before anything prints.', cta: 'Get a quote', href: '/quick-quote/' },
   { text: 'Printed in-house in Los Angeles and Cleveland. Pickup or shipping.', cta: 'Track an order', href: '/track/' },
 ];
+import { agent } from '../lib/facts.mjs';
 ---
 <div class="bg-zinc-900 dark:bg-black text-white text-[11.5px] md:text-[13px] pt-[env(safe-area-inset-top)] md:pt-0">
   <div class="wrap h-7 md:h-9 flex items-center justify-center gap-2 max-md:gap-1.5 text-center">
     {max ? (
-      <><Sparkles class="w-3.5 h-3.5 text-violet-300 shrink-0" aria-hidden="true" /><span class="truncate">New: <b>Max</b>, your merch agent, picks the product, places your logo and quotes your order in minutes.</span>
+      <><Sparkles class="w-3.5 h-3.5 text-violet-300 shrink-0" aria-hidden="true" /><span class="truncate">New: <b>{agent}</b>, your merch agent, picks the product, places your logo and quotes your order in minutes.</span>
       <a href="/#max" class="font-semibold underline underline-offset-2 shrink-0">See how</a></>
     ) : (
       <div data-promo class="relative min-w-0 flex-1 max-w-3xl h-full" aria-live="off">
@@ -49,7 +50,7 @@ const promos = [
       <Search class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" aria-hidden="true" />
       <input name="q" type="search" autocomplete="off" placeholder="Search products, or describe what you need…" aria-label="Search or describe what you need"
         class="w-full h-11 rounded-full bg-zinc-100 dark:bg-white/[0.06] border border-transparent focus:border-violet-500 focus:bg-white dark:focus:bg-[#0d0d14] pl-11 pr-28 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-500 outline-none transition-colors" />
-      {max && <button type="button" data-search-max data-max-only class="absolute right-1.5 top-1/2 -translate-y-1/2 inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-[13px] font-semibold" title="Describe what you need and Max takes it from there"><Sparkles class="w-3.5 h-3.5" aria-hidden="true" />Ask Max</button>}
+      {max && <button type="button" data-search-max data-max-only class="absolute right-1.5 top-1/2 -translate-y-1/2 inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-[13px] font-semibold" title={`Describe what you need and ${agent} takes it from there`}><Sparkles class="w-3.5 h-3.5" aria-hidden="true" />Ask {agent}</button>}
       <div data-results class="hidden absolute left-0 right-0 top-[calc(100%+8px)] panel-raised p-2 max-h-[70vh] overflow-auto"></div>
     </form>
     <div class="ml-auto flex items-center gap-1.5 max-md:gap-0.5 max-md:-mr-1.5 sm:gap-3">
@@ -105,8 +106,8 @@ const promos = [
                     <div>
                       <p class="eyebrow">Design studio</p>
                       <p class="mt-2 text-2xl font-bold text-zinc-900 dark:text-white">A full-service agent, not just a design tool</p>
-                      <p class="mt-2 text-sm muted">Describe what you need. Max, your merch agent, picks the product, places your logo, suggests the best print method and builds your quote. Real people check every order.</p>
-                      <a href={aiHref} data-ask-ai class="btn-primary mt-5">Ask Max<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
+                      <p class="mt-2 text-sm muted">Describe what you need. {agent}, your merch agent, picks the product, places your logo, suggests the best print method and builds your quote. Real people check every order.</p>
+                      <a href={aiHref} data-ask-ai class="btn-primary mt-5">Ask {agent}<ArrowRight class="w-4 h-4" aria-hidden="true" /></a>
                     </div>
                     {[
                       { icon: MessageSquareText, t: 'Just describe it', d: '"50 black tees, logo on the chest, by Friday."' },
@@ -217,13 +218,14 @@ const promos = [
       ))}
     </div>
     <div class="shrink-0 border-t border-zinc-200/80 dark:border-white/10 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] grid gap-2.5">
-      <a href={aiHref} data-ask-ai class="btn-primary w-full h-12 text-[15px]"><Sparkles class="w-4 h-4" aria-hidden="true" /><span data-max-only>Ask Max</span><span data-max-alt>Get a quote</span></a>
+      <a href={aiHref} data-ask-ai class="btn-primary w-full h-12 text-[15px]"><Sparkles class="w-4 h-4" aria-hidden="true" /><span data-max-only>Ask {agent}</span><span data-max-alt>Get a quote</span></a>
       <a href={`tel:${business.phone}`} class="btn-quiet w-full h-auto min-h-12 py-2 !whitespace-normal text-center text-[15px]"><Phone class="w-4 h-4" aria-hidden="true" /><span>Talk to a real person: <span class="whitespace-nowrap">{business.phoneDisplay}</span></span></a>
     </div>
   </div>
 </div>
 
 <script>
+  import { agentName } from '../lib/agent';
   import { openSheet, closeSheet, wireSheet } from '../lib/sheet';
   import '../lib/cart-badge';
   import { readQuery, searchProducts, vocabulary, describe, colorPhoto, type SearchProduct, type Vocab, type Match, type Query } from '../lib/search';
@@ -336,7 +338,7 @@ const promos = [
       const { query, found, colorful } = findProducts(q);
       const others = rank(all.filter((h) => h.k !== 'product'), q);
       const understood = describe(query).filter((p) => p.kind !== 'word').map((p) => p.label).join(' · ');
-      const ai = `<a href="${aiLink(q)}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="min-w-0 text-sm"><b class="text-violet-700 dark:text-violet-300">${document.documentElement.dataset.max === 'on' ? 'Ask Max' : 'Request a quote for'}</b><span class="block muted truncate">“${esc(q)}”</span></span></a>`;
+      const ai = `<a href="${aiLink(q)}" data-ai-row class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-violet-500/10 hover:bg-violet-500/15"><span class="w-8 h-8 shrink-0 rounded-lg grid place-items-center bg-violet-600 text-white">✦</span><span class="min-w-0 text-sm"><b class="text-violet-700 dark:text-violet-300">${document.documentElement.dataset.max === 'on' ? 'Ask ${agentName()}' : 'Request a quote for'}</b><span class="block muted truncate">“${esc(q)}”</span></span></a>`;
       const all1 = found.length
         ? `<a href="${searchLink(q)}" data-see-all class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-white/[0.06]"><span class="min-w-0 text-sm"><b class="text-zinc-900 dark:text-white">See all ${found.length} ${found.length === 1 ? 'product' : 'products'}</b>${understood ? `<span class="block text-[12px] muted truncate">${esc(understood)}</span>` : ''}</span><span class="text-violet-700 dark:text-violet-300 text-sm font-semibold shrink-0">View →</span></a>`
         : '';

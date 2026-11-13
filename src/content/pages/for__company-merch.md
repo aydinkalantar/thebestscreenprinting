@@ -47,4 +47,4 @@ See the [full price table](/how-much-does-custom-shirt-printing-cost/).
 
 ## Ordering for an office in another state
 
-Everything happens online: send the logo and sizes through the [quote form](/quick-quote/) or ask Max, approve the mockup by email, pay online and get tracking. Read how [nationwide shipping](/shipping-nationwide/) works, or see [promotional products](/for/promotional-products/) for giveaways.
+Everything happens online: send the logo and sizes through the [quote form](/quick-quote/) or ask {{agent}}, approve the mockup by email, pay online and get tracking. Read how [nationwide shipping](/shipping-nationwide/) works, or see [promotional products](/for/promotional-products/) for giveaways.

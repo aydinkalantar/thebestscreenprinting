@@ -44,7 +44,7 @@ Screen printing and embroidery start at 12 pieces; DTF and DTG start at 6. Scree
 - **Quantity.** The biggest factor. Going from 24 to 72 shirts cuts the screen print price by about 25%.
 - **Number of ink colors.** Screen printing adds a screen and a pass per color. Full-color art is often cheaper as DTF or DTG.
 - **Number of print spots.** A back print or sleeve print is priced as its own spot. See [front, back and sleeve printing](/front-back-sleeve-printing/).
-- **The garment.** Heavyweight, oversized, organic and name-brand blanks cost more than a basic tee. Max prices any shirt in our [catalog](/catalog/) with its real blank price.
+- **The garment.** Heavyweight, oversized, organic and name-brand blanks cost more than a basic tee. {{agent}} prices any shirt in our [catalog](/catalog/) with its real blank price.
 - **Delivery date.** Rush adds 15% and Super Rush adds 30%.
 
 ## How to get the lowest price

@@ -18,7 +18,7 @@ faqs:
   - q: "What sizes can each spot be?"
     a: "Full front or back up to about 12 by 14 inches, left or right chest up to 4 by 4, sleeves up to 3.5 by 3.5, back neck up to 3.5 by 2, and hat fronts up to 4.5 by 2.25 inches."
   - q: "How do I tell you where each design goes?"
-    a: "List each spot in the quote form, or upload your art to Max and tell him where each piece goes. We place everything on your mockup for approval."
+    a: "List each spot in the quote form, or upload your art to {{agent}} and say where each piece goes. We place everything on your mockup for approval."
 updated: "2026-10-28"
 ---
 ## Print spots and their sizes
@@ -54,4 +54,4 @@ A second DTG spot on a dark shirt is about $14 at 6 pieces down to $6.50 at 144.
 - **Brand drop:** front logo, back graphic, back-neck mark and a sleeve hit.
 - **Team shirt:** front team name, back name and number.
 
-Upload all your art at once in the [quote form](/quick-quote/), or send it to Max, and we will place each design on your mockup.
+Upload all your art at once in the [quote form](/quick-quote/), or send it to {{agent}}, and we will place each design on your mockup.

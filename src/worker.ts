@@ -6,6 +6,7 @@ import { buildQuotePdf, type PdfMockup } from './lib/quote-pdf';
 import { confirmationEmail } from './lib/quote-confirm';
 import { business } from './data/business';
 import { SS_ORIGIN, SS_PREFIX } from './lib/ss-img';
+import { AGENT_MARK, agentName } from './lib/facts.mjs';
 
 interface Env {
   ASSETS: { fetch(req: Request): Promise<Response> };
@@ -490,15 +491,47 @@ async function handleSsImage(url: URL, ctx?: Ctx): Promise<Response> {
 
 const REWRITE_TYPES = /^(?:text\/html|text\/javascript|application\/javascript|application\/json)/;
 
-/** Points S&S photo URLs in a served page, script or JSON file at /ss-img/ on this site. */
-async function rewriteSsUrls(res: Response, origin: string): Promise<Response> {
+/** Points S&S photo URLs in a served page, script or JSON file at /ss-img/ on this site, and puts the agent's current name in. */
+async function rewritePage(res: Response, origin: string, agent: string | null): Promise<Response> {
   if (res.status !== 200 || !REWRITE_TYPES.test(res.headers.get('content-type') || '')) return res;
   const text = await res.text();
-  if (!text.includes(SS_ORIGIN)) return new Response(text, res);
-  const out = new Response(text.replaceAll(SS_ORIGIN, `${origin}${SS_PREFIX}`), res);
-  out.headers.delete('content-length');
-  out.headers.delete('etag');
-  return out;
+  // Only in pages: scripts read the name from the page (<html data-agent>, src/lib/agent.ts).
+  const swapName = !!agent && agent !== builtAgent && (res.headers.get('content-type') || '').startsWith('text/html') && text.includes(builtMarked);
+  if (!text.includes(SS_ORIGIN) && !swapName) return new Response(text, res);
+  let out = text.replaceAll(SS_ORIGIN, `${origin}${SS_PREFIX}`);
+  if (swapName) out = out.replaceAll(builtMarked, `${AGENT_MARK}${escapeHtml(agent!)}${AGENT_MARK}`);
+  const r = new Response(out, res);
+  r.headers.delete('content-length');
+  r.headers.delete('etag');
+  return r;
+}
+
+const builtAgent = agentName;
+const builtMarked = `${AGENT_MARK}${agentName}${AGENT_MARK}`;
+const escapeHtml = (t: string) => t.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+const AGENT_TTL = 300;
+
+/**
+ * The merch agent's name as set in Admin › Settings › Max right now (GET /api/public/max on the
+ * studio), kept at the edge for 5 minutes. null when the studio can't say (pages keep the built name).
+ */
+async function currentAgent(origin: string, ctx?: Ctx): Promise<string | null> {
+  const cache = (globalThis as unknown as { caches?: { default?: Cache } }).caches?.default;
+  const key = new Request(`${origin}/__agent-name`);
+  const hit = await cache?.match(key).catch(() => undefined);
+  if (hit) return (await hit.text()) || null;
+  let name = '';
+  try {
+    const res = await fetch(`${business.studioUrl}/api/public/max`, { headers: { origin: 'https://thebestscreenprinting.com' }, signal: AbortSignal.timeout(3000) });
+    const data = res.ok ? await res.json() as { name?: unknown } : null;
+    // Letters, spaces and . ' - only (the studio cleans it the same way), at most 20.
+    if (typeof data?.name === 'string') name = data.name.replace(/[^\p{L}\p{M} .'’-]/gu, '').trim().slice(0, 20);
+  } catch { name = ''; }
+  if (cache) {
+    const put = cache.put(key, new Response(name, { headers: { 'cache-control': `public, max-age=${name ? AGENT_TTL : 60}` } })).catch(() => {});
+    if (ctx) ctx.waitUntil(put); else await put;
+  }
+  return name || null;
 }
 
 /** Sent with every page: no type guessing, no framing by other sites, HTTPS only, and only our origin as referrer. */
@@ -565,6 +598,9 @@ export default {
       return withHeaders(new Response('Gone', { status: 410, headers: { 'content-type': 'text/plain' } }), env);
     }
 
-    return withHeaders(await rewriteSsUrls(await env.ASSETS.fetch(request), url.origin), env);
+    const page = await env.ASSETS.fetch(request);
+    // Only pages carry the name.
+    const agent = page.status === 200 && (page.headers.get('content-type') || '').startsWith('text/html') ? await currentAgent(url.origin, ctx) : null;
+    return withHeaders(await rewritePage(page, url.origin, agent), env);
   },
 };

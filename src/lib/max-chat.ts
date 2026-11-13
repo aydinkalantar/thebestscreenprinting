@@ -16,6 +16,7 @@ import { setupVoice, type VoiceConfig } from './max-voice';
 import { renderOnProduct, type RenderResult } from './max-render';
 import { startLiveCall, prefetchToken, LiveUnavailable } from './max-live';
 import { getContact, saveContact, forgetContact, isEmail, type Contact } from './contact';
+import { agentName } from './agent';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 interface CartLine extends Omit<PriceItemInput, 'locations'> {
@@ -600,8 +601,8 @@ if (sheet && window.parent === window) {
     micBtn.classList.toggle('is-on', on);
     micBtn.querySelector('[data-idle]')!.toggleAttribute('hidden', on);
     micBtn.querySelector('[data-stop]')!.toggleAttribute('hidden', !on);
-    micBtn.setAttribute('aria-label', on ? 'End the call' : 'Talk to Max');
-    micBtn.title = on ? 'End the call' : 'Talk to Max';
+    micBtn.setAttribute('aria-label', on ? 'End the call' : `Talk to ${agentName()}`);
+    micBtn.title = on ? 'End the call' : `Talk to ${agentName()}`;
     if (!on) callOrb.classList.remove('is-talking');
   };
   function endCall() { call?.end(); }
@@ -648,7 +649,7 @@ if (sheet && window.parent === window) {
             if (why === 'dropped') bubble('assistant', 'The call dropped. Tap the mic to talk again, or keep typing.');
             return;
           }
-          callStatus.textContent = st === 'connecting' ? 'Connecting…' : st === 'talking' ? 'Max is talking…' : (call?.muted ? 'Muted' : 'Listening…');
+          callStatus.textContent = st === 'connecting' ? 'Connecting…' : st === 'talking' ? `${agentName()} is talking…` : (call?.muted ? 'Muted' : 'Listening…');
           callOrb.classList.toggle('is-talking', st === 'talking');
         },
         caption: (who, text, done) => {
@@ -705,7 +706,7 @@ if (sheet && window.parent === window) {
   });
 
   // ── talking to the studio ──
-  function typing() { const t = el('div', 'max-bubble max-bot max-typing'); t.innerHTML = '<span></span><span></span><span></span>'; t.setAttribute('aria-label', 'Max is typing'); log.append(t); scroll(); return t; }
+  function typing() { const t = el('div', 'max-bubble max-bot max-typing'); t.innerHTML = '<span></span><span></span><span></span>'; t.setAttribute('aria-label', `${agentName()} is typing`); log.append(t); scroll(); return t; }
 
   // ── progress row: Products › Colors › Design › Sizes › Price › Pay ──
   const stepRow = sheet.querySelector<HTMLElement>('[data-max-steps]');

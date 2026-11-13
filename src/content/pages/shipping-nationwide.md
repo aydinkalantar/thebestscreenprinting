@@ -30,7 +30,7 @@ updated: "2026-10-28"
 
 You never need to visit. Here is the whole process, start to finish:
 
-1. **Send your idea.** Use the [quote form](/quick-quote/) or ask Max: garment, quantity, deadline and artwork. A phone photo of a sketch is fine.
+1. **Send your idea.** Use the [quote form](/quick-quote/) or ask {{agent}}: garment, quantity, deadline and artwork. A phone photo of a sketch is fine.
 2. **Get a price within one business day.** Your quote lists every print spot, the garment, the delivery option and the shipping.
 3. **Approve the mockup.** We check your art for free and send a mockup with placement and sizes. Nothing is printed until you approve it.
 4. **We make it in-house.** Screen printing, embroidery, DTF or DTG in our own facilities, never sent out to another shop.

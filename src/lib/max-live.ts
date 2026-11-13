@@ -206,7 +206,7 @@ export async function startLiveCall(context: () => unknown, on: LiveEvents, hist
     // after a while gets one short welcome back; reopening right away continues quietly.
     if (past.length && !first) {
       if (resume === 'reconnected') send({ realtimeInput: { text: '[reconnected after a dropped call: say "Sorry, I lost you for a second" once and continue where you were]' } });
-      else if (resume === 'welcome') send({ realtimeInput: { text: '[visitor reopened Max after a break: one short welcome-back line, then ask what they need now. Do not apologize or repeat the greeting. Only bring up the earlier conversation if they do]' } });
+      else if (resume === 'welcome') send({ realtimeInput: { text: '[visitor reopened the chat after a break: one short welcome-back line, then ask what they need now. Do not apologize or repeat the greeting. Only bring up the earlier conversation if they do]' } });
     }
     if (first) send({ realtimeInput: { text: first } });
     else if (!past.length && typeof t.start === 'string' && t.start) send({ realtimeInput: { text: t.start } });

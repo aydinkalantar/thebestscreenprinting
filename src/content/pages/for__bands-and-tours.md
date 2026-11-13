@@ -45,7 +45,7 @@ Add a back print with tour dates for about {{tee.back1.24}} a shirt at 24 pieces
 
 ## How it works from anywhere
 
-1. **Send the art and the date.** Use the [quote form](/quick-quote/) or ask Max. Tell us where it ships.
+1. **Send the art and the date.** Use the [quote form](/quick-quote/) or ask {{agent}}. Tell us where it ships.
 2. **Approve the mockup.** Placement, sizes and ink colors, checked for free.
 3. **We print it in-house.** Screen printing for runs, DTF for small full-color batches.
 4. **It ships to you or the venue.** Tracking by email. Free shipping from {{shipFreeFrom}} anywhere in the lower 48.

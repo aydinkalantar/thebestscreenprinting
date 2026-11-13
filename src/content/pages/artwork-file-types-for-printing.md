@@ -46,4 +46,4 @@ updated: "2026-10-27"
 | Custom design | From {{artCustom}}, confirmed first |
 | Extra round of changes (after 2 included) | {{artRevision}} |
 
-The fee is non-refundable once work starts and adds 1 to 2 business days before your mockup. Upload your art in the [quote form](/quick-quote/) or send it to Max. More [design tips](/helpful-design-tips/).
+The fee is non-refundable once work starts and adds 1 to 2 business days before your mockup. Upload your art in the [quote form](/quick-quote/) or send it to {{agent}}. More [design tips](/helpful-design-tips/).

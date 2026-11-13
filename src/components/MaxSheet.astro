@@ -23,11 +23,12 @@ const can = [
 // The order, step by step (filled in as the conversation goes).
 const steps = ['Products', 'Colors', 'Design', 'Sizes', 'Price', 'Pay'];
 const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full border border-zinc-200 dark:border-white/10 text-[13px] font-semibold text-zinc-800 dark:text-zinc-100 hover:border-violet-300';
+import { agent } from '../lib/facts.mjs';
 ---
 <!-- Desktop: Max is one click away on every page (phones use the tab bar's orb). -->
 <button type="button" data-max-open data-max-fab data-max-only class="hidden md:flex fixed bottom-6 right-6 z-[50] items-center gap-2.5 h-12 pl-1.5 pr-4 rounded-full bg-white dark:bg-[#15151d] border border-zinc-200 dark:border-white/10 shadow-xl hover:shadow-2xl transition-shadow print:hidden">
   <span class="max-orb relative w-9 h-9" aria-hidden="true"><Sparkles class="w-4 h-4" /></span>
-  <span class="text-[14px] font-semibold text-zinc-900 dark:text-white">Talk to Max</span>
+  <span class="text-[14px] font-semibold text-zinc-900 dark:text-white">Talk to {agent}</span>
 </button>
 
 <!-- Phones: a full-height sheet over the page. Desktop: a side panel that leaves the page usable, so
@@ -40,10 +41,10 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
       <div class="mt-2 flex items-center gap-3">
         <span class="max-orb relative w-10 h-10 shrink-0" aria-hidden="true"><Sparkles class="w-5 h-5" /></span>
         <div class="min-w-0 flex-1 leading-tight">
-          <p id="max-title" class="text-[17px] font-bold text-zinc-900 dark:text-white">Max</p>
+          <p id="max-title" class="text-[17px] font-bold text-zinc-900 dark:text-white">{agent}</p>
           <p class="text-[12.5px] muted">Your merch agent · picks, prices and plans your order</p>
         </div>
-        <button type="button" data-max-speak hidden aria-pressed="false" class="icon-btn w-10 h-10 rounded-xl shrink-0" aria-label="Read Max's replies aloud" title="Read replies aloud">
+        <button type="button" data-max-speak hidden aria-pressed="false" class="icon-btn w-10 h-10 rounded-xl shrink-0" aria-label={`Read ${agent}'s replies aloud`} title="Read replies aloud">
           <Volume2 data-on hidden class="w-[18px] h-[18px] text-violet-600 dark:text-violet-300" aria-hidden="true" /><VolumeX data-off class="w-[18px] h-[18px]" aria-hidden="true" />
         </button>
         <button type="button" data-max-reset hidden class="icon-btn w-10 h-10 rounded-xl shrink-0" aria-label="Start over" title="Start over"><RotateCcw class="w-4 h-4" aria-hidden="true" /></button>
@@ -59,13 +60,13 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
     <div data-max-log class="flex-1 overflow-y-auto overscroll-contain px-4 py-4 flex flex-col gap-3" aria-live="polite">
       <!-- Shown until the first message. -->
       <div data-max-intro class="grid gap-4">
-        <div data-max-greeting class="max-bubble max-bot">Hi, I'm Max. I can help you pick products and colors, place your logo, get a real price, and order and pay right here. What's the occasion, and when do you need it?</div>
+        <div data-max-greeting class="max-bubble max-bot">Hi, I'm {agent}. I can help you pick products and colors, place your logo, get a real price, and order and pay right here. What's the occasion, and when do you need it?</div>
         <ul class="grid grid-cols-2 gap-2">
           {can.map((c) => <li class="flex items-center gap-2 rounded-xl bg-violet-500/[0.07] px-3 py-2 text-[12.5px] font-semibold text-zinc-800 dark:text-zinc-100"><c.icon class="w-4 h-4 text-violet-600 dark:text-violet-300 shrink-0" aria-hidden="true" />{c.t}</li>)}
         </ul>
         <button type="button" data-max-call-cta hidden class="press flex items-center gap-3 w-full rounded-2xl bg-violet-600 hover:bg-violet-700 text-white px-4 py-3.5 text-left shadow-lg shadow-violet-600/20">
           <span class="relative grid place-items-center w-11 h-11 rounded-full bg-white/15 shrink-0"><span class="absolute inset-0 rounded-full bg-white/25 animate-ping" aria-hidden="true"></span><AudioLines class="relative w-5 h-5" aria-hidden="true" /></span>
-          <span class="leading-tight"><span class="block text-[16px] font-bold">Talk to Max</span><span class="block text-[12.5px] text-white/80">Tap and just say what you need</span></span>
+          <span class="leading-tight"><span class="block text-[16px] font-bold">Talk to {agent}</span><span class="block text-[12.5px] text-white/80">Tap and just say what you need</span></span>
         </button>
         <div data-max-starters class="flex flex-wrap gap-2">
           {starters.map((s) => <button type="button" data-max-starter data-max-logo={/^check my logo/i.test(s) ? '' : undefined} class="chip !h-auto py-2 text-left text-[13.5px]">{s}</button>)}
@@ -91,12 +92,12 @@ const contact = 'press inline-flex items-center gap-1.5 h-9 px-3 rounded-full bo
       </div>
       <p data-max-listening hidden class="mb-2 flex items-center gap-2 text-[13px] font-semibold text-rose-600 dark:text-rose-400" aria-live="polite"><span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse" aria-hidden="true"></span><span data-max-listening-text>Listening… speak now</span></p>
       <div class="flex items-end gap-2">
-        <button type="button" data-max-attach class="icon-btn w-11 h-11 rounded-xl shrink-0" aria-label="Send Max your logo" title="Send your logo"><Paperclip class="w-[18px] h-[18px]" aria-hidden="true" /></button>
-        <button type="button" data-max-mic hidden class="icon-btn w-11 h-11 rounded-xl shrink-0" aria-label="Talk to Max" title="Talk to Max">
+        <button type="button" data-max-attach class="icon-btn w-11 h-11 rounded-xl shrink-0" aria-label={`Send ${agent} your logo`} title="Send your logo"><Paperclip class="w-[18px] h-[18px]" aria-hidden="true" /></button>
+        <button type="button" data-max-mic hidden class="icon-btn w-11 h-11 rounded-xl shrink-0" aria-label={`Talk to ${agent}`} title={`Talk to ${agent}`}>
           <Mic data-idle class="w-[18px] h-[18px]" aria-hidden="true" /><Square data-stop hidden class="w-4 h-4 fill-current" aria-hidden="true" />
         </button>
-        <label for="max-input" class="sr-only">Message Max</label>
-        <textarea id="max-input" name="details" rows="1" maxlength="1000" enterkeyhint="send" class="field !text-base resize-none !py-2.5 max-h-36" placeholder="Message Max…"></textarea>
+        <label for="max-input" class="sr-only">Message {agent}</label>
+        <textarea id="max-input" name="details" rows="1" maxlength="1000" enterkeyhint="send" class="field !text-base resize-none !py-2.5 max-h-36" placeholder={`Message ${agent}…`}></textarea>
         <button type="submit" data-max-send class="btn-primary w-11 h-11 !p-0 rounded-xl shrink-0 disabled:opacity-50" aria-label="Send"><ArrowUp class="w-5 h-5" aria-hidden="true" /></button>
       </div>
       <input type="file" data-max-file class="sr-only" tabindex="-1" aria-hidden="true" accept="image/*,.pdf,.ai,.psd,.svg" />

@@ -48,4 +48,4 @@ Prices include the shirt and come from our current price list. See the [full pri
 
 ## Not sure? Send the art
 
-Upload your design with the [quote form](/quick-quote/) or to Max and we will recommend the method that gives the best result for your budget. The art check is free. Learn more about [screen printing](/screen-printing/), [DTF transfers](/services/direct-to-film/) and [DTG printing](/services/direct-to-garment/).
+Upload your design with the [quote form](/quick-quote/) or to {{agent}} and we will recommend the method that gives the best result for your budget. The art check is free. Learn more about [screen printing](/screen-printing/), [DTF transfers](/services/direct-to-film/) and [DTG printing](/services/direct-to-garment/).
