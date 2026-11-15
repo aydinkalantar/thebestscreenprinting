@@ -534,6 +534,38 @@ async function currentAgent(origin: string, ctx?: Ctx): Promise<string | null> {
   return name || null;
 }
 
+/** Paths that serve a page (no file extension, or .html), not a script, style or image. */
+const PAGE_PATH = /(?:\/|\/[^/.]+|\.html)$/;
+
+/** The same request without If-None-Match / If-Modified-Since, so the asset store sends the whole page. */
+function withoutConditionals(request: Request): Request {
+  const headers = new Headers(request.headers);
+  headers.delete('if-none-match');
+  headers.delete('if-modified-since');
+  return new Request(request, { headers });
+}
+
+/**
+ * Tags a page with its file tag plus the agent's name, and answers 304 when the browser already has
+ * exactly that. A rename changes the tag, so every browser gets the page with the new name.
+ */
+function pageTag(res: Response, fileTag: string | null, name: string, request: Request): Response {
+  let h = 5381;
+  for (const ch of name) h = ((h * 33) ^ ch.codePointAt(0)!) >>> 0;
+  const base = (fileTag || '').replace(/^W\//, '').replace(/"/g, '') || 'page';
+  const tag = `W/"${base}-${h.toString(36)}"`;
+  const out = new Response(res.body, res);
+  out.headers.set('etag', tag);
+  out.headers.delete('last-modified');
+  out.headers.set('cache-control', 'public, max-age=0, must-revalidate');
+  const sent = (request.headers.get('if-none-match') || '').split(',').map((t) => t.trim());
+  if (sent.includes(tag) || sent.includes(tag.slice(2))) {
+    out.body?.cancel().catch(() => {});
+    return new Response(null, { status: 304, headers: out.headers });
+  }
+  return out;
+}
+
 /** Sent with every page: no type guessing, no framing by other sites, HTTPS only, and only our origin as referrer. */
 const SECURITY_HEADERS: Record<string, string> = {
   'X-Content-Type-Options': 'nosniff',
@@ -598,9 +630,17 @@ export default {
       return withHeaders(new Response('Gone', { status: 410, headers: { 'content-type': 'text/plain' } }), env);
     }
 
-    const page = await env.ASSETS.fetch(request);
+    // A page's file tag stays the same when the agent is renamed, so the browser's "has it changed?"
+    // check must not reach the asset store: it would answer 304 and the browser would keep showing
+    // the old name. Pages get their own tag that includes the current name (pageTag below).
+    const isPage = PAGE_PATH.test(url.pathname);
+    const ask = isPage ? withoutConditionals(request) : request;
+    const page = await env.ASSETS.fetch(ask);
     // Only pages carry the name.
-    const agent = page.status === 200 && (page.headers.get('content-type') || '').startsWith('text/html') ? await currentAgent(url.origin, ctx) : null;
-    return withHeaders(await rewritePage(page, url.origin, agent), env);
+    const html = page.status === 200 && (page.headers.get('content-type') || '').startsWith('text/html');
+    const agent = html ? await currentAgent(url.origin, ctx) : null;
+    const out = await rewritePage(page, url.origin, agent);
+    if (!html) return withHeaders(out, env);
+    return withHeaders(pageTag(out, page.headers.get('etag'), agent || builtAgent, request), env);
   },
 };
