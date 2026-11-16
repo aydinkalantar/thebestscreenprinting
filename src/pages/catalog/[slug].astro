@@ -301,7 +301,7 @@ import { agent } from '../../lib/facts.mjs';
   import { setMaxContext } from '../../lib/max';
   import { addToCart, replaceCartItem, cartCount, cartItem, cartItems, cartPersistsFiles, carryArtwork, getCarry, setCarry, getFile } from '../../lib/cart';
   import { MAX_TOTAL_BYTES } from '../../lib/quote';
-  import { fetchPrices, money, printSize, type ArtHelp, type ArtHelpType, type PriceItemInput, type PriceResponse } from '../../lib/online';
+  import { checkArtwork, fetchPrices, money, printSize, type ArtHelp, type ArtHelpType, type PriceItemInput, type PriceResponse } from '../../lib/online';
   import { openOrder, type OrderArtwork } from '../../lib/order-sheet';
   import { countInks, dpiFor, inksOn, type InkCount } from '../../components/design/colors';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
@@ -725,7 +725,40 @@ import { agent } from '../../lib/facts.mjs';
       detected.set(k, 'pending');
       countInks(p.blob).then((r) => { detected.set(k, r); schedulePrice(0); }).catch(() => { detected.set(k, { kind: 'unknown' }); schedulePrice(0); });
     }
+    checkPlacedArt();
   }
+
+  // ── the art check before payment ──
+  // Every placed file goes through the shop's own art check (the same one the admin and the Art desk
+  // use). When it needs the customer's original (a screenshot, a photo of a shirt, too small to print
+  // sharp), they're told before they pay, with the cleanup price: send the original, or let us fix it.
+  // Payment is never blocked: "I'll send the original" lets them order, and the shop asks for it after.
+  /** Per placed file: why the original is needed, null when the shop can print it, 'pending' while checking. */
+  const artAsks = new Map<string, { why: string } | null | 'pending'>();
+  /** The customer chose to send the original after ordering. */
+  let artLater = false;
+  /** Shown (and the order button paused once) until the customer picks one of the two. */
+  let artNudged = false;
+  function checkPlacedArt() {
+    for (const p of design.snapshot()) {
+      const k = artKey(p.location, p);
+      if (artAsks.has(k)) continue;
+      artAsks.set(k, 'pending');
+      checkArtwork(p.blob, p.file, { placement: p.location, method: p.decoration, widthIn: p.widthIn, quantity: sum() || undefined })
+        .then((r) => {
+          artAsks.set(k, r?.ask ? { why: r.ask.why } : null);
+          if (r?.ask) artLater = false;
+          if (helpRes) renderArtHelp(helpRes);
+          if (r?.ask && artOn.checked) schedulePrice(0);
+        })
+        .catch(() => { artAsks.set(k, null); });
+    }
+  }
+  /** Placed files the art check says need the original. */
+  const artProblems = () => design.snapshot().flatMap((p) => {
+    const a = artAsks.get(artKey(p.location, p));
+    return a && a !== 'pending' ? [{ location: p.location, why: a.why }] : [];
+  });
 
   /** Per location: the ink colors found in the artwork (screen printing is priced by colors). */
   function renderInks() {
@@ -788,12 +821,33 @@ import { agent } from '../../lib/facts.mjs';
   const artNotes = artBox.querySelector<HTMLTextAreaElement>('[data-art-notes]')!;
   const artType = () => (artBox.querySelector<HTMLInputElement>('input[name="artHelp"]:checked')?.value || 'cleanup') as ArtHelpType;
   let artOffered = false;
-  function artHelpInput(): { artHelp?: ArtHelp } {
-    if (!artOffered || !artOn.checked) return {};
-    const notes = artNotes.value.trim().slice(0, 1000);
+  function artHelpInput(): { artHelp?: ArtHelp; artLater?: boolean } {
+    const problems = artProblems();
+    if (!artOffered || !artOn.checked) return artLater && problems.length ? { artLater: true } : {};
+    // What the file check found goes with the order, so the designer knows what to fix.
+    const notes = (artNotes.value.trim() || problems.map((p) => `${p.location} file: ${p.why}`).join('; ')).slice(0, 1000);
     return { artHelp: { type: artType(), ...(notes ? { notes } : {}) } };
   }
+  let helpRes: Extract<PriceResponse, { enabled: true }> | null = null;
+  /** The line above the price: the text, its buttons and an optional small print. */
+  function suggest(sug: HTMLElement, text: string, buttons: { label: string; on: () => void }[], small = '') {
+    sug.replaceChildren();
+    const t = document.createElement('span');
+    t.className = 'min-w-0 basis-full';
+    t.textContent = text;
+    sug.append(t);
+    for (const b of buttons) {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.className = 'font-semibold underline underline-offset-2';
+      el.textContent = b.label;
+      el.onclick = b.on;
+      sug.append(el);
+    }
+    if (small) { const p = document.createElement('span'); p.className = 'basis-full text-[12px] opacity-80'; p.textContent = small; sug.append(p); }
+  }
   function renderArtHelp(res: Extract<PriceResponse, { enabled: true }>) {
+    helpRes = res;
     const o = res.artHelp;
     artOffered = !!(o && (o.cleanup || o.layout || o.custom));
     artBox.hidden = !artOffered;
@@ -808,23 +862,36 @@ import { agent } from '../../lib/facts.mjs';
     artBox.querySelector('[data-art-terms]')!.textContent = `${terms.join(' · ')}. You get the final file.`;
     // Suggest it when the artwork has a problem, or when there's no artwork yet.
     const sug = artBox.querySelector<HTMLElement>('[data-art-suggest]')!;
+    const pick = (type: ArtHelpType) => () => {
+      artOn.checked = true;
+      artLater = false;
+      artBox.querySelector<HTMLInputElement>(`input[name="artHelp"][value="${type}"]`)!.checked = true;
+      artOpts.hidden = false;
+      sug.hidden = true;
+      sug.classList.remove('ring-2', 'ring-amber-500');
+      schedulePrice(0);
+      artNotes.focus();
+    };
+    const problems = artProblems();
+    if (problems.length && !artOn.checked && o.cleanup) {
+      // The art check found a file we can't print as it is: say so before payment, with the price.
+      const p = problems[0];
+      const where = problems.length > 1 ? `${problems.length} of your files need a better copy (${problems.map((x) => x.location.toLowerCase()).join(', ')})` : `Your ${p.location.toLowerCase()} file: ${p.why}`;
+      const fix = { label: `Fix it for me (${money(o.cleanup.price)})`, on: pick('cleanup') };
+      const small = o.custom ? `Very detailed art can need a full redraw (from ${money(o.custom.price)}). We always ask before charging more.` : '';
+      if (artLater) suggest(sug, `No problem. After you order, we'll email you for the original file. Don't have it? We can redraw it for ${money(o.cleanup.price)}.`, [{ label: 'Fix it for me instead', on: fix.on }]);
+      else suggest(sug, `${where}. Upload the original (Illustrator, PDF, SVG or a PNG with a clear background), or let us fix it.`, [fix, { label: "I'll send the original after I order", on: () => { artLater = true; artNudged = false; sug.classList.remove('ring-2', 'ring-amber-500'); renderArtHelp(res); schedulePrice(0); } }], small);
+      sug.hidden = false;
+      return;
+    }
+    sug.classList.remove('ring-2', 'ring-amber-500');
     const rows = inkRows.filter((r) => r.ink && r.ink !== 'pending' && r.ink.kind !== 'unknown');
     const lowRes = rows.some((r) => { const f = r.ink as Exclude<InkCount, { kind: 'unknown' }>; return !f.vector && r.widthIn && dpiFor(f.widthPx, r.widthIn) < 150; });
     const offer = !artOn.checked && (lowRes && o.cleanup ? { type: 'cleanup' as ArtHelpType, text: 'Your file may print soft.' } : !design.count() && o.layout ? { type: 'layout' as ArtHelpType, text: 'No artwork yet? We can make it for you.' } : null);
     sug.hidden = !offer;
     if (offer) {
-      sug.querySelector('[data-art-suggest-text]')!.textContent = offer.text;
-      const b = sug.querySelector<HTMLButtonElement>('[data-art-suggest-btn]')!;
       const price = o[offer.type]!.price;
-      b.textContent = `${offer.type === 'cleanup' ? 'Add art cleanup' : 'Get design help'} (${offer.type === 'custom' ? 'from ' : ''}${money(price)})`;
-      b.onclick = () => {
-        artOn.checked = true;
-        artBox.querySelector<HTMLInputElement>(`input[name="artHelp"][value="${offer.type}"]`)!.checked = true;
-        artOpts.hidden = false;
-        sug.hidden = true;
-        schedulePrice(0);
-        artNotes.focus();
-      };
+      suggest(sug, offer.text, [{ label: `${offer.type === 'cleanup' ? 'Add art cleanup' : 'Get design help'} (${offer.type === 'custom' ? 'from ' : ''}${money(price)})`, on: pick(offer.type) }]);
     }
   }
   artOn.addEventListener('change', () => { artOpts.hidden = !artOn.checked; schedulePrice(0); });
@@ -929,6 +996,14 @@ import { agent } from '../../lib/facts.mjs';
   orderBtn.addEventListener('click', async () => {
     const input = priceInput();
     if (typeof input === 'string' || !lastPrice) return;
+    // A file the shop can't print as it is: the customer picks "fix it" or "I'll send the original" first (once).
+    const sug = artBox.querySelector<HTMLElement>('[data-art-suggest]')!;
+    if (artOffered && !artOn.checked && !artLater && !artNudged && artProblems().length && !sug.hidden) {
+      artNudged = true;
+      sug.classList.add('ring-2', 'ring-amber-500');
+      sug.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return;
+    }
     orderBtn.disabled = true;
     const [res, shots] = await Promise.all([fetchPrices([input.item]), design.snapshot().length ? design.mockups(3_000_000).catch(() => []) : Promise.resolve([])]);
     orderBtn.disabled = false;

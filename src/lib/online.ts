@@ -9,7 +9,7 @@ export const STUDIO_API = (import.meta.env.PUBLIC_STUDIO_API as string | undefin
 export interface PriceLocation { placement: string; method: string; colors?: number; widthIn?: number; heightIn?: number }
 export type ArtHelpType = 'cleanup' | 'layout' | 'custom';
 export interface ArtHelp { type: ArtHelpType; notes?: string }
-export interface PriceItemInput { brand: string; style: string; color: string; sizes: Record<string, number>; locations: PriceLocation[]; productName?: string; artHelp?: ArtHelp }
+export interface PriceItemInput { brand: string; style: string; color: string; sizes: Record<string, number>; locations: PriceLocation[]; productName?: string; artHelp?: ArtHelp; /** The art check said a file needs the original and the customer will send it after ordering. */ artLater?: boolean }
 export interface ArtHelpOptions { cleanup?: { price: number }; layout?: { price: number }; custom?: { price: number; from?: boolean }; revisionPrice?: number; extraDays?: number; revisionsIncluded?: number }
 export const ART_HELP_LABELS: Record<ArtHelpType, string> = { cleanup: 'Art cleanup / vectorize', layout: 'Text or simple layout', custom: 'Custom design' };
 export interface PricedItem {
@@ -39,6 +39,27 @@ export async function fetchPrices(items: PriceItemInput[], delivery: 'pickup' | 
     });
     if (!res.ok) return null;
     return (await res.json()) as PriceResponse;
+  } catch {
+    return null;
+  }
+}
+
+/** The shop's art check on one file, as the website needs it: `ask` is set when the customer's original file is needed (a screenshot, a photo of the product, too small to print sharp). */
+export interface ArtCheckAnswer { verdict: 'ready' | 'needs_work' | 'unreadable'; ask: { why: string } | null }
+
+/** Runs the shop's art check on a placed file (/api/public/art-check). null when it can't be reached: nothing is ever blocked on it. */
+export async function checkArtwork(blob: Blob, name: string, job: { placement?: string; method?: string; widthIn?: number; quantity?: number }): Promise<ArtCheckAnswer | null> {
+  try {
+    const fd = new FormData();
+    fd.set('file', blob, name);
+    if (job.placement) fd.set('placement', job.placement);
+    if (job.method) fd.set('method', job.method);
+    if (job.widthIn) fd.set('widthIn', String(job.widthIn));
+    if (job.quantity) fd.set('quantity', String(job.quantity));
+    const res = await fetch(`${STUDIO_API}/api/public/art-check`, { method: 'POST', body: fd });
+    if (!res.ok) return null;
+    const d = (await res.json()) as Partial<ArtCheckAnswer>;
+    return { verdict: d.verdict || 'ready', ask: d.ask && typeof d.ask.why === 'string' ? { why: d.ask.why } : null };
   } catch {
     return null;
   }
