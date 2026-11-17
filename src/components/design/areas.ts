@@ -227,6 +227,12 @@ export function templateFor(category: string, subcategory = '', name = ''): keyo
 }
 
 /** Kids' garments: smaller print sizes and a smaller chest. */
+/** The spot buttons list the places most orders print first: Front, Back, then the rest (chest, back neck, sleeves). */
+export function chipOrder<T extends { id: string }>(spots: T[]): T[] {
+  const rank = (id: string) => (id === 'front' ? 0 : id === 'back' ? 1 : 2);
+  return spots.map((s, i) => ({ s, i })).sort((a, b) => rank(a.s.id) - rank(b.s.id) || a.i - b.i).map((x) => x.s);
+}
+
 export const isYouth = (p: { category: string; name: string }) => p.category === 'kids' || /\b(youth|toddler|infant|kids?)\b/i.test(p.name);
 
 /** One location as the browser uses it: position on the photo plus its size in inches. */

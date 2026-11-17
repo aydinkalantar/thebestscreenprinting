@@ -127,8 +127,9 @@ export async function countInks(file: Blob): Promise<InkCount> {
   }
   const covered = big.reduce((s, cl) => s + cl.n, 0) / art;
   // Gradients and photos: many mid-sized bins and a lot of pixels outside the main inks.
+  // A camera photo: no plain background around it and a lot of texture, even when its colors are muted.
   const busyBins = sorted.filter((b) => b.n >= art * 0.002).length;
-  if (main.length > MAX_SPOT || covered < 0.9 || (busyBins > 60 && main.length > 3)) return { kind: 'full', ...size };
+  if (main.length > MAX_SPOT || covered < 0.9 || (busyBins > 60 && main.length > 3) || (!bg && transparent < W * H * 0.02 && busyBins > 30)) return { kind: 'full', ...size };
   return { kind: 'spot', count: Math.max(1, main.length), colors: main.map((cl) => hex(cl.c)), ...size };
 }
 

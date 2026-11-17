@@ -2,7 +2,7 @@
 // Design preview: the garment photo for the selected color with the customer's artwork placed
 // on it. All behaviour lives in design.ts; the product page mounts it and wires the quote panel.
 import { techniqueNames, recommendedMethod, type CatalogProduct } from '../../lib/catalog';
-import { spotsFor, placeConfigFor, applyPrintAreas, type Overrides, type PrintAreas } from './areas';
+import { spotsFor, placeConfigFor, applyPrintAreas, chipOrder, type Overrides, type PrintAreas } from './areas';
 import overrides from '../../../data/print-area-overrides.json';
 import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info, Eye, Plus, X } from '@lucide/astro';
 
@@ -63,8 +63,8 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
     <div class="mt-3 max-md:px-4">
       <p class="sr-only" id="design-loc-label">Print location</p>
       <div data-chips role="group" aria-labelledby="design-loc-label" class="flex gap-2 md:flex-wrap max-md:overflow-x-auto no-scrollbar max-md:-mx-4 max-md:px-4 py-0.5">
-        {spots.map((s, i) => (
-          <button type="button" class={chip} data-loc={s.id} data-side-of={s.side} aria-pressed={i === 0 ? 'true' : 'false'} hidden={s.side === 'back' && !back}>
+        {chipOrder(spots).map((s) => (
+          <button type="button" class={chip} data-loc={s.id} data-side-of={s.side} aria-pressed={s.id === spots[0]?.id ? 'true' : 'false'} hidden={s.side === 'back' && !back}>
             <span data-dot class="hidden w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true"></span>{s.label}<span class="sr-only" data-has> (no artwork)</span>
           </button>
         ))}
