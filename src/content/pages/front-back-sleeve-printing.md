@@ -16,7 +16,7 @@ faqs:
   - q: "How much does a back print add?"
     a: "For a one-color screen print, about {{tee.back1.12}} per shirt at 12 pieces, {{tee.back1.24}} at 24, {{tee.back1.48}} at 48, {{tee.back1.72}} at 72 and {{tee.back1.144}} at 144, plus a {{screenSetup}} screen per color."
   - q: "What sizes can each spot be?"
-    a: "Full front or back up to about 12 by 14 inches, left or right chest up to 4 by 4, sleeves up to 3.5 by 3.5, back neck up to 3.5 by 2, and hat fronts up to 4.5 by 2.25 inches."
+    a: "Full front or back up to 14 by 16 inches, left or right chest up to 4 by 4, sleeves up to 3.5 by 3.5, back neck up to 3.5 by 2, and hat fronts up to 4.5 by 2.25 inches."
   - q: "How do I tell you where each design goes?"
     a: "List each spot in the quote form, or upload your art to {{agent}} and say where each piece goes. We place everything on your mockup for approval."
 updated: "2026-10-28"
@@ -25,8 +25,8 @@ updated: "2026-10-28"
 
 | Spot | Largest size | Common use |
 | --- | --- | --- |
-| Front | 12" × 14" | Main design |
-| Back | 12" × 14" | Big design, names, numbers, tour dates |
+| Front | Up to 14" × 16" | Main design |
+| Back | Up to 14" × 16" | Big design, names, numbers, tour dates |
 | Left chest | 4" × 4" | Logo, often embroidered |
 | Right chest | 4" × 4" | Second logo, name |
 | Left or right sleeve | 3.5" × 3.5" | Small logo, flag, website |

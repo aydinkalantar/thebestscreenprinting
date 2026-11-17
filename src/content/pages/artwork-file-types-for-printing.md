@@ -32,7 +32,7 @@ updated: "2026-10-27"
 
 ## A quick check before you send
 
-1. **Size it right.** A full front print is about 12 inches wide, so a 300 dpi PNG should be about 3,600 pixels wide.
+1. **Size it right.** A full front print is up to 14 inches wide, so a 300 dpi PNG should be about 4,200 pixels wide.
 2. **Use a transparent background.** Otherwise a white or colored box may print around your design.
 3. **List the ink colors.** For screen printing, tell us the colors or the Pantone numbers if you have them.
 4. **Outline your text.** Or send the fonts.
