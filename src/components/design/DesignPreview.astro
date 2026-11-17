@@ -4,7 +4,7 @@
 import { techniqueNames, recommendedMethod, type CatalogProduct } from '../../lib/catalog';
 import { spotsFor, placeConfigFor, applyPrintAreas, type Overrides, type PrintAreas } from './areas';
 import overrides from '../../../data/print-area-overrides.json';
-import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info, Eye } from '@lucide/astro';
+import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info, Eye, Plus } from '@lucide/astro';
 
 interface Props { p: CatalogProduct }
 const { p } = Astro.props;
@@ -49,6 +49,9 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
       </div>
     </div>
 
+    <!-- Phones: the color swatches sit right under the shirt (moved here from the order form). -->
+    <div data-phone-colors class="md:hidden mt-3 px-4"></div>
+
     <div class="mt-3 max-md:px-4">
       <p class="sr-only" id="design-loc-label">Print location</p>
       <div data-chips role="group" aria-labelledby="design-loc-label" class="flex gap-2 md:flex-wrap max-md:overflow-x-auto no-scrollbar max-md:-mx-4 max-md:px-4 py-0.5">
@@ -91,13 +94,15 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
             <button type="button" data-replace class={tool} aria-label="Replace artwork"><Replace class="w-4 h-4" aria-hidden="true" /><span class="max-sm:sr-only">Replace</span></button>
           </div>
           <div class="grid gap-3 sm:grid-cols-2">
-            <label class="label"><span>Decoration</span>
-              <select data-decoration class="field !h-10 max-md:!h-11">
+            <div class="label"><span>Print method</span>
+              <p class="flex flex-wrap items-baseline gap-x-1.5 text-[14px]"><b data-method-name class="font-semibold text-zinc-900 dark:text-white"></b><span data-method-why class="text-[12.5px] muted"></span><button type="button" data-method-change class="ml-1 text-[13px] font-semibold text-violet-700 dark:text-violet-300 underline">Change</button></p>
+              <select data-decoration hidden aria-label="Print method" class="field !h-10 max-md:!h-11">
                 {config.decorations.map((d) => <option value={d}>{d}</option>)}
               </select>
-            </label>
-            <label class="label"><span>Notes <small>(optional)</small></span>
-              <input data-notes class="field !h-10 max-md:!h-11" maxlength="300" placeholder="Ink/thread colors, PMS…" autocomplete="off" />
+              <button type="button" data-note-add class="justify-self-start inline-flex items-center gap-1 text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline"><Plus class="w-3.5 h-3.5" aria-hidden="true" />Add a note</button>
+            </div>
+            <label class="label" data-notes-wrap hidden><span>Notes <small>(optional)</small></span>
+              <input data-notes class="field !h-10 max-md:!h-11" maxlength="300" placeholder="Anything we should know?" autocomplete="off" />
             </label>
           </div>
           <div class="flex flex-wrap gap-2">

@@ -19,6 +19,9 @@ interface Art {
   /** Background on the uploaded file (src/lib/bg-remove.ts): removed (undo-able), kept, a solid color box
    *  we only offer to remove, or a photo/busy one we never cut. `original` and `cleaned` swap on undo/redo. */
   bg?: 'removed' | 'kept' | 'offer' | 'busy'; bgRgb?: [number, number, number]; original?: File; cleaned?: File;
+  /** The shop picked the method from the art (full color → the shop's full-color method): why, and the
+   *  methods that don't work for this art (never offered for it). */
+  auto?: { method: string; why: string; blocked: string[]; notes: Record<string, string> };
 }
 export interface Order {
   name: string; style: string; brand: string; color: string; cat: string; sub: string; url: string;
@@ -116,7 +119,13 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     names: qa('[data-loc-name]'), size: q('[data-loc-size]'), addLabel: q('[data-add-label]'),
     file: q('[data-file]'), readout: q('[data-readout]'),
     decoration: q<HTMLSelectElement>('[data-decoration]'), notes: q<HTMLInputElement>('[data-notes]'),
+    notesWrap: q('[data-notes-wrap]'), noteAdd: q<HTMLButtonElement>('[data-note-add]'),
+    methodName: q('[data-method-name]'), methodWhy: q('[data-method-why]'), methodChange: q<HTMLButtonElement>('[data-method-change]'),
   };
+  /** The print spot whose method list is open ("Change"); the method is a plain line otherwise. */
+  let pickFor = '';
+  /** The print spot whose notes field was opened. */
+  let noteFor = '';
 
   const arts = new Map<string, Art>();
   /** Photo analysis per photo URL (null: couldn't be measured), and the plain garment box for the template. */
@@ -436,19 +445,31 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       panel.file.textContent = a.kind === 'file' ? `${a.file.name} (preview not available, we'll use the file)` : a.file.name;
       panel.readout.textContent = describe(a);
       moved.hidden = !movedIn(sp);
-      // Only the decorations allowed on this location.
-      const allowed = allowedFor(sp.id);
-      [...panel.decoration.options].forEach((o) => { o.hidden = o.disabled = !allowed.includes(o.value); });
-      if (!allowed.includes(a.decoration)) a.decoration = allowed[0];
+      // Only the decorations allowed on this location, and that work for this art.
+      const ok = allowedFor(sp.id);
+      const allowed = ok.filter((m) => !a.auto?.blocked.includes(m));
+      const list = allowed.length ? allowed : ok;
+      [...panel.decoration.options].forEach((o) => { o.hidden = o.disabled = !list.includes(o.value); });
+      if (!list.includes(a.decoration)) a.decoration = list[0];
       panel.decoration.value = a.decoration;
+      // One line by default ("DTF · best for photos"); "Change" opens the list.
+      panel.methodName.textContent = a.decoration;
+      const why = a.auto ? (a.decoration === a.auto.method ? a.auto.why : a.auto.notes[a.decoration] || '') : '';
+      panel.methodWhy.textContent = why ? `· ${why}` : '';
+      panel.methodChange.hidden = list.length < 2 || pickFor === sp.id;
+      panel.decoration.hidden = pickFor !== sp.id;
       if (document.activeElement !== panel.notes) panel.notes.value = a.notes;
+      // Notes stay one tap away ("+ Note") until there is one.
+      const showNotes = !!a.notes || noteFor === sp.id;
+      panel.notesWrap.hidden = !showNotes;
+      panel.noteAdd.hidden = showNotes;
     }
     // The background line: what happened to it, and the one button that changes it.
     const bgText: Record<NonNullable<Art['bg']>, [string, string]> = {
       removed: ['We removed the white background so only your design prints.', 'Undo'],
       kept: ['Background kept: it prints as part of your design.', 'Remove background'],
       offer: ['Your design sits on a solid color box. Remove it so only the design prints?', 'Remove background'],
-      busy: ['This has a photo or busy background, which prints as a full rectangle. Want just the design? Add a note and our designer will cut it out for your proof.', ''],
+      busy: ['The photo background prints as a full rectangle. Want just the design? Say so in Notes.', ''],
     };
     const t = a?.bg ? bgText[a.bg] : null;
     bgLine.hidden = !t;
@@ -775,8 +796,10 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   });
   panel.decoration.addEventListener('change', () => {
     const a = arts.get(active);
-    if (a) { a.decoration = panel.decoration.value; renderSummary(); opts.onChange(); }
+    if (a) { a.decoration = panel.decoration.value; pickFor = ''; renderPanel(); renderSummary(); opts.onChange(); }
   });
+  panel.noteAdd.addEventListener('click', () => { noteFor = active; renderPanel(); panel.notes.focus(); });
+  panel.methodChange.addEventListener('click', () => { pickFor = active; renderPanel(); panel.decoration.focus(); });
   panel.notes.addEventListener('input', () => {
     const a = arts.get(active);
     if (a) a.notes = panel.notes.value.slice(0, 300);
@@ -1084,6 +1107,27 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     },
     /** The method new artwork starts with (the order form's method choice). */
     setMethod(m: string) { cfg.recommended = m; },
+    /**
+     * The shop picks a spot's method from its art (full-color art → the shop's full-color method,
+     * Settings › Art check): switches to it when allowed there, says why, and stops offering `blocked`.
+     * false when the spot has no art or can't take that method.
+     */
+    autoMethod(locId: string, method: string, why: string, blocked: string[], notes: Record<string, string> = {}) {
+      const a = arts.get(locId);
+      if (!a || !allowedFor(locId).includes(method)) return false;
+      const same = a.decoration === method && a.auto?.method === method && a.auto.why === why && a.auto.blocked.join() === blocked.join();
+      if (a.auto?.method === method && a.decoration !== method && !blocked.includes(a.decoration)) return true; // they changed it themselves
+      a.auto = { method, why, blocked, notes };
+      a.decoration = method;
+      if (same) return true;
+      if (pickFor === locId) pickFor = '';
+      renderPanel(); renderSummary(); opts.onChange();
+      return true;
+    },
+    /** The methods a spot offers (admin's list for it). */
+    methodsFor: (locId: string) => allowedFor(locId),
+    /** Spot id by its label ("Front"). */
+    spotId: (label: string) => spots.find((x) => x.label === label)?.id ?? '',
     /** Label of the selected print spot. */
     activeLabel: () => spotById.get(active)?.label ?? '',
     clearCarried() { pending = []; carriedNote = ''; renderPending(); },
