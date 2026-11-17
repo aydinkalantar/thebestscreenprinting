@@ -244,7 +244,6 @@ import { agent } from '../../lib/facts.mjs';
        "Add to cart" form above, so the minimum and the quote link stay in one place. -->
   <div data-pdp-bar class="md:hidden fixed inset-x-0 bottom-0 z-[60] border-t border-zinc-200/80 dark:border-white/10 bg-white/90 dark:bg-[#0a0a0f]/90 backdrop-blur-xl backdrop-saturate-150 pb-[env(safe-area-inset-bottom)]">
     <div class="px-4 h-[76px] flex items-center gap-2.5">
-      <button type="button" data-max-open aria-haspopup="dialog" aria-label={`Ask ${agent} about this product`} class="press max-orb relative w-11 h-11 shrink-0"><Sparkles class="w-5 h-5" aria-hidden="true" /></button>
       <button type="button" data-bar-sizes class="press min-w-0 flex-1 flex items-center gap-2.5 text-left" aria-label="Choose sizes and quantities">
         {p.colors.length > 0 && <span data-bar-swatch class="w-8 h-8 max-[399px]:hidden rounded-full shrink-0 border border-zinc-300 dark:border-white/20" style={`background:${p.colors[0].hex}`} aria-hidden="true"></span>}
         <span class="min-w-0 leading-tight">
@@ -252,11 +251,15 @@ import { agent } from '../../lib/facts.mjs';
           <span class="block mt-0.5 text-[12.5px] muted truncate" data-bar-line><b data-bar-total class="text-zinc-900 dark:text-white">0</b> pieces · min <span data-bar-min>{startMin}</span></span>
         </span>
       </button>
-      <button type="submit" form="add-to-quote" data-bar-submit class="btn-primary h-12 px-3.5 text-[14px] shrink-0 disabled:opacity-50 disabled:shadow-none aria-busy:cursor-wait" disabled>
-        <ShoppingBag class="w-4 h-4" aria-hidden="true" /><span data-bar-submit-label>Add to cart</span>
+      <button type="submit" form="add-to-quote" data-bar-submit class="btn-primary w-12 h-12 !px-0 justify-center shrink-0 disabled:opacity-50 disabled:shadow-none aria-busy:cursor-wait" disabled>
+        <ShoppingBag class="w-5 h-5" aria-hidden="true" /><span data-bar-submit-label class="sr-only">Add to cart</span>
       </button>
       <button type="button" data-bar-order hidden class="btn-primary h-12 px-3.5 text-[14px] shrink-0">Order &amp; pay</button>
     </div>
+  </div>
+  <!-- Phones: the agent's orb floats above the bar (like the home page orb), so the bar is only for buying. -->
+  <div class="md:hidden">
+    <button type="button" data-max-open aria-haspopup="dialog" aria-label={`Ask ${agent} about this product`} class="press max-orb fixed right-4 bottom-[calc(76px+env(safe-area-inset-bottom)+14px)] z-[61] w-[54px] h-[54px] outline outline-4 outline-white dark:outline-[#0a0a0f]"><Sparkles class="w-6 h-6" aria-hidden="true" /></button>
   </div>
 
   <div class="md:hidden h-24" aria-hidden="true"></div>
@@ -1003,18 +1006,15 @@ import { agent } from '../../lib/facts.mjs';
     if (it.stockShort.length) ip('stock').textContent = `Low stock: ${it.stockShort.map((s) => `${s.size} (${s.stock} left)`).join(', ')}. We'll confirm a replacement before printing.`;
   }
 
-  // Phone bar: the price and "Order & pay" once there is one; otherwise pieces and "Add to cart".
+  // Phone bar: the price and "Order & pay" once there is one; otherwise pieces. The cart button is its bag icon.
   const barLine = document.querySelector<HTMLElement>('[data-bar-line]');
   const barOrder = document.querySelector<HTMLButtonElement>('[data-bar-order]');
-  const barAddLabel = document.querySelector<HTMLElement>('[data-bar-submit-label]');
   const barPiecesHtml = barLine?.innerHTML ?? '';
   function barPrice(text: string, sub = '') {
     if (!barLine) return;
     if (text) { if (barColor) barColor.textContent = text; barLine.textContent = sub; }
     else { if (barColor) barColor.textContent = color; barLine.innerHTML = barPiecesHtml; const t = barLine.querySelector('[data-bar-total]'); if (t) t.textContent = String(sum()); const m = barLine.querySelector('[data-bar-min]'); if (m) m.textContent = String(min); }
     if (barOrder) barOrder.hidden = !text;
-    // With "Order & pay" next to it, the cart button shrinks to its icon.
-    barAddLabel?.classList.toggle('sr-only', !!text);
   }
   barOrder?.addEventListener('click', () => orderBtn.click());
 
