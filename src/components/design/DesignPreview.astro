@@ -159,9 +159,11 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
   @media (max-width: 767px) { [data-design] { --stage-h: 58svh; } }
   [data-design] .d-area { position: absolute; pointer-events: none; z-index: 1; }
   [data-design] .d-area.is-active { z-index: 2; }
-  [data-design] .d-area.is-active { outline: calc(1.5px / var(--z)) dashed rgb(139 92 246); outline-offset: 0; background: rgba(139, 92, 246, .06); }
-  [data-design] .d-area.is-active.has-art { background: transparent; outline-color: color-mix(in srgb, rgb(124 58 237) 35%, transparent); }
-  [data-design] [data-stage].is-dragging .d-area.is-active.has-art { outline-color: rgb(124 58 237); }
+  @property --frame { syntax: '<color>'; inherits: true; initial-value: transparent; }
+  [data-design] .d-area.is-active::before { content: ''; position: absolute; inset: 0; pointer-events: none; --t: calc(1.5px / var(--z)); background: repeating-linear-gradient(90deg, var(--frame) 0 calc(6px / var(--z)), transparent 0 calc(10px / var(--z))) top left / 100% var(--t) no-repeat, repeating-linear-gradient(90deg, var(--frame) 0 calc(6px / var(--z)), transparent 0 calc(10px / var(--z))) bottom left / 100% var(--t) no-repeat, repeating-linear-gradient(180deg, var(--frame) 0 calc(6px / var(--z)), transparent 0 calc(10px / var(--z))) top left / var(--t) 100% no-repeat, repeating-linear-gradient(180deg, var(--frame) 0 calc(6px / var(--z)), transparent 0 calc(10px / var(--z))) top right / var(--t) 100% no-repeat; }
+  [data-design] .d-area.is-active { --frame: rgb(139 92 246); background: rgba(139, 92, 246, .06); }
+  [data-design] .d-area.is-active.has-art { background: transparent; --frame: color-mix(in srgb, rgb(124 58 237) 35%, transparent); }
+  [data-design] [data-stage].is-dragging .d-area.is-active.has-art { --frame: rgb(124 58 237); }
   [data-design] .d-area.is-centered::after { content: ''; position: absolute; top: -6%; bottom: -6%; left: 50%; width: calc(1px / var(--z)); background: rgb(124 58 237); pointer-events: none; }
   [data-design] .d-area-label { position: absolute; left: 0; bottom: 100%; margin-bottom: 3px; white-space: nowrap; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: rgb(124 58 237); background: rgba(255,255,255,.88); padding: 1px 5px; border-radius: 4px; pointer-events: none; }
   .dark [data-design] .d-area-label { background: rgba(10,10,15,.8); color: rgb(196 181 253); }
@@ -175,14 +177,14 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
   [data-design] .d-ph span { font-size: clamp(6px, 11cqmin, 11px); font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   /* Guides step back so the artwork reads as it will print: on hover-capable screens they show
      only while the pointer is on the garment (or something in it has focus); "Preview" hides them everywhere. */
-  [data-design] .d-area, [data-design] .d-area-label, [data-design] .d-handle, [data-design] .d-art { transition: outline-color .2s, background-color .2s, opacity .2s, box-shadow .2s; }
+  [data-design] .d-area, [data-design] .d-area-label, [data-design] .d-handle, [data-design] .d-art { transition: --frame .2s, outline-color .2s, background-color .2s, opacity .2s, box-shadow .2s; }
   @media (hover: hover) {
-    [data-design] [data-stage]:not(:hover):not(:focus-within):not(.is-drop) .d-area.has-art { outline-color: transparent; background: transparent; }
+    [data-design] [data-stage]:not(:hover):not(:focus-within):not(.is-drop) .d-area.has-art { --frame: transparent; background: transparent; }
     [data-design] [data-stage]:not(:hover):not(:focus-within):not(.is-drop) .d-area.has-art .d-area-label,
     [data-design] [data-stage]:not(:hover):not(:focus-within):not(.is-drop) .d-handle { opacity: 0; }
     [data-design] [data-stage]:not(:hover):not(:focus-within):not(.is-drop) .d-art.is-active { box-shadow: none; }
   }
-  [data-design] [data-stage].is-clean .d-area { outline-color: transparent !important; background: transparent !important; }
+  [data-design] [data-stage].is-clean .d-area { --frame: transparent !important; background: transparent !important; }
   [data-design] [data-stage].is-clean .d-area-label, [data-design] [data-stage].is-clean .d-handle, [data-design] [data-stage].is-clean .d-drop { opacity: 0 !important; pointer-events: none; }
   [data-design] [data-stage].is-clean .d-art { box-shadow: none !important; }
   [data-design] [data-stage].is-clean [data-art-tools] { display: none; }
