@@ -154,6 +154,8 @@ html.sheet-lock body { position: fixed; left: 0; right: 0; overflow: hidden; }
   html.hdr-hidden { --hdr-offset: 0px; }
   body { padding-bottom: var(--tabbar-h); }
   /* Product pages swap the tab bar for their own action bar. */
+  /* Product pages never slide sideways: anything a little too wide is cut, not scrolled. */
+  html:has([data-pdp-bar]), body:has([data-pdp-bar]) { overflow-x: clip; }
   body:has([data-pdp-bar]) { --tabbar-h: 0px; --orb-rise: 0px; padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
   body:has([data-pdp-bar]) [data-tabbar] { display: none; }
 
