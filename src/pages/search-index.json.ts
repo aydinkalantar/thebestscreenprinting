@@ -20,6 +20,7 @@ const SYNONYMS: Record<string, string> = {
   'sweatpants-shorts': 'sweatpants joggers shorts pants',
   jackets: 'jacket outerwear coat',
   bags: 'bag tote totes accessories',
+  towels: 'towel towels rally golf beach hand fingertip velour terry',
   womens: 'women ladies',
   kids: 'kid youth toddler child children',
 };
@@ -29,7 +30,7 @@ const GARMENT: Record<string, string> = {
   't-shirts': 't-shirts', 'long-sleeves': 'long-sleeves', hoodies: 'hoodies', 'zip-hoodies': 'hoodies', crewnecks: 'crewnecks',
   polos: 'polos', 'trucker-hats': 'hats', snapbacks: 'hats', 'dad-hats': 'hats', 'fitted-hats': 'hats', beanies: 'beanies',
   'tank-tops': 'tank-tops', 'crop-tops': 'tank-tops', sweatpants: 'sweatpants-shorts', shorts: 'sweatpants-shorts',
-  jackets: 'jackets', totes: 'bags',
+  jackets: 'jackets', totes: 'bags', towels: 'towels',
 };
 const photo = (url?: string) => /\/Images\/Color\/(\d+)_f_fl\.jpg$/.exec(url ?? '')?.[1] ?? url ?? '';
 

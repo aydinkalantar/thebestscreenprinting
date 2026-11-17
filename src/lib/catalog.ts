@@ -44,7 +44,8 @@ export const COLLECTIONS: { slug: string; label: string; match: (p: CatalogProdu
   { slug: 'tank-tops', label: 'Tank tops', match: (p) => ['tank-tops', 'crop-tops'].includes(p.subcategory ?? '') },
   { slug: 'sweatpants-shorts', label: 'Sweatpants & shorts', match: (p) => p.category === 'pants' },
   { slug: 'jackets', label: 'Jackets', match: (p) => p.category === 'outerwear' },
-  { slug: 'bags', label: 'Bags & totes', match: (p) => p.category === 'accessories' },
+  { slug: 'bags', label: 'Bags & totes', match: (p) => p.category === 'accessories' && p.subcategory !== 'towels' },
+  { slug: 'towels', label: 'Towels', match: (p) => p.subcategory === 'towels' },
   { slug: 'womens', label: "Women's", match: (p) => p.category === 'womens' },
   { slug: 'kids', label: 'Kids & youth', match: (p) => p.category === 'kids' },
 ];
@@ -62,15 +63,15 @@ export const featuredProducts = products.filter((p) => p.featured);
 
 /**
  * The print method we suggest first for a product, with a one-line reason shown under it.
- * Thread for hats, polos, jackets and beanies (premium, no heat on technical fabrics); ink for the rest.
+ * Thread for hats, polos, jackets, beanies and towels (premium, no heat on technical fabrics); ink for the rest.
  */
 export function recommendedMethod(p: Pick<CatalogProduct, 'category' | 'subcategory'>, methods: string[]): { method: string; why: string } | null {
   if (!methods.length) return null;
   const has = (m: string) => methods.find((x) => x.toLowerCase().startsWith(m));
   const sub = p.subcategory ?? '';
-  const thread = p.category === 'hats' || ['polos', 'beanies', 'jackets'].includes(sub) || p.category === 'outerwear';
+  const thread = p.category === 'hats' || ['polos', 'beanies', 'jackets', 'towels'].includes(sub) || p.category === 'outerwear';
   if (thread && has('embroider')) {
-    const why = p.category === 'hats' || sub === 'beanies' ? 'Stitched logos look sharp and last on hats.' : sub === 'polos' ? 'Clean thread and no heat on performance fabric.' : 'A premium stitched look that lasts.';
+    const why = p.category === 'hats' || sub === 'beanies' ? 'Stitched logos look sharp and last on hats.' : sub === 'polos' ? 'Clean thread and no heat on performance fabric.' : sub === 'towels' ? 'Stitched logos hold up wash after wash.' : 'A premium stitched look that lasts.';
     return { method: has('embroider')!, why };
   }
   if (has('screen')) return { method: has('screen')!, why: 'Bold, long-lasting ink and the best price per piece.' };

@@ -118,6 +118,7 @@ export const TYPE_WORDS: Record<string, string[]> = {
   'sweatpants-shorts': ['sweatpants', 'joggers', 'jogger', 'pants', 'shorts', 'sweats'],
   jackets: ['jacket', 'jackets', 'windbreaker', 'coat', 'outerwear', 'vest'],
   bags: ['bag', 'bags', 'tote', 'totes', 'tote bag', 'backpack', 'drawstring'],
+  towels: ['towel', 'towels', 'rally towel', 'golf towel', 'beach towel', 'hand towel', 'washcloth'],
   womens: ['women', 'womens', 'ladies', 'woman'],
   kids: ['kid', 'kids', 'youth', 'toddler', 'child', 'children', 'infant', 'baby'],
 };
@@ -277,7 +278,7 @@ export function searchProducts(items: SearchProduct[], q: Query): Match[] {
 export function describe(q: Query): { kind: 'color' | 'shade' | 'brand' | 'type' | 'fabric' | 'word'; id: string; label: string }[] {
   const typeLabel: Record<string, string> = {
     't-shirts': 'T-shirts', 'long-sleeves': 'Long sleeves', hoodies: 'Hoodies', crewnecks: 'Crewnecks', polos: 'Polos', hats: 'Hats',
-    beanies: 'Beanies', 'tank-tops': 'Tank tops', 'sweatpants-shorts': 'Sweatpants & shorts', jackets: 'Jackets', bags: 'Bags & totes',
+    beanies: 'Beanies', 'tank-tops': 'Tank tops', 'sweatpants-shorts': 'Sweatpants & shorts', jackets: 'Jackets', bags: 'Bags & totes', towels: 'Towels',
     womens: "Women's", kids: 'Kids & youth',
   };
   const cap = (s: string) => s.replace(/\b\w/g, (c) => c.toUpperCase());
