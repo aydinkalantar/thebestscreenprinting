@@ -160,6 +160,9 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
   [data-design] .d-area { position: absolute; pointer-events: none; z-index: 1; }
   [data-design] .d-area.is-active { z-index: 2; }
   [data-design] .d-area.is-active { outline: calc(1.5px / var(--z)) dashed rgb(139 92 246); outline-offset: 0; background: rgba(139, 92, 246, .06); }
+  [data-design] .d-area.is-active.has-art { background: transparent; outline-color: color-mix(in srgb, rgb(124 58 237) 35%, transparent); }
+  [data-design] [data-stage].is-dragging .d-area.is-active.has-art { outline-color: rgb(124 58 237); }
+  [data-design] .d-area.is-centered::after { content: ''; position: absolute; top: -6%; bottom: -6%; left: 50%; width: calc(1px / var(--z)); background: rgb(124 58 237); pointer-events: none; }
   [data-design] .d-area-label { position: absolute; left: 0; bottom: 100%; margin-bottom: 3px; white-space: nowrap; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: rgb(124 58 237); background: rgba(255,255,255,.88); padding: 1px 5px; border-radius: 4px; pointer-events: none; }
   .dark [data-design] .d-area-label { background: rgba(10,10,15,.8); color: rgb(196 181 253); }
   [data-design] .d-art { position: absolute; pointer-events: auto; touch-action: none; cursor: grab; outline: none; }
@@ -184,7 +187,7 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
   [data-design] [data-stage].is-clean .d-art { box-shadow: none !important; }
   [data-design] [data-stage].is-clean [data-art-tools] { display: none; }
   /* The shirt takes sideways swipes itself (front/back); the page only scrolls up and down. */
-  [data-design] [data-stage] { touch-action: pan-y pinch-zoom; }
+  [data-design] [data-stage] { touch-action: pan-y; }
   [data-design] .d-dot { width: 7px; height: 7px; border-radius: 9999px; background: rgb(0 0 0 / .22); transition: background .2s, width .2s; }
   [data-design] .d-dot.is-on { width: 18px; background: rgb(124 58 237); }
   [data-design] [data-stage-note]:not([hidden]) ~ [data-art-tools] { bottom: 3.25rem; }
@@ -198,12 +201,12 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
   @container (max-width: 90px) { [data-design] .d-drop b { display: none; } }
   .dark [data-design] .d-drop b, .dark [data-design] .d-drop span { background: rgba(10,10,15,.75); color: rgb(221 214 254); }
   [data-design] [data-stage].is-drop { outline: 2px dashed rgb(124 58 237); outline-offset: -2px; }
-  [data-design] .d-handle { position: absolute; right: -11px; bottom: -11px; width: 22px; height: 22px; border-radius: 9999px; background: rgb(124 58 237); border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.3); cursor: nwse-resize; touch-action: none; }
-  /* Bigger hit area, grown outward so it never covers the artwork itself (that would block moving it). */
-  [data-design] .d-handle::before { content: ''; position: absolute; inset: -2px -14px -14px -2px; }
-  @media (pointer: coarse) { [data-design] .d-handle { width: 28px; height: 28px; right: -14px; bottom: -14px; } }
-  [data-design] .d-art.is-tiny .d-handle { right: -26px; bottom: -26px; }
-  [data-design] .d-art.is-tiny .d-handle::before { inset: -10px; }
+  [data-design] .d-handle { position: absolute; right: -9px; bottom: -9px; width: 18px; height: 18px; border-radius: 9999px; background: #fff; border: 2px solid rgb(124 58 237); box-shadow: 0 1px 4px rgba(0,0,0,.25); cursor: nwse-resize; touch-action: none; }
+  /* Bigger hit area (44px on phones), grown outward so it never covers the artwork itself. */
+  [data-design] .d-handle::before { content: ''; position: absolute; inset: -4px -16px -16px -4px; }
+  @media (pointer: coarse) { [data-design] .d-handle { width: 20px; height: 20px; right: -10px; bottom: -10px; } [data-design] .d-handle::before { inset: -6px -20px -20px -6px; } }
+  [data-design] .d-art.is-tiny .d-handle { right: -22px; bottom: -22px; }
+  [data-design] .d-art.is-tiny .d-handle::before { inset: -12px; }
   /* Handles and labels stay the same size when the stage zooms in. */
   [data-design] [data-zoomer] { --z: 1; }
   [data-design] .d-handle, [data-design] .d-area-label { transform: scale(calc(1 / var(--z))); }
