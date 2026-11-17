@@ -38,6 +38,12 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
     </div>
 
     <div class="relative mx-auto" data-stage-wrap style="width:min(100%, calc(var(--stage-h) * 0.8))">
+      <!-- Preview, side dots and zoom: a row above the shirt on phones (lined up with the page text), on the photo corners on desktop. -->
+      <div data-stage-bar class="grid grid-cols-[1fr_auto_1fr] items-center max-md:w-screen max-md:ml-[calc(50%-50vw)] max-md:px-4 max-md:pb-3 md:absolute md:inset-x-2 md:top-2 md:z-10 md:pointer-events-none">
+        <button type="button" data-clean aria-pressed="false" class="justify-self-start md:pointer-events-auto inline-grid place-items-center w-10 h-10 rounded-full border border-zinc-200 dark:border-white/10 bg-white/90 dark:bg-black/60 backdrop-blur text-[13px] font-semibold text-zinc-800 dark:text-zinc-100 hover:border-violet-300 aria-pressed:bg-violet-600 aria-pressed:text-white aria-pressed:border-violet-600" title="Show the product without guides"><Eye class="w-[18px] h-[18px]" aria-hidden="true" /><span data-clean-label class="sr-only">Preview</span></button>
+        <div data-side-dots hidden aria-hidden="true" class="justify-self-center flex gap-1.5 pointer-events-none"><span data-dot-side="front" class="d-dot"></span><span data-dot-side="back" class="d-dot"></span></div>
+        <button type="button" data-zoom hidden class="justify-self-end md:pointer-events-auto icon-btn w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 backdrop-blur" aria-pressed="false" aria-label="Zoom in on the print area"><ZoomIn data-zoom-in class="w-[18px] h-[18px]" aria-hidden="true" /><ZoomOut data-zoom-out class="hidden w-[18px] h-[18px]" aria-hidden="true" /></button>
+      </div>
       <div id="design-stage" role="tabpanel" aria-label="Garment preview" data-stage
         class="relative w-full overflow-hidden bg-zinc-50 dark:bg-white/[0.04] md:rounded-xl select-none" style="aspect-ratio:4/5">
         <div data-zoomer class="absolute inset-0 origin-top-left transition-transform duration-300 ease-out">
@@ -45,15 +51,12 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
           <div data-layer class="absolute inset-0"></div>
         </div>
         <p data-stage-note hidden class="absolute left-2 right-2 bottom-2 rounded-lg bg-white/90 dark:bg-black/70 px-2.5 py-1.5 text-[12px] font-medium text-zinc-700 dark:text-zinc-200 text-center"></p>
-        <button type="button" data-clean aria-pressed="false" class="absolute left-2 top-2 inline-flex items-center gap-1.5 h-10 px-3.5 rounded-full border border-zinc-200 dark:border-white/10 bg-white/90 dark:bg-black/60 backdrop-blur text-[13px] font-semibold text-zinc-800 dark:text-zinc-100 hover:border-violet-300 aria-pressed:bg-violet-600 aria-pressed:text-white aria-pressed:border-violet-600" title="Show the product without guides"><Eye class="w-4 h-4" aria-hidden="true" /><span data-clean-label>Preview</span></button>
         <!-- Selected art: its tools sit on the preview, next to it. -->
         <div data-art-tools hidden role="toolbar" aria-label="Artwork tools" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 shadow-sm p-0.5 rounded-full border border-zinc-200 dark:border-white/10 bg-white/90 dark:bg-black/60 backdrop-blur">
           <button type="button" data-center class="inline-grid place-items-center w-10 h-10 rounded-full text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10" title="Center" aria-label="Center the artwork"><Crosshair class="w-[18px] h-[18px]" aria-hidden="true" /></button>
           <button type="button" data-reset class="inline-grid place-items-center w-10 h-10 rounded-full text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10" title="Reset size and position" aria-label="Reset size and position"><RotateCcw class="w-[18px] h-[18px]" aria-hidden="true" /></button>
           <button type="button" data-remove class="inline-grid place-items-center w-10 h-10 rounded-full text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10 !text-red-600 dark:!text-red-400" title="Remove" aria-label="Remove the artwork"><Trash2 class="w-[18px] h-[18px]" aria-hidden="true" /></button>
         </div>
-        <div data-side-dots hidden aria-hidden="true" class="absolute top-4 left-1/2 -translate-x-1/2 flex gap-1.5 pointer-events-none"><span data-dot-side="front" class="d-dot"></span><span data-dot-side="back" class="d-dot"></span></div>
-        <button type="button" data-zoom hidden class="absolute right-2 top-2 icon-btn w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 backdrop-blur" aria-pressed="false" aria-label="Zoom in on the print area"><ZoomIn data-zoom-in class="w-[18px] h-[18px]" aria-hidden="true" /><ZoomOut data-zoom-out class="hidden w-[18px] h-[18px]" aria-hidden="true" /></button>
       </div>
     </div>
 
