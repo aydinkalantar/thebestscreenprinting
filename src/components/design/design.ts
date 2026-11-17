@@ -15,6 +15,8 @@ interface Art {
   aspect: number;
   /** Position and width as fractions of the print area. */
   x: number; y: number; w: number;
+  /** The customer moved or resized it. Until then it stays fitted (full width, centered, top) when the area changes. */
+  moved?: boolean;
   decoration: string; notes: string; el?: HTMLElement;
   /** Background on the uploaded file (src/lib/bg-remove.ts): removed (undo-able), kept, a solid color box
    *  we only offer to remove, or a photo/busy one we never cut. `original` and `cleaned` swap on undo/redo. */
@@ -335,8 +337,10 @@ export function mountDesign(root: HTMLElement, opts: Options) {
 
   /** Keeps artwork inside its print area after the area changes (other color photo, photo measured). */
   function keepInside(a: Art) {
+    if (!a.moved) { fit(a); return; }
+    const cx = a.x + a.w / 2;
     a.w = Math.min(a.w, maxW(a, 0, 0));
-    a.x = clamp(a.x, 0, Math.max(0, 1 - a.w));
+    a.x = clamp(cx - a.w / 2, 0, Math.max(0, 1 - a.w));
     a.y = clamp(a.y, 0, Math.max(0, 1 - artH(a)));
   }
 
@@ -391,8 +395,11 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     zoomBtn.querySelector('[data-zoom-out]')?.classList.toggle('hidden', !zoomed);
     if (!zoomed || !r) { zoomer.style.transform = ''; zoomer.style.setProperty('--z', '1'); return; }
     const s = clamp(0.6 / r.w, 1, 3.2);
-    const tx = clamp(0.5 - (r.x + r.w / 2) * s, 1 - s, 0);
-    const ty = clamp(0.5 - (r.y + r.h / 2) * s, 1 - s, 0);
+    const za = arts.get(active);
+    const cx = za ? r.x + (za.x + za.w / 2) * r.w : r.x + r.w / 2;
+    const cy = za ? r.y + (za.y + artH(za) / 2) * r.h : r.y + r.h / 2;
+    const tx = clamp(0.5 - cx * s, 1 - s, 0);
+    const ty = clamp(0.5 - cy * s, 1 - s, 0);
     zoomer.style.transform = `translate(${tx * 100}%, ${ty * 100}%) scale(${s})`;
     zoomer.style.setProperty('--z', String(s));
   }
@@ -633,6 +640,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     const r = el.parentElement!.getBoundingClientRect();
     drag = { a, mode: target.closest('[data-handle]') ? 'resize' : 'move', id: e.pointerId, px: e.clientX, py: e.clientY, x: a.x, y: a.y, r, L: layer.getBoundingClientRect(), A0: areaRect(spotById.get(a.loc)!, photoFor(side)) };
     el.setPointerCapture(e.pointerId);
+    stage.classList.add('is-dragging');
   });
   layer.addEventListener('pointermove', (e) => {
     if (!drag || e.pointerId !== drag.id) return;
@@ -656,21 +664,64 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       a.x = clamp((ax - R.x) / R.w, 0, maxX);
       a.y = clamp((ay - R.y) / R.h, 0, maxY);
       // Within a quarter inch of the middle, it snaps to centered (where most logos go).
-      if (Math.abs((a.x + a.w / 2 - 0.5) * dims(sp).wIn) < 0.25) a.x = clamp((1 - a.w) / 2, 0, maxX);
+      const snapped = Math.abs((a.x + a.w / 2 - 0.5) * dims(sp).wIn) < 0.25;
+      if (snapped) a.x = clamp((1 - a.w) / 2, 0, maxX);
       const areaEl = a.el?.parentElement;
-      if (areaEl) Object.assign(areaEl.style, { left: `${R.x * 100}%`, top: `${R.y * 100}%` });
+      if (areaEl) { Object.assign(areaEl.style, { left: `${R.x * 100}%`, top: `${R.y * 100}%` }); areaEl.classList.toggle('is-centered', snapped); }
     } else {
       const fromX = (e.clientX - r.left) / r.width - a.x;
       const fromY = ((e.clientY - r.top) / r.height - a.y) / ratio(a, sp);
       a.w = clamp(Math.max(fromX, fromY), Math.min(minW(sp), maxW(a)), maxW(a));
     }
+    a.moved = true;
     placeArt(a);
     panel.readout.textContent = describe(a);
   });
+  // Two fingers on the shirt: pinch the selected artwork bigger or smaller (like photos).
+  const fingers = new Map<number, { x: number; y: number }>();
+  let pinch: null | { a: Art; d0: number; w0: number; cx: number; cy: number } = null;
+  const spread = () => { const [p, q2] = [...fingers.values()]; return Math.hypot(p.x - q2.x, p.y - q2.y) || 1; };
+  stage.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'touch') return;
+    fingers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const a = arts.get(active);
+    if (fingers.size !== 2 || !a || spotById.get(a.loc)!.side !== side) return;
+    pinch = { a, d0: spread(), w0: a.w, cx: a.x + a.w / 2, cy: a.y + artH(a) / 2 };
+    drag = null;
+    stage.classList.add('is-dragging');
+  }, true);
+  stage.addEventListener('pointermove', (e) => {
+    if (!fingers.has(e.pointerId)) return;
+    fingers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (!pinch || fingers.size < 2) return;
+    const { a } = pinch;
+    const sp = spotById.get(a.loc)!;
+    const r = ratio(a, sp);
+    a.w = clamp(pinch.w0 * (spread() / pinch.d0), minW(sp), Math.min(1, 1 / r));
+    a.x = clamp(pinch.cx - a.w / 2, 0, 1 - a.w);
+    a.y = clamp(pinch.cy - (a.w * r) / 2, 0, Math.max(0, 1 - a.w * r));
+    a.moved = true;
+    placeArt(a);
+    panel.readout.textContent = describe(a);
+  });
+  const liftFinger = (e: PointerEvent) => {
+    if (!fingers.delete(e.pointerId) || !pinch || fingers.size >= 2) return;
+    const a = pinch.a;
+    pinch = null;
+    stage.classList.remove('is-dragging');
+    renderPanel();
+    renderSummary();
+    announce(`${spotById.get(a.loc)!.label} artwork ${sizeText(a)}.`);
+  };
+  stage.addEventListener('pointerup', liftFinger);
+  stage.addEventListener('pointercancel', liftFinger);
+
   const endDrag = (e: PointerEvent) => {
     if (!drag || e.pointerId !== drag.id) return;
     const a = drag.a;
     drag = null;
+    stage.classList.remove('is-dragging');
+    a.el?.parentElement?.classList.remove('is-centered');
     renderPanel();
     renderSummary();
     announce(`${spotById.get(a.loc)!.label} artwork ${sizeText(a)}.`);
@@ -698,6 +749,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       a.y = clamp(cy - (w * r) / 2, 0, Math.max(0, 1 - w * r));
     } else return;
     e.preventDefault();
+    a.moved = true;
     if (active !== a.loc) { active = a.loc; render(); el!.focus(); }
     placeArt(a);
     renderPanel();
@@ -813,6 +865,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   q('[data-reset]').addEventListener('click', () => {
     const a = arts.get(active);
     if (!a) return;
+    a.moved = false;
     fit(a);
     render();
     announce(`Reset. ${describe(a)}`);
@@ -1161,11 +1214,13 @@ export function mountDesign(root: HTMLElement, opts: Options) {
         if (dec) a.decoration = dec;
         a.notes = src.notes ?? '';
         if (sp.id === src.locId && src.w > 0) {
+          a.moved = true;
           a.w = clamp(src.w, Math.min(minW(sp), maxW(a, 0, 0)), maxW(a, 0, 0));
           a.x = clamp(src.x, 0, 1 - a.w);
           a.y = clamp(src.y, 0, Math.max(0, 1 - artH(a)));
         } else if (src.widthIn && src.widthIn > 0) {
           // A size in inches (Max's placements): that width, centered, from the top of the area.
+          a.moved = true;
           a.w = clamp(src.widthIn / dims(sp).wIn, Math.min(minW(sp), maxW(a, 0, 0)), maxW(a, 0, 0));
           a.x = (1 - a.w) / 2;
         }
