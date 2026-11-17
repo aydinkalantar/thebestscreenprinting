@@ -14,7 +14,7 @@ const BRANDS = ['Gildan', 'BELLA + CANVAS', 'Comfort Colors', 'Next Level', 'Ind
   'American Apparel', 'Shaka Wear', 'Los Angeles Apparel', 'Lane Seven', 'Richardson', 'YP Classics', 'Flexfit', 'Sportsman', 'Atlantis Headwear',
   'Valucap', 'Big Accessories', 'Adidas', 'Under Armour', 'Columbia', 'Puma Golf', 'Harriton', 'CORE365', 'Devon & Jones', 'Team 365',
   'Augusta Sportswear', 'Badger', 'Russell Athletic', 'Holloway', 'Boxercraft', 'J. America', 'Rabbit Skins', 'Live & Tell by LAT', 'Tultex',
-  'Threadfast Apparel', 'econscious', 'MV Sport', 'Alternative', 'Liberty Bags', 'Q-Tees', 'BAGedge', 'North End', 'DRI DUCK', 'Burnside', 'C2 Sport'];
+  'Threadfast Apparel', 'econscious', 'MV Sport', 'Alternative', 'Liberty Bags', 'Q-Tees', 'Carmel Towel Company', 'BAGedge', 'North End', 'DRI DUCK', 'Burnside', 'C2 Sport'];
 const rank = new Map(BRANDS.map((b, i) => [b.toLowerCase(), i]));
 
 const T = ['SCREEN', 'DTG', 'DTF', 'HTV'], F = ['SCREEN', 'DTF', 'EMBROIDERY', 'HTV'], H = ['EMBROIDERY'], P = ['EMBROIDERY', 'SCREEN', 'DTF'], B = ['SCREEN', 'DTF'], O = ['EMBROIDERY', 'SCREEN', 'DTF'];
@@ -37,13 +37,15 @@ function classify(s) {
     const sub = has(t, /beanie|knit|cuffed/) ? 'beanies' : has(t, /trucker|mesh/) ? 'trucker-hats' : has(t, /dad|unstructured|garment-washed|relaxed/) ? 'dad-hats' : has(t, /flexfit|fitted/) ? 'fitted-hats' : 'snapbacks';
     return { category: 'hats', subcategory: sub, techniques: H };
   }
+  // Towels (S&S files them under Accessories). Sublimation-only blanks are left out: we don't sublimate.
+  if (has(t, /\btowels?\b/) && !has(t, /sublimation/)) return { category: 'accessories', subcategory: 'towels', techniques: ['EMBROIDERY', 'SCREEN', 'DTF'] };
   if (base === 'Bags') return has(t, /tote|bag|backpack|drawstring|duffel|sack|pack/) ? { category: 'accessories', subcategory: 'totes', techniques: B } : null;
   if (base === 'Bottoms') return kid || has(t, /skirt|legging|scrub|cargo work|work pant/) ? null : { category: 'pants', subcategory: has(t, /short/) ? 'shorts' : 'sweatpants', techniques: O };
   if (base === 'Outerwear') return kid ? null : { category: 'outerwear', subcategory: 'jackets', techniques: O };
   return null;
 }
 const QUOTA = { 'apparel/t-shirts': 70, 'apparel/long-sleeves': 30, 'apparel/tank-tops': 15, 'apparel/polos': 40, 'sweatshirts/hoodies': 50, 'sweatshirts/zip-hoodies': 15,
-  'sweatshirts/crewnecks': 30, 'hats/trucker-hats': 20, 'hats/dad-hats': 15, 'hats/snapbacks': 15, 'hats/fitted-hats': 6, 'hats/beanies': 15, 'accessories/totes': 25,
+  'sweatshirts/crewnecks': 30, 'hats/trucker-hats': 20, 'hats/dad-hats': 15, 'hats/snapbacks': 15, 'hats/fitted-hats': 6, 'hats/beanies': 15, 'accessories/totes': 25, 'accessories/towels': 12,
   'pants/sweatpants': 15, 'pants/shorts': 10, 'outerwear/jackets': 30, 'womens/t-shirts': 20, 'womens/tank-tops': 6, 'womens/crop-tops': 4, 'womens/hoodies': 8,
   'womens/polos': 8, 'kids/t-shirts': 15, 'kids/hoodies': 10, 'kids/tank-tops': 2 };
 
