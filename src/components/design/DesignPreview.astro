@@ -4,7 +4,7 @@
 import { techniqueNames, recommendedMethod, type CatalogProduct } from '../../lib/catalog';
 import { spotsFor, placeConfigFor, applyPrintAreas, type Overrides, type PrintAreas } from './areas';
 import overrides from '../../../data/print-area-overrides.json';
-import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info, Eye } from '@lucide/astro';
+import { Upload, Crosshair, RotateCcw, Trash2, ZoomIn, ZoomOut, Replace, Info, Eye, Plus, X } from '@lucide/astro';
 
 interface Props { p: CatalogProduct }
 const { p } = Astro.props;
@@ -28,9 +28,10 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
 <section id="design" data-design data-config={JSON.stringify(config)} aria-labelledby="design-title" class="relative min-w-0 scroll-mt-24">
   <div class="absolute inset-8 rounded-[2rem] bg-violet-500/15 blur-3xl max-md:hidden" aria-hidden="true"></div>
   <div class="relative md:panel-raised md:p-4 max-md:-mx-4">
-    <div class="flex items-center justify-between gap-3 max-md:px-4 max-md:pt-1 max-md:pb-3 md:mb-3">
+    <div class="flex items-center justify-between gap-3 max-md:sr-only md:mb-3">
       <h2 id="design-title" class="text-[15px] font-bold text-zinc-900 dark:text-white">Design preview</h2>
-      <div role="tablist" aria-label="Garment side" class="inline-flex p-1 rounded-xl bg-zinc-100 dark:bg-white/[0.06]" data-tabs>
+      <!-- Front / Back follow the print spot chips below (one place to pick where it prints). -->
+      <div role="tablist" aria-label="Garment side" hidden class="inline-flex p-1 rounded-xl bg-zinc-100 dark:bg-white/[0.06]" data-tabs>
         <button type="button" role="tab" data-side="front" aria-selected="true" aria-controls="design-stage" class="tab">Front</button>
         <button type="button" role="tab" data-side="back" aria-selected="false" aria-controls="design-stage" class="tab" hidden={!back}>Back</button>
       </div>
@@ -45,9 +46,19 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
         </div>
         <p data-stage-note hidden class="absolute left-2 right-2 bottom-2 rounded-lg bg-white/90 dark:bg-black/70 px-2.5 py-1.5 text-[12px] font-medium text-zinc-700 dark:text-zinc-200 text-center"></p>
         <button type="button" data-clean aria-pressed="false" class="absolute left-2 top-2 inline-flex items-center gap-1.5 h-10 px-3.5 rounded-full border border-zinc-200 dark:border-white/10 bg-white/90 dark:bg-black/60 backdrop-blur text-[13px] font-semibold text-zinc-800 dark:text-zinc-100 hover:border-violet-300 aria-pressed:bg-violet-600 aria-pressed:text-white aria-pressed:border-violet-600" title="Show the product without guides"><Eye class="w-4 h-4" aria-hidden="true" /><span data-clean-label>Preview</span></button>
+        <!-- Selected art: its tools sit on the preview, next to it. -->
+        <div data-art-tools hidden role="toolbar" aria-label="Artwork tools" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 shadow-sm p-0.5 rounded-full border border-zinc-200 dark:border-white/10 bg-white/90 dark:bg-black/60 backdrop-blur">
+          <button type="button" data-center class="inline-grid place-items-center w-10 h-10 rounded-full text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10" title="Center" aria-label="Center the artwork"><Crosshair class="w-[18px] h-[18px]" aria-hidden="true" /></button>
+          <button type="button" data-reset class="inline-grid place-items-center w-10 h-10 rounded-full text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10" title="Reset size and position" aria-label="Reset size and position"><RotateCcw class="w-[18px] h-[18px]" aria-hidden="true" /></button>
+          <button type="button" data-remove class="inline-grid place-items-center w-10 h-10 rounded-full text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10 !text-red-600 dark:!text-red-400" title="Remove" aria-label="Remove the artwork"><Trash2 class="w-[18px] h-[18px]" aria-hidden="true" /></button>
+        </div>
+        <div data-side-dots hidden aria-hidden="true" class="absolute top-4 left-1/2 -translate-x-1/2 flex gap-1.5 pointer-events-none"><span data-dot-side="front" class="d-dot"></span><span data-dot-side="back" class="d-dot"></span></div>
         <button type="button" data-zoom hidden class="absolute right-2 top-2 icon-btn w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 backdrop-blur" aria-pressed="false" aria-label="Zoom in on the print area"><ZoomIn data-zoom-in class="w-[18px] h-[18px]" aria-hidden="true" /><ZoomOut data-zoom-out class="hidden w-[18px] h-[18px]" aria-hidden="true" /></button>
       </div>
     </div>
+
+    <!-- Phones: the color swatches sit right under the shirt (moved here from the order form). -->
+    <div data-phone-colors class="md:hidden mt-3 px-4"></div>
 
     <div class="mt-3 max-md:px-4">
       <p class="sr-only" id="design-loc-label">Print location</p>
@@ -91,19 +102,16 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
             <button type="button" data-replace class={tool} aria-label="Replace artwork"><Replace class="w-4 h-4" aria-hidden="true" /><span class="max-sm:sr-only">Replace</span></button>
           </div>
           <div class="grid gap-3 sm:grid-cols-2">
-            <label class="label"><span>Decoration</span>
-              <select data-decoration class="field !h-10 max-md:!h-11">
+            <div class="label"><span>Print method</span>
+              <p class="flex flex-wrap items-baseline gap-x-1.5 text-[14px]"><b data-method-name class="font-semibold text-zinc-900 dark:text-white"></b><span data-method-why class="text-[12.5px] muted"></span><button type="button" data-method-change class="ml-1 text-[13px] font-semibold text-violet-700 dark:text-violet-300 underline">Change</button></p>
+              <select data-decoration hidden aria-label="Print method" class="field !h-10 max-md:!h-11">
                 {config.decorations.map((d) => <option value={d}>{d}</option>)}
               </select>
+              <button type="button" data-note-add class="justify-self-start inline-flex items-center gap-1 text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline"><Plus class="w-3.5 h-3.5" aria-hidden="true" />Add a note</button>
+            </div>
+            <label class="label" data-notes-wrap hidden><span>Notes <small>(optional)</small></span>
+              <input data-notes class="field !h-10 max-md:!h-11" maxlength="300" placeholder="Anything we should know?" autocomplete="off" />
             </label>
-            <label class="label"><span>Notes <small>(optional)</small></span>
-              <input data-notes class="field !h-10 max-md:!h-11" maxlength="300" placeholder="Ink/thread colors, PMS…" autocomplete="off" />
-            </label>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <button type="button" data-center class={tool}><Crosshair class="w-4 h-4" aria-hidden="true" />Center</button>
-            <button type="button" data-reset class={tool}><RotateCcw class="w-4 h-4" aria-hidden="true" />Reset</button>
-            <button type="button" data-remove class={`${tool} text-red-600 dark:text-red-400`}><Trash2 class="w-4 h-4" aria-hidden="true" />Remove</button>
           </div>
           <p class="text-[12px] muted max-md:hidden">Drag to move, drag the corner to resize. Or select the artwork and use the arrow keys (Shift for bigger steps) and + / − to resize.</p>
           <p class="text-[12px] muted md:hidden">Drag to move, drag the corner handle to resize.</p>
@@ -114,6 +122,22 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
       <p data-error role="alert" aria-live="assertive" class="err mt-2"></p>
       <p class="sr-only" aria-live="polite" data-announce></p>
       <p class="mt-3 flex gap-1.5 text-[12.5px] muted"><Info class="w-4 h-4 shrink-0 mt-px" aria-hidden="true" />Mockups are a visual guide. Final print size, placement and colors are confirmed on your proof before production.</p>
+    </div>
+  </div>
+
+  <!-- "Change" print method: a bottom sheet on phones (dialog on desktop), each method with its price. -->
+  <div data-method-sheet data-sheet="modal" hidden role="dialog" aria-modal="true" aria-labelledby="method-sheet-title" class="fixed inset-0 z-[100] flex items-end md:items-center justify-center md:p-6">
+    <div class="absolute inset-0 bg-black/45" data-sheet-backdrop data-sheet-close></div>
+    <div data-sheet-panel class="relative w-full md:max-w-md max-h-[85dvh] flex flex-col bg-white dark:bg-[#0d0d14] rounded-t-3xl md:rounded-2xl shadow-2xl border border-zinc-200/80 dark:border-white/10 max-md:border-x-0 max-md:border-b-0 pb-[env(safe-area-inset-bottom)]">
+      <div class="shrink-0 px-5 pt-2 pb-3" data-sheet-grip>
+        <div class="md:hidden mx-auto mb-2 h-1.5 w-10 rounded-full bg-zinc-300 dark:bg-white/20" aria-hidden="true"></div>
+        <div class="flex items-center justify-between gap-3 md:pt-2">
+          <h2 id="method-sheet-title" class="text-lg font-bold text-zinc-900 dark:text-white">Print method</h2>
+          <button type="button" class="icon-btn w-10 h-10 rounded-xl" data-sheet-close aria-label="Close"><X class="w-[18px] h-[18px]" aria-hidden="true" /></button>
+        </div>
+        <p data-method-sub class="mt-0.5 text-[13px] muted truncate"></p>
+      </div>
+      <div data-method-list role="radiogroup" aria-labelledby="method-sheet-title" class="min-h-0 overflow-y-auto overscroll-contain px-5 pb-5 grid gap-2"></div>
     </div>
   </div>
 </section>
@@ -155,6 +179,10 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
   [data-design] [data-stage].is-clean .d-area { outline-color: transparent !important; background: transparent !important; }
   [data-design] [data-stage].is-clean .d-area-label, [data-design] [data-stage].is-clean .d-handle, [data-design] [data-stage].is-clean .d-drop { opacity: 0 !important; pointer-events: none; }
   [data-design] [data-stage].is-clean .d-art { box-shadow: none !important; }
+  [data-design] [data-stage].is-clean [data-art-tools] { display: none; }
+  [data-design] .d-dot { width: 7px; height: 7px; border-radius: 9999px; background: rgb(0 0 0 / .22); transition: background .2s, width .2s; }
+  [data-design] .d-dot.is-on { width: 18px; background: rgb(124 58 237); }
+  [data-design] [data-stage-note]:not([hidden]) ~ [data-art-tools] { bottom: 3.25rem; }
   [data-design] .d-drop { position: absolute; inset: 0; pointer-events: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 6px; color: rgb(109 40 217); text-align: center; cursor: pointer; container-type: size; border-radius: 2px; transition: background .15s; }
   [data-design] .d-drop:hover, [data-design] .d-drop:focus-visible, [data-design] [data-stage].is-drop .d-drop { background: rgba(139, 92, 246, .16); }
   [data-design] .d-drop:focus-visible { outline: 2px solid rgb(124 58 237); outline-offset: 2px; }

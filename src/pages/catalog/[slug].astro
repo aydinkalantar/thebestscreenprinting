@@ -83,7 +83,7 @@ import { agent } from '../../lib/facts.mjs';
       <form id="add-to-quote" class="mt-2 lg:mt-3 panel-raised p-5 sm:p-6 grid grid-cols-[minmax(0,1fr)] gap-6 min-w-0" novalidate
         data-id={p.id} data-slug={p.slug} data-name={p.name} data-style={p.style ?? ''} data-brand={p.brand ?? ''} data-cat={p.category} data-sub={p.subcategory ?? ''} data-img={p.image} data-min={min} data-screen-min={screenMin}>
                 {p.colors.length > 0 && (
-          <fieldset class="min-w-0">
+          <fieldset class="min-w-0" data-color-set>
             <legend class="eyebrow !text-zinc-500 dark:!text-zinc-400"><span class={step}>1</span>Color · <span id="color-name" class="normal-case tracking-normal text-zinc-900 dark:text-white text-[13px]">{p.colors[0].name}</span></legend>
             <div class="mt-3 flex flex-wrap gap-2 max-md:flex-nowrap max-md:overflow-x-auto max-md:no-scrollbar max-md:-mx-5 max-md:px-5 max-md:py-1" role="radiogroup" aria-label="Color">
               {p.colors.map((c, i) => (
@@ -348,6 +348,22 @@ import { agent } from '../../lib/facts.mjs';
       total: sum(),
     }),
     onChange: () => { if (design.count()) hit('designer'); refresh(); },
+    // The "Change" sheet: this order's price per piece with the spot on another method.
+    methodPrice: async (locId, method) => {
+      const input = priceInput();
+      if (typeof input === 'string') return null;
+      const label = design.snapshot().find((x) => x.locId === locId)?.location;
+      if (!label) return null;
+      const locations = input.item.locations.map((l) => {
+        if (l.placement !== label) return l;
+        const { colors: _c, ...rest } = l as typeof l & { colors?: number };
+        return isScreen(method) ? { ...rest, method, colors: effectiveInks.get(label) || 1 } : { ...rest, method };
+      });
+      const res = await fetchPrices([{ ...input.item, locations }], 'pickup');
+      const it = res && res.enabled ? res.items[0] : null;
+      if (!it?.ok || !Object.keys(it.sizePrices || {}).length) return null;
+      return { each: Math.min(...Object.values(it.sizePrices)) };
+    },
   });
 
   form.querySelector('[data-art-upload]')?.addEventListener('click', () => design.pickFile());
@@ -416,6 +432,18 @@ import { agent } from '../../lib/facts.mjs';
     first?.scrollIntoView({ block: 'center', behavior: 'smooth' });
     first?.focus({ preventScroll: true });
   });
+  // Phones: color right under the shirt, so changing it shows at once; sizes follow in the form.
+  const colorSet = form.querySelector<HTMLElement>('[data-color-set]');
+  const colorHome = colorSet ? { parent: colorSet.parentElement!, next: colorSet.nextElementSibling } : null;
+  const phoneSlot = document.querySelector<HTMLElement>('[data-phone-colors]');
+  const phone = window.matchMedia('(max-width: 767.98px)');
+  const placeColors = () => {
+    if (!colorSet || !colorHome || !phoneSlot) return;
+    if (phone.matches) { if (colorSet.parentElement !== phoneSlot) phoneSlot.append(colorSet); }
+    else if (colorSet.parentElement !== colorHome.parent) colorHome.parent.insertBefore(colorSet, colorHome.next);
+  };
+  placeColors();
+  phone.addEventListener('change', placeColors);
   if (swatches[0]) design.init({ name: color, front: colorImg, back: swatches[0].dataset.back || '' });
   // ?color=Neon%20Pink (from search results and color filters) starts on that color.
   const wantColor = new URLSearchParams(location.search).get('color')?.toLowerCase();
@@ -723,9 +751,30 @@ import { agent } from '../../lib/facts.mjs';
       const k = artKey(p.location, p);
       if (detected.has(k)) continue;
       detected.set(k, 'pending');
-      countInks(p.blob).then((r) => { detected.set(k, r); schedulePrice(0); }).catch(() => { detected.set(k, { kind: 'unknown' }); schedulePrice(0); });
+      countInks(p.blob).then((r) => { detected.set(k, r); if (r.kind === 'full') fullColorMethod(p.locId); schedulePrice(0); }).catch(() => { detected.set(k, { kind: 'unknown' }); schedulePrice(0); });
     }
     checkPlacedArt();
+  }
+
+  // ── full-color art (photos, gradients) ──
+  // Not screen printed: the spot switches to the shop's full-color method (Settings › Art check, DTF
+  // unless the shop picked DTG) with an instant price. DTG and embroidery stay under "Change";
+  // embroidery says it's simplified into thread colors. Quotes, email replies and Max follow the same rule.
+  const familyOf = (m: string) => /embroid|puff/i.test(m) ? 'embroidery' : /dtf|transfer/i.test(m) ? 'dtf' : /dtg|direct/i.test(m) ? 'dtg' : /screen|silk/i.test(m) ? 'screen' : '';
+  /** The shop's full-color family per spot, from the art check (until it answers: DTF). */
+  const fullFamily = new Map<string, string>();
+  function fullColorMethod(locId: string, family = fullFamily.get(locId) || 'dtf') {
+    fullFamily.set(locId, family);
+    const offered = design.methodsFor(locId);
+    const pick = offered.find((m) => familyOf(m) === family) || offered.find((m) => familyOf(m) === 'dtf') || offered.find((m) => familyOf(m) === 'dtg');
+    if (!pick) return;
+    const why = familyOf(pick) === 'dtg' ? 'soft full-color print' : 'best for photos and full color';
+    const blocked = offered.filter((m) => familyOf(m) === 'screen');
+    const notes = Object.fromEntries(offered.flatMap((m) => familyOf(m) === 'embroidery' ? [[m, 'photos and gradients get simplified into thread colors, shown on your proof']] : familyOf(m) === 'dtg' && m !== pick ? [[m, 'soft full-color print']] : familyOf(m) === 'dtf' && m !== pick ? [[m, 'full color on any fabric']] : []));
+    // Embroidery chosen (hats, polos): it stays, simplified into thread colors.
+    const now = design.snapshot().find((x) => x.locId === locId)?.decoration || '';
+    if (familyOf(now) === 'embroidery') design.autoMethod(locId, now, notes[now], blocked, notes);
+    else design.autoMethod(locId, pick, why, blocked, notes);
   }
 
   // ── the art check before payment ──
@@ -747,6 +796,8 @@ import { agent } from '../../lib/facts.mjs';
       checkArtwork(p.blob, p.file, { placement: p.location, method: p.decoration, widthIn: p.widthIn, quantity: sum() || undefined })
         .then((r) => {
           artAsks.set(k, r?.ask ? { why: r.ask.why } : null);
+          const fam = r?.recommended ? familyOf(r.recommended) : '';
+          if (r?.fullColor && (fam === 'dtf' || fam === 'dtg')) fullColorMethod(p.locId, fam);
           if (r?.ask) artLater = false;
           if (helpRes) renderArtHelp(helpRes);
           if (r?.ask && artOn.checked) schedulePrice(0);
@@ -763,12 +814,14 @@ import { agent } from '../../lib/facts.mjs';
   /** Per location: the ink colors found in the artwork (screen printing is priced by colors). */
   function renderInks() {
     const box = ip('inks');
-    const key = JSON.stringify([garmentColor(), inkRows.map((r) => [r.placement, r.method, r.ink === 'pending' ? 'p' : r.ink?.kind, r.ink && r.ink !== 'pending' && r.ink.kind === 'spot' ? r.ink.count : 0])]);
+    const key = JSON.stringify([garmentColor(), artOffered, inkRows.map((r) => [r.placement, r.method, r.ink === 'pending' ? 'p' : r.ink?.kind, r.ink && r.ink !== 'pending' && r.ink.kind === 'spot' ? r.ink.count : 0])]);
     if (box.dataset.key === key) return;
     box.dataset.key = key;
     box.replaceChildren();
     for (const r of inkRows) {
       const screen = isScreen(r.method);
+      // Other methods aren't priced by colors: only a low-resolution warning, and not when the art help line already says it.
+      if (!screen && artOffered) continue;
       const found = r.ink && r.ink !== 'pending' ? r.ink : null;
       const row = document.createElement('div');
       row.className = 'flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 text-[13.5px]';
@@ -788,7 +841,7 @@ import { agent } from '../../lib/facts.mjs';
         for (const c of shown) { const dot = document.createElement('span'); dot.className = 'w-4 h-4 rounded-full border border-zinc-300 dark:border-white/30'; dot.style.background = c; dots.append(dot); }
         t.append(dots);
       }
-      row.append(t);
+      if (screen) row.append(t);
       if (screen && found?.kind !== 'full' && r.ink !== 'pending') {
         // The count can go up (the customer knows better) but never below what the artwork shows.
         const floor = shown.length || 1;
@@ -800,10 +853,10 @@ import { agent } from '../../lib/facts.mjs';
         sel.addEventListener('change', () => { inks.set(r.placement, Number(sel.value)); schedulePrice(0); });
         row.append(sel);
       }
-      box.append(row);
+      if (row.childElementCount) box.append(row);
       const note = document.createElement('p');
       note.className = 'text-[12.5px] muted -mt-1';
-      if (screen && found?.kind === 'full') note.textContent = 'Photos, gradients and 7+ colors are best printed with DTG or DTF (no color charge). Change the decoration for this location to see an instant price, or add it to your quote.';
+      if (screen && found?.kind === 'full') note.textContent = 'Photos, gradients and 7+ colors print in full color with DTF or DTG. Change the print method for this spot to see an instant price.';
       else if (screen && !found && r.ink !== 'pending' && design.count()) note.textContent = "We couldn't read this file type. Pick the ink colors; we confirm them on your proof.";
       else if (screen && !design.count()) note.textContent = 'We confirm ink colors from your artwork on the proof.';
       if (found && found.kind !== 'unknown' && !found.vector && r.widthIn) {
@@ -851,6 +904,7 @@ import { agent } from '../../lib/facts.mjs';
     const o = res.artHelp;
     artOffered = !!(o && (o.cleanup || o.layout || o.custom));
     artBox.hidden = !artOffered;
+    renderInks();
     if (!o || !artOffered) return;
     (['cleanup', 'layout', 'custom'] as ArtHelpType[]).forEach((k) => {
       const opt = o[k];

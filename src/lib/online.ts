@@ -45,7 +45,8 @@ export async function fetchPrices(items: PriceItemInput[], delivery: 'pickup' | 
 }
 
 /** The shop's art check on one file, as the website needs it: `ask` is set when the customer's original file is needed (a screenshot, a photo of the product, too small to print sharp). */
-export interface ArtCheckAnswer { verdict: 'ready' | 'needs_work' | 'unreadable'; ask: { why: string } | null }
+/** fullColor + recommended: the shop's method for full-color art (Settings › Art check), by its studio name. */
+export interface ArtCheckAnswer { verdict: 'ready' | 'needs_work' | 'unreadable'; ask: { why: string } | null; fullColor: boolean; recommended: string | null }
 
 /** Runs the shop's art check on a placed file (/api/public/art-check). null when it can't be reached: nothing is ever blocked on it. */
 export async function checkArtwork(blob: Blob, name: string, job: { placement?: string; method?: string; widthIn?: number; quantity?: number }): Promise<ArtCheckAnswer | null> {
@@ -59,7 +60,7 @@ export async function checkArtwork(blob: Blob, name: string, job: { placement?: 
     const res = await fetch(`${STUDIO_API}/api/public/art-check`, { method: 'POST', body: fd });
     if (!res.ok) return null;
     const d = (await res.json()) as Partial<ArtCheckAnswer>;
-    return { verdict: d.verdict || 'ready', ask: d.ask && typeof d.ask.why === 'string' ? { why: d.ask.why } : null };
+    return { verdict: d.verdict || 'ready', ask: d.ask && typeof d.ask.why === 'string' ? { why: d.ask.why } : null, fullColor: d.fullColor === true, recommended: typeof d.recommended === 'string' ? d.recommended : null };
   } catch {
     return null;
   }
