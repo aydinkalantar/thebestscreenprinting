@@ -5,6 +5,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import { products, CATEGORY_LABELS, COLLECTIONS, collectionHref, brandHref, techniqueNames, customizeHref, recommendedMethod, type CatalogProduct } from '../../lib/catalog';
 import { spotsFor } from '../../components/design/areas';
 import { business } from '../../data/business';
+import { fitChart, type SizeChart } from '../../lib/size-chart';
 import DesignPreview from '../../components/design/DesignPreview.astro';
 import DesignRequestSheet from '../../components/design/DesignRequestSheet.astro';
 import { ArrowRight, Palette, Phone, Check, Users, Sparkles, Send, ClipboardPlus, CircleCheck, X, Upload, CreditCard, ShoppingBag, Minus, Plus, ChevronDown, Star } from '@lucide/astro';
@@ -31,8 +32,8 @@ const screenMin = business.screenMinimum;
 const startMin = /screen|embroider/i.test(recommended?.method ?? methods[0] ?? '') ? screenMin : min;
 const SWATCH_LIMIT = 24;
 // Measurements per size, from the studio catalog (nightly); absent for some styles.
-type SizeChart = { sizes: string[]; rows: { name: string; values: string[] }[] };
-const sizeChart = (p as CatalogProduct & { sizeChart?: SizeChart }).sizeChart;
+// Only the sizes this product sells, only real measurements (lib/size-chart.ts).
+const sizeChart = fitChart((p as CatalogProduct & { sizeChart?: SizeChart }).sizeChart, p.sizes);
 const description = `Custom ${p.name} printed with your logo or design. ${methods.join(', ')}. Orders from ${min} pieces (${screenMin} for screen printing and embroidery), made in our own shops in Los Angeles and Cleveland.`;
 const url = `${business.url}/catalog/${p.slug}/`;
 const jsonLd = [
@@ -213,15 +214,19 @@ import { agent } from '../../lib/facts.mjs';
             <ul class="pb-4 grid gap-1.5 text-sm muted list-disc pl-5">{p.features.map((f) => <li>{f}</li>)}</ul>
           </details>
         )}
-        {sizeChart?.rows?.length > 0 && (
-          <details class="group panel px-4" data-size-chart>
+        {sizeChart && (
+          <details class="group panel px-4 min-w-0" data-size-chart>
             <summary class="flex items-center justify-between gap-3 min-h-[52px] cursor-pointer list-none font-semibold text-zinc-900 dark:text-white">Size chart<ChevronDown class="w-4 h-4 muted transition-transform group-open:rotate-180" aria-hidden="true" /></summary>
-            <div class="pb-4 overflow-x-auto">
-              <table class="w-full text-[13px] tabular-nums">
-                <thead><tr class="border-b border-zinc-200 dark:border-white/10"><th scope="col" class="text-left font-semibold py-2 pr-3">Inches</th>{sizeChart.sizes.map((z) => <th scope="col" class="font-semibold py-2 px-2 text-center">{z}</th>)}</tr></thead>
-                <tbody>{sizeChart.rows.map((r) => <tr class="border-b border-zinc-100 dark:border-white/5"><th scope="row" class="py-2 pr-3 text-left font-normal muted whitespace-nowrap">{r.name}</th>{r.values.map((v) => <td class="py-2 px-2 text-center whitespace-nowrap">{v || '–'}</td>)}</tr>)}</tbody>
-              </table>
-              <p class="mt-2 text-xs muted">Garment measurements laid flat. Allow about half an inch either way.</p>
+            <div class="pb-4">
+              {sizeChart.sizes.length > 4 && <p class="sm:hidden mb-2 text-xs muted" aria-hidden="true">Swipe to see every size →</p>}
+              <div class="overflow-x-auto overscroll-x-contain -mx-1 px-1">
+                <table class="w-full min-w-max border-separate border-spacing-0 text-[13px] tabular-nums">
+                  <caption class="sr-only">Garment measurements in inches</caption>
+                  <thead><tr><th scope="col" class="sc-pin text-left font-semibold py-2 pr-3 border-b border-zinc-200 dark:border-white/10">Inches</th>{sizeChart.sizes.map((z) => <th scope="col" class="font-semibold py-2 px-2 min-w-[3.25rem] text-center border-b border-zinc-200 dark:border-white/10">{z}</th>)}</tr></thead>
+                  <tbody>{sizeChart.rows.map((r) => <tr><th scope="row" class="sc-pin py-2 pr-3 text-left font-normal muted whitespace-nowrap border-b border-zinc-100 dark:border-white/5">{r.name}</th>{r.values.map((v) => <td class="py-2 px-2 text-center whitespace-nowrap border-b border-zinc-100 dark:border-white/5">{v || '–'}</td>)}</tr>)}</tbody>
+                </table>
+              </div>
+              <p class="mt-2 text-xs muted">Garment measurements in inches, laid flat. Allow about half an inch either way.</p>
             </div>
           </details>
         )}
@@ -295,6 +300,10 @@ import { agent } from '../../lib/facts.mjs';
 <style is:global>
   /* `hidden` must win over the display utilities used on the same elements. */
   #add-to-quote [hidden] { display: none !important; }
+  /* Size chart: measurement names stay pinned while a phone swipes through the sizes. */
+  [data-size-chart] .sc-pin { position: sticky; left: 0; z-index: 1; background: #fff; }
+  .dark [data-size-chart] .sc-pin { background: #0d0d14; }
+  @media (max-width: 639px) { [data-size-chart] tbody .sc-pin { box-shadow: 6px 0 6px -6px rgba(0,0,0,.18); } }
 </style>
 
 <script>
