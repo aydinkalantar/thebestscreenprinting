@@ -394,6 +394,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   zoomBtn.addEventListener('click', () => { zoomed = !zoomed; applyZoom(); });
   // "Preview": hides print areas, labels and handles to see just the product with the artwork.
   const cleanBtn = q<HTMLButtonElement>('[data-clean]');
+  const artTools = q('[data-art-tools]');
   const setClean = (on: boolean) => {
     stage.classList.toggle('is-clean', on);
     cleanBtn.setAttribute('aria-pressed', String(on));
@@ -441,6 +442,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     panel.addLabel.textContent = `Add artwork to ${sp.label.toLowerCase()}`;
     panel.empty.hidden = !!a;
     panel.filled.hidden = !a;
+    artTools.hidden = !a;
     if (a) {
       panel.file.textContent = a.kind === 'file' ? `${a.file.name} (preview not available, we'll use the file)` : a.file.name;
       panel.readout.textContent = describe(a);
