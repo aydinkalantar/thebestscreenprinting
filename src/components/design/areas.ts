@@ -108,11 +108,11 @@ export type Overrides = Record<string, SpotOverride> & {
 export interface PlaceConfig { template: string; chestIn: number; crop: boolean; youth: boolean; womens: boolean; hood: boolean; overrides?: Overrides }
 
 export const PRINT_SIZES = {
-  'full-front':   { w: 12,  h: 14 },
+  'full-front':   { w: 14,  h: 16 },
   'hoodie-front': { w: 12,  h: 11 },
   'tank-front':   { w: 11,  h: 14 },
   'left-chest':   { w: 4,   h: 4 },
-  back:           { w: 12,  h: 15 },
+  back:           { w: 14,  h: 16 },
   'back-neck':    { w: 6,   h: 2.5 },
   'sleeve-long':  { w: 3.5, h: 12 },
   'sleeve-short': { w: 3.5, h: 3 },
@@ -143,49 +143,49 @@ const sleeves = (size: SizeKey, top: number, inset: number, w: number): Spot[] =
 
 export const TEMPLATES: Record<string, Spot[]> = {
   tee: [
-    { id: 'front', label: 'Front', side: 'front', size: 'full-front', cx: 0.5, top: 0.15, w: 0.37 },
+    { id: 'front', label: 'Front', side: 'front', size: 'full-front', cx: 0.5, top: 0.15, w: 0.432 },
     ...chest(0.19),
-    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.15, w: 0.37 },
+    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.15, w: 0.432 },
     { id: 'back-neck', label: 'Back neck', side: 'back', size: 'back-neck', cx: 0.5, top: 0.045, w: 0.17 },
     ...sleeves('sleeve-short', 0.2, 0.1, 0.11),
   ],
   polo: [
-    { id: 'front', label: 'Front', side: 'front', size: 'full-front', cx: 0.5, top: 0.3, w: 0.34 },
+    { id: 'front', label: 'Front', side: 'front', size: 'full-front', cx: 0.5, top: 0.3, w: 0.397 },
     ...chest(0.2, 0.15),
-    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.17, w: 0.36 },
+    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.17, w: 0.42 },
     { id: 'back-neck', label: 'Back yoke', side: 'back', size: 'back-neck', cx: 0.5, top: 0.08, w: 0.17 },
     ...sleeves('sleeve-short', 0.2, 0.11, 0.1),
   ],
   longsleeve: [
-    { id: 'front', label: 'Front', side: 'front', size: 'full-front', cx: 0.5, top: 0.13, w: 0.34 },
+    { id: 'front', label: 'Front', side: 'front', size: 'full-front', cx: 0.5, top: 0.13, w: 0.397 },
     ...chest(0.14, 0.13, 0.11),
-    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.13, w: 0.34 },
+    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.13, w: 0.397 },
     { id: 'back-neck', label: 'Back neck', side: 'back', size: 'back-neck', cx: 0.5, top: 0.04, w: 0.16 },
     ...sleeves('sleeve-long', 0.34, 0.12, 0.085),
   ],
   crew: [
-    { id: 'front', label: 'Front', side: 'front', size: 'full-front', cx: 0.5, top: 0.15, w: 0.34 },
+    { id: 'front', label: 'Front', side: 'front', size: 'full-front', cx: 0.5, top: 0.15, w: 0.397 },
     ...chest(0.16, 0.13, 0.11),
-    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.14, w: 0.34 },
+    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.14, w: 0.397 },
     { id: 'back-neck', label: 'Back neck', side: 'back', size: 'back-neck', cx: 0.5, top: 0.05, w: 0.16 },
     ...sleeves('sleeve-long', 0.36, 0.115, 0.085),
   ],
   hoodie: [
     { id: 'front', label: 'Front', side: 'front', size: 'hoodie-front', cx: 0.5, top: 0.31, w: 0.38 },
     ...chest(0.3, 0.15, 0.12),
-    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.27, w: 0.38 },
+    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.27, w: 0.443 },
     ...sleeves('sleeve-long', 0.45, 0.1, 0.09),
   ],
   // Full-zip hoodies and jackets: no full front across the zipper.
   zip: [
     ...chest(0.3, 0.15, 0.12),
-    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.27, w: 0.38 },
+    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.27, w: 0.443 },
     ...sleeves('sleeve-long', 0.45, 0.1, 0.09),
   ],
   tank: [
     { id: 'front', label: 'Front', side: 'front', size: 'tank-front', cx: 0.5, top: 0.22, w: 0.5 },
     ...chest(0.23, 0.19, 0.17),
-    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.18, w: 0.5 },
+    { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.18, w: 0.583 },
     { id: 'back-neck', label: 'Back neck', side: 'back', size: 'back-neck', cx: 0.5, top: 0.1, w: 0.24 },
   ],
   cap: [

@@ -9,12 +9,12 @@ summary: "Yes, we print oversized and heavyweight tees for streetwear brands, ba
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Fabric weight", value: "6.1 to 7.5 oz" }
-  - { label: "Largest front print", value: "About 12\" × 14\"" }
+  - { label: "Largest front print", value: "Up to 14\" × 16\"" }
 faqs:
   - q: "What is the best heavyweight t-shirt for printing?"
     a: "For a boxy streetwear fit, the Shaka Wear Max Heavyweight. For a soft, washed vintage look, the Comfort Colors 1717. For a clean modern heavyweight, the Bella+Canvas 4610. We can send you the specs for each."
   - q: "Do you print large designs on oversized tees?"
-    a: "Yes. A full front or back print is up to about 12 inches wide by 14 inches tall. For bigger prints, see [oversize printing](/services/large-format-screen-printing/)."
+    a: "Yes. A full front or back print is up to 14 inches wide by 16 inches tall (a little smaller on small sizes so it stays off the side seams). For bigger prints, see [oversize printing](/services/large-format-screen-printing/)."
   - q: "Which method is best for heavyweight cotton?"
     a: "Screen printing gives the boldest, most durable result on thick cotton and is the cheapest from 24 pieces. DTF works well for full-color art on small runs."
   - q: "Can you add neck labels or hang tags for my brand?"
