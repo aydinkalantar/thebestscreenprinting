@@ -28,9 +28,10 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
 <section id="design" data-design data-config={JSON.stringify(config)} aria-labelledby="design-title" class="relative min-w-0 scroll-mt-24">
   <div class="absolute inset-8 rounded-[2rem] bg-violet-500/15 blur-3xl max-md:hidden" aria-hidden="true"></div>
   <div class="relative md:panel-raised md:p-4 max-md:-mx-4">
-    <div class="flex items-center justify-between gap-3 max-md:px-4 max-md:pt-1 max-md:pb-3 md:mb-3">
+    <div class="flex items-center justify-between gap-3 max-md:sr-only md:mb-3">
       <h2 id="design-title" class="text-[15px] font-bold text-zinc-900 dark:text-white">Design preview</h2>
-      <div role="tablist" aria-label="Garment side" class="inline-flex p-1 rounded-xl bg-zinc-100 dark:bg-white/[0.06]" data-tabs>
+      <!-- Front / Back follow the print spot chips below (one place to pick where it prints). -->
+      <div role="tablist" aria-label="Garment side" hidden class="inline-flex p-1 rounded-xl bg-zinc-100 dark:bg-white/[0.06]" data-tabs>
         <button type="button" role="tab" data-side="front" aria-selected="true" aria-controls="design-stage" class="tab">Front</button>
         <button type="button" role="tab" data-side="back" aria-selected="false" aria-controls="design-stage" class="tab" hidden={!back}>Back</button>
       </div>
