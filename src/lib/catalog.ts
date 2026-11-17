@@ -1,8 +1,10 @@
 import catalog from '../../data/catalog.json';
 import { business } from '../data/business';
+import { mainColorsFirst } from './main-colors';
 
 export type CatalogProduct = (typeof catalog.products)[number];
-export const products: CatalogProduct[] = catalog.products;
+/** Main colors (White, Black, Navy…) first on every product: src/lib/main-colors.ts. */
+export const products: CatalogProduct[] = catalog.products.map((p) => ({ ...p, colors: mainColorsFirst(p.colors) }));
 export const syncedAt = catalog.syncedAt;
 
 export const CATEGORY_LABELS: Record<string, string> = {
