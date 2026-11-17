@@ -348,6 +348,22 @@ import { agent } from '../../lib/facts.mjs';
       total: sum(),
     }),
     onChange: () => { if (design.count()) hit('designer'); refresh(); },
+    // The "Change" sheet: this order's price per piece with the spot on another method.
+    methodPrice: async (locId, method) => {
+      const input = priceInput();
+      if (typeof input === 'string') return null;
+      const label = design.snapshot().find((x) => x.locId === locId)?.location;
+      if (!label) return null;
+      const locations = input.item.locations.map((l) => {
+        if (l.placement !== label) return l;
+        const { colors: _c, ...rest } = l as typeof l & { colors?: number };
+        return isScreen(method) ? { ...rest, method, colors: effectiveInks.get(label) || 1 } : { ...rest, method };
+      });
+      const res = await fetchPrices([{ ...input.item, locations }], 'pickup');
+      const it = res && res.enabled ? res.items[0] : null;
+      if (!it?.ok || !Object.keys(it.sizePrices || {}).length) return null;
+      return { each: Math.min(...Object.values(it.sizePrices)) };
+    },
   });
 
   form.querySelector('[data-art-upload]')?.addEventListener('click', () => design.pickFile());

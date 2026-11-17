@@ -1,7 +1,7 @@
 // Design preview on product pages: place artwork per location on the garment photo, then send the
 // whole request (files, rendered mockups, placements) to /api/quote. Markup: DesignPreview.astro
 // and DesignRequestSheet.astro. Print areas and inch sizes: areas.ts.
-import { openSheet, wireSheet } from '../../lib/sheet';
+import { openSheet, closeSheet, wireSheet } from '../../lib/sheet';
 import { track } from '../../lib/analytics';
 import { garmentFor, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, MAX_PLACEMENTS } from '../../lib/quote';
 import { business } from '../../data/business';
@@ -27,7 +27,11 @@ export interface Order {
   name: string; style: string; brand: string; color: string; cat: string; sub: string; url: string;
   sizes: { size: string; n: number }[]; total: number;
 }
-interface Options { summary: HTMLElement | null; sheet: HTMLElement | null; getOrder: () => Order; onChange: () => void }
+interface Options {
+  summary: HTMLElement | null; sheet: HTMLElement | null; getOrder: () => Order; onChange: () => void;
+  /** Price per piece with this spot on that method (the "Change" sheet shows it), null when there's no price yet. */
+  methodPrice?: (locId: string, method: string) => Promise<{ each: number; note?: string } | null>;
+}
 type Config = {
   spots: DesignSpot[]; decorations: string[]; name: string;
   /** The print method suggested first (catalog.ts recommendedMethod). */
@@ -110,6 +114,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   const note = q('[data-stage-note]');
   const zoomBtn = q<HTMLButtonElement>('[data-zoom]');
   const tabs = qa<HTMLButtonElement>('[data-side]');
+  const sideDots = q('[data-side-dots]');
   const chips = qa<HTMLButtonElement>('[data-loc]');
   const fileInput = q<HTMLInputElement>('[data-file-input]');
   const errorEl = q('[data-error]');
@@ -530,6 +535,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   function render() {
     renderPending();
     const showBack = hasBack();
+    sideDots.hidden = !showBack;
+    sideDots.querySelectorAll<HTMLElement>('[data-dot-side]').forEach((dot) => { dot.classList.toggle('is-on', dot.dataset.dotSide === side); });
     tabs.forEach((t) => {
       if (t.dataset.side === 'back') t.hidden = !showBack;
       t.setAttribute('aria-selected', String(t.dataset.side === side));
@@ -569,11 +576,25 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (scroll) root.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   }
 
-  tabs.forEach((t) => t.addEventListener('click', () => {
-    const s = t.dataset.side as Side;
+  const showSide = (s: Side) => {
     const first = spots.find((sp) => sp.side === s && arts.has(sp.id)) ?? spots.find((sp) => sp.side === s);
     if (first) select(first.id);
-  }));
+  };
+  tabs.forEach((t) => t.addEventListener('click', () => showSide(t.dataset.side as Side)));
+  // Swipe the shirt left or right to turn it around (like a photo gallery). Not while moving art or zoomed in.
+  let swipe: { x: number; y: number } | null = null;
+  stage.addEventListener('touchstart', (e) => {
+    const t = e.target as HTMLElement;
+    swipe = e.touches.length === 1 && !zoomed && !t.closest('.d-art, button') ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : null;
+  }, { passive: true });
+  stage.addEventListener('touchend', (e) => {
+    if (!swipe || !hasBack()) { swipe = null; return; }
+    const dx = e.changedTouches[0].clientX - swipe.x, dy = e.changedTouches[0].clientY - swipe.y;
+    swipe = null;
+    if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx) * 0.6) return;
+    showSide(side === 'front' ? 'back' : 'front');
+    announce(side === 'back' ? 'Showing the back' : 'Showing the front');
+  }, { passive: true });
   root.querySelector('[data-tabs]')!.addEventListener('keydown', (e) => {
     const k = (e as KeyboardEvent).key;
     if (k !== 'ArrowLeft' && k !== 'ArrowRight') return;
@@ -801,7 +822,56 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     if (a) { a.decoration = panel.decoration.value; pickFor = ''; renderPanel(); renderSummary(); opts.onChange(); }
   });
   panel.noteAdd.addEventListener('click', () => { noteFor = active; renderPanel(); panel.notes.focus(); });
-  panel.methodChange.addEventListener('click', () => { pickFor = active; renderPanel(); panel.decoration.focus(); });
+  // "Change": a sheet with each method that works for this art and its price per piece.
+  const methodSheet = root.querySelector<HTMLElement>('[data-method-sheet]');
+  if (methodSheet) { document.body.append(methodSheet); wireSheet(methodSheet); }
+  const money = (n: number) => `$${n.toFixed(2)}`;
+  function openMethods() {
+    const a = arts.get(active);
+    const sp = spotById.get(active);
+    if (!a || !sp || !methodSheet) { pickFor = active; renderPanel(); panel.decoration.focus(); return; }
+    const loc = active;
+    const ok = allowedFor(loc);
+    const list = ok.filter((m) => !a.auto?.blocked.includes(m));
+    const box = methodSheet.querySelector<HTMLElement>('[data-method-list]')!;
+    methodSheet.querySelector('[data-method-sub]')!.textContent = `${sp.label} · ${a.file.name}`;
+    box.replaceChildren();
+    for (const m of list.length ? list : ok) {
+      const on = m === a.decoration;
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'radio');
+      b.setAttribute('aria-checked', String(on));
+      b.className = `w-full flex items-center gap-3 text-left rounded-2xl border px-4 py-3 min-h-[60px] ${on ? 'border-violet-500 bg-violet-500/10' : 'border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03]'}`;
+      const why = a.auto ? (m === a.auto.method ? a.auto.why : a.auto.notes[m] || '') : '';
+      const dot = document.createElement('span');
+      dot.className = `w-5 h-5 shrink-0 rounded-full border-2 ${on ? 'border-violet-600 bg-violet-600 shadow-[inset_0_0_0_3px_#fff]' : 'border-zinc-300 dark:border-white/30'}`;
+      const text = document.createElement('span');
+      text.className = 'min-w-0 flex-1';
+      const nameEl = document.createElement('span');
+      nameEl.className = 'block text-[15px] font-semibold text-zinc-900 dark:text-white';
+      nameEl.textContent = m;
+      text.append(nameEl);
+      if (why) { const w = document.createElement('span'); w.className = 'block text-[12.5px] muted'; w.textContent = why; text.append(w); }
+      const priceEl = document.createElement('span');
+      priceEl.className = 'shrink-0 text-right text-[14px] font-semibold text-zinc-900 dark:text-white';
+      b.append(dot, text, priceEl);
+      b.addEventListener('click', () => {
+        const art = arts.get(loc);
+        if (art) { art.decoration = m; renderPanel(); renderSummary(); opts.onChange(); }
+        closeSheet(methodSheet);
+      });
+      box.append(b);
+      if (!opts.methodPrice) continue;
+      priceEl.textContent = '…';
+      opts.methodPrice(loc, m).then((r) => {
+        priceEl.textContent = r ? money(r.each) : '';
+        if (r) { const e = document.createElement('span'); e.className = 'block text-[11.5px] font-normal muted'; e.textContent = `each${r.note ? ` · ${r.note}` : ''}`; priceEl.append(e); }
+      }).catch(() => { priceEl.textContent = ''; });
+    }
+    openSheet(methodSheet, { focus: box.querySelector<HTMLElement>('[aria-checked="true"]') });
+  }
+  panel.methodChange.addEventListener('click', openMethods);
   panel.notes.addEventListener('input', () => {
     const a = arts.get(active);
     if (a) a.notes = panel.notes.value.slice(0, 300);
