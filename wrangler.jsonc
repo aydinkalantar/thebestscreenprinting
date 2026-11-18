@@ -2,34 +2,61 @@
 // (1) answer legacy WordPress URLs with 301/410 from src/redirects.json and
 // (2) add `X-Robots-Tag: noindex` everywhere while STAGING is "1".
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "tbsp-site",
-  "main": "src/worker.ts",
-  "compatibility_date": "2026-09-01",
-  "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS",
-    "run_worker_first": true,
-    "html_handling": "force-trailing-slash",
-    "not_found_handling": "404-page"
-  },
-  "vars": { "STAGING": "1" },
-  // Website quote requests the admin missed, kept until the cron below files them
-  // (src/worker.ts, outbox). No id: wrangler deploy creates the namespace the first time.
-  "kv_namespaces": [{ "binding": "INTAKE_OUTBOX" }],
-  "triggers": { "crons": ["*/5 * * * *"] },
-  "env": {
-    "production": {
-      "name": "tbsp-site-production",
-      "vars": { "STAGING": "0" },
-      "kv_namespaces": [{ "binding": "INTAKE_OUTBOX" }],
-      "triggers": { "crons": ["*/5 * * * *"] },
-      "routes": [
-        // Routes (not custom domains) so the existing proxied DNS records stay as
-        // they are: rolling back is just removing these routes.
-        { "pattern": "thebestscreenprinting.com/*", "zone_name": "thebestscreenprinting.com" },
-        { "pattern": "www.thebestscreenprinting.com/*", "zone_name": "thebestscreenprinting.com" }
-      ]
-    }
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "tbsp-site",
+	"main": "src/worker.ts",
+	"compatibility_date": "2026-09-01",
+	"assets": {
+		"directory": "./dist",
+		"binding": "ASSETS",
+		"run_worker_first": true,
+		"html_handling": "force-trailing-slash",
+		"not_found_handling": "404-page"
+	},
+	"vars": {
+		"STAGING": "1"
+	},
+	// Website quote requests the admin missed, kept until the cron below files them
+	// (src/worker.ts, outbox). No id: wrangler deploy creates the namespace the first time.
+	"kv_namespaces": [
+		{
+			"binding": "INTAKE_OUTBOX",
+			"id": "77adc8b07dc74ebd8dbe598c9bb3cda4"
+		}
+	],
+	"triggers": {
+		"crons": [
+			"*/5 * * * *"
+		]
+	},
+	"env": {
+		"production": {
+			"name": "tbsp-site-production",
+			"vars": {
+				"STAGING": "0"
+			},
+			"kv_namespaces": [
+				{
+					"binding": "INTAKE_OUTBOX"
+				}
+			],
+			"triggers": {
+				"crons": [
+					"*/5 * * * *"
+				]
+			},
+			"routes": [
+				// Routes (not custom domains) so the existing proxied DNS records stay as
+				// they are: rolling back is just removing these routes.
+				{
+					"pattern": "thebestscreenprinting.com/*",
+					"zone_name": "thebestscreenprinting.com"
+				},
+				{
+					"pattern": "www.thebestscreenprinting.com/*",
+					"zone_name": "thebestscreenprinting.com"
+				}
+			]
+		}
+	}
 }
