@@ -44,8 +44,12 @@ export const business = {
   shopMinimum: 6,
   /** Screen printing and embroidery minimum; smaller requests get offered DTG or DTF. */
   screenMinimum: 12,
-  /** Google Analytics 4 measurement ID (public). Only loads on the production host. */
-  gaId: 'G-MHYSRCDHB1',
+  /**
+   * Google Analytics 4 measurement IDs (public). Only loads on the production host; every page view
+   * and event goes to each one. G-ZWKHXFJL9N is the "The Best Screen Printing" account Ayden can see
+   * (property 401552235). G-MHYSRCDHB1 is the older ID, kept so its history stays continuous.
+   */
+  gaIds: ['G-ZWKHXFJL9N', 'G-MHYSRCDHB1'],
   /**
    * Turnaround options shown across the site and offered on the quote form.
    * `time` is filled in once confirmed; until then pages say it's confirmed with the quote.
