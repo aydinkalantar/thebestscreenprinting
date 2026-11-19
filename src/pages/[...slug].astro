@@ -9,7 +9,7 @@ import RelatedProducts from '../components/home/RelatedProducts.astro';
 import { PAGE_VIDEOS, videoJsonLd } from '../data/videos';
 import { business } from '../data/business';
 import { fill, agent, facts as shopFacts } from '../lib/facts.mjs';
-import { heroImage, eyebrowFor, relatedFor } from '../lib/page-meta';
+import { heroImage, eyebrowFor, relatedFor, answersFor } from '../lib/page-meta';
 import { ArrowRight, Palette, Phone, Clock, MapPin, ChevronRight, ListOrdered, Printer, CalendarCheck, MessageCircle } from '@lucide/astro';
 
 export async function getStaticPaths() {
@@ -40,11 +40,23 @@ const eyebrow = eyebrowFor(kind, path);
 const related = relatedFor(kind);
 const narrow = kind === 'blog' || kind === 'legal' || kind === 'utility';
 
+// Breadcrumbs link only to pages that exist; a folder with no page of its own points at its hub.
+const allPages = await getCollection('pages');
+const pagePaths = new Set(['/', '/quick-quote/', ...allPages.map((p) => p.data.path)]);
+const CRUMB_HUB: Record<string, { href: string; label: string }> = { '/for/': { href: '/solutions/', label: 'Who we print for' } };
 const crumbs = path.split('/').filter(Boolean);
-const crumbItems = crumbs.map((c, i) => ({
-  label: i === crumbs.length - 1 ? h1 : c.replace(/-/g, ' ').replace(/^\w/, (x) => x.toUpperCase()),
-  href: i === crumbs.length - 1 ? undefined : `/${crumbs.slice(0, i + 1).join('/')}/`,
-}));
+const crumbItems = crumbs.map((c, i) => {
+  const last = i === crumbs.length - 1;
+  const own = `/${crumbs.slice(0, i + 1).join('/')}/`;
+  const hub = CRUMB_HUB[own];
+  return {
+    label: last ? h1 : hub?.label ?? c.replace(/-/g, ' ').replace(/^\w/, (x) => x.toUpperCase()),
+    href: last ? undefined : hub?.href ?? (pagePaths.has(own) ? own : undefined),
+    item: last ? url : hub ? new URL(hub.href, business.url).toString() : pagePaths.has(own) ? new URL(own, business.url).toString() : undefined,
+  };
+});
+// Straight answers (prices, minimums, rush): linked from every service, product and area page so search engines find them.
+const answerLinks = answersFor(allPages.filter((p) => p.data.kind === 'answer').map((p) => ({ href: p.data.path, h1: p.data.h1 })));
 // LA neighborhood pages serve LA, Cleveland pages serve Cleveland; everything else ships nationwide.
 const isLa = kind === 'location' || /los-angeles|-ca\/$|-la-/.test(path);
 const serviceArea = states.length
@@ -58,7 +70,7 @@ const jsonLd: object[] = [
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${business.url}/` },
-      ...crumbItems.map((c, i) => ({ '@type': 'ListItem', position: i + 2, name: c.label, item: `${business.url}/${crumbs.slice(0, i + 1).join('/')}/` })),
+      ...crumbItems.filter((c) => c.item).map((c, i) => ({ '@type': 'ListItem', position: i + 2, name: c.label, item: c.item })),
     ],
   },
 ];
@@ -188,6 +200,16 @@ if (faqs.length) {
 
   {videos.length > 0 && <div class="mt-16"><VideoGrid videos={videos} /></div>}
   {!narrow && <div class="mt-16 empty:hidden"><RelatedProducts path={path} kind={kind} /></div>}
+  {!narrow && answerLinks.length > 0 && (
+    <nav class="mt-16" aria-labelledby="answers-title">
+      <h2 id="answers-title" class="text-2xl font-bold text-zinc-900 dark:text-white">Prices &amp; straight answers</h2>
+      <div class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {answerLinks.filter((l) => l.href !== path).map((l) => (
+          <a href={l.href} class="panel flex items-center justify-between gap-3 px-4 min-h-[52px] text-[15px] font-semibold text-zinc-900 dark:text-white hover:border-violet-300 dark:hover:border-violet-400/40">{l.label}<ChevronRight class="w-4 h-4 shrink-0 text-zinc-400" aria-hidden="true" /></a>
+        ))}
+      </div>
+    </nav>
+  )}
   {faqs.length > 0 && <div class="mt-16"><Faq faqs={faqs} /></div>}
   {!narrow && <div class="mt-16"><CtaBand /></div>}
 </Base>

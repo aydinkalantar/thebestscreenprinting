@@ -21,6 +21,28 @@ export const PRODUCT_LINKS = [
   { href: '/catalog/', label: 'Full catalog' },
 ];
 
+// Short labels for the "Prices & answers" list, in the order shown. Answer pages not listed here follow, labeled by their h1.
+const ANSWER_LABELS: [string, string][] = [
+  ['/how-much-does-custom-shirt-printing-cost/', 'Prices per shirt'],
+  ['/cheapest-way-to-print-50-shirts/', 'Cheapest way to print 50 shirts'],
+  ['/custom-shirts-minimum-order/', 'Minimum order'],
+  ['/rush-custom-shirts-shipped-fast/', 'How fast can I get shirts?'],
+  ['/screen-printing-vs-dtf-vs-dtg/', 'Screen printing vs DTF vs DTG'],
+  ['/front-back-sleeve-printing/', 'Front, back & sleeve prints'],
+  ['/custom-hoodies-in-bulk/', 'Hoodies in bulk'],
+  ['/oversized-heavyweight-t-shirt-printing/', 'Oversized & heavyweight tees'],
+  ['/embroidered-polos-and-hats-for-companies/', 'Embroidered polos & hats'],
+  ['/artwork-file-types-for-printing/', 'Artwork files we need'],
+  ['/how-to-choose-a-screen-printer-in-los-angeles/', 'Choosing a screen printer in LA'],
+];
+
+export function answersFor(pages: { href: string; h1: string }[]) {
+  const have = new Map(pages.map((p) => [p.href, p.h1]));
+  const known = ANSWER_LABELS.filter(([href]) => have.has(href)).map(([href, label]) => ({ href, label }));
+  const rest = pages.filter((p) => !ANSWER_LABELS.some(([href]) => href === p.href)).map((p) => ({ href: p.href, label: p.h1 }));
+  return [...known, ...rest];
+}
+
 const IMAGES: [RegExp, string][] = [
   [/embroider/, 'custom-embroidery-img'],
   [/heat-transfer/, 'heat-transfer-vinyl-img'],
