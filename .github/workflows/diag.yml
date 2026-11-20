@@ -1,0 +1,10 @@
+name: Diag studio direct
+on: pull_request
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - run: |
+          curl -sS -o b.txt -w 'catalog %{http_code}\n' https://web-production-99c4ff.up.railway.app/api/public/catalog; head -c 120 b.txt; echo
+          curl -sS -o p.txt -w 'price %{http_code}\n' -X POST https://web-production-99c4ff.up.railway.app/api/public/price -H 'content-type: application/json' -H 'origin: https://thebestscreenprinting.com' -d '{"items":[{"brand":"Gildan","style":"5000","color":"Black","sizes":{"L":12},"locations":[{"placement":"Front","method":"Screen printing","colors":1}]}],"delivery":"ship"}'; head -c 200 p.txt; echo
