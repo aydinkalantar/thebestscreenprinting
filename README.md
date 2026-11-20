@@ -50,7 +50,9 @@ Without `RESEND_API_KEY` the form answers with the phone number and email instea
 
 ## Deploy (Cloudflare)
 
+- Production deploys itself: every merge to `main` (and a daily 4:15 AM ET run
+  that picks up studio catalog and price changes) runs
+  `.github/workflows/deploy.yml`: sync catalog, build, `wrangler deploy --env production`.
+  It needs the `CLOUDFLARE_API_TOKEN` repository secret. To redeploy by hand:
+  GitHub › Actions › Deploy website › Run workflow.
 - Staging: `npx wrangler deploy` (noindexed, on a workers.dev URL).
-- Production: `npx wrangler deploy --env production` once DNS for
-  thebestscreenprinting.com is on Cloudflare. Then run the redirect check
-  against the live domain.

@@ -1,0 +1,45 @@
+name: Deploy website
+
+# Every merge to main goes live on thebestscreenprinting.com, with the same steps
+# that used to run by hand: fresh catalog + prices from the studio, build, wrangler deploy.
+# A daily run also picks up catalog and price changes made in the studio admin.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '15 9 * * *' # 4:15 AM ET, after the nightly S&S catalog sync
+  workflow_dispatch:
+
+# One deploy at a time; a newer one waits instead of overlapping.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      # Products from the studio admin. If the studio can't be reached, keep the
+      # catalog already in the repo rather than failing the deploy.
+      - name: Sync catalog
+        run: npm run sync:catalog || echo "::warning::Studio catalog unreachable; using the catalog in the repo"
+
+      # Also refreshes prices from the studio (scripts/refresh-facts.mjs).
+      - run: npm run build
+
+      - name: Deploy to Cloudflare
+        run: npx wrangler deploy --env production
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 24a38f0168b95a06b2ee51bce35abc3e
