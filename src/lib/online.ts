@@ -18,12 +18,14 @@ export interface PricedItem {
   next: { qty: number; perPiece: number } | null; stockShort: { size: string; stock: number }[];
   /** Artwork help fee for this item, when asked for. */ artFee?: number;
 }
-export interface Totals { subtotal: number; setup: number; shipping: number; tax: number; taxRate: number; total: number; /** Rush / Super Rush fee, when the studio prices turnaround. */ rush?: number; /** Artwork help fees. */ art?: number; rushPercent?: number; turnaround?: string; /** Estimated ready date (ISO). */ readyBy?: string; businessDays?: number; /** e.g. Super Rush over its piece limit. */ turnaroundError?: string }
+export interface Totals { subtotal: number; setup: number; shipping: number; tax: number; taxRate: number; total: number; /** Rush / Super Rush fee, when the studio prices turnaround. */ rush?: number; /** Artwork help fees. */ art?: number; rushPercent?: number; turnaround?: string; /** Estimated ready date (ISO). */ readyBy?: string; businessDays?: number; /** e.g. Super Rush over its piece limit. */ turnaroundError?: string; /** Live shipping: no ZIP yet, so shipping is an estimate. */ shippingEstimate?: boolean; /** Live shipping prices for the ZIP: standard, and fast when offered. */ shippingOptions?: { standard: ShipOption; fast?: ShipOption } }
+export interface ShipOption { amount: number; days: number | null }
+export type ShipSpeed = 'standard' | 'fast';
 export type TurnaroundOptions = { normal: { days: number }; rush?: { percent: number; days: number }; superrush?: { percent: number; days: number; maxPieces?: number } };
 export type Turnaround = 'normal' | 'rush' | 'superrush';
 export type PriceResponse =
   | { enabled: false }
-  | { enabled: true; items: PricedItem[]; totals: Totals | null; payment: { options: ('full' | 'deposit')[]; depositPercent: number }; delivery: { pickup: string | null; shipping: number | null }; /** Present once the studio prices turnaround; only the options that are on. */ turnaround?: TurnaroundOptions; /** Present when the artwork help service is on. */ artHelp?: ArtHelpOptions };
+  | { enabled: true; items: PricedItem[]; totals: Totals | null; payment: { options: ('full' | 'deposit')[]; depositPercent: number }; delivery: { pickup: string | null; shipping: number | null; /** Shipping is the carrier's live price for the address. */ shippingLive?: boolean }; /** Present once the studio prices turnaround; only the options that are on. */ turnaround?: TurnaroundOptions; /** Present when the artwork help service is on. */ artHelp?: ArtHelpOptions };
 
 /** Size of a placed artwork, in inches (DTF and other methods are priced by print size). */
 export const printSize = (w?: number, h?: number) => (w && h && w > 0 && h > 0 ? { widthIn: Math.round(w * 10) / 10, heightIn: Math.round(h * 10) / 10 } : {});
@@ -31,11 +33,11 @@ export const printSize = (w?: number, h?: number) => (w && h && w > 0 && h > 0 ?
 export const money = (n: number) => `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 /** Prices a set of items. Returns null when the studio can't be reached (the site then just shows the quote flow). */
-/** `state`: the ship-to state (free shipping is for the lower 48 only). */
-export async function fetchPrices(items: PriceItemInput[], delivery: 'pickup' | 'ship' = 'pickup', signal?: AbortSignal, turnaround?: Turnaround, state?: string): Promise<PriceResponse | null> {
+/** `state`: the ship-to state (free shipping is for the lower 48 only). `ship`: ZIP and speed for live shipping prices. */
+export async function fetchPrices(items: PriceItemInput[], delivery: 'pickup' | 'ship' = 'pickup', signal?: AbortSignal, turnaround?: Turnaround, state?: string, ship?: { zip?: string; speed?: ShipSpeed }): Promise<PriceResponse | null> {
   try {
     const res = await fetch(`${STUDIO_API}/api/public/price`, {
-      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ items, delivery, ...(turnaround ? { turnaround } : {}), ...(delivery === 'ship' && state ? { state } : {}) }), signal,
+      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ items, delivery, ...(turnaround ? { turnaround } : {}), ...(delivery === 'ship' && state ? { state } : {}), ...(delivery === 'ship' && ship?.zip ? { zip: ship.zip } : {}), ...(delivery === 'ship' && ship?.speed === 'fast' ? { shipSpeed: 'fast' } : {}) }), signal,
     });
     if (!res.ok) return null;
     return (await res.json()) as PriceResponse;
