@@ -26,6 +26,8 @@ const INDEX_KEY = 'tbsp-quote-cart-v1';
 const CARRY_KEY = 'tbsp-quote-cart-carry';
 const DB_NAME = 'tbsp-quote-cart';
 const STORE = 'files';
+/** File keys owned by product page drafts, never by cart items. */
+export const DRAFT_PREFIX = 'draft/';
 
 /** One artwork placed on a product, with where it sits (fractions of the print area) for reuse. */
 export interface CartPlacement {
@@ -120,7 +122,7 @@ export async function getFile(key: string): Promise<Blob | null> {
   }
 }
 
-async function deleteFiles(keys: string[]) {
+export async function deleteFiles(keys: string[]) {
   keys.forEach((k) => memoryFiles.delete(k));
   if (!keys.length || !idbOk) return;
   try { await tx('readwrite', (s) => { keys.forEach((k) => s.delete(k)); }); } catch { /* ignore */ }
@@ -274,16 +276,30 @@ export async function clearCart() {
   await gc();
 }
 
+/** Stored files whose key starts with `prefix` (in memory or IndexedDB). */
+export async function fileKeysWith(prefix: string): Promise<string[]> {
+  const out = new Set([...memoryFiles.keys()].filter((k) => k.startsWith(prefix)));
+  await openDb();
+  if (idbOk) {
+    try {
+      const keys = ((await tx<IDBValidKey[]>('readonly', (s) => s.getAllKeys())) ?? []) as string[];
+      keys.filter((k) => typeof k === 'string' && k.startsWith(prefix)).forEach((k) => out.add(k));
+    } catch { /* ignore */ }
+  }
+  return [...out];
+}
+
 const fileKeys = (it: CartItem) => [...it.placements.map((p) => p.fileKey), ...it.mockups.map((m) => m.key)];
 
 /** Removes stored files no item refers to any more (removed items, other tabs). */
 export async function gc() {
   const used = new Set(readIndex().flatMap(fileKeys));
-  for (const k of [...memoryFiles.keys()]) if (!used.has(k)) memoryFiles.delete(k);
+  for (const k of [...memoryFiles.keys()]) if (!used.has(k) && !k.startsWith(DRAFT_PREFIX)) memoryFiles.delete(k);
   if (!idbOk) return;
   try {
     const keys = ((await tx<IDBValidKey[]>('readonly', (s) => s.getAllKeys())) ?? []) as string[];
-    await deleteFiles(keys.filter((k) => !used.has(k)));
+    // Product page drafts keep their own files (src/lib/design-draft.ts cleans those up).
+    await deleteFiles(keys.filter((k) => !used.has(k) && !k.startsWith(DRAFT_PREFIX)));
   } catch { /* ignore */ }
 }
 

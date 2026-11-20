@@ -41,11 +41,12 @@ const steps = [
 </Base>
 
 <script>
-  import { removeCartItem } from '../../lib/cart';
+  import { cartItem, removeCartItem } from '../../lib/cart';
+  import { clearDraft } from '../../lib/design-draft';
   import { CHECKOUT_KEY } from '../../lib/order-sheet';
 
   const n = (new URLSearchParams(location.search).get('n') || '').replace(/[^A-Za-z0-9-]/g, '').slice(0, 30);
-  let saved: { orderNumber?: string; email?: string; cartIds?: string[] } = {};
+  let saved: { orderNumber?: string; email?: string; cartIds?: string[]; drafts?: string[] } = {};
   try { saved = JSON.parse(localStorage.getItem(CHECKOUT_KEY) || '{}'); } catch { /* ignore */ }
   const number = n || saved.orderNumber || '';
   if (number) {
@@ -58,7 +59,10 @@ const steps = [
   // The products just paid for leave the cart.
   if (saved.orderNumber && saved.orderNumber === number) {
     (async () => {
+      // The saved designs for what was just bought start fresh too.
+      const drafts = new Set([...(saved.drafts || []), ...(saved.cartIds || []).map((id) => cartItem(id)?.slug || '')].filter(Boolean));
       for (const id of saved.cartIds || []) await removeCartItem(id);
+      for (const slug of drafts) await clearDraft(slug);
       try { localStorage.removeItem(CHECKOUT_KEY); } catch { /* ignore */ }
     })();
   }

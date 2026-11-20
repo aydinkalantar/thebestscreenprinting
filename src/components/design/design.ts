@@ -25,6 +25,14 @@ interface Art {
    *  methods that don't work for this art (never offered for it). */
   auto?: { method: string; why: string; blocked: string[]; notes: Record<string, string> };
 }
+/** One placed artwork as saved in a product page draft (src/lib/design-draft.ts). */
+export interface DraftArt {
+  locId: string; location: string; decoration: string; notes: string;
+  x: number; y: number; w: number; moved: boolean; file: File;
+  /** The file before its background came off (so Undo still works after a reload). */
+  original?: File;
+  bg?: 'removed' | 'kept' | 'offer' | 'busy'; bgRgb?: [number, number, number];
+}
 export interface Order {
   name: string; style: string; brand: string; color: string; cat: string; sub: string; url: string;
   sizes: { size: string; n: number }[]; total: number;
@@ -1260,6 +1268,46 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     clearCarried() { pending = []; carriedNote = ''; renderPending(); },
     decorations: () => [...new Set(ordered().map((a) => a.decoration))],
     locations: () => ordered().map((a) => spotById.get(a.loc)!.label),
+    /** The placed artwork exactly as it is now (raw notes, position, background state), to save as a draft. */
+    draft: (): DraftArt[] => ordered().map((a) => ({
+      locId: a.loc, location: spotById.get(a.loc)!.label, decoration: a.decoration, notes: a.notes,
+      x: a.x, y: a.y, w: a.w, moved: !!a.moved, file: a.file,
+      ...(a.original && a.original !== a.file ? { original: a.original } : {}),
+      ...(a.bg ? { bg: a.bg } : {}), ...(a.bgRgb ? { bgRgb: a.bgRgb } : {}),
+    })),
+    /** Puts a saved draft back (see draft()): same spots, sizes, methods, notes and background state. */
+    async restore(list: DraftArt[]) {
+      for (const src of list) {
+        const sp = spotById.get(src.locId) ?? spotFor(src.location);
+        if (!sp || arts.has(sp.id)) continue;
+        await addFile(sp.id, src.file, false);
+        const a = arts.get(sp.id);
+        if (!a) continue;
+        if (allowedFor(sp.id).includes(src.decoration)) a.decoration = src.decoration;
+        a.notes = src.notes || '';
+        if (src.bg) a.bg = src.bg;
+        if (src.bgRgb) a.bgRgb = src.bgRgb;
+        if (src.bg === 'removed' && src.original) { a.original = src.original; a.cleaned = src.file; }
+        if (src.moved && src.w > 0 && sp.id === src.locId) {
+          a.moved = true;
+          a.w = clamp(src.w, Math.min(minW(sp), maxW(a, 0, 0)), maxW(a, 0, 0));
+          a.x = clamp(src.x, 0, 1 - a.w);
+          a.y = clamp(src.y, 0, Math.max(0, 1 - artH(a)));
+        }
+      }
+      const first = spots.find((x) => arts.has(x.id));
+      if (first) select(first.id, { zoom: false }); else render();
+      return arts.size;
+    },
+    /** Removes all placed artwork (the "Start over" link). */
+    clearAll() {
+      for (const a of arts.values()) if (a.url) URL.revokeObjectURL(a.url);
+      arts.clear();
+      pending = []; carriedNote = '';
+      if (side === 'back' && !hasBack()) { side = 'front'; active = spots.find((s) => s.side === 'front')?.id ?? active; }
+      render();
+      announce('Design cleared.');
+    },
     openRequest,
     setColor(c: { name: string; front: string; back: string }) {
       colorName = c.name;

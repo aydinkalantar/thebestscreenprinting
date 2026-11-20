@@ -315,6 +315,7 @@ import { agent } from '../../lib/facts.mjs';
   import { MAX_TOTAL_BYTES } from '../../lib/quote';
   import { checkArtwork, fetchPrices, money, printSize, type ArtHelp, type ArtHelpType, type PriceItemInput, type PriceResponse } from '../../lib/online';
   import { openOrder, type OrderArtwork } from '../../lib/order-sheet';
+  import { clearDraft, loadDraft, saveDraft, type DraftState } from '../../lib/design-draft';
   import { countInks, dpiFor, inksOn, type InkCount } from '../../components/design/colors';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
   const label = document.getElementById('color-name');
@@ -389,6 +390,12 @@ import { agent } from '../../lib/facts.mjs';
     maxContext();
     if (barSwatch) barSwatch.style.background = b.style.background;
     design.setColor({ name: color, front: colorImg, back: b.dataset.back || '' });
+    // The address keeps the color, so a refresh or a shared link opens on it.
+    try {
+      const u = new URL(location.href);
+      if (b === swatches[0]) u.searchParams.delete('color'); else u.searchParams.set('color', color);
+      if (u.href !== location.href) history.replaceState(history.state, '', u);
+    } catch { /* ignore */ }
   }));
 
   document.getElementById('more-colors')?.addEventListener('click', (e) => {
@@ -574,6 +581,9 @@ import { agent } from '../../lib/facts.mjs';
         return;
       }
       const item = await addToCart(input);
+      // In the cart now: the saved draft starts over from here (the design stays on the page).
+      draftSkip = true;
+      void clearDraft(draftSlug);
       setCarry(null);
       design.clearCarried();
       if (!(await cartPersistsFiles()) && placements.length) {
@@ -688,9 +698,12 @@ import { agent } from '../../lib/facts.mjs';
       } catch (e) { reply({ error: e instanceof Error ? e.message : 'failed' }); }
     })();
   }
+  /** Max carried a design to this page (it starts with his, not a saved draft). */
+  let fromMax = false;
   try {
     const carried = JSON.parse(sessionStorage.getItem('tbsp-max-place') || 'null');
     if (carried?.productId && carried.productId === d.id && !editItem) {
+      fromMax = true;
       sessionStorage.removeItem('tbsp-max-place');
       // Max's color and sizes first, so the design lands on the right shirt.
       maxSync({ color: carried.color, sizes: carried.sizes });
@@ -1071,6 +1084,110 @@ import { agent } from '../../lib/facts.mjs';
     const [res, shots] = await Promise.all([fetchPrices([input.item]), design.snapshot().length ? design.mockups(3_000_000).catch(() => []) : Promise.resolve([])]);
     orderBtn.disabled = false;
     if (!res?.enabled || !res.items[0]?.ok || !res.totals) { showPrice(res, input); return; }
-    openOrder({ items: [input.item], artwork: input.artwork, mockups: shots.map((m) => ({ itemIndex: 0, side: m.side, blob: m.blob })), price: res, summary: `${d.name}${color ? ` · ${color}` : ''} · ${sum()} pieces` });
+    openOrder({ items: [input.item], artwork: input.artwork, mockups: shots.map((m) => ({ itemIndex: 0, side: m.side, blob: m.blob })), price: res, summary: `${d.name}${color ? ` · ${color}` : ''} · ${sum()} pieces`, drafts: [draftSlug] });
   });
+
+  // ── saved draft: the design, sizes and choices survive a refresh (src/lib/design-draft.ts) ──
+  const draftSlug = d.slug || location.pathname;
+  /** Saving starts once the saved draft (if any) is back on the page. */
+  let draftReady = false;
+  /** The next change after "Add to cart" isn't saved (the draft was just cleared for it). */
+  let draftSkip = false;
+  let draftTimer = 0;
+  let draftChain: Promise<unknown> = Promise.resolve();
+  function draftState(): DraftState {
+    return {
+      color,
+      sizes: sizesMap(),
+      decoration: checked('decoration')[0],
+      locations: checked('location'),
+      inks: Object.fromEntries(inks),
+      artHelp: { on: artOn.checked, type: artType(), notes: artNotes.value },
+      artLater,
+      arts: design.draft(),
+    };
+  }
+  const saveNow = () => {
+    clearTimeout(draftTimer);
+    if (!draftReady) return;
+    if (draftSkip) { draftSkip = false; return; }
+    const state = draftState();
+    draftChain = draftChain.then(() => saveDraft(draftSlug, state)).catch(() => {});
+  };
+  const saveSoon = () => { if (!draftReady) return; clearTimeout(draftTimer); draftTimer = window.setTimeout(saveNow, 400); };
+  window.addEventListener('tbsp-pdp-change', saveSoon);
+  instant.addEventListener('change', saveSoon);
+  instant.addEventListener('click', saveSoon);
+  artNotes.addEventListener('input', saveSoon);
+  // Leaving or hiding the page: save what's pending right away.
+  window.addEventListener('pagehide', () => { if (draftTimer) saveNow(); });
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && draftTimer) saveNow(); });
+
+  /** "Picked up where you left off" with a Start over link, at the top of the form. */
+  function showDraftNote() {
+    const box = document.createElement('div');
+    box.dataset.draftNote = '';
+    box.className = 'flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-xl border border-violet-300/70 dark:border-violet-400/30 bg-violet-500/[0.06] px-3.5 py-2.5 text-[13px] text-zinc-800 dark:text-zinc-200';
+    box.setAttribute('role', 'status');
+    const t = document.createElement('span');
+    t.textContent = 'We kept your design and sizes from last time.';
+    const reset = document.createElement('button');
+    reset.type = 'button';
+    reset.className = 'min-h-[32px] font-semibold text-violet-700 dark:text-violet-300 hover:underline';
+    reset.textContent = 'Start over';
+    reset.addEventListener('click', () => {
+      draftReady = false;
+      clearTimeout(draftTimer);
+      design.clearAll();
+      inputs.forEach((i) => { i.value = ''; });
+      inks.clear();
+      artOn.checked = false; artOpts.hidden = true; artNotes.value = ''; artLater = false;
+      if (swatches[0] && swatches[0].getAttribute('aria-checked') !== 'true') swatches[0].click();
+      box.remove();
+      refresh();
+      schedulePrice(0);
+      draftChain = draftChain.then(() => clearDraft(draftSlug)).catch(() => {}).finally(() => { draftReady = true; });
+    });
+    box.append(t, reset);
+    form.prepend(box);
+  }
+
+  async function restoreDraft() {
+    const s = await loadDraft(draftSlug);
+    if (!s) return;
+    // A color in the address (search results, color filters) wins over the saved one.
+    if (!wantSwatch && s.color) {
+      const sw = swatches.find((b) => b.dataset.name === s.color);
+      if (sw && sw.getAttribute('aria-checked') !== 'true') { sw.hidden = false; sw.click(); }
+    }
+    for (const i of inputs) {
+      const v = s.sizes?.[i.dataset.size || ''];
+      i.value = v ? String(v) : '';
+      if (v) i.closest<HTMLElement>('[data-size-row]')?.removeAttribute('hidden');
+    }
+    const dec = form.querySelector<HTMLInputElement>(`input[name="decoration"][value="${CSS.escape(s.decoration || '')}"]`);
+    if (dec) { dec.checked = true; design.setMethod(dec.value); }
+    if (s.locations?.length) form.querySelectorAll<HTMLInputElement>('input[name="location"]').forEach((c) => { c.checked = s.locations!.includes(c.value); });
+    for (const [k, v] of Object.entries(s.inks || {})) if (v > 0) inks.set(k, v);
+    if (s.artHelp?.on) {
+      artOn.checked = true;
+      artOpts.hidden = false;
+      const r = artBox.querySelector<HTMLInputElement>(`input[name="artHelp"][value="${CSS.escape(s.artHelp.type)}"]`);
+      if (r) r.checked = true;
+      artNotes.value = s.artHelp.notes || '';
+    }
+    artLater = !!s.artLater;
+    if (s.arts.length) await design.restore(s.arts);
+    refresh();
+    schedulePrice(0);
+    if (s.arts.length || sum() > 0) showDraftNote();
+  }
+
+  // Edit from the cart, artwork carried from another product, Max's design or a hidden render
+  // start the page their own way: no draft then, and nothing saved over the visitor's draft.
+  if (editItem || renderJob || fromMax || getCarry()) {
+    if (!editItem && !renderJob) draftReady = true;
+  } else {
+    restoreDraft().catch(() => {}).finally(() => { draftReady = true; });
+  }
 </script>
