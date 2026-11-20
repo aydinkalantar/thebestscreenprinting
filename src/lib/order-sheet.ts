@@ -4,7 +4,7 @@ import { visitField } from './hit';
 import { fetchPrices, money, placeOrder, type PriceItemInput, type PriceResponse, type Totals, type Turnaround } from './online';
 import { prefillContact, saveContact } from './contact';
 import { openSheet, wireSheet } from './sheet';
-import { attachAddressAutocomplete } from './address-autocomplete';
+import { attachAddressAutocomplete, lookupZip } from './address-autocomplete';
 
 export interface OrderArtwork { itemIndex: number; placement: string; file: File }
 export interface OrderMockup { itemIndex: number; side: string; blob: Blob }
@@ -169,7 +169,17 @@ function wire(el: HTMLElement) {
   // Live shipping: the price shows as soon as a full ZIP is typed.
   form.addEventListener('input', (e) => {
     const t = e.target as HTMLInputElement;
-    if (t.name === 'zip' && /^\d{5}$/.test(t.value.trim()) && current?.price.delivery.shippingLive) reprice(el, form);
+    if (t.name !== 'zip' || !/^\d{5}$/.test(t.value.trim())) return;
+    if (current?.price.delivery.shippingLive) reprice(el, form);
+    // A full ZIP fills an empty city and state (the state re-prices: tax, free shipping area).
+    const zip = t.value.trim();
+    if (val('city') && val('state')) return;
+    lookupZip(zip).then((p) => {
+      if (!p || val('zip') !== zip) return;
+      if (!val('city')) field('city').value = p.city;
+      const st = field('state') as HTMLSelectElement;
+      if (!st.value && [...st.options].some((o) => o.value === p.state)) { st.value = p.state; st.dispatchEvent(new Event('change', { bubbles: true })); }
+    });
   });
 
   let sending = false;

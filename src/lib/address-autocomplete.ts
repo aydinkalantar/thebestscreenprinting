@@ -1,46 +1,46 @@
-// Address suggestions while typing (Google Places API, New) for the checkout's shipping address.
-// The key is a browser key limited to this site's domain (PUBLIC_GOOGLE_PLACES_KEY in .env);
-// without it, or if Google can't be reached, the fields stay plain inputs with browser autofill.
-// One session token per address keeps Google's billing at one "session" per address picked.
+// Address autofill for the checkout's shipping address, through the studio (GET /api/public/address),
+// so no key lives on the website and every shop's site gets it:
+// - street suggestions while typing (Google, when the studio has its key); picking one fills the rest
+// - a full ZIP fills an empty city and state (always on)
+// Off or offline, the fields stay plain inputs with the browser's own autofill.
+// One session id per address keeps Google's billing at one "session" per address picked.
 
-const KEY = import.meta.env.PUBLIC_GOOGLE_PLACES_KEY as string | undefined;
-const API = 'https://places.googleapis.com/v1';
+import { STUDIO_API } from './online';
 
-interface Suggestion { placeId: string; main: string; secondary: string }
+const API = `${STUDIO_API}/api/public/address`;
+
+interface Suggestion { id: string; main: string; secondary: string }
 export interface PickedAddress { street: string; city: string; state: string; zip: string }
 
 const uuid = () => (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
 
-async function suggest(input: string, session: string, signal: AbortSignal): Promise<Suggestion[]> {
-  const res = await fetch(`${API}/places:autocomplete`, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json', 'X-Goog-Api-Key': KEY! },
-    body: JSON.stringify({ input, sessionToken: session, includedRegionCodes: ['us'], includedPrimaryTypes: ['street_address', 'premise', 'subpremise'] }),
-    signal,
-  });
-  if (!res.ok) throw new Error(`places ${res.status}`);
-  const data = (await res.json()) as { suggestions?: { placePrediction?: { placeId: string; structuredFormat?: { mainText?: { text: string }; secondaryText?: { text: string } }; text?: { text: string } } }[] };
-  return (data.suggestions || []).map((s) => s.placePrediction).filter(Boolean).map((p) => ({
-    placeId: p!.placeId,
-    main: p!.structuredFormat?.mainText?.text || p!.text?.text || '',
-    secondary: p!.structuredFormat?.secondaryText?.text || '',
-  }));
+/** Suggestions, or null when the studio has street suggestions off. */
+async function suggest(input: string, session: string, signal: AbortSignal): Promise<Suggestion[] | null> {
+  const res = await fetch(`${API}?q=${encodeURIComponent(input)}&s=${encodeURIComponent(session)}`, { signal });
+  if (!res.ok) throw new Error(`address ${res.status}`);
+  const data = (await res.json()) as { on?: boolean; suggestions?: Suggestion[] };
+  return data.on === false ? null : data.suggestions || [];
 }
 
-async function details(placeId: string, session: string): Promise<PickedAddress | null> {
-  const res = await fetch(`${API}/places/${encodeURIComponent(placeId)}?sessionToken=${encodeURIComponent(session)}`, {
-    headers: { 'X-Goog-Api-Key': KEY!, 'X-Goog-FieldMask': 'addressComponents' },
-  });
+async function details(id: string, session: string): Promise<PickedAddress | null> {
+  const res = await fetch(`${API}?place=${encodeURIComponent(id)}&s=${encodeURIComponent(session)}`);
   if (!res.ok) return null;
-  const data = (await res.json()) as { addressComponents?: { longText: string; shortText: string; types: string[] }[] };
-  const c = (t: string, short = false) => { const x = data.addressComponents?.find((a) => a.types.includes(t)); return x ? (short ? x.shortText : x.longText) : ''; };
-  const street = [c('street_number'), c('route', true)].filter(Boolean).join(' ');
-  return { street, city: c('locality') || c('sublocality') || c('postal_town') || c('administrative_area_level_3'), state: c('administrative_area_level_1', true), zip: c('postal_code') };
+  return ((await res.json()) as { address: PickedAddress | null }).address;
+}
+
+/** City and state for a 5-digit ZIP, or null. */
+export async function lookupZip(zip: string): Promise<{ city: string; state: string } | null> {
+  const z = zip.trim().match(/^\d{5}$/)?.[0];
+  if (!z) return null;
+  try {
+    const d = (await (await fetch(`${API}?zip=${z}`)).json()) as { city: string | null; state: string | null };
+    return d.city && d.state ? { city: d.city, state: d.state } : null;
+  } catch { return null; }
 }
 
 /** Turns a street input into a suggest-as-you-type field. `onPick` fills the other fields. */
 export function attachAddressAutocomplete(input: HTMLInputElement, onPick: (a: PickedAddress) => void) {
-  if (!KEY || input.dataset.ac) return;
+  if (input.dataset.ac) return;
   input.dataset.ac = '1';
   input.setAttribute('role', 'combobox');
   input.setAttribute('aria-autocomplete', 'list');
@@ -71,7 +71,7 @@ export function attachAddressAutocomplete(input: HTMLInputElement, onPick: (a: P
   const pick = async (s: Suggestion) => {
     close();
     input.value = s.main;
-    const a = await details(s.placeId, session).catch(() => null);
+    const a = await details(s.id, session).catch(() => null);
     session = uuid();
     if (a) onPick(a);
   };
@@ -104,7 +104,7 @@ export function attachAddressAutocomplete(input: HTMLInputElement, onPick: (a: P
     timer = window.setTimeout(async () => {
       ctl?.abort();
       ctl = new AbortController();
-      try { items = await suggest(q, session, ctl.signal); render(); } catch (e) { if ((e as Error).name !== 'AbortError') { broken = true; close(); } }
+      try { const r = await suggest(q, session, ctl.signal); if (r === null) { broken = true; close(); return; } items = r; render(); } catch (e) { if ((e as Error).name !== 'AbortError') { broken = true; close(); } }
     }, 250);
   });
   input.addEventListener('keydown', (e) => {
