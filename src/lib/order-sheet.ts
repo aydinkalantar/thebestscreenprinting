@@ -50,10 +50,10 @@ function renderTotals(el: HTMLElement) {
   if (totals.setup) row(dl, 'Setup / screens', money(totals.setup));
   if (totals.art) row(dl, 'Artwork help', money(totals.art));
   if (totals.rush) row(dl, `${totals.turnaround === 'superrush' ? 'Super Rush' : 'Rush'} fee${totals.rushPercent ? ` (+${totals.rushPercent}%)` : ''}`, money(totals.rush));
-  const shipping = deliveryOf(el.querySelector<HTMLFormElement>('[data-os-form]')!) === 'ship';
-  row(dl, shipping ? 'Shipping' : 'Pickup', totals.shipping ? money(totals.shipping) : 'Free');
-  // The studio waives shipping over its free-shipping amount: the option says so once this order qualifies.
-  if (shipping) el.querySelector('[data-os-ship-price]')!.textContent = `· ${totals.shipping ? money(totals.shipping) : 'free for this order'}`;
+  const form = el.querySelector<HTMLFormElement>('[data-os-form]')!;
+  const shipping = deliveryOf(form) === 'ship';
+  row(dl, shipping ? (speedOf(form) === 'fast' ? 'Fast shipping' : totals.shippingEstimate ? 'Shipping (estimate)' : 'Shipping') : 'Pickup', totals.shipping ? money(totals.shipping) : 'Free');
+  renderShipChoices(el);
   if (totals.tax) row(dl, `Tax (${totals.taxRate}%)`, money(totals.tax));
   row(dl, 'Total', money(totals.total), true);
   const pct = current.price.payment.depositPercent;
@@ -61,9 +61,45 @@ function renderTotals(el: HTMLElement) {
   el.querySelector('[data-os-deposit-amount]')!.textContent = `· ${pct}% now, ${money(Math.round(totals.total * pct) / 100)}`;
 }
 
+/** Live shipping: one list, one tap. Shipping and Fast shipping show their price for the ZIP. */
+const days = (d: number | null | undefined) => (d ? `Arrives in about ${d} business day${d === 1 ? '' : 's'} after it ships` : 'Anywhere in the US');
+function renderShipChoices(el: HTMLElement) {
+  const form = el.querySelector<HTMLFormElement>('[data-os-form]')!;
+  const live = !!current?.price.delivery.shippingLive;
+  const opts = totals?.shippingOptions;
+  const fast = el.querySelector<HTMLElement>('[data-os-fast]')!;
+  const shipPrice = el.querySelector('[data-os-ship-price]')!;
+  const shipNote = el.querySelector('[data-os-ship-note]')!;
+  if (live) {
+    shipPrice.textContent = opts ? `· ${money(opts.standard.amount)}` : '· priced to your ZIP';
+    shipNote.textContent = opts ? days(opts.standard.days) : 'Enter your address below to see the price';
+    fast.hidden = !opts?.fast;
+    if (opts?.fast) {
+      el.querySelector('[data-os-fast-price]')!.textContent = `· ${money(opts.fast.amount)}`;
+      el.querySelector('[data-os-fast-note]')!.textContent = days(opts.fast.days);
+    }
+    // Fast isn't offered for this address: back to standard shipping.
+    const fastIn = fast.querySelector('input')!;
+    if (fast.hidden && fastIn.checked) { el.querySelector<HTMLInputElement>('[data-os-ship] input')!.checked = true; }
+  } else {
+    fast.hidden = true;
+    // The studio waives shipping over its free-shipping amount: the option says so once this order qualifies.
+    if (totals && deliveryOf(form) === 'ship') shipPrice.textContent = `· ${totals.shipping ? money(totals.shipping) : 'free for this order'}`;
+  }
+}
+
 /** The ship-to state, once chosen (Alaska, Hawaii and territories don't get free shipping). */
 const stateOf = (form: HTMLFormElement) => ((form.elements.namedItem('state') as HTMLSelectElement | null)?.value || '').trim() || undefined;
-const deliveryOf = (form: HTMLFormElement) => (form.querySelector<HTMLInputElement>('input[name="delivery"]:checked')?.value || 'pickup') as 'pickup' | 'ship';
+const deliveryValue = (form: HTMLFormElement) => form.querySelector<HTMLInputElement>('input[name="delivery"]:checked')?.value || 'pickup';
+const deliveryOf = (form: HTMLFormElement) => (deliveryValue(form) === 'pickup' ? 'pickup' : 'ship') as 'pickup' | 'ship';
+const speedOf = (form: HTMLFormElement) => (deliveryValue(form) === 'ship-fast' ? 'fast' : 'standard') as 'standard' | 'fast';
+const zipOf = (form: HTMLFormElement) => ((form.elements.namedItem('zip') as HTMLInputElement | null)?.value || '').trim().match(/^\d{5}/)?.[0];
+/** Re-prices for the current delivery, speed, turnaround, state and ZIP. */
+const reprice = (el: HTMLElement, form: HTMLFormElement) => {
+  if (!current) return;
+  fetchPrices(current.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined, stateOf(form), { zip: zipOf(form), speed: speedOf(form) })
+    .then((res) => { if (res?.enabled && res.totals) { totals = res.totals; renderTotals(el); renderReady(el); } });
+};
 const turnOf = (form: HTMLFormElement) => (form.querySelector<HTMLInputElement>('input[name="turnaround"]:checked')?.value || 'normal') as Turnaround;
 
 const pieces = (items: PriceItemInput[]) => items.reduce((n, it) => n + Object.values(it.sizes).reduce((a, b) => a + b, 0), 0);
@@ -118,7 +154,7 @@ function wire(el: HTMLElement) {
     if (a.city) field('city').value = a.city;
     // Re-priced for the state (free shipping is for the lower 48 only).
     if (a.state) { field('state').value = a.state; field('state').dispatchEvent(new Event('change', { bubbles: true })); }
-    if (a.zip) field('zip').value = a.zip;
+    if (a.zip) { field('zip').value = a.zip; field('zip').dispatchEvent(new Event('change', { bubbles: true })); }
     (field('street2') as HTMLInputElement).focus();
   });
   const showMsg = (t: string) => { msg.className = 'rounded-xl px-4 py-3 text-sm font-medium bg-red-500/10 text-red-700 dark:text-red-300'; msg.textContent = t; msg.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); };
@@ -126,10 +162,14 @@ function wire(el: HTMLElement) {
 
   form.addEventListener('change', async (e) => {
     const t = e.target as HTMLInputElement;
-    if ((t.name !== 'delivery' && t.name !== 'turnaround' && t.name !== 'state') || !current) return;
-    if (t.name === 'delivery') address.hidden = t.value !== 'ship';
-    const res = await fetchPrices(current.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined, stateOf(form));
-    if (res?.enabled && res.totals) { totals = res.totals; renderTotals(el); renderReady(el); }
+    if ((t.name !== 'delivery' && t.name !== 'turnaround' && t.name !== 'state' && t.name !== 'zip') || !current) return;
+    if (t.name === 'delivery') address.hidden = t.value === 'pickup';
+    reprice(el, form);
+  });
+  // Live shipping: the price shows as soon as a full ZIP is typed.
+  form.addEventListener('input', (e) => {
+    const t = e.target as HTMLInputElement;
+    if (t.name === 'zip' && /^\d{5}$/.test(t.value.trim()) && current?.price.delivery.shippingLive) reprice(el, form);
   });
 
   let sending = false;
@@ -149,7 +189,7 @@ function wire(el: HTMLElement) {
     if (visitField()) fd.set('visit', visitField());
     fd.set('data', JSON.stringify({
       contact: { name, email, phone: val('phone') || undefined, company: val('company') || undefined },
-      items: current.items, delivery, pay,
+      items: current.items, delivery, pay, ...(delivery === 'ship' && speedOf(form) === 'fast' ? { shipSpeed: 'fast' } : {}),
       ...(delivery === 'ship' ? { address: { street: [val('street'), val('street2')].filter(Boolean).join(', '), city: val('city'), state: val('state'), zip: val('zip') } } : {}),
       notes: val('notes') || undefined, leadSource: val('leadSource') || undefined,
       ...(turnPriced ? { turnaround: turnOf(form) } : {}),
@@ -208,11 +248,13 @@ export function openOrder(req: OrderRequest) {
   pickup.hidden = delivery.pickup == null;
   ship.hidden = delivery.shipping == null;
   el.querySelector('[data-os-pickup-note]')!.textContent = delivery.pickup || '';
-  el.querySelector('[data-os-ship-price]')!.textContent = delivery.shipping != null ? `· ${delivery.shipping ? money(delivery.shipping) : 'free'}` : '';
+  el.querySelector('[data-os-ship-price]')!.textContent = delivery.shippingLive ? '· priced to your ZIP' : delivery.shipping != null ? `· ${delivery.shipping ? money(delivery.shipping) : 'free'}` : '';
   const pickupInput = pickup.querySelector('input')!, shipInput = ship.querySelector('input')!;
-  if (!pickupInput.checked && !shipInput.checked) (delivery.pickup != null ? pickupInput : shipInput).checked = true;
+  const fastInput = el.querySelector<HTMLInputElement>('[data-os-fast] input')!;
+  // Live shipping: Shipping is picked first (most orders ship); otherwise Pickup when offered.
+  if (!pickupInput.checked && !shipInput.checked && !fastInput.checked) (delivery.shippingLive && delivery.shipping != null ? shipInput : delivery.pickup != null ? pickupInput : shipInput).checked = true;
   el.querySelector<HTMLElement>('[data-os-delivery]')!.hidden = delivery.pickup == null && delivery.shipping == null;
-  el.querySelector<HTMLElement>('[data-os-address]')!.hidden = !shipInput.checked;
+  el.querySelector<HTMLElement>('[data-os-address]')!.hidden = !shipInput.checked && !fastInput.checked;
   const full = el.querySelector<HTMLElement>('[data-os-full]')!, dep = el.querySelector<HTMLElement>('[data-os-deposit]')!;
   full.hidden = !payment.options.includes('full');
   dep.hidden = !payment.options.includes('deposit');
@@ -223,7 +265,7 @@ export function openOrder(req: OrderRequest) {
   // Turnaround choices come from the studio (only the ones that are on, with their % and days).
   setupTurnaround(el, req.price.turnaround, req.items);
   const form = el.querySelector<HTMLFormElement>('[data-os-form]')!;
-  if (deliveryOf(form) === 'ship' || turnPriced) fetchPrices(req.items, deliveryOf(form), undefined, turnPriced ? turnOf(form) : undefined, stateOf(form)).then((r) => { if (r?.enabled && r.totals) { totals = r.totals; renderTotals(el); renderReady(el); } });
+  if (deliveryOf(form) === 'ship' || turnPriced) reprice(el, form);
   renderReady(el);
   openSheet(el);
 }
