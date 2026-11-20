@@ -8,7 +8,7 @@ import { attachAddressAutocomplete, lookupZip } from './address-autocomplete';
 
 export interface OrderArtwork { itemIndex: number; placement: string; file: File }
 export interface OrderMockup { itemIndex: number; side: string; blob: Blob }
-export interface OrderRequest { items: PriceItemInput[]; artwork: OrderArtwork[]; /** Product photos with the designs on them, per item and side. */ mockups?: OrderMockup[]; price: Extract<PriceResponse, { enabled: true }>; summary: string; /** Cart items being bought: removed on the thank-you page. */ cartIds?: string[] }
+export interface OrderRequest { items: PriceItemInput[]; artwork: OrderArtwork[]; /** Product photos with the designs on them, per item and side. */ mockups?: OrderMockup[]; price: Extract<PriceResponse, { enabled: true }>; summary: string; /** Cart items being bought: removed on the thank-you page. */ cartIds?: string[]; /** Product page drafts (by slug) cleared on the thank-you page. */ drafts?: string[] }
 
 /** Remembered while the customer is at Stripe, so the thank-you page can tidy the cart. */
 export const CHECKOUT_KEY = 'tbsp-checkout';
@@ -215,7 +215,7 @@ function wire(el: HTMLElement) {
     if (res.ok) {
       label.textContent = 'Opening secure payment…';
       saveContact({ name, email, phone: val('phone'), company: val('company') });
-      try { localStorage.setItem(CHECKOUT_KEY, JSON.stringify({ orderNumber: res.orderNumber, email, cartIds: current.cartIds || [], at: Date.now() })); } catch { /* ignore */ }
+      try { localStorage.setItem(CHECKOUT_KEY, JSON.stringify({ orderNumber: res.orderNumber, email, cartIds: current.cartIds || [], drafts: current.drafts || [], at: Date.now() })); } catch { /* ignore */ }
       location.href = res.checkoutUrl;
       return;
     }
