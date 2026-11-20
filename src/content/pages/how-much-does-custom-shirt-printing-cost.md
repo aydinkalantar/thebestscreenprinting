@@ -1,18 +1,18 @@
 ---
 path: "/how-much-does-custom-shirt-printing-cost/"
 title: "How Much Does Custom Shirt Printing Cost? 2026 Prices | TBSP"
-description: "Custom t-shirt printing costs about {{tee.screen1.24}} per shirt at 24 pieces and {{tee.screen1.144}} at 144 for a one-color print, shirt included. Full price table by method and quantity, free shipping from {{shipFreeFrom}} in the lower 48."
+description: "Custom t-shirt printing costs about {{tee.screen1.24}} per shirt at 24 pieces and {{tee.screen1.144}} at 144 for a one-color print, shirt included. Full price table by method and quantity, {{shipNote}} in the lower 48."
 h1: "How much does custom shirt printing cost?"
 kind: answer
 imported: false
-summary: "A one-color screen printed tee costs about {{tee.screen1.24}} each for 24 shirts and {{tee.screen1.144}} each for 144, shirt included, plus a one-time {{screenSetup}} screen. Full-color DTF runs about {{tee.dtf.24}} each at 24. The price per shirt drops as the quantity goes up, and shipping is free on orders of {{shipFreeFrom}} or more anywhere in the lower 48 states."
+summary: "A one-color screen printed tee costs about {{tee.screen1.24}} each for 24 shirts and {{tee.screen1.144}} each for 144, shirt included, plus a one-time {{screenSetup}} screen. Full-color DTF runs about {{tee.dtf.24}} each at 24. The price per shirt drops as the quantity goes up, and shipping anywhere in the lower 48 states is {{shipBrief}}."
 facts:
   - { label: "24 tees, 1 color", value: "About {{tee.screen1.24}} each" }
   - { label: "144 tees, 1 color", value: "About {{tee.screen1.144}} each" }
-  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
+  - { label: "Shipping", value: "{{shipShort}}" }
 faqs:
   - q: "How much does it cost to print 24 custom t-shirts?"
-    a: "About {{tee.screen1.24}} per shirt for a one-color screen print on the front plus a {{screenSetup}} screen, or about {{tee.dtf.24}} per shirt for a full-color DTF print with no setup fee. That is about {{$ tee.screen1.24 × 24 + screenSetup}} for screen printing or {{$ tee.dtf.24 × 24}} for DTF, and shipping is free from {{shipFreeFrom}}."
+    a: "About {{tee.screen1.24}} per shirt for a one-color screen print on the front plus a {{screenSetup}} screen, or about {{tee.dtf.24}} per shirt for a full-color DTF print with no setup fee. That is about {{$ tee.screen1.24 × 24 + screenSetup}} for screen printing or {{$ tee.dtf.24 × 24}} for DTF, and shipping is {{shipBrief}}."
   - q: "How much does it cost to print 100 shirts?"
     a: "For a one-color front print, about {{tee.screen1.72}} per shirt at 72 to 143 pieces, so around {{$ tee.screen1.72 × 100 + screenSetup}} for 100 including the screen. Two colors add about {{$. tee.screen2.72 - tee.screen1.72}} per shirt at that quantity, plus a second screen."
   - q: "What is a setup fee?"
@@ -20,7 +20,7 @@ faqs:
   - q: "Why are small orders more per shirt?"
     a: "Setup and press time cost the same for 12 shirts as for 500, so they are spread over fewer pieces. For full-color art under 24 pieces, DTF is often the best value."
   - q: "Is shipping included?"
-    a: "Shipping is free on orders of {{shipFreeFrom}} or more and a flat {{shipFlat}} below that, to any address in the lower 48 states. Pickup in Los Angeles is free."
+    a: "{{shipRule}}, to any address in the lower 48 states. Pickup in Los Angeles is free."
 updated: "2026-10-28"
 ---
 ## Price per shirt, by method and quantity

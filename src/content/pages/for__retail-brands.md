@@ -5,7 +5,7 @@ description: "Screen printing and embroidery for clothing and retail brands in L
 h1: "Branded apparel for retail"
 kind: audience
 imported: false
-summary: "Your drop, printed in Los Angeles by a shop that has printed for Netflix, Adidas and Nike. Screen printed runs start at 12 pieces and are printed in-house; full-color test runs go DTG or DTF from 6. We ship anywhere in the lower 48, free from {{shipFreeFrom}}."
+summary: "Your drop, printed in Los Angeles by a shop that has printed for Netflix, Adidas and Nike. Screen printed runs start at 12 pieces and are printed in-house; full-color test runs go DTG or DTF from 6. We ship anywhere in the lower 48, {{shipPrice}}."
 facts:
   - label: "Production runs"
     value: "Screen printed in-house, from 12 pieces"
@@ -70,4 +70,4 @@ Send your art, blanks and quantities through the [quick quote form](/quick-quote
 
 ## Ordering from outside California?
 
-You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask {{agent}}, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of {{shipFreeFrom}} or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask {{agent}}, approve the mockup by email and we ship to any address in the lower 48 states, {{shipPrice}}. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).

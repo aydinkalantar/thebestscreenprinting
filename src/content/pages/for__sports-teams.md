@@ -1,15 +1,15 @@
 ---
 path: "/for/sports-teams/"
 title: "Custom Team Shirts, Jerseys & Hoodies for Any League | TBSP"
-description: "Custom team shirts, jerseys, hoodies and hats with names and numbers for rec leagues, club teams, schools and coaches, from 12 pieces. Shipped anywhere in the US, free from {{shipFreeFrom}}."
+description: "Custom team shirts, jerseys, hoodies and hats with names and numbers for rec leagues, club teams, schools and coaches, from 12 pieces. Shipped anywhere in the US, {{shipPrice}}."
 h1: "Custom apparel for sports teams"
 kind: audience
 imported: false
-summary: "Team shirts, jerseys, warm-up hoodies and hats for rec leagues, club teams, school teams and coaches anywhere in the US. Orders start at 6 pieces (12 for screen printing and embroidery), names and numbers can go on the back, and shipping is free from {{shipFreeFrom}}."
+summary: "Team shirts, jerseys, warm-up hoodies and hats for rec leagues, club teams, school teams and coaches anywhere in the US. Orders start at 6 pieces (12 for screen printing and embroidery), names and numbers can go on the back, and shipping is {{shipBrief}}."
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Names & numbers", value: "Yes, on the back" }
-  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
+  - { label: "Shipping", value: "{{shipShort}}" }
 faqs:
   - q: "How much are custom team shirts?"
     a: "A one-color team shirt is about {{tee.screen1.12}} each at 12 pieces and {{tee.screen1.24}} at 24, shirt included, plus a one-time {{screenSetup}} screen. Names and numbers on the back are priced with your quote."
@@ -39,4 +39,4 @@ Browse jerseys and uniforms on [team uniforms](/products/team-uniforms-jerseys/)
 2. **Approve the mockup.** We place the logo, names and numbers for you.
 3. **We make it in-house** and ship it to the coach or team manager.
 
-Team parent paying? Most team orders of 24 or more shirts pass {{shipFreeFrom}} and [ship free](/shipping-nationwide/). Schools and booster clubs, see [apparel for schools](/for/schools/).
+Team parent paying? Order everyone's shirts at once so it all ships together ([how shipping works](/shipping-nationwide/)). Schools and booster clubs, see [apparel for schools](/for/schools/).

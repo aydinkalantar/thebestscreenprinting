@@ -59,9 +59,10 @@ export const business = {
   superRushNote: `Up to ${facts.superRushMaxPieces} pieces. Not available for all products, styles or PO Box addresses.`,
   /** Areas we serve without a shop address there (service-area business). */
   serviceAreas: ['Los Angeles, CA', 'Cleveland, OH'],
-  /** Shipping per order to any address in the lower 48 (same as online checkout): flat under the threshold, free from it. */
+  /** Shipping as Settings › Shipping has it: live carrier price, or flat with a free-from amount (0 = never free). */
   shippingFlat: facts.shipFlat,
   shippingFreeFrom: facts.shipFreeFrom,
+  shippingLive: facts.shipLive === true,
 } as const;
 
 export const localBusinessJsonLd = {

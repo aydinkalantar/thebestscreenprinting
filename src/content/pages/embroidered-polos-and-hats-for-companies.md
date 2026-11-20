@@ -5,7 +5,7 @@ description: "Embroidered polos, hats and jackets with your company logo, from 1
 h1: "Embroidered polos and hats for your company"
 kind: answer
 imported: false
-summary: "We embroider company logos on polos, caps, jackets and fleece from 12 pieces and ship them to any US state, free from {{shipFreeFrom}}. A left-chest logo costs about $11.75 per piece at 12 and $4.75 at 144 for the stitching, plus the garment. Digitizing is a one-time {{digitizing}} per logo."
+summary: "We embroider company logos on polos, caps, jackets and fleece from 12 pieces and ship them to any US state, {{shipPrice}}. A left-chest logo costs about $11.75 per piece at 12 and $4.75 at 144 for the stitching, plus the garment. Digitizing is a one-time {{digitizing}} per logo."
 facts:
   - { label: "Minimum", value: "12 pieces" }
   - { label: "Digitizing", value: "{{digitizing}} per logo" }
@@ -47,6 +47,6 @@ Smaller logos with fewer stitches cost less; bigger ones cost more. Send your lo
 - **Your logo on file.** The stitch file, thread colors and placement are saved, so new hires get matching gear.
 - **Mockup first.** You approve the exact placement and size before anything is stitched.
 - **Mix items on one order.** Polos, caps and jackets together, each priced on its own.
-- **Ships anywhere.** Free shipping from {{shipFreeFrom}} in the lower 48, {{shipFlat}} below that.
+- **Ships anywhere.** {{shipRule}}.
 
 Read more about our [embroidery](/services/embroidery/) and [polos](/products/business-and-polos-landings/).

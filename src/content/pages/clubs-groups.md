@@ -5,7 +5,7 @@ description: "Custom shirts and hoodies for clubs, school groups, families, char
 h1: "Specialty t-shirts for clubs and groups"
 kind: audience
 imported: false
-summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Los Angeles shop. Orders start at 6 pieces (12 for screen printing and embroidery). We ship anywhere in the lower 48, free from {{shipFreeFrom}}."
+summary: "One design, one crew. Custom shirts, hoodies and hats for clubs, classes, families, charities and work teams, printed at our Los Angeles shop. Orders start at 6 pieces (12 for screen printing and embroidery). We ship anywhere in the lower 48, {{shipPrice}}."
 facts:
   - { label: "Minimum", value: "6 pieces per order (12 for screen printing and embroidery)" }
   - { label: "Turnaround", value: "Normal ~2 weeks · Rush 1 week · Super Rush 3 business days" }
@@ -60,4 +60,4 @@ Rounding up the crew? [Get a free quote](/quick-quote/).
 
 ## Ordering from outside California?
 
-You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask {{agent}}, approve the mockup by email and we ship to any address in the lower 48 states, free on orders of {{shipFreeFrom}} or more. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).
+You don't need to visit. Send your art and sizes through the [quote form](/quick-quote/) or ask {{agent}}, approve the mockup by email and we ship to any address in the lower 48 states, {{shipPrice}}. Read how [nationwide shipping](/shipping-nationwide/) works and see [what custom shirts cost](/how-much-does-custom-shirt-printing-cost/).

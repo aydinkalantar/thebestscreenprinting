@@ -52,7 +52,7 @@ const categories = collectionTiles.length > 12
 const trust = [
   { icon: BadgeCheck, t: 'Free art proof before anything prints' },
   { icon: Package, t: `Orders start at ${business.shopMinimum} pieces` },
-  { icon: Truck, t: `Free shipping on $${business.shippingFreeFrom}+ (lower 48)` },
+  { icon: Truck, t: fill('Ships anywhere in the US · {{shipShort}}') },
   { icon: Star, t: 'Real Google reviews', href: '#reviews' },
 ]
 const brands = brandTiles(10);

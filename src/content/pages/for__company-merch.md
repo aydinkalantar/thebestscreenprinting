@@ -1,11 +1,11 @@
 ---
 path: "/for/company-merch/"
 title: "Company Merch & Employee Apparel, Shipped Nationwide | TBSP"
-description: "Branded company shirts, embroidered polos, hoodies and hats for employees, clients and events, from 12 pieces. Logo digitizing {{digitizing}} per design, free shipping from {{shipFreeFrom}} in the lower 48, shipping anywhere in the US."
+description: "Branded company shirts, embroidered polos, hoodies and hats for employees, clients and events, from 12 pieces. Logo digitizing {{digitizing}} per design, {{shipNote}} in the lower 48, shipping anywhere in the US."
 h1: "Company merch and employee apparel"
 kind: audience
 imported: false
-summary: "Branded tees, embroidered polos, hoodies, hats and totes for your team, new hires, clients and events, made in our own facilities and shipped to any office in the lower 48. Orders start at 6 pieces (12 for screen printing and embroidery), logo digitizing is a one-time {{digitizing}} per design, and shipping is free from {{shipFreeFrom}}."
+summary: "Branded tees, embroidered polos, hoodies, hats and totes for your team, new hires, clients and events, made in our own facilities and shipped to any office in the lower 48. Orders start at 6 pieces (12 for screen printing and embroidery), logo digitizing is a one-time {{digitizing}} per design, and shipping is {{shipBrief}}."
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Digitizing", value: "{{digitizing}} per design" }

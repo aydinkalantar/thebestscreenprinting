@@ -1,23 +1,23 @@
 ---
 path: "/shipping-nationwide/dc-maryland-virginia/"
 title: "Custom Shirts Shipped to Washington DC, Maryland and Virginia | TBSP"
-description: "Custom t-shirts, hoodies and hats for Washington DC, Maryland and Virginia, printed in our own shops and shipped to your door. From 6 pieces (12 for screen printing and embroidery), about {{tee.screen1.24}} a tee at 24, free shipping from {{shipFreeFrom}} in the lower 48."
+description: "Custom t-shirts, hoodies and hats for Washington DC, Maryland and Virginia, printed in our own shops and shipped to your door. From 6 pieces (12 for screen printing and embroidery), about {{tee.screen1.24}} a tee at 24, {{shipNote}} in the lower 48."
 h1: "Custom shirts shipped to Washington DC, Maryland and Virginia"
 kind: service
 imported: false
-summary: "We don't have a shop in the DC area, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in District of Columbia, Maryland and Virginia. Orders start at 6 pieces (12 for screen printing and embroidery), and shipping is free from {{shipFreeFrom}}."
+summary: "We don't have a shop in the DC area, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in District of Columbia, Maryland and Virginia. Orders start at 6 pieces (12 for screen printing and embroidery), and shipping is {{shipBrief}}."
 states: ["District of Columbia", "Maryland", "Virginia"]
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "24 tees, 1 color", value: "About {{tee.screen1.24}} each" }
-  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
+  - { label: "Shipping", value: "{{shipShort}}" }
 faqs:
   - q: "Do you ship to Washington DC?"
-    a: "Yes, to any address in DC, Maryland and Virginia. Shipping is free on orders of {{shipFreeFrom}} or more and {{shipFlat}} below that."
+    a: "Yes, to any address in DC, Maryland and Virginia. {{shipRule}}."
   - q: "Can you invoice our organization?"
     a: "Every order gets a written quote with all costs before you approve. Ask us about the payment option that works for your organization when you send the request."
   - q: "How much do custom shirts cost if I am in the DC area?"
-    a: "The same as everywhere: a one-color screen printed black tee is about {{tee.screen1.24}} each at 24 pieces and {{tee.screen1.144}} at 144, shirt included, plus a one-time {{screenSetup}} screen. Shipping is free from {{shipFreeFrom}}."
+    a: "The same as everywhere: a one-color screen printed black tee is about {{tee.screen1.24}} each at 24 pieces and {{tee.screen1.144}} at 144, shirt included, plus a one-time {{screenSetup}} screen. Shipping is {{shipBrief}}."
   - q: "What is the minimum order?"
     a: "12 pieces for screen printing (1 to 3 colors) and embroidery, 6 for DTF and DTG. You can mix sizes."
 updated: "2026-10-28"
@@ -35,7 +35,7 @@ Associations and non-profits around DC order a lot of event and volunteer shirts
 1. **Send your art and sizes** through the [quote form](/quick-quote/) or ask {{agent}} for an instant price.
 2. **Approve the mockup** by email. The art check is free.
 3. **We print it in-house** in Los Angeles or Cleveland.
-4. **It ships to your door** with tracking. Free on orders of {{shipFreeFrom}} or more, {{shipFlat}} below that.
+4. **It ships to your door** with tracking. {{shipRule}}.
 
 ## Prices and delivery
 

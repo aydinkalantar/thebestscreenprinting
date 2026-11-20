@@ -95,7 +95,10 @@ async function main() {
     if (typeof art.revisionPrice === 'number') facts.artRevision = art.revisionPrice;
   }
   if (typeof last?.delivery?.shipping === 'number') facts.shipFlat = round(last.delivery.shipping);
+  // Live carrier prices (Settings › Shipping › Live price): never free, so no free-from amount.
+  if (last?.delivery) facts.shipLive = last.delivery.shippingLive === true;
   if (typeof last?.delivery?.freeOver === 'number') facts.shipFreeFrom = round(last.delivery.freeOver);
+  else if (last?.delivery) facts.shipFreeFrom = 0;
   if (typeof last?.turnaround?.rush?.percent === 'number') facts.rushPercent = last.turnaround.rush.percent;
   if (typeof last?.turnaround?.superrush?.percent === 'number') facts.superRushPercent = last.turnaround.superrush.percent;
   if (typeof last?.turnaround?.superrush?.maxPieces === 'number') facts.superRushMaxPieces = last.turnaround.superrush.maxPieces;
