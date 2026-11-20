@@ -1,0 +1,12 @@
+name: Diag studio 403
+on: pull_request
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - run: |
+          for u in https://design.thebestscreenprinting.com/api/public/catalog https://design.thebestscreenprinting.com/; do
+            echo "== curl $u"; curl -sS -o body.txt -D - "$u" | grep -iE '^(HTTP|server|cf-mitigated|cf-ray|x-railway|content-type)'; head -c 300 body.txt; echo
+          done
+          node -e "fetch('https://design.thebestscreenprinting.com/api/public/catalog',{headers:{accept:'application/json'}}).then(async r=>{console.log('node',r.status,r.headers.get('server'),r.headers.get('cf-mitigated'));console.log((await r.text()).slice(0,300))})"
