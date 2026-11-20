@@ -10,6 +10,12 @@ on:
     - cron: '15 9 * * *' # 4:15 AM ET, after the nightly S&S catalog sync
   workflow_dispatch:
 
+# Prices and products are read straight from the studio's Railway address: Cloudflare's
+# bot check on design.thebestscreenprinting.com turns away GitHub's servers.
+env:
+  STUDIO_API: https://web-production-99c4ff.up.railway.app
+  CATALOG_URL: https://web-production-99c4ff.up.railway.app/api/public/catalog
+
 # One deploy at a time; a newer one waits instead of overlapping.
 concurrency:
   group: deploy-production
