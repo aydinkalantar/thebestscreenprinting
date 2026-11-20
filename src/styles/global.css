@@ -203,6 +203,16 @@ html.sheet-lock body { position: fixed; left: 0; right: 0; overflow: hidden; }
   .field:not(textarea) { min-height: 44px; }
 }
 
+/* Every text field on a touch phone is 16px, not only .field (the product page size boxes
+   were 14px). iOS zooms in on any field under 16px when tapped;
+   we used to stop that with maximum-scale=1, which also blocked pinch zoom on Android
+   (WCAG 1.4.4). Pinch zoom is on now, and this keeps the focus zoom away. */
+@media (max-width: 767px) and (pointer: coarse) {
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']):not([type='color']):not([type='button']):not([type='submit']):not([type='reset']):not([type='image']),
+  select,
+  textarea { font-size: 16px !important; }
+}
+
 @media (min-width: 640px) and (max-width: 767px) { .m-rail { --bleed: 1.5rem; } }
 
 @media (prefers-reduced-motion: reduce) {
