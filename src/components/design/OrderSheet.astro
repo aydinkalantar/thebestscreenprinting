@@ -57,6 +57,7 @@ const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:bor
       <div data-os-address hidden class="grid gap-4 sm:grid-cols-6">
         <label class="label sm:col-span-6"><span>Street address</span><input name="street" class="field" autocomplete="shipping address-line1" autocapitalize="words" /><span class="err" data-for="address"></span></label>
         <label class="label sm:col-span-6"><span>Apt, suite, unit <small>(optional)</small></span><input name="street2" class="field" autocomplete="shipping address-line2" /></label>
+        <label class="label sm:col-span-2"><span>ZIP</span><input name="zip" class="field" autocomplete="shipping postal-code" inputmode="numeric" maxlength="10" /></label>
         <label class="label sm:col-span-3"><span>City</span><input name="city" class="field" autocomplete="shipping address-level2" autocapitalize="words" /></label>
         <label class="label sm:col-span-1"><span>State</span>
           <select name="state" class="field !px-2" autocomplete="shipping address-level1">
@@ -64,7 +65,6 @@ const radio = 'flex items-start gap-3 rounded-xl border border-zinc-200 dark:bor
             {US_STATES.map((st) => <option value={st}>{st}</option>)}
           </select>
         </label>
-        <label class="label sm:col-span-2"><span>ZIP</span><input name="zip" class="field" autocomplete="shipping postal-code" inputmode="numeric" maxlength="10" /></label>
         <input type="hidden" name="country" value="US" autocomplete="shipping country" />
       </div>
 
