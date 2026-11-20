@@ -109,6 +109,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   } from '../lib/cart';
   import { garmentFor, MAX_TOTAL_BYTES, MAX_ARTWORK_BYTES, MULTIPLE_PRODUCTS } from '../lib/quote';
   import { openSheet, wireSheet } from '../lib/sheet';
+  import { keepDraft, clearDraft } from '../lib/form-draft';
   import { fetchPrices, money, printSize, ART_HELP_LABELS, type PriceItemInput, type PriceResponse } from '../lib/online';
   import { openOrder, type OrderArtwork, type OrderMockup } from '../lib/order-sheet';
   import { business } from '../data/business';
@@ -372,6 +373,8 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   const done = sheet.querySelector<HTMLElement>('[data-dr-done]')!;
   const actionsEl = sheet.querySelector<HTMLElement>('[data-dr-actions]')!;
   wireSheet(sheet);
+  // Their details and notes are kept through a refresh or Back until the request is sent.
+  keepDraft(form, 'cart-request');
   let sending = false;
 
   const showMsg = (text: string, tone: 'error' | 'info', call = false) => {
@@ -515,6 +518,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
         done.focus();
         await clearCart();
         drafts.clear();
+        clearDraft('cart-request');
         render();
         if (data.ref) { sent.hidden = false; sent.querySelector('[data-ref]')!.textContent = data.ref; }
         if (skipped) console.info(`quote cart: ${skipped} mockup(s) left out to stay under 25 MB`);

@@ -4,6 +4,7 @@ import { visitField } from './hit';
 import { fetchPrices, money, placeOrder, type PriceItemInput, type PriceResponse, type Totals, type Turnaround } from './online';
 import { prefillContact, saveContact } from './contact';
 import { openSheet, wireSheet } from './sheet';
+import { keepDraft } from './form-draft';
 import { attachAddressAutocomplete, lookupZip } from './address-autocomplete';
 
 export interface OrderArtwork { itemIndex: number; placement: string; file: File }
@@ -12,6 +13,8 @@ export interface OrderRequest { items: PriceItemInput[]; artwork: OrderArtwork[]
 
 /** Remembered while the customer is at Stripe, so the thank-you page can tidy the cart. */
 export const CHECKOUT_KEY = 'tbsp-checkout';
+/** The checkout form's typed details (lib/form-draft). */
+export const ORDER_DRAFT = 'order';
 
 let wired = false;
 let current: OrderRequest | null = null;
@@ -146,6 +149,9 @@ function wire(el: HTMLElement) {
   const send = el.querySelector<HTMLButtonElement>('[data-os-send]')!;
   const msg = el.querySelector<HTMLElement>('[data-os-msg]')!;
   const address = el.querySelector<HTMLElement>('[data-os-address]')!;
+  // Name, address and notes are kept through a refresh or Back (cleared on the thank-you page).
+  // Delivery, payment and turnaround are set from each order's price.
+  keepDraft(form, ORDER_DRAFT, { skip: ['delivery', 'pay', 'turnaround'] });
   const val = (n: string) => ((form.elements.namedItem(n) as HTMLInputElement | null)?.value || '').trim();
   // Shipping address: Google suggestions while typing fill city, state and ZIP.
   const field = (n: string) => form.elements.namedItem(n) as HTMLInputElement | HTMLSelectElement;
@@ -233,6 +239,14 @@ function wire(el: HTMLElement) {
   };
   send.addEventListener('click', submit);
   form.addEventListener('submit', (e) => { e.preventDefault(); submit(); });
+  // Back from the payment page: the browser restores this page as it was ("Opening secure
+  // payment…", button locked). Unlock it so they can change the order and pay again.
+  window.addEventListener('pageshow', (e) => {
+    if (!e.persisted || !sending) return;
+    sending = false;
+    send.removeAttribute('aria-busy'); send.removeAttribute('aria-disabled');
+    send.querySelector('span')!.textContent = 'Continue to secure payment';
+  });
 }
 
 /** Opens the checkout for priced items. */

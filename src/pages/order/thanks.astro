@@ -42,7 +42,8 @@ const steps = [
 
 <script>
   import { removeCartItem } from '../../lib/cart';
-  import { CHECKOUT_KEY } from '../../lib/order-sheet';
+  import { CHECKOUT_KEY, ORDER_DRAFT } from '../../lib/order-sheet';
+  import { clearDraft } from '../../lib/form-draft';
 
   const n = (new URLSearchParams(location.search).get('n') || '').replace(/[^A-Za-z0-9-]/g, '').slice(0, 30);
   let saved: { orderNumber?: string; email?: string; cartIds?: string[] } = {};
@@ -55,8 +56,9 @@ const steps = [
     // Pre-fills the tracking form on this device (kept out of the URL).
     if (saved.orderNumber === number && saved.email) { try { localStorage.setItem('tbsp-last-order', JSON.stringify({ n: number, email: saved.email })); } catch { /* ignore */ } }
   }
-  // The products just paid for leave the cart.
+  // The products just paid for leave the cart, and the typed checkout details are done with.
   if (saved.orderNumber && saved.orderNumber === number) {
+    clearDraft(ORDER_DRAFT);
     (async () => {
       for (const id of saved.cartIds || []) await removeCartItem(id);
       try { localStorage.removeItem(CHECKOUT_KEY); } catch { /* ignore */ }

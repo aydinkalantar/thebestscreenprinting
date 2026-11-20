@@ -5,6 +5,10 @@
 // Markup contract: the sheet root is hidden with the `hidden` attribute/class
 // until opened; it gets `data-open` one frame after it is shown so CSS can
 // animate it in. Elements with [data-sheet-close] inside it close it.
+//
+// Back button: a modal sheet adds one history entry when it opens, so the phone's Back button
+// (or the browser's) closes the sheet instead of leaving the page, like any shop app. Closing it
+// with X / Escape / swipe takes that entry back off.
 
 /** `modal: false`: the page stays scrollable and usable behind it (Max's panel on desktop). */
 type Opts = { onClose?: () => void; focus?: HTMLElement | null; modal?: boolean };
@@ -29,6 +33,44 @@ const unlock = () => {
   window.scrollTo({ top: lockY, behavior: 'instant' as ScrollBehavior });
 };
 
+// ── Back button ────────────────────────────────────────────────────────────────
+/** Sheets that added a history entry, oldest first. */
+const pushed: HTMLElement[] = [];
+/** history.back() calls of our own whose popstate is not a Back press. */
+let ownBacks = 0;
+/** A link inside a sheet is taking the visitor to another page: keep the history as it is. */
+let leaving = false;
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('popstate', () => {
+    if (ownBacks > 0) { ownBacks--; return; }
+    const top = pushed.pop();
+    if (top) closeSheet(top);
+  });
+  // A click on a link to another page from inside a sheet: the sheet closes, the page changes,
+  // and the sheet's entry stays (going Back from there returns to this page).
+  document.addEventListener('click', (e) => {
+    const a = (e.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
+    if (!a || !pushed.length || !pushed.some((s) => s.contains(a))) return;
+    const to = new URL(a.href, location.href);
+    if (to.pathname === location.pathname && to.search === location.search) return; // same page (#anchor)
+    leaving = true;
+    setTimeout(() => { leaving = false; }, 0);
+  }, true);
+}
+
+const pushEntry = (el: HTMLElement) => {
+  try { history.pushState({ ...(history.state || {}), sheet: el.id || true }, ''); pushed.push(el); } catch { /* ignore */ }
+};
+const dropEntry = (el: HTMLElement) => {
+  const i = pushed.indexOf(el);
+  if (i < 0) return;
+  pushed.splice(i, 1);
+  if (leaving) return;
+  ownBacks++;
+  history.back();
+};
+
 export function isSheetOpen(el: HTMLElement) { return open.has(el); }
 
 export function openSheet(el: HTMLElement, opts: Opts = {}) {
@@ -36,7 +78,7 @@ export function openSheet(el: HTMLElement, opts: Opts = {}) {
   open.set(el, { prev: document.activeElement, opts });
   el.hidden = false;
   el.classList.remove('hidden');
-  if (opts.modal !== false) lock();
+  if (opts.modal !== false) { lock(); pushEntry(el); }
   requestAnimationFrame(() => requestAnimationFrame(() => el.setAttribute('data-open', '')));
   const target = opts.focus ?? el.querySelector<HTMLElement>('[autofocus],[data-sheet-focus]') ?? el.querySelector<HTMLElement>(FOCUSABLE);
   // Focus synchronously so iOS raises the keyboard inside the tap gesture.
@@ -47,6 +89,7 @@ export function closeSheet(el: HTMLElement) {
   const st = open.get(el);
   if (!st) return;
   open.delete(el);
+  dropEntry(el);
   el.removeAttribute('data-open');
   const panel = el.querySelector<HTMLElement>('[data-sheet-panel]');
   if (panel) panel.style.transform = '';
