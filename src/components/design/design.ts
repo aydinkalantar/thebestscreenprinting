@@ -5,7 +5,7 @@ import { openSheet, closeSheet, wireSheet } from '../../lib/sheet';
 import { track } from '../../lib/analytics';
 import { garmentFor, MAX_ARTWORK_BYTES, MAX_TOTAL_BYTES, MAX_PLACEMENTS } from '../../lib/quote';
 import { business } from '../../data/business';
-import type { DesignSpot, PlaceConfig, PrintAreas, Side } from './areas';
+import { PLACEMENT, YOUTH_SCALE, type DesignSpot, type PlaceConfig, type PrintAreas, type Side } from './areas';
 import { checkBackground, removeBackground, canClean } from '../../lib/bg-remove';
 import { analyzeImage, boxOf, placeSpots, templateRect, type Analysis, type Box, type Placed } from './placement';
 
@@ -140,7 +140,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   const panel = {
     empty: q('[data-empty]'), filled: q('[data-filled]'),
     names: qa('[data-loc-name]'), size: q('[data-loc-size]'), addLabel: q('[data-add-label]'),
-    file: q('[data-file]'), readout: q('[data-readout]'),
+    file: q('[data-file]'), readout: q('[data-readout]'), thumb: q<HTMLImageElement>('[data-thumb]'), thumbWrap: q('[data-thumb-wrap]'),
     decoration: q<HTMLSelectElement>('[data-decoration]'), notes: q<HTMLInputElement>('[data-notes]'),
     notesWrap: q('[data-notes-wrap]'), noteAdd: q<HTMLButtonElement>('[data-note-add]'),
     methodName: q('[data-method-name]'), methodWhy: q('[data-method-why]'), methodChange: q<HTMLButtonElement>('[data-method-change]'),
@@ -277,10 +277,21 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       fromCenterIn: (a.x + a.w / 2 - 0.5) * d.wIn,
     };
   };
+  /** Inches from the collar seam to the top of this print area (areas.ts PLACEMENT), null for sleeves or no template. */
+  const collarDy = (sp: DesignSpot): number | null => {
+    const pc = cfg.place;
+    const t = pc ? PLACEMENT[pc.template]?.[sp.id] : undefined;
+    if (!pc || !t || t.sleeve) return null;
+    const dy = pc.crop && t.crop !== undefined ? t.crop : t.dy;
+    return dy * (pc.youth ? YOUTH_SCALE : 1) + (pc.overrides?.[sp.id]?.dy ?? 0);
+  };
   const describe = (a: Art) => {
     const m = measure(a);
     const off = Math.abs(m.fromCenterIn) < 0.15 ? 'centered' : `${inch(Math.abs(m.fromCenterIn))} ${m.fromCenterIn < 0 ? 'left' : 'right'} of center`;
-    return `≈ ${inch(m.widthIn)} × ${inch(m.heightIn)} · ${inch(m.fromTopIn)} from top of print area, ${off}`;
+    // How a print shop measures it: down from the collar seam (house rule), not from the top of a box.
+    const dy = collarDy(spotById.get(a.loc)!);
+    const down = dy !== null ? `${inch(dy + m.fromTopIn)} below the collar` : `${inch(m.fromTopIn)} from top of print area`;
+    return `≈ ${inch(m.widthIn)} × ${inch(m.heightIn)} · ${down}, ${off}`;
   };
   const sizeText = (a: Art) => { const m = measure(a); return `≈ ${inch(m.widthIn)} × ${inch(m.heightIn)}`; };
   const totalBytes = (skip?: string) => [...arts.values()].reduce((n, a) => n + (a.loc === skip ? 0 : a.file.size), 0);
@@ -472,6 +483,9 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     panel.filled.hidden = !a;
     artTools.hidden = !a;
     if (a) {
+      // The artwork itself, not just its name (a checkerboard shows white or transparent art).
+      panel.thumbWrap.hidden = !a.url;
+      if (a.url && panel.thumb.src !== a.url) panel.thumb.src = a.url;
       panel.file.textContent = a.kind === 'file' ? `${a.file.name} (preview not available, we'll use the file)` : a.file.name;
       panel.readout.textContent = describe(a);
       moved.hidden = !movedIn(sp);
@@ -495,6 +509,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       const showNotes = !!a.notes || noteFor === sp.id;
       panel.notesWrap.hidden = !showNotes;
       panel.noteAdd.hidden = showNotes;
+      // Notes live in the spot's row of the order summary too (next to its method), so only there.
+      if (opts.summary) { panel.notesWrap.hidden = true; panel.noteAdd.hidden = true; }
     }
     // The background line: what happened to it, and the one button that changes it.
     const bgText: Record<NonNullable<Art['bg']>, [string, string]> = {
@@ -955,6 +971,43 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   });
 
   // ── summary in the quote panel ─────────────────────────────────────────────
+  /** The note line in a spot's summary row (editing in place keeps focus across re-renders). */
+  function noteRow(a: Art, sp: DesignSpot) {
+    const wrap = document.createElement('span');
+    wrap.className = 'block mt-1.5';
+    const link = 'text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline underline-offset-2 min-h-[32px] max-md:min-h-[40px]';
+    if (noteFor === a.loc) {
+      const input = document.createElement('input');
+      input.className = 'field !h-10 max-md:!h-11 w-full text-[14px]';
+      input.maxLength = 300;
+      input.placeholder = 'Anything we should know? Size, colors, placement…';
+      input.value = a.notes;
+      input.dataset.noteFor = a.loc;
+      input.setAttribute('aria-label', `Note for the ${sp.label.toLowerCase()} artwork`);
+      input.addEventListener('input', () => { a.notes = input.value.slice(0, 300); });
+      const done = () => { if (noteFor === a.loc) { noteFor = ''; a.notes = a.notes.trim(); renderSummary(); } };
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); done(); } if (e.key === 'Escape') done(); });
+      // A re-render swaps the input (focus moves to the new one): only a real blur closes it.
+      input.addEventListener('blur', () => setTimeout(() => { if (input.isConnected) done(); }, 120));
+      wrap.append(input);
+    } else if (a.notes) {
+      const t = document.createElement('span');
+      t.className = 'text-[12.5px] leading-snug text-zinc-700 dark:text-zinc-300 break-words';
+      t.textContent = `Note: ${a.notes} `;
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline underline-offset-2 px-1 -mx-1 py-2 -my-2'; b.textContent = 'Edit';
+      b.setAttribute('aria-label', `Edit the note for the ${sp.label.toLowerCase()} artwork`);
+      b.addEventListener('click', () => { noteFor = a.loc; renderSummary(); });
+      wrap.append(t, b);
+    } else {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = `inline-flex items-center gap-1 ${link}`; b.textContent = '+ Add a note';
+      b.setAttribute('aria-label', `Add a note for the ${sp.label.toLowerCase()} artwork`);
+      b.addEventListener('click', () => { noteFor = a.loc; renderSummary(); });
+      wrap.append(b);
+    }
+    return wrap;
+  }
   function renderSummary() {
     const box = opts.summary;
     if (!box) return;
@@ -986,8 +1039,12 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       // The print method, next to the price it changes: tap to see each method's price (the same sheet as "Change").
       const offered = allowedFor(a.loc).filter((m) => !a.auto?.blocked.includes(m));
       const method = document.createElement(offered.length > 1 ? 'button' : 'span');
-      method.className = 'mt-1 inline-flex max-w-full items-center gap-1 rounded-lg border border-zinc-200 dark:border-white/15 bg-white dark:bg-white/[0.04] px-2.5 min-h-[34px] max-md:min-h-[40px] text-[13px] text-zinc-600 dark:text-zinc-300';
-      method.append('Print method: ');
+      method.className = 'mt-1 inline-flex max-w-full items-center gap-1 whitespace-nowrap rounded-lg border border-zinc-200 dark:border-white/15 bg-white dark:bg-white/[0.04] px-2.5 min-h-[34px] max-md:min-h-[40px] text-[13px] text-zinc-600 dark:text-zinc-300';
+      // Phones: just the method name (the row is narrow); the label stays for screen readers.
+      const lbl = document.createElement('span');
+      lbl.className = 'max-sm:sr-only';
+      lbl.textContent = 'Print method: ';
+      method.append(lbl);
       const mb = document.createElement('b');
       mb.className = 'font-semibold text-zinc-900 dark:text-white truncate';
       mb.textContent = a.decoration;
@@ -1007,6 +1064,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
         t3.textContent = `${why.charAt(0).toUpperCase()}${why.slice(1)}.`;
         text.append(t3);
       }
+      // The spot's note for the art team, right under its method: "+ Add a note", or the note with Edit.
+      text.append(noteRow(a, sp));
       const edit = document.createElement('button');
       edit.type = 'button';
       edit.className = 'icon-btn w-10 h-10 shrink-0';
@@ -1022,6 +1081,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       li.append(thumb, text, edit, del);
       ul.append(li);
     }
+    const editing = box.querySelector<HTMLInputElement>('input[data-note-for]');
+    if (editing) { editing.focus({ preventScroll: true }); editing.setSelectionRange(editing.value.length, editing.value.length); }
     const bytes = box.querySelector('[data-bytes]');
     if (bytes) bytes.textContent = `${list.length} file${list.length === 1 ? '' : 's'} · ${MB(totalBytes())} of 25 MB`;
   }
