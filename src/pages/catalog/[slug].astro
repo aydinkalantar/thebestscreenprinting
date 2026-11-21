@@ -27,9 +27,11 @@ const recommended = recommendedMethod(p, methods);
 const COMMON = ['S', 'M', 'L', 'XL', '2XL'];
 const rare = (s: string) => p.sizes.some((x) => COMMON.includes(x)) && !COMMON.includes(s);
 const min = business.shopMinimum;
-// Screen printing and embroidery start higher; the form follows the method chosen.
+// Screen printing and embroidery start higher. Screen printing moves to DTF (or DTG) under its minimum
+// (src/lib/method-rule.ts), so only embroidery, or screen printing with nothing to move to, starts higher.
 const screenMin = business.screenMinimum;
-const startMin = /screen|embroider/i.test(recommended?.method ?? methods[0] ?? '') ? screenMin : min;
+const startWith = recommended?.method ?? methods[0] ?? '';
+const startMin = /embroider/i.test(startWith) || (/screen/i.test(startWith) && !methods.some((m) => /dtf|transfer|dtg|direct/i.test(m))) ? screenMin : min;
 const SWATCH_LIMIT = 24;
 // Measurements per size, from the studio catalog (nightly); absent for some styles.
 // Only the sizes this product sells, only real measurements (lib/size-chart.ts).
@@ -120,7 +122,7 @@ import { agent } from '../../lib/facts.mjs';
         <div data-design-summary class="grid grid-cols-[minmax(0,1fr)] gap-2 min-w-0">
           <div class="flex items-baseline justify-between gap-3" data-art-some hidden>
             <p class="eyebrow !text-zinc-500 dark:!text-zinc-400">Your design</p>
-            <a href="#design" class="text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add another spot</a>
+            <a href="#design" data-add-spot class="text-[13px] font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add another spot</a>
           </div>
           <!-- No design yet: one line pointing to the preview (the one place to upload). -->
           <p data-art-none class="text-[13px] muted">No logo yet? <a href="#design" data-art-upload class="font-semibold text-violet-700 dark:text-violet-300 hover:underline">Add it on the preview</a>, or skip it and send it later.</p>
@@ -134,7 +136,8 @@ import { agent } from '../../lib/facts.mjs';
             <div class="mt-3 flex flex-wrap gap-2">
               {methods.map((m) => <label class={chipOn}><input type="radio" name="decoration" value={m} checked={m === (recommended?.method ?? methods[0])} class="sr-only" />{m === recommended?.method && <Star class="w-3.5 h-3.5 fill-current" aria-hidden="true" />}{m}</label>)}
             </div>
-            {recommended?.why && <p class="mt-2 text-[12.5px] muted"><Star class="inline w-3 h-3 -mt-0.5 fill-current text-violet-600 dark:text-violet-300" aria-hidden="true" /> Recommended: {recommended.why}</p>}
+            {recommended?.why && <p data-method-rec class="mt-2 text-[12.5px] muted"><Star class="inline w-3 h-3 -mt-0.5 fill-current text-violet-600 dark:text-violet-300" aria-hidden="true" /> Recommended: {recommended.why}</p>}
+            <p data-method-qty hidden class="mt-2 text-[12.5px] muted" aria-live="polite"></p>
           </fieldset>
         )}
 
@@ -195,6 +198,7 @@ import { agent } from '../../lib/facts.mjs';
             </button>
           </div>
           <p id="qty-hint" class="text-[13px] muted" aria-live="polite">Enter at least {startMin} pieces to add this product to your cart.</p>
+          <button id="qty-switch" type="button" hidden class="justify-self-start text-[13.5px] font-semibold text-violet-700 dark:text-violet-300 hover:underline underline-offset-2 min-h-[44px] sm:min-h-0">Print with DTF instead</button>
           <p id="cart-error" class="err" role="alert"></p>
           <p class="text-[12.5px] muted">Ordering several products? Add each one to your cart, then pay or request one quote for all of them.</p>
         </div>
@@ -317,6 +321,7 @@ import { agent } from '../../lib/facts.mjs';
   import { openOrder, type OrderArtwork } from '../../lib/order-sheet';
   import { clearDraft, loadDraft, saveDraft, type DraftState } from '../../lib/design-draft';
   import { countInks, dpiFor, inksOn, type InkCount } from '../../components/design/colors';
+  import { cheaperWhy, isEmbroidery, isScreen, screenNote, shortName, smallRunMethod, smallRunWhy } from '../../lib/method-rule';
   const form = document.getElementById('add-to-quote') as HTMLFormElement;
   const label = document.getElementById('color-name');
   const total = document.getElementById('qty-total')!;
@@ -362,24 +367,11 @@ import { agent } from '../../lib/facts.mjs';
     }),
     onChange: () => { if (design.count()) hit('designer'); refresh(); },
     // The "Change" sheet: this order's price per piece with the spot on another method.
-    methodPrice: async (locId, method) => {
-      const input = priceInput();
-      if (typeof input === 'string') return null;
-      const label = design.snapshot().find((x) => x.locId === locId)?.location;
-      if (!label) return null;
-      const locations = input.item.locations.map((l) => {
-        if (l.placement !== label) return l;
-        const { colors: _c, ...rest } = l as typeof l & { colors?: number };
-        return isScreen(method) ? { ...rest, method, colors: effectiveInks.get(label) || 1 } : { ...rest, method };
-      });
-      const res = await fetchPrices([{ ...input.item, locations }], 'pickup');
-      const it = res && res.enabled ? res.items[0] : null;
-      if (!it?.ok || !Object.keys(it.sizePrices || {}).length) return null;
-      return { each: Math.min(...Object.values(it.sizePrices)) };
-    },
+    methodPrice: (locId, method) => spotPrice(locId, method),
   });
 
   form.querySelector('[data-art-upload]')?.addEventListener('click', () => design.pickFile());
+  form.querySelector('[data-add-spot]')?.addEventListener('click', (e) => { e.preventDefault(); design.addSpot(); });
 
   swatches.forEach((b) => b.addEventListener('click', () => {
     swatches.forEach((x) => { on.forEach((c) => x.classList.toggle(c, x === b)); x.setAttribute('aria-checked', String(x === b)); });
@@ -403,8 +395,119 @@ import { agent } from '../../lib/facts.mjs';
     (e.currentTarget as HTMLElement).remove();
   });
 
+  // ── the method follows the quantity (src/lib/method-rule.ts) ──
+  /** This order's lowest price per piece with `method` on the locations `pick` says (null: can't price it). */
+  async function priceEach(pick: (placement: string) => boolean, method: string): Promise<{ each: number; allIn: number } | null> {
+    const input = priceInput();
+    if (typeof input === 'string') return null;
+    const locations = input.item.locations.map((l) => {
+      if (!pick(l.placement)) return l;
+      const { colors: _c, ...rest } = l as typeof l & { colors?: number };
+      return isScreen(method) ? { ...rest, method, colors: effectiveInks.get(l.placement) || 1 } : { ...rest, method };
+    });
+    const res = await fetchPrices([{ ...input.item, locations }], 'pickup');
+    const it = res && res.enabled ? res.items[0] : null;
+    if (!it?.ok || !Object.keys(it.sizePrices || {}).length) return null;
+    // allIn: the whole item with setup / screens, per piece (what "cheaper" compares).
+    return { each: Math.min(...Object.values(it.sizePrices)), allIn: (it.subtotal + (it.setup || 0)) / (it.quantity || 1) };
+  }
+  async function spotPrice(locId: string, method: string) {
+    const label = design.snapshot().find((x) => x.locId === locId)?.location;
+    return label ? priceEach((p) => p === label, method) : null;
+  }
+  /** From the screen minimum up: is screen printing cheaper than the small-run method? Per spot, quantity and color. */
+  const screenCheaper = new Map<string, boolean>();
+  const comparing = new Set<string>();
+  function compare(key: string, price: (m: string) => Promise<{ allIn: number } | null>, swap: { from: string; to: string }) {
+    if (screenCheaper.has(key) || comparing.has(key)) return;
+    comparing.add(key);
+    Promise.all([price(swap.from), price(swap.to)]).catch(() => [null, null]).then(([screen, small]) => {
+      comparing.delete(key);
+      // Can't price screen printing (quote only): stay. Can't price the other: go back to screen.
+      screenCheaper.set(key, !!screen && (!small || screen.allIn <= small.allIn));
+      refresh();
+    });
+  }
+  const qtyKey = (where: string, n: number) => `${where}|${n}|${color}|${effectiveInks.get(where) || ''}`;
+  /** The order form's method before any design: picked by the customer, or moved by the quantity. */
+  let radioByHand = false;
+  let radioSwap: { from: string; to: string } | null = null;
+  const radios = [...form.querySelectorAll<HTMLInputElement>('input[name="decoration"]')];
+  const radioNote = form.querySelector<HTMLElement>('[data-method-qty]');
+  const radioRec = form.querySelector<HTMLElement>('[data-method-rec]');
+  const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+  function followQuantity() {
+    const n = sum();
+    if (!n) return; // nothing entered yet: keep the starting method
+    design?.followQuantity(({ locId, method, offered, swap }) => {
+      if (n < screenMin) {
+        const from = swap ? swap.from : method;
+        const to = isScreen(from) ? smallRunMethod(offered) : undefined;
+        return to ? { method: to, from, why: smallRunWhy(screenMin, to), fromNote: screenNote(screenMin) } : null;
+      }
+      if (!swap) return null;
+      const label = design.snapshot().find((x) => x.locId === locId)?.location || locId;
+      const key = qtyKey(label, n);
+      const cheaper = screenCheaper.get(key);
+      if (cheaper === undefined) { compare(key, (m) => spotPrice(locId, m), swap); return { method: swap.to, from: swap.from, why: '', fromNote: '' }; }
+      return cheaper ? { back: true } : { method: swap.to, from: swap.from, why: cheaperWhy(n), fromNote: '' };
+    });
+    // No design yet: the method chips follow the same rule.
+    let note = '';
+    if (!radioByHand && !(design?.count() ?? 0) && radios.length) {
+      const cur = radios.find((r) => r.checked)?.value || '';
+      const pick = (m: string) => radios.forEach((r) => { r.checked = r.value === m; });
+      if (n < screenMin) {
+        const from = radioSwap && cur === radioSwap.to ? radioSwap.from : cur;
+        const to = isScreen(from) ? smallRunMethod(radios.map((r) => r.value)) : undefined;
+        if (to) { radioSwap = { from, to }; if (cur !== to) pick(to); note = smallRunWhy(screenMin, to); }
+      } else if (radioSwap && cur === radioSwap.to) {
+        const key = qtyKey('*', n);
+        const cheaper = screenCheaper.get(key);
+        if (cheaper === undefined) compare(key, (m) => priceEach(() => true, m), radioSwap);
+        else if (cheaper) { pick(radioSwap.from); radioSwap = null; }
+        else note = cheaperWhy(n);
+      }
+    }
+    if (radioNote) { radioNote.textContent = note ? `${cap(note)}.` : ''; radioNote.hidden = !note; }
+    if (radioRec) radioRec.hidden = !!note;
+  }
+  /** Spots (or the method chips) on screen printing that a smaller run could print now: the nudge's target. */
+  const smallRunNow = () => {
+    const placed = design?.snapshot() ?? [];
+    if (placed.length) {
+      const id = placed.find((p) => isScreen(p.decoration))?.locId;
+      return id ? smallRunMethod(design.methodsFor(id)) : undefined;
+    }
+    const cur = radios.find((r) => r.checked)?.value || '';
+    return isScreen(cur) ? smallRunMethod(radios.map((r) => r.value)) : undefined;
+  };
+  const qtySwitch = document.getElementById('qty-switch') as HTMLButtonElement | null;
+  qtySwitch?.addEventListener('click', () => {
+    if (design.count()) design.switchAll(isScreen, smallRunMethod);
+    else {
+      const to = smallRunMethod(radios.map((r) => r.value));
+      if (!to) return;
+      radios.forEach((r) => { r.checked = r.value === to; });
+      radioByHand = true; radioSwap = null;
+      design.setMethod(to, true);
+    }
+    refresh();
+    schedulePrice(0);
+  });
+  /** Under the minimum: what's holding it, and how to order now (a smaller run on DTF, or more pieces). */
+  function shortBy(n: number) {
+    const more = `Add ${min - n} more piece${min - n === 1 ? '' : 's'}`;
+    const to = smallRunNow();
+    if (min > baseMin && to) return `Screen printing starts at ${min} pieces. ${more}, or print with ${shortName(to)} (from ${baseMin}).`;
+    if (min > baseMin && methodsNow().some(isEmbroidery)) return `Embroidery starts at ${min} pieces. ${more} to order it.`;
+    return `${more} to reach the ${min}-piece minimum for this product.`;
+  }
+
   function refresh() {
-    min = methodsNow().some((m) => /screen|embroider/i.test(m)) ? screenMin : baseMin;
+    followQuantity();
+    // Before any pieces, screen printing still has its smaller-run fallback (it moves once they type a number).
+    min = methodsNow().some((m) => isEmbroidery(m) || (isScreen(m) && !(sum() === 0 && smallRunNow()))) ? screenMin : baseMin;
     form.querySelectorAll<HTMLElement>('[data-min-line]').forEach((el) => { el.textContent = `Minimum ${min} pieces per product`; });
     document.querySelectorAll<HTMLElement>('[data-bar-min]').forEach((el) => { el.textContent = String(min); });
     const n = sum();
@@ -418,9 +521,10 @@ import { agent } from '../../lib/facts.mjs';
     if (barSubmit) barSubmit.disabled = n < min;
     plainOnly.forEach((f) => { f.hidden = placed > 0; });
     hint.textContent = n === 0 ? `Enter at least ${min} pieces to add this product to your cart.`
-      : n < min ? `Add ${min - n} more piece${min - n === 1 ? '' : 's'} to reach the ${min}-piece minimum${min > baseMin ? ` for screen printing and embroidery (DTF and DTG start at ${baseMin})` : ' for this product'}.`
+      : n < min ? shortBy(n)
       : placed ? `${n} pieces with your artwork. Order it now, or add it to your cart.`
       : `${n} pieces. Order it now, or add it to your cart.`;
+    if (qtySwitch) { const to = n > 0 && n < min ? smallRunNow() : undefined; qtySwitch.hidden = !to; if (to) qtySwitch.textContent = `Print with ${shortName(to)} instead`; }
     window.dispatchEvent(new Event('tbsp-pdp-change'));
   }
   inputs.forEach((i) => i.addEventListener('input', refresh));
@@ -445,7 +549,7 @@ import { agent } from '../../lib/facts.mjs';
     refresh();
   });
   // The method chosen here is the one a new design starts with.
-  form.querySelectorAll<HTMLInputElement>('input[name="decoration"]').forEach((r) => r.addEventListener('change', () => { if (r.checked) design.setMethod(r.value); refresh(); }));
+  form.querySelectorAll<HTMLInputElement>('input[name="decoration"]').forEach((r) => r.addEventListener('change', () => { if (r.checked) { radioByHand = true; radioSwap = null; design.setMethod(r.value, true); } refresh(); }));
   document.querySelector('[data-bar-sizes]')?.addEventListener('click', () => {
     const first = inputs.find((i) => !qty(i)) ?? inputs[0];
     first?.scrollIntoView({ block: 'center', behavior: 'smooth' });
@@ -716,7 +820,6 @@ import { agent } from '../../lib/facts.mjs';
   const ip = (k: string) => instant.querySelector<HTMLElement>(`[data-ip-${k}]`)!;
   const orderBtn = ip('order') as HTMLButtonElement;
   const inks = new Map<string, number>();
-  const isScreen = (m: string) => /screen/i.test(m);
   let priceTimer = 0;
   let priceCtl: AbortController | null = null;
   let lastPrice: Extract<PriceResponse, { enabled: true }> | null = null;
@@ -735,7 +838,7 @@ import { agent } from '../../lib/facts.mjs';
 
   function priceInput(): { item: PriceItemInput; artwork: OrderArtwork[] } | string {
     const n = sum();
-    if (n < min) return `Enter at least ${min} pieces to see your price.`;
+    if (n < min) return n ? `${shortBy(n)} Then you'll see your price.` : `Enter at least ${min} pieces to see your price.`;
     const placements = design.snapshot();
     effectiveInks.clear();
     inkRows = [];
