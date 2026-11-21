@@ -367,7 +367,8 @@ import { agent } from '../../lib/facts.mjs';
     }),
     onChange: () => { if (design.count()) hit('designer'); refresh(); },
     // The "Change" sheet: this order's price per piece with the spot on another method.
-    methodPrice: (locId, method) => spotPrice(locId, method),
+    // All-in per piece (setup / screens spread over the order), so methods compare fairly.
+    methodPrice: (locId, method) => spotPrice(locId, method).then((r) => (r ? { each: Math.round(r.allIn * 100) / 100, note: r.setup ? 'incl. setup' : undefined } : null)),
   });
 
   form.querySelector('[data-art-upload]')?.addEventListener('click', () => design.pickFile());
@@ -397,7 +398,7 @@ import { agent } from '../../lib/facts.mjs';
 
   // ── the method follows the quantity (src/lib/method-rule.ts) ──
   /** This order's lowest price per piece with `method` on the locations `pick` says (null: can't price it). */
-  async function priceEach(pick: (placement: string) => boolean, method: string): Promise<{ each: number; allIn: number } | null> {
+  async function priceEach(pick: (placement: string) => boolean, method: string): Promise<{ each: number; allIn: number; setup: number } | null> {
     const input = priceInput();
     if (typeof input === 'string') return null;
     const locations = input.item.locations.map((l) => {
@@ -409,7 +410,7 @@ import { agent } from '../../lib/facts.mjs';
     const it = res && res.enabled ? res.items[0] : null;
     if (!it?.ok || !Object.keys(it.sizePrices || {}).length) return null;
     // allIn: the whole item with setup / screens, per piece (what "cheaper" compares).
-    return { each: Math.min(...Object.values(it.sizePrices)), allIn: (it.subtotal + (it.setup || 0)) / (it.quantity || 1) };
+    return { each: Math.min(...Object.values(it.sizePrices)), allIn: (it.subtotal + (it.setup || 0)) / (it.quantity || 1), setup: it.setup || 0 };
   }
   async function spotPrice(locId: string, method: string) {
     const label = design.snapshot().find((x) => x.locId === locId)?.location;
@@ -445,12 +446,15 @@ import { agent } from '../../lib/facts.mjs';
         const to = isScreen(from) ? smallRunMethod(offered) : undefined;
         return to ? { method: to, from, why: smallRunWhy(screenMin, to), fromNote: screenNote(screenMin) } : null;
       }
-      if (!swap) return null;
+      // From the minimum up: whichever costs less all-in, however they got to this quantity.
+      const pair = swap ?? (isScreen(method) && smallRunMethod(offered) ? { from: method, to: smallRunMethod(offered)! } : null);
+      if (!pair) return null;
       const label = design.snapshot().find((x) => x.locId === locId)?.location || locId;
       const key = qtyKey(label, n);
       const cheaper = screenCheaper.get(key);
-      if (cheaper === undefined) { compare(key, (m) => spotPrice(locId, m), swap); return { method: swap.to, from: swap.from, why: '', fromNote: '' }; }
-      return cheaper ? { back: true } : { method: swap.to, from: swap.from, why: cheaperWhy(n), fromNote: '' };
+      if (cheaper === undefined) { compare(key, (m) => spotPrice(locId, m), pair); return swap ? { method: swap.to, from: swap.from, why: '', fromNote: '' } : null; }
+      if (cheaper) return swap ? { back: true } : null;
+      return { method: pair.to, from: pair.from, why: cheaperWhy(n), fromNote: '' };
     });
     // No design yet: the method chips follow the same rule.
     let note = '';
@@ -461,12 +465,16 @@ import { agent } from '../../lib/facts.mjs';
         const from = radioSwap && cur === radioSwap.to ? radioSwap.from : cur;
         const to = isScreen(from) ? smallRunMethod(radios.map((r) => r.value)) : undefined;
         if (to) { radioSwap = { from, to }; if (cur !== to) pick(to); note = smallRunWhy(screenMin, to); }
-      } else if (radioSwap && cur === radioSwap.to) {
-        const key = qtyKey('*', n);
-        const cheaper = screenCheaper.get(key);
-        if (cheaper === undefined) compare(key, (m) => priceEach(() => true, m), radioSwap);
-        else if (cheaper) { pick(radioSwap.from); radioSwap = null; }
-        else note = cheaperWhy(n);
+      } else {
+        const to = isScreen(cur) ? smallRunMethod(radios.map((r) => r.value)) : undefined;
+        const pair = radioSwap && cur === radioSwap.to ? radioSwap : to ? { from: cur, to } : null;
+        if (pair) {
+          const key = qtyKey('*', n);
+          const cheaper = screenCheaper.get(key);
+          if (cheaper === undefined) compare(key, (m) => priceEach(() => true, m), pair);
+          else if (cheaper) { if (cur !== pair.from) pick(pair.from); radioSwap = null; }
+          else { radioSwap = pair; if (cur !== pair.to) pick(pair.to); note = cheaperWhy(n); }
+        }
       }
     }
     if (radioNote) { radioNote.textContent = note ? `${cap(note)}.` : ''; radioNote.hidden = !note; }

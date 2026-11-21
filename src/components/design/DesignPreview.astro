@@ -105,8 +105,8 @@ const tool = 'btn-quiet btn-sm max-md:h-11 max-md:px-3';
             <button type="button" data-replace class={tool} aria-label="Replace artwork"><Replace class="w-4 h-4" aria-hidden="true" /><span class="max-sm:sr-only">Replace</span></button>
           </div>
           <div class="grid gap-3 sm:grid-cols-2">
-            <div class="label"><span>Print method</span>
-              <p class="flex flex-wrap items-baseline gap-x-1.5 text-[14px]"><b data-method-name class="font-semibold text-zinc-900 dark:text-white"></b><span data-method-why class="text-[12.5px] muted"></span><button type="button" data-method-change class="ml-1 text-[13px] font-semibold text-violet-700 dark:text-violet-300 underline">Change</button></p>
+            <div class="label"><span data-method-label>Print method</span>
+              <p data-method-line class="flex flex-wrap items-baseline gap-x-1.5 text-[14px]"><b data-method-name class="font-semibold text-zinc-900 dark:text-white"></b><span data-method-why class="text-[12.5px] muted"></span><button type="button" data-method-change class="ml-1 text-[13px] font-semibold text-violet-700 dark:text-violet-300 underline">Change</button></p>
               <select data-decoration hidden aria-label="Print method" class="field !h-10 max-md:!h-11">
                 {config.decorations.map((d) => <option value={d}>{d}</option>)}
               </select>
