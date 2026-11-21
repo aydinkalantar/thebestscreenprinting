@@ -140,7 +140,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   const panel = {
     empty: q('[data-empty]'), filled: q('[data-filled]'),
     names: qa('[data-loc-name]'), size: q('[data-loc-size]'), addLabel: q('[data-add-label]'),
-    file: q('[data-file]'), readout: q('[data-readout]'),
+    file: q('[data-file]'), readout: q('[data-readout]'), thumb: q<HTMLImageElement>('[data-thumb]'), thumbWrap: q('[data-thumb-wrap]'),
     decoration: q<HTMLSelectElement>('[data-decoration]'), notes: q<HTMLInputElement>('[data-notes]'),
     notesWrap: q('[data-notes-wrap]'), noteAdd: q<HTMLButtonElement>('[data-note-add]'),
     methodName: q('[data-method-name]'), methodWhy: q('[data-method-why]'), methodChange: q<HTMLButtonElement>('[data-method-change]'),
@@ -483,6 +483,9 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     panel.filled.hidden = !a;
     artTools.hidden = !a;
     if (a) {
+      // The artwork itself, not just its name (a checkerboard shows white or transparent art).
+      panel.thumbWrap.hidden = !a.url;
+      if (a.url && panel.thumb.src !== a.url) panel.thumb.src = a.url;
       panel.file.textContent = a.kind === 'file' ? `${a.file.name} (preview not available, we'll use the file)` : a.file.name;
       panel.readout.textContent = describe(a);
       moved.hidden = !movedIn(sp);
