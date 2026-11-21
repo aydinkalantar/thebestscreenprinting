@@ -86,8 +86,8 @@ export const PLACEMENT: Record<string, Record<string, Offset>> = {
   tee: { ...FRONT_TEE, 'left-sleeve': { dy: 0, sleeve: 'short' }, 'right-sleeve': { dy: 0, sleeve: 'short' } },
   longsleeve: { ...FRONT_TEE, 'left-sleeve': { dy: 0, sleeve: 'long' }, 'right-sleeve': { dy: 0, sleeve: 'long' } },
   crew: { ...FRONT_TEE, 'left-sleeve': { dy: 0, sleeve: 'long' }, 'right-sleeve': { dy: 0, sleeve: 'long' } },
-  // Polos: the full front sits below the placket, the chest prints beside it.
-  polo: { ...FRONT_TEE, front: { dy: 8 }, 'left-chest': { dy: 5, dx: 4 }, 'right-chest': { dy: 5, dx: -4 }, back: { dy: 5 }, 'back-neck': { dy: 2.5 }, 'left-sleeve': { dy: 0, sleeve: 'short' }, 'right-sleeve': { dy: 0, sleeve: 'short' } },
+  // Polos: the front print sits below the placket and the chest logos (left chest is the main spot).
+  polo: { ...FRONT_TEE, front: { dy: 9.5 }, 'left-chest': { dy: 5, dx: 4 }, 'right-chest': { dy: 5, dx: -4 }, back: { dy: 5 }, 'back-neck': { dy: 2.5 }, 'left-sleeve': { dy: 0, sleeve: 'short' }, 'right-sleeve': { dy: 0, sleeve: 'short' } },
   // Hoodies: the front print sits below the drawstrings.
   hoodie: { ...FRONT_TEE, front: { dy: 2 }, back: { dy: 4 }, 'left-sleeve': { dy: 0, sleeve: 'long' }, 'right-sleeve': { dy: 0, sleeve: 'long' } },
   zip: { ...FRONT_TEE, back: { dy: 4 }, 'left-sleeve': { dy: 0, sleeve: 'long' }, 'right-sleeve': { dy: 0, sleeve: 'long' } },
@@ -110,6 +110,8 @@ export interface PlaceConfig { template: string; chestIn: number; crop: boolean;
 export const PRINT_SIZES = {
   'full-front':   { w: 14,  h: 16 },
   'hoodie-front': { w: 12,  h: 11 },
+  // Polos: below the placket, so smaller than a tee front.
+  'polo-front':   { w: 10,  h: 10 },
   'tank-front':   { w: 11,  h: 14 },
   'left-chest':   { w: 4,   h: 4 },
   back:           { w: 14,  h: 16 },
@@ -150,7 +152,7 @@ export const TEMPLATES: Record<string, Spot[]> = {
     ...sleeves('sleeve-short', 0.2, 0.1, 0.11),
   ],
   polo: [
-    { id: 'front', label: 'Front', side: 'front', size: 'full-front', cx: 0.5, top: 0.3, w: 0.397 },
+    { id: 'front', label: 'Front', side: 'front', size: 'polo-front', cx: 0.5, top: 0.34, w: 0.284 },
     ...chest(0.2, 0.15),
     { id: 'back', label: 'Back', side: 'back', size: 'back', cx: 0.5, top: 0.17, w: 0.42 },
     { id: 'back-neck', label: 'Back yoke', side: 'back', size: 'back-neck', cx: 0.5, top: 0.08, w: 0.17 },
@@ -267,6 +269,14 @@ export function applyPrintAreas(spots: DesignSpot[], pa?: PrintAreas | null): De
       if (!o) return s;
       return { ...s, ...(o.wIn ? { wIn: o.wIn } : {}), ...(o.hIn ? { hIn: o.hIn } : {}), ...(o.methods?.length ? { methods: o.methods } : {}) };
     });
+}
+
+/** Inches from the collar to the top of a spot's automatic box, as placed (null for sleeves and template-only products). */
+export function collarDropIn(place: PlaceConfig | null, spotId: string): number | null {
+  const t = place ? PLACEMENT[place.template]?.[spotId] : undefined;
+  if (!place || !t || t.sleeve) return null;
+  const dy = place.crop && t.crop !== undefined ? t.crop : t.dy;
+  return dy * (place.youth ? YOUTH_SCALE : 1) + (place.overrides?.[spotId]?.dy ?? 0);
 }
 
 /** Measured-placement settings for a product (null for hats, bags and pants: template only). */
