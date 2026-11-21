@@ -73,6 +73,7 @@ const extOf = (name: string) => (name.split('.').pop() || '').toLowerCase();
 const ICON = {
   upload: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>',
   pencil: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/></svg>',
+  chevron: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
   trash: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
 };
 
@@ -486,6 +487,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       const why = whyFor(a, a.decoration);
       panel.methodWhy.textContent = why ? `· ${why}` : '';
       panel.methodChange.hidden = list.length < 2 || pickFor === sp.id;
+      // With an order summary (product page), the method is chosen there, next to the price: one control per spot.
+      if (opts.summary) root.querySelectorAll<HTMLElement>('[data-method-label],[data-method-line]').forEach((el) => { el.hidden = true; });
       panel.decoration.hidden = pickFor !== sp.id;
       if (document.activeElement !== panel.notes) panel.notes.value = a.notes;
       // Notes stay one tap away ("+ Note") until there is one.
@@ -963,7 +966,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     for (const a of list) {
       const sp = spotById.get(a.loc)!;
       const li = document.createElement('li');
-      li.className = 'flex items-center gap-3 py-2.5';
+      li.className = 'flex items-start gap-3 py-3';
       const thumb = document.createElement('span');
       thumb.className = 'w-12 h-12 shrink-0 rounded-lg border border-zinc-200/80 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.04] grid place-items-center overflow-hidden text-[11px] font-bold text-violet-700 dark:text-violet-300';
       if (a.kind === 'image' && a.url) {
@@ -975,17 +978,33 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       text.className = 'min-w-0 flex-1 leading-snug';
       const t1 = document.createElement('span');
       t1.className = 'block text-[13.5px] font-semibold text-zinc-900 dark:text-white';
-      t1.textContent = `${sp.label} · ${a.decoration}`;
+      t1.textContent = sp.label;
       const t2 = document.createElement('span');
       t2.className = 'block text-[12.5px] muted truncate';
       t2.textContent = `${sizeText(a)} · ${a.file.name}`;
       text.append(t1, t2);
-      // Why the shop picked this method for the quantity ("Screen printing starts at 12, so…").
-      const qtyWhy = a.qty && !a.byHand && a.decoration === a.qty.to ? a.qty.why : '';
-      if (qtyWhy) {
+      // The print method, next to the price it changes: tap to see each method's price (the same sheet as "Change").
+      const offered = allowedFor(a.loc).filter((m) => !a.auto?.blocked.includes(m));
+      const method = document.createElement(offered.length > 1 ? 'button' : 'span');
+      method.className = 'mt-1 inline-flex max-w-full items-center gap-1 rounded-lg border border-zinc-200 dark:border-white/15 bg-white dark:bg-white/[0.04] px-2.5 min-h-[34px] max-md:min-h-[40px] text-[13px] text-zinc-600 dark:text-zinc-300';
+      method.append('Print method: ');
+      const mb = document.createElement('b');
+      mb.className = 'font-semibold text-zinc-900 dark:text-white truncate';
+      mb.textContent = a.decoration;
+      method.append(mb);
+      if (method instanceof HTMLButtonElement) {
+        method.type = 'button';
+        method.classList.add('hover:border-violet-400', 'focus-visible:ring-2', 'focus-visible:ring-violet-500');
+        method.insertAdjacentHTML('beforeend', ICON.chevron);
+        method.setAttribute('aria-label', `${sp.label} print method: ${a.decoration}. Change`);
+        method.addEventListener('click', () => { select(a.loc, { zoom: false }); openMethods(); });
+      }
+      text.append(method);
+      const why = whyFor(a, a.decoration);
+      if (why) {
         const t3 = document.createElement('span');
-        t3.className = 'block text-[12.5px] text-violet-700 dark:text-violet-300';
-        t3.textContent = `${qtyWhy.charAt(0).toUpperCase()}${qtyWhy.slice(1)}.`;
+        t3.className = 'block mt-1 text-[12.5px] text-violet-700 dark:text-violet-300';
+        t3.textContent = `${why.charAt(0).toUpperCase()}${why.slice(1)}.`;
         text.append(t3);
       }
       const edit = document.createElement('button');
