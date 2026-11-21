@@ -1,11 +1,11 @@
 ---
 path: "/cheapest-way-to-print-50-shirts/"
 title: "Cheapest Way to Print 50 Custom Shirts (About {{$ tee.screen1.48 × 50 + screenSetup}}) | TBSP"
-description: "The cheapest way to print 50 shirts is a one-color screen print on a standard tee: about {{$. (tee.screen1.48 × 50 + screenSetup) / 50}} each, {{$ tee.screen1.48 × 50 + screenSetup}} total, shirt and screen included, with free shipping anywhere in the lower 48."
+description: "The cheapest way to print 50 shirts is a one-color screen print on a standard tee: about {{$. (tee.screen1.48 × 50 + screenSetup) / 50}} each, {{$ tee.screen1.48 × 50 + screenSetup}} total, shirt and screen included, plus shipping ({{shipNote}})."
 h1: "What is the cheapest way to print 50 shirts?"
 kind: answer
 imported: false
-summary: "Screen print a one-color design on one spot of a standard tee. At 50 pieces that is about {{$. (tee.screen1.48 × 50 + screenSetup) / 50}} per shirt, or about {{$ tee.screen1.48 × 50 + screenSetup}} for the order, with the shirt and screen included. Shipping is free, because the order is over {{shipFreeFrom}}."
+summary: "Screen print a one-color design on one spot of a standard tee. At 50 pieces that is about {{$. (tee.screen1.48 × 50 + screenSetup) / 50}} per shirt, or about {{$ tee.screen1.48 × 50 + screenSetup}} for the order, with the shirt and screen included. Shipping is {{shipBrief}}."
 facts:
   - { label: "50 tees, 1 color", value: "About {{$ tee.screen1.48 × 50 + screenSetup}}" }
   - { label: "50 tees, 2 colors", value: "About {{$ tee.screen2.48 × 50 + screenSetup × 2}}" }
@@ -31,7 +31,7 @@ For 50 black Gildan 5000 tees with one print on the front, shirt and screens inc
 | Screen print, 2 colors | About {{$. (tee.screen2.48 × 50 + screenSetup × 2) / 50}} | About {{$ tee.screen2.48 × 50 + screenSetup × 2}} | Two-color logos |
 | DTF, full color | About {{tee.dtf.48}} | About {{$ tee.dtf.48 × 50}} | Photos, gradients, many colors |
 
-Shipping is free on all three, since each order is over {{shipFreeFrom}}. Prices are estimates from our current price list. See the [full price table](/how-much-does-custom-shirt-printing-cost/).
+{{shipRule}}. Prices are estimates from our current price list. See the [full price table](/how-much-does-custom-shirt-printing-cost/).
 
 ## Five ways to cut the price further
 

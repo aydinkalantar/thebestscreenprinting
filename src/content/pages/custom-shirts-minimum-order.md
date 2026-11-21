@@ -50,4 +50,4 @@ From 24 pieces, prices drop quickly. See the [full price table](/how-much-does-c
 
 ## Small orders still get the full treatment
 
-A free art check, a mockup to approve, production in our own facilities and shipping to any US state, free from {{shipFreeFrom}}. Read how [nationwide shipping](/shipping-nationwide/) works.
+A free art check, a mockup to approve, production in our own facilities and shipping to any US state, {{shipPrice}}. Read how [nationwide shipping](/shipping-nationwide/) works.

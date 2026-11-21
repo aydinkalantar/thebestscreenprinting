@@ -43,4 +43,4 @@ The print costs the same on a heavyweight tee as on a standard one. Only the bla
 - **Finishings.** Printed neck labels and hang tags from 50 pieces.
 - **Reorders.** We keep your art, placements and sizes on file, so the next drop is one email.
 
-Shipping is free from {{shipFreeFrom}} and {{shipFlat}} below that, to any address in the lower 48 states. Read how [nationwide shipping](/shipping-nationwide/) works.
+{{shipRule}}, to any address in the lower 48 states. Read how [nationwide shipping](/shipping-nationwide/) works.

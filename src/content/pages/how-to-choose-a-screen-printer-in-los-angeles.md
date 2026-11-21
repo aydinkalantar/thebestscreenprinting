@@ -21,7 +21,7 @@ faqs:
   - q: "Should I get a proof before my shirts are printed?"
     a: "Yes. A good shop checks your art for free and sends a mockup showing size, placement and ink colors before anything is printed. Don't approve a job you haven't seen."
   - q: "Can I pick up my order in Los Angeles?"
-    a: "Yes. Pickup is free at 5738 Holmes Ave., just south of Downtown LA, Monday to Friday from 9am to 5pm. We also ship anywhere in the lower 48, free on orders of {{shipFreeFrom}} or more."
+    a: "Yes. Pickup is free at 5738 Holmes Ave., just south of Downtown LA, Monday to Friday from 9am to 5pm. We also ship anywhere in the lower 48, {{shipPrice}}."
   - q: "Is screen printing, DTF or DTG better?"
     a: "Screen printing is cheapest for 1 to 3 color designs from about 24 pieces. DTF is best for full-color art and small runs. DTG suits soft full-color prints on cotton. See our side-by-side comparison of all three."
 updated: "2026-11-12"

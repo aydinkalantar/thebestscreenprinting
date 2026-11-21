@@ -48,7 +48,7 @@ TBSP was started in Los Angeles in 2017 by brothers who wanted custom apparel to
 2. **Setup.** Screens are burned or your logo is digitized for embroidery.
 3. **Production.** Your order runs on the press, embroidery machine or printer that fits the design.
 4. **Quality check and packing.** Pieces are counted, folded and packed.
-5. **Pickup or shipping.** Free pickup in Los Angeles, or shipping anywhere in the lower 48, free on orders of {{shipFreeFrom}} or more.
+5. **Pickup or shipping.** Free pickup in Los Angeles, or shipping anywhere in the lower 48, {{shipPrice}}.
 
 ## Come see it
 

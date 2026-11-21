@@ -9,6 +9,13 @@
 //   {{$ tee.screen1.48 × 50 + screenSetup}}       → $500    (a sum, whole dollars)
 //   {{$. (tee.screen1.48 × 50 + screenSetup) / 50}} → $10.00  (a sum, with cents)
 //   {{agent}}                → Max          (the merch agent's name, Admin › Settings › Max)
+//   Shipping words follow Settings › Shipping (live carrier price, or flat + free threshold):
+//   {{shipShort}}  → "Priced to your ZIP"          | "Free from $600"          (labels, chips)
+//   {{shipNote}}   → "shipping priced to your ZIP" | "free shipping from $600" (mid-sentence)
+//   {{shipPrice}}  → "at the carrier's price to your ZIP" | "free from $600"  (after "we ship anywhere…,")
+//   {{shipBrief}}  → "the real carrier price…, shown at checkout" | "free from $600, $45 below that" (after "shipping is")
+//   {{shipRule}}   → the whole rule as a sentence, without the final period
+//   Never write "free shipping" or a shipping price into copy by hand.
 // Use × (not *) to multiply, so Markdown never reads it as emphasis.
 import facts from '../data/facts.json' with { type: 'json' };
 
@@ -31,8 +38,35 @@ export const agent = `${AGENT_MARK}${agentName}${AGENT_MARK}`;
 /** Words on the desktop chat button (Admin › Settings › Max › Chat button); "Talk to <name>" by default. */
 export const launcher = (typeof facts.agentLauncher === 'string' && facts.agentLauncher.trim()) || `Talk to ${agent}`;
 
+/** Shipping in words, from Settings › Shipping as the build read it (scripts/refresh-facts.mjs). */
+export function shippingWords(f = facts) {
+  const flat = usd(f.shipFlat ?? 0, !Number.isInteger(f.shipFlat ?? 0));
+  const free = f.shipFreeFrom > 0 ? usd(f.shipFreeFrom, !Number.isInteger(f.shipFreeFrom)) : '';
+  if (f.shipLive) {
+    return {
+      shipShort: 'Priced to your ZIP',
+      shipNote: 'shipping priced to your ZIP',
+      shipPrice: "at the carrier's price to your ZIP",
+      shipBrief: 'the real UPS or USPS price for your boxes to your ZIP, shown at checkout before you pay',
+      shipRule: 'Shipping is the real UPS or USPS price for your boxes to your ZIP, shown at checkout before you pay',
+    };
+  }
+  if (free) {
+    return {
+      shipShort: `Free from ${free}`,
+      shipNote: `free shipping from ${free}`,
+      shipPrice: `free from ${free}`,
+      shipBrief: `free from ${free}, ${flat} below that`,
+      shipRule: `Shipping is free on orders of ${free} or more in the lower 48 states and a flat ${flat} below that`,
+    };
+  }
+  return { shipShort: `${flat} flat`, shipNote: `${flat} flat shipping`, shipPrice: `for a flat ${flat}`, shipBrief: `a flat ${flat}`, shipRule: `Shipping is a flat ${flat} per order` };
+}
+const SHIP_WORDS = shippingWords();
+
 export function fact(token) {
   if (token === 'agent') return agent;
+  if (token in SHIP_WORDS) return SHIP_WORDS[token];
   const v = lookup(token);
   if (typeof v !== 'number') throw new Error(`Unknown fact {{${token}}}: add it to src/data/facts.json`);
   if (token.startsWith('tee.')) return usd(v, true);

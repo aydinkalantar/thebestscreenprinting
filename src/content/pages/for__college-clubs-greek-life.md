@@ -1,15 +1,15 @@
 ---
 path: "/for/college-clubs-greek-life/"
 title: "Custom Shirts for College Clubs, Fraternities & Sororities | TBSP"
-description: "Custom shirts, hoodies and crewnecks for college clubs, fraternities, sororities and student orgs, from 6 pieces (12 for screen printing and embroidery). Comfort Colors and heavyweight blanks, free shipping from {{shipFreeFrom}} to any campus in the lower 48."
+description: "Custom shirts, hoodies and crewnecks for college clubs, fraternities, sororities and student orgs, from 6 pieces (12 for screen printing and embroidery). Comfort Colors and heavyweight blanks, {{shipNote}} to any campus in the lower 48."
 h1: "Custom shirts for college clubs and Greek life"
 kind: audience
 imported: false
-summary: "Rush shirts, philanthropy tees, chapter hoodies and club merch for fraternities, sororities and student orgs on any campus in the lower 48. Orders start at 6 pieces (12 for screen printing and embroidery), Comfort Colors and heavyweight blanks are in our catalog, and shipping is free from {{shipFreeFrom}}."
+summary: "Rush shirts, philanthropy tees, chapter hoodies and club merch for fraternities, sororities and student orgs on any campus in the lower 48. Orders start at 6 pieces (12 for screen printing and embroidery), Comfort Colors and heavyweight blanks are in our catalog, and shipping is {{shipBrief}}."
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "Popular blank", value: "Comfort Colors 1717" }
-  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
+  - { label: "Shipping", value: "{{shipShort}}" }
 faqs:
   - q: "How much do custom shirts for a chapter cost?"
     a: "On a basic black tee, a one-color front print is about {{tee.screen1.24}} each at 24 and {{tee.screen1.48}} at 48, plus a one-time {{screenSetup}} screen. Comfort Colors and other premium blanks cost a little more; {{agent}} prices any of them in a minute."
@@ -18,7 +18,7 @@ faqs:
   - q: "Can you print our letters or crest?"
     a: "Yes. Send your crest, letters or design as a file or a sketch. The art check is free, and design help starts at {{artLayout}} for text or a simple layout."
   - q: "Do you ship to campus?"
-    a: "Yes, to any address in the lower 48 states. Shipping is free on orders of {{shipFreeFrom}} or more and {{shipFlat}} below that."
+    a: "Yes, to any address in the lower 48 states. {{shipRule}}."
 updated: "2026-10-28"
 ---
 ## What chapters and clubs order
@@ -34,7 +34,7 @@ updated: "2026-10-28"
 
 1. **Collect sizes first** and order everything at once.
 2. **Keep it to 1 to 3 ink colors** for screen printing.
-3. **Hit {{shipFreeFrom}}** and shipping is free. Most orders of 24 or more shirts do.
+3. **Ship it all at once** to one address. {{shipRule}}.
 4. **Order early.** Normal delivery takes about 2 weeks; [Rush and Super Rush](/rush-custom-shirts-shipped-fast/) cost 15% to 30% more.
 
 See the [price table](/how-much-does-custom-shirt-printing-cost/) or ask {{agent}} for an instant price. More for groups on [clubs and groups](/clubs-groups/).

@@ -1,23 +1,23 @@
 ---
 path: "/shipping-nationwide/chicago-midwest/"
 title: "Custom Shirts Shipped to Chicago and the Midwest | TBSP"
-description: "Custom t-shirts, hoodies and hats for Chicago and the Midwest, printed in our own shops and shipped to your door. From 6 pieces (12 for screen printing and embroidery), about {{tee.screen1.24}} a tee at 24, free shipping from {{shipFreeFrom}} in the lower 48."
+description: "Custom t-shirts, hoodies and hats for Chicago and the Midwest, printed in our own shops and shipped to your door. From 6 pieces (12 for screen printing and embroidery), about {{tee.screen1.24}} a tee at 24, {{shipNote}} in the lower 48."
 h1: "Custom shirts shipped to Chicago and the Midwest"
 kind: service
 imported: false
-summary: "We don't have a shop in the Midwest, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in Illinois, Ohio, Michigan, Wisconsin, Minnesota, Missouri and Indiana. Orders start at 6 pieces (12 for screen printing and embroidery), and shipping is free from {{shipFreeFrom}}."
+summary: "We don't have a shop in the Midwest, but we ship there every week. Custom t-shirts, hoodies, hats and polos are printed in our own facilities in Los Angeles and Cleveland and shipped to any address in Illinois, Ohio, Michigan, Wisconsin, Minnesota, Missouri and Indiana. Orders start at 6 pieces (12 for screen printing and embroidery), and shipping is {{shipBrief}}."
 states: ["Illinois", "Ohio", "Michigan", "Wisconsin", "Minnesota", "Missouri", "Indiana"]
 facts:
   - { label: "Minimum", value: "6 pieces (12 for screen printing and embroidery)" }
   - { label: "24 tees, 1 color", value: "About {{tee.screen1.24}} each" }
-  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
+  - { label: "Shipping", value: "{{shipShort}}" }
 faqs:
   - q: "Do you have a facility in the Midwest?"
     a: "Yes. Our second production facility is in Cleveland, Ohio. It is not a walk-in store, so orders are placed online or by phone and delivered by our team in Greater Cleveland or shipped across the Midwest."
   - q: "Do you ship to Chicago?"
-    a: "Yes, to any address in Chicago and its suburbs and the rest of Illinois. Shipping is free on orders of {{shipFreeFrom}} or more and {{shipFlat}} below that."
+    a: "Yes, to any address in Chicago and its suburbs and the rest of Illinois. {{shipRule}}."
   - q: "How much do custom shirts cost if I am in the Midwest?"
-    a: "The same as everywhere: a one-color screen printed black tee is about {{tee.screen1.24}} each at 24 pieces and {{tee.screen1.144}} at 144, shirt included, plus a one-time {{screenSetup}} screen. Shipping is free from {{shipFreeFrom}}."
+    a: "The same as everywhere: a one-color screen printed black tee is about {{tee.screen1.24}} each at 24 pieces and {{tee.screen1.144}} at 144, shirt included, plus a one-time {{screenSetup}} screen. Shipping is {{shipBrief}}."
   - q: "What is the minimum order?"
     a: "12 pieces for screen printing (1 to 3 colors) and embroidery, 6 for DTF and DTG. You can mix sizes."
 updated: "2026-10-28"
@@ -35,7 +35,7 @@ Our second production facility is in [Cleveland, Ohio](/cleveland-oh/), right in
 1. **Send your art and sizes** through the [quote form](/quick-quote/) or ask {{agent}} for an instant price.
 2. **Approve the mockup** by email. The art check is free.
 3. **We print it in-house** in Los Angeles or Cleveland.
-4. **It ships to your door** with tracking. Free on orders of {{shipFreeFrom}} or more, {{shipFlat}} below that.
+4. **It ships to your door** with tracking. {{shipRule}}.
 
 ## Prices and delivery
 

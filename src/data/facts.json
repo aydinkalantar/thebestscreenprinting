@@ -6,7 +6,8 @@
   "screenSetup": 35,
   "digitizing": 65,
   "shipFlat": 45,
-  "shipFreeFrom": 600,
+  "shipFreeFrom": 0,
+  "shipLive": true,
   "rushPercent": 15,
   "superRushPercent": 30,
   "tee": {

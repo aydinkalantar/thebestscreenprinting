@@ -1,15 +1,15 @@
 ---
 path: "/online-screen-printing/"
 title: "Online Screen Printing: Order Custom Shirts From 12 Pieces | TBSP"
-description: "Order screen printed shirts online from anywhere in the US: send your art, approve a free mockup, pay online. 12-piece minimum, about {{tee.screen1.24}} a shirt at 24, free shipping from {{shipFreeFrom}} in the lower 48."
+description: "Order screen printed shirts online from anywhere in the US: send your art, approve a free mockup, pay online. 12-piece minimum, about {{tee.screen1.24}} a shirt at 24, {{shipNote}} in the lower 48."
 h1: "Order screen printing online"
 kind: service
 imported: false
-summary: "Order custom screen printed shirts, hoodies and hats online from anywhere in the US. Send your art, approve a free mockup by email and pay online; we print in our own shops in Los Angeles and Cleveland and ship to your door. Orders start at 12 pieces, a one-color tee is about {{tee.screen1.24}} at 24, and shipping is free from {{shipFreeFrom}}."
+summary: "Order custom screen printed shirts, hoodies and hats online from anywhere in the US. Send your art, approve a free mockup by email and pay online; we print in our own shops in Los Angeles and Cleveland and ship to your door. Orders start at 12 pieces, a one-color tee is about {{tee.screen1.24}} at 24, and shipping is {{shipBrief}}."
 facts:
   - { label: "Minimum", value: "12 pieces" }
   - { label: "24 tees, 1 color", value: "About {{tee.screen1.24}} each" }
-  - { label: "Shipping", value: "Free from {{shipFreeFrom}}" }
+  - { label: "Shipping", value: "{{shipShort}}" }
 faqs:
   - q: "Is there online screen printing with no minimum?"
     a: "Screen printing starts at 12 pieces, which is lower than most screen printers. DTF and DTG start at 6. For 6 to 23 full-color shirts, DTF is usually the best value at about {{tee.dtf.12}} to {{tee.dtf.6}} per shirt, shirt included, with no setup fee."
@@ -29,7 +29,7 @@ updated: "2026-10-28"
 2. **Send your art.** Upload it in the [quote form](/quick-quote/) or to {{agent}}. A sketch or phone photo is fine; the art check is free.
 3. **Get a price.** {{agent}} prices it on the spot, or we reply within one business day.
 4. **Approve the mockup.** You see placement, sizes and ink colors before we print.
-5. **We print and ship.** Made in-house, shipped with tracking, free from {{shipFreeFrom}}.
+5. **We print and ship.** Made in-house, shipped with tracking, {{shipPrice}}.
 
 ## What it costs
 

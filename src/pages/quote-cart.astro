@@ -604,9 +604,11 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     if (res.totals.art) line('Artwork help', money(res.totals.art));
     line('Total before tax', money(res.totals.subtotal + res.totals.setup + (res.totals.art || 0)), true);
     const ship = cp.querySelector<HTMLElement>('[data-cp-ship]')!;
-    const { pickup, shipping } = res.delivery;
-    ship.textContent = pickup != null && shipping != null ? `Delivery: free pickup or shipping ${money(shipping)}, chosen at checkout.`
-      : shipping != null ? `Shipping ${money(shipping)} is added at checkout.` : pickup != null ? 'Free pickup in Los Angeles.' : '';
+    const { pickup, shipping, shippingLive } = res.delivery as { pickup?: string | null; shipping?: number | null; shippingLive?: boolean };
+    // Live carrier prices: the price depends on the ZIP, so never show the backup number as the price.
+    const shipWords = shippingLive ? "shipping at the carrier's price to your ZIP" : shipping != null ? `shipping ${money(shipping)}` : '';
+    ship.textContent = pickup != null && shipWords ? `Delivery: free pickup or ${shipWords}, chosen at checkout.`
+      : shipWords ? `${shipWords[0].toUpperCase()}${shipWords.slice(1)} is added at checkout.` : pickup != null ? 'Free pickup in Los Angeles.' : '';
     setPayMode(true, res.totals.subtotal + res.totals.setup + (res.totals.art || 0));
   }
 
