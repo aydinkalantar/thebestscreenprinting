@@ -252,6 +252,23 @@ export function updateCartItem(id: string, patch: Partial<Pick<CartItem, 'sizes'
   writeIndex(items);
 }
 
+/** The customer moved this product's screen-printed spots to a smaller-run method (DTF/DTG), e.g.
+ *  "Print with DTF instead" when the cart is under the screen minimum (src/lib/method-rule.ts). */
+export function switchCartItemMethod(id: string, from: (m: string) => boolean, to: string, sizes?: Record<string, number>) {
+  const items = readIndex().map((it) => {
+    if (it.id !== id) return it;
+    const next = {
+      ...it,
+      ...(sizes ? { sizes } : {}),
+      decorations: it.decorations.map((m) => (from(m) ? to : m)),
+      placements: it.placements.map((pl) => (from(pl.decoration) ? { ...pl, decoration: to } : pl)),
+    };
+    next.total = sumSizes(next.sizes);
+    return next;
+  });
+  writeIndex(items);
+}
+
 export async function removeCartItem(id: string) {
   writeIndex(readIndex().filter((it) => it.id !== id));
   await gc();

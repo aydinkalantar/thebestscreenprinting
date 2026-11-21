@@ -7,10 +7,18 @@ import Base from '../layouts/Base.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import DesignRequestSheet from '../components/design/DesignRequestSheet.astro';
 import { business } from '../data/business';
-import { COLLECTIONS, collectionHref } from '../lib/catalog';
+import { COLLECTIONS, collectionHref, products, techniqueNames } from '../lib/catalog';
+import { isScreen, smallRunMethod } from '../lib/method-rule';
 import { ClipboardList, Plus, ArrowRight, CircleCheck, Phone, Info, CreditCard, Lock } from '@lucide/astro';
 
 const min = business.shopMinimum;
+// Per product (slug): the method a run under the screen minimum prints with (DTF, else DTG), for the
+// cart's "Print with DTF instead" (src/lib/method-rule.ts).
+const smallRun = Object.fromEntries(products.flatMap((p) => {
+  const names = techniqueNames(p.techniques || []);
+  const to = names.some(isScreen) ? smallRunMethod(names) : undefined;
+  return to ? [[p.slug, to]] : [];
+}));
 const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   .map((slug) => COLLECTIONS.find((c) => c.slug === slug))
   .filter((c): c is (typeof COLLECTIONS)[number] => !!c)
@@ -18,11 +26,11 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
 ---
 <Base title="Your cart | TBSP" description="The products you picked: check out online or request one quote." noindex>
   <Breadcrumbs items={[{ label: 'Products', href: '/catalog/' }, { label: 'Cart' }]} />
-  <div id="cart-grid" class="grid gap-8 lg:gap-10 grid-cols-[minmax(0,1fr)]">
+  <div id="cart-grid" data-small-run={JSON.stringify(smallRun)} class="grid gap-8 lg:gap-10 grid-cols-[minmax(0,1fr)]">
     <div class="min-w-0">
       <p class="eyebrow">Cart</p>
       <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white">Your cart</h1>
-      <p class="mt-3 text-[15px] muted max-w-3xl">Check out and pay online, or send everything as one quote request and we reply within one business day. Minimum {min} pieces per product, {business.screenMinimum} with screen printing or embroidery.</p>
+      <p class="mt-3 text-[15px] muted max-w-3xl">Check out and pay online, or send everything as one quote request and we reply within one business day. Minimum {min} pieces per product. Screen printing and embroidery start at {business.screenMinimum}; smaller screen print orders are printed with DTF.</p>
 
       <div id="cart-sent" hidden tabindex="-1" class="mt-6 panel p-5 sm:p-6 border-emerald-500/40 bg-emerald-500/[0.06] grid gap-2" role="status">
         <p class="flex items-center gap-2 text-lg font-bold text-zinc-900 dark:text-white"><CircleCheck class="w-6 h-6 text-emerald-500 shrink-0" aria-hidden="true" />Request sent. Thank you!</p>
@@ -104,7 +112,7 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   import { track } from '../lib/analytics';
   import { ssImg } from '../lib/ss-img';
   import {
-    CART_MIN, minFor, cartItems, updateCartItem, removeCartItem, duplicateCartItem, clearCart, getFile, setCarry,
+    CART_MIN, minFor, cartItems, updateCartItem, switchCartItemMethod, removeCartItem, duplicateCartItem, clearCart, getFile, setCarry,
     onCartChange, cartPersistsFiles, sumSizes, CART_MAX_ITEMS, type CartItem,
   } from '../lib/cart';
   import { garmentFor, MAX_TOTAL_BYTES, MAX_ARTWORK_BYTES, MULTIPLE_PRODUCTS } from '../lib/quote';
@@ -112,6 +120,14 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   import { fetchPrices, money, printSize, ART_HELP_LABELS, type PriceItemInput, type PriceResponse } from '../lib/online';
   import { openOrder, type OrderArtwork, type OrderMockup } from '../lib/order-sheet';
   import { business } from '../data/business';
+  import { isEmbroidery, isScreen, shortName as methodShort } from '../lib/method-rule';
+  let smallRunBySlug: Record<string, string> = {};
+  try { smallRunBySlug = JSON.parse(document.getElementById('cart-grid')?.dataset.smallRun || '{}'); } catch { /* none */ }
+  /** Under the screen minimum: the method this product could print with instead (not for embroidery). */
+  const smallRunFor = (it: CartItem) => {
+    const methods = it.placements.length ? it.placements.map((p) => p.decoration) : it.decorations;
+    return methods.some(isScreen) && !methods.some(isEmbroidery) ? smallRunBySlug[it.slug] : undefined;
+  };
 
   const list = document.getElementById('cart-list')!;
   const empty = document.getElementById('cart-empty')!;
@@ -270,13 +286,35 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     err.setAttribute('aria-live', 'polite');
     const inputs: HTMLInputElement[] = [];
     const itMin = minFor(it);
+    // Screen printing under its minimum: print with DTF (or DTG) instead, at the size they typed.
+    const to = itMin > CART_MIN ? smallRunFor(it) : undefined;
+    const swap = el('button', 'justify-self-start text-[13.5px] font-semibold text-violet-700 dark:text-violet-300 hover:underline underline-offset-2 min-h-[44px] sm:min-h-0', to ? `Print with ${methodShort(to)} instead` : '');
+    swap.type = 'button';
+    swap.hidden = true;
+    const short = (n: number) => to && n >= CART_MIN
+      ? `Screen printing starts at ${itMin} pieces. Add ${itMin - n} more, or print with ${methodShort(to)} (from ${CART_MIN}).`
+      : `Minimum ${itMin} pieces for this product. Add ${itMin - n} more, or remove this product.`;
+    const readSizes = () => {
+      const sizes: Record<string, number> = {};
+      inputs.forEach((i) => { const n = Math.max(0, Math.min(99999, Math.floor(Number(i.value) || 0))); if (n) sizes[i.dataset.size!] = n; });
+      return sizes;
+    };
+    swap.addEventListener('click', () => {
+      if (!to) return;
+      const sizes = readSizes();
+      drafts.delete(it.id);
+      switchCartItemMethod(it.id, isScreen, to, sizes);
+      track('cart_small_run_method', { method: to });
+      render();
+    });
     const sync = () => {
       const sizes: Record<string, number> = {};
       inputs.forEach((i) => { const n = Math.max(0, Math.min(99999, Math.floor(Number(i.value) || 0))); if (n) sizes[i.dataset.size!] = n; });
       const n = sumSizes(sizes);
       totalEl.textContent = `Total: ${n} pieces`;
       const bad = n < itMin;
-      err.textContent = bad ? `Minimum ${itMin} pieces for this product. Add ${itMin - n} more, or remove this product.` : '';
+      err.textContent = bad ? short(n) : '';
+      swap.hidden = !(bad && to && n >= CART_MIN);
       inputs.forEach((i) => i.setAttribute('aria-invalid', String(bad)));
       li.classList.toggle('ring-2', bad);
       li.classList.toggle('ring-red-500/60', bad);
@@ -310,11 +348,11 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
     // Filled by the instant price (online orders): price per piece, product total, next price break.
     const priceBox = el('div', 'hidden rounded-xl bg-zinc-50 dark:bg-white/[0.04] px-3.5 py-2.5 text-[13.5px] grid gap-0.5');
     priceBox.dataset.priceFor = it.id;
-    qtys.append(gridEl, totalRow, err, priceBox);
+    qtys.append(gridEl, totalRow, err, swap, priceBox);
     // Show the current state without saving it again.
     const n0 = totalOf(it);
     totalEl.textContent = `Total: ${n0} pieces`;
-    if (n0 < itMin) { err.textContent = `Minimum ${itMin} pieces for this product. Add ${itMin - n0} more, or remove this product.`; li.classList.add('ring-2', 'ring-red-500/60'); }
+    if (n0 < itMin) { err.textContent = short(n0); swap.hidden = !(to && n0 >= CART_MIN); li.classList.add('ring-2', 'ring-red-500/60'); }
 
     // Actions.
     const actions = el('div', 'flex flex-wrap gap-2 pt-1 border-t border-zinc-200/80 dark:border-white/10 pt-3');
@@ -544,7 +582,6 @@ const shortcuts = ['t-shirts', 'hoodies', 'hats', 'polos']
   let cpTimer = 0;
   let cpCtl: AbortController | null = null;
   let cpPrice: Extract<PriceResponse, { enabled: true }> | null = null;
-  const isScreen = (m: string) => /screen/i.test(m);
 
   /** Cart items as the studio prices them. */
   const priceItems = (): PriceItemInput[] => cartItems().map((it) => ({
