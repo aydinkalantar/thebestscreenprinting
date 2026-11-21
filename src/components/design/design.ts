@@ -24,6 +24,11 @@ interface Art {
   /** The shop picked the method from the art (full color → the shop's full-color method): why, and the
    *  methods that don't work for this art (never offered for it). */
   auto?: { method: string; why: string; blocked: string[]; notes: Record<string, string> };
+  /** The customer picked this spot's method themselves: the shop never changes it again. */
+  byHand?: boolean;
+  /** The method follows the quantity (src/lib/method-rule.ts): moved from `from` (screen printing)
+   *  to `to` (DTF) because the order is under the screen minimum, or kept there because it's cheaper. */
+  qty?: { from: string; to: string; why: string; fromNote: string };
 }
 /** One placed artwork as saved in a product page draft (src/lib/design-draft.ts). */
 export interface DraftArt {
@@ -112,6 +117,8 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   const spots = cfg.spots;
   const spotById = new Map(spots.map((s) => [s.id, s]));
   /** Decorations offered on a location: the admin's list for it, else all of the product's. */
+  /** The customer picked the order form's method themselves (new artwork keeps it, see followQuantity). */
+  let recommendedByHand = false;
   const allowedFor = (id: string) => { const m = spotById.get(id)?.methods?.filter((x) => cfg.decorations.includes(x)); return m?.length ? m : cfg.decorations; };
   const q = <T extends Element = HTMLElement>(sel: string) => root.querySelector<T>(sel)!;
   const qa = <T extends Element = HTMLElement>(sel: string) => [...root.querySelectorAll<T>(sel)];
@@ -476,7 +483,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       panel.decoration.value = a.decoration;
       // One line by default ("DTF · best for photos"); "Change" opens the list.
       panel.methodName.textContent = a.decoration;
-      const why = a.auto ? (a.decoration === a.auto.method ? a.auto.why : a.auto.notes[a.decoration] || '') : '';
+      const why = whyFor(a, a.decoration);
       panel.methodWhy.textContent = why ? `· ${why}` : '';
       panel.methodChange.hidden = list.length < 2 || pickFor === sp.id;
       panel.decoration.hidden = pickFor !== sp.id;
@@ -821,6 +828,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     const a: Art = {
       loc, file, ext, kind: 'file', aspect: 1, x: 0, y: 0, w: 1,
       decoration: prev?.decoration ?? (cfg.recommended && allowedFor(loc).includes(cfg.recommended) ? cfg.recommended : allowedFor(loc)[0]), notes: prev?.notes ?? '',
+      byHand: prev ? prev.byHand : recommendedByHand && !!cfg.recommended && allowedFor(loc).includes(cfg.recommended), qty: prev?.qty,
     };
     if (DRAWABLE.has(ext)) {
       const url = URL.createObjectURL(file);
@@ -878,9 +886,14 @@ export function mountDesign(root: HTMLElement, opts: Options) {
     render();
     announce(`Reset. ${describe(a)}`);
   });
+  /** The short line next to a method: why the shop picked it (full-color art, quantity), or a note about it. */
+  function whyFor(a: Art, m: string) {
+    if (a.qty && !a.byHand) { if (m === a.qty.to && a.decoration === m) return a.qty.why; if (m === a.qty.from) return a.qty.fromNote; }
+    return a.auto ? (m === a.auto.method ? a.auto.why : a.auto.notes[m] || '') : '';
+  }
   panel.decoration.addEventListener('change', () => {
     const a = arts.get(active);
-    if (a) { a.decoration = panel.decoration.value; pickFor = ''; renderPanel(); renderSummary(); opts.onChange(); }
+    if (a) { a.decoration = panel.decoration.value; a.byHand = true; pickFor = ''; renderPanel(); renderSummary(); opts.onChange(); }
   });
   panel.noteAdd.addEventListener('click', () => { noteFor = active; renderPanel(); panel.notes.focus(); });
   // "Change": a sheet with each method that works for this art and its price per piece.
@@ -904,7 +917,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       b.setAttribute('role', 'radio');
       b.setAttribute('aria-checked', String(on));
       b.className = `w-full flex items-center gap-3 text-left rounded-2xl border px-4 py-3 min-h-[60px] ${on ? 'border-violet-500 bg-violet-500/10' : 'border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03]'}`;
-      const why = a.auto ? (m === a.auto.method ? a.auto.why : a.auto.notes[m] || '') : '';
+      const why = whyFor(a, m);
       const dot = document.createElement('span');
       dot.className = `w-5 h-5 shrink-0 rounded-full border-2 ${on ? 'border-violet-600 bg-violet-600 shadow-[inset_0_0_0_3px_#fff]' : 'border-zinc-300 dark:border-white/30'}`;
       const text = document.createElement('span');
@@ -919,7 +932,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       b.append(dot, text, priceEl);
       b.addEventListener('click', () => {
         const art = arts.get(loc);
-        if (art) { art.decoration = m; renderPanel(); renderSummary(); opts.onChange(); }
+        if (art) { art.decoration = m; art.byHand = true; renderPanel(); renderSummary(); opts.onChange(); }
         closeSheet(methodSheet);
       });
       box.append(b);
@@ -967,6 +980,14 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       t2.className = 'block text-[12.5px] muted truncate';
       t2.textContent = `${sizeText(a)} · ${a.file.name}`;
       text.append(t1, t2);
+      // Why the shop picked this method for the quantity ("Screen printing starts at 12, so…").
+      const qtyWhy = a.qty && !a.byHand && a.decoration === a.qty.to ? a.qty.why : '';
+      if (qtyWhy) {
+        const t3 = document.createElement('span');
+        t3.className = 'block text-[12.5px] text-violet-700 dark:text-violet-300';
+        t3.textContent = `${qtyWhy.charAt(0).toUpperCase()}${qtyWhy.slice(1)}.`;
+        text.append(t3);
+      }
       const edit = document.createElement('button');
       edit.type = 'button';
       edit.className = 'icon-btn w-10 h-10 shrink-0';
@@ -1184,6 +1205,16 @@ export function mountDesign(root: HTMLElement, opts: Options) {
   return {
     /** Opens the file picker for the selected location (the quote panel's Upload button). */
     pickFile: () => fileInput.click(),
+    /** "Add another spot": the next print spot without artwork (in the preview's order) is picked on the
+     *  photo and the file picker opens for it, so the customer just chooses a file. */
+    addSpot() {
+      const free = spots.filter((x) => !arts.has(x.id) && allowedFor(x.id).length);
+      // The big spots first (Front, then Back), then chest, sleeves and the rest in the preview's order.
+      const rank = (l: string) => { const i = ['front', 'back'].indexOf(l.toLowerCase()); return i < 0 ? 2 : i; };
+      const next = [...free].sort((x, y) => rank(x.label) - rank(y.label))[0];
+      if (next) select(next.id, { scroll: true });
+      fileInput.click();
+    },
     count: () => arts.size,
     /** Placed artwork with its files and measurements, for the quote cart. */
     snapshot: () => ordered().map((a) => {
@@ -1241,7 +1272,7 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       return { placed, pending: pending.length };
     },
     /** The method new artwork starts with (the order form's method choice). */
-    setMethod(m: string) { cfg.recommended = m; },
+    setMethod(m: string, byHand = false) { cfg.recommended = m; recommendedByHand = byHand; },
     /**
      * The shop picks a spot's method from its art (full-color art → the shop's full-color method,
      * Settings › Art check): switches to it when allowed there, says why, and stops offering `blocked`.
@@ -1258,6 +1289,46 @@ export function mountDesign(root: HTMLElement, opts: Options) {
       if (pickFor === locId) pickFor = '';
       renderPanel(); renderSummary(); opts.onChange();
       return true;
+    },
+    /**
+     * The method follows the quantity (src/lib/method-rule.ts decides; this applies it). For each spot
+     * the customer didn't set by hand and whose art allows it, `want(current, offered)` returns the
+     * method it should be on (with why), or null to leave it. Returns true when a spot changed.
+     */
+    followQuantity(want: (a: { locId: string; method: string; offered: string[]; swap: { from: string; to: string } | null }) => { method: string; why: string; fromNote: string; from: string } | { back: true } | null) {
+      let changed = false, shown = false;
+      for (const a of arts.values()) {
+        if (a.byHand) continue;
+        const ok = allowedFor(a.loc).filter((m) => !a.auto?.blocked.includes(m));
+        const swap = a.qty && a.decoration === a.qty.to ? { from: a.qty.from, to: a.qty.to } : null;
+        if (a.qty && !swap) a.qty = undefined; // moved on (full-color art picked another method)
+        const r = want({ locId: a.loc, method: a.decoration, offered: ok, swap });
+        if (!r) continue;
+        if ('back' in r) {
+          if (!a.qty || !ok.includes(a.qty.from)) { if (a.qty) { a.qty = undefined; shown = true; } continue; }
+          a.decoration = a.qty.from; a.qty = undefined; changed = true; continue;
+        }
+        if (!ok.includes(r.method)) continue;
+        const next = { from: r.from, to: r.method, why: r.why, fromNote: r.fromNote };
+        if (a.decoration === r.method && a.qty && JSON.stringify(a.qty) === JSON.stringify(next)) continue;
+        if (a.decoration !== r.method) changed = true; else shown = true;
+        a.decoration = r.method; a.qty = next;
+      }
+      // No onChange: the page calls this from its own refresh and re-prices after.
+      if (changed || shown) { renderPanel(); renderSummary(); }
+      return changed;
+    },
+    /** The customer chose a method for every spot on `from` (the "print with DTF instead" nudge). */
+    switchAll(from: (m: string) => boolean, to: (offered: string[]) => string | undefined) {
+      let changed = false;
+      for (const a of arts.values()) {
+        if (!from(a.decoration)) continue;
+        const m = to(allowedFor(a.loc).filter((x) => !a.auto?.blocked.includes(x)));
+        if (!m) continue;
+        a.decoration = m; a.byHand = true; a.qty = undefined; changed = true;
+      }
+      if (changed) { renderPanel(); renderSummary(); opts.onChange(); }
+      return changed;
     },
     /** The methods a spot offers (admin's list for it). */
     methodsFor: (locId: string) => allowedFor(locId),
