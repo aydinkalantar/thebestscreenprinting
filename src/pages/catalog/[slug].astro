@@ -182,6 +182,7 @@ import { agent } from '../../lib/facts.mjs';
             <dl data-ip-lines class="mt-1 grid grid-cols-[1fr_auto] gap-y-1 text-[14px]"></dl>
             <p data-ip-next hidden class="mt-1 text-[13px] font-medium text-emerald-700 dark:text-emerald-400"></p>
             <p data-ip-stock hidden class="text-[13px] font-medium text-amber-700 dark:text-amber-300"></p>
+            <p data-ip-ready hidden class="text-[13.5px] text-zinc-900 dark:text-white"></p>
           </div>
           <p data-ip-quote hidden class="text-[13px] muted"></p>
           <button type="button" data-ip-order hidden class="btn-primary w-full h-12 text-[15px] disabled:opacity-50 disabled:shadow-none"><CreditCard class="w-4 h-4" aria-hidden="true" /><span>Order &amp; pay now</span></button>
@@ -1135,6 +1136,15 @@ import { agent } from '../../lib/facts.mjs';
     line('Total before tax', money(res.totals!.subtotal + res.totals!.setup + (res.totals!.art || 0)), true);
     ip('next').hidden = !it.next;
     if (it.next) ip('next').textContent = `Order ${it.next.qty} or more and pay ${money(it.next.perPiece)} each.`;
+    // When it's ready, before the cart (standard on print shop product pages): the normal turnaround
+    // from Settings, counted from today; Rush is picked at checkout.
+    const t = res.totals!;
+    ip('ready').hidden = !t.readyBy;
+    if (t.readyBy) {
+      const day = new Date(t.readyBy).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+      const rush = res.turnaround?.rush;
+      ip('ready').replaceChildren('Ready by ', Object.assign(document.createElement('b'), { textContent: day }), ' if you order today', Object.assign(document.createElement('span'), { className: 'muted', textContent: ` (${t.businessDays ?? res.turnaround?.normal.days} business days${rush ? `; Rush ${rush.days} days, +${rush.percent}%, at checkout` : ''}).` }));
+    }
     ip('stock').hidden = !it.stockShort.length;
     if (it.stockShort.length) ip('stock').textContent = `Low stock: ${it.stockShort.map((s) => `${s.size} (${s.stock} left)`).join(', ')}. We'll confirm a replacement before printing.`;
   }
